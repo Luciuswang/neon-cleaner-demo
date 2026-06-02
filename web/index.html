@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>霓虹清道夫 Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main id="app">
+      <section class="stage">
+        <div class="scene-backdrop" aria-hidden="true">
+          <video
+            id="backgroundVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="./assets/neon-cleaner-keyframe.png"
+          >
+            <source src="./assets/neon-cleaner-bg-noaudio.mp4" type="video/mp4" />
+          </video>
+          <img src="./assets/neon-cleaner-keyframe.png" alt="" />
+          <div class="rain"></div>
+          <div class="scanline"></div>
+        </div>
+
+        <div class="topbar">
+          <div>
+            <p class="eyebrow">Interactive Film Prototype</p>
+            <h1>霓虹清道夫</h1>
+          </div>
+          <div class="node-pill" id="nodeLabel">A0 / Rain Signal</div>
+        </div>
+
+        <div class="film-panel" id="filmPanel">
+          <div class="caption" id="caption"></div>
+          <div class="subtitle" id="subtitle"></div>
+        </div>
+
+        <div class="hud" id="hud" hidden>
+          <div class="metric">
+            <span id="metricAName">速度</span>
+            <div><i id="metricA"></i></div>
+            <b id="metricAValue">0</b>
+          </div>
+          <div class="metric">
+            <span id="metricBName">稳定</span>
+            <div><i id="metricB"></i></div>
+            <b id="metricBValue">0</b>
+          </div>
+          <div class="metric">
+            <span id="metricCName">风险</span>
+            <div><i id="metricC"></i></div>
+            <b id="metricCValue">0</b>
+          </div>
+        </div>
+
+        <div class="playfield" id="playfield" hidden>
+          <div class="road" id="road">
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="lane"></div>
+            <div class="target-car" id="targetCar"></div>
+            <div class="player-car" id="playerCar"></div>
+          </div>
+
+          <div class="combat" id="combat" hidden>
+            <div class="boss-card">
+              <span>维克多</span>
+              <div class="boss-bar"><i id="bossBar"></i></div>
+            </div>
+            <button class="combat-btn" id="attackBtn">攻击 J</button>
+            <button class="combat-btn" id="guardBtn">格挡 K</button>
+            <button class="combat-btn primary" id="terminalBtn">破坏终端 L</button>
+            <div class="upload">
+              <span>伪造上传</span>
+              <div><i id="uploadBar"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="primaryBtn">开始接管</button>
+          <button id="restartBtn" class="ghost">重开</button>
+          <div class="keys" id="keys">追车：← → 控方向，↑ 加速，空格走捷径</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
