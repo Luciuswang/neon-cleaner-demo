@@ -36,6 +36,22 @@ http://127.0.0.1:5177/
 
 部署到 GitHub Pages 后，用手机访问 Pages 地址即可。视频是 muted + playsinline，适合移动端自动播放。
 
+线上地址：
+
+```text
+https://luciuswang.github.io/neon-cleaner-demo/
+```
+
+## 明天继续
+
+交接说明在：
+
+```text
+docs/handoff.md
+```
+
+新环境里让 Codex 先阅读 `README.md` 和 `docs/handoff.md`，就可以从当前状态继续。
+
 ## 项目结构
 
 ```text
@@ -43,6 +59,7 @@ docs/
   story-bible.md
   branch-map.md
   ai-shot-list.md
+  handoff.md
 web/
   index.html
   styles.css
@@ -55,4 +72,3 @@ web/
 ## 注意
 
 `source/video` 是本地素材目录，不提交到 GitHub。公开版本只包含已经去掉音轨的背景视频。
-
