@@ -1,13 +1,13 @@
-# AI Video Shot List v1
+# AI Video Shot List v2
 
 Use this after the interactive skeleton works. Generate each film node as a short independent clip, then wire the clips into the demo.
 
-## A0 Rain Signal
+## A0 War Signal
 
 Prompt intent:
 
 ```text
-Near-future San Francisco at night after rain. A female city cleanup bounty hunter sits inside a black electric car, rain streaks across the windshield, magenta and cyan neon reflections, dashboard AI interface glow on her face. A black convoy passes outside, carrying a witness. Cinematic thriller, tense, photorealistic, anamorphic lens, no text.
+Epic post-war future San Francisco at night after rain. Wide overlook from high above a battle-scarred city: broken rails, smoke columns, damaged towers, wet streets, distant emergency glows, ruined drones. Lin Xia appears on a rooftop edge overlooking the wounded city, carrying grief and a faint thread of hope as the human representative of carbon-based life. Premium cinematic sci-fi war drama, photorealistic, large scale, no text.
 ```
 
 ## I1 Transition Frame
@@ -15,7 +15,7 @@ Near-future San Francisco at night after rain. A female city cleanup bounty hunt
 Prompt intent:
 
 ```text
-First-person-ish cinematic car chase view through rain-smeared windshield, black SUV ahead, wet street, neon signs, cable car tracks, headlights, motion blur, high-speed but readable composition.
+Cinematic combat pursuit transition. Rain-smeared windshield or chase-rig view, armored hostile vehicle ahead, incoming fire, sparks, debris, near-miss explosion, high-speed but readable composition, built to hand off into gameplay during a dodge or blast cover.
 ```
 
 ## C1 Clean Pursuit
@@ -23,7 +23,7 @@ First-person-ish cinematic car chase view through rain-smeared windshield, black
 Prompt intent:
 
 ```text
-The heroine's black car perfectly drifts around a corner on wet San Francisco asphalt, catching the convoy, water spray and neon reflections, controlled cinematic action, no crash chaos.
+Lin Xia's combat vehicle cleanly outmaneuvers the hostile escort through a war-damaged future city, precise steering, controlled weapon fire, sparks, debris, rain, powerful cinematic speed, no loss of control.
 ```
 
 ## C2 Damaged Pursuit
@@ -31,7 +31,7 @@ The heroine's black car perfectly drifts around a corner on wet San Francisco as
 Prompt intent:
 
 ```text
-The heroine's car catches the convoy but scrapes a guard rail, cracked windshield, sparks and rain, still in control, tense costly success.
+Lin Xia stays in the fight but her vehicle takes visible damage during the dual-car combat chase, cracked glass, armor sparks, evasive steering under fire, costly success, intense but readable.
 ```
 
 ## C3 Lost Trail
@@ -39,7 +39,7 @@ The heroine's car catches the convoy but scrapes a guard rail, cracked windshiel
 Prompt intent:
 
 ```text
-The heroine's car stops at an empty foggy intersection, the convoy disappears into an elevated highway shadow, neon reflections fade, regretful cinematic pause.
+The hostile vehicle disappears through smoke, blast light, and collapsing road cover, Lin Xia emerges too late into a damaged intersection, rain and ash drifting through neon reflections, regret and delay.
 ```
 
 ## A2 Warehouse Threshold
@@ -47,7 +47,7 @@ The heroine's car stops at an empty foggy intersection, the convoy disappears in
 Prompt intent:
 
 ```text
-Rainy industrial port warehouse at night, magenta contamination glow inside, the heroine enters with energy baton, a witness tied near a server terminal, villain silhouette near upload equipment, cinematic noir sci-fi, no gore.
+War-battered industrial port warehouse at night, contamination glow inside, scorched metal, broken machinery, hanging cables, witness near an upload terminal, villain silhouette in a militarized control zone, cinematic sci-fi war noir.
 ```
 
 ## E1 Best Ending
@@ -55,7 +55,7 @@ Rainy industrial port warehouse at night, magenta contamination glow inside, the
 Prompt intent:
 
 ```text
-The heroine destroys the terminal just before upload finishes, magenta sparks illuminate wet warehouse floor, witness alive, villain defeated, triumphant but grounded cinematic ending.
+Lin Xia stops the upload at the last second, witness alive, terminal destroyed in a controlled blast, wet floor reflecting fire and magenta sparks, victory with hard-earned relief.
 ```
 
 ## E2 Costly Victory
@@ -63,7 +63,7 @@ The heroine destroys the terminal just before upload finishes, magenta sparks il
 Prompt intent:
 
 ```text
-The terminal is broken but the villain escapes into rain, heroine injured but standing, witness alive, partial evidence saved, bittersweet neon port atmosphere.
+The upload is partially stopped but the villain escapes through smoke and rain, Lin Xia wounded but standing, witness alive, damaged evidence, bittersweet war-torn atmosphere.
 ```
 
 ## E3 Regret Ending
@@ -71,6 +71,6 @@ The terminal is broken but the villain escapes into rain, heroine injured but st
 Prompt intent:
 
 ```text
-City screens show manipulated footage as rain falls, heroine stands alone in a neon street, witness lost or evidence corrupted, quiet tragic cyberpunk ending, no readable text.
+City displays and public systems have been overwritten by manipulated footage, Lin Xia stands alone in a rain-soaked future street after the battle, witness lost or truth corrupted, tragic large-scale sci-fi ending, no readable text.
 ```
 

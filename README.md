@@ -32,6 +32,18 @@ python -m http.server 5177
 http://127.0.0.1:5177/
 ```
 
+也可以直接用仓库根目录的一键脚本：
+
+```powershell
+.\start_local_demo.ps1
+```
+
+停止本地服务：
+
+```powershell
+.\stop_local_demo.ps1
+```
+
 ## 手机测试
 
 部署到 GitHub Pages 后，用手机访问 Pages 地址即可。视频是 muted + playsinline，适合移动端自动播放。
