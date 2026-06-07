@@ -7,7 +7,8 @@ const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
 const params = new URLSearchParams(location.search);
 const perfMode = params.get("perf") || "balanced";
 const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1.05;
-const maxPursuitDistance = perfMode === "high" ? 64 : 38;
+const maxPursuitDistance = perfMode === "high" ? 54 : 30;
+const driveScale = perfMode === "high" ? 0.34 : 0.28;
 
 const el = {
   canvas: document.getElementById("worldCanvas"),
@@ -104,17 +105,25 @@ bindHold(el.boost, "boost");
 bindHold(el.brake, "brake");
 
 window.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft" || event.key.toLowerCase() === "a") state.inputs.add("left");
-  if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") state.inputs.add("right");
-  if (event.key === "ArrowUp" || event.key.toLowerCase() === "w") state.inputs.add("boost");
-  if (event.key === "ArrowDown" || event.key.toLowerCase() === "s") state.inputs.add("brake");
+  const key = event.key.toLowerCase();
+  if (["arrowleft", "arrowright", "arrowup", "arrowdown", "a", "d", "w", "s"].includes(key)) {
+    event.preventDefault();
+  }
+  if (event.key === "ArrowLeft" || key === "a") state.inputs.add("left");
+  if (event.key === "ArrowRight" || key === "d") state.inputs.add("right");
+  if (event.key === "ArrowUp" || key === "w") state.inputs.add("boost");
+  if (event.key === "ArrowDown" || key === "s") state.inputs.add("brake");
 });
 
 window.addEventListener("keyup", (event) => {
-  if (event.key === "ArrowLeft" || event.key.toLowerCase() === "a") state.inputs.delete("left");
-  if (event.key === "ArrowRight" || event.key.toLowerCase() === "d") state.inputs.delete("right");
-  if (event.key === "ArrowUp" || event.key.toLowerCase() === "w") state.inputs.delete("boost");
-  if (event.key === "ArrowDown" || event.key.toLowerCase() === "s") state.inputs.delete("brake");
+  const key = event.key.toLowerCase();
+  if (["arrowleft", "arrowright", "arrowup", "arrowdown", "a", "d", "w", "s"].includes(key)) {
+    event.preventDefault();
+  }
+  if (event.key === "ArrowLeft" || key === "a") state.inputs.delete("left");
+  if (event.key === "ArrowRight" || key === "d") state.inputs.delete("right");
+  if (event.key === "ArrowUp" || key === "w") state.inputs.delete("boost");
+  if (event.key === "ArrowDown" || key === "s") state.inputs.delete("brake");
 });
 
 const renderer = new THREE.WebGLRenderer({
@@ -389,7 +398,9 @@ function updateHud() {
   el.pursuitValue.textContent = pursuit;
   el.stabilityValue.textContent = stability;
 
-  if (state.complete) {
+  if (!state.complete) {
+    el.branchReadout.textContent = `推进 ${pursuit}% / 速度 ${Math.round(state.speed)}`;
+  } else {
     if (state.pursuit > 86 && state.stability > 68) {
       el.branchReadout.textContent = "C1 / Clean Pursuit";
     } else if (state.pursuit > 62 && state.stability > 36) {
@@ -408,28 +419,30 @@ function animate(time) {
   const steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
   const throttle = Number(state.inputs.has("boost")) - Number(state.inputs.has("brake"));
 
-  state.heading = clamp(state.heading + steer * dt * 0.42, -0.55, 0.55);
-  state.speed = clamp(state.speed + throttle * dt * 8 - dt * 1.4, 0, 12);
+  state.heading = clamp(state.heading + steer * dt * 0.56, -0.62, 0.62);
+  state.speed = clamp(state.speed + throttle * dt * 13 - dt * 1.1, 0, 16);
   state.distance = clamp(state.distance + state.speed * dt, 0, maxPursuitDistance);
   state.pursuit = clamp((state.distance / maxPursuitDistance) * 100, 0, 100);
-  state.stability = clamp(state.stability - Math.abs(steer) * dt * 10 + dt * 2.6, 0, 100);
+  state.stability = clamp(state.stability - Math.abs(steer) * dt * 12 + dt * 2.2, 0, 100);
 
   if (state.pursuit >= 100 && !state.complete) {
     state.complete = true;
     state.speed = 0;
   }
 
-  const lateral = Math.sin(state.heading) * 0.92;
+  const forward = state.distance * driveScale;
+  const lateral = Math.sin(state.heading) * 1.35;
   vehicle.position.x = THREE.MathUtils.lerp(vehicle.position.x, lateral, 0.14);
   vehicle.position.y = 0.22 + Math.sin(seconds * 10) * 0.012;
+  vehicle.position.z = THREE.MathUtils.lerp(vehicle.position.z, 2.2 - forward, 0.12);
   vehicle.rotation.y = THREE.MathUtils.lerp(vehicle.rotation.y, -state.heading * 0.55, 0.12);
   vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * 0.08, 0.16);
 
   target.position.x = Math.sin(seconds * 0.9) * 0.55;
-  target.position.z = -10 - state.pursuit * 0.08 + Math.sin(seconds * 1.4) * 0.2;
+  target.position.z = -10 - forward - state.pursuit * 0.06 + Math.sin(seconds * 1.4) * 0.2;
 
   guide.position.x = vehicle.position.x * 0.35;
-  guide.position.z = -0.8 - state.distance * 0.06;
+  guide.position.z = vehicle.position.z - 1.2;
   guide.rotation.y = state.heading * 0.1;
 
   if (proceduralWorld) {
@@ -437,22 +450,16 @@ function animate(time) {
     proceduralWorld.rotation.y = state.heading * 0.025;
   }
 
-  if (splat && splatUrl !== SAMPLE_SPLAT_URL) {
-    splat.position.z = -12 + state.distance * 0.055;
-    splat.position.x = -vehicle.position.x * 0.08;
-    splat.rotation.y = state.heading * 0.018;
-  }
-
   magentaLight.position.x = vehicle.position.x - 2.5;
   magentaLight.position.z = vehicle.position.z - 1.2;
   cyanLight.position.x = target.position.x + 2.1;
   cyanLight.position.z = target.position.z + 0.2;
 
-  const camX = vehicle.position.x * 0.32;
-  const camY = 2.4 + state.speed * 0.012;
-  const camZ = 6.6 - state.speed * 0.02;
+  const camX = vehicle.position.x * 0.58;
+  const camY = 2.25 + state.speed * 0.015;
+  const camZ = vehicle.position.z + 4.8 - state.speed * 0.025;
   camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.08);
-  camera.lookAt(vehicle.position.x * 0.16, 0.86, -8.5 - state.pursuit * 0.025);
+  camera.lookAt(vehicle.position.x * 0.22, 0.82, vehicle.position.z - 7.5);
 
   updateHud();
   renderer.render(scene, camera);
