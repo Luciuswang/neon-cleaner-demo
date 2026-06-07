@@ -12,6 +12,7 @@ const el = {
   pursuitValue: document.getElementById("pursuitValue"),
   stabilityValue: document.getElementById("stabilityValue"),
   branchReadout: document.getElementById("branchReadout"),
+  assetNote: document.getElementById("assetNote"),
   steerLeft: document.getElementById("steerLeft"),
   steerRight: document.getElementById("steerRight"),
   boost: document.getElementById("boost"),
@@ -37,13 +38,17 @@ async function resolveSplatUrl() {
   const override = new URLSearchParams(location.search).get("splat");
   if (override) return override;
 
+  if (new URLSearchParams(location.search).get("sample") === "1") {
+    return SAMPLE_SPLAT_URL;
+  }
+
   try {
     const response = await fetch(LOCAL_SPLAT_URL, { method: "HEAD" });
     if (response.ok) return LOCAL_SPLAT_URL;
   } catch {
   }
 
-  return SAMPLE_SPLAT_URL;
+  return null;
 }
 
 function setButtonActive(button, isActive) {
@@ -174,19 +179,171 @@ const cyanLight = new THREE.PointLight(0x43dfff, 4, 30);
 cyanLight.position.set(4, 4.5, -18);
 scene.add(cyanLight);
 
-const splatUrl = await resolveSplatUrl();
-const splat = new SplatMesh({ url: splatUrl });
-if (splatUrl === SAMPLE_SPLAT_URL) {
-  splat.quaternion.set(1, 0, 0, 0);
-  splat.position.set(0, 3.2, -24);
-  splat.scale.setScalar(4.8);
-  el.assetStatus.textContent = "Sample SPZ";
-} else {
-  splat.position.set(0, -1.2, -12);
-  splat.scale.setScalar(1);
-  el.assetStatus.textContent = "Marble SPZ";
+function makeMaterial(color, emissive = 0x000000, emissiveIntensity = 0.1) {
+  return new THREE.MeshStandardMaterial({
+    color,
+    roughness: 0.58,
+    metalness: 0.28,
+    emissive,
+    emissiveIntensity,
+  });
 }
-scene.add(splat);
+
+function createProceduralWarSanFrancisco() {
+  const world = new THREE.Group();
+  world.name = "procedural-war-san-francisco";
+
+  const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(120, 360),
+    new THREE.MeshStandardMaterial({
+      color: 0x11141a,
+      roughness: 0.2,
+      metalness: 0.45,
+      emissive: 0x05060a,
+      emissiveIntensity: 0.28,
+    }),
+  );
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.z = -84;
+  world.add(ground);
+
+  const centerLineMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff3fb6,
+    transparent: true,
+    opacity: 0.36,
+  });
+  for (let i = 0; i < 28; i += 1) {
+    const laneMark = new THREE.Mesh(new THREE.BoxGeometry(0.1, 0.03, 3.5), centerLineMaterial);
+    laneMark.position.set(0, 0.04, -i * 10 - 6);
+    world.add(laneMark);
+  }
+
+  const buildingMaterials = [
+    makeMaterial(0x161b23, 0x02060c, 0.22),
+    makeMaterial(0x20242b, 0x0c0508, 0.18),
+    makeMaterial(0x10151d, 0x06131a, 0.26),
+  ];
+
+  for (let i = 0; i < 34; i += 1) {
+    const side = i % 2 === 0 ? -1 : 1;
+    const width = 4 + (i % 4) * 1.2;
+    const depth = 6 + (i % 5) * 1.4;
+    const height = 7 + ((i * 7) % 18);
+    const building = new THREE.Mesh(
+      new THREE.BoxGeometry(width, height, depth),
+      buildingMaterials[i % buildingMaterials.length],
+    );
+    building.position.set(side * (17 + (i % 3) * 5), height / 2, -10 - i * 7.4);
+    building.rotation.z = i % 7 === 0 ? side * 0.08 : 0;
+    world.add(building);
+
+    if (i % 6 === 0) {
+      const brokenTop = new THREE.Mesh(
+        new THREE.ConeGeometry(width * 0.65, 2.8, 4),
+        makeMaterial(0x0b0e13, 0x1e0905, 0.34),
+      );
+      brokenTop.position.set(building.position.x + side * 0.4, height + 1.0, building.position.z);
+      brokenTop.rotation.y = Math.PI * 0.25;
+      world.add(brokenTop);
+    }
+  }
+
+  const railMaterial = makeMaterial(0x262b31, 0x1e0509, 0.16);
+  for (let i = 0; i < 9; i += 1) {
+    const rail = new THREE.Mesh(new THREE.BoxGeometry(15, 0.32, 0.45), railMaterial);
+    rail.position.set(-13 + i * 3.3, 7 + Math.sin(i) * 0.4, -58 - i * 4.6);
+    rail.rotation.z = i > 5 ? -0.18 : 0.02;
+    world.add(rail);
+  }
+
+  const towerMaterial = makeMaterial(0x4b1b25, 0x2a0508, 0.35);
+  for (const x of [-42, 42]) {
+    const tower = new THREE.Mesh(new THREE.BoxGeometry(3.8, 26, 3.8), towerMaterial);
+    tower.position.set(x, 13, -132);
+    world.add(tower);
+
+    const bridgeTop = new THREE.Mesh(new THREE.BoxGeometry(11, 1.2, 2.8), towerMaterial);
+    bridgeTop.position.set(x, 25.5, -132);
+    world.add(bridgeTop);
+  }
+  const bridgeDeck = new THREE.Mesh(new THREE.BoxGeometry(98, 1.1, 4), towerMaterial);
+  bridgeDeck.position.set(0, 5.5, -132);
+  bridgeDeck.rotation.z = -0.05;
+  world.add(bridgeDeck);
+
+  const cableMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff786f,
+    transparent: true,
+    opacity: 0.38,
+  });
+  for (let i = 0; i < 12; i += 1) {
+    const cable = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 60, 8), cableMaterial);
+    cable.position.set(-31 + i * 5.6, 15 + Math.sin(i * 0.5) * 2, -132);
+    cable.rotation.z = Math.PI / 2 + (i - 6) * 0.025;
+    world.add(cable);
+  }
+
+  const smokeMaterial = new THREE.MeshBasicMaterial({
+    color: 0x9aa0a7,
+    transparent: true,
+    opacity: 0.12,
+    depthWrite: false,
+  });
+  for (let i = 0; i < 18; i += 1) {
+    const smoke = new THREE.Mesh(new THREE.SphereGeometry(2.8 + (i % 4), 12, 8), smokeMaterial);
+    smoke.position.set(-28 + (i % 6) * 11, 12 + (i % 5) * 4, -38 - i * 8);
+    smoke.scale.y = 1.7 + (i % 3) * 0.55;
+    world.add(smoke);
+  }
+
+  const glowMaterial = new THREE.MeshBasicMaterial({
+    color: 0xff3fb6,
+    transparent: true,
+    opacity: 0.42,
+  });
+  for (let i = 0; i < 16; i += 1) {
+    const ember = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.16, 2.4), glowMaterial);
+    ember.position.set(-25 + (i % 8) * 7, 0.2, -18 - i * 9);
+    ember.rotation.y = Math.random() * Math.PI;
+    world.add(ember);
+  }
+
+  const droneMaterial = makeMaterial(0x07090d, 0x43dfff, 0.6);
+  for (let i = 0; i < 7; i += 1) {
+    const drone = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.18, 0.75), droneMaterial);
+    drone.position.set(-15 + i * 5, 8 + (i % 3) * 2.4, -35 - i * 11);
+    drone.rotation.set(0.08 * i, 0.3 * i, 0.12 * i);
+    world.add(drone);
+  }
+
+  world.position.z = 4;
+  return world;
+}
+
+const splatUrl = await resolveSplatUrl();
+let proceduralWorld = null;
+let splat = null;
+if (splatUrl) {
+  splat = new SplatMesh({ url: splatUrl });
+  if (splatUrl === SAMPLE_SPLAT_URL) {
+    splat.quaternion.set(1, 0, 0, 0);
+    splat.position.set(0, 3.2, -24);
+    splat.scale.setScalar(4.8);
+    el.assetStatus.textContent = "Sample SPZ";
+    el.assetNote.textContent = "当前是 SparkJS 示例资产，只用于排查渲染问题。正式实验请放入 Marble 导出的旧金山 .spz。";
+  } else {
+    splat.position.set(0, -1.2, -12);
+    splat.scale.setScalar(1);
+    el.assetStatus.textContent = "Marble SPZ";
+    el.assetNote.textContent = "已加载 Marble 世界资产，正在测试可接管追车镜头。";
+  }
+  scene.add(splat);
+} else {
+  proceduralWorld = createProceduralWarSanFrancisco();
+  scene.add(proceduralWorld);
+  el.assetStatus.textContent = "本地代理场景";
+  el.assetNote.textContent = "还没有 Marble 导出的旧金山 .spz；当前先用本地低模战后旧金山代理场景验证手机和接管手感。";
+}
 
 function resize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -246,6 +403,11 @@ function animate(time) {
 
   road.position.z = (state.distance % 8) * 1.8;
   road.rotation.y = state.heading * 0.08;
+
+  if (proceduralWorld) {
+    proceduralWorld.position.z = 4 + (state.distance % 12) * 0.12;
+    proceduralWorld.rotation.y = state.heading * 0.025;
+  }
 
   magentaLight.position.x = vehicle.position.x - 2.5;
   magentaLight.position.z = vehicle.position.z - 1.2;

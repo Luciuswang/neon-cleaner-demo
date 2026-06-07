@@ -92,7 +92,7 @@ web/worlds/a0-war-signal-500k.spz
 web/worlds/a0-war-signal-collider.glb
 ```
 
-如果还没有 `.spz`，实验页会先使用公开 SparkJS 示例资产验证网页渲染链路。
+如果还没有 `.spz`，实验页会先显示本地低模战后旧金山代理场景，避免把示例资产误认为正式效果。
 
 ## 项目结构
 

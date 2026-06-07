@@ -149,6 +149,13 @@ h1 {
   letter-spacing: 0;
 }
 
+.asset-note {
+  margin: -6px 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 .meter-row {
   display: grid;
   grid-template-columns: 54px 1fr 42px;

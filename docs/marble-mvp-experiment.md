@@ -25,6 +25,8 @@ The prototype page is:
 web/world-prototype.html
 ```
 
+If `web/worlds/a0-war-signal-500k.spz` is missing, the page shows a local low-poly proxy scene instead of a real Marble world. This keeps mobile/control testing honest while making the missing asset obvious.
+
 It currently tests:
 
 - SparkJS / Three.js splat rendering in browser.
@@ -88,9 +90,25 @@ If using the Marble web UI instead of API:
 - The asset is light enough for mobile.
 - We can later add collider mesh physics without redesigning the page.
 
+## Phone testing
+
+Local network test URLs for this machine:
+
+```text
+http://192.168.1.23:5177/world-prototype.html
+http://192.168.180.23:5177/world-prototype.html
+```
+
+Use a phone on the same network. If neither opens, Windows firewall or network isolation is blocking the local server; use the GitHub Pages URL after pushing instead.
+
+Public test URL:
+
+```text
+https://luciuswang.github.io/neon-cleaner-demo/web/world-prototype.html
+```
+
 ## Known limits
 
 - Marble is best used for environments, not the heroine character.
 - The first MVP uses visual splats and simple chase scoring before full collision.
 - True driving physics should wait until we have a collider mesh.
-
