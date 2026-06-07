@@ -83,9 +83,44 @@ function Get-ListeningProcessId {
     return $null
 }
 
+function Get-LanIPv4Addresses {
+    $ipconfig = cmd.exe /c ipconfig
+    $addresses = @()
+
+    foreach ($line in $ipconfig) {
+        if ($line -match 'IPv4.*:\s*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)') {
+            $address = $Matches[1]
+            if ($address -notlike '127.*' -and $address -notlike '169.254.*') {
+                $addresses += $address
+            }
+        }
+    }
+
+    return $addresses | Select-Object -Unique
+}
+
+function Write-PhoneTestUrls {
+    param([int]$ListeningPort)
+
+    foreach ($address in Get-LanIPv4Addresses) {
+        $url = "http://$address`:$ListeningPort/world-prototype.html"
+        try {
+            $response = Invoke-WebRequest -UseBasicParsing $url -TimeoutSec 2
+            if ($response.StatusCode -eq 200) {
+                Write-Host "Phone test URL: $url"
+            } else {
+                Write-Host "Phone test URL candidate, not verified: $url"
+            }
+        } catch {
+            Write-Host "Phone test URL candidate, not responding locally: $url"
+        }
+    }
+}
+
 $existingPid = Get-ListeningProcessId -ListeningPort $Port
 if ($existingPid) {
     Write-Host "Server already listening on http://127.0.0.1:$Port/ (PID: $existingPid)"
+    Write-PhoneTestUrls -ListeningPort $Port
     if (!$NoBrowser) {
         Start-Process "http://127.0.0.1:$Port/" | Out-Null
     }
@@ -126,6 +161,8 @@ if ($serverPid) {
 }
 
 Write-Host "Local demo is running at http://127.0.0.1:$Port/ (PID: $serverPid)"
+Write-PhoneTestUrls -ListeningPort $Port
+Write-Host "If the phone cannot connect, make sure it is on the same network and Windows Firewall allows TCP port $Port."
 
 if (!$NoBrowser) {
     Start-Process "http://127.0.0.1:$Port/" | Out-Null

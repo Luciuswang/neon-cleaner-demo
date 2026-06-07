@@ -101,6 +101,14 @@ http://192.168.180.23:5177/world-prototype.html
 
 Use a phone on the same network. If neither opens, Windows firewall or network isolation is blocking the local server; use the GitHub Pages URL after pushing instead.
 
+Current note: on this machine `192.168.180.23` is the address that responds locally. The `192.168.1.23` adapter did not respond to the local server check.
+
+Firewall rule used during setup:
+
+```powershell
+netsh advfirewall firewall add rule name="Neon Cleaner Local Demo 5177" dir=in action=allow protocol=TCP localport=5177
+```
+
 Public test URL:
 
 ```text
