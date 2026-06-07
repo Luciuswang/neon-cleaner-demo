@@ -16,6 +16,7 @@ Then export:
 
 ```text
 web/worlds/a0-war-signal-500k.spz
+web/worlds/a0-war-signal-low.spz
 web/worlds/a0-war-signal-collider.glb
 ```
 
@@ -78,9 +79,17 @@ If using the Marble web UI instead of API:
 
 1. Generate the world from the prompt in `docs/video/marble-a0-i1-world-prompt.md`.
 2. Download the 500k SPZ export.
-3. Rename it to `a0-war-signal-500k.spz`.
-4. Put it in `web/worlds/`.
-5. Reload `web/world-prototype.html`.
+3. If available, also download the low-res SPZ export for phone testing.
+4. Rename them to `a0-war-signal-500k.spz` and `a0-war-signal-low.spz`.
+5. Put them in `web/worlds/`.
+6. Reload `web/world-prototype.html`.
+
+Quality switch:
+
+```text
+web/world-prototype.html
+web/world-prototype.html?quality=low
+```
 
 ## Success criteria
 

@@ -1,7 +1,8 @@
 import * as THREE from "three";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
-const LOCAL_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
+const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
+const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
 
 const el = {
@@ -35,16 +36,37 @@ function clamp(value, min, max) {
 }
 
 async function resolveSplatUrl() {
-  const override = new URLSearchParams(location.search).get("splat");
+  const params = new URLSearchParams(location.search);
+  const override = params.get("splat");
   if (override) return override;
 
-  if (new URLSearchParams(location.search).get("sample") === "1") {
+  if (params.get("sample") === "1") {
     return SAMPLE_SPLAT_URL;
   }
 
+  const quality = params.get("quality");
+  const preferredUrls = quality === "low"
+    ? [LOW_SPLAT_URL, HIGH_SPLAT_URL]
+    : [HIGH_SPLAT_URL, LOW_SPLAT_URL];
+
+  for (const url of preferredUrls) {
+    try {
+      const response = await fetch(url, { method: "HEAD" });
+      if (response.ok) return url;
+    } catch {
+    }
+  }
+
+  return null;
+}
+
+async function readAssetSize(url) {
   try {
-    const response = await fetch(LOCAL_SPLAT_URL, { method: "HEAD" });
-    if (response.ok) return LOCAL_SPLAT_URL;
+    const response = await fetch(url, { method: "HEAD" });
+    const size = Number(response.headers.get("content-length"));
+    if (Number.isFinite(size) && size > 0) {
+      return `${(size / (1024 * 1024)).toFixed(1)} MB`;
+    }
   } catch {
   }
 
@@ -324,6 +346,7 @@ const splatUrl = await resolveSplatUrl();
 let proceduralWorld = null;
 let splat = null;
 if (splatUrl) {
+  const assetSize = await readAssetSize(splatUrl);
   splat = new SplatMesh({ url: splatUrl });
   if (splatUrl === SAMPLE_SPLAT_URL) {
     splat.quaternion.set(1, 0, 0, 0);
@@ -334,8 +357,9 @@ if (splatUrl) {
   } else {
     splat.position.set(0, -1.2, -12);
     splat.scale.setScalar(1);
-    el.assetStatus.textContent = "Marble SPZ";
-    el.assetNote.textContent = "已加载 Marble 世界资产，正在测试可接管追车镜头。";
+    const isLow = splatUrl.includes("-low.");
+    el.assetStatus.textContent = isLow ? "Marble SPZ low" : "Marble SPZ";
+    el.assetNote.textContent = `已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}，正在测试可接管追车镜头。${isLow ? "当前是低清测试版。" : "如果手机卡顿，可导出 low-res splat 并访问 ?quality=low。"}`;
   }
   scene.add(splat);
 } else {

@@ -6,6 +6,7 @@ Expected first experiment files:
 
 ```text
 a0-war-signal-500k.spz
+a0-war-signal-low.spz
 a0-war-signal-collider.glb
 ```
 
@@ -16,4 +17,10 @@ To force the old public SparkJS sample splat for renderer debugging:
 
 ```text
 world-prototype.html?sample=1
+```
+
+To force the low-res Marble export after downloading it:
+
+```text
+world-prototype.html?quality=low
 ```
