@@ -76,8 +76,8 @@ function sampleChasePath(progress) {
 
 function sampleRoadWidth(progress) {
   const t = clamp(progress, 0, 1);
-  return mix(2.05, 2.8, smoothstep(clamp((t - 0.12) / 0.28, 0, 1))) -
-    mix(0, 0.55, smoothstep(clamp((t - 0.62) / 0.28, 0, 1)));
+  return mix(1.28, 1.82, smoothstep(clamp((t - 0.12) / 0.28, 0, 1))) -
+    mix(0, 0.36, smoothstep(clamp((t - 0.62) / 0.28, 0, 1)));
 }
 
 function samplePathBasis(progress) {
@@ -97,6 +97,107 @@ function samplePathBasis(progress) {
     rightZ: forwardX,
     yaw: Math.atan2(forwardX, -forwardZ),
   };
+}
+
+function createLowPolyCar({
+  bodyColor = 0x111722,
+  cabinColor = 0x1d2631,
+  accentColor = 0xff3fb6,
+  headlightColor = 0x43dfff,
+} = {}) {
+  const car = new THREE.Group();
+  const bodyMaterial = new THREE.MeshStandardMaterial({
+    color: bodyColor,
+    roughness: 0.36,
+    metalness: 0.62,
+    emissive: accentColor,
+    emissiveIntensity: 0.08,
+  });
+  const glassMaterial = new THREE.MeshStandardMaterial({
+    color: cabinColor,
+    roughness: 0.22,
+    metalness: 0.72,
+    emissive: headlightColor,
+    emissiveIntensity: 0.16,
+  });
+  const glowMaterial = new THREE.MeshBasicMaterial({
+    color: accentColor,
+    transparent: true,
+    opacity: 0.78,
+    depthWrite: false,
+  });
+  const cyanMaterial = new THREE.MeshBasicMaterial({
+    color: headlightColor,
+    transparent: true,
+    opacity: 0.86,
+    depthWrite: false,
+  });
+  const tireMaterial = new THREE.MeshStandardMaterial({
+    color: 0x050608,
+    roughness: 0.72,
+    metalness: 0.18,
+  });
+
+  const chassis = new THREE.Mesh(new THREE.BoxGeometry(1.42, 0.28, 2.55), bodyMaterial);
+  chassis.position.y = 0.26;
+  car.add(chassis);
+
+  const nose = new THREE.Mesh(new THREE.BoxGeometry(1.08, 0.18, 0.92), bodyMaterial);
+  nose.position.set(0, 0.32, -0.98);
+  nose.rotation.x = -0.08;
+  car.add(nose);
+
+  const cabin = new THREE.Mesh(new THREE.BoxGeometry(0.86, 0.46, 0.78), glassMaterial);
+  cabin.position.set(0, 0.64, -0.12);
+  cabin.rotation.x = -0.05;
+  car.add(cabin);
+
+  const rear = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.22, 0.62), bodyMaterial);
+  rear.position.set(0, 0.43, 0.94);
+  car.add(rear);
+
+  const spoiler = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.06, 0.2), glowMaterial);
+  spoiler.position.set(0, 0.76, 1.18);
+  car.add(spoiler);
+
+  for (const x of [-0.82, 0.82]) {
+    for (const z of [-0.86, 0.86]) {
+      const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.18, 18), tireMaterial);
+      wheel.position.set(x, 0.15, z);
+      wheel.rotation.z = Math.PI / 2;
+      car.add(wheel);
+    }
+  }
+
+  for (const x of [-0.42, 0.42]) {
+    const headlight = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.07, 0.035), cyanMaterial);
+    headlight.position.set(x, 0.37, -1.32);
+    car.add(headlight);
+
+    const tailLight = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.08, 0.035), glowMaterial);
+    tailLight.position.set(x, 0.38, 1.32);
+    car.add(tailLight);
+  }
+
+  car.userData.glowMaterial = glowMaterial;
+  car.userData.cyanMaterial = cyanMaterial;
+  return car;
+}
+
+function createCockpitHoodGeometry() {
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute([
+      -1.46, -0.18, 0.16,
+      1.46, -0.18, 0.16,
+      0.78, 0.07, -1.52,
+      -0.78, 0.07, -1.52,
+    ], 3),
+  );
+  geometry.setIndex([0, 1, 2, 0, 2, 3]);
+  geometry.computeVertexNormals();
+  return geometry;
 }
 
 async function resolveSplatUrl() {
@@ -211,9 +312,9 @@ if (usePostProcessing) {
   composer.addPass(new RenderPass(scene, camera));
   bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
-    0.55,
-    0.44,
-    0.72,
+    0.26,
+    0.32,
+    0.86,
   );
   composer.addPass(bloomPass);
   composer.addPass(new OutputPass());
@@ -225,29 +326,12 @@ scene.add(spark);
 const rig = new THREE.Group();
 scene.add(rig);
 
-const vehicle = new THREE.Group();
-const body = new THREE.Mesh(
-  new THREE.BoxGeometry(1.25, 0.38, 2.45),
-  new THREE.MeshStandardMaterial({
-    color: 0x131923,
-    roughness: 0.42,
-    metalness: 0.58,
-    emissive: 0x240017,
-    emissiveIntensity: 0.5,
-  }),
-);
-const cabin = new THREE.Mesh(
-  new THREE.BoxGeometry(0.92, 0.34, 0.98),
-  new THREE.MeshStandardMaterial({
-    color: 0x2f1329,
-    roughness: 0.28,
-    metalness: 0.76,
-    emissive: 0xff3fb6,
-    emissiveIntensity: 0.24,
-  }),
-);
-cabin.position.set(0, 0.3, -0.16);
-vehicle.add(body, cabin);
+const vehicle = createLowPolyCar({
+  bodyColor: 0x121823,
+  cabinColor: 0x182334,
+  accentColor: 0xff3fb6,
+  headlightColor: 0x43dfff,
+});
 vehicle.position.set(0, 0.42, 2.2);
 vehicle.visible = cameraMode !== "first";
 scene.add(vehicle);
@@ -255,17 +339,19 @@ scene.add(vehicle);
 const cockpit = new THREE.Group();
 cockpit.visible = cameraMode === "first";
 const hood = new THREE.Mesh(
-  new THREE.BoxGeometry(1.65, 0.18, 1.35),
+  createCockpitHoodGeometry(),
   new THREE.MeshBasicMaterial({
-    color: 0x160816,
+    color: 0x120812,
     transparent: true,
-    opacity: 0.88,
+    opacity: 0.76,
+    depthWrite: false,
+    side: THREE.DoubleSide,
   }),
 );
-hood.position.set(0, -0.62, -1.18);
-hood.rotation.x = -0.12;
+hood.position.set(0, -0.68, -0.86);
+hood.rotation.x = -0.06;
 const hoodGlow = new THREE.Mesh(
-  new THREE.PlaneGeometry(1.9, 0.06),
+  new THREE.PlaneGeometry(1.42, 0.055),
   new THREE.MeshBasicMaterial({
     color: 0xff3fb6,
     transparent: true,
@@ -273,10 +359,10 @@ const hoodGlow = new THREE.Mesh(
     depthWrite: false,
   }),
 );
-hoodGlow.position.set(0, -0.51, -1.9);
-hoodGlow.rotation.x = -0.32;
+hoodGlow.position.set(0, -0.55, -2.18);
+hoodGlow.rotation.x = -0.36;
 const windshieldLine = new THREE.Mesh(
-  new THREE.PlaneGeometry(2.2, 0.035),
+  new THREE.PlaneGeometry(1.76, 0.032),
   new THREE.MeshBasicMaterial({
     color: 0x43dfff,
     transparent: true,
@@ -284,7 +370,7 @@ const windshieldLine = new THREE.Mesh(
     depthWrite: false,
   }),
 );
-windshieldLine.position.set(0, -0.18, -2.2);
+windshieldLine.position.set(0, -0.29, -2.34);
 windshieldLine.rotation.x = -0.44;
 cockpit.add(hood, hoodGlow, windshieldLine);
 camera.add(cockpit);
@@ -373,16 +459,13 @@ for (let i = 0; i < 24; i += 1) {
 }
 scene.add(boundaryLayer);
 
-const target = new THREE.Mesh(
-  new THREE.BoxGeometry(1.45, 0.5, 2.7),
-  new THREE.MeshStandardMaterial({
-    color: 0x07090d,
-    roughness: 0.36,
-    metalness: 0.72,
-    emissive: 0x123344,
-    emissiveIntensity: 0.7,
-  }),
-);
+const target = createLowPolyCar({
+  bodyColor: 0x07090d,
+  cabinColor: 0x111c22,
+  accentColor: 0xff3fb6,
+  headlightColor: 0x43dfff,
+});
+target.scale.setScalar(1.08);
 target.position.set(1.6, 0.52, -28);
 scene.add(target);
 
@@ -408,6 +491,7 @@ const vfxDirector = {
   flash: 0,
   lastWallSparkAt: -10,
   lastExplosionAt: -10,
+  firstBlastDone: false,
   sparkGeometry: new THREE.BoxGeometry(0.045, 0.045, 0.34),
   emberGeometry: new THREE.BoxGeometry(0.08, 0.08, 0.72),
   burstGeometry: new THREE.SphereGeometry(1, 18, 10),
@@ -421,7 +505,7 @@ const vfxDirector = {
   spawnWallImpact(origin, basis, side, intensity, seconds) {
     if (seconds - this.lastWallSparkAt < 0.12) return;
     this.lastWallSparkAt = seconds;
-    this.flash = Math.max(this.flash, 0.22 + intensity * 0.28);
+    this.flash = Math.max(this.flash, 0.38 + intensity * 0.38);
 
     const count = Math.round((10 + intensity * 18) * vfxDensity);
     for (let i = 0; i < count; i += 1) {
@@ -540,8 +624,25 @@ const vfxDirector = {
     this.shockwaves.push({ ring, material, age: 0, life: 0.58, radius });
   },
   maybeSpawnAmbientExplosion(progress, basis, speed, seconds) {
-    if (speed < maxSpeed * 0.34 || seconds - this.lastExplosionAt < 2.8) return;
-    if (Math.random() > 0.018 * vfxDensity) return;
+    const driveIntensity = clamp(speed / maxSpeed, 0, 1);
+    if (!this.firstBlastDone && progress > 0.07 && speed > maxSpeed * 0.12) {
+      this.firstBlastDone = true;
+      const firstBasis = samplePathBasis(clamp(progress + 0.18, 0, 1));
+      const firstSide = state.laneOffset >= 0 ? 1 : -1;
+      const firstWidth = sampleRoadWidth(progress) + 2.15;
+      this.spawnExplosion(
+        new THREE.Vector3(
+          firstBasis.path.x + firstBasis.rightX * firstWidth * firstSide,
+          firstBasis.path.y,
+          firstBasis.path.z + firstBasis.rightZ * firstWidth * firstSide,
+        ),
+        basis,
+        1.08,
+      );
+      return;
+    }
+    if (speed < maxSpeed * 0.14 || seconds - this.lastExplosionAt < 1.35 + (1 - driveIntensity) * 0.65) return;
+    if (Math.random() > 0.16 * vfxDensity + driveIntensity * 0.26) return;
 
     const blastProgress = clamp(progress + 0.2 + Math.random() * 0.18, 0, 1);
     const blastBasis = samplePathBasis(blastProgress);
@@ -831,8 +932,8 @@ function animate(time) {
   let driveIntensity = clamp(state.speed / maxSpeed, 0, 1);
   const steeringPower = 0.78 + driveIntensity * 0.7;
   state.heading = clamp(state.heading + steer * dt * steeringPower, -0.86, 0.86);
-  state.laneOffset = clamp(state.laneOffset + steer * dt * (3.4 + driveIntensity * 2.2), -1.9, 1.9);
-  state.laneOffset = THREE.MathUtils.lerp(state.laneOffset, 0, dt * (0.42 + driveIntensity * 0.45));
+  state.laneOffset = clamp(state.laneOffset + steer * dt * (4.4 + driveIntensity * 3.6), -2.85, 2.85);
+  state.laneOffset = THREE.MathUtils.lerp(state.laneOffset, 0, dt * (0.22 + driveIntensity * 0.28));
   const acceleration = state.inputs.has("boost") ? 58 : -8;
   const braking = state.inputs.has("brake") ? 48 : 0;
   state.speed = clamp(state.speed + acceleration * dt - braking * dt, 0, maxSpeed);
@@ -842,6 +943,18 @@ function animate(time) {
   const progress = state.distance / maxPursuitDistance;
   const roadWidth = sampleRoadWidth(progress);
   const overflow = Math.abs(state.laneOffset) - roadWidth;
+  const nearEdge = Math.abs(state.laneOffset) > roadWidth * 0.78 && steer === Math.sign(state.laneOffset);
+  if (nearEdge) {
+    const side = Math.sign(state.laneOffset);
+    const scrapeBasis = samplePathBasis(progress);
+    const scrapeOrigin = new THREE.Vector3(
+      scrapeBasis.path.x + scrapeBasis.rightX * roadWidth * side,
+      scrapeBasis.path.y,
+      scrapeBasis.path.z + scrapeBasis.rightZ * roadWidth * side,
+    );
+    vfxDirector.spawnWallImpact(scrapeOrigin, scrapeBasis, side, 0.32 + driveIntensity * 0.6, seconds);
+    state.impact = clamp(state.impact + 0.018 + driveIntensity * 0.025, 0, 1);
+  }
   if (overflow > 0) {
     const side = Math.sign(state.laneOffset);
     const impactBasis = samplePathBasis(progress);
@@ -976,8 +1089,8 @@ function animate(time) {
   camera.rotateZ(-steer * 0.04 - state.laneOffset * 0.016 + state.impact * Math.sin(seconds * 39) * 0.018);
 
   if (bloomPass) {
-    bloomPass.strength = 0.48 + driveIntensity * 0.26 + state.impact * 0.4 + vfxDirector.flash * 0.72;
-    bloomPass.radius = 0.34 + driveIntensity * 0.18;
+    bloomPass.strength = 0.24 + driveIntensity * 0.18 + state.impact * 0.28 + vfxDirector.flash * 0.52;
+    bloomPass.radius = 0.26 + driveIntensity * 0.16;
   }
 
   updateHud();
