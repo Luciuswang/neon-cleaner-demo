@@ -53,6 +53,7 @@ button[data-active="true"] {
   height: 100vh;
   overflow: hidden;
   isolation: isolate;
+  --vfx-flash: 0;
 }
 
 #worldCanvas {
@@ -133,6 +134,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   background:
+    radial-gradient(circle at 50% 56%, rgba(255, 202, 95, var(--vfx-flash)) 0 7%, rgba(255, 63, 182, calc(var(--vfx-flash) * 0.34)) 18%, transparent 38%),
     linear-gradient(90deg, rgba(5, 7, 10, 0.62), transparent 42%, rgba(5, 7, 10, 0.48)),
     linear-gradient(0deg, rgba(5, 7, 10, 0.78), transparent 45%),
     repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 9px);

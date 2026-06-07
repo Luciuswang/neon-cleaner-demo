@@ -1,4 +1,8 @@
 import * as THREE from "three";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
 const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
@@ -11,6 +15,8 @@ const maxPursuitDistance = perfMode === "high" ? 168 : perfMode === "low" ? 94 :
 const pathScale = perfMode === "high" ? 1.55 : perfMode === "low" ? 1 : 1.28;
 const maxSpeed = perfMode === "high" ? 96 : perfMode === "low" ? 62 : 82;
 const cameraMode = params.get("camera") || "first";
+const usePostProcessing = params.get("post") !== "0" && perfMode !== "low";
+const vfxDensity = perfMode === "high" ? 1 : perfMode === "low" ? 0.55 : 0.78;
 
 const el = {
   stage: document.querySelector(".world-stage"),
@@ -196,6 +202,23 @@ const camera = new THREE.PerspectiveCamera(72, window.innerWidth / window.innerH
 camera.position.set(0, 4.3, 12);
 scene.add(camera);
 
+let composer = null;
+let bloomPass = null;
+if (usePostProcessing) {
+  composer = new EffectComposer(renderer);
+  composer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
+  composer.setSize(window.innerWidth, window.innerHeight);
+  composer.addPass(new RenderPass(scene, camera));
+  bloomPass = new UnrealBloomPass(
+    new THREE.Vector2(window.innerWidth, window.innerHeight),
+    0.55,
+    0.44,
+    0.72,
+  );
+  composer.addPass(bloomPass);
+  composer.addPass(new OutputPass());
+}
+
 const spark = new SparkRenderer({ renderer });
 scene.add(spark);
 
@@ -374,6 +397,227 @@ const cyanLight = new THREE.PointLight(0x43dfff, 4, 30);
 cyanLight.position.set(4, 4.5, -18);
 scene.add(cyanLight);
 
+const vfxLayer = new THREE.Group();
+scene.add(vfxLayer);
+
+const vfxDirector = {
+  sparks: [],
+  explosions: [],
+  shockwaves: [],
+  smoke: [],
+  flash: 0,
+  lastWallSparkAt: -10,
+  lastExplosionAt: -10,
+  sparkGeometry: new THREE.BoxGeometry(0.045, 0.045, 0.34),
+  emberGeometry: new THREE.BoxGeometry(0.08, 0.08, 0.72),
+  burstGeometry: new THREE.SphereGeometry(1, 18, 10),
+  smokeGeometry: new THREE.SphereGeometry(1, 14, 8),
+  shockwaveGeometry: new THREE.RingGeometry(0.45, 0.62, 48),
+  sparkMaterials: [
+    new THREE.MeshBasicMaterial({ color: 0xffca5f, transparent: true, opacity: 1, depthWrite: false }),
+    new THREE.MeshBasicMaterial({ color: 0xff3fb6, transparent: true, opacity: 1, depthWrite: false }),
+    new THREE.MeshBasicMaterial({ color: 0x43dfff, transparent: true, opacity: 1, depthWrite: false }),
+  ],
+  spawnWallImpact(origin, basis, side, intensity, seconds) {
+    if (seconds - this.lastWallSparkAt < 0.12) return;
+    this.lastWallSparkAt = seconds;
+    this.flash = Math.max(this.flash, 0.22 + intensity * 0.28);
+
+    const count = Math.round((10 + intensity * 18) * vfxDensity);
+    for (let i = 0; i < count; i += 1) {
+      const material = this.sparkMaterials[i % this.sparkMaterials.length].clone();
+      const mesh = new THREE.Mesh(this.sparkGeometry, material);
+      mesh.position.copy(origin);
+      mesh.position.y += 0.08 + Math.random() * 0.22;
+      mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+      vfxLayer.add(mesh);
+      this.sparks.push({
+        mesh,
+        material,
+        age: 0,
+        life: 0.28 + Math.random() * 0.28,
+        spin: (Math.random() - 0.5) * 10,
+        velocity: new THREE.Vector3(
+          basis.rightX * side * (1.2 + Math.random() * 2.2) + basis.forwardX * (Math.random() - 0.5) * 1.2,
+          0.55 + Math.random() * 1.9,
+          basis.rightZ * side * (1.2 + Math.random() * 2.2) + basis.forwardZ * (Math.random() - 0.5) * 1.2,
+        ),
+      });
+    }
+
+    this.spawnShockwave(origin, 0xff3fb6, 0.42 + intensity * 0.16, 1.8 + intensity * 1.2);
+  },
+  spawnExplosion(origin, basis, intensity = 1) {
+    this.lastExplosionAt = performance.now() * 0.001;
+    this.flash = Math.max(this.flash, 0.5);
+
+    const burstMaterial = new THREE.MeshBasicMaterial({
+      color: 0xff7a2f,
+      transparent: true,
+      opacity: 0.72,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+    });
+    const burst = new THREE.Mesh(this.burstGeometry, burstMaterial);
+    burst.position.copy(origin);
+    burst.position.y += 0.68;
+    vfxLayer.add(burst);
+
+    const light = new THREE.PointLight(0xff8844, 9 * intensity, 18 + intensity * 8);
+    light.position.copy(burst.position);
+    vfxLayer.add(light);
+
+    this.explosions.push({
+      burst,
+      burstMaterial,
+      light,
+      age: 0,
+      life: 0.86,
+      intensity,
+      baseScale: 0.42 + intensity * 0.26,
+    });
+
+    this.spawnShockwave(origin, 0xffca5f, 0.6, 3.2 + intensity * 1.6);
+
+    for (let i = 0; i < Math.round(18 * vfxDensity); i += 1) {
+      const material = this.sparkMaterials[i % 2].clone();
+      const ember = new THREE.Mesh(this.emberGeometry, material);
+      ember.position.copy(origin);
+      ember.position.y += 0.35 + Math.random() * 0.5;
+      ember.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+      vfxLayer.add(ember);
+      this.sparks.push({
+        mesh: ember,
+        material,
+        age: 0,
+        life: 0.55 + Math.random() * 0.45,
+        spin: (Math.random() - 0.5) * 12,
+        velocity: new THREE.Vector3(
+          (Math.random() - 0.5) * 5 + basis.rightX * (Math.random() - 0.5) * 2,
+          1.1 + Math.random() * 3.2,
+          (Math.random() - 0.5) * 5 + basis.forwardZ * (Math.random() - 0.5) * 2,
+        ),
+      });
+    }
+
+    for (let i = 0; i < Math.max(2, Math.round(5 * vfxDensity)); i += 1) {
+      const smokeMaterial = new THREE.MeshBasicMaterial({
+        color: i % 2 === 0 ? 0x6f7480 : 0x33272c,
+        transparent: true,
+        opacity: 0.22,
+        depthWrite: false,
+      });
+      const puff = new THREE.Mesh(this.smokeGeometry, smokeMaterial);
+      puff.position.copy(origin);
+      puff.position.x += (Math.random() - 0.5) * 1.5;
+      puff.position.y += 0.75 + Math.random() * 1.1;
+      puff.position.z += (Math.random() - 0.5) * 1.5;
+      vfxLayer.add(puff);
+      this.smoke.push({
+        puff,
+        material: smokeMaterial,
+        age: 0,
+        life: 1.8 + Math.random() * 0.7,
+        drift: new THREE.Vector3((Math.random() - 0.5) * 0.45, 0.32 + Math.random() * 0.28, -0.25 - Math.random() * 0.3),
+        scale: 0.5 + Math.random() * 0.35,
+      });
+    }
+  },
+  spawnShockwave(origin, color, opacity, radius) {
+    const material = new THREE.MeshBasicMaterial({
+      color,
+      transparent: true,
+      opacity,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      side: THREE.DoubleSide,
+    });
+    const ring = new THREE.Mesh(this.shockwaveGeometry, material);
+    ring.position.copy(origin);
+    ring.position.y = Math.max(0.08, origin.y + 0.05);
+    ring.rotation.x = -Math.PI / 2;
+    vfxLayer.add(ring);
+    this.shockwaves.push({ ring, material, age: 0, life: 0.58, radius });
+  },
+  maybeSpawnAmbientExplosion(progress, basis, speed, seconds) {
+    if (speed < maxSpeed * 0.34 || seconds - this.lastExplosionAt < 2.8) return;
+    if (Math.random() > 0.018 * vfxDensity) return;
+
+    const blastProgress = clamp(progress + 0.2 + Math.random() * 0.18, 0, 1);
+    const blastBasis = samplePathBasis(blastProgress);
+    const side = Math.random() > 0.5 ? 1 : -1;
+    const width = sampleRoadWidth(blastProgress) + 1.8 + Math.random() * 1.5;
+    const origin = new THREE.Vector3(
+      blastBasis.path.x + blastBasis.rightX * width * side,
+      blastBasis.path.y,
+      blastBasis.path.z + blastBasis.rightZ * width * side,
+    );
+    this.spawnExplosion(origin, basis, 0.78 + Math.random() * 0.45);
+  },
+  update(dt, driveIntensity) {
+    this.flash = Math.max(0, this.flash - dt * 1.85);
+
+    for (let i = this.sparks.length - 1; i >= 0; i -= 1) {
+      const spark = this.sparks[i];
+      spark.age += dt;
+      spark.velocity.y -= dt * 4.8;
+      spark.mesh.position.addScaledVector(spark.velocity, dt);
+      spark.mesh.rotation.x += spark.spin * dt;
+      spark.mesh.rotation.z -= spark.spin * dt * 0.7;
+      spark.material.opacity = clamp(1 - spark.age / spark.life, 0, 1);
+      spark.mesh.scale.setScalar(1 + driveIntensity * 0.4);
+      if (spark.age >= spark.life) {
+        vfxLayer.remove(spark.mesh);
+        spark.material.dispose();
+        this.sparks.splice(i, 1);
+      }
+    }
+
+    for (let i = this.explosions.length - 1; i >= 0; i -= 1) {
+      const explosion = this.explosions[i];
+      explosion.age += dt;
+      const t = clamp(explosion.age / explosion.life, 0, 1);
+      const scale = explosion.baseScale + t * (2.6 + explosion.intensity * 1.2);
+      explosion.burst.scale.setScalar(scale);
+      explosion.burstMaterial.opacity = (1 - t) * 0.78;
+      explosion.light.intensity = (1 - t) * 10 * explosion.intensity;
+      if (explosion.age >= explosion.life) {
+        vfxLayer.remove(explosion.burst);
+        vfxLayer.remove(explosion.light);
+        explosion.burstMaterial.dispose();
+        this.explosions.splice(i, 1);
+      }
+    }
+
+    for (let i = this.shockwaves.length - 1; i >= 0; i -= 1) {
+      const shockwave = this.shockwaves[i];
+      shockwave.age += dt;
+      const t = clamp(shockwave.age / shockwave.life, 0, 1);
+      shockwave.ring.scale.setScalar(1 + t * shockwave.radius);
+      shockwave.material.opacity = (1 - t) * 0.58;
+      if (shockwave.age >= shockwave.life) {
+        vfxLayer.remove(shockwave.ring);
+        shockwave.material.dispose();
+        this.shockwaves.splice(i, 1);
+      }
+    }
+
+    for (let i = this.smoke.length - 1; i >= 0; i -= 1) {
+      const smoke = this.smoke[i];
+      smoke.age += dt;
+      const t = clamp(smoke.age / smoke.life, 0, 1);
+      smoke.puff.position.addScaledVector(smoke.drift, dt);
+      smoke.puff.scale.setScalar(smoke.scale + t * 2.2);
+      smoke.material.opacity = (1 - t) * 0.22;
+      if (smoke.age >= smoke.life) {
+        vfxLayer.remove(smoke.puff);
+        smoke.material.dispose();
+        this.smoke.splice(i, 1);
+      }
+    }
+  },
+};
+
 function makeMaterial(color, emissive = 0x000000, emissiveIntensity = 0.1) {
   return new THREE.MeshStandardMaterial({
     color,
@@ -547,6 +791,10 @@ function resize() {
   camera.updateProjectionMatrix();
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
   renderer.setSize(window.innerWidth, window.innerHeight);
+  if (composer) {
+    composer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
+    composer.setSize(window.innerWidth, window.innerHeight);
+  }
 }
 
 window.addEventListener("resize", resize);
@@ -596,6 +844,13 @@ function animate(time) {
   const overflow = Math.abs(state.laneOffset) - roadWidth;
   if (overflow > 0) {
     const side = Math.sign(state.laneOffset);
+    const impactBasis = samplePathBasis(progress);
+    const impactOrigin = new THREE.Vector3(
+      impactBasis.path.x + impactBasis.rightX * roadWidth * side,
+      impactBasis.path.y,
+      impactBasis.path.z + impactBasis.rightZ * roadWidth * side,
+    );
+    vfxDirector.spawnWallImpact(impactOrigin, impactBasis, side, clamp(overflow + driveIntensity, 0.2, 1.35), seconds);
     state.laneOffset = THREE.MathUtils.lerp(state.laneOffset, side * roadWidth, clamp(dt * (8 + overflow * 3), 0, 1));
     state.speed = clamp(state.speed - (18 + overflow * 26) * dt, 0, maxSpeed);
     state.impact = clamp(state.impact + overflow * 0.3 + driveIntensity * 0.05, 0, 1);
@@ -678,6 +933,10 @@ function animate(time) {
     material.opacity = 0.12 + driveIntensity * 0.18 + state.impact * 0.32;
   }
 
+  vfxDirector.maybeSpawnAmbientExplosion(progress, basis, state.speed, seconds);
+  vfxDirector.update(dt, driveIntensity);
+  el.stage.style.setProperty("--vfx-flash", String(clamp(vfxDirector.flash, 0, 0.72).toFixed(3)));
+
   if (proceduralWorld) {
     proceduralWorld.position.z = 4 + (state.distance % 12) * 0.12;
     proceduralWorld.rotation.y = state.heading * 0.025;
@@ -716,8 +975,17 @@ function animate(time) {
   );
   camera.rotateZ(-steer * 0.04 - state.laneOffset * 0.016 + state.impact * Math.sin(seconds * 39) * 0.018);
 
+  if (bloomPass) {
+    bloomPass.strength = 0.48 + driveIntensity * 0.26 + state.impact * 0.4 + vfxDirector.flash * 0.72;
+    bloomPass.radius = 0.34 + driveIntensity * 0.18;
+  }
+
   updateHud();
-  renderer.render(scene, camera);
+  if (composer) {
+    composer.render();
+  } else {
+    renderer.render(scene, camera);
+  }
 }
 
 renderer.setAnimationLoop(animate);
