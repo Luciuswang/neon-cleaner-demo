@@ -75,6 +75,49 @@ body::before {
   z-index: 3;
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 0 44%, rgba(255, 255, 255, 0.045) 49%, transparent 54%),
+    repeating-linear-gradient(100deg, transparent 0 26px, rgba(71, 223, 255, 0.04) 27px 28px, transparent 29px 58px);
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  z-index: 3;
+}
+
+.world-stage::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(94deg, transparent 0 42px, rgba(255, 255, 255, 0.08) 43px 45px, transparent 46px 106px),
+    radial-gradient(ellipse at 50% 74%, transparent 0 26%, rgba(255, 63, 182, 0.1) 48%, rgba(67, 223, 255, 0.06) 62%, transparent 82%);
+  opacity: 0;
+  mix-blend-mode: screen;
+  transform: skewY(-3deg);
+  transition: opacity 0.14s ease;
+  z-index: 2;
+}
+
+.world-stage[data-speed="fast"]::before {
+  animation: speed-streaks 0.38s linear infinite;
+  opacity: 0.34;
+}
+
+@keyframes speed-streaks {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: 180px 0, 0 0;
+  }
+}
+
 .world-stage::after {
   content: "";
   position: absolute;

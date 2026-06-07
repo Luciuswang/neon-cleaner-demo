@@ -7,10 +7,12 @@ const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
 const params = new URLSearchParams(location.search);
 const perfMode = params.get("perf") || "balanced";
 const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1.05;
-const maxPursuitDistance = perfMode === "high" ? 54 : 30;
-const driveScale = perfMode === "high" ? 0.34 : 0.28;
+const maxPursuitDistance = perfMode === "high" ? 168 : perfMode === "low" ? 94 : 128;
+const pathScale = perfMode === "high" ? 1.55 : perfMode === "low" ? 1 : 1.28;
+const maxSpeed = perfMode === "high" ? 96 : perfMode === "low" ? 62 : 82;
 
 const el = {
+  stage: document.querySelector(".world-stage"),
   canvas: document.getElementById("worldCanvas"),
   assetStatus: document.getElementById("assetStatus"),
   pursuitMeter: document.getElementById("pursuitMeter"),
@@ -28,6 +30,7 @@ const el = {
 const state = {
   heading: 0,
   speed: 0,
+  laneOffset: 0,
   pursuit: 0,
   stability: 100,
   distance: 0,
@@ -38,6 +41,29 @@ const state = {
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
+}
+
+function mix(a, b, t) {
+  return a + (b - a) * t;
+}
+
+function smoothstep(t) {
+  return t * t * (3 - 2 * t);
+}
+
+function sampleChasePath(progress) {
+  const t = clamp(progress, 0, 1);
+  const z = mix(2.2, -38 * pathScale, t);
+  const x =
+    mix(0.1, -1.8, smoothstep(clamp(t / 0.28, 0, 1))) +
+    mix(0, 4.2, smoothstep(clamp((t - 0.24) / 0.44, 0, 1))) +
+    mix(0, -2.2, smoothstep(clamp((t - 0.68) / 0.32, 0, 1)));
+  const y = mix(0.18, 0.5, smoothstep(t));
+  const yaw =
+    mix(-0.12, 0.48, smoothstep(clamp((t - 0.18) / 0.5, 0, 1))) -
+    mix(0, 0.26, smoothstep(clamp((t - 0.72) / 0.28, 0, 1)));
+
+  return { x, y, z, yaw };
 }
 
 async function resolveSplatUrl() {
@@ -139,7 +165,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x070910, 0.017);
 
-const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.02, 900);
+const camera = new THREE.PerspectiveCamera(72, window.innerWidth / window.innerHeight, 0.02, 900);
 camera.position.set(0, 4.3, 12);
 
 const spark = new SparkRenderer({ renderer });
@@ -188,6 +214,49 @@ for (let i = 0; i < 12; i += 1) {
 }
 guide.visible = true;
 scene.add(guide);
+
+const trackRibbon = new THREE.Mesh(
+  new THREE.PlaneGeometry(6.2, 72),
+  new THREE.MeshBasicMaterial({
+    color: 0xff3fb6,
+    transparent: true,
+    opacity: 0.08,
+    depthWrite: false,
+  }),
+);
+trackRibbon.rotation.x = -Math.PI / 2;
+trackRibbon.position.set(0, 0.025, -16);
+scene.add(trackRibbon);
+
+const speedLayer = new THREE.Group();
+const speedMarkers = [];
+const speedMaterials = [
+  new THREE.MeshBasicMaterial({
+    color: 0xff3fb6,
+    transparent: true,
+    opacity: 0.18,
+    depthWrite: false,
+  }),
+  new THREE.MeshBasicMaterial({
+    color: 0x43dfff,
+    transparent: true,
+    opacity: 0.16,
+    depthWrite: false,
+  }),
+];
+for (let i = 0; i < 42; i += 1) {
+  const lane = i % 3 === 0 ? -2.15 : i % 3 === 1 ? 0 : 2.15;
+  const length = i % 3 === 1 ? 1.4 : 2.4;
+  const marker = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.025, length), speedMaterials[i % 2]);
+  marker.userData = {
+    lane,
+    phase: i * 2.35,
+    drift: i % 2 === 0 ? -0.18 : 0.18,
+  };
+  speedMarkers.push(marker);
+  speedLayer.add(marker);
+}
+scene.add(speedLayer);
 
 const target = new THREE.Mesh(
   new THREE.BoxGeometry(1.45, 0.5, 2.7),
@@ -419,31 +488,66 @@ function animate(time) {
   const steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
   const throttle = Number(state.inputs.has("boost")) - Number(state.inputs.has("brake"));
 
-  state.heading = clamp(state.heading + steer * dt * 0.56, -0.62, 0.62);
-  state.speed = clamp(state.speed + throttle * dt * 13 - dt * 1.1, 0, 16);
-  state.distance = clamp(state.distance + state.speed * dt, 0, maxPursuitDistance);
+  const driveIntensity = clamp(state.speed / maxSpeed, 0, 1);
+  const steeringPower = 0.78 + driveIntensity * 0.7;
+  state.heading = clamp(state.heading + steer * dt * steeringPower, -0.86, 0.86);
+  state.laneOffset = clamp(state.laneOffset + steer * dt * (3.4 + driveIntensity * 2.2), -1.9, 1.9);
+  state.laneOffset = THREE.MathUtils.lerp(state.laneOffset, 0, dt * (0.42 + driveIntensity * 0.45));
+  const acceleration = state.inputs.has("boost") ? 58 : -8;
+  const braking = state.inputs.has("brake") ? 48 : 0;
+  state.speed = clamp(state.speed + acceleration * dt - braking * dt, 0, maxSpeed);
+  state.distance = clamp(state.distance + state.speed * dt * 0.58, 0, maxPursuitDistance);
   state.pursuit = clamp((state.distance / maxPursuitDistance) * 100, 0, 100);
-  state.stability = clamp(state.stability - Math.abs(steer) * dt * 12 + dt * 2.2, 0, 100);
+  state.stability = clamp(state.stability - Math.abs(steer) * dt * (15 + driveIntensity * 10) - Math.max(0, state.speed - maxSpeed * 0.72) * dt * 0.35 + dt * 2.2, 0, 100);
 
   if (state.pursuit >= 100 && !state.complete) {
     state.complete = true;
     state.speed = 0;
   }
 
-  const forward = state.distance * driveScale;
-  const lateral = Math.sin(state.heading) * 1.35;
-  vehicle.position.x = THREE.MathUtils.lerp(vehicle.position.x, lateral, 0.14);
-  vehicle.position.y = 0.22 + Math.sin(seconds * 10) * 0.012;
-  vehicle.position.z = THREE.MathUtils.lerp(vehicle.position.z, 2.2 - forward, 0.12);
-  vehicle.rotation.y = THREE.MathUtils.lerp(vehicle.rotation.y, -state.heading * 0.55, 0.12);
-  vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * 0.08, 0.16);
+  const progress = state.distance / maxPursuitDistance;
+  const path = sampleChasePath(progress);
+  const nextPath = sampleChasePath(clamp(progress + 0.04, 0, 1));
+  const tangentYaw = Math.atan2(nextPath.x - path.x, -(nextPath.z - path.z));
+  const vehicleX = path.x + state.laneOffset;
+  const vehicleZ = path.z;
+  const vehicleY = path.y + Math.sin(seconds * 16) * (0.01 + state.speed * 0.0012);
+  vehicle.position.x = THREE.MathUtils.lerp(vehicle.position.x, vehicleX, 0.18);
+  vehicle.position.y = THREE.MathUtils.lerp(vehicle.position.y, vehicleY, 0.18);
+  vehicle.position.z = THREE.MathUtils.lerp(vehicle.position.z, vehicleZ, 0.18);
+  vehicle.rotation.y = THREE.MathUtils.lerp(vehicle.rotation.y, tangentYaw - state.heading * 0.22, 0.16);
+  vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * 0.12, 0.18);
 
-  target.position.x = Math.sin(seconds * 0.9) * 0.55;
-  target.position.z = -10 - forward - state.pursuit * 0.06 + Math.sin(seconds * 1.4) * 0.2;
+  const targetProgress = clamp(progress + 0.25, 0, 1);
+  const targetPath = sampleChasePath(targetProgress);
+  target.position.x = targetPath.x + Math.sin(seconds * 0.9) * 0.4;
+  target.position.y = targetPath.y + 0.12;
+  target.position.z = targetPath.z + Math.sin(seconds * 1.4) * 0.2;
 
-  guide.position.x = vehicle.position.x * 0.35;
+  guide.position.x = path.x + state.laneOffset * 0.35;
   guide.position.z = vehicle.position.z - 1.2;
-  guide.rotation.y = state.heading * 0.1;
+  guide.rotation.y = tangentYaw + state.heading * 0.08;
+
+  trackRibbon.position.x = path.x + state.laneOffset * 0.25;
+  trackRibbon.position.z = vehicle.position.z - 18;
+  trackRibbon.rotation.y = tangentYaw;
+  trackRibbon.material.opacity = 0.06 + driveIntensity * 0.12;
+
+  speedLayer.position.x = path.x + state.laneOffset * 0.12;
+  speedLayer.position.y = 0.055;
+  speedLayer.position.z = vehicle.position.z;
+  speedLayer.rotation.y = tangentYaw;
+  for (const marker of speedMarkers) {
+    const phase = marker.userData.phase;
+    marker.position.x = marker.userData.lane + state.laneOffset * 0.18 + Math.sin(seconds * 1.4 + phase) * marker.userData.drift;
+    marker.position.z = -58 + ((phase + state.distance * 2.4) % 72);
+    marker.scale.z = 1 + driveIntensity * 2.6;
+    marker.visible = driveIntensity > 0.08;
+  }
+  for (const material of speedMaterials) {
+    material.opacity = 0.08 + driveIntensity * 0.28;
+  }
+  el.stage.dataset.speed = driveIntensity > 0.28 ? "fast" : "idle";
 
   if (proceduralWorld) {
     proceduralWorld.position.z = 4 + (state.distance % 12) * 0.12;
@@ -455,11 +559,17 @@ function animate(time) {
   cyanLight.position.x = target.position.x + 2.1;
   cyanLight.position.z = target.position.z + 0.2;
 
-  const camX = vehicle.position.x * 0.58;
-  const camY = 2.25 + state.speed * 0.015;
-  const camZ = vehicle.position.z + 4.8 - state.speed * 0.025;
-  camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.08);
-  camera.lookAt(vehicle.position.x * 0.22, 0.82, vehicle.position.z - 7.5);
+  const chaseDistance = 6.2 + driveIntensity * 2.4;
+  const camX = vehicle.position.x - Math.sin(tangentYaw) * chaseDistance + state.laneOffset * 0.28;
+  const camY = 1.85 + driveIntensity * 1.25;
+  const camZ = vehicle.position.z + Math.cos(tangentYaw) * chaseDistance;
+  const lookProgress = clamp(progress + 0.14 + driveIntensity * 0.08, 0, 1);
+  const lookPath = sampleChasePath(lookProgress);
+  camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.2);
+  camera.fov = THREE.MathUtils.lerp(camera.fov, Math.min(90, 68 + state.speed * 0.38), 0.12);
+  camera.updateProjectionMatrix();
+  camera.lookAt(lookPath.x + state.laneOffset * 0.16, 0.92 + driveIntensity * 0.22, lookPath.z);
+  camera.rotateZ(-steer * 0.045 - state.laneOffset * 0.012);
 
   updateHud();
   renderer.render(scene, camera);
