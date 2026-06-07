@@ -20,17 +20,53 @@ if (!(Test-Path $LocalRoot)) {
 }
 
 function Get-PythonCommand {
+    function Test-PythonCommand {
+        param([string]$Command)
+
+        if (!$Command) {
+            return $false
+        }
+
+        try {
+            $null = & $Command --version 2>$null
+            return $LASTEXITCODE -eq 0
+        } catch {
+            return $false
+        }
+    }
+
+    $candidates = @()
+
+    if ($env:NEON_CLEANER_PYTHON) {
+        $candidates += $env:NEON_CLEANER_PYTHON
+    }
+
+    if ($env:USERPROFILE) {
+        $candidates += Join-Path $env:USERPROFILE ".cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe"
+    }
+
+    $candidates += @(
+        "D:\ai\SULPHUR2_ComfyUI\python_embeded\python.exe",
+        "D:\AI\SULPHUR2_ComfyUI\python_embeded\python.exe"
+    )
+
     $python = Get-Command python -ErrorAction SilentlyContinue
     if ($python) {
-        return $python.Source
+        $candidates += $python.Source
     }
 
     $py = Get-Command py -ErrorAction SilentlyContinue
     if ($py) {
-        return $py.Source
+        $candidates += $py.Source
     }
 
-    throw "Python was not found on PATH."
+    foreach ($candidate in ($candidates | Where-Object { $_ } | Select-Object -Unique)) {
+        if ((Test-Path $candidate) -and (Test-PythonCommand -Command $candidate)) {
+            return $candidate
+        }
+    }
+
+    throw "A working Python executable was not found. Set NEON_CLEANER_PYTHON to a valid python.exe path."
 }
 
 function Get-ListeningProcessId {
