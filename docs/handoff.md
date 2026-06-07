@@ -87,6 +87,8 @@ Do not start by running the video workflow. First generate and approve still fra
 Primary docs:
 
 ```text
+docs/weekly-progress-2026-06-08.md
+web/reports/weekly-progress-2026-06-08.html
 docs/video/storyboard-stills-operation-guide.md
 docs/video/topview-storyboard-stills-first.md
 docs/video/topview-storyboard-stills.json
@@ -153,6 +155,7 @@ docs/story-bible.md
 docs/branch-map.md
 docs/ai-shot-list.md
 docs/handoff.md
+docs/weekly-progress-2026-06-08.md
 docs/daily-summary-2026-06-08.md
 docs/video/storyboard-stills-operation-guide.md
 docs/video/topview-storyboard-stills-first.md
@@ -163,6 +166,7 @@ docs/video/topview-local-comfyui-storyboard.json
 tools/comfy/print_storyboard_still_prompt.mjs
 tools/comfy/print_storyboard_prompt.mjs
 tools/comfy/build_storyboard_t2v_workflow.mjs
+web/reports/weekly-progress-2026-06-08.html
 web/index.html
 web/styles.css
 web/script.js

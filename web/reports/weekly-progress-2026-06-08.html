@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Cleaner 项目周报 2026-06-08</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #07090c;
+        --panel: #10151d;
+        --panel-2: #151b24;
+        --line: #293241;
+        --text: #eef3f8;
+        --muted: #aab4c0;
+        --cyan: #4dd8f0;
+        --pink: #f05ac4;
+        --amber: #f2c56b;
+        --green: #79d89b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Microsoft YaHei UI", "Segoe UI", Arial, sans-serif;
+        line-height: 1.65;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+        background: #0b0f15;
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 48px 0 34px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--cyan);
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 860px;
+        margin: 16px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      a {
+        color: var(--cyan);
+      }
+
+      .link-btn {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 8px 14px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--text);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      main {
+        padding: 28px 0 56px;
+      }
+
+      section {
+        padding: 24px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 22px;
+        line-height: 1.25;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 20px 0 8px;
+        font-size: 17px;
+        letter-spacing: 0;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 8px;
+        padding-left: 22px;
+      }
+
+      li {
+        margin: 5px 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .metric {
+        min-height: 112px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: var(--panel-2);
+      }
+
+      .metric b {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--cyan);
+        font-size: 25px;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .status {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .callout {
+        border-left: 4px solid var(--pink);
+        background: #16111b;
+      }
+
+      .done {
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      .next {
+        color: var(--amber);
+        font-weight: 700;
+      }
+
+      code,
+      pre {
+        font-family: Consolas, "Cascadia Mono", monospace;
+      }
+
+      pre {
+        margin: 10px 0 0;
+        overflow-x: auto;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: #070a0f;
+        color: #dfe9f5;
+      }
+
+      footer {
+        padding: 24px 0 40px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+      }
+
+      @media (max-width: 860px) {
+        .grid,
+        .status {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 28px;
+        }
+
+        section {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap hero">
+        <p class="eyebrow">Project Weekly Report · 2026-06-08</p>
+        <h1>《霓虹清道夫 / Neon Cleaner》互动电影游戏项目周报</h1>
+        <p class="subtitle">
+          本周末项目从“可玩的互动视频原型”推进到“可持续生产 AI 电影内容的流程原型”。当前重点已经明确为先完成电影分镜静帧，再用通过的静帧生成视频并接入互动节点。
+        </p>
+        <div class="links">
+          <a class="link-btn" href="../index.html">查看在线 Demo</a>
+          <a class="link-btn" href="https://github.com/Luciuswang/neon-cleaner-demo">查看 GitHub 仓库</a>
+          <a class="link-btn" href="../../docs/weekly-progress-2026-06-08.md">查看 Markdown 周报</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section>
+        <h2>一、项目定位</h2>
+        <p>
+          Neon Cleaner 是一个互动电影游戏原型。目标不是传统小游戏，也不是单纯 AI 短片，而是让用户先观看电影片段，在关键动作节点接管操作，再根据操作表现进入不同剧情影片。
+        </p>
+        <pre>观众观看电影片段 -> 关键节点接管操作 -> 系统计算表现 -> 播放不同剧情分支</pre>
+      </section>
+
+      <section>
+        <h2>二、本周核心成果</h2>
+        <div class="grid">
+          <div class="metric">
+            <b>1</b>
+            <span>完成第一版可玩的网页互动电影原型</span>
+          </div>
+          <div class="metric">
+            <b>2</b>
+            <span>验证本地 Sulphur2/LTX-2.3 视频生成环境</span>
+          </div>
+          <div class="metric">
+            <b>3</b>
+            <span>完成 World Labs / Marble 3D 接管可行性实验</span>
+          </div>
+          <div class="metric">
+            <b>4</b>
+            <span>建立 Topview 风格的分镜静帧优先制作流程</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>三、已经完成什么</h2>
+        <h3>网页互动原型</h3>
+        <ul>
+          <li>开场影片播放结构已经完成。</li>
+          <li>追车接管玩法已经完成。</li>
+          <li>根据玩家表现进入不同分支的基础逻辑已经完成。</li>
+          <li>Boss 接管玩法和三个结局路径已经完成。</li>
+          <li>GitHub Pages 可以在线访问和手机测试。</li>
+        </ul>
+
+        <h3>本地 AI 视频环境</h3>
+        <ul>
+          <li>独立视频环境位于 <code>D:\AI\SULPHUR2_ComfyUI</code>。</li>
+          <li>ComfyUI 服务、模型、自定义节点和 RTX 3080 Ti 运行状态已验证。</li>
+          <li>结论：该环境适合后续 I2V 视频生成。</li>
+        </ul>
+
+        <h3>3D 接管实验</h3>
+        <ul>
+          <li>Marble 生成的 SPZ 世界可以导入网页实验。</li>
+          <li>GLB 碰撞体、驾驶视角、基础碰撞和路径控制方向可行。</li>
+          <li>当前仍是技术验证，不是最终美术效果。</li>
+        </ul>
+      </section>
+
+      <section class="callout">
+        <h2>四、重要流程修正</h2>
+        <p>
+          本周末最重要的判断是：不能一上来直接生成视频。视频模型会同时引入构图、镜头、角色、车辆、场景一致性等不确定因素，容易浪费时间。
+        </p>
+        <p>现在采用更稳定的流程：</p>
+        <pre>剧本拆分 -> 分镜静帧 -> 人工确认 -> I2V 生成视频 -> 接入互动游戏</pre>
+      </section>
+
+      <section>
+        <h2>五、项目当前状态</h2>
+        <div class="status">
+          <div>
+            <h3 class="done">已完成</h3>
+            <ul>
+              <li>互动电影网页 demo。</li>
+              <li>GitHub Pages 在线访问。</li>
+              <li>本地 Sulphur2/LTX-2.3 视频环境。</li>
+              <li>Marble 3D 世界接管实验。</li>
+              <li>分镜静帧优先的制作管线。</li>
+              <li>第一批分镜 prompt 和验收标准。</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="next">正在进入</h3>
+            <ul>
+              <li>AI 分镜静帧打样阶段。</li>
+              <li>角色林夏视觉确认。</li>
+              <li>旧金山战后世界视觉确认。</li>
+              <li>第一人称接管驾驶画面确认。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>六、下周计划</h2>
+        <ol>
+          <li>先完成 4 张关键分镜静帧：旧金山战后大远景、林夏俯瞰城市、敌方装甲车出现、第一人称接管驾驶画面。</li>
+          <li>每张图生成 3 个候选版本，筛选通过版。</li>
+          <li>用通过静帧进入 Sulphur2/LTX-2.3 I2V，生成 5 到 10 秒视频片段。</li>
+          <li>把通过视频替换到网页 demo 中，验证电影到玩法的衔接。</li>
+          <li>继续优化第一人称驾驶、碰撞边界、车辆模型、爆炸烟雾和手机端性能。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>七、风险和资源需求</h2>
+        <ul>
+          <li>直接生成视频风险较高，必须先确认分镜静帧。</li>
+          <li>Marble 3D 世界目前可用于验证空间接管，但还不能作为最终资产。</li>
+          <li>当前本地视频环境不是静帧生成环境。如需完全本地化分镜图，建议后续单独安装 Flux 或 SDXL。</li>
+          <li>第一批视觉确认会决定后续视频生成效率，是下周最关键节点。</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>八、老板需要知道的决策点</h2>
+        <ol>
+          <li>项目已有可玩的网页原型，不只是概念。</li>
+          <li>当前核心任务是建立可持续的 AI 电影内容生产流程。</li>
+          <li>下周重点不是堆新功能，而是锁定第一批电影级分镜画面。</li>
+          <li>如果要提高产出效率，需要稳定的图片生成工具或本地 Flux/SDXL 静帧环境。</li>
+          <li>项目下一阶段会以短片段、高质量、可接管为核心，而不是一次生成整部长片。</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>九、明天继续方式</h2>
+        <p>到公司后先更新仓库：</p>
+        <pre>git pull</pre>
+        <p>然后打印第一张分镜 prompt：</p>
+        <pre>node tools/comfy/print_storyboard_still_prompt.mjs SB-A0-01</pre>
+        <p>先从 <code>SB-A0-01</code> 旧金山战后大远景开始生成候选分镜静帧。</p>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <p>Neon Cleaner 项目周报，生成于 2026-06-08。当前版本重点：分镜静帧优先，确认后再进入 I2V 视频生产。</p>
+      </div>
+    </footer>
+  </body>
+</html>
