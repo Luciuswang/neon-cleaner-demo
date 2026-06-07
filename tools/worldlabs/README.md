@@ -32,3 +32,16 @@ web/worlds/a0-war-signal-500k.spz
 web/worlds/a0-war-signal-collider.glb
 ```
 
+## Local key helpers
+
+Set the API key interactively without committing it:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\worldlabs\set_api_key.ps1
+```
+
+Check whether this machine can read the key:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\worldlabs\check_api_key.ps1
+```

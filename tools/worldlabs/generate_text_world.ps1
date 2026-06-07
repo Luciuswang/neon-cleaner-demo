@@ -21,10 +21,23 @@ if (!(Test-Path $OutputPath)) {
     New-Item -ItemType Directory -Path $OutputPath | Out-Null
 }
 
-$apiKey = $env:WORLDLABS_API_KEY
-if (!$apiKey) {
-    $apiKey = $env:WLT_API_KEY
+function Get-WorldLabsApiKey {
+    $names = @("WORLDLABS_API_KEY", "WLT_API_KEY")
+    $targets = @("Process", "User", "Machine")
+
+    foreach ($name in $names) {
+        foreach ($target in $targets) {
+            $value = [Environment]::GetEnvironmentVariable($name, $target)
+            if ($value) {
+                return $value
+            }
+        }
+    }
+
+    return $null
 }
+
+$apiKey = Get-WorldLabsApiKey
 
 if (!$apiKey) {
     throw "Missing API key. Set WORLDLABS_API_KEY or WLT_API_KEY before running this script."
