@@ -1,0 +1,72 @@
+{
+  "project": "neon-cleaner-demo",
+  "workflow_order": [
+    "script beat",
+    "storyboard still",
+    "approval",
+    "image-to-video",
+    "game handoff"
+  ],
+  "approved_frame_dir": "source/storyboard/approved/",
+  "comfyui_input_dir": "D:\\AI\\SULPHUR2_ComfyUI\\ComfyUI\\input",
+  "i2v_workflow": "C:\\Users\\Administrator\\Desktop\\ComfyUI工作流\\A0-S01_I2V_可上传首帧图.json",
+  "global_negative_prompt": "cartoon, anime, illustration, comic style, toy car, low poly, game screenshot, HUD, UI text, subtitles, watermark, logo, readable text, plastic materials, fantasy armor, fashion ad, idol pose, overclean city, no war damage, flat lighting, blurry, low detail, distorted buildings, warped road, duplicated vehicles, melted car, wrong scale, floating objects, overexposed white sky",
+  "stills": [
+    {
+      "still_id": "SB-A0-01",
+      "story_node": "A0",
+      "purpose": "Prove the world: post-war San Francisco is cinematic, damaged, wet, and large-scale.",
+      "prompt": "A premium cinematic storyboard still of post-war future San Francisco after rain, wide establishing frame from a slightly elevated street overlook. Broken Golden Gate Bridge structures are visible in the misty distance, damaged downtown towers rise on both sides, cracked elevated tracks and road scars cut through the scene, smoke columns drift behind buildings, ruined drones and abandoned vehicles sit near the roadside. Wet asphalt reflects cold blue-gray sky and restrained magenta emergency signal lights. No characters. Photorealistic, grounded sci-fi war drama, expensive film composition, strong depth, natural rain reflections, atmospheric perspective, 16:9.",
+      "approval_check": "The frame must immediately read as San Francisco after a large conflict. It must have a road corridor that can later become the chase route.",
+      "after_approval": "Use as A0-S01 establishing keyframe or as reference for A0-S01 video."
+    },
+    {
+      "still_id": "SB-A0-02",
+      "story_node": "A0",
+      "purpose": "Prove heroine identity and emotional tone before action begins.",
+      "prompt": "A premium cinematic storyboard still of Lin Xia standing on a rooftop edge or shattered overpass above post-war future San Francisco after rain. She is an East Asian woman in her early 20s, slim athletic build, pale skin, black ponytail with loose front strands, sharp tired eyes, long black tactical leather coat with magenta inner lining and subtle magenta glowing strips near the hem, fitted black combat clothing, gloves, utility belt, black boots. She looks over the wounded city with grief, pressure, endurance, and a faint thread of hope. The damaged city is large behind her: wet streets, smoke, broken infrastructure, restrained magenta emergency lights, cold mist. Photorealistic, grounded sci-fi, premium film frame, no fashion pose, 16:9.",
+      "approval_check": "Lin Xia must look human and burdened, not like a fashion model. Her silhouette and coat must be readable.",
+      "after_approval": "Use as heroine identity reference and optional I2V first frame for a character reveal clip."
+    },
+    {
+      "still_id": "SB-A0-03",
+      "story_node": "A0",
+      "purpose": "Reveal the enemy vehicle and create the action objective.",
+      "prompt": "A cinematic storyboard still of an armored black hostile vehicle cutting through a damaged rain-soaked future San Francisco street. The camera is low and behind cover, looking toward the vehicle as it moves through mist. Wet asphalt reflects magenta emergency signal lights, broken lane markings, abandoned damaged cars, cracked road, smoke and sparks near the roadside. The vehicle has a heavy reinforced silhouette, dirty wet panels, damaged tail lights, realistic scale, no toy look. Photorealistic grounded sci-fi pursuit setup, premium action-thriller frame, 16:9.",
+      "approval_check": "The enemy vehicle must be readable and consistent enough to become the chase target.",
+      "after_approval": "Use as target reveal and vehicle reference for chase video."
+    },
+    {
+      "still_id": "SB-I1-01",
+      "story_node": "I1",
+      "purpose": "Create the exact frame that can become the first playable driving view.",
+      "prompt": "A first-person hood-level cinematic storyboard still from inside or just above a damaged futuristic pursuit car, driving through a post-war future San Francisco street after rain. The car hood and windshield edge are barely visible at the bottom of frame, low and cinematic, not blocking the road. Ahead, an armored black hostile vehicle is visible in the same lane through mist and rain. Wet asphalt, road scars, debris, damaged buildings, broken Golden Gate Bridge in the distance, restrained magenta emergency lights reflecting on puddles and car paint. Photorealistic, grounded, intense but readable driving takeover frame, 16:9.",
+      "approval_check": "This frame must look playable. The road direction, camera height, and enemy car position must be usable in the web driving scene.",
+      "after_approval": "Use as the most important handoff frame for I2V and web gameplay camera matching."
+    },
+    {
+      "still_id": "SB-C1-01",
+      "story_node": "C1",
+      "purpose": "Winning branch visual target.",
+      "prompt": "A cinematic storyboard still of Lin Xia's pursuit vehicle cleanly outmaneuvering the hostile armored car through a rain-soaked damaged future San Francisco street. Low fast camera, strong road perspective, sparks and debris near the road edge, magenta signal lights reflecting across wet asphalt, the enemy car still visible ahead but under pressure. The frame feels controlled, decisive, and thrilling. Photorealistic premium action film composition, grounded sci-fi, 16:9.",
+      "approval_check": "Must feel like a clean player success, not random chaos.",
+      "after_approval": "Use as C1 result clip first frame."
+    },
+    {
+      "still_id": "SB-C2-01",
+      "story_node": "C2",
+      "purpose": "Costly success branch visual target.",
+      "prompt": "A cinematic storyboard still from a damaged pursuit car during a rain-soaked chase in post-war future San Francisco. The windshield edge is cracked, sparks scrape from the hood, the camera is unstable but readable, the armored enemy vehicle remains ahead through smoke and rain. Wet asphalt reflects magenta emergency signals, damaged buildings and road debris surround the chase. Photorealistic grounded sci-fi, costly victory mood, premium film frame, 16:9.",
+      "approval_check": "Must show damage and cost while keeping the pursuit alive.",
+      "after_approval": "Use as C2 result clip first frame."
+    },
+    {
+      "still_id": "SB-C3-01",
+      "story_node": "C3",
+      "purpose": "Failure branch visual target.",
+      "prompt": "A tragic cinematic storyboard still of a damaged San Francisco intersection after the enemy vehicle has disappeared into smoke. Rain and ash drift through restrained magenta reflections on wet asphalt. Broken road barriers, abandoned cars, distant fire, damaged buildings, empty road ahead, the sense of arriving too late. Photorealistic grounded sci-fi noir, regret, delay, premium film composition, 16:9.",
+      "approval_check": "Must clearly communicate lost target and regret.",
+      "after_approval": "Use as C3 result clip first frame."
+    }
+  ]
+}

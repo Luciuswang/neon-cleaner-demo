@@ -1,0 +1,150 @@
+{
+  "project": "neon-cleaner-demo",
+  "template_version": "2026-06-07",
+  "local_comfyui": {
+    "server": "http://127.0.0.1:8190",
+    "recommended_workflow": "D:\\AI\\SULPHUR2_ComfyUI\\ComfyUI\\user\\default\\workflows\\00_OPEN_THIS_CAR_CHASE_T2V.json",
+    "model_stack": {
+      "checkpoint": "sulphur_dev_fp8mixed.safetensors",
+      "upstream_ltx_checkpoint": "ltx-2.3-22b-dev-fp8.safetensors",
+      "text_encoder": "gemma_3_12B_it_fp4_mixed.safetensors",
+      "vae": "taeltx2_3.safetensors",
+      "distilled_lora": "ltx-2.3-22b-distilled-lora-384.safetensors",
+      "latent_upscaler": "ltx-2.3-spatial-upscaler-x2-1.1.safetensors"
+    },
+    "first_pass_settings": {
+      "duration_seconds": 5,
+      "fps": 25,
+      "width": 960,
+      "height": 540,
+      "notes": "Use lower resolution first. Upscale only after composition and motion are approved."
+    }
+  },
+  "global_style_lock": "Post-war future San Francisco, rain, wet asphalt, damaged downtown buildings, broken Golden Gate Bridge, mist, smoke layers, magenta emergency signal lights, grounded sci-fi, photorealistic, premium cinematic action thriller, strong lens depth, controlled contrast, natural reflections, practical explosions, no readable text.",
+  "character_lock": {
+    "name": "Lin Xia",
+    "description": "East Asian female, early 20s, slim athletic build, pale skin, black ponytail with loose front strands, sharp tired eyes, long black tactical leather coat with magenta inner lining and subtle magenta glowing strips near the hem, fitted black combat clothing, gloves, utility belt, black boots, grounded tactical sci-fi styling, burdened but resilient.",
+    "reference_asset": "web/assets/女主.png",
+    "continuity_rules": [
+      "Preserve face shape, eye spacing, hairline, coat silhouette, and black tactical styling.",
+      "Avoid idol portrait, fantasy warrior, fashion model, or exposed midriff.",
+      "For action shots, protect identity through silhouette, costume, and color before close-up face detail."
+    ]
+  },
+  "vehicle_lock": {
+    "player_vehicle": "Low damaged futuristic pursuit car, dark graphite body, magenta dashboard glow, rain on windshield, low hood-line, combat-modified but realistic, no toy scale.",
+    "enemy_vehicle": "Armored black hostile vehicle, heavier silhouette, reinforced panels, damaged tail lights, dirty wet bodywork, readable direction and consistent scale."
+  },
+  "universal_negative_prompt": "cartoon, anime, toy car, low poly, game UI, HUD text, subtitles, watermark, logo, readable text, floating car, car changing shape, inconsistent vehicle, wrong car scale, car without wheels, broken perspective, static camera, no road movement, no background parallax, jump cut, scene cut, sudden camera teleport, overexposed white sky, flat billboard explosion, particles only in center of screen, fake fireworks, magic effect, unrealistic pink cloud, explosion not lighting the environment, smoke without volume, blurry, low quality, warped road, distorted buildings, duplicated cars, melted vehicles, camera too high, cockpit blocking the view, fashion shoot, idol pose, fantasy armor, exposed midriff",
+  "shots": [
+    {
+      "shot_id": "A0-S01",
+      "branch_node": "A0",
+      "clip_role": "cinematic opening",
+      "target_duration_seconds": 6,
+      "input_mode": "t2v first pass, i2v after keyframe approval",
+      "source_reference": "optional WorldLabs/Marble panorama or generated city keyframe",
+      "first_frame_requirement": "wide view of damaged future San Francisco after rain",
+      "final_frame_requirement": "camera settles toward the road corridor where chase can begin",
+      "camera": "slow expensive aerial glide, not shaky, high to medium descent",
+      "action": "smoke moves, rain falls, distant magenta emergency lights pulse, damaged city breathes",
+      "continuity_locks": [
+        "broken bridge",
+        "wet road",
+        "post-war scale",
+        "magenta signal color"
+      ],
+      "positive_prompt": "Epic post-war future San Francisco after rain, a grand cinematic establishing shot over a wounded city. Broken Golden Gate Bridge structures in the distance, damaged downtown towers, cracked elevated tracks, smoke columns, ruined drones, wet streets reflecting cold blue-gray light and restrained magenta emergency signals. Heavy mist and light rain create deep atmospheric layers. The camera slowly glides downward toward a road corridor that can become a chase route. Photorealistic premium sci-fi war drama, large scale, grounded, expensive lensing, natural rain reflections, controlled contrast, no characters, no readable text.",
+      "handoff_strategy": "End with the road corridor centered, horizon line stable, enough road visible to cut into chase footage.",
+      "acceptance_check": [
+        "The city must feel large, damaged, and cinematic.",
+        "The final two seconds must point toward a playable path."
+      ],
+      "reject_if": [
+        "generic clean cyberpunk city",
+        "no war damage",
+        "flat sky",
+        "unusable final road direction"
+      ],
+      "game_integration": "Lead-in movie before chase."
+    },
+    {
+      "shot_id": "A0-S02",
+      "branch_node": "A0-to-I1",
+      "clip_role": "movie-to-play transition",
+      "target_duration_seconds": 10,
+      "input_mode": "t2v first pass, i2v if a strong chase keyframe is created",
+      "source_reference": "approved Marble world frame or A0-S01 final frame",
+      "first_frame_requirement": "low chase camera behind player pursuit car",
+      "final_frame_requirement": "hood-level or first-person driving view, enemy car ahead",
+      "camera": "low road-level tracking camera, strong parallax, smooth push into first-person",
+      "action": "pursuit car chases armored enemy vehicle through wet damaged street, side explosions, magenta reflections",
+      "continuity_locks": [
+        "wet post-war San Francisco",
+        "magenta emergency glow",
+        "consistent vehicles",
+        "enemy car stays ahead"
+      ],
+      "positive_prompt": "A realistic cinematic 10-second landscape video, 16:9, set on a post-war future San Francisco street in heavy mist and light rain. Wet asphalt, damaged downtown buildings, debris on the road, broken Golden Gate Bridge visible in the distance, magenta emergency signal lights reflecting on puddles and car windows. Photorealistic, high detail, cinematic lighting, dramatic but grounded.\n\nOne continuous shot, no cuts. The shot begins as a low tracking chase camera close behind a futuristic damaged pursuit car driving fast through the ruined San Francisco street. Ahead, an enemy armored black vehicle speeds through the mist, weaving between abandoned cars and cracked lane markings. Both cars keep consistent shape, scale, and direction throughout the entire shot.\n\nThe camera moves forward with strong road parallax, very low to the wet street, intense speed feeling. Magenta neon reflections slide naturally across the road surface, building glass, car paint, and chrome. Small explosions happen on the side of the street, with realistic orange fireballs, smoke, sparks, debris, and light spill. The explosions briefly illuminate the wet asphalt, nearby cars, smoke, and the side of the enemy vehicle, then fade naturally. No flat particles, no screen-center effects.\n\nDuring the final two seconds, the camera smoothly pushes into a first-person hood-level driving view, as if the viewer is taking control of the pursuit car. The car hood and windshield edge are barely visible at the bottom of the frame, low and cinematic, not blocking the road. The enemy car remains ahead on the right side of the road. The final frame should look like a playable first-person driving takeover moment: wet road ahead, damaged San Francisco street, enemy car in front, magenta signal lights, mist, realistic motion blur, strong cinematic tension.",
+      "handoff_strategy": "Use the final hood-level frame as the first gameplay frame. Match camera height, road direction, enemy car position, and magenta signal color.",
+      "acceptance_check": [
+        "Clear forward road motion and background parallax.",
+        "Final frame is playable.",
+        "Vehicle silhouettes remain stable."
+      ],
+      "reject_if": [
+        "camera floats high above road",
+        "cars morph",
+        "explosions are screen-center flat particles",
+        "final frame cannot align with gameplay"
+      ],
+      "game_integration": "Movie lead-in for I1 playable takeover."
+    },
+    {
+      "shot_id": "I1-S01",
+      "branch_node": "I1",
+      "clip_role": "first interactive takeover",
+      "target_duration_seconds": 12,
+      "input_mode": "web runtime gameplay",
+      "source_reference": "A0-S02 final frame",
+      "first_frame_requirement": "camera position matches A0-S02 final frame",
+      "final_frame_requirement": "branch result chooses C1, C2, or C3",
+      "camera": "first-person hood-level chase camera",
+      "action": "player stabilizes pursuit car, avoids debris, keeps enemy vehicle in sight",
+      "continuity_locks": [
+        "road heading",
+        "camera height",
+        "enemy car ahead",
+        "magenta signal glow"
+      ],
+      "positive_prompt": "",
+      "handoff_strategy": "Freeze or crossfade the final 8 to 12 frames from A0-S02 into the web driving scene.",
+      "acceptance_check": [
+        "Player feels the movie became controllable.",
+        "The gameplay scene does not feel like a separate toy scene."
+      ],
+      "reject_if": [
+        "camera jumps to a different height",
+        "road direction changes abruptly",
+        "enemy car disappears at handoff"
+      ],
+      "game_integration": "High attack and high stability routes to C1. Medium score or collision routes to C2. Low stability, missed route, or speed collapse routes to C3."
+    }
+  ],
+  "branch_result_prompts": {
+    "C1": "Lin Xia's pursuit vehicle cleanly outmaneuvers the hostile armored car through a rain-soaked damaged future San Francisco street. The camera stays low and fast, road parallax is strong, sparks and debris pass close to the windshield, magenta signal lights reflect across wet asphalt, controlled driving, decisive momentum, cinematic victory energy.",
+    "C2": "The pursuit continues but the player vehicle takes visible damage. Cracked windshield edge, sparks from the hood, unstable steering, the enemy car remains ahead through smoke and rain. The city lights smear across wet asphalt, magenta signal reflections flicker, the chase survives but at a cost, cinematic tension, realistic damage.",
+    "C3": "The enemy vehicle disappears through smoke, blast light, and collapsing road cover. The camera pushes into a damaged San Francisco intersection too late, rain and ash drifting through magenta reflections, road empty ahead, distant engine sound fading, regret and delay, cinematic tragic branch."
+  },
+  "output_naming": {
+    "source_video": [
+      "source/video/A0_S01_war_signal_establishing.mp4",
+      "source/video/A0_S02_chase_to_takeover.mp4",
+      "source/video/I1_S01_takeover_placeholder.mp4",
+      "source/video/C1_clean_pursuit.mp4",
+      "source/video/C2_damaged_pursuit.mp4",
+      "source/video/C3_lost_trail.mp4"
+    ],
+    "web_assets": "web/assets/video/"
+  }
+}
