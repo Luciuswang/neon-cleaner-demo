@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>霓虹清道夫 3D 接管测试</title>
+    <link rel="stylesheet" href="./world-prototype.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/",
+          "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/2.1.0/spark.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="world-stage">
+      <canvas id="worldCanvas"></canvas>
+
+      <header class="world-hud">
+        <a class="back-link" href="./index.html">霓虹清道夫</a>
+        <div class="world-status">
+          <span>A0 / World Takeover</span>
+          <b id="assetStatus">Loading world</b>
+        </div>
+      </header>
+
+      <section class="takeover-panel" aria-live="polite">
+        <p class="eyebrow">Spatial Prototype</p>
+        <h1>战后旧金山接管段</h1>
+        <div class="meter-row">
+          <span>追击</span>
+          <i><b id="pursuitMeter"></b></i>
+          <strong id="pursuitValue">0</strong>
+        </div>
+        <div class="meter-row">
+          <span>稳定</span>
+          <i><b id="stabilityMeter"></b></i>
+          <strong id="stabilityValue">100</strong>
+        </div>
+        <p id="branchReadout">I1 / Combat chase handoff</p>
+      </section>
+
+      <nav class="touch-rig" aria-label="3D controls">
+        <button id="steerLeft" aria-label="left">←</button>
+        <button id="brake" aria-label="brake">↓</button>
+        <button id="boost" aria-label="boost">↑</button>
+        <button id="steerRight" aria-label="right">→</button>
+      </nav>
+    </main>
+
+    <script type="module" src="./world-prototype.js"></script>
+  </body>
+</html>

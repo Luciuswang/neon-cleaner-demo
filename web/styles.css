@@ -38,6 +38,18 @@ button {
   box-shadow: 0 10px 26px rgba(255, 63, 182, 0.26);
 }
 
+.world-link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.09);
+}
+
 button.ghost {
   background: rgba(255, 255, 255, 0.09);
   color: var(--text);

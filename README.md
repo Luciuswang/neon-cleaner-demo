@@ -64,6 +64,36 @@ docs/handoff.md
 
 新环境里让 Codex 先阅读 `README.md` 和 `docs/handoff.md`，就可以从当前状态继续。
 
+## 3D 接管实验
+
+第一版 World Labs / Marble 接管实验页：
+
+```text
+web/world-prototype.html
+```
+
+本地访问：
+
+```text
+http://127.0.0.1:5177/world-prototype.html
+```
+
+准备说明：
+
+```text
+docs/marble-mvp-experiment.md
+tools/worldlabs/README.md
+```
+
+真实 Marble 世界资产放这里：
+
+```text
+web/worlds/a0-war-signal-500k.spz
+web/worlds/a0-war-signal-collider.glb
+```
+
+如果还没有 `.spz`，实验页会先使用公开 SparkJS 示例资产验证网页渲染链路。
+
 ## 项目结构
 
 ```text
@@ -72,13 +102,18 @@ docs/
   branch-map.md
   ai-shot-list.md
   handoff.md
+  marble-mvp-experiment.md
+tools/
+  worldlabs/
 web/
   index.html
   styles.css
   script.js
+  world-prototype.html
   assets/
     neon-cleaner-bg-noaudio.mp4
     neon-cleaner-keyframe.png
+  worlds/
 ```
 
 ## 注意
