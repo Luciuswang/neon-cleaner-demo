@@ -3,6 +3,7 @@ import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
 import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
 const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
@@ -17,6 +18,10 @@ const maxSpeed = perfMode === "high" ? 96 : perfMode === "low" ? 62 : 82;
 const cameraMode = params.get("camera") || "first";
 const usePostProcessing = params.get("post") !== "0" && perfMode !== "low";
 const vfxDensity = perfMode === "high" ? 1 : perfMode === "low" ? 0.55 : 0.78;
+const cockpitModelUrl = params.get("cockpit") || "./models/player-cockpit.glb";
+const enemyModelUrl = params.get("enemy") || "./models/enemy-car.glb";
+const cockpitModelScale = Number(params.get("cockpitScale")) || 1;
+const enemyModelScale = Number(params.get("enemyScale")) || 1;
 
 const el = {
   stage: document.querySelector(".world-stage"),
@@ -198,6 +203,65 @@ function createCockpitHoodGeometry() {
   geometry.setIndex([0, 1, 2, 0, 2, 3]);
   geometry.computeVertexNormals();
   return geometry;
+}
+
+function setGroupChildrenVisible(group, visible) {
+  for (const child of group.children) {
+    child.visible = visible;
+  }
+}
+
+function prepareImportedModel(root) {
+  root.traverse((node) => {
+    if (!node.isMesh) return;
+    node.frustumCulled = false;
+    const materials = Array.isArray(node.material) ? node.material : [node.material];
+    for (const material of materials) {
+      if (!material) continue;
+      material.side = material.side ?? THREE.FrontSide;
+      material.needsUpdate = true;
+    }
+  });
+}
+
+async function urlExists(url) {
+  if (!url || url === "0" || url === "false") return false;
+  try {
+    const response = await fetch(url, { method: "HEAD", cache: "no-cache" });
+    return response.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function attachOptionalGlb({
+  url,
+  parent,
+  hideFallback = true,
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+  scale = 1,
+}) {
+  if (!(await urlExists(url))) return null;
+
+  try {
+    const loader = new GLTFLoader();
+    const gltf = await loader.loadAsync(url);
+    const root = gltf.scene;
+    prepareImportedModel(root);
+    root.position.set(...position);
+    root.rotation.set(...rotation);
+    root.scale.setScalar(scale);
+
+    if (hideFallback) {
+      setGroupChildrenVisible(parent, false);
+    }
+    parent.add(root);
+    return root;
+  } catch (error) {
+    console.warn(`Could not load GLB model from ${url}`, error);
+    return null;
+  }
 }
 
 async function resolveSplatUrl() {
@@ -468,6 +532,24 @@ const target = createLowPolyCar({
 target.scale.setScalar(1.08);
 target.position.set(1.6, 0.52, -28);
 scene.add(target);
+
+attachOptionalGlb({
+  url: cockpitModelUrl,
+  parent: cockpit,
+  hideFallback: true,
+  position: [0, -0.58, -1.18],
+  rotation: [0, 0, 0],
+  scale: cockpitModelScale,
+});
+
+attachOptionalGlb({
+  url: enemyModelUrl,
+  parent: target,
+  hideFallback: true,
+  position: [0, -0.08, 0],
+  rotation: [0, 0, 0],
+  scale: enemyModelScale,
+});
 
 const hemi = new THREE.HemisphereLight(0x9fc7ff, 0x0a0208, 1.1);
 scene.add(hemi);
