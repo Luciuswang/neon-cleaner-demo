@@ -64,6 +64,7 @@ button[data-active="true"] {
   background:
     radial-gradient(circle at 50% 70%, rgba(255, 63, 182, 0.2), transparent 34%),
     linear-gradient(180deg, #101827 0%, #070910 56%, #020306 100%);
+  transition: filter 0.12s ease;
 }
 
 body::before {
@@ -106,6 +107,14 @@ body::after {
 .world-stage[data-speed="fast"]::before {
   animation: speed-streaks 0.38s linear infinite;
   opacity: 0.34;
+}
+
+.world-stage[data-impact="hit"] #worldCanvas {
+  filter: contrast(1.18) saturate(1.22);
+}
+
+.world-stage[data-impact="hit"]::before {
+  opacity: 0.56;
 }
 
 @keyframes speed-streaks {

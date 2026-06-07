@@ -10,6 +10,7 @@ const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1
 const maxPursuitDistance = perfMode === "high" ? 168 : perfMode === "low" ? 94 : 128;
 const pathScale = perfMode === "high" ? 1.55 : perfMode === "low" ? 1 : 1.28;
 const maxSpeed = perfMode === "high" ? 96 : perfMode === "low" ? 62 : 82;
+const cameraMode = params.get("camera") || "first";
 
 const el = {
   stage: document.querySelector(".world-stage"),
@@ -34,6 +35,7 @@ const state = {
   pursuit: 0,
   stability: 100,
   distance: 0,
+  impact: 0,
   lastTime: 0,
   complete: false,
   inputs: new Set(),
@@ -64,6 +66,31 @@ function sampleChasePath(progress) {
     mix(0, 0.26, smoothstep(clamp((t - 0.72) / 0.28, 0, 1)));
 
   return { x, y, z, yaw };
+}
+
+function sampleRoadWidth(progress) {
+  const t = clamp(progress, 0, 1);
+  return mix(2.05, 2.8, smoothstep(clamp((t - 0.12) / 0.28, 0, 1))) -
+    mix(0, 0.55, smoothstep(clamp((t - 0.62) / 0.28, 0, 1)));
+}
+
+function samplePathBasis(progress) {
+  const path = sampleChasePath(progress);
+  const nextPath = sampleChasePath(clamp(progress + 0.035, 0, 1));
+  const dx = nextPath.x - path.x;
+  const dz = nextPath.z - path.z;
+  const length = Math.hypot(dx, dz) || 1;
+  const forwardX = dx / length;
+  const forwardZ = dz / length;
+
+  return {
+    path,
+    forwardX,
+    forwardZ,
+    rightX: -forwardZ,
+    rightZ: forwardX,
+    yaw: Math.atan2(forwardX, -forwardZ),
+  };
 }
 
 async function resolveSplatUrl() {
@@ -167,6 +194,7 @@ scene.fog = new THREE.FogExp2(0x070910, 0.017);
 
 const camera = new THREE.PerspectiveCamera(72, window.innerWidth / window.innerHeight, 0.02, 900);
 camera.position.set(0, 4.3, 12);
+scene.add(camera);
 
 const spark = new SparkRenderer({ renderer });
 scene.add(spark);
@@ -198,7 +226,45 @@ const cabin = new THREE.Mesh(
 cabin.position.set(0, 0.3, -0.16);
 vehicle.add(body, cabin);
 vehicle.position.set(0, 0.42, 2.2);
+vehicle.visible = cameraMode !== "first";
 scene.add(vehicle);
+
+const cockpit = new THREE.Group();
+cockpit.visible = cameraMode === "first";
+const hood = new THREE.Mesh(
+  new THREE.BoxGeometry(1.65, 0.18, 1.35),
+  new THREE.MeshBasicMaterial({
+    color: 0x160816,
+    transparent: true,
+    opacity: 0.88,
+  }),
+);
+hood.position.set(0, -0.62, -1.18);
+hood.rotation.x = -0.12;
+const hoodGlow = new THREE.Mesh(
+  new THREE.PlaneGeometry(1.9, 0.06),
+  new THREE.MeshBasicMaterial({
+    color: 0xff3fb6,
+    transparent: true,
+    opacity: 0.72,
+    depthWrite: false,
+  }),
+);
+hoodGlow.position.set(0, -0.51, -1.9);
+hoodGlow.rotation.x = -0.32;
+const windshieldLine = new THREE.Mesh(
+  new THREE.PlaneGeometry(2.2, 0.035),
+  new THREE.MeshBasicMaterial({
+    color: 0x43dfff,
+    transparent: true,
+    opacity: 0.42,
+    depthWrite: false,
+  }),
+);
+windshieldLine.position.set(0, -0.18, -2.2);
+windshieldLine.rotation.x = -0.44;
+cockpit.add(hood, hoodGlow, windshieldLine);
+camera.add(cockpit);
 
 const guide = new THREE.Group();
 const guideMaterial = new THREE.MeshBasicMaterial({
@@ -257,6 +323,32 @@ for (let i = 0; i < 42; i += 1) {
   speedLayer.add(marker);
 }
 scene.add(speedLayer);
+
+const boundaryLayer = new THREE.Group();
+const boundaryMarkers = [];
+const boundaryMaterials = [
+  new THREE.MeshBasicMaterial({
+    color: 0xff3fb6,
+    transparent: true,
+    opacity: 0.2,
+    depthWrite: false,
+  }),
+  new THREE.MeshBasicMaterial({
+    color: 0x43dfff,
+    transparent: true,
+    opacity: 0.18,
+    depthWrite: false,
+  }),
+];
+for (let i = 0; i < 24; i += 1) {
+  for (const side of [-1, 1]) {
+    const marker = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.72), boundaryMaterials[side > 0 ? 1 : 0]);
+    marker.userData = { index: i, side };
+    boundaryMarkers.push(marker);
+    boundaryLayer.add(marker);
+  }
+}
+scene.add(boundaryLayer);
 
 const target = new THREE.Mesh(
   new THREE.BoxGeometry(1.45, 0.5, 2.7),
@@ -468,7 +560,8 @@ function updateHud() {
   el.stabilityValue.textContent = stability;
 
   if (!state.complete) {
-    el.branchReadout.textContent = `推进 ${pursuit}% / 速度 ${Math.round(state.speed)}`;
+    const modeName = cameraMode === "chase" ? "追车视角" : "第一人称";
+    el.branchReadout.textContent = `${modeName} / 推进 ${pursuit}% / 速度 ${Math.round(state.speed)}`;
   } else {
     if (state.pursuit > 86 && state.stability > 68) {
       el.branchReadout.textContent = "C1 / Clean Pursuit";
@@ -486,9 +579,8 @@ function animate(time) {
   state.lastTime = seconds;
 
   const steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
-  const throttle = Number(state.inputs.has("boost")) - Number(state.inputs.has("brake"));
 
-  const driveIntensity = clamp(state.speed / maxSpeed, 0, 1);
+  let driveIntensity = clamp(state.speed / maxSpeed, 0, 1);
   const steeringPower = 0.78 + driveIntensity * 0.7;
   state.heading = clamp(state.heading + steer * dt * steeringPower, -0.86, 0.86);
   state.laneOffset = clamp(state.laneOffset + steer * dt * (3.4 + driveIntensity * 2.2), -1.9, 1.9);
@@ -498,20 +590,39 @@ function animate(time) {
   state.speed = clamp(state.speed + acceleration * dt - braking * dt, 0, maxSpeed);
   state.distance = clamp(state.distance + state.speed * dt * 0.58, 0, maxPursuitDistance);
   state.pursuit = clamp((state.distance / maxPursuitDistance) * 100, 0, 100);
-  state.stability = clamp(state.stability - Math.abs(steer) * dt * (15 + driveIntensity * 10) - Math.max(0, state.speed - maxSpeed * 0.72) * dt * 0.35 + dt * 2.2, 0, 100);
+
+  const progress = state.distance / maxPursuitDistance;
+  const roadWidth = sampleRoadWidth(progress);
+  const overflow = Math.abs(state.laneOffset) - roadWidth;
+  if (overflow > 0) {
+    const side = Math.sign(state.laneOffset);
+    state.laneOffset = THREE.MathUtils.lerp(state.laneOffset, side * roadWidth, clamp(dt * (8 + overflow * 3), 0, 1));
+    state.speed = clamp(state.speed - (18 + overflow * 26) * dt, 0, maxSpeed);
+    state.impact = clamp(state.impact + overflow * 0.3 + driveIntensity * 0.05, 0, 1);
+  }
+  state.impact = Math.max(0, state.impact - dt * 1.9);
+  driveIntensity = clamp(state.speed / maxSpeed, 0, 1);
+  state.stability = clamp(
+    state.stability -
+      Math.abs(steer) * dt * (11 + driveIntensity * 9) -
+      Math.max(0, state.speed - maxSpeed * 0.72) * dt * 0.28 -
+      Math.max(0, overflow) * dt * 34 +
+      dt * 2.2,
+    0,
+    100,
+  );
 
   if (state.pursuit >= 100 && !state.complete) {
     state.complete = true;
     state.speed = 0;
   }
 
-  const progress = state.distance / maxPursuitDistance;
-  const path = sampleChasePath(progress);
-  const nextPath = sampleChasePath(clamp(progress + 0.04, 0, 1));
-  const tangentYaw = Math.atan2(nextPath.x - path.x, -(nextPath.z - path.z));
-  const vehicleX = path.x + state.laneOffset;
-  const vehicleZ = path.z;
-  const vehicleY = path.y + Math.sin(seconds * 16) * (0.01 + state.speed * 0.0012);
+  const basis = samplePathBasis(progress);
+  const path = basis.path;
+  const tangentYaw = basis.yaw;
+  const vehicleX = path.x + basis.rightX * state.laneOffset;
+  const vehicleZ = path.z + basis.rightZ * state.laneOffset;
+  const vehicleY = path.y + Math.sin(seconds * 18) * (0.008 + state.speed * 0.001);
   vehicle.position.x = THREE.MathUtils.lerp(vehicle.position.x, vehicleX, 0.18);
   vehicle.position.y = THREE.MathUtils.lerp(vehicle.position.y, vehicleY, 0.18);
   vehicle.position.z = THREE.MathUtils.lerp(vehicle.position.z, vehicleZ, 0.18);
@@ -519,23 +630,26 @@ function animate(time) {
   vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * 0.12, 0.18);
 
   const targetProgress = clamp(progress + 0.25, 0, 1);
-  const targetPath = sampleChasePath(targetProgress);
-  target.position.x = targetPath.x + Math.sin(seconds * 0.9) * 0.4;
-  target.position.y = targetPath.y + 0.12;
-  target.position.z = targetPath.z + Math.sin(seconds * 1.4) * 0.2;
+  const targetBasis = samplePathBasis(targetProgress);
+  const targetLane = Math.sin(seconds * 0.9) * 0.58;
+  target.position.x = targetBasis.path.x + targetBasis.rightX * targetLane;
+  target.position.y = targetBasis.path.y + 0.12;
+  target.position.z = targetBasis.path.z + targetBasis.rightZ * targetLane + Math.sin(seconds * 1.4) * 0.2;
+  target.rotation.y = targetBasis.yaw;
 
-  guide.position.x = path.x + state.laneOffset * 0.35;
-  guide.position.z = vehicle.position.z - 1.2;
+  guide.position.x = path.x + basis.rightX * state.laneOffset * 0.35;
+  guide.position.z = path.z + basis.rightZ * state.laneOffset * 0.35 - 1.2;
   guide.rotation.y = tangentYaw + state.heading * 0.08;
 
-  trackRibbon.position.x = path.x + state.laneOffset * 0.25;
-  trackRibbon.position.z = vehicle.position.z - 18;
+  trackRibbon.position.x = path.x + basis.forwardX * 17;
+  trackRibbon.position.z = path.z + basis.forwardZ * 17;
+  trackRibbon.scale.x = roadWidth / 3.1;
   trackRibbon.rotation.y = tangentYaw;
   trackRibbon.material.opacity = 0.06 + driveIntensity * 0.12;
 
-  speedLayer.position.x = path.x + state.laneOffset * 0.12;
+  speedLayer.position.x = path.x + basis.rightX * state.laneOffset * 0.12;
   speedLayer.position.y = 0.055;
-  speedLayer.position.z = vehicle.position.z;
+  speedLayer.position.z = path.z + basis.rightZ * state.laneOffset * 0.12;
   speedLayer.rotation.y = tangentYaw;
   for (const marker of speedMarkers) {
     const phase = marker.userData.phase;
@@ -548,6 +662,21 @@ function animate(time) {
     material.opacity = 0.08 + driveIntensity * 0.28;
   }
   el.stage.dataset.speed = driveIntensity > 0.28 ? "fast" : "idle";
+  el.stage.dataset.impact = state.impact > 0.16 ? "hit" : "clean";
+
+  for (const marker of boundaryMarkers) {
+    const markerProgress = clamp(progress + 0.015 + marker.userData.index * 0.018, 0, 1);
+    const markerBasis = samplePathBasis(markerProgress);
+    const markerWidth = sampleRoadWidth(markerProgress) + 0.18;
+    marker.position.x = markerBasis.path.x + markerBasis.rightX * markerWidth * marker.userData.side;
+    marker.position.y = markerBasis.path.y + 0.075;
+    marker.position.z = markerBasis.path.z + markerBasis.rightZ * markerWidth * marker.userData.side;
+    marker.rotation.y = markerBasis.yaw;
+    marker.visible = markerProgress < 0.995;
+  }
+  for (const material of boundaryMaterials) {
+    material.opacity = 0.12 + driveIntensity * 0.18 + state.impact * 0.32;
+  }
 
   if (proceduralWorld) {
     proceduralWorld.position.z = 4 + (state.distance % 12) * 0.12;
@@ -559,17 +688,33 @@ function animate(time) {
   cyanLight.position.x = target.position.x + 2.1;
   cyanLight.position.z = target.position.z + 0.2;
 
-  const chaseDistance = 6.2 + driveIntensity * 2.4;
-  const camX = vehicle.position.x - Math.sin(tangentYaw) * chaseDistance + state.laneOffset * 0.28;
-  const camY = 1.85 + driveIntensity * 1.25;
-  const camZ = vehicle.position.z + Math.cos(tangentYaw) * chaseDistance;
-  const lookProgress = clamp(progress + 0.14 + driveIntensity * 0.08, 0, 1);
-  const lookPath = sampleChasePath(lookProgress);
-  camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.2);
-  camera.fov = THREE.MathUtils.lerp(camera.fov, Math.min(90, 68 + state.speed * 0.38), 0.12);
+  const lookProgress = clamp(progress + 0.16 + driveIntensity * 0.1, 0, 1);
+  const lookBasis = samplePathBasis(lookProgress);
+  if (cameraMode === "chase") {
+    const chaseDistance = 6.2 + driveIntensity * 2.4;
+    const camX = vehicle.position.x - basis.forwardX * chaseDistance + basis.rightX * state.laneOffset * 0.28;
+    const camY = 1.85 + driveIntensity * 1.25;
+    const camZ = vehicle.position.z - basis.forwardZ * chaseDistance + basis.rightZ * state.laneOffset * 0.28;
+    camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.2);
+    camera.fov = THREE.MathUtils.lerp(camera.fov, Math.min(90, 68 + state.speed * 0.38), 0.12);
+  } else {
+    const shake = state.impact * Math.sin(seconds * 48) * 0.055;
+    const camX = vehicle.position.x + basis.forwardX * 0.56 + basis.rightX * (0.08 + shake);
+    const camY = 0.72 + driveIntensity * 0.22 + Math.sin(seconds * 22) * driveIntensity * 0.018;
+    const camZ = vehicle.position.z + basis.forwardZ * 0.56 + basis.rightZ * (0.08 + shake);
+    camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.34);
+    camera.fov = THREE.MathUtils.lerp(camera.fov, Math.min(98, 84 + state.speed * 0.22), 0.16);
+    cockpit.rotation.z = THREE.MathUtils.lerp(cockpit.rotation.z, -steer * 0.045 - state.laneOffset * 0.018, 0.18);
+    cockpit.position.y = Math.sin(seconds * 20) * driveIntensity * 0.015 - state.impact * 0.025;
+    hoodGlow.material.opacity = 0.55 + driveIntensity * 0.28 + state.impact * 0.18;
+  }
   camera.updateProjectionMatrix();
-  camera.lookAt(lookPath.x + state.laneOffset * 0.16, 0.92 + driveIntensity * 0.22, lookPath.z);
-  camera.rotateZ(-steer * 0.045 - state.laneOffset * 0.012);
+  camera.lookAt(
+    lookBasis.path.x + lookBasis.rightX * state.laneOffset * 0.42,
+    0.9 + driveIntensity * 0.24,
+    lookBasis.path.z + lookBasis.rightZ * state.laneOffset * 0.42,
+  );
+  camera.rotateZ(-steer * 0.04 - state.laneOffset * 0.016 + state.impact * Math.sin(seconds * 39) * 0.018);
 
   updateHud();
   renderer.render(scene, camera);
