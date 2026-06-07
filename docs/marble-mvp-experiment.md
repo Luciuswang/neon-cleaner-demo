@@ -89,7 +89,14 @@ Quality switch:
 ```text
 web/world-prototype.html
 web/world-prototype.html?quality=low
+web/world-prototype.html?quality=low&perf=low
 ```
+
+Performance notes:
+
+- The first exported `a0-war-signal-500k.spz` is about 63MB and can push a desktop GPU hard.
+- Phone testing should use `a0-war-signal-low.spz` plus `?quality=low&perf=low`.
+- The prototype intentionally limits forward movement to a short usable range because Marble splats can break into sheets when viewed too far outside their stable capture zone.
 
 ## Success criteria
 

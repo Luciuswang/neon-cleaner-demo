@@ -66,6 +66,15 @@ button[data-active="true"] {
     linear-gradient(180deg, #101827 0%, #070910 56%, #020306 100%);
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 80%, transparent 0 32%, rgba(0, 0, 0, 0.34) 76%);
+  z-index: 3;
+}
+
 .world-stage::after {
   content: "";
   position: absolute;

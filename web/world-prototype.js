@@ -4,6 +4,10 @@ import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
 const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
+const params = new URLSearchParams(location.search);
+const perfMode = params.get("perf") || "balanced";
+const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1.05;
+const maxPursuitDistance = perfMode === "high" ? 64 : 38;
 
 const el = {
   canvas: document.getElementById("worldCanvas"),
@@ -22,7 +26,7 @@ const el = {
 
 const state = {
   heading: 0,
-  speed: 11,
+  speed: 0,
   pursuit: 0,
   stability: 100,
   distance: 0,
@@ -36,7 +40,6 @@ function clamp(value, min, max) {
 }
 
 async function resolveSplatUrl() {
-  const params = new URLSearchParams(location.search);
   const override = params.get("splat");
   if (override) return override;
 
@@ -120,7 +123,7 @@ const renderer = new THREE.WebGLRenderer({
   alpha: false,
   powerPreference: "high-performance",
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.65));
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -162,20 +165,20 @@ vehicle.add(body, cabin);
 vehicle.position.set(0, 0.42, 2.2);
 scene.add(vehicle);
 
-const road = new THREE.Group();
-for (let i = 0; i < 34; i += 1) {
-  const strip = new THREE.Mesh(
-    new THREE.BoxGeometry(i % 5 === 0 ? 9.5 : 0.08, 0.02, 0.85),
-    new THREE.MeshBasicMaterial({
-      color: i % 5 === 0 ? 0xff3fb6 : 0x43dfff,
-      transparent: true,
-      opacity: i % 5 === 0 ? 0.18 : 0.26,
-    }),
-  );
-  strip.position.set(i % 5 === 0 ? 0 : (i % 2 ? -3.2 : 3.2), 0.02, -i * 8);
-  road.add(strip);
+const guide = new THREE.Group();
+const guideMaterial = new THREE.MeshBasicMaterial({
+  color: 0xff3fb6,
+  transparent: true,
+  opacity: 0.22,
+  depthWrite: false,
+});
+for (let i = 0; i < 12; i += 1) {
+  const marker = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.02, 0.8), guideMaterial);
+  marker.position.set(0, 0.03, -i * 2.4 - 1.4);
+  guide.add(marker);
 }
-scene.add(road);
+guide.visible = true;
+scene.add(guide);
 
 const target = new THREE.Mesh(
   new THREE.BoxGeometry(1.45, 0.5, 2.7),
@@ -355,11 +358,11 @@ if (splatUrl) {
     el.assetStatus.textContent = "Sample SPZ";
     el.assetNote.textContent = "当前是 SparkJS 示例资产，只用于排查渲染问题。正式实验请放入 Marble 导出的旧金山 .spz。";
   } else {
-    splat.position.set(0, -1.2, -12);
+    splat.position.set(0, -0.95, -12);
     splat.scale.setScalar(1);
     const isLow = splatUrl.includes("-low.");
     el.assetStatus.textContent = isLow ? "Marble SPZ low" : "Marble SPZ";
-    el.assetNote.textContent = `已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}，正在测试可接管追车镜头。${isLow ? "当前是低清测试版。" : "如果手机卡顿，可导出 low-res splat 并访问 ?quality=low。"}`;
+    el.assetNote.textContent = `已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}。当前是短程接管验证：只在可用路段内推进，避免走远后片状破碎。${isLow ? "当前是低清测试版。" : "手机请优先下载 low-res splat 并访问 ?quality=low&perf=low。"}`;
   }
   scene.add(splat);
 } else {
@@ -372,7 +375,7 @@ if (splatUrl) {
 function resize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.65));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio));
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
@@ -405,32 +408,39 @@ function animate(time) {
   const steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
   const throttle = Number(state.inputs.has("boost")) - Number(state.inputs.has("brake"));
 
-  state.heading += steer * dt * 0.82;
-  state.speed = clamp(state.speed + throttle * dt * 12 - dt * 0.7, 4.5, 24);
-  state.distance += state.speed * dt;
-  state.pursuit = clamp(state.pursuit + (state.speed - 8) * dt * 0.62, 0, 100);
-  state.stability = clamp(state.stability - Math.abs(steer) * dt * (state.speed * 0.9) + dt * 3.2, 0, 100);
+  state.heading = clamp(state.heading + steer * dt * 0.42, -0.55, 0.55);
+  state.speed = clamp(state.speed + throttle * dt * 8 - dt * 1.4, 0, 12);
+  state.distance = clamp(state.distance + state.speed * dt, 0, maxPursuitDistance);
+  state.pursuit = clamp((state.distance / maxPursuitDistance) * 100, 0, 100);
+  state.stability = clamp(state.stability - Math.abs(steer) * dt * 10 + dt * 2.6, 0, 100);
 
   if (state.pursuit >= 100 && !state.complete) {
     state.complete = true;
-    state.speed = Math.min(state.speed, 12);
+    state.speed = 0;
   }
 
-  const lateral = Math.sin(state.heading) * 3.4;
+  const lateral = Math.sin(state.heading) * 0.92;
   vehicle.position.x = THREE.MathUtils.lerp(vehicle.position.x, lateral, 0.14);
-  vehicle.position.y = 0.42 + Math.sin(seconds * 10) * 0.025;
+  vehicle.position.y = 0.22 + Math.sin(seconds * 10) * 0.012;
   vehicle.rotation.y = THREE.MathUtils.lerp(vehicle.rotation.y, -state.heading * 0.55, 0.12);
   vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * 0.08, 0.16);
 
-  target.position.x = Math.sin(seconds * 0.9) * 1.8;
-  target.position.z = -28 - state.pursuit * 0.26 + Math.sin(seconds * 1.4) * 0.7;
+  target.position.x = Math.sin(seconds * 0.9) * 0.55;
+  target.position.z = -10 - state.pursuit * 0.08 + Math.sin(seconds * 1.4) * 0.2;
 
-  road.position.z = (state.distance % 8) * 1.8;
-  road.rotation.y = state.heading * 0.08;
+  guide.position.x = vehicle.position.x * 0.35;
+  guide.position.z = -0.8 - state.distance * 0.06;
+  guide.rotation.y = state.heading * 0.1;
 
   if (proceduralWorld) {
     proceduralWorld.position.z = 4 + (state.distance % 12) * 0.12;
     proceduralWorld.rotation.y = state.heading * 0.025;
+  }
+
+  if (splat && splatUrl !== SAMPLE_SPLAT_URL) {
+    splat.position.z = -12 + state.distance * 0.055;
+    splat.position.x = -vehicle.position.x * 0.08;
+    splat.rotation.y = state.heading * 0.018;
   }
 
   magentaLight.position.x = vehicle.position.x - 2.5;
@@ -438,11 +448,11 @@ function animate(time) {
   cyanLight.position.x = target.position.x + 2.1;
   cyanLight.position.z = target.position.z + 0.2;
 
-  const camX = vehicle.position.x * 0.52;
-  const camY = 3.8 + state.speed * 0.018;
-  const camZ = 10.5 - state.speed * 0.04;
+  const camX = vehicle.position.x * 0.32;
+  const camY = 2.4 + state.speed * 0.012;
+  const camZ = 6.6 - state.speed * 0.02;
   camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.08);
-  camera.lookAt(vehicle.position.x * 0.32, 1.1, -16 - state.pursuit * 0.06);
+  camera.lookAt(vehicle.position.x * 0.16, 0.86, -8.5 - state.pursuit * 0.025);
 
   updateHud();
   renderer.render(scene, camera);
