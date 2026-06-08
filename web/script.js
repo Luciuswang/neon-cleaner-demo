@@ -15,6 +15,21 @@ const state = {
   boss: 100,
   combatTicks: 0,
   timer: null,
+  currentVideo: "",
+};
+
+const defaultVideo = {
+  src: "./assets/neon-cleaner-bg-noaudio.mp4",
+  poster: "./assets/neon-cleaner-keyframe.png",
+  loop: true,
+};
+
+const videoAssets = {
+  A0: {
+    src: "./assets/video/A0-S01-establishing-sulphur2-v2-web.mp4",
+    poster: "./assets/video/A0-S01-establishing-sulphur2-v2-poster.jpg",
+    loop: false,
+  },
 };
 
 const nodes = {
@@ -107,6 +122,17 @@ const el = {
 };
 
 if (el.backgroundVideo) {
+  setBackgroundVideo(defaultVideo);
+}
+
+function setBackgroundVideo(asset = defaultVideo) {
+  if (!el.backgroundVideo || state.currentVideo === asset.src) return;
+  state.currentVideo = asset.src;
+  el.backgroundVideo.pause();
+  el.backgroundVideo.loop = Boolean(asset.loop);
+  el.backgroundVideo.poster = asset.poster;
+  el.backgroundVideo.src = asset.src;
+  el.backgroundVideo.load();
   el.backgroundVideo.muted = true;
   el.backgroundVideo.play().catch(() => {
     el.backgroundVideo.setAttribute("data-autoplay-blocked", "true");
@@ -130,6 +156,7 @@ function showFilm(id) {
   clearInterval(state.timer);
   state.mode = "film";
   state.node = id;
+  setBackgroundVideo(videoAssets[id] || defaultVideo);
   const node = nodes[id];
   el.nodeLabel.textContent = node.label;
   el.caption.textContent = node.title;
