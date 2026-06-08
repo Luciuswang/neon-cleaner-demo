@@ -1,0 +1,150 @@
+{
+  "project": "neon-cleaner-demo",
+  "template_version": "2026-06-08",
+  "local_comfyui": {
+    "server": "http://127.0.0.1:8190",
+    "recommended_workflow": "D:\\AI\\SULPHUR2_ComfyUI\\ComfyUI\\user\\default\\workflows\\00_OPEN_THIS_CAR_CHASE_T2V.json",
+    "model_stack": {
+      "checkpoint": "sulphur_dev_fp8mixed.safetensors",
+      "text_encoder": "gemma_3_12B_it_fp4_mixed.safetensors",
+      "distilled_lora": "ltx-2.3-22b-distilled-lora-384.safetensors",
+      "latent_upscaler": "ltx-2.3-spatial-upscaler-x2-1.1.safetensors"
+    },
+    "first_pass_settings": {
+      "duration_seconds": 5,
+      "fps": 24,
+      "width": 960,
+      "height": 540,
+      "notes": "Generate short clips per shot, then assemble the short film in editing. Do not try to create one long movie in a single pass."
+    }
+  },
+  "universal_negative_prompt": "cartoon, anime, toy car, low poly, game UI, HUD text, subtitles, watermark, logo, readable text, floating car, car changing shape, inconsistent vehicle, wrong car scale, broken perspective, static camera, no road movement, no background parallax, jump cut, scene cut, sudden camera teleport, overexposed white sky, flat billboard explosion, particles only in center of screen, unrealistic pink cloud, explosion not lighting the environment, smoke without volume, blurry, low quality, warped road, distorted buildings, duplicated cars, melted vehicles, fashion shoot, idol pose, fantasy armor, exposed midriff, generic concept art, sterile CG, weak atmosphere",
+  "shots": [
+    {
+      "shot_id": "A0-S01",
+      "branch_node": "A0",
+      "clip_role": "establishing world",
+      "target_duration_seconds": 6,
+      "input_mode": "t2v first pass, i2v after still approval",
+      "source_reference": "source/storyboard/approved/SB-A0-01_establishing_world.png",
+      "first_frame_requirement": "wide war-damaged San Francisco with elevated chase corridor",
+      "final_frame_requirement": "camera settles toward the elevated pursuit route and motivates the heroine reveal above the same route",
+      "camera": "slow majestic half-bird's-eye aerial glide, slight forward push with gentle downward descent",
+      "action": "storm clouds roll, lightning flashes in the distance, smoke columns drift, tiny battle glints flicker across the skyline, rain haze moves, distant emergency lights pulse",
+      "positive_prompt": "Epic post-war future San Francisco after rain, a grand cinematic establishing shot over a wounded city, seen from a half-bird's-eye elevated viewpoint. A damaged elevated freeway and broken chase ramp cut above lower wet city streets, creating a strong layered high-road versus low-road read. Broken Golden Gate Bridge structures in the distance, damaged downtown towers, cracked elevated tracks, smoke columns, ruined drones, wet streets reflecting cold blue-gray storm light and restrained magenta emergency signals. The sky is heavy with dense storm clouds and visible lightning. Far across the skyline, tiny but readable flashes of battle show carbon-based human forces and silicon-based machine forces fighting in the background with tracer fire, distant explosions, and airborne combat silhouettes. Heavy mist and rain create deep atmospheric layers. The camera slowly glides downward toward the elevated road corridor that can become the chase route. Photorealistic premium sci-fi war drama, large scale, grounded, expensive lensing, realistic wet-surface specular, subtle lens halation, controlled bloom, no characters, no readable text.",
+      "handoff_strategy": "End with the elevated route centered and visually dominant, so the next shot can cut to Lin Xia standing above that same route."
+    },
+    {
+      "shot_id": "A0-S02",
+      "branch_node": "A0",
+      "clip_role": "heroine reveal",
+      "target_duration_seconds": 5,
+      "input_mode": "i2v preferred after still approval",
+      "source_reference": "SB-A0-02 approved still",
+      "first_frame_requirement": "Lin Xia silhouette above the city",
+      "final_frame_requirement": "her eyeline and body angle motivate the route below",
+      "camera": "controlled lateral drift or slow push toward Lin Xia",
+      "action": "coat moves in wind, practical lights flicker in background haze",
+      "positive_prompt": "Lin Xia stands on a rooftop edge or shattered overpass above post-war future San Francisco after rain. She is small against a vast layered city with elevated freeway sections above lower streets, broken infrastructure, smoke, and restrained magenta emergency lights. The shot should feel sorrowful but hopeful, premium live-action, realistic skin and leather response, subtle halation, grounded practical lighting, no fashion pose, cinematic restraint, 16:9.",
+      "handoff_strategy": "Use her eyeline to motivate the next cut toward the enemy convoy."
+    },
+    {
+      "shot_id": "A0-S03",
+      "branch_node": "A0",
+      "clip_role": "target reveal",
+      "target_duration_seconds": 5,
+      "input_mode": "t2v or i2v after still approval",
+      "source_reference": "SB-A0-03 approved still",
+      "first_frame_requirement": "armored hostile vehicle on elevated ramp",
+      "final_frame_requirement": "vehicle commits to the route that chase will follow",
+      "camera": "low hidden observer angle, subtle tracking",
+      "action": "vehicle cuts through mist, practical sparks and smoke drift",
+      "positive_prompt": "An armored black hostile vehicle cuts through a partially damaged elevated freeway ramp in post-war future San Francisco at night after rain. The camera stays low and behind cover, watching it move through mist on the high route, with the lower city falling away on one side. Wet asphalt reflects restrained magenta emergency signal lights, damaged guardrails, cracked elevated concrete, smoke and sparks near the roadside. Premium action-thriller realism, realistic metal and wet paint response, cinematic depth compression, grounded sci-fi, 16:9.",
+      "handoff_strategy": "Hold the convoy direction clearly so the next shot can launch pursuit."
+    },
+    {
+      "shot_id": "A0-S04",
+      "branch_node": "A0",
+      "clip_role": "launch into pursuit",
+      "target_duration_seconds": 4,
+      "input_mode": "i2v preferred after still approval",
+      "source_reference": "SB-A0-04 approved still",
+      "first_frame_requirement": "Lin Xia entering or igniting the pursuit car",
+      "final_frame_requirement": "vehicle starts moving into chase alignment",
+      "camera": "tight cockpit-to-road transition",
+      "action": "dashboard glow wakes up, rain beads shift, vehicle lurches forward",
+      "positive_prompt": "Lin Xia drops into a low damaged futuristic pursuit car on a rain-soaked shattered overpass in post-war future San Francisco. Cockpit glows with restrained magenta dashboard light, rain beads on the windshield, the elevated route ahead is visible through cracked supports and drifting smoke, and the city drops away below. The shot should feel like the ignition point before a combat chase begins. Premium live-action realism, atmospheric depth, practical lighting, cinematic tension, 16:9.",
+      "handoff_strategy": "End with forward motion clearly underway."
+    },
+    {
+      "shot_id": "I1-S01",
+      "branch_node": "I1",
+      "clip_role": "chase takeover frame",
+      "target_duration_seconds": 7,
+      "input_mode": "t2v or i2v after still approval",
+      "source_reference": "SB-I1-01 approved still",
+      "first_frame_requirement": "hood-level view on elevated route",
+      "final_frame_requirement": "enemy car still ahead, route still readable",
+      "camera": "low chase camera pushing toward hood-level",
+      "action": "road parallax, rain, debris, speed build, enemy car stays ahead",
+      "positive_prompt": "A hood-level cinematic chase shot from inside or just above a damaged futuristic pursuit car, driving on a partially damaged elevated freeway segment in post-war future San Francisco after rain. Ahead, an armored black hostile vehicle remains visible through mist and rain. One side of the route drops toward the lower city, while damaged buildings, layered roads, and broken bridge structures appear in the distance. Wet asphalt, broken lane lines, debris, damaged guardrails, restrained magenta emergency lights reflecting on puddles and car paint. High-end practical night lighting, cinematic windshield moisture response, layered distance haze, subtle motion energy, realistic asphalt specular, premium filmic contrast, 16:9.",
+      "handoff_strategy": "This is the exact chase language the rest of the short film should preserve."
+    },
+    {
+      "shot_id": "I1-S02",
+      "branch_node": "I1",
+      "clip_role": "explosion dodge escalation",
+      "target_duration_seconds": 5,
+      "input_mode": "t2v or i2v after still approval",
+      "source_reference": "SB-I1-02 approved still",
+      "first_frame_requirement": "chase is already in progress",
+      "final_frame_requirement": "explosion and near-miss create momentum into the next scene",
+      "camera": "road-level aggressive tracking, still readable",
+      "action": "side explosion, sparks, smoke, damaged guardrail, high-speed dodge",
+      "positive_prompt": "A combat chase on a damaged elevated freeway in post-war future San Francisco. Lin Xia's pursuit car races behind an armored black hostile vehicle while a side explosion erupts near a broken guardrail, briefly lighting wet asphalt, smoke, and the underside of elevated concrete. The lower city drops away on one side. The shot feels dangerous, readable, and expensive, with strong road perspective, realistic firelight spill, debris, rain, and layered atmosphere. Photorealistic grounded sci-fi action thriller, premium live-action film rendering, 16:9.",
+      "handoff_strategy": "Explosion and smoke can mask the cut into the warehouse approach."
+    },
+    {
+      "shot_id": "A2-S01",
+      "branch_node": "A2",
+      "clip_role": "warehouse threshold",
+      "target_duration_seconds": 6,
+      "input_mode": "t2v or i2v after still approval",
+      "source_reference": "SB-A2-01 approved still",
+      "first_frame_requirement": "industrial port warehouse entrance after chase",
+      "final_frame_requirement": "clear entry path into the objective space",
+      "camera": "steady forward move into entrance",
+      "action": "rain, smoke, practical work lights, contamination glow from inside",
+      "positive_prompt": "A war-battered industrial port warehouse entrance at night after rain. Wet concrete, broken metal shutters, hanging cables, smoke drifting through practical work lights, distant magenta contamination glow from inside, and damaged cargo structures create the sense that the chase has arrived at a dangerous objective. The composition clearly shows an entry path into the warehouse. Photorealistic grounded sci-fi war noir, expensive film rendering, realistic puddle reflections, 16:9.",
+      "handoff_strategy": "End with the warehouse interior visually pulling the viewer inward."
+    },
+    {
+      "shot_id": "I2-S01",
+      "branch_node": "I2",
+      "clip_role": "upload terminal confrontation",
+      "target_duration_seconds": 6,
+      "input_mode": "t2v or i2v after still approval",
+      "source_reference": "SB-I2-01 approved still",
+      "first_frame_requirement": "Lin Xia, witness, terminal, and hostile figure are all readable",
+      "final_frame_requirement": "moment peaks toward the ending beat",
+      "camera": "measured forward pressure, not chaotic coverage",
+      "action": "terminal glow, confrontation, smoke, falling sparks, witness under threat",
+      "positive_prompt": "Inside a damaged sci-fi warehouse command zone, Lin Xia confronts a hostile figure near an active upload terminal while the witness is trapped nearby. Wet floor reflections, scorched metal, hanging cables, practical work lights, restrained magenta contamination glow, and a strong line from heroine to terminal create a readable confrontation frame. Photorealistic grounded sci-fi action drama, premium live-action film still in motion, no fantasy effects, 16:9.",
+      "handoff_strategy": "Build to a decisive beat that can cut into the ending tableau."
+    },
+    {
+      "shot_id": "E1-S01",
+      "branch_node": "E1",
+      "clip_role": "best ending tableau",
+      "target_duration_seconds": 6,
+      "input_mode": "t2v or i2v after still approval",
+      "source_reference": "SB-E1-01 approved still",
+      "first_frame_requirement": "aftermath is already visible",
+      "final_frame_requirement": "shot can hold as the last image of the short film",
+      "camera": "gentle settling move or almost-static final hold",
+      "action": "sparks fade, smoke drifts, witness and Lin Xia remain alive in aftermath",
+      "positive_prompt": "Lin Xia and the rescued witness stand inside the rain-soaked warehouse aftermath. The upload terminal is destroyed, sparks and smoke fade into darkness, wet floor reflections carry restrained magenta and orange light, and the city night glows faintly beyond broken structure lines. The shot feels costly but hopeful, intimate after large-scale action, and clearly like the ending image of a short sci-fi war film. Photorealistic grounded sci-fi, premium film composition, 16:9.",
+      "handoff_strategy": "This is the end card. Let it breathe and hold."
+    }
+  ]
+}

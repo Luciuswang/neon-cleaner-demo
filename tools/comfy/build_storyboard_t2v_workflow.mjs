@@ -1,4 +1,4 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { randomUUID } from "node:crypto";
 
@@ -24,10 +24,20 @@ function safeName(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
 }
 
+function resolveExistingPath(candidates) {
+  for (const candidate of candidates) {
+    const resolved = resolve(candidate);
+    if (existsSync(resolved)) {
+      return resolved;
+    }
+  }
+  return null;
+}
+
 const shotId = args[0];
 const root = argValue("--root", "D:\\AI\\SULPHUR2_ComfyUI");
 const storyboardPath = argValue("--storyboard", "docs/video/topview-local-comfyui-storyboard.json");
-const baseWorkflowPath = argValue(
+const requestedBaseWorkflowPath = argValue(
   "--base",
   `${root}\\ComfyUI\\user\\default\\workflows\\Sulphur2\\video_ltx2_3_t2v.json`
 );
@@ -44,12 +54,26 @@ if (!shot.positive_prompt) {
   throw new Error(`Shot "${shotId}" does not have a movie prompt. It may be a runtime gameplay beat.`);
 }
 
-const outputPath = argValue(
-  "--out",
-  `${root}\\ComfyUI\\user\\default\\workflows\\Storyboard\\${shot.shot_id}_${safeName(shot.clip_role)}.json`
-);
+const baseWorkflowPath = resolveExistingPath([
+  requestedBaseWorkflowPath,
+  `${root}\\ComfyUI\\user\\default\\workflows\\Sulphur2\\video_ltx2_3_t2v.json`,
+  "D:\\AI\\SULPHUR2_ComfyUI\\ComfyUI\\user\\default\\workflows\\Sulphur2\\video_ltx2_3_t2v.json",
+  "D:\\AI\\ComfyUI_windows_portable\\ComfyUI\\blueprints\\Text to Video (LTX-2.3).json"
+]);
 
-const workflow = JSON.parse(readFileSync(resolve(baseWorkflowPath), "utf8"));
+if (!baseWorkflowPath) {
+  throw new Error(
+    `Could not find a usable base workflow. Tried:\n- ${requestedBaseWorkflowPath}\n- ${root}\\ComfyUI\\user\\default\\workflows\\Sulphur2\\video_ltx2_3_t2v.json\n- D:\\AI\\SULPHUR2_ComfyUI\\ComfyUI\\user\\default\\workflows\\Sulphur2\\video_ltx2_3_t2v.json\n- D:\\AI\\ComfyUI_windows_portable\\ComfyUI\\blueprints\\Text to Video (LTX-2.3).json`
+  );
+}
+
+const defaultOutputPath = existsSync(resolve(root))
+  ? `${root}\\ComfyUI\\user\\default\\workflows\\Storyboard\\${shot.shot_id}_${safeName(shot.clip_role)}.json`
+  : `tools/comfy/generated/${shot.shot_id}_${safeName(shot.clip_role)}.json`;
+
+const outputPath = argValue("--out", defaultOutputPath);
+
+const workflow = JSON.parse(readFileSync(baseWorkflowPath, "utf8"));
 const oldPositivePrefix = "Dynamic cinematic close-up of high-tech modular machinery";
 const oldCarChasePrefix = "A realistic cinematic 10-second landscape video";
 const oldNegativeShort = "pc game, console game, video game, cartoon, childish, ugly";
@@ -63,7 +87,11 @@ function updateNodeList(nodes = []) {
     if (!Array.isArray(node.widgets_values)) continue;
     node.widgets_values = node.widgets_values.map((value) => {
       if (typeof value !== "string") return value;
-      if (value.startsWith(oldPositivePrefix) || value.startsWith(oldCarChasePrefix)) {
+      if (
+        (node.type === "CLIPTextEncode" && value.trim() === "") ||
+        value.startsWith(oldPositivePrefix) ||
+        value.startsWith(oldCarChasePrefix)
+      ) {
         positiveUpdates += 1;
         return shot.positive_prompt;
       }
@@ -97,7 +125,8 @@ workflow.extra = {
     branch_node: shot.branch_node,
     clip_role: shot.clip_role,
     target_duration_seconds: shot.target_duration_seconds,
-    source_storyboard: storyboardPath
+    source_storyboard: storyboardPath,
+    base_workflow: baseWorkflowPath
   }
 };
 

@@ -3,19 +3,25 @@ import { resolve } from "node:path";
 
 const args = process.argv.slice(2);
 const usage = `Usage:
-  node tools/comfy/print_storyboard_still_prompt.mjs <still_id>
+  node tools/comfy/print_storyboard_still_prompt.mjs <still_id> [--storyboard docs/video/topview-storyboard-stills.json]
 
 Examples:
   node tools/comfy/print_storyboard_still_prompt.mjs SB-A0-01
-  node tools/comfy/print_storyboard_still_prompt.mjs SB-I1-01`;
+  node tools/comfy/print_storyboard_still_prompt.mjs SB-I1-01
+  node tools/comfy/print_storyboard_still_prompt.mjs SB-A2-01 --storyboard docs/video/topview-nine-shot-stills.json`;
 
 if (args.length < 1 || args.includes("--help") || args.includes("-h")) {
   console.log(usage);
   process.exit(args.length < 1 ? 1 : 0);
 }
 
+function argValue(name, fallback) {
+  const index = args.indexOf(name);
+  return index >= 0 ? args[index + 1] : fallback;
+}
+
 const stillId = args[0];
-const stillsPath = resolve("docs/video/topview-storyboard-stills.json");
+const stillsPath = resolve(argValue("--storyboard", "docs/video/topview-storyboard-stills.json"));
 const storyboard = JSON.parse(readFileSync(stillsPath, "utf8"));
 const still = storyboard.stills.find((item) => item.still_id === stillId);
 
