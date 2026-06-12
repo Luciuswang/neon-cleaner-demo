@@ -50,6 +50,32 @@ button {
   background: rgba(255, 255, 255, 0.09);
 }
 
+.world-link[data-ready="true"] {
+  border-color: rgba(67, 231, 255, 0.52);
+  box-shadow: 0 0 22px rgba(67, 231, 255, 0.16);
+}
+
+.world-prewarm-frame {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  left: -10px;
+  top: -10px;
+  border: 0;
+  opacity: 0.001;
+  pointer-events: none;
+}
+
+.world-prewarm-frame.is-active {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 20;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 button.ghost {
   background: rgba(255, 255, 255, 0.09);
   color: var(--text);

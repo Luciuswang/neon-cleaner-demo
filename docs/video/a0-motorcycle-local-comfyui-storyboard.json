@@ -1,0 +1,37 @@
+{
+  "project": "neon-cleaner-demo",
+  "template_version": "2026-06-11-motorcycle",
+  "local_comfyui": {
+    "server": "http://127.0.0.1:8190",
+    "first_pass_settings": {
+      "duration_seconds": 5,
+      "fps": 25,
+      "width": 960,
+      "height": 540,
+      "notes": "Use lower resolution first. Upscale only after composition and motion are approved."
+    }
+  },
+  "universal_negative_prompt": "anime, cartoon, idol pose, fashion ad, sexualized framing, cheap cyberpunk, plastic leather, cross-eyed, distorted face, extra limbs, bad hands, warped motorcycle, floating wheels, toy vehicle, hover bike, unreadable action, game HUD, subtitles, text, watermark, logo, overprocessed HDR, fisheye, shaky drone vlog, melted buildings, distorted Golden Gate Bridge, warped bridge, melting freeway, unstable skyline, large foreground explosion, close aircraft flyby, cheap CG, toy city, empty sky, flat clouds, toy cars, shape-changing vehicles, bad wheel contact, oversized sci-fi guns, unreadable convoy, generic freeway",
+  "shots": [
+    {
+      "shot_id": "A0-S01",
+      "branch_node": "A0",
+      "clip_role": "post-war city establishing shot",
+      "target_duration_seconds": 5,
+      "input_mode": "t2v first pass",
+      "positive_prompt": "Premium cinematic opening shot of post-war future San Francisco in 2037 after heavy rain. Dense thunderstorm clouds cover the sky, lightning pulses inside the cloud bank, smoke columns rise from distant districts, and tiny far-background combat flashes show the ongoing war between carbon-based human forces and silicon-based machine forces. The Golden Gate Bridge silhouette is visible through haze, the downtown skyline is damaged, layered elevated freeways and broken ramps cut through the city, wet streets and soaked freeway concrete reflect cold blue-gray storm light with restrained magenta emergency glows. The subject is the wounded city and the elevated chase corridor, no main character yet. Big-budget live-action sci-fi war film, grounded photographic realism, atmospheric depth, expensive anamorphic lensing, controlled bloom, natural rain reflections. Motion: heavy cinematic hold, then a very slow forward push and slight downward descent toward the broken elevated freeway corridor. Architecture remains rigid and stable. Motion comes from rolling storm clouds, rain haze, drifting smoke, subtle wet-surface shimmer, distant lightning pulses, tiny tracer fire and small far explosions.",
+      "handoff_strategy": "End with the broken elevated route readable and centered for the next pursuit setup.",
+      "negative_prompt": "warped bridge, melting freeway, unstable skyline, large foreground explosion, close aircraft flyby, drone vlog movement, handheld shake, cheap CG, toy city, empty sky, flat clouds, game screenshot, HUD, text, watermark"
+    },
+    {
+      "shot_id": "A0-S03",
+      "branch_node": "A0",
+      "clip_role": "hostile convoy target reveal",
+      "target_duration_seconds": 5,
+      "input_mode": "t2v first pass",
+      "positive_prompt": "Premium live-action sci-fi action thriller target reveal. A black armored convoy enters a damaged elevated freeway ramp in post-war future San Francisco after rain. The convoy carries a witness and is escorted by hostile silicon-machine security drones. Vehicles are heavy, grounded, dirty, militarized, with real tires, wet armor panels, cyan headlights, restrained magenta security lights, damaged metal, readable silhouettes. The route is dangerous: cracked elevated concrete, broken guardrails, lower city falling away on one side, road debris, steam, rain haze, smoke, distant firefights. This is the enemy target Lin Xia will chase on her motorcycle. Keep physical scale believable and grounded. Low hidden observer angle from behind broken concrete. The convoy moves left to right or away from camera, committing to the elevated route. Camera makes a slight rise or forward track as the target becomes readable. Wheel spray, wet reflections, smoke drift, drone lights, and small tracer streaks add motion. End with the armored lead vehicle fully aligned on the chase corridor.",
+      "handoff_strategy": "End with the armored lead vehicle readable and committed to the elevated chase route.",
+      "negative_prompt": "toy cars, hovercars, shape-changing vehicles, bad wheel contact, oversized sci-fi guns, unreadable convoy, generic freeway, no San Francisco height difference, foreground explosion hiding the target, cartoon, HUD, text, watermark"
+    }
+  ]
+}

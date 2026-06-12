@@ -10,6 +10,7 @@ const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
 const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
 const params = new URLSearchParams(location.search);
+const isPrewarm = params.get("prewarm") === "1";
 const perfMode = params.get("perf") || "balanced";
 const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1.05;
 const maxPursuitDistance = perfMode === "high" ? 168 : perfMode === "low" ? 94 : 128;
@@ -39,6 +40,17 @@ const el = {
   brake: document.getElementById("brake"),
 };
 
+if (isPrewarm) {
+  document.body.dataset.prewarm = "true";
+}
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== window.location.origin) return;
+  if (event.data?.type !== "neon-world-activate") return;
+  document.body.dataset.prewarm = "false";
+  window.focus();
+});
+
 const state = {
   heading: 0,
   speed: 0,
@@ -50,6 +62,7 @@ const state = {
   lastTime: 0,
   complete: false,
   inputs: new Set(),
+  firstFramePosted: false,
 };
 
 function clamp(value, min, max) {
@@ -1180,6 +1193,11 @@ function animate(time) {
     composer.render();
   } else {
     renderer.render(scene, camera);
+  }
+
+  if (!state.firstFramePosted) {
+    state.firstFramePosted = true;
+    window.parent?.postMessage({ type: "neon-world-ready" }, window.location.origin);
   }
 }
 
