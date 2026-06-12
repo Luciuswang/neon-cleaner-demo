@@ -28,7 +28,7 @@ const defaultVideo = {
 
 const videoAssets = {
   A0: {
-    src: "./assets/video/A0-S01-establishing-sulphur2-v2-web.mp4",
+    src: "./assets/video/A0-S01-seedance-2028.mp4",
     poster: "./assets/video/A0-S01-establishing-sulphur2-v2-poster.jpg",
     loop: false,
   },
@@ -37,8 +37,8 @@ const videoAssets = {
 const nodes = {
   A0: {
     label: "A0 / Rain Signal",
-    title: "雨夜，黑色车队带走了证人。",
-    text: "林夏跨上黑色电动摩托，雨水从护目镜边缘滑落。阿洛标记出三辆黑色装甲车：目标将在 30 秒后进入高架。",
+    title: "雨夜，城市还在燃烧。",
+    text: "旧金山的高架像裂开的伤口。阿洛捕捉到一段断续信号：证人正在被转移，黑色车队即将进入雨雾。",
     button: "接管追车",
     next: "I1",
   },
@@ -94,6 +94,7 @@ const nodes = {
 };
 
 const el = {
+  stage: document.querySelector(".stage"),
   backgroundVideo: document.getElementById("backgroundVideo"),
   nodeLabel: document.getElementById("nodeLabel"),
   caption: document.getElementById("caption"),
@@ -288,6 +289,7 @@ function showFilm(id) {
   clearInterval(state.timer);
   state.mode = "film";
   state.node = id;
+  el.stage?.classList.toggle("is-a0-film", id === "A0");
   setBackgroundVideo(videoAssets[id] || defaultVideo);
   const node = nodes[id];
   el.nodeLabel.textContent = node.label;
@@ -306,6 +308,7 @@ function showFilm(id) {
 function startDriving() {
   clearInterval(state.timer);
   state.mode = "drive";
+  el.stage?.classList.remove("is-a0-film");
   state.node = "I1";
   state.lane = 1;
   state.speed = 48;
@@ -361,6 +364,7 @@ function finishDriving() {
 function startCombat() {
   clearInterval(state.timer);
   state.mode = "combat";
+  el.stage?.classList.remove("is-a0-film");
   state.node = "I2";
   state.health = 100;
   state.timing = 42;
