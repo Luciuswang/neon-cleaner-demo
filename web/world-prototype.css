@@ -257,6 +257,22 @@ h1 {
   font-size: 13px;
 }
 
+.return-film {
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-color: rgba(67, 223, 255, 0.42);
+  background: linear-gradient(135deg, rgba(255, 63, 182, 0.78), rgba(67, 223, 255, 0.72));
+  color: #05070a;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+.return-film[hidden] {
+  display: none;
+}
+
 .touch-rig {
   right: 28px;
   bottom: 30px;

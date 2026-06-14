@@ -33,6 +33,7 @@ const el = {
   stabilityValue: document.getElementById("stabilityValue"),
   branchReadout: document.getElementById("branchReadout"),
   assetNote: document.getElementById("assetNote"),
+  returnFilm: document.getElementById("returnFilm"),
   steerLeft: document.getElementById("steerLeft"),
   steerRight: document.getElementById("steerRight"),
   boost: document.getElementById("boost"),
@@ -982,6 +983,21 @@ function resize() {
 
 window.addEventListener("resize", resize);
 
+function getBranchResult() {
+  if (state.pursuit > 86 && state.stability > 68) return "C1";
+  if (state.pursuit > 62 && state.stability > 36) return "C2";
+  return "C3";
+}
+
+function returnToFilm() {
+  const result = getBranchResult();
+  location.href = `./index.html?worldResult=${encodeURIComponent(result)}`;
+}
+
+if (el.returnFilm) {
+  el.returnFilm.addEventListener("click", returnToFilm);
+}
+
 function updateHud() {
   const pursuit = Math.round(clamp(state.pursuit, 0, 100));
   const stability = Math.round(clamp(state.stability, 0, 100));
@@ -994,12 +1010,11 @@ function updateHud() {
     const modeName = cameraMode === "chase" ? "追车视角" : "第一人称";
     el.branchReadout.textContent = `${modeName} / 推进 ${pursuit}% / 速度 ${Math.round(state.speed)}`;
   } else {
-    if (state.pursuit > 86 && state.stability > 68) {
-      el.branchReadout.textContent = "C1 / Clean Pursuit";
-    } else if (state.pursuit > 62 && state.stability > 36) {
-      el.branchReadout.textContent = "C2 / Damaged Pursuit";
-    } else {
-      el.branchReadout.textContent = "C3 / Lost Trail";
+    const result = getBranchResult();
+    el.branchReadout.textContent = `${result} / ${result === "C1" ? "Clean Pursuit" : result === "C2" ? "Damaged Pursuit" : "Lost Trail"}`;
+    if (el.returnFilm) {
+      el.returnFilm.hidden = false;
+      el.returnFilm.textContent = `返回主线：${result}`;
     }
   }
 }

@@ -66,7 +66,13 @@ docs/handoff.md
 
 ## 3D 接管实验
 
-第一版 World Labs / Marble 接管实验页：
+A0 开场已经接入 3D 世界接管闭环：
+
+```text
+A0 电影段 → web/world-prototype.html → C1/C2/C3 主线分支
+```
+
+也可以单独打开第一版 World Labs / Marble 接管实验页：
 
 ```text
 web/world-prototype.html

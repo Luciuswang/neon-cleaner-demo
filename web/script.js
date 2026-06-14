@@ -36,9 +36,9 @@ const nodes = {
   A0: {
     label: "A0 / Rain Signal",
     title: "雨夜，黑色车队带走了证人。",
-    text: "林夏坐在车里，雨水切碎挡风玻璃上的霓虹。阿洛标记出三辆黑色 SUV：目标将在 30 秒后进入高架。",
-    button: "接管追车",
-    next: "I1",
+    text: "林夏坐在车里，雨水切碎挡风玻璃上的霓虹。阿洛标记出三辆黑色 SUV：目标将在 30 秒后进入高架。影片结束后切入 3D 世界接管。",
+    button: "进入 3D 接管",
+    next: "WORLD",
   },
   C1: {
     label: "C1 / Clean Pursuit",
@@ -137,6 +137,24 @@ function setBackgroundVideo(asset = defaultVideo) {
   el.backgroundVideo.play().catch(() => {
     el.backgroundVideo.setAttribute("data-autoplay-blocked", "true");
   });
+}
+
+function currentWorldUrl() {
+  return "./world-prototype.html?from=film&return=1&perf=balanced&camera=first";
+}
+
+function enterWorldTakeover() {
+  location.href = currentWorldUrl();
+}
+
+function handleWorldReturn() {
+  const params = new URLSearchParams(location.search);
+  const result = params.get("worldResult");
+  if (!result || !nodes[result]) return false;
+  history.replaceState(null, "", location.pathname);
+  showFilm(result);
+  el.keys.textContent = "3D 接管结果已回写主线分支；继续进入港口段。";
+  return true;
 }
 
 function clamp(value, min = 0, max = 100) {
@@ -300,7 +318,8 @@ function restart() {
 function primaryAction() {
   const node = nodes[state.node];
   if (!node) return;
-  if (node.next === "I1") startDriving();
+  if (node.next === "WORLD") enterWorldTakeover();
+  else if (node.next === "I1") startDriving();
   else if (node.next === "I2") startCombat();
   else if (node.next === "restart") restart();
   else showFilm(node.next);
@@ -374,4 +393,6 @@ window.addEventListener("keydown", (event) => {
   handleCombatKey(event);
 });
 
-restart();
+if (!handleWorldReturn()) {
+  restart();
+}
