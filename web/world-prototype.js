@@ -6,7 +6,8 @@ import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
-const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
+const HIGH_SPLAT_URL = "./worlds/a0-seamless-takeover-500k.spz";
+const LEGACY_HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
 const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
 const params = new URLSearchParams(location.search);
@@ -273,9 +274,12 @@ async function resolveSplatUrl() {
   }
 
   const quality = params.get("quality");
+  const world = params.get("world");
   const preferredUrls = quality === "low"
-    ? [LOW_SPLAT_URL, HIGH_SPLAT_URL]
-    : [HIGH_SPLAT_URL, LOW_SPLAT_URL];
+    ? [LOW_SPLAT_URL, HIGH_SPLAT_URL, LEGACY_HIGH_SPLAT_URL]
+    : world === "legacy"
+      ? [LEGACY_HIGH_SPLAT_URL, HIGH_SPLAT_URL, LOW_SPLAT_URL]
+      : [HIGH_SPLAT_URL, LOW_SPLAT_URL, LEGACY_HIGH_SPLAT_URL];
 
   for (const url of preferredUrls) {
     try {
@@ -958,8 +962,9 @@ if (splatUrl) {
     splat.position.set(0, -0.95, -12);
     splat.scale.setScalar(1);
     const isLow = splatUrl.includes("-low.");
-    el.assetStatus.textContent = isLow ? "Marble SPZ low" : "Marble SPZ";
-    el.assetNote.textContent = `已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}。当前是短程接管验证：只在可用路段内推进，避免走远后片状破碎。${isLow ? "当前是低清测试版。" : "手机请优先下载 low-res splat 并访问 ?quality=low&perf=low。"}`;
+    const isSeamless = splatUrl.includes("a0-seamless-takeover");
+    el.assetStatus.textContent = isLow ? "Marble SPZ low" : isSeamless ? "Seamless Marble SPZ" : "Marble SPZ";
+    el.assetNote.textContent = `已加载${isSeamless ? "新生成的无缝接管" : "Marble"}世界资产${assetSize ? `（${assetSize}）` : ""}。当前从开场影片直接进入 3D 追车接管，短程推进避免走远后片状破碎。${isLow ? "当前是低清测试版。" : "手机请优先访问 ?perf=low 或 ?quality=low&perf=low。"}`;
   }
   scene.add(splat);
 } else {

@@ -1,0 +1,38 @@
+{
+  "world_id": "508b54f6-4508-44b7-b921-b3d0d49173ff",
+  "display_name": "",
+  "tags": null,
+  "assets": {
+    "mesh": {
+      "collider_mesh_url": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/5cf53db2.glb"
+    },
+    "imagery": {
+      "pano_url": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/f1d7bcf2-4762-410a-87a8-8db92321095d_panos/rgb_0.png"
+    },
+    "splats": {
+      "spz_urls": {
+        "500k": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/99d95bde-291f-4b1f-a058-3be395d8eb43_ceramic_500k.spz",
+        "100k": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/617461a4-768a-4b7d-99c3-44cb602c4600_dust_100k.spz",
+        "150k": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/f5ee1150-ef09-42f5-9791-35a765b6ecea_ceramic_150k.spz",
+        "full_res": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/ff5812a8-b809-47ad-9ec3-df295c7c8892_ceramic.spz"
+      },
+      "semantics_metadata": {
+        "metric_scale_factor": 5.838773,
+        "ground_plane_offset": 3.7490678
+      }
+    },
+    "thumbnail_url": "https://cdn.marble.worldlabs.ai/508b54f6-4508-44b7-b921-b3d0d49173ff/3ac582a3-7511-4fcf-8bac-1c5f0f0dd056_sand_mpi/thumbnail.webp",
+    "caption": "The scene is a photorealistic, high-budget cinematic representation of a post-war future San Francisco at night, imbued with a cold, blue-gray storm light that casts a somber and dangerous tone. The wet, reflective asphalt of the streets and elevated structures gleams under the ambient light, mirroring the damaged urban landscape. Broken elevated freeway ramps jut out at precarious angles, their concrete skeletons exposed, while damaged towers pierce the hazy sky, their upper sections obscured by smoke columns rising from small, contained fire pockets scattered across the cityscape. Collapsed rail segments hang precariously, adding to the sense of ruin. In the distant haze, the iconic silhouette of the Golden Gate Bridge is barely discernible, a ghostly reminder of a past era. Ruined drones lie scattered, their forms twisted and inert, while emergency magenta glows emanate from various points, providing stark contrast to the prevailing blue-gray palette. A clear, navigable chase corridor begins from a cinematic overlook, serving as a road entrance, and descends into a drivable, damaged street route. This central pursuit path is designed with strong depth cues and sufficient clear foreground road to support a fast first-person chase. The environment avoids a flat panorama, instead presenting spatial layers, a realistic road scale, and a tunnel-like city depth that suggests plausible vehicle navigation space. The route feels dangerous yet readable, with broken barriers, wet lane markings, and debris confined mostly to the edges of the path, ensuring the main road remains clear. Smoke and fire, while present, are strategically placed off the primary driving line, not obstructing the chase. The elevated freeway ramps are positioned above the main street, with damaged towers rising behind them. The Golden Gate Bridge is visible far in the background, beyond the city's immediate structures. The 360 scene is faultless."
+  },
+  "created_at": null,
+  "updated_at": null,
+  "permission": {
+    "public": false,
+    "allowed_readers": [],
+    "allowed_writers": [],
+    "allow_id_access": false
+  },
+  "world_prompt": null,
+  "world_marble_url": "https://marble.worldlabs.ai/world/508b54f6-4508-44b7-b921-b3d0d49173ff",
+  "model": null
+}

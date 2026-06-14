@@ -66,16 +66,16 @@ docs/handoff.md
 
 ## 3D 接管实验
 
-第一版 World Labs / Marble 接管实验页：
+主线开场 A0 现在会衔接到 World Labs / Marble 3D 接管页：
 
 ```text
-web/world-prototype.html
+web/world-prototype.html?from=A0&handoff=1&world=seamless&perf=balanced&camera=first
 ```
 
 本地访问：
 
 ```text
-http://127.0.0.1:5177/world-prototype.html
+http://127.0.0.1:5177/world-prototype.html?from=A0&handoff=1&world=seamless&perf=balanced&camera=first
 ```
 
 准备说明：
@@ -85,7 +85,15 @@ docs/marble-mvp-experiment.md
 tools/worldlabs/README.md
 ```
 
-真实 Marble 世界资产放这里：
+当前无缝接管 Marble 世界资产：
+
+```text
+web/worlds/a0-seamless-takeover-500k.spz
+web/worlds/a0-seamless-takeover-collider.glb
+web/worlds/a0-seamless-takeover-world.json
+```
+
+旧版 Marble 世界资产仍保留作为 fallback：
 
 ```text
 web/worlds/a0-war-signal-500k.spz
@@ -93,6 +101,23 @@ web/worlds/a0-war-signal-collider.glb
 ```
 
 如果还没有 `.spz`，实验页会先显示本地低模战后旧金山代理场景，避免把示例资产误认为正式效果。
+
+## Seedance 生成
+
+Seedance 2.0 I2V 脚本在：
+
+```text
+tools/seedance/generate_a0_i2v.py
+```
+
+需要先设置火山方舟 Ark API Key：
+
+```bash
+export ARK_API_KEY="..."
+python tools/seedance/generate_a0_i2v.py
+```
+
+当前提交的可测试版本仍使用已生成并验证过的 Sulphur2 A0 视频；拿到 `ARK_API_KEY` 后可用 Seedance 输出替换为 `web/assets/video/A0-S01-seedance-web.mp4`。
 
 ## 项目结构
 

@@ -16,6 +16,7 @@ const state = {
   combatTicks: 0,
   timer: null,
   currentVideo: "",
+  openingVideoEnded: false,
 };
 
 const defaultVideo = {
@@ -36,9 +37,9 @@ const nodes = {
   A0: {
     label: "A0 / Rain Signal",
     title: "雨夜，黑色车队带走了证人。",
-    text: "林夏坐在车里，雨水切碎挡风玻璃上的霓虹。阿洛标记出三辆黑色 SUV：目标将在 30 秒后进入高架。",
-    button: "接管追车",
-    next: "I1",
+    text: "战后旧金山在雨雾和烟柱里展开。镜头落向破碎高架，阿洛锁定黑色车队：接下来直接进入 3D 接管世界。",
+    button: "进入3D接管",
+    next: "WORLD_I1",
   },
   C1: {
     label: "C1 / Clean Pursuit",
@@ -137,6 +138,17 @@ function setBackgroundVideo(asset = defaultVideo) {
   el.backgroundVideo.play().catch(() => {
     el.backgroundVideo.setAttribute("data-autoplay-blocked", "true");
   });
+}
+
+function enterWorldTakeover() {
+  const params = new URLSearchParams({
+    from: "A0",
+    handoff: "1",
+    world: "seamless",
+    perf: "balanced",
+    camera: "first",
+  });
+  window.location.href = `./world-prototype.html?${params.toString()}`;
 }
 
 function clamp(value, min = 0, max = 100) {
@@ -293,6 +305,7 @@ function restart() {
     upload: 0,
     boss: 100,
     combatTicks: 0,
+    openingVideoEnded: false,
   });
   showFilm("A0");
 }
@@ -302,6 +315,7 @@ function primaryAction() {
   if (!node) return;
   if (node.next === "I1") startDriving();
   else if (node.next === "I2") startCombat();
+  else if (node.next === "WORLD_I1") enterWorldTakeover();
   else if (node.next === "restart") restart();
   else showFilm(node.next);
 }
@@ -362,6 +376,16 @@ function combatTerminal() {
   state.timing = clamp(state.timing - 2);
   state.evidence = clamp(state.evidence + 2);
   updateCombat();
+}
+
+
+if (el.backgroundVideo) {
+  el.backgroundVideo.addEventListener("ended", () => {
+    if (state.node !== "A0" || state.openingVideoEnded) return;
+    state.openingVideoEnded = true;
+    el.primaryBtn.textContent = "进入3D接管";
+    el.keys.textContent = "开场视频结束，点击进入 Marble 3D 追车接管。";
+  });
 }
 
 el.primaryBtn.addEventListener("click", primaryAction);
