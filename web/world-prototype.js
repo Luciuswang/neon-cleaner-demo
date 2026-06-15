@@ -10,6 +10,7 @@ const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
 const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
 const params = new URLSearchParams(location.search);
+const isPrewarm = params.get("prewarm") === "1";
 const perfMode = params.get("perf") || "balanced";
 const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1.05;
 const maxPursuitDistance = perfMode === "high" ? 168 : perfMode === "low" ? 94 : 128;
@@ -33,12 +34,22 @@ const el = {
   stabilityValue: document.getElementById("stabilityValue"),
   branchReadout: document.getElementById("branchReadout"),
   assetNote: document.getElementById("assetNote"),
-  returnFilm: document.getElementById("returnFilm"),
   steerLeft: document.getElementById("steerLeft"),
   steerRight: document.getElementById("steerRight"),
   boost: document.getElementById("boost"),
   brake: document.getElementById("brake"),
 };
+
+if (isPrewarm) {
+  document.body.dataset.prewarm = "true";
+}
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== window.location.origin) return;
+  if (event.data?.type !== "neon-world-activate") return;
+  document.body.dataset.prewarm = "false";
+  window.focus();
+});
 
 const state = {
   heading: 0,
@@ -51,6 +62,7 @@ const state = {
   lastTime: 0,
   complete: false,
   inputs: new Set(),
+  firstFramePosted: false,
 };
 
 function clamp(value, min, max) {
@@ -983,21 +995,6 @@ function resize() {
 
 window.addEventListener("resize", resize);
 
-function getBranchResult() {
-  if (state.pursuit > 86 && state.stability > 68) return "C1";
-  if (state.pursuit > 62 && state.stability > 36) return "C2";
-  return "C3";
-}
-
-function returnToFilm() {
-  const result = getBranchResult();
-  location.href = `./index.html?worldResult=${encodeURIComponent(result)}`;
-}
-
-if (el.returnFilm) {
-  el.returnFilm.addEventListener("click", returnToFilm);
-}
-
 function updateHud() {
   const pursuit = Math.round(clamp(state.pursuit, 0, 100));
   const stability = Math.round(clamp(state.stability, 0, 100));
@@ -1010,11 +1007,12 @@ function updateHud() {
     const modeName = cameraMode === "chase" ? "追车视角" : "第一人称";
     el.branchReadout.textContent = `${modeName} / 推进 ${pursuit}% / 速度 ${Math.round(state.speed)}`;
   } else {
-    const result = getBranchResult();
-    el.branchReadout.textContent = `${result} / ${result === "C1" ? "Clean Pursuit" : result === "C2" ? "Damaged Pursuit" : "Lost Trail"}`;
-    if (el.returnFilm) {
-      el.returnFilm.hidden = false;
-      el.returnFilm.textContent = `返回主线：${result}`;
+    if (state.pursuit > 86 && state.stability > 68) {
+      el.branchReadout.textContent = "C1 / Clean Pursuit";
+    } else if (state.pursuit > 62 && state.stability > 36) {
+      el.branchReadout.textContent = "C2 / Damaged Pursuit";
+    } else {
+      el.branchReadout.textContent = "C3 / Lost Trail";
     }
   }
 }
@@ -1195,6 +1193,11 @@ function animate(time) {
     composer.render();
   } else {
     renderer.render(scene, camera);
+  }
+
+  if (!state.firstFramePosted) {
+    state.firstFramePosted = true;
+    window.parent?.postMessage({ type: "neon-world-ready" }, window.location.origin);
   }
 }
 
