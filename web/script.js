@@ -16,6 +16,8 @@ const state = {
   combatTicks: 0,
   timer: null,
   currentVideo: "",
+  takeoverReady: false,
+  takeoverRevealTimer: null,
 };
 
 const defaultVideo = {
@@ -26,7 +28,7 @@ const defaultVideo = {
 
 const videoAssets = {
   A0: {
-    src: "./assets/video/A0-S01-establishing-sulphur2-v2-web.mp4",
+    src: "./assets/video/A0-S01-seedance-2028.mp4",
     poster: "./assets/video/A0-S01-establishing-sulphur2-v2-poster.jpg",
     loop: false,
   },
@@ -35,22 +37,22 @@ const videoAssets = {
 const nodes = {
   A0: {
     label: "A0 / Rain Signal",
-    title: "雨夜，黑色车队带走了证人。",
-    text: "林夏坐在车里，雨水切碎挡风玻璃上的霓虹。阿洛标记出三辆黑色 SUV：目标将在 30 秒后进入高架。影片结束后切入 3D 世界接管。",
-    button: "进入 3D 接管",
-    next: "WORLD",
+    title: "雨夜，城市还在燃烧。",
+    text: "旧金山的高架像裂开的伤口。阿洛捕捉到一段断续信号：证人正在被转移，黑色车队即将进入雨雾。",
+    button: "接管追车",
+    next: "I1",
   },
   C1: {
     label: "C1 / Clean Pursuit",
     title: "你贴住了目标车尾。",
-    text: "林夏从狭窄坡道飞出，车身擦过护卫车。黑色 SUV 被迫改道，港口坐标暴露。",
+    text: "林夏压低车身从狭窄坡道飞出，摩托擦过护卫车侧翼。黑色装甲车队被迫改道，港口坐标暴露。",
     button: "进入港口",
     next: "A2",
   },
   C2: {
     label: "C2 / Damaged Pursuit",
     title: "追上了，但车快散了。",
-    text: "挡风玻璃裂开，左侧车门变形。阿洛警告车辆稳定系统只剩两分钟，林夏没有减速。",
+    text: "摩托外壳被弹片撕开，后轮稳定系统报警。阿洛警告还能撑两分钟，林夏没有减速。",
     button: "进入港口",
     next: "A2",
   },
@@ -92,6 +94,7 @@ const nodes = {
 };
 
 const el = {
+  stage: document.querySelector(".stage"),
   backgroundVideo: document.getElementById("backgroundVideo"),
   nodeLabel: document.getElementById("nodeLabel"),
   caption: document.getElementById("caption"),
@@ -119,11 +122,101 @@ const el = {
   terminalBtn: document.getElementById("terminalBtn"),
   bossBar: document.getElementById("bossBar"),
   uploadBar: document.getElementById("uploadBar"),
+  worldLink: document.getElementById("worldLink"),
 };
+
+const worldPrewarm = {
+  started: false,
+  ready: false,
+  pendingOpen: false,
+  frame: null,
+};
+
+const canPrewarmWorld = location.protocol === "http:" || location.protocol === "https:";
+const takeoverRevealProgress = 0.82;
+const takeoverRevealRemainingSeconds = 1.2;
+const takeoverRevealFallbackMs = 12000;
 
 if (el.backgroundVideo) {
   setBackgroundVideo(defaultVideo);
 }
+
+function updateWorldPrewarmStatus() {
+  if (!el.worldLink) return;
+  if (!canPrewarmWorld) {
+    el.worldLink.dataset.ready = "false";
+    el.worldLink.textContent = "打开本地3D";
+    el.worldLink.href = "http://127.0.0.1:5177/world-prototype.html";
+    return;
+  }
+  el.worldLink.dataset.ready = worldPrewarm.ready ? "true" : "false";
+  el.worldLink.textContent = worldPrewarm.ready ? "3D场景已就绪" : "3D场景预热中";
+}
+
+function prewarmWorld() {
+  if (!canPrewarmWorld) {
+    updateWorldPrewarmStatus();
+    return;
+  }
+  if (worldPrewarm.started || !el.worldLink) return;
+  worldPrewarm.started = true;
+  updateWorldPrewarmStatus();
+
+  const frame = document.createElement("iframe");
+  frame.className = "world-prewarm-frame";
+  frame.title = "3D takeover prewarm";
+  frame.tabIndex = -1;
+  frame.setAttribute("aria-hidden", "true");
+  frame.src = "./world-prototype.html?prewarm=1";
+  document.body.appendChild(frame);
+  worldPrewarm.frame = frame;
+}
+
+function activatePrewarmedWorld() {
+  if (!worldPrewarm.ready || !worldPrewarm.frame) return false;
+  worldPrewarm.frame.classList.add("is-active");
+  worldPrewarm.frame.removeAttribute("aria-hidden");
+  worldPrewarm.frame.contentWindow?.postMessage({ type: "neon-world-activate" }, window.location.origin);
+  worldPrewarm.frame.focus();
+  return true;
+}
+
+function startWorldTakeover(event) {
+  event?.preventDefault();
+  if (!canPrewarmWorld) {
+    location.href = "http://127.0.0.1:5177/world-prototype.html";
+    return;
+  }
+
+  if (!worldPrewarm.started) prewarmWorld();
+  if (!worldPrewarm.ready || !worldPrewarm.frame) {
+    worldPrewarm.pendingOpen = true;
+    if (el.worldLink) el.worldLink.textContent = "3D 加载中...";
+    el.primaryBtn.textContent = "3D 接管加载中...";
+    el.primaryBtn.disabled = true;
+
+    window.setTimeout(() => {
+      if (!worldPrewarm.pendingOpen) return;
+      location.href = "./world-prototype.html";
+    }, 7000);
+    return;
+  }
+
+  activatePrewarmedWorld();
+}
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== window.location.origin) return;
+  if (event.data?.type !== "neon-world-ready") return;
+  worldPrewarm.ready = true;
+  updateWorldPrewarmStatus();
+  if (worldPrewarm.pendingOpen && worldPrewarm.frame) {
+    worldPrewarm.pendingOpen = false;
+    activatePrewarmedWorld();
+  }
+});
+
+updateWorldPrewarmStatus();
 
 function setBackgroundVideo(asset = defaultVideo) {
   if (!el.backgroundVideo || state.currentVideo === asset.src) return;
@@ -139,22 +232,44 @@ function setBackgroundVideo(asset = defaultVideo) {
   });
 }
 
-function currentWorldUrl() {
-  return "./world-prototype.html?from=film&return=1&perf=balanced&camera=first";
+function setPrimaryAvailable(available) {
+  el.primaryBtn.hidden = !available;
+  el.primaryBtn.disabled = !available;
 }
 
-function enterWorldTakeover() {
-  location.href = currentWorldUrl();
+function clearTakeoverRevealTimer() {
+  if (!state.takeoverRevealTimer) return;
+  window.clearTimeout(state.takeoverRevealTimer);
+  state.takeoverRevealTimer = null;
 }
 
-function handleWorldReturn() {
-  const params = new URLSearchParams(location.search);
-  const result = params.get("worldResult");
-  if (!result || !nodes[result]) return false;
-  history.replaceState(null, "", location.pathname);
-  showFilm(result);
-  el.keys.textContent = "3D 接管结果已回写主线分支；继续进入港口段。";
-  return true;
+function revealTakeoverButton() {
+  if (state.mode !== "film" || state.node !== "A0" || state.takeoverReady) return;
+  state.takeoverReady = true;
+  clearTakeoverRevealTimer();
+  setPrimaryAvailable(true);
+  el.keys.textContent = worldPrewarm.ready ? "3D 场景已就绪，接管窗口开启。" : "接管窗口开启，3D 场景继续加载中。";
+}
+
+function maybeRevealTakeoverFromVideo() {
+  if (state.mode !== "film" || state.node !== "A0" || state.takeoverReady || !el.backgroundVideo) return;
+  const { currentTime, duration } = el.backgroundVideo;
+  if (!Number.isFinite(duration) || duration <= 0) return;
+  const progress = currentTime / duration;
+  const remaining = duration - currentTime;
+  if (progress >= takeoverRevealProgress || remaining <= takeoverRevealRemainingSeconds) {
+    revealTakeoverButton();
+  }
+}
+
+function scheduleTakeoverReveal(id) {
+  clearTakeoverRevealTimer();
+  state.takeoverReady = id !== "A0";
+  setPrimaryAvailable(id !== "A0");
+  if (id !== "A0") return;
+
+  el.keys.textContent = "观看开场，接管窗口会在合适时机出现。";
+  state.takeoverRevealTimer = window.setTimeout(revealTakeoverButton, takeoverRevealFallbackMs);
 }
 
 function clamp(value, min = 0, max = 100) {
@@ -174,23 +289,26 @@ function showFilm(id) {
   clearInterval(state.timer);
   state.mode = "film";
   state.node = id;
+  el.stage?.classList.toggle("is-a0-film", id === "A0");
   setBackgroundVideo(videoAssets[id] || defaultVideo);
   const node = nodes[id];
   el.nodeLabel.textContent = node.label;
   el.caption.textContent = node.title;
   el.subtitle.textContent = node.text;
   el.primaryBtn.textContent = node.button;
-  el.primaryBtn.disabled = false;
   el.hud.hidden = true;
   el.playfield.hidden = true;
   el.road.classList.remove("active");
   el.combat.hidden = true;
   el.keys.textContent = "影片节点会切到可接管片段，操作结果决定下一段影片。";
+  scheduleTakeoverReveal(id);
+  if (id === "A0") prewarmWorld();
 }
 
 function startDriving() {
   clearInterval(state.timer);
   state.mode = "drive";
+  el.stage?.classList.remove("is-a0-film");
   state.node = "I1";
   state.lane = 1;
   state.speed = 48;
@@ -246,6 +364,7 @@ function finishDriving() {
 function startCombat() {
   clearInterval(state.timer);
   state.mode = "combat";
+  el.stage?.classList.remove("is-a0-film");
   state.node = "I2";
   state.health = 100;
   state.timing = 42;
@@ -316,10 +435,10 @@ function restart() {
 }
 
 function primaryAction() {
+  if (el.primaryBtn.hidden || el.primaryBtn.disabled) return;
   const node = nodes[state.node];
   if (!node) return;
-  if (node.next === "WORLD") enterWorldTakeover();
-  else if (node.next === "I1") startDriving();
+  if (node.next === "I1") startWorldTakeover();
   else if (node.next === "I2") startCombat();
   else if (node.next === "restart") restart();
   else showFilm(node.next);
@@ -385,6 +504,11 @@ function combatTerminal() {
 
 el.primaryBtn.addEventListener("click", primaryAction);
 el.restartBtn.addEventListener("click", restart);
+el.backgroundVideo.addEventListener("timeupdate", maybeRevealTakeoverFromVideo);
+el.backgroundVideo.addEventListener("ended", revealTakeoverButton);
+el.worldLink.addEventListener("pointerenter", prewarmWorld);
+el.worldLink.addEventListener("focus", prewarmWorld);
+el.worldLink.addEventListener("click", startWorldTakeover);
 el.attackBtn.addEventListener("click", combatAttack);
 el.guardBtn.addEventListener("click", combatGuard);
 el.terminalBtn.addEventListener("click", combatTerminal);
@@ -393,6 +517,4 @@ window.addEventListener("keydown", (event) => {
   handleCombatKey(event);
 });
 
-if (!handleWorldReturn()) {
-  restart();
-}
+restart();
