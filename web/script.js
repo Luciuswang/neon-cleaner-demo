@@ -16,6 +16,8 @@ const state = {
   combatTicks: 0,
   timer: null,
   currentVideo: "",
+  currentPlaylist: null,
+  playlistIndex: 0,
   takeoverReady: false,
   takeoverRevealTimer: null,
 };
@@ -28,8 +30,20 @@ const defaultVideo = {
 
 const videoAssets = {
   A0: {
-    src: "./assets/video/A0-S01-seedance-2028.mp4",
-    poster: "./assets/video/A0-S01-establishing-sulphur2-v2-poster.jpg",
+    playlist: [
+      "./assets/video/cgt-20260611202855-vr5w8_202606112028.mp4",
+      "./assets/video/cgt-20260612203400-sc5hs_202606122034.mp4",
+      "./assets/video/cgt-20260612210231-tqqn2_202606122102.mp4",
+      "./assets/video/cgt-20260612211306-rmqfw_202606122113.mp4",
+      "./assets/video/cgt-20260612212332-zftf7_202606122123.mp4",
+      "./assets/video/cgt-20260612222723-jvcsz_202606122227.mp4",
+      "./assets/video/cgt-20260616204543-rxzzj_202606162045.mp4",
+      "./assets/video/cgt-20260616205242-qhrht_202606162052.mp4",
+      "./assets/video/cgt-20260617134348-mx7fp_202606171343.mp4",
+      "./assets/video/cgt-20260617134352-z2s54_202606171343.mp4",
+      "./assets/video/cgt-20260617134350-xdhfr_202606171343 (1).mp4",
+    ],
+    poster: "./assets/video/cgt-20260611202855-vr5w8_202606112028.mp4",
     loop: false,
   },
 };
@@ -219,12 +233,21 @@ window.addEventListener("message", (event) => {
 updateWorldPrewarmStatus();
 
 function setBackgroundVideo(asset = defaultVideo) {
-  if (!el.backgroundVideo || state.currentVideo === asset.src) return;
-  state.currentVideo = asset.src;
+  if (!el.backgroundVideo) return;
+  const playlist = Array.isArray(asset.playlist) ? asset.playlist.filter(Boolean) : null;
+  const nextSrc = playlist?.[0] || asset.src;
+  const playlistKey = playlist ? playlist.join("|") : "";
+  if (state.currentVideo === nextSrc && (!playlist || state.currentPlaylist?.join("|") === playlistKey)) return;
+
+  state.currentPlaylist = playlist;
+  state.playlistIndex = 0;
+  state.currentVideo = nextSrc;
   el.backgroundVideo.pause();
-  el.backgroundVideo.loop = Boolean(asset.loop);
-  el.backgroundVideo.poster = asset.poster;
-  el.backgroundVideo.src = asset.src;
+  el.backgroundVideo.loop = Boolean(asset.loop) && !playlist;
+  if (asset.poster && !asset.poster.endsWith(".mp4")) {
+    el.backgroundVideo.poster = asset.poster;
+  }
+  el.backgroundVideo.src = nextSrc;
   el.backgroundVideo.load();
   el.backgroundVideo.muted = true;
   el.backgroundVideo.play().catch(() => {
@@ -253,6 +276,7 @@ function revealTakeoverButton() {
 
 function maybeRevealTakeoverFromVideo() {
   if (state.mode !== "film" || state.node !== "A0" || state.takeoverReady || !el.backgroundVideo) return;
+  if (state.currentPlaylist && state.playlistIndex < state.currentPlaylist.length - 1) return;
   const { currentTime, duration } = el.backgroundVideo;
   if (!Number.isFinite(duration) || duration <= 0) return;
   const progress = currentTime / duration;
@@ -260,6 +284,29 @@ function maybeRevealTakeoverFromVideo() {
   if (progress >= takeoverRevealProgress || remaining <= takeoverRevealRemainingSeconds) {
     revealTakeoverButton();
   }
+}
+
+function playNextOpeningClip() {
+  if (!state.currentPlaylist || state.mode !== "film" || state.node !== "A0") {
+    revealTakeoverButton();
+    return;
+  }
+
+  if (state.playlistIndex < state.currentPlaylist.length - 1) {
+    state.playlistIndex += 1;
+    const nextSrc = state.currentPlaylist[state.playlistIndex];
+    state.currentVideo = nextSrc;
+    el.backgroundVideo.loop = false;
+    el.backgroundVideo.src = nextSrc;
+    el.backgroundVideo.load();
+    el.backgroundVideo.play().catch(() => {
+      el.backgroundVideo.setAttribute("data-autoplay-blocked", "true");
+    });
+    el.keys.textContent = `开场片段 ${state.playlistIndex + 1}/${state.currentPlaylist.length}，接管窗口会在末段出现。`;
+    return;
+  }
+
+  revealTakeoverButton();
 }
 
 function scheduleTakeoverReveal(id) {
@@ -505,7 +552,7 @@ function combatTerminal() {
 el.primaryBtn.addEventListener("click", primaryAction);
 el.restartBtn.addEventListener("click", restart);
 el.backgroundVideo.addEventListener("timeupdate", maybeRevealTakeoverFromVideo);
-el.backgroundVideo.addEventListener("ended", revealTakeoverButton);
+el.backgroundVideo.addEventListener("ended", playNextOpeningClip);
 el.worldLink.addEventListener("pointerenter", prewarmWorld);
 el.worldLink.addEventListener("focus", prewarmWorld);
 el.worldLink.addEventListener("click", startWorldTakeover);
