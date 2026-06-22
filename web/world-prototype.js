@@ -4,6 +4,8 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
+import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
 const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
@@ -25,16 +27,20 @@ const cameraMode = params.get("camera") || "chase";
 const usePostProcessing = params.get("post") !== "0" && perfMode !== "low";
 const vfxDensity = perfMode === "high" ? 1 : perfMode === "low" ? 0.55 : 0.78;
 const playerModelUrl = params.get("player") || "./models/player-motorcycle.glb";
+const playerObjUrl = params.get("playerObj") || "./models/player-motorcycle-obj/model_1781781224363_obj.obj";
+const playerMtlUrl = params.get("playerMtl") || "./models/player-motorcycle-obj/model_1781781224363_obj.mtl";
+const playerFormat = params.get("playerFormat") || "obj";
 const cockpitModelUrl = params.get("cockpit") || "./models/player-cockpit.glb";
 const autoDrive = params.get("autodrive") === "1";
 const showProceduralBackdrop = params.get("backdrop") !== "0";
 const marbleOnly = params.get("marbleOnly") === "1";
 const enemyModelUrl = params.get("enemy") || "./models/enemy-car.glb";
-const playerModelScale = paramNumber("playerScale", 2.35);
+const playerModelScale = paramNumber("playerScale", 3.15);
 const playerModelYaw = THREE.MathUtils.degToRad(paramNumber("playerYaw", 0));
 const playerModelY = paramNumber("playerY", -0.18);
 const playerModelZ = paramNumber("playerZ", -0.15);
 const playerLean = paramNumber("playerLean", 0.34);
+const playerModelBrightness = paramNumber("playerBright", 0.28);
 const cockpitModelScale = Number(params.get("cockpitScale")) || 1;
 const enemyModelScale = Number(params.get("enemyScale")) || 1;
 const splatTransform = {
@@ -377,14 +383,23 @@ function setGroupChildrenVisible(group, visible) {
   }
 }
 
-function prepareImportedModel(root) {
+function prepareImportedModel(root, options = {}) {
+  const emissiveIntensity = options.emissiveIntensity ?? 0.08;
   root.traverse((node) => {
     if (!node.isMesh) return;
     node.frustumCulled = false;
+    node.castShadow = false;
+    node.receiveShadow = false;
     const materials = Array.isArray(node.material) ? node.material : [node.material];
     for (const material of materials) {
       if (!material) continue;
       material.side = material.side ?? THREE.FrontSide;
+      material.transparent = false;
+      material.opacity = 1;
+      if ("emissive" in material) {
+        material.emissive = new THREE.Color(0x101018);
+        material.emissiveIntensity = emissiveIntensity;
+      }
       material.needsUpdate = true;
     }
   });
@@ -407,14 +422,20 @@ async function attachOptionalGlb({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = 1,
+  emissiveIntensity = 0.08,
+  onLoaded = null,
+  onError = null,
 }) {
-  if (!(await urlExists(url))) return null;
+  if (!(await urlExists(url))) {
+    onError?.(new Error(`Missing GLB: ${url}`));
+    return null;
+  }
 
   try {
     const loader = new GLTFLoader();
     const gltf = await loader.loadAsync(url);
     const root = gltf.scene;
-    prepareImportedModel(root);
+    prepareImportedModel(root, { emissiveIntensity });
     root.position.set(...position);
     root.rotation.set(...rotation);
     root.scale.setScalar(scale);
@@ -423,9 +444,58 @@ async function attachOptionalGlb({
       setGroupChildrenVisible(parent, false);
     }
     parent.add(root);
+    onLoaded?.(root);
     return root;
   } catch (error) {
     console.warn(`Could not load GLB model from ${url}`, error);
+    onError?.(error);
+    return null;
+  }
+}
+
+async function attachOptionalObj({
+  objUrl,
+  mtlUrl,
+  parent,
+  hideFallback = true,
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+  scale = 1,
+  emissiveIntensity = 0.08,
+  onLoaded = null,
+  onError = null,
+}) {
+  if (!(await urlExists(objUrl)) || !(await urlExists(mtlUrl))) {
+    onError?.(new Error(`Missing OBJ or MTL: ${objUrl}`));
+    return null;
+  }
+
+  try {
+    const basePath = mtlUrl.slice(0, mtlUrl.lastIndexOf("/") + 1);
+    const mtlFile = mtlUrl.slice(mtlUrl.lastIndexOf("/") + 1);
+    const mtlLoader = new MTLLoader();
+    mtlLoader.setPath(basePath);
+    mtlLoader.setResourcePath(basePath);
+    const materials = await mtlLoader.loadAsync(mtlFile);
+    materials.preload();
+
+    const objLoader = new OBJLoader();
+    objLoader.setMaterials(materials);
+    const root = await objLoader.loadAsync(objUrl);
+    prepareImportedModel(root, { emissiveIntensity });
+    root.position.set(...position);
+    root.rotation.set(...rotation);
+    root.scale.setScalar(scale);
+
+    if (hideFallback) {
+      setGroupChildrenVisible(parent, false);
+    }
+    parent.add(root);
+    onLoaded?.(root);
+    return root;
+  } catch (error) {
+    console.warn(`Could not load OBJ model from ${objUrl}`, error);
+    onError?.(error);
     return null;
   }
 }
@@ -925,14 +995,41 @@ if (marbleOnly) {
   boundaryLayer.visible = false;
 }
 
-attachOptionalGlb({
-  url: playerModelUrl,
-  parent: vehicle,
-  hideFallback: false,
-  position: [0, playerModelY, playerModelZ],
-  rotation: [0, playerModelYaw, 0],
-  scale: playerModelScale,
-});
+attachPlayerVehicleModel();
+
+async function attachPlayerVehicleModel() {
+  const sharedOptions = {
+    parent: vehicle,
+    hideFallback: true,
+    position: [0, playerModelY, playerModelZ],
+    rotation: [0, playerModelYaw, 0],
+    scale: playerModelScale,
+    emissiveIntensity: playerModelBrightness,
+  };
+
+  if (playerFormat !== "glb") {
+    const objRoot = await attachOptionalObj({
+      ...sharedOptions,
+      objUrl: playerObjUrl,
+      mtlUrl: playerMtlUrl,
+      onLoaded: () => {
+        el.branchReadout.textContent = "追车视角 / 真实摩托 OBJ 模型已加载 / 自动巡航";
+      },
+    });
+    if (objRoot) return;
+  }
+
+  await attachOptionalGlb({
+    ...sharedOptions,
+    url: playerModelUrl,
+    onLoaded: () => {
+      el.branchReadout.textContent = "追车视角 / 真实摩托 GLB 模型已加载 / 自动巡航";
+    },
+    onError: () => {
+      el.branchReadout.textContent = "追车视角 / 摩托真实模型未加载，当前显示临时代理模型";
+    },
+  });
+}
 
 attachOptionalGlb({
   url: cockpitModelUrl,
