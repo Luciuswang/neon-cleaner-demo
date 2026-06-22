@@ -4,29 +4,70 @@ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
+import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
+const BUILD_TAG = "20260622-cinematic-handoff-2";
 const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
 const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
+const FULL_SPLAT_URL = "./worlds/a0-war-signal-full.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
+const DEFAULT_BRIDGE_VIDEO = "./assets/video/cgt-20260612222723-jvcsz_202606122227.mp4";
 const params = new URLSearchParams(location.search);
 const isPrewarm = params.get("prewarm") === "1";
 const perfMode = params.get("perf") || "balanced";
 const maxPixelRatio = perfMode === "high" ? 1.45 : perfMode === "low" ? 0.85 : 1.05;
-const maxPursuitDistance = perfMode === "high" ? 168 : perfMode === "low" ? 94 : 128;
+const routeLength = Number(params.get("route")) || 3000;
+const maxPursuitDistance = routeLength;
+const driveDistanceScale = perfMode === "high" ? 0.42 : perfMode === "low" ? 0.32 : 0.36;
+const roadSegmentLength = 18;
+const visibleRoadSegments = perfMode === "high" ? 82 : perfMode === "low" ? 54 : 68;
 const pathScale = perfMode === "high" ? 1.55 : perfMode === "low" ? 1 : 1.28;
 const maxSpeed = perfMode === "high" ? 96 : perfMode === "low" ? 62 : 82;
-const cameraMode = params.get("camera") || "first";
+const cameraMode = params.get("camera") || "chase";
+const modelDebug = params.get("modelDebug") === "1";
+const cinematicEnabled = params.get("cinematic") !== "0" && !isPrewarm && !modelDebug;
+const cinematicVideoUrl = params.get("bridgeVideo") || DEFAULT_BRIDGE_VIDEO;
+const cinematicFadeSeconds = paramNumber("cinematicFade", 0.9);
 const usePostProcessing = params.get("post") !== "0" && perfMode !== "low";
 const vfxDensity = perfMode === "high" ? 1 : perfMode === "low" ? 0.55 : 0.78;
-const cockpitModelUrl = params.get("cockpit") || "./models/player-cockpit.glb";
-const enemyModelUrl = params.get("enemy") || "./models/enemy-car.glb";
+const playerModelUrl = params.get("player") || "./models/player-motorcycle.glb";
+const playerObjUrl = params.get("playerObj") || "./models/player-motorcycle-obj/model_1781781224363_obj.obj";
+const playerMtlUrl = params.get("playerMtl") || "./models/player-motorcycle-obj/model_1781781224363_obj.mtl";
+const playerFormat = params.get("playerFormat") || "obj";
+const cockpitModelUrl = params.get("cockpit") || "0";
+const autoDrive = params.get("autodrive") === "1";
+const showProceduralBackdrop = params.get("backdrop") !== "0";
+const marbleOnly = params.get("marbleOnly") === "1";
+const enemyModelUrl = params.get("enemy") || "0";
+const playerModelScale = paramNumber("playerScale", 3.2);
+const playerModelYaw = THREE.MathUtils.degToRad(paramNumber("playerYaw", 90));
+const playerModelY = paramNumber("playerY", 0);
+const playerModelZ = paramNumber("playerZ", 0);
+const playerLean = paramNumber("playerLean", 0.34);
+const playerModelBrightness = paramNumber("playerBright", 0.28);
 const cockpitModelScale = Number(params.get("cockpitScale")) || 1;
 const enemyModelScale = Number(params.get("enemyScale")) || 1;
+const splatTransform = {
+  scale: paramNumber("splatScale", perfMode === "low" ? 3 : 3.6),
+  x: paramNumber("splatX", 0),
+  y: paramNumber("splatY", -1.35),
+  lead: paramNumber("splatLead", -34),
+  yaw: THREE.MathUtils.degToRad(paramNumber("splatYaw", 0)),
+  pitch: THREE.MathUtils.degToRad(paramNumber("splatPitch", 0)),
+  roll: THREE.MathUtils.degToRad(paramNumber("splatRoll", 0)),
+  flipX: params.get("splatFlip") !== "0",
+  follow: params.get("splatFollow") !== "0",
+};
 
 const el = {
   stage: document.querySelector(".world-stage"),
   canvas: document.getElementById("worldCanvas"),
+  cinematicBridge: document.getElementById("cinematicBridge"),
+  cinematicVideo: document.getElementById("cinematicVideo"),
+  cinematicStatus: document.getElementById("cinematicStatus"),
+  cinematicSkip: document.getElementById("cinematicSkip"),
   assetStatus: document.getElementById("assetStatus"),
   pursuitMeter: document.getElementById("pursuitMeter"),
   stabilityMeter: document.getElementById("stabilityMeter"),
@@ -43,6 +84,27 @@ const el = {
 if (isPrewarm) {
   document.body.dataset.prewarm = "true";
 }
+
+let worldAssetMessage = "";
+let playerModelMessage = "摩托模型：准备加载真实 3D 资产。";
+
+function renderAssetNote() {
+  el.assetNote.textContent = [worldAssetMessage, playerModelMessage, `Build ${BUILD_TAG}`]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function setWorldAssetMessage(message) {
+  worldAssetMessage = message;
+  renderAssetNote();
+}
+
+function setPlayerModelMessage(message) {
+  playerModelMessage = message;
+  renderAssetNote();
+}
+
+renderAssetNote();
 
 window.addEventListener("message", (event) => {
   if (event.origin !== window.location.origin) return;
@@ -63,7 +125,76 @@ const state = {
   complete: false,
   inputs: new Set(),
   firstFramePosted: false,
+  cinematicActive: cinematicEnabled,
+  cinematicFinishTimer: null,
 };
+
+function completeCinematicBridge() {
+  if (!state.cinematicActive) return;
+  if (state.cinematicFinishTimer) {
+    window.clearTimeout(state.cinematicFinishTimer);
+    state.cinematicFinishTimer = null;
+  }
+  state.cinematicActive = false;
+  state.speed = Math.max(state.speed, maxSpeed * 0.78);
+  if (el.cinematicStatus) el.cinematicStatus.textContent = "接管完成，进入 3D 追车。";
+  if (el.cinematicBridge) {
+    el.cinematicBridge.classList.add("is-fading");
+    window.setTimeout(() => {
+      el.cinematicBridge.classList.add("is-gone");
+      el.cinematicBridge.hidden = true;
+      el.canvas.focus?.();
+    }, 760);
+  }
+}
+
+function setupCinematicBridge() {
+  if (!el.cinematicBridge || !el.cinematicVideo) return;
+  if (!cinematicEnabled) {
+    state.cinematicActive = false;
+    el.cinematicBridge.hidden = true;
+    return;
+  }
+
+  el.cinematicBridge.hidden = false;
+  el.cinematicBridge.classList.remove("is-fading", "is-gone");
+  el.cinematicVideo.muted = true;
+  el.cinematicVideo.playsInline = true;
+  el.cinematicVideo.src = cinematicVideoUrl;
+  el.cinematicVideo.load();
+  if (el.cinematicStatus) el.cinematicStatus.textContent = "影片播放中，3D 场景在背后预热。";
+
+  el.cinematicVideo.addEventListener("canplay", () => {
+    if (el.cinematicStatus) el.cinematicStatus.textContent = "影片播放中，3D 场景在背后预热。";
+    el.cinematicVideo.play().catch(() => {
+      if (el.cinematicStatus) el.cinematicStatus.textContent = "浏览器拦截自动播放，点击画面开始。";
+    });
+  }, { once: true });
+
+  el.cinematicVideo.addEventListener("timeupdate", () => {
+    const { currentTime, duration } = el.cinematicVideo;
+    if (!Number.isFinite(duration) || duration <= 0) return;
+    const remaining = duration - currentTime;
+    if (remaining <= cinematicFadeSeconds) {
+      el.cinematicBridge.classList.add("is-fading");
+      if (el.cinematicStatus) el.cinematicStatus.textContent = "接管窗口打开，准备无缝切入。";
+      if (!state.cinematicFinishTimer) {
+        state.cinematicFinishTimer = window.setTimeout(
+          completeCinematicBridge,
+          Math.max(120, remaining * 1000 + 80),
+        );
+      }
+    }
+  });
+
+  el.cinematicVideo.addEventListener("ended", completeCinematicBridge);
+  el.cinematicVideo.addEventListener("click", () => {
+    el.cinematicVideo.play().catch(() => {});
+  });
+  el.cinematicSkip?.addEventListener("click", completeCinematicBridge);
+}
+
+setupCinematicBridge();
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -73,34 +204,65 @@ function mix(a, b, t) {
   return a + (b - a) * t;
 }
 
+function paramNumber(name, fallback) {
+  const rawValue = params.get(name);
+  if (rawValue === null || rawValue === "") return fallback;
+  const value = Number(rawValue);
+  return Number.isFinite(value) ? value : fallback;
+}
+
 function smoothstep(t) {
   return t * t * (3 - 2 * t);
 }
 
-function sampleChasePath(progress) {
-  const t = clamp(progress, 0, 1);
-  const z = mix(2.2, -38 * pathScale, t);
-  const x =
-    mix(0.1, -1.8, smoothstep(clamp(t / 0.28, 0, 1))) +
-    mix(0, 4.2, smoothstep(clamp((t - 0.24) / 0.44, 0, 1))) +
-    mix(0, -2.2, smoothstep(clamp((t - 0.68) / 0.32, 0, 1)));
-  const y = mix(0.18, 0.5, smoothstep(t));
-  const yaw =
-    mix(-0.12, 0.48, smoothstep(clamp((t - 0.18) / 0.5, 0, 1))) -
-    mix(0, 0.26, smoothstep(clamp((t - 0.72) / 0.28, 0, 1)));
+function routeZone(distance) {
+  const d = clamp(distance, 0, routeLength);
+  if (d < 260) return "takeover";
+  if (d < 760) return "acceleration";
+  if (d < 1180) return "debris";
+  if (d < 1600) return "fire";
+  if (d < 2180) return "interchange";
+  if (d < 2640) return "split";
+  return "port";
+}
 
-  return { x, y, z, yaw };
+function sampleRouteAtDistance(distance) {
+  const d = clamp(distance, 0, routeLength);
+  const t = d / routeLength;
+  const curveA = Math.sin(d * 0.0042) * 13;
+  const curveB = Math.sin((d - 380) * 0.0018) * 21 * smoothstep(clamp((d - 260) / 1900, 0, 1));
+  const splitBias = mix(0, 15, smoothstep(clamp((d - 2050) / 520, 0, 1))) -
+    mix(0, 12, smoothstep(clamp((d - 2580) / 360, 0, 1)));
+  const x = curveA + curveB + splitBias;
+  const z = 2.2 - d * 0.42;
+  const y =
+    0.18 +
+    Math.sin(d * 0.0024) * 0.42 +
+    mix(0, 3.2, smoothstep(clamp((d - 1840) / 520, 0, 1))) -
+    mix(0, 2.4, smoothstep(clamp((d - 2500) / 420, 0, 1)));
+  const width =
+    5.1 +
+    Math.sin(d * 0.006) * 0.32 +
+    mix(0, 2.1, smoothstep(clamp((d - 1780) / 360, 0, 1))) -
+    mix(0, 1.2, smoothstep(clamp((d - 2480) / 320, 0, 1)));
+  const zone = routeZone(d);
+
+  return { x, y, z, width, zone, progress: t };
+}
+
+function sampleChasePath(progress) {
+  const path = sampleRouteAtDistance(clamp(progress, 0, 1) * routeLength);
+  return { x: path.x, y: path.y, z: path.z, yaw: 0 };
 }
 
 function sampleRoadWidth(progress) {
-  const t = clamp(progress, 0, 1);
-  return mix(1.28, 1.82, smoothstep(clamp((t - 0.12) / 0.28, 0, 1))) -
-    mix(0, 0.36, smoothstep(clamp((t - 0.62) / 0.28, 0, 1)));
+  const route = sampleRouteAtDistance(clamp(progress, 0, 1) * routeLength);
+  return route.width;
 }
 
 function samplePathBasis(progress) {
   const path = sampleChasePath(progress);
-  const nextPath = sampleChasePath(clamp(progress + 0.035, 0, 1));
+  const nextPath = sampleChasePath(clamp(progress + 18 / routeLength, 0, 1));
   const dx = nextPath.x - path.x;
   const dz = nextPath.z - path.z;
   const length = Math.hypot(dx, dz) || 1;
@@ -202,6 +364,105 @@ function createLowPolyCar({
   return car;
 }
 
+function createLowPolyMotorcycle({
+  bodyColor = 0x0a0d13,
+  riderColor = 0x151923,
+  accentColor = 0xff3fb6,
+  headlightColor = 0x43dfff,
+} = {}) {
+  const bike = new THREE.Group();
+  bike.name = "visible-player-motorcycle-fallback";
+
+  const bodyMaterial = new THREE.MeshStandardMaterial({
+    color: bodyColor,
+    roughness: 0.28,
+    metalness: 0.74,
+    emissive: accentColor,
+    emissiveIntensity: 0.08,
+  });
+  const riderMaterial = new THREE.MeshStandardMaterial({
+    color: riderColor,
+    roughness: 0.44,
+    metalness: 0.42,
+    emissive: 0x180816,
+    emissiveIntensity: 0.2,
+  });
+  const tireMaterial = new THREE.MeshStandardMaterial({
+    color: 0x030406,
+    roughness: 0.72,
+    metalness: 0.22,
+  });
+  const neonMaterial = new THREE.MeshBasicMaterial({
+    color: accentColor,
+    transparent: true,
+    opacity: 0.86,
+    depthWrite: false,
+  });
+  const cyanMaterial = new THREE.MeshBasicMaterial({
+    color: headlightColor,
+    transparent: true,
+    opacity: 0.92,
+    depthWrite: false,
+  });
+
+  const frame = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.28, 1.65), bodyMaterial);
+  frame.position.y = 0.38;
+  frame.rotation.x = -0.08;
+  bike.add(frame);
+
+  const fairing = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.32, 0.64), bodyMaterial);
+  fairing.position.set(0, 0.54, -0.52);
+  fairing.rotation.x = -0.22;
+  bike.add(fairing);
+
+  const seat = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.16, 0.58), riderMaterial);
+  seat.position.set(0, 0.64, 0.38);
+  seat.rotation.x = 0.08;
+  bike.add(seat);
+
+  const torso = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.62, 0.26), riderMaterial);
+  torso.position.set(0, 1.08, 0.08);
+  torso.rotation.x = -0.36;
+  bike.add(torso);
+
+  const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.2, 18, 12), riderMaterial);
+  helmet.position.set(0, 1.43, -0.1);
+  helmet.scale.z = 1.16;
+  bike.add(helmet);
+
+  for (const z of [-0.82, 0.82]) {
+    const wheel = new THREE.Mesh(new THREE.CylinderGeometry(0.32, 0.32, 0.13, 28), tireMaterial);
+    wheel.position.set(0, 0.26, z);
+    wheel.rotation.z = Math.PI / 2;
+    bike.add(wheel);
+
+    const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 0.145, 20), neonMaterial);
+    rim.position.copy(wheel.position);
+    rim.rotation.z = Math.PI / 2;
+    bike.add(rim);
+  }
+
+  const headlight = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.08, 0.035), cyanMaterial);
+  headlight.position.set(0, 0.62, -1.08);
+  bike.add(headlight);
+
+  for (const x of [-0.28, 0.28]) {
+    const tail = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.07, 0.03), neonMaterial);
+    tail.position.set(x, 0.62, 1.08);
+    bike.add(tail);
+  }
+
+  const underglow = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 1.6), neonMaterial);
+  underglow.position.set(0, 0.08, 0.1);
+  underglow.rotation.x = -Math.PI / 2;
+  underglow.material.opacity = 0.28;
+  bike.add(underglow);
+
+  bike.userData.glowMaterial = neonMaterial;
+  bike.userData.cyanMaterial = cyanMaterial;
+  return bike;
+}
+
 function createCockpitHoodGeometry() {
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute(
@@ -224,16 +485,52 @@ function setGroupChildrenVisible(group, visible) {
   }
 }
 
-function prepareImportedModel(root) {
+function prepareImportedModel(root, options = {}) {
+  const emissiveIntensity = options.emissiveIntensity ?? 0.08;
   root.traverse((node) => {
     if (!node.isMesh) return;
     node.frustumCulled = false;
+    node.castShadow = false;
+    node.receiveShadow = false;
     const materials = Array.isArray(node.material) ? node.material : [node.material];
     for (const material of materials) {
       if (!material) continue;
       material.side = material.side ?? THREE.FrontSide;
+      material.transparent = false;
+      material.opacity = 1;
+      if ("emissive" in material) {
+        material.emissive = new THREE.Color(0x101018);
+        material.emissiveIntensity = emissiveIntensity;
+      }
       material.needsUpdate = true;
     }
+  });
+}
+
+function frameImportedVehicle(root, groundClearance = 0.02) {
+  root.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(root);
+  if (box.isEmpty()) return null;
+
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  root.position.x -= center.x;
+  root.position.z -= center.z;
+  root.position.y += groundClearance - box.min.y;
+  root.updateMatrixWorld(true);
+  return size;
+}
+
+function applyFallbackVehicleMaterial(root) {
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x11131a,
+    roughness: 0.42,
+    metalness: 0.65,
+    emissive: 0x120814,
+    emissiveIntensity: 0.12,
+  });
+  root.traverse((node) => {
+    if (node.isMesh) node.material = material;
   });
 }
 
@@ -254,31 +551,102 @@ async function attachOptionalGlb({
   position = [0, 0, 0],
   rotation = [0, 0, 0],
   scale = 1,
+  emissiveIntensity = 0.08,
+  autoFrame = false,
+  onLoaded = null,
+  onError = null,
 }) {
-  if (!(await urlExists(url))) return null;
+  if (!(await urlExists(url))) {
+    onError?.(new Error(`Missing GLB: ${url}`));
+    return null;
+  }
 
   try {
     const loader = new GLTFLoader();
     const gltf = await loader.loadAsync(url);
     const root = gltf.scene;
-    prepareImportedModel(root);
+    prepareImportedModel(root, { emissiveIntensity });
     root.position.set(...position);
     root.rotation.set(...rotation);
     root.scale.setScalar(scale);
+    const framedSize = autoFrame ? frameImportedVehicle(root) : null;
 
     if (hideFallback) {
       setGroupChildrenVisible(parent, false);
     }
     parent.add(root);
+    onLoaded?.(root, framedSize);
     return root;
   } catch (error) {
     console.warn(`Could not load GLB model from ${url}`, error);
+    onError?.(error);
+    return null;
+  }
+}
+
+async function attachOptionalObj({
+  objUrl,
+  mtlUrl,
+  parent,
+  hideFallback = true,
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
+  scale = 1,
+  emissiveIntensity = 0.08,
+  autoFrame = false,
+  onStatus = null,
+  onLoaded = null,
+  onError = null,
+}) {
+  if (!(await urlExists(objUrl)) || !(await urlExists(mtlUrl))) {
+    onError?.(new Error(`Missing OBJ or MTL: ${objUrl}`));
+    return null;
+  }
+
+  try {
+    const basePath = mtlUrl.slice(0, mtlUrl.lastIndexOf("/") + 1);
+    const mtlFile = mtlUrl.slice(mtlUrl.lastIndexOf("/") + 1);
+    let materials = null;
+    try {
+      const mtlLoader = new MTLLoader();
+      mtlLoader.setPath(basePath);
+      mtlLoader.setResourcePath(basePath);
+      materials = await mtlLoader.loadAsync(mtlFile);
+      materials.preload();
+    } catch (materialError) {
+      console.warn(`Could not load OBJ material from ${mtlUrl}; continuing with fallback material.`, materialError);
+      onStatus?.(`OBJ 材质读取失败，已改用备用金属材质：${materialError.message || materialError}`);
+    }
+
+    const objLoader = new OBJLoader();
+    if (materials) objLoader.setMaterials(materials);
+    const root = await objLoader.loadAsync(objUrl);
+    if (!materials) applyFallbackVehicleMaterial(root);
+    prepareImportedModel(root, { emissiveIntensity });
+    root.position.set(...position);
+    root.rotation.set(...rotation);
+    root.scale.setScalar(scale);
+    const framedSize = autoFrame ? frameImportedVehicle(root) : null;
+
+    if (hideFallback) {
+      setGroupChildrenVisible(parent, false);
+    }
+    parent.add(root);
+    onLoaded?.(root, framedSize);
+    return root;
+  } catch (error) {
+    console.warn(`Could not load OBJ model from ${objUrl}`, error);
+    onError?.(error);
     return null;
   }
 }
 
 async function resolveSplatUrl() {
   const override = params.get("splat");
+  if (override === "0" || override === "none" || override === "off") return null;
+  if (override === "high") return HIGH_SPLAT_URL;
+  if (override === "low") return LOW_SPLAT_URL;
+  if (override === "full" || override === "full_res") return FULL_SPLAT_URL;
   if (override) return override;
 
   if (params.get("sample") === "1") {
@@ -403,13 +771,13 @@ scene.add(spark);
 const rig = new THREE.Group();
 scene.add(rig);
 
-const vehicle = createLowPolyCar({
-  bodyColor: 0x121823,
-  cabinColor: 0x182334,
+const vehicle = createLowPolyMotorcycle({
+  bodyColor: 0x080a10,
+  riderColor: 0x171a23,
   accentColor: 0xff3fb6,
   headlightColor: 0x43dfff,
 });
-vehicle.position.set(0, 0.42, 2.2);
+vehicle.position.set(0, 0.22, 2.2);
 vehicle.visible = cameraMode !== "first";
 scene.add(vehicle);
 
@@ -536,6 +904,218 @@ for (let i = 0; i < 24; i += 1) {
 }
 scene.add(boundaryLayer);
 
+const modularRoad = new THREE.Group();
+modularRoad.name = "procedural-3000m-elevated-freeway";
+scene.add(modularRoad);
+
+const roadMaterials = {
+  deck: new THREE.MeshStandardMaterial({
+    color: 0x171d25,
+    roughness: 0.18,
+    metalness: 0.48,
+    emissive: 0x05070c,
+    emissiveIntensity: 0.28,
+  }),
+  shoulder: new THREE.MeshStandardMaterial({
+    color: 0x232a32,
+    roughness: 0.34,
+    metalness: 0.32,
+    emissive: 0x040509,
+    emissiveIntensity: 0.16,
+  }),
+  line: new THREE.MeshBasicMaterial({
+    color: 0xb5c4d5,
+    transparent: true,
+    opacity: 0.5,
+  }),
+  wetGlow: new THREE.MeshBasicMaterial({
+    color: 0x43dfff,
+    transparent: true,
+    opacity: 0.12,
+    depthWrite: false,
+  }),
+  rail: new THREE.MeshStandardMaterial({
+    color: 0x303841,
+    roughness: 0.42,
+    metalness: 0.52,
+    emissive: 0x07080c,
+    emissiveIntensity: 0.18,
+  }),
+  cone: new THREE.MeshStandardMaterial({
+    color: 0x9b4b22,
+    roughness: 0.46,
+    metalness: 0.18,
+    emissive: 0x421807,
+    emissiveIntensity: 0.18,
+  }),
+  wreck: new THREE.MeshStandardMaterial({
+    color: 0x0d1016,
+    roughness: 0.56,
+    metalness: 0.5,
+    emissive: 0x160508,
+    emissiveIntensity: 0.24,
+  }),
+  fire: new THREE.MeshBasicMaterial({
+    color: 0xff7a2f,
+    transparent: true,
+    opacity: 0.58,
+    depthWrite: false,
+  }),
+};
+
+function createRoadObstacle(type) {
+  const group = new THREE.Group();
+  const wreck = new THREE.Mesh(
+    type === "wide" ? new THREE.BoxGeometry(1.5, 0.45, 2.2) : new THREE.BoxGeometry(0.9, 0.32, 1.3),
+    roadMaterials.wreck,
+  );
+  wreck.position.y = 0.22;
+  wreck.rotation.y = type === "wide" ? 0.28 : -0.36;
+  group.add(wreck);
+
+  const glow = new THREE.Mesh(new THREE.PlaneGeometry(0.8, 0.18), roadMaterials.fire);
+  glow.position.set(0.26, 0.55, 0.18);
+  glow.rotation.x = -0.4;
+  group.add(glow);
+
+  return group;
+}
+
+function createRoadSegment(index) {
+  const group = new THREE.Group();
+  group.userData.index = index;
+
+  const deck = new THREE.Mesh(new THREE.BoxGeometry(12, 0.16, roadSegmentLength + 1.4), roadMaterials.deck);
+  deck.position.y = -0.06;
+  deck.receiveShadow = true;
+  group.add(deck);
+  group.userData.deck = deck;
+
+  const wet = new THREE.Mesh(new THREE.PlaneGeometry(11.4, roadSegmentLength), roadMaterials.wetGlow);
+  wet.rotation.x = -Math.PI / 2;
+  wet.position.y = 0.035;
+  group.add(wet);
+  group.userData.wet = wet;
+
+  const leftShoulder = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.12, roadSegmentLength), roadMaterials.shoulder);
+  const rightShoulder = leftShoulder.clone();
+  leftShoulder.position.y = 0.03;
+  rightShoulder.position.y = 0.03;
+  group.add(leftShoulder, rightShoulder);
+  group.userData.shoulders = [leftShoulder, rightShoulder];
+
+  const railLeft = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.52, roadSegmentLength), roadMaterials.rail);
+  const railRight = railLeft.clone();
+  railLeft.position.y = 0.42;
+  railRight.position.y = 0.42;
+  group.add(railLeft, railRight);
+  group.userData.rails = [railLeft, railRight];
+
+  const laneMarks = [];
+  for (const x of [-1.85, 0, 1.85]) {
+    for (let i = 0; i < 3; i += 1) {
+      const mark = new THREE.Mesh(new THREE.BoxGeometry(0.075, 0.022, 3.4), roadMaterials.line);
+      mark.position.set(x, 0.055, -roadSegmentLength * 0.32 + i * roadSegmentLength * 0.32);
+      laneMarks.push(mark);
+      group.add(mark);
+    }
+  }
+  group.userData.laneMarks = laneMarks;
+
+  const cones = [];
+  for (let i = 0; i < 4; i += 1) {
+    const cone = new THREE.Mesh(new THREE.ConeGeometry(0.16, 0.46, 8), roadMaterials.cone);
+    cone.position.y = 0.25;
+    cones.push(cone);
+    group.add(cone);
+  }
+  group.userData.cones = cones;
+
+  const obstacle = createRoadObstacle(index % 2 === 0 ? "wide" : "small");
+  obstacle.visible = false;
+  group.add(obstacle);
+  group.userData.obstacle = obstacle;
+
+  const sideFire = new THREE.Mesh(new THREE.PlaneGeometry(1.3, 0.55), roadMaterials.fire);
+  sideFire.rotation.x = -0.28;
+  sideFire.position.y = 0.45;
+  sideFire.visible = false;
+  group.add(sideFire);
+  group.userData.sideFire = sideFire;
+
+  modularRoad.add(group);
+  return group;
+}
+
+const roadSegments = Array.from({ length: visibleRoadSegments }, (_, index) => createRoadSegment(index));
+
+function segmentObstacleLane(absDistance, width) {
+  const zone = routeZone(absDistance);
+  if (zone === "takeover" || zone === "acceleration") return null;
+  const seed = Math.floor(absDistance / roadSegmentLength);
+  if (seed % 4 === 0) return -width * 0.46;
+  if (seed % 5 === 0) return width * 0.44;
+  if (zone === "fire" && seed % 3 === 0) return width * 0.62;
+  return null;
+}
+
+function updateRoadSegments(distance, seconds) {
+  const startDistance = Math.max(0, distance - roadSegmentLength * 1.15);
+  for (let i = 0; i < roadSegments.length; i += 1) {
+    const segment = roadSegments[i];
+    const absDistance = startDistance + i * roadSegmentLength;
+    if (absDistance > routeLength + roadSegmentLength) {
+      segment.visible = false;
+      continue;
+    }
+
+    const progress = clamp(absDistance / routeLength, 0, 1);
+    const basis = samplePathBasis(progress);
+    const width = sampleRoadWidth(progress);
+    segment.visible = true;
+    segment.position.set(basis.path.x, basis.path.y, basis.path.z);
+    segment.rotation.y = basis.yaw;
+
+    segment.userData.deck.scale.x = (width * 2 + 1.4) / 12;
+    segment.userData.wet.scale.x = (width * 2) / 11.4;
+    segment.userData.wet.material.opacity = 0.08 + Math.sin(seconds * 1.7 + i) * 0.018;
+
+    segment.userData.shoulders[0].position.x = -width - 0.36;
+    segment.userData.shoulders[1].position.x = width + 0.36;
+    segment.userData.rails[0].position.x = -width - 0.72;
+    segment.userData.rails[1].position.x = width + 0.72;
+
+    for (const [markIndex, mark] of segment.userData.laneMarks.entries()) {
+      const lane = (markIndex % 3) - 1;
+      mark.position.x = lane * Math.min(2.2, width * 0.34);
+      mark.material.opacity = 0.34 + Math.sin(seconds * 2.1 + i + markIndex) * 0.08;
+    }
+
+    const obstacleX = segmentObstacleLane(absDistance, width);
+    segment.userData.obstacle.visible = obstacleX !== null;
+    if (obstacleX !== null) {
+      segment.userData.obstacle.position.set(obstacleX, 0.05, Math.sin(i * 1.7) * 6);
+      segment.userData.obstacle.rotation.y = Math.sin(i * 0.9) * 0.5;
+    }
+
+    const isFireZone = routeZone(absDistance) === "fire" || routeZone(absDistance) === "interchange";
+    segment.userData.sideFire.visible = isFireZone && i % 3 === 0;
+    if (segment.userData.sideFire.visible) {
+      const side = i % 2 === 0 ? -1 : 1;
+      segment.userData.sideFire.position.x = side * (width + 1.4);
+      segment.userData.sideFire.position.z = -3 + Math.sin(i) * 5;
+      segment.userData.sideFire.material.opacity = 0.34 + Math.sin(seconds * 6 + i) * 0.18;
+    }
+
+    for (const [coneIndex, cone] of segment.userData.cones.entries()) {
+      const side = coneIndex % 2 === 0 ? -1 : 1;
+      cone.position.x = side * (width - 0.45);
+      cone.position.z = -roadSegmentLength * 0.42 + coneIndex * roadSegmentLength * 0.26;
+      cone.visible = routeZone(absDistance) !== "takeover";
+    }
+  }
+}
+
 const target = createLowPolyCar({
   bodyColor: 0x07090d,
   cabinColor: 0x111c22,
@@ -545,6 +1125,72 @@ const target = createLowPolyCar({
 target.scale.setScalar(1.08);
 target.position.set(1.6, 0.52, -28);
 scene.add(target);
+
+if (modelDebug) {
+  target.visible = false;
+  guide.visible = false;
+  trackRibbon.visible = false;
+  speedLayer.visible = false;
+  boundaryLayer.visible = false;
+  setPlayerModelMessage("摩托模型：调试模式已开启，模型会固定在镜头前；若仍是简陋代理，说明真实资产没有加载成功。");
+}
+
+if (marbleOnly) {
+  modularRoad.visible = false;
+  vehicle.visible = false;
+  target.visible = false;
+  guide.visible = false;
+  trackRibbon.visible = false;
+  speedLayer.visible = false;
+  boundaryLayer.visible = false;
+}
+
+attachPlayerVehicleModel();
+
+async function attachPlayerVehicleModel() {
+  setPlayerModelMessage(`摩托模型：正在加载 OBJ 真实资产（${playerObjUrl}）。`);
+  const sharedOptions = {
+    parent: vehicle,
+    hideFallback: true,
+    position: [0, playerModelY, playerModelZ],
+    rotation: [0, playerModelYaw, 0],
+    scale: playerModelScale,
+    emissiveIntensity: playerModelBrightness,
+    autoFrame: true,
+  };
+
+  if (playerFormat !== "glb") {
+    const objRoot = await attachOptionalObj({
+      ...sharedOptions,
+      objUrl: playerObjUrl,
+      mtlUrl: playerMtlUrl,
+      onStatus: (message) => {
+        setPlayerModelMessage(`摩托模型：${message}`);
+      },
+      onLoaded: (_, size) => {
+        const sizeText = size ? `尺寸约 ${size.x.toFixed(1)} x ${size.y.toFixed(1)} x ${size.z.toFixed(1)}m` : "尺寸已自动归中";
+        setPlayerModelMessage(`摩托模型：OBJ 已加载并替换代理模型，${sizeText}。`);
+      },
+      onError: (error) => {
+        setPlayerModelMessage(`摩托模型：OBJ 加载失败，准备尝试 GLB。${error.message || error}`);
+      },
+    });
+    if (objRoot) return;
+  }
+
+  setPlayerModelMessage(`摩托模型：正在加载 GLB 真实资产（${playerModelUrl}）。`);
+  await attachOptionalGlb({
+    ...sharedOptions,
+    url: playerModelUrl,
+    onLoaded: (_, size) => {
+      const sizeText = size ? `尺寸约 ${size.x.toFixed(1)} x ${size.y.toFixed(1)} x ${size.z.toFixed(1)}m` : "尺寸已自动归中";
+      setPlayerModelMessage(`摩托模型：GLB 已加载并替换代理模型，${sizeText}。`);
+    },
+    onError: (error) => {
+      setPlayerModelMessage(`摩托模型：真实模型未加载，当前显示临时代理模型。${error.message || error}`);
+    },
+  });
+}
 
 attachOptionalGlb({
   url: cockpitModelUrl,
@@ -722,9 +1368,9 @@ const vfxDirector = {
     const driveIntensity = clamp(speed / maxSpeed, 0, 1);
     if (!this.firstBlastDone && progress > 0.07 && speed > maxSpeed * 0.12) {
       this.firstBlastDone = true;
-      const firstBasis = samplePathBasis(clamp(progress + 0.18, 0, 1));
+      const firstBasis = samplePathBasis(clamp(progress + 86 / routeLength, 0, 1));
       const firstSide = state.laneOffset >= 0 ? 1 : -1;
-      const firstWidth = sampleRoadWidth(progress) + 2.15;
+      const firstWidth = sampleRoadWidth(progress) + 2.8;
       this.spawnExplosion(
         new THREE.Vector3(
           firstBasis.path.x + firstBasis.rightX * firstWidth * firstSide,
@@ -739,10 +1385,10 @@ const vfxDirector = {
     if (speed < maxSpeed * 0.14 || seconds - this.lastExplosionAt < 1.35 + (1 - driveIntensity) * 0.65) return;
     if (Math.random() > 0.16 * vfxDensity + driveIntensity * 0.26) return;
 
-    const blastProgress = clamp(progress + 0.2 + Math.random() * 0.18, 0, 1);
+    const blastProgress = clamp(progress + (70 + Math.random() * 90) / routeLength, 0, 1);
     const blastBasis = samplePathBasis(blastProgress);
     const side = Math.random() > 0.5 ? 1 : -1;
-    const width = sampleRoadWidth(blastProgress) + 1.8 + Math.random() * 1.5;
+    const width = sampleRoadWidth(blastProgress) + 2.2 + Math.random() * 1.8;
     const origin = new THREE.Vector3(
       blastBasis.path.x + blastBasis.rightX * width * side,
       blastBasis.path.y,
@@ -956,7 +1602,13 @@ function createProceduralWarSanFrancisco() {
 }
 
 const splatUrl = await resolveSplatUrl();
-let proceduralWorld = null;
+const useProceduralBackdrop = showProceduralBackdrop && !marbleOnly && (!splatUrl || params.get("backdrop") === "1");
+let proceduralWorld = useProceduralBackdrop ? createProceduralWarSanFrancisco() : null;
+if (proceduralWorld) {
+  proceduralWorld.name = "procedural-chase-backdrop";
+  proceduralWorld.position.set(0, -0.35, 0);
+  scene.add(proceduralWorld);
+}
 let splat = null;
 if (splatUrl) {
   const assetSize = await readAssetSize(splatUrl);
@@ -966,20 +1618,32 @@ if (splatUrl) {
     splat.position.set(0, 3.2, -24);
     splat.scale.setScalar(4.8);
     el.assetStatus.textContent = "Sample SPZ";
-    el.assetNote.textContent = "当前是 SparkJS 示例资产，只用于排查渲染问题。正式实验请放入 Marble 导出的旧金山 .spz。";
+    setWorldAssetMessage("当前是 SparkJS 示例资产，只用于排查渲染问题。正式实验请放入 Marble 导出的旧金山 .spz。");
   } else {
-    splat.position.set(0, -0.95, -12);
-    splat.scale.setScalar(1);
+    splat.position.set(splatTransform.x, splatTransform.y, splatTransform.lead);
+    splat.rotation.set(
+      (splatTransform.flipX ? Math.PI : 0) + splatTransform.pitch,
+      splatTransform.yaw,
+      splatTransform.roll,
+    );
+    splat.scale.setScalar(splatTransform.scale);
+    splat.userData.followRoute = splatTransform.follow;
+    splat.userData.offsetX = splatTransform.x;
+    splat.userData.offsetY = splatTransform.y;
+    splat.userData.lead = splatTransform.lead;
+    splat.userData.yawOffset = splatTransform.yaw;
+    splat.userData.pitch = splatTransform.pitch;
+    splat.userData.roll = splatTransform.roll;
+    splat.userData.flipX = splatTransform.flipX;
     const isLow = splatUrl.includes("-low.");
-    el.assetStatus.textContent = isLow ? "Marble SPZ low" : "Marble SPZ";
-    el.assetNote.textContent = `已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}。当前是短程接管验证：只在可用路段内推进，避免走远后片状破碎。${isLow ? "当前是低清测试版。" : "手机请优先下载 low-res splat 并访问 ?quality=low&perf=low。"}`;
+    const isFull = splatUrl.includes("-full.");
+    el.assetStatus.textContent = isLow ? "Marble SPZ low" : isFull ? "Marble SPZ full" : "Marble SPZ";
+    setWorldAssetMessage(`已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}。当前使用本地 3000m 程序化高架赛道作为可玩骨架，Marble 资产作为电影氛围层。可用 splatScale / splatY / splatLead / splatYaw / splatFlip 调整对齐。${isLow ? "当前是低清测试版。" : "手机请优先下载 low-res splat 并访问 ?quality=low&perf=low。"}`);
   }
   scene.add(splat);
 } else {
-  proceduralWorld = createProceduralWarSanFrancisco();
-  scene.add(proceduralWorld);
   el.assetStatus.textContent = "本地代理场景";
-  el.assetNote.textContent = "还没有 Marble 导出的旧金山 .spz；当前先用本地低模战后旧金山代理场景验证手机和接管手感。";
+  setWorldAssetMessage("当前用本地 3000m 程序化高架赛道验证追逐手感；Marble/World Labs 后续只负责背景、氛围和局部资产。");
 }
 
 function resize() {
@@ -1005,7 +1669,7 @@ function updateHud() {
 
   if (!state.complete) {
     const modeName = cameraMode === "chase" ? "追车视角" : "第一人称";
-    el.branchReadout.textContent = `${modeName} / 推进 ${pursuit}% / 速度 ${Math.round(state.speed)}`;
+    el.branchReadout.textContent = `${modeName}${autoDrive ? " / 自动巡航" : ""} / ${Math.round(state.distance)}m / ${Math.round(routeLength)}m / 速度 ${Math.round(state.speed)}`;
   } else {
     if (state.pursuit > 86 && state.stability > 68) {
       el.branchReadout.textContent = "C1 / Clean Pursuit";
@@ -1022,17 +1686,46 @@ function animate(time) {
   const dt = Math.min(0.05, state.lastTime ? seconds - state.lastTime : 0.016);
   state.lastTime = seconds;
 
-  const steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
+  if (modelDebug) {
+    vehicle.visible = true;
+    state.speed = 0;
+    state.distance = 0;
+    state.pursuit = 0;
+    state.stability = 100;
+    vehicle.position.set(0, 0.22, 0);
+    vehicle.rotation.set(0, Math.sin(seconds * 0.45) * 0.18, Math.sin(seconds * 0.85) * 0.05);
+    camera.position.lerp(new THREE.Vector3(3.2, 1.7, 5.2), 0.24);
+    camera.fov = THREE.MathUtils.lerp(camera.fov, 54, 0.2);
+    camera.updateProjectionMatrix();
+    camera.lookAt(0, 0.8, 0);
+    updateHud();
+    if (composer) {
+      composer.render();
+    } else {
+      renderer.render(scene, camera);
+    }
+    if (!state.firstFramePosted) {
+      state.firstFramePosted = true;
+      window.parent?.postMessage({ type: "neon-world-ready" }, window.location.origin);
+    }
+    return;
+  }
+
+  let steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
+  if (autoDrive && !state.complete) {
+    steer += Math.sin(seconds * 0.75) * 0.42 + Math.sin(seconds * 1.9) * 0.16;
+    steer = clamp(steer, -1, 1);
+  }
 
   let driveIntensity = clamp(state.speed / maxSpeed, 0, 1);
   const steeringPower = 0.78 + driveIntensity * 0.7;
   state.heading = clamp(state.heading + steer * dt * steeringPower, -0.86, 0.86);
-  state.laneOffset = clamp(state.laneOffset + steer * dt * (4.4 + driveIntensity * 3.6), -2.85, 2.85);
+  state.laneOffset = clamp(state.laneOffset + steer * dt * (4.4 + driveIntensity * 3.6), -5.4, 5.4);
   state.laneOffset = THREE.MathUtils.lerp(state.laneOffset, 0, dt * (0.22 + driveIntensity * 0.28));
-  const acceleration = state.inputs.has("boost") ? 58 : -8;
+  const acceleration = state.inputs.has("boost") || autoDrive ? 58 : -8;
   const braking = state.inputs.has("brake") ? 48 : 0;
   state.speed = clamp(state.speed + acceleration * dt - braking * dt, 0, maxSpeed);
-  state.distance = clamp(state.distance + state.speed * dt * 0.58, 0, maxPursuitDistance);
+  state.distance = clamp(state.distance + state.speed * dt * driveDistanceScale, 0, maxPursuitDistance);
   state.pursuit = clamp((state.distance / maxPursuitDistance) * 100, 0, 100);
 
   const progress = state.distance / maxPursuitDistance;
@@ -1090,11 +1783,11 @@ function animate(time) {
   vehicle.position.y = THREE.MathUtils.lerp(vehicle.position.y, vehicleY, 0.18);
   vehicle.position.z = THREE.MathUtils.lerp(vehicle.position.z, vehicleZ, 0.18);
   vehicle.rotation.y = THREE.MathUtils.lerp(vehicle.rotation.y, tangentYaw - state.heading * 0.22, 0.16);
-  vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * 0.12, 0.18);
+  vehicle.rotation.z = THREE.MathUtils.lerp(vehicle.rotation.z, -steer * playerLean - state.laneOffset * 0.018, 0.18);
 
-  const targetProgress = clamp(progress + 0.25, 0, 1);
+  const targetProgress = clamp((state.distance + 105 + driveIntensity * 58) / routeLength, 0, 1);
   const targetBasis = samplePathBasis(targetProgress);
-  const targetLane = Math.sin(seconds * 0.9) * 0.58;
+  const targetLane = Math.sin(seconds * 0.9) * Math.min(1.3, sampleRoadWidth(targetProgress) * 0.22);
   target.position.x = targetBasis.path.x + targetBasis.rightX * targetLane;
   target.position.y = targetBasis.path.y + 0.12;
   target.position.z = targetBasis.path.z + targetBasis.rightZ * targetLane + Math.sin(seconds * 1.4) * 0.2;
@@ -1128,7 +1821,7 @@ function animate(time) {
   el.stage.dataset.impact = state.impact > 0.16 ? "hit" : "clean";
 
   for (const marker of boundaryMarkers) {
-    const markerProgress = clamp(progress + 0.015 + marker.userData.index * 0.018, 0, 1);
+    const markerProgress = clamp((state.distance + 10 + marker.userData.index * 9.5) / routeLength, 0, 1);
     const markerBasis = samplePathBasis(markerProgress);
     const markerWidth = sampleRoadWidth(markerProgress) + 0.18;
     marker.position.x = markerBasis.path.x + markerBasis.rightX * markerWidth * marker.userData.side;
@@ -1144,10 +1837,22 @@ function animate(time) {
   vfxDirector.maybeSpawnAmbientExplosion(progress, basis, state.speed, seconds);
   vfxDirector.update(dt, driveIntensity);
   el.stage.style.setProperty("--vfx-flash", String(clamp(vfxDirector.flash, 0, 0.72).toFixed(3)));
+  updateRoadSegments(state.distance, seconds);
 
   if (proceduralWorld) {
-    proceduralWorld.position.z = 4 + (state.distance % 12) * 0.12;
-    proceduralWorld.rotation.y = state.heading * 0.025;
+    proceduralWorld.position.x = THREE.MathUtils.lerp(proceduralWorld.position.x, path.x, 0.08);
+    proceduralWorld.position.y = THREE.MathUtils.lerp(proceduralWorld.position.y, path.y - 0.62, 0.08);
+    proceduralWorld.position.z = THREE.MathUtils.lerp(proceduralWorld.position.z, path.z, 0.08);
+    proceduralWorld.rotation.y = THREE.MathUtils.lerp(proceduralWorld.rotation.y, tangentYaw + state.heading * 0.025, 0.08);
+  }
+
+  if (splat?.userData.followRoute) {
+    splat.position.x = THREE.MathUtils.lerp(splat.position.x, path.x + splat.userData.offsetX, 0.08);
+    splat.position.y = THREE.MathUtils.lerp(splat.position.y, path.y + splat.userData.offsetY, 0.08);
+    splat.position.z = THREE.MathUtils.lerp(splat.position.z, path.z + splat.userData.lead, 0.08);
+    splat.rotation.x = (splat.userData.flipX ? Math.PI : 0) + splat.userData.pitch;
+    splat.rotation.y = THREE.MathUtils.lerp(splat.rotation.y, tangentYaw + splat.userData.yawOffset, 0.06);
+    splat.rotation.z = splat.userData.roll;
   }
 
   magentaLight.position.x = vehicle.position.x - 2.5;
@@ -1155,13 +1860,14 @@ function animate(time) {
   cyanLight.position.x = target.position.x + 2.1;
   cyanLight.position.z = target.position.z + 0.2;
 
-  const lookProgress = clamp(progress + 0.16 + driveIntensity * 0.1, 0, 1);
+  const lookProgress = clamp((state.distance + 58 + driveIntensity * 72) / routeLength, 0, 1);
   const lookBasis = samplePathBasis(lookProgress);
   if (cameraMode === "chase") {
     const chaseDistance = 6.2 + driveIntensity * 2.4;
-    const camX = vehicle.position.x - basis.forwardX * chaseDistance + basis.rightX * state.laneOffset * 0.28;
+    const shoulderOffset = -1.25 + Math.sin(seconds * 0.55) * 0.28;
+    const camX = vehicle.position.x - basis.forwardX * chaseDistance + basis.rightX * (state.laneOffset * 0.28 + shoulderOffset);
     const camY = 1.85 + driveIntensity * 1.25;
-    const camZ = vehicle.position.z - basis.forwardZ * chaseDistance + basis.rightZ * state.laneOffset * 0.28;
+    const camZ = vehicle.position.z - basis.forwardZ * chaseDistance + basis.rightZ * (state.laneOffset * 0.28 + shoulderOffset);
     camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.2);
     camera.fov = THREE.MathUtils.lerp(camera.fov, Math.min(90, 68 + state.speed * 0.38), 0.12);
   } else {
