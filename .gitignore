@@ -1,5 +1,6 @@
 source/video/*.mp4
 *.tmp.mp4
+tmp-*.png
 .DS_Store
 Thumbs.db
 .local/

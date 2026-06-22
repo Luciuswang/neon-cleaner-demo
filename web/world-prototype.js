@@ -8,10 +8,12 @@ import { MTLLoader } from "three/addons/loaders/MTLLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { SparkRenderer, SplatMesh } from "@sparkjsdev/spark";
 
+const BUILD_TAG = "20260622-cinematic-handoff-2";
 const HIGH_SPLAT_URL = "./worlds/a0-war-signal-500k.spz";
 const LOW_SPLAT_URL = "./worlds/a0-war-signal-low.spz";
 const FULL_SPLAT_URL = "./worlds/a0-war-signal-full.spz";
 const SAMPLE_SPLAT_URL = "https://sparkjs.dev/assets/splats/butterfly.spz";
+const DEFAULT_BRIDGE_VIDEO = "./assets/video/cgt-20260612222723-jvcsz_202606122227.mp4";
 const params = new URLSearchParams(location.search);
 const isPrewarm = params.get("prewarm") === "1";
 const perfMode = params.get("perf") || "balanced";
@@ -24,21 +26,25 @@ const visibleRoadSegments = perfMode === "high" ? 82 : perfMode === "low" ? 54 :
 const pathScale = perfMode === "high" ? 1.55 : perfMode === "low" ? 1 : 1.28;
 const maxSpeed = perfMode === "high" ? 96 : perfMode === "low" ? 62 : 82;
 const cameraMode = params.get("camera") || "chase";
+const modelDebug = params.get("modelDebug") === "1";
+const cinematicEnabled = params.get("cinematic") !== "0" && !isPrewarm && !modelDebug;
+const cinematicVideoUrl = params.get("bridgeVideo") || DEFAULT_BRIDGE_VIDEO;
+const cinematicFadeSeconds = paramNumber("cinematicFade", 0.9);
 const usePostProcessing = params.get("post") !== "0" && perfMode !== "low";
 const vfxDensity = perfMode === "high" ? 1 : perfMode === "low" ? 0.55 : 0.78;
 const playerModelUrl = params.get("player") || "./models/player-motorcycle.glb";
 const playerObjUrl = params.get("playerObj") || "./models/player-motorcycle-obj/model_1781781224363_obj.obj";
 const playerMtlUrl = params.get("playerMtl") || "./models/player-motorcycle-obj/model_1781781224363_obj.mtl";
 const playerFormat = params.get("playerFormat") || "obj";
-const cockpitModelUrl = params.get("cockpit") || "./models/player-cockpit.glb";
+const cockpitModelUrl = params.get("cockpit") || "0";
 const autoDrive = params.get("autodrive") === "1";
 const showProceduralBackdrop = params.get("backdrop") !== "0";
 const marbleOnly = params.get("marbleOnly") === "1";
-const enemyModelUrl = params.get("enemy") || "./models/enemy-car.glb";
-const playerModelScale = paramNumber("playerScale", 3.15);
-const playerModelYaw = THREE.MathUtils.degToRad(paramNumber("playerYaw", 0));
-const playerModelY = paramNumber("playerY", -0.18);
-const playerModelZ = paramNumber("playerZ", -0.15);
+const enemyModelUrl = params.get("enemy") || "0";
+const playerModelScale = paramNumber("playerScale", 3.2);
+const playerModelYaw = THREE.MathUtils.degToRad(paramNumber("playerYaw", 90));
+const playerModelY = paramNumber("playerY", 0);
+const playerModelZ = paramNumber("playerZ", 0);
 const playerLean = paramNumber("playerLean", 0.34);
 const playerModelBrightness = paramNumber("playerBright", 0.28);
 const cockpitModelScale = Number(params.get("cockpitScale")) || 1;
@@ -58,6 +64,10 @@ const splatTransform = {
 const el = {
   stage: document.querySelector(".world-stage"),
   canvas: document.getElementById("worldCanvas"),
+  cinematicBridge: document.getElementById("cinematicBridge"),
+  cinematicVideo: document.getElementById("cinematicVideo"),
+  cinematicStatus: document.getElementById("cinematicStatus"),
+  cinematicSkip: document.getElementById("cinematicSkip"),
   assetStatus: document.getElementById("assetStatus"),
   pursuitMeter: document.getElementById("pursuitMeter"),
   stabilityMeter: document.getElementById("stabilityMeter"),
@@ -74,6 +84,27 @@ const el = {
 if (isPrewarm) {
   document.body.dataset.prewarm = "true";
 }
+
+let worldAssetMessage = "";
+let playerModelMessage = "摩托模型：准备加载真实 3D 资产。";
+
+function renderAssetNote() {
+  el.assetNote.textContent = [worldAssetMessage, playerModelMessage, `Build ${BUILD_TAG}`]
+    .filter(Boolean)
+    .join(" ");
+}
+
+function setWorldAssetMessage(message) {
+  worldAssetMessage = message;
+  renderAssetNote();
+}
+
+function setPlayerModelMessage(message) {
+  playerModelMessage = message;
+  renderAssetNote();
+}
+
+renderAssetNote();
 
 window.addEventListener("message", (event) => {
   if (event.origin !== window.location.origin) return;
@@ -94,7 +125,76 @@ const state = {
   complete: false,
   inputs: new Set(),
   firstFramePosted: false,
+  cinematicActive: cinematicEnabled,
+  cinematicFinishTimer: null,
 };
+
+function completeCinematicBridge() {
+  if (!state.cinematicActive) return;
+  if (state.cinematicFinishTimer) {
+    window.clearTimeout(state.cinematicFinishTimer);
+    state.cinematicFinishTimer = null;
+  }
+  state.cinematicActive = false;
+  state.speed = Math.max(state.speed, maxSpeed * 0.78);
+  if (el.cinematicStatus) el.cinematicStatus.textContent = "接管完成，进入 3D 追车。";
+  if (el.cinematicBridge) {
+    el.cinematicBridge.classList.add("is-fading");
+    window.setTimeout(() => {
+      el.cinematicBridge.classList.add("is-gone");
+      el.cinematicBridge.hidden = true;
+      el.canvas.focus?.();
+    }, 760);
+  }
+}
+
+function setupCinematicBridge() {
+  if (!el.cinematicBridge || !el.cinematicVideo) return;
+  if (!cinematicEnabled) {
+    state.cinematicActive = false;
+    el.cinematicBridge.hidden = true;
+    return;
+  }
+
+  el.cinematicBridge.hidden = false;
+  el.cinematicBridge.classList.remove("is-fading", "is-gone");
+  el.cinematicVideo.muted = true;
+  el.cinematicVideo.playsInline = true;
+  el.cinematicVideo.src = cinematicVideoUrl;
+  el.cinematicVideo.load();
+  if (el.cinematicStatus) el.cinematicStatus.textContent = "影片播放中，3D 场景在背后预热。";
+
+  el.cinematicVideo.addEventListener("canplay", () => {
+    if (el.cinematicStatus) el.cinematicStatus.textContent = "影片播放中，3D 场景在背后预热。";
+    el.cinematicVideo.play().catch(() => {
+      if (el.cinematicStatus) el.cinematicStatus.textContent = "浏览器拦截自动播放，点击画面开始。";
+    });
+  }, { once: true });
+
+  el.cinematicVideo.addEventListener("timeupdate", () => {
+    const { currentTime, duration } = el.cinematicVideo;
+    if (!Number.isFinite(duration) || duration <= 0) return;
+    const remaining = duration - currentTime;
+    if (remaining <= cinematicFadeSeconds) {
+      el.cinematicBridge.classList.add("is-fading");
+      if (el.cinematicStatus) el.cinematicStatus.textContent = "接管窗口打开，准备无缝切入。";
+      if (!state.cinematicFinishTimer) {
+        state.cinematicFinishTimer = window.setTimeout(
+          completeCinematicBridge,
+          Math.max(120, remaining * 1000 + 80),
+        );
+      }
+    }
+  });
+
+  el.cinematicVideo.addEventListener("ended", completeCinematicBridge);
+  el.cinematicVideo.addEventListener("click", () => {
+    el.cinematicVideo.play().catch(() => {});
+  });
+  el.cinematicSkip?.addEventListener("click", completeCinematicBridge);
+}
+
+setupCinematicBridge();
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
@@ -105,7 +205,9 @@ function mix(a, b, t) {
 }
 
 function paramNumber(name, fallback) {
-  const value = Number(params.get(name));
+  const rawValue = params.get(name);
+  if (rawValue === null || rawValue === "") return fallback;
+  const value = Number(rawValue);
   return Number.isFinite(value) ? value : fallback;
 }
 
@@ -405,6 +507,33 @@ function prepareImportedModel(root, options = {}) {
   });
 }
 
+function frameImportedVehicle(root, groundClearance = 0.02) {
+  root.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(root);
+  if (box.isEmpty()) return null;
+
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  root.position.x -= center.x;
+  root.position.z -= center.z;
+  root.position.y += groundClearance - box.min.y;
+  root.updateMatrixWorld(true);
+  return size;
+}
+
+function applyFallbackVehicleMaterial(root) {
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x11131a,
+    roughness: 0.42,
+    metalness: 0.65,
+    emissive: 0x120814,
+    emissiveIntensity: 0.12,
+  });
+  root.traverse((node) => {
+    if (node.isMesh) node.material = material;
+  });
+}
+
 async function urlExists(url) {
   if (!url || url === "0" || url === "false") return false;
   try {
@@ -423,6 +552,7 @@ async function attachOptionalGlb({
   rotation = [0, 0, 0],
   scale = 1,
   emissiveIntensity = 0.08,
+  autoFrame = false,
   onLoaded = null,
   onError = null,
 }) {
@@ -439,12 +569,13 @@ async function attachOptionalGlb({
     root.position.set(...position);
     root.rotation.set(...rotation);
     root.scale.setScalar(scale);
+    const framedSize = autoFrame ? frameImportedVehicle(root) : null;
 
     if (hideFallback) {
       setGroupChildrenVisible(parent, false);
     }
     parent.add(root);
-    onLoaded?.(root);
+    onLoaded?.(root, framedSize);
     return root;
   } catch (error) {
     console.warn(`Could not load GLB model from ${url}`, error);
@@ -462,6 +593,8 @@ async function attachOptionalObj({
   rotation = [0, 0, 0],
   scale = 1,
   emissiveIntensity = 0.08,
+  autoFrame = false,
+  onStatus = null,
   onLoaded = null,
   onError = null,
 }) {
@@ -473,25 +606,33 @@ async function attachOptionalObj({
   try {
     const basePath = mtlUrl.slice(0, mtlUrl.lastIndexOf("/") + 1);
     const mtlFile = mtlUrl.slice(mtlUrl.lastIndexOf("/") + 1);
-    const mtlLoader = new MTLLoader();
-    mtlLoader.setPath(basePath);
-    mtlLoader.setResourcePath(basePath);
-    const materials = await mtlLoader.loadAsync(mtlFile);
-    materials.preload();
+    let materials = null;
+    try {
+      const mtlLoader = new MTLLoader();
+      mtlLoader.setPath(basePath);
+      mtlLoader.setResourcePath(basePath);
+      materials = await mtlLoader.loadAsync(mtlFile);
+      materials.preload();
+    } catch (materialError) {
+      console.warn(`Could not load OBJ material from ${mtlUrl}; continuing with fallback material.`, materialError);
+      onStatus?.(`OBJ 材质读取失败，已改用备用金属材质：${materialError.message || materialError}`);
+    }
 
     const objLoader = new OBJLoader();
-    objLoader.setMaterials(materials);
+    if (materials) objLoader.setMaterials(materials);
     const root = await objLoader.loadAsync(objUrl);
+    if (!materials) applyFallbackVehicleMaterial(root);
     prepareImportedModel(root, { emissiveIntensity });
     root.position.set(...position);
     root.rotation.set(...rotation);
     root.scale.setScalar(scale);
+    const framedSize = autoFrame ? frameImportedVehicle(root) : null;
 
     if (hideFallback) {
       setGroupChildrenVisible(parent, false);
     }
     parent.add(root);
-    onLoaded?.(root);
+    onLoaded?.(root, framedSize);
     return root;
   } catch (error) {
     console.warn(`Could not load OBJ model from ${objUrl}`, error);
@@ -985,6 +1126,15 @@ target.scale.setScalar(1.08);
 target.position.set(1.6, 0.52, -28);
 scene.add(target);
 
+if (modelDebug) {
+  target.visible = false;
+  guide.visible = false;
+  trackRibbon.visible = false;
+  speedLayer.visible = false;
+  boundaryLayer.visible = false;
+  setPlayerModelMessage("摩托模型：调试模式已开启，模型会固定在镜头前；若仍是简陋代理，说明真实资产没有加载成功。");
+}
+
 if (marbleOnly) {
   modularRoad.visible = false;
   vehicle.visible = false;
@@ -998,6 +1148,7 @@ if (marbleOnly) {
 attachPlayerVehicleModel();
 
 async function attachPlayerVehicleModel() {
+  setPlayerModelMessage(`摩托模型：正在加载 OBJ 真实资产（${playerObjUrl}）。`);
   const sharedOptions = {
     parent: vehicle,
     hideFallback: true,
@@ -1005,6 +1156,7 @@ async function attachPlayerVehicleModel() {
     rotation: [0, playerModelYaw, 0],
     scale: playerModelScale,
     emissiveIntensity: playerModelBrightness,
+    autoFrame: true,
   };
 
   if (playerFormat !== "glb") {
@@ -1012,21 +1164,30 @@ async function attachPlayerVehicleModel() {
       ...sharedOptions,
       objUrl: playerObjUrl,
       mtlUrl: playerMtlUrl,
-      onLoaded: () => {
-        el.branchReadout.textContent = "追车视角 / 真实摩托 OBJ 模型已加载 / 自动巡航";
+      onStatus: (message) => {
+        setPlayerModelMessage(`摩托模型：${message}`);
+      },
+      onLoaded: (_, size) => {
+        const sizeText = size ? `尺寸约 ${size.x.toFixed(1)} x ${size.y.toFixed(1)} x ${size.z.toFixed(1)}m` : "尺寸已自动归中";
+        setPlayerModelMessage(`摩托模型：OBJ 已加载并替换代理模型，${sizeText}。`);
+      },
+      onError: (error) => {
+        setPlayerModelMessage(`摩托模型：OBJ 加载失败，准备尝试 GLB。${error.message || error}`);
       },
     });
     if (objRoot) return;
   }
 
+  setPlayerModelMessage(`摩托模型：正在加载 GLB 真实资产（${playerModelUrl}）。`);
   await attachOptionalGlb({
     ...sharedOptions,
     url: playerModelUrl,
-    onLoaded: () => {
-      el.branchReadout.textContent = "追车视角 / 真实摩托 GLB 模型已加载 / 自动巡航";
+    onLoaded: (_, size) => {
+      const sizeText = size ? `尺寸约 ${size.x.toFixed(1)} x ${size.y.toFixed(1)} x ${size.z.toFixed(1)}m` : "尺寸已自动归中";
+      setPlayerModelMessage(`摩托模型：GLB 已加载并替换代理模型，${sizeText}。`);
     },
-    onError: () => {
-      el.branchReadout.textContent = "追车视角 / 摩托真实模型未加载，当前显示临时代理模型";
+    onError: (error) => {
+      setPlayerModelMessage(`摩托模型：真实模型未加载，当前显示临时代理模型。${error.message || error}`);
     },
   });
 }
@@ -1457,7 +1618,7 @@ if (splatUrl) {
     splat.position.set(0, 3.2, -24);
     splat.scale.setScalar(4.8);
     el.assetStatus.textContent = "Sample SPZ";
-    el.assetNote.textContent = "当前是 SparkJS 示例资产，只用于排查渲染问题。正式实验请放入 Marble 导出的旧金山 .spz。";
+    setWorldAssetMessage("当前是 SparkJS 示例资产，只用于排查渲染问题。正式实验请放入 Marble 导出的旧金山 .spz。");
   } else {
     splat.position.set(splatTransform.x, splatTransform.y, splatTransform.lead);
     splat.rotation.set(
@@ -1477,12 +1638,12 @@ if (splatUrl) {
     const isLow = splatUrl.includes("-low.");
     const isFull = splatUrl.includes("-full.");
     el.assetStatus.textContent = isLow ? "Marble SPZ low" : isFull ? "Marble SPZ full" : "Marble SPZ";
-    el.assetNote.textContent = `已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}。当前使用本地 3000m 程序化高架赛道作为可玩骨架，Marble 资产作为电影氛围层。可用 splatScale / splatY / splatLead / splatYaw / splatFlip 调整对齐。${isLow ? "当前是低清测试版。" : "手机请优先下载 low-res splat 并访问 ?quality=low&perf=low。"}`;
+    setWorldAssetMessage(`已加载 Marble 世界资产${assetSize ? `（${assetSize}）` : ""}。当前使用本地 3000m 程序化高架赛道作为可玩骨架，Marble 资产作为电影氛围层。可用 splatScale / splatY / splatLead / splatYaw / splatFlip 调整对齐。${isLow ? "当前是低清测试版。" : "手机请优先下载 low-res splat 并访问 ?quality=low&perf=low。"}`);
   }
   scene.add(splat);
 } else {
   el.assetStatus.textContent = "本地代理场景";
-  el.assetNote.textContent = "当前用本地 3000m 程序化高架赛道验证追逐手感；Marble/World Labs 后续只负责背景、氛围和局部资产。";
+  setWorldAssetMessage("当前用本地 3000m 程序化高架赛道验证追逐手感；Marble/World Labs 后续只负责背景、氛围和局部资产。");
 }
 
 function resize() {
@@ -1524,6 +1685,31 @@ function animate(time) {
   const seconds = time * 0.001;
   const dt = Math.min(0.05, state.lastTime ? seconds - state.lastTime : 0.016);
   state.lastTime = seconds;
+
+  if (modelDebug) {
+    vehicle.visible = true;
+    state.speed = 0;
+    state.distance = 0;
+    state.pursuit = 0;
+    state.stability = 100;
+    vehicle.position.set(0, 0.22, 0);
+    vehicle.rotation.set(0, Math.sin(seconds * 0.45) * 0.18, Math.sin(seconds * 0.85) * 0.05);
+    camera.position.lerp(new THREE.Vector3(3.2, 1.7, 5.2), 0.24);
+    camera.fov = THREE.MathUtils.lerp(camera.fov, 54, 0.2);
+    camera.updateProjectionMatrix();
+    camera.lookAt(0, 0.8, 0);
+    updateHud();
+    if (composer) {
+      composer.render();
+    } else {
+      renderer.render(scene, camera);
+    }
+    if (!state.firstFramePosted) {
+      state.firstFramePosted = true;
+      window.parent?.postMessage({ type: "neon-world-ready" }, window.location.origin);
+    }
+    return;
+  }
 
   let steer = Number(state.inputs.has("right")) - Number(state.inputs.has("left"));
   if (autoDrive && !state.complete) {
@@ -1678,9 +1864,10 @@ function animate(time) {
   const lookBasis = samplePathBasis(lookProgress);
   if (cameraMode === "chase") {
     const chaseDistance = 6.2 + driveIntensity * 2.4;
-    const camX = vehicle.position.x - basis.forwardX * chaseDistance + basis.rightX * state.laneOffset * 0.28;
+    const shoulderOffset = -1.25 + Math.sin(seconds * 0.55) * 0.28;
+    const camX = vehicle.position.x - basis.forwardX * chaseDistance + basis.rightX * (state.laneOffset * 0.28 + shoulderOffset);
     const camY = 1.85 + driveIntensity * 1.25;
-    const camZ = vehicle.position.z - basis.forwardZ * chaseDistance + basis.rightZ * state.laneOffset * 0.28;
+    const camZ = vehicle.position.z - basis.forwardZ * chaseDistance + basis.rightZ * (state.laneOffset * 0.28 + shoulderOffset);
     camera.position.lerp(new THREE.Vector3(camX, camY, camZ), 0.2);
     camera.fov = THREE.MathUtils.lerp(camera.fov, Math.min(90, 68 + state.speed * 0.38), 0.12);
   } else {
