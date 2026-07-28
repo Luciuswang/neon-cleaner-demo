@@ -4,3 +4,12 @@ tmp-*.png
 .DS_Store
 Thumbs.db
 .local/
+ue/**/.vs/
+ue/**/Binaries/
+ue/**/Build/
+ue/**/DerivedDataCache/
+ue/**/Intermediate/
+ue/**/Saved/
+ue/Builds/
+ue/**/*.sln
+ue/**/.vsconfig
