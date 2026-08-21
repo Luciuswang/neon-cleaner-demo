@@ -163,6 +163,9 @@ docs/video/topview-storyboard-stills.json
 docs/video/next-step-storyboard-stills.md
 docs/video/topview-local-comfyui-storyboard-template.md
 docs/video/topview-local-comfyui-storyboard.json
+docs/character-continuity-pipeline.md
+docs/ue-heroine-character-brief.md
+docs/ue-install-checklist.md
 tools/comfy/print_storyboard_still_prompt.mjs
 tools/comfy/print_storyboard_prompt.mjs
 tools/comfy/build_storyboard_t2v_workflow.mjs
@@ -173,3 +176,55 @@ web/script.js
 web/assets/neon-cleaner-bg-noaudio.mp4
 web/assets/neon-cleaner-keyframe.png
 ```
+
+## Character continuity update
+
+The next UE-facing production rule is:
+
+```text
+UE character is the source of truth. AI video is generated from UE references.
+```
+
+Start from:
+
+```text
+docs/character-continuity-pipeline.md
+docs/ue-heroine-character-brief.md
+docs/ue-install-checklist.md
+ue/NeonCleanerUE/Docs/CharacterContinuity-Day2.md
+source/reference/linxia/README.md
+```
+
+## UE Playable Lin Xia Preview - 2026-08-21
+
+Current local UE status:
+
+- Engine: Unreal Engine 5.8, installed at `C:\Program Files\Epic Games\UE_5.8`.
+- Project: `ue/NeonCleanerUE/NeonCleanerUE.uproject`.
+- Startup map: `/Game/LinxiaPreview/LVL_Linxia_CharacterPreview`.
+- Playable C++ character: `/Script/NeonCleanerUE.PlayablePhaseCharacter`.
+- Character source asset: Epic/Fab `Paragon: Phase`.
+- Controls: `WASD` / arrow keys to move, mouse to look, `Space` to jump.
+
+Important repository note:
+
+```text
+ue/NeonCleanerUE/Content/ParagonPhase/
+```
+
+is intentionally not committed because this GitHub repo is public and that folder contains Epic/Fab Marketplace content. Restore it from the user's Epic/Fab library instead of redistributing it through GitHub.
+
+To restore this preview on another PC:
+
+1. Install Unreal Engine 5.8 through Epic Games Launcher.
+2. Clone this repo and open `ue/NeonCleanerUE/NeonCleanerUE.uproject`.
+3. In Epic/Fab Library, add `Paragon: Phase` to this UE project.
+4. Run these scripts from UE or through `UnrealEditor.exe -ExecutePythonScript=...`:
+
+```text
+ue/scripts/tune_phase_hair_materials.py
+ue/scripts/create_linxia_preview_level.py
+ue/scripts/validate_linxia_preview_level.py
+```
+
+The critical fix for the skating/sideways animation issue is in `PlayablePhaseCharacter`: the Phase skeletal mesh must keep the original Paragon relative transform, especially mesh yaw `-90` / `270` degrees. Do not reset the mesh component rotation to zero.

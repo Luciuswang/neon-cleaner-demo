@@ -1,6 +1,21 @@
 source/video/*.mp4
 *.tmp.mp4
+*.tmp
 tmp-*.png
 .DS_Store
 Thumbs.db
 .local/
+node_modules/
+docs/presentations/**/pptx_unzip/
+ue/**/.vs/
+ue/**/Binaries/
+ue/**/Build/
+ue/**/DerivedDataCache/
+ue/**/Intermediate/
+ue/**/Saved/
+ue/Builds/
+ue/**/*.sln
+ue/**/.vsconfig
+
+# Third-party Epic/Fab Marketplace assets are restored from the user's Epic library.
+ue/NeonCleanerUE/Content/ParagonPhase/
