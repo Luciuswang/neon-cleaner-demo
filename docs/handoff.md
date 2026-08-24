@@ -262,3 +262,25 @@ powershell -ExecutionPolicy Bypass -File ue/Capture-LinxiaReference.ps1
 
 The capture uses `-LinxiaReferencePose` so the gameplay animation blueprint stays
 unchanged during normal play.
+
+## Cross-PC Sync - 2026-08-24
+
+Use GitHub plus repo-local handoff docs as the project memory across the user's
+home PC and two office PCs. At the start of any session, run:
+
+```powershell
+.\sync_project_start.ps1
+```
+
+At the end of a productive session, run:
+
+```powershell
+.\sync_project_finish.ps1 -Note "what changed / what is next" -CommitMessage "short commit message" -Push
+```
+
+Codex should read `AGENTS.md` first when the user says "start Neon Cleaner" or
+asks to continue this project from another PC.
+
+## Cross-PC Sync Note - 2026-08-24 13:56 +08:00
+
+Added cross-PC Codex project sync entrypoint: AGENTS.md, docs/project-sync.md, start sync script, and finish sync script. Future sessions should run sync_project_start.ps1 before work and sync_project_finish.ps1 at handoff.

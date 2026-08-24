@@ -64,6 +64,27 @@ docs/handoff.md
 
 新环境里让 Codex 先阅读 `README.md` 和 `docs/handoff.md`，就可以从当前状态继续。
 
+## 三台电脑同步继续
+
+每次开始工作先运行：
+
+```powershell
+.\sync_project_start.ps1
+```
+
+每次结束工作用：
+
+```powershell
+.\sync_project_finish.ps1 -Note "今天做了什么 / 下一步是什么" -CommitMessage "short commit message" -Push
+```
+
+详细说明：
+
+```text
+AGENTS.md
+docs/project-sync.md
+```
+
 ## 3D 接管实验
 
 第一版 World Labs / Marble 接管实验页：
