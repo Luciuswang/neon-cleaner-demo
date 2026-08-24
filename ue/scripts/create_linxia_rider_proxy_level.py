@@ -126,7 +126,18 @@ def set_bone_rotation(component, bone_name, pitch, yaw, roll):
         component.set_bone_rotation_by_name(
             bone_name,
             unreal.Rotator(pitch, yaw, roll),
-            unreal.BoneSpaces.PARENT_BONE_SPACE,
+            unreal.BoneSpaces.COMPONENT_SPACE,
+        )
+    except Exception:
+        pass
+
+
+def set_bone_location(component, bone_name, x, y, z):
+    try:
+        component.set_bone_location_by_name(
+            bone_name,
+            unreal.Vector(x, y, z),
+            unreal.BoneSpaces.COMPONENT_SPACE,
         )
     except Exception:
         pass
@@ -194,15 +205,25 @@ def spawn_poseable_rider(mesh):
         pose_comp.set_skeletal_mesh(mesh)
     set_prop(pose_comp, "mobility", unreal.ComponentMobility.MOVABLE)
 
-    # Static handoff pose: seated lean, arms toward bars, legs hidden partly by side fairings.
-    for bone in ["pelvis", "spine_01", "spine_02", "spine_03"]:
-        set_bone_rotation(pose_comp, bone, -8.0, 0.0, 0.0)
-    for side, yaw in [("l", -12.0), ("r", 12.0)]:
-        set_bone_rotation(pose_comp, f"upperarm_{side}", -38.0, yaw, 8.0 if side == "l" else -8.0)
-        set_bone_rotation(pose_comp, f"lowerarm_{side}", -46.0, yaw, 0.0)
-        set_bone_rotation(pose_comp, f"thigh_{side}", -68.0, yaw * 0.2, 0.0)
-        set_bone_rotation(pose_comp, f"calf_{side}", 72.0, 0.0, 0.0)
-        set_bone_rotation(pose_comp, f"foot_{side}", -18.0, 0.0, 0.0)
+    # Static handoff pose: seated lean, hands near bars, feet near pegs.
+    set_bone_rotation(pose_comp, "pelvis", -18.0, 0.0, 0.0)
+    set_bone_rotation(pose_comp, "spine_01", -22.0, 0.0, 0.0)
+    set_bone_rotation(pose_comp, "spine_02", -30.0, 0.0, 0.0)
+    set_bone_rotation(pose_comp, "spine_03", -36.0, 0.0, 0.0)
+    set_bone_rotation(pose_comp, "neck_01", 16.0, 0.0, 0.0)
+    set_bone_rotation(pose_comp, "head", 10.0, 0.0, 0.0)
+
+    set_bone_location(pose_comp, "hand_l", 132.0, -34.0, 115.0)
+    set_bone_location(pose_comp, "hand_r", 132.0, 34.0, 115.0)
+    set_bone_location(pose_comp, "foot_l", 52.0, -46.0, 45.0)
+    set_bone_location(pose_comp, "foot_r", 52.0, 46.0, 45.0)
+    for side, yaw in [("l", -18.0), ("r", 18.0)]:
+        set_bone_rotation(pose_comp, f"clavicle_{side}", -22.0, yaw, 0.0)
+        set_bone_rotation(pose_comp, f"upperarm_{side}", -58.0, yaw, 0.0)
+        set_bone_rotation(pose_comp, f"lowerarm_{side}", -72.0, yaw, 0.0)
+        set_bone_rotation(pose_comp, f"thigh_{side}", -82.0, yaw * 0.15, 0.0)
+        set_bone_rotation(pose_comp, f"calf_{side}", 96.0, yaw * 0.1, 0.0)
+        set_bone_rotation(pose_comp, f"foot_{side}", -28.0, 0.0, 0.0)
 
     try:
         pose_comp.refresh_bone_transforms()
@@ -261,6 +282,10 @@ def setup_level():
     add_box("NC_Motorcycle_RearSwingarm_L", cube, mat_graphite, -86.0, -26.0, 66.0, 1.12, 0.045, 0.08, pitch=8.0)
     add_box("NC_Motorcycle_RearSwingarm_R", cube, mat_graphite, -86.0, 26.0, 66.0, 1.12, 0.045, 0.08, pitch=8.0)
     add_box("NC_Motorcycle_Handlebar", cube, mat_graphite, 78.0, 0.0, 128.0, 0.08, 0.72, 0.05)
+    add_box("NC_Motorcycle_LeftGrip", cube, mat_graphite, 78.0, -48.0, 126.0, 0.18, 0.08, 0.06, yaw=-16.0)
+    add_box("NC_Motorcycle_RightGrip", cube, mat_graphite, 78.0, 48.0, 126.0, 0.18, 0.08, 0.06, yaw=16.0)
+    add_box("NC_Motorcycle_LeftFootPeg", cube, mat_graphite, 2.0, -54.0, 48.0, 0.28, 0.055, 0.04)
+    add_box("NC_Motorcycle_RightFootPeg", cube, mat_graphite, 2.0, 54.0, 48.0, 0.28, 0.055, 0.04)
     add_box("NC_Motorcycle_NoseLight_Cyan", cube, mat_cyan, 166.0, 0.0, 104.0, 0.18, 0.34, 0.055, pitch=-8.0)
     add_box("NC_Motorcycle_SideAccent_Magenta_L", cube, mat_magenta, -12.0, -38.0, 107.0, 1.55, 0.035, 0.055, pitch=-3.0)
     add_box("NC_Motorcycle_SideAccent_Magenta_R", cube, mat_magenta, -12.0, 38.0, 107.0, 1.55, 0.035, 0.055, pitch=-3.0)
@@ -347,7 +372,7 @@ def setup_level():
     set_prop(rear_camera.camera_component, "field_of_view", 34.0)
 
     try:
-        unreal.get_editor_subsystem(unreal.EditorActorSubsystem).set_selected_level_actors([rider, handoff_camera])
+        unreal.get_editor_subsystem(unreal.EditorActorSubsystem).set_selected_level_actors([])
     except Exception:
         pass
     unreal.EditorLevelLibrary.set_level_viewport_camera_info(

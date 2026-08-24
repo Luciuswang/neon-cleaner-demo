@@ -2,7 +2,11 @@ import unreal
 
 
 LEVEL = "/Game/LinxiaRiderProxy/LVL_Linxia_RiderProxy"
-CAMERA_LABEL = "Linxia_Rider_HandoffCamera"
+CAMERA_BY_VIEW = {
+    "handoff": "Linxia_Rider_HandoffCamera",
+    "side": "Linxia_Rider_SideCamera",
+    "rear": "Linxia_Rider_RearCamera",
+}
 
 
 def log(message):
@@ -10,14 +14,22 @@ def log(message):
 
 
 def main():
+    command_line = unreal.SystemLibrary.get_command_line()
+    view = "handoff"
+    marker = "-LinxiaRiderProxyView="
+    for token in command_line.split():
+        if token.startswith(marker):
+            view = token[len(marker):].strip().lower()
+    camera_label = CAMERA_BY_VIEW.get(view, CAMERA_BY_VIEW["handoff"])
+
     unreal.EditorLevelLibrary.load_level(LEVEL)
     by_label = {
         actor.get_actor_label(): actor
         for actor in unreal.EditorLevelLibrary.get_all_level_actors()
     }
-    camera = by_label.get(CAMERA_LABEL)
+    camera = by_label.get(camera_label)
     if camera is None:
-        raise RuntimeError("Missing camera actor: " + CAMERA_LABEL)
+        raise RuntimeError("Missing camera actor: " + camera_label)
 
     try:
         actor_subsystem = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
@@ -31,7 +43,7 @@ def main():
     )
     unreal.SystemLibrary.execute_console_command(None, "viewmode lit")
     unreal.SystemLibrary.execute_console_command(None, "showflag.BillboardSprites 0")
-    log("Focused handoff viewport on " + CAMERA_LABEL)
+    log("Focused " + view + " viewport on " + camera_label)
 
 
 main()

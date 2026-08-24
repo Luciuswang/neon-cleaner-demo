@@ -68,6 +68,12 @@ public class Win32WindowTools {
 
   [DllImport("user32.dll")]
   public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+
+  [DllImport("user32.dll")]
+  public static extern bool SetCursorPos(int X, int Y);
+
+  [DllImport("user32.dll")]
+  public static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, UIntPtr dwExtraInfo);
 }
 '@
   }
@@ -86,11 +92,30 @@ public class Win32WindowTools {
 
   $rect = New-Object Win32WindowTools+RECT
   [Win32WindowTools]::GetWindowRect($window.MainWindowHandle, [ref]$rect) | Out-Null
+  [Win32WindowTools]::SetCursorPos($rect.Left + 240, $rect.Top + 360) | Out-Null
+  [Win32WindowTools]::mouse_event(0x0002, 0, 0, 0, [UIntPtr]::Zero)
+  [Win32WindowTools]::mouse_event(0x0004, 0, 0, 0, [UIntPtr]::Zero)
+  [System.Windows.Forms.SendKeys]::SendWait("g")
+  Start-Sleep -Seconds 2
+
+  [Win32WindowTools]::GetWindowRect($window.MainWindowHandle, [ref]$rect) | Out-Null
   $width = [Math]::Max(1, $rect.Right - $rect.Left)
   $height = [Math]::Max(1, $rect.Bottom - $rect.Top)
-  $bitmap = New-Object System.Drawing.Bitmap $width, $height
+  $viewportLeft = 6
+  $viewportTop = 137
+  $viewportRightInset = 386
+  $viewportBottomInset = 177
+  $captureWidth = [Math]::Max(1, $width - $viewportLeft - $viewportRightInset)
+  $captureHeight = [Math]::Max(1, $height - $viewportTop - $viewportBottomInset)
+  $bitmap = New-Object System.Drawing.Bitmap $captureWidth, $captureHeight
   $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
-  $graphics.CopyFromScreen($rect.Left, $rect.Top, 0, 0, $bitmap.Size)
+  $graphics.CopyFromScreen(
+    $rect.Left + $viewportLeft,
+    $rect.Top + $viewportTop,
+    0,
+    0,
+    $bitmap.Size
+  )
   $bitmap.Save($outFile, [System.Drawing.Imaging.ImageFormat]::Png)
   $graphics.Dispose()
   $bitmap.Dispose()

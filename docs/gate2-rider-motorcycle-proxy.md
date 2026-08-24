@@ -63,6 +63,22 @@ Rear wheel z: 43.0
 Handoff camera: low rear-three-quarter, FOV 36
 ```
 
+Capture:
+
+```powershell
+.\ue\Capture-LinxiaRiderProxy.ps1
+```
+
+Current capture:
+
+```text
+source/reference/linxia/ue-captures/linxia_rider_proxy_handoff_2026-08-24.png
+```
+
+The capture script crops the editor viewport and enters Game View before
+capturing, so the proof image no longer includes the Unreal menu bar, side
+panels, light icons, or selection outlines.
+
 ## Producer Notes
 
 - `PlayablePhaseCharacter` was not modified.
@@ -74,5 +90,7 @@ Handoff camera: low rear-three-quarter, FOV 36
 - The current rider pose is still a silhouette proxy. It is better for judging
   scale, camera direction, and handoff composition, but not enough for final
   rider animation or AI video generation.
+- `ue/scripts/inspect_phase_bones.py` logs the key Phase skeleton bone names
+  for the next pose pass.
 - Do not restart AI still or video generation until QA reviews this level and a
   UE reference capture pack exists.
