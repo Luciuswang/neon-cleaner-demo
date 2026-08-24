@@ -49,7 +49,7 @@ def main():
     if pawn.get_editor_property("auto_possess_player") != unreal.AutoReceiveInput.PLAYER0:
         raise RuntimeError("Motorcycle pawn is not set to auto possess Player0")
 
-    skeletal = pawn.get_component_by_class(unreal.SkeletalMeshComponent)
+    skeletal = pawn.get_component_by_class(unreal.PoseableMeshComponent)
     if skeletal is None:
         raise RuntimeError("Motorcycle pawn has no visible Lin Xia skeletal mesh")
     mesh = skeletal.get_editor_property("skeletal_mesh")

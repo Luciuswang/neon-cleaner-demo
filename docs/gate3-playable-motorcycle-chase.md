@@ -99,13 +99,18 @@ powershell -ExecutionPolicy Bypass -File .\ue\Run-LinxiaMotorcycleChase.ps1
 
 `Paragon: Phase` is a normal combat character with a valid skeleton and many
 combat / locomotion animations, but no motorcycle / seated / riding animation
-was found in the local asset set. The current rider pose uses an existing Phase
-animation as a temporary approximation.
+was found in the local asset set.
+
+The current rider pose now uses `UPoseableMeshComponent` with local
+bone-space deltas copied from the Phase reference pose. This avoids the earlier
+component-space pose failure that could rotate the whole character sideways.
+It has passed background build / validation / smoke tests, but still needs a
+visual QA pass after the desktop is unlocked.
 
 Next quality step:
 
 - Import or create a seated motorcycle rider animation.
 - Retarget it onto `phase_Skeleton`.
-- Replace the temporary rider animation in `ALinxiaMotorcyclePawn`.
+- Replace or refine the local rider pose in `ALinxiaMotorcyclePawn`.
 - Re-run visual QA before using this frame as the final AI-video continuity
 reference.

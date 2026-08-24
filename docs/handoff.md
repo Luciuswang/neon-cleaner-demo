@@ -2,6 +2,11 @@
 
 Last updated: 2026-06-08
 
+## Away contact
+
+- If Baomin is away and user approval is truly required, contact:
+  `baomin.wang@garena.com`.
+
 ## Repo and live demo
 
 - GitHub repo: https://github.com/Luciuswang/neon-cleaner-demo

@@ -5,8 +5,8 @@
 #include "LinxiaMotorcyclePawn.generated.h"
 
 class UCameraComponent;
+class UPoseableMeshComponent;
 class USceneComponent;
-class USkeletalMeshComponent;
 class USpringArmComponent;
 class UStaticMeshComponent;
 
@@ -32,6 +32,7 @@ private:
 	void RunSmokeTest(float DeltaSeconds);
 	void ResetToStart();
 	void UpdateTargetDistanceLog();
+	void ApplyRiderLocalPose();
 	void ApplyMaterial(UStaticMeshComponent* Component, const TCHAR* MaterialPath);
 
 	float CurrentSpeed = 0.0f;
@@ -88,7 +89,7 @@ private:
 	TObjectPtr<UStaticMeshComponent> NoseLight;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
-	TObjectPtr<USkeletalMeshComponent> RiderMesh;
+	TObjectPtr<UPoseableMeshComponent> RiderMesh;
 
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 	TObjectPtr<USpringArmComponent> CameraBoom;

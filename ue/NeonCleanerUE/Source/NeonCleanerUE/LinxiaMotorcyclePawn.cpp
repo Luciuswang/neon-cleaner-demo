@@ -1,9 +1,9 @@
 #include "LinxiaMotorcyclePawn.h"
 
-#include "Animation/AnimationAsset.h"
 #include "Camera/CameraComponent.h"
-#include "Components/SkeletalMeshComponent.h"
+#include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Engine/SkeletalMesh.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -28,7 +28,6 @@ constexpr float CameraFollowInterp = 7.5f;
 constexpr float SmokeTestDuration = 4.0f;
 
 const TCHAR* PhaseMeshPath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC");
-const TCHAR* PhaseRideApproximationPath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Animations/RMB_Loop.RMB_Loop");
 }
 
 ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
@@ -48,7 +47,6 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ImportedBikeMesh(TEXT("/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle"));
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> PhaseMesh(PhaseMeshPath);
-	static ConstructorHelpers::FObjectFinder<UAnimationAsset> PhaseRideApproximation(PhaseRideApproximationPath);
 
 	const bool bHasImportedBike = ImportedBikeMesh.Succeeded();
 
@@ -126,17 +124,11 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	NoseLight->SetVisibility(!bHasImportedBike, true);
 	NoseLight->SetHiddenInGame(bHasImportedBike);
 
-	RiderMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LinxiaRiderMesh"));
+	RiderMesh = CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("LinxiaRiderMesh"));
 	RiderMesh->SetupAttachment(VisualRoot);
 	if (PhaseMesh.Succeeded())
 	{
-		RiderMesh->SetSkeletalMesh(PhaseMesh.Object);
-	}
-	if (PhaseRideApproximation.Succeeded())
-	{
-		RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-		RiderMesh->SetAnimation(PhaseRideApproximation.Object);
-		RiderMesh->PlayAnimation(PhaseRideApproximation.Object, true);
+		RiderMesh->SetSkinnedAssetAndUpdate(PhaseMesh.Object);
 	}
 	RiderMesh->SetRelativeLocation(FVector(8.0f, 0.0f, 20.0f));
 	RiderMesh->SetRelativeRotation(FRotator(-11.0f, 270.0f, 0.0f));
@@ -198,6 +190,7 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	ApplyMaterial(RearWheel, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_RubberBlack.M_NC_RubberBlack"));
 	ApplyMaterial(Handlebar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(NoseLight, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_CyanDiagnostic.M_NC_CyanDiagnostic"));
+	ApplyRiderLocalPose();
 
 	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
 	{
@@ -396,6 +389,63 @@ void ALinxiaMotorcyclePawn::UpdateTargetDistanceLog()
 		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] ChaseTargetDistance=%.1f"), Distance);
 		LastTargetDistance = Distance;
 	}
+}
+
+void ALinxiaMotorcyclePawn::ApplyRiderLocalPose()
+{
+	if (!RiderMesh)
+	{
+		return;
+	}
+
+	const USkeletalMesh* SkeletalMesh = Cast<USkeletalMesh>(RiderMesh->GetSkinnedAsset());
+	if (!SkeletalMesh)
+	{
+		return;
+	}
+
+	const FReferenceSkeleton& ReferenceSkeleton = SkeletalMesh->GetRefSkeleton();
+	const TArray<FTransform>& RefPose = ReferenceSkeleton.GetRefBonePose();
+	if (RefPose.Num() == 0)
+	{
+		return;
+	}
+
+	RiderMesh->BoneSpaceTransforms = RefPose;
+
+	const auto AddLocalRotation = [this, &ReferenceSkeleton](const FName BoneName, const FRotator DeltaRotation)
+	{
+		const int32 BoneIndex = ReferenceSkeleton.FindBoneIndex(BoneName);
+		if (RiderMesh->BoneSpaceTransforms.IsValidIndex(BoneIndex))
+		{
+			FTransform& Transform = RiderMesh->BoneSpaceTransforms[BoneIndex];
+			const FQuat Rotated = (DeltaRotation.Quaternion() * Transform.GetRotation()).GetNormalized();
+			Transform.SetRotation(Rotated);
+		}
+	};
+
+	// Keep the pose conservative: a readable forward lean and bent limbs without overwriting absolute bone axes.
+	AddLocalRotation(TEXT("pelvis"), FRotator(-8.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("spine_01"), FRotator(-10.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("spine_02"), FRotator(-10.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("spine_03"), FRotator(-8.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("neck_01"), FRotator(8.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("head"), FRotator(4.0f, 0.0f, 0.0f));
+
+	for (const TPair<FString, float>& Side : { TPair<FString, float>(TEXT("l"), -1.0f), TPair<FString, float>(TEXT("r"), 1.0f) })
+	{
+		const FString& Suffix = Side.Key;
+		const float Sign = Side.Value;
+		AddLocalRotation(*FString::Printf(TEXT("clavicle_%s"), *Suffix), FRotator(-10.0f, Sign * 5.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("upperarm_%s"), *Suffix), FRotator(-28.0f, Sign * 10.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("lowerarm_%s"), *Suffix), FRotator(-30.0f, Sign * 4.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("thigh_%s"), *Suffix), FRotator(-38.0f, Sign * 5.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("calf_%s"), *Suffix), FRotator(52.0f, 0.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("foot_%s"), *Suffix), FRotator(-14.0f, 0.0f, 0.0f));
+	}
+
+	RiderMesh->MarkRefreshTransformDirty();
+	RiderMesh->RefreshBoneTransforms();
 }
 
 void ALinxiaMotorcyclePawn::ApplyMaterial(UStaticMeshComponent* Component, const TCHAR* MaterialPath)
