@@ -12,7 +12,7 @@ The Day 2 goal is not final character art. The goal is to prove that a UE
 character source can drive AI video references and then cut back into gameplay
 without identity shock.
 
-## Current UE Starting Point
+## Historical Day 1 Starting Point
 
 - Project: `ue/NeonCleanerUE/NeonCleanerUE.uproject`
 - Startup map: `/Game/VehicleTemplate/Maps/VehicleExampleMap`
@@ -20,6 +20,22 @@ without identity shock.
 - Bridge system:
   - `UNeonCinematicBridgeSubsystem`
   - `UNeonCinematicBridgeWidget`
+
+This was the original Day 1 gameplay / bridge starting point. Do not use this
+as the current character-continuity baseline without checking `docs/handoff.md`.
+
+## Current Character Baseline - 2026-08-24
+
+- Current branch: `codex/character-continuity-pipeline`
+- Current startup preview map: `/Game/LinxiaPreview/LVL_Linxia_CharacterPreview`
+- Current playable character: `/Script/NeonCleanerUE.PlayablePhaseCharacter`
+- Current identity source asset: Epic/Fab `Paragon: Phase`
+- Current source asset path:
+  `/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC`
+
+Use this current baseline for the next production slice. The critical animation
+fix depends on preserving the original Paragon mesh component relative transform,
+especially mesh yaw `-90` / `270` degrees.
 
 ## Day 2 Tasks
 
@@ -62,7 +78,8 @@ Until that is ready, keep gameplay shots behind/side/rear-biased.
 
 ## Test Scene Success Criteria
 
-- Startup video still plays and hands input back correctly.
+- Current Lin Xia preview map opens and Player 0 controls the heroine.
+- Movement, camera, and run animation directions are aligned.
 - First gameplay frame shows a rider / motorcycle silhouette, not a stock car
   identity.
 - Handoff camera direction matches the bridge movie ending.

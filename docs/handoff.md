@@ -228,3 +228,22 @@ ue/scripts/validate_linxia_preview_level.py
 ```
 
 The critical fix for the skating/sideways animation issue is in `PlayablePhaseCharacter`: the Phase skeletal mesh must keep the original Paragon relative transform, especially mesh yaw `-90` / `270` degrees. Do not reset the mesh component rotation to zero.
+
+## Agent Workflow - 2026-08-24
+
+This project now uses a two-agent production loop:
+
+```text
+Producer Agent -> QA Director Agent -> Fix Pass -> QA Sign-off -> Next Step
+```
+
+Workflow and quality gates live in:
+
+```text
+docs/agent-production-workflow.md
+docs/sprint-2026-08-24.md
+```
+
+Use the workflow before moving between major slices: playable Lin Xia baseline,
+rider / motorcycle proxy, handoff camera match, short chase prototype, and
+GitHub handoff.
