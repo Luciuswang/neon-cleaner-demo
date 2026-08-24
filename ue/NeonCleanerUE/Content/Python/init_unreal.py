@@ -14,6 +14,11 @@ def is_game_runtime():
     return "-game" in command_line
 
 
+def is_linxia_rider_proxy_workflow():
+    command_line = unreal.SystemLibrary.get_command_line().lower()
+    return "linxiariderproxy" in command_line or "linxia_rider_proxy" in command_line
+
+
 def find_actor(label):
     for actor in unreal.EditorLevelLibrary.get_all_level_actors():
         if actor.get_actor_label() == label:
@@ -47,5 +52,7 @@ def focus_linxia():
 
 if is_game_runtime():
     log("Skipped editor viewport focus during game runtime")
+elif is_linxia_rider_proxy_workflow():
+    log("Skipped editor viewport focus during Linxia rider proxy workflow")
 else:
     focus_linxia()
