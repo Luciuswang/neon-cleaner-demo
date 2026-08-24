@@ -293,3 +293,7 @@ Added cross-PC Codex project sync entrypoint: AGENTS.md, docs/project-sync.md, s
 ## Cross-PC Sync Note - 2026-08-24 20:36 +08:00
 
 Gate 3 playable Linxia motorcycle chase uses imported player-motorcycle asset; smoke/validation passed; rider pose still needs retargeted riding animation.
+
+## Cross-PC Sync Note - 2026-08-24 20:53 +08:00
+
+Rider pose switched to local bone-space PoseableMeshComponent and passed background build/validation/smoke. Visual QA deferred because user locked screen.
