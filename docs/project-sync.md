@@ -61,12 +61,6 @@ From the repo root:
 .\sync_project_start.ps1
 ```
 
-Or double-click:
-
-```text
-Start-NeonCleanerSync.cmd
-```
-
 Then tell Codex:
 
 ```text
