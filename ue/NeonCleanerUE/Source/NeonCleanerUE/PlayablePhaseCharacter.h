@@ -23,6 +23,7 @@ protected:
 	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 private:
+	void ApplyReferencePoseIfRequested();
 	void EnsurePlayerPossession();
 	void PollDirectPlayerInput(float DeltaSeconds);
 	void RunSmokeTest(float DeltaSeconds);

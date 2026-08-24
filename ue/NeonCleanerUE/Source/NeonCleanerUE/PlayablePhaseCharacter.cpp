@@ -1,5 +1,6 @@
 #include "PlayablePhaseCharacter.h"
 
+#include "Animation/AnimationAsset.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -16,6 +17,7 @@ namespace
 {
 constexpr float PhaseInitialCameraYawDegrees = -90.0f;
 constexpr float KeyboardCameraFollowSpeed = 7.0f;
+const TCHAR* PhaseReferenceIdlePath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Animations/Idle_Straight.Idle_Straight");
 }
 
 APlayablePhaseCharacter::APlayablePhaseCharacter()
@@ -84,6 +86,7 @@ void APlayablePhaseCharacter::CalcCamera(float DeltaTime, FMinimalViewInfo& OutR
 void APlayablePhaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+	ApplyReferencePoseIfRequested();
 	EnsurePlayerPossession();
 	bSmokeTestActive = FParse::Param(FCommandLine::Get(), TEXT("LinxiaSmokeTest"));
 	if (bSmokeTestActive)
@@ -91,6 +94,24 @@ void APlayablePhaseCharacter::BeginPlay()
 		SmokeTestStartLocation = GetActorLocation();
 		UE_LOG(LogTemp, Display, TEXT("[LinxiaSmokeTest] Started at %s"), *SmokeTestStartLocation.ToCompactString());
 	}
+}
+
+void APlayablePhaseCharacter::ApplyReferencePoseIfRequested()
+{
+	if (!FParse::Param(FCommandLine::Get(), TEXT("LinxiaReferencePose")))
+	{
+		return;
+	}
+
+	UAnimationAsset* ReferenceIdle = LoadObject<UAnimationAsset>(nullptr, PhaseReferenceIdlePath);
+	if (!ReferenceIdle)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[LinxiaReferencePose] Missing reference idle: %s"), PhaseReferenceIdlePath);
+		return;
+	}
+
+	GetMesh()->PlayAnimation(ReferenceIdle, true);
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaReferencePose] Using %s"), *ReferenceIdle->GetPathName());
 }
 
 void APlayablePhaseCharacter::Tick(float DeltaSeconds)

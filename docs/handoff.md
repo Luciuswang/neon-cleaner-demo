@@ -229,6 +229,12 @@ ue/scripts/validate_linxia_preview_level.py
 
 The critical fix for the skating/sideways animation issue is in `PlayablePhaseCharacter`: the Phase skeletal mesh must keep the original Paragon relative transform, especially mesh yaw `-90` / `270` degrees. Do not reset the mesh component rotation to zero.
 
+Known UE 5.8 note: the local Epic/Fab `PhasePlayerCharacter` blueprint can log
+old `ResetOrientationAndPosition` node errors when Paragon assets load. The
+current playable path uses the C++ `PlayablePhaseCharacter` with the Phase mesh
+and animation blueprint; the smoke test still passes despite those local
+Marketplace blueprint warnings.
+
 ## Agent Workflow - 2026-08-24
 
 This project now uses a two-agent production loop:
@@ -247,3 +253,12 @@ docs/sprint-2026-08-24.md
 Use the workflow before moving between major slices: playable Lin Xia baseline,
 rider / motorcycle proxy, handoff camera match, short chase prototype, and
 GitHub handoff.
+
+To refresh the current UE reference image:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ue/Capture-LinxiaReference.ps1
+```
+
+The capture uses `-LinxiaReferencePose` so the gameplay animation blueprint stays
+unchanged during normal play.

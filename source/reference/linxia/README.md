@@ -29,3 +29,13 @@ Create these from UE Day 2:
 - motorcycle front, side, and rear three-quarter
 
 Use these captures as image references for the next A0-S04 handoff clip.
+
+## Current Technical Preview
+
+`ue-captures/linxia_phase_preview_2026-08-24.png` proves that the current UE
+Phase-based Lin Xia baseline loads and renders in game mode. It is not approved
+as a front-facing AI identity reference because the captured pose is still a low
+combat stance.
+
+Use it only as technical proof for Gate 1. Gate 2 must create a stronger rider
+reference pack before AI still or video generation resumes.
