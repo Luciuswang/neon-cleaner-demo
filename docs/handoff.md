@@ -284,3 +284,7 @@ asks to continue this project from another PC.
 ## Cross-PC Sync Note - 2026-08-24 13:56 +08:00
 
 Added cross-PC Codex project sync entrypoint: AGENTS.md, docs/project-sync.md, start sync script, and finish sync script. Future sessions should run sync_project_start.ps1 before work and sync_project_finish.ps1 at handoff.
+
+## Cross-PC Sync Note - 2026-08-24 20:36 +08:00
+
+Gate 3 playable Linxia motorcycle chase uses imported player-motorcycle asset; smoke/validation passed; rider pose still needs retargeted riding animation.
