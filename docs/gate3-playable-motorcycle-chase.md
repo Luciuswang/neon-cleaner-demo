@@ -1,0 +1,111 @@
+# Gate 3 - Playable Lin Xia Motorcycle Chase
+
+Status: `PLAYABLE PROTOTYPE PASS / RIDER POSE CONDITIONAL`.
+
+## Current Result
+
+- Runtime map: `/Game/LinxiaChase/LVL_Linxia_MotorcycleChase`.
+- Player pawn: `/Script/NeonCleanerUE.LinxiaMotorcyclePawn`.
+- Game mode: `/Script/NeonCleanerUE.LinxiaMotorcycleChaseGameMode`.
+- Player 0 controls the motorcycle pawn directly.
+- Controls:
+  - `W/S`: accelerate / brake.
+  - `A/D`: steer.
+  - Mouse: camera yaw / pitch.
+  - `Space`: brake.
+  - `R` or `Backspace`: reset.
+- Chase route includes a readable forward lane, five obstacle beats, and a visible target ahead.
+
+## Motorcycle Asset
+
+The prototype now uses the previously created high-quality vehicle asset instead
+of the blockout proxy.
+
+Source asset:
+
+- `web/models/player-motorcycle.glb`
+- `web/models/player-motorcycle-obj/model_1781781224363_obj.obj`
+- `web/models/player-motorcycle-obj/textures/*`
+
+Imported UE assets:
+
+- `/Game/LinxiaChase/Imported/SM_PlayerMotorcycle`
+- `/Game/LinxiaChase/Imported/TEX_Color_68fa4d52-54ee-46b9-af70-22149dd48be6`
+- `/Game/LinxiaChase/Imported/TEX_NormalGL_68fa4d52-54ee-46b9-af70-22149dd48be6`
+- `/Game/LinxiaChase/Imported/TEX_ORM_68fa4d52-54ee-46b9-af70-22149dd48be6`
+
+Import command:
+
+```powershell
+& "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" `
+  "E:\codex_project\neon-cleaner-demo\ue\NeonCleanerUE\NeonCleanerUE.uproject" `
+  -unattended -nop4 -nosplash `
+  -ExecutePythonScript="E:\codex_project\neon-cleaner-demo\ue\scripts\import_player_motorcycle_asset.py"
+```
+
+## Build / Validate / Run
+
+Build:
+
+```powershell
+& "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.bat" `
+  NeonCleanerUEEditor Win64 Development `
+  -Project="E:\codex_project\neon-cleaner-demo\ue\NeonCleanerUE\NeonCleanerUE.uproject" `
+  -WaitMutex
+```
+
+Recreate and validate the map:
+
+```powershell
+& "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" `
+  "E:\codex_project\neon-cleaner-demo\ue\NeonCleanerUE\NeonCleanerUE.uproject" `
+  -unattended -nop4 -nosplash `
+  -ExecutePythonScript="E:\codex_project\neon-cleaner-demo\ue\scripts\create_linxia_motorcycle_chase_level.py"
+
+& "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor-Cmd.exe" `
+  "E:\codex_project\neon-cleaner-demo\ue\NeonCleanerUE\NeonCleanerUE.uproject" `
+  -unattended -nop4 -nosplash `
+  -ExecutePythonScript="E:\codex_project\neon-cleaner-demo\ue\scripts\validate_linxia_motorcycle_chase_level.py"
+```
+
+Smoke test:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\SmokeTest-LinxiaMotorcycleChase.ps1
+```
+
+Run in a visible window:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-LinxiaMotorcycleChase.ps1
+```
+
+## Latest Verification
+
+- C++ build succeeded.
+- `validate_linxia_motorcycle_chase_level.py` passed.
+- Validation confirmed:
+  - `rider_mesh=/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC`
+  - `motorcycle_mesh=/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle`
+  - `target_distance=4363.3`
+  - `obstacle_count=5`
+- Smoke test passed:
+  - `Player0 now controls LinxiaMotorcyclePawn_0`
+  - `LinxiaMotorcycleSmokeTest Completed distance=6954.2 targetDistance=3235.6 speed=2049.9`
+- Visual check retained:
+  - `source/reference/linxia/ue-captures/linxia_motorcycle_imported_asset_check3_2026-08-24.png`
+
+## Known Limitation
+
+`Paragon: Phase` is a normal combat character with a valid skeleton and many
+combat / locomotion animations, but no motorcycle / seated / riding animation
+was found in the local asset set. The current rider pose uses an existing Phase
+animation as a temporary approximation.
+
+Next quality step:
+
+- Import or create a seated motorcycle rider animation.
+- Retarget it onto `phase_Skeleton`.
+- Replace the temporary rider animation in `ALinxiaMotorcyclePawn`.
+- Re-run visual QA before using this frame as the final AI-video continuity
+reference.
