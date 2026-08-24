@@ -2,6 +2,8 @@
 
 When the user says to start or continue the Neon Cleaner project, first treat
 this repository as the source of truth. Do not rely on prior chat memory alone.
+If the user says "开始 Neon Cleaner" or "开始 Neon Cleaner 项目", run
+`.\sync_project_start.ps1` automatically before planning or editing.
 
 ## Start Of Session
 

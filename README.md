@@ -72,6 +72,12 @@ docs/handoff.md
 .\sync_project_start.ps1
 ```
 
+也可以直接双击仓库根目录里的：
+
+```text
+Start-NeonCleanerSync.cmd
+```
+
 每次结束工作用：
 
 ```powershell
