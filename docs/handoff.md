@@ -297,3 +297,7 @@ Gate 3 playable Linxia motorcycle chase uses imported player-motorcycle asset; s
 ## Cross-PC Sync Note - 2026-08-24 20:53 +08:00
 
 Rider pose switched to local bone-space PoseableMeshComponent and passed background build/validation/smoke. Visual QA deferred because user locked screen.
+
+## Cross-PC Sync Note - 2026-08-25 20:26 +08:00
+
+Added repo-sourced biweekly reporting rule and created new automation 'Neon Cleaner 双周项目报告' that syncs GitHub before reporting. User should cancel the old other-PC report to avoid duplicate/inaccurate reports.
