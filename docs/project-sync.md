@@ -16,8 +16,9 @@ Use this branch for current UE / Lin Xia work:
 codex/character-continuity-pipeline
 ```
 
-Codex chat history may differ between PCs. The project state lives in this repo,
-especially:
+Codex chat history and local workspaces may differ between PCs. Codex is not a
+single shared live workspace just because the same account is signed in. The
+project state lives in GitHub and this repo, especially:
 
 ```text
 AGENTS.md
@@ -106,10 +107,14 @@ Epic/Fab library on each PC instead of being uploaded to the public GitHub repo.
 
 ## Current Project Shortcut
 
-When the user says:
+When the user says any of:
 
 ```text
 开始 Neon Cleaner
+开始 Neon Cleaner 项目
+开始霓虹清道夫
+开始这个项目
+继续这个项目
 ```
 
 Codex should:

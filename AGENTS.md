@@ -2,8 +2,14 @@
 
 When the user says to start or continue the Neon Cleaner project, first treat
 this repository as the source of truth. Do not rely on prior chat memory alone.
-If the user says "开始 Neon Cleaner" or "开始 Neon Cleaner 项目", run
-`.\sync_project_start.ps1` automatically before planning or editing.
+If the user says "开始 Neon Cleaner", "开始 Neon Cleaner 项目",
+"开始霓虹清道夫", "开始这个项目", or "继续这个项目" while this repo is the
+active project, run `.\sync_project_start.ps1` automatically before planning or
+editing.
+
+Codex conversations and local PC workspaces are not a single always-on shared
+memory. Treat GitHub plus these repo-local handoff files as the cross-PC source
+of truth.
 
 ## Start Of Session
 
