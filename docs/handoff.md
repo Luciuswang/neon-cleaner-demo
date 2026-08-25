@@ -301,3 +301,7 @@ Rider pose switched to local bone-space PoseableMeshComponent and passed backgro
 ## Cross-PC Sync Note - 2026-08-25 20:26 +08:00
 
 Added repo-sourced biweekly reporting rule and created new automation 'Neon Cleaner 双周项目报告' that syncs GitHub before reporting. User should cancel the old other-PC report to avoid duplicate/inaccurate reports.
+
+## Cross-PC Sync Note - 2026-08-25 20:28 +08:00
+
+Updated automation 'Neon Cleaner 双周项目报告' to start on the weekend biweekly cadence and email baomin.wang@garena.com plus zhaot@garena.com. Report source remains GitHub/repo facts, not local Codex chat memory.
