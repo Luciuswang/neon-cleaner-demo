@@ -68,3 +68,9 @@ one of:
 If `sync_project_finish.ps1` says the repo is dirty and no commit message was
 provided, summarize the exact pending files to the user and ask whether to
 commit now.
+
+## Reporting Rule
+
+Biweekly or progress reports must be generated from GitHub plus repo-local
+handoff docs, not from a single Codex chat history. Follow
+`docs/biweekly-reporting.md` and sync the repo before reporting.

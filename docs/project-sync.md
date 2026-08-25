@@ -123,3 +123,9 @@ Codex should:
 2. run `.\sync_project_start.ps1`
 3. read `AGENTS.md` and the handoff files
 4. continue from the latest pushed branch state
+
+## Reports
+
+Recurring progress reports must follow `docs/biweekly-reporting.md`. They should
+pull GitHub, read repo-local handoff docs, and summarize commits from the
+reporting window instead of relying on one computer's Codex chat history.
