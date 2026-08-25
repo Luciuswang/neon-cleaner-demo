@@ -87,11 +87,17 @@ powershell -ExecutionPolicy Bypass -File .\ue\Run-LinxiaMotorcycleChase.ps1
 - Validation confirmed:
   - `rider_mesh=/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC`
   - `motorcycle_mesh=/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle`
+  - `motorcycle_relative_yaw=0.0`
   - `target_distance=4363.3`
   - `obstacle_count=5`
 - Smoke test passed:
   - `Player0 now controls LinxiaMotorcyclePawn_0`
+  - `Visual alignment bikeRot=R(0) riderRot=R(P=-11.00, Y=-90.00)`
   - `LinxiaMotorcycleSmokeTest Completed distance=6954.2 targetDistance=3235.6 speed=2049.9`
+- 2026-08-25 update:
+  - Imported motorcycle relative yaw changed from `90` to `0` to align the vehicle with pawn forward movement.
+  - `validate_linxia_motorcycle_chase_level.py` now fails if the imported motorcycle yaw drifts away from `0` or the Phase rider yaw drifts away from `270` / `-90`.
+  - `SmokeTest-LinxiaMotorcycleChase.ps1` now prints the visual alignment marker.
 - Visual check retained:
   - `source/reference/linxia/ue-captures/linxia_motorcycle_imported_asset_check3_2026-08-24.png`
 
@@ -104,8 +110,9 @@ was found in the local asset set.
 The current rider pose now uses `UPoseableMeshComponent` with local
 bone-space deltas copied from the Phase reference pose. This avoids the earlier
 component-space pose failure that could rotate the whole character sideways.
-It has passed background build / validation / smoke tests, but still needs a
-visual QA pass after the desktop is unlocked.
+It has passed background build / validation / smoke tests. A visual QA pass is
+still required after the Windows desktop is unlocked because the 2026-08-25
+foreground screenshot attempt captured the lock screen instead of the UE window.
 
 Next quality step:
 

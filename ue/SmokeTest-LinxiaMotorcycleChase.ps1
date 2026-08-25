@@ -31,14 +31,20 @@ if (-not (Test-Path $LogPath)) {
 
 $possessionLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Player0 now controls" |
     Select-Object -Last 4
+$alignmentLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Visual alignment" |
+    Select-Object -Last 4
 $completedLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycleSmokeTest\] Completed" |
     Select-Object -Last 4
 if (-not $possessionLines) {
     throw "Smoke-test possession marker not found in log"
+}
+if (-not $alignmentLines) {
+    throw "Smoke-test visual alignment marker not found in log"
 }
 if (-not $completedLines) {
     throw "Smoke-test completion marker not found in log"
 }
 
 $possessionLines | ForEach-Object { $_.Line }
+$alignmentLines | ForEach-Object { $_.Line }
 $completedLines | ForEach-Object { $_.Line }

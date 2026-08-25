@@ -305,3 +305,11 @@ Added repo-sourced biweekly reporting rule and created new automation 'Neon Clea
 ## Cross-PC Sync Note - 2026-08-25 20:28 +08:00
 
 Updated automation 'Neon Cleaner 双周项目报告' to start on the weekend biweekly cadence and email baomin.wang@garena.com plus zhaot@garena.com. Report source remains GitHub/repo facts, not local Codex chat memory.
+
+## Cross-PC Sync Note - 2026-08-25 20:48 +08:00
+
+Gate 3 motorcycle chase build / validation / smoke passed after aligning the imported motorcycle mesh to pawn forward yaw `0`. Smoke now prints the bike/rider visual alignment marker. Visual screenshot QA is still pending because the Windows desktop was locked during capture.
+
+## Cross-PC Sync Note - 2026-08-25 20:49 +08:00
+
+Gate 3 motorcycle chase: aligned imported motorcycle yaw to pawn forward, added visual alignment markers to validation/smoke, and documented lock-screen visual QA blocker.

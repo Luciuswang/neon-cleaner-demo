@@ -57,7 +57,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 		ImportedMotorcycle->SetStaticMesh(ImportedBikeMesh.Object);
 	}
 	ImportedMotorcycle->SetRelativeLocation(FVector(6.0f, 0.0f, 58.0f));
-	ImportedMotorcycle->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
+	ImportedMotorcycle->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
 	ImportedMotorcycle->SetRelativeScale3D(FVector(230.0f, 230.0f, 230.0f));
 	ImportedMotorcycle->SetVisibility(bHasImportedBike, true);
 	ImportedMotorcycle->SetHiddenInGame(!bHasImportedBike);
@@ -191,6 +191,9 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	ApplyMaterial(Handlebar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(NoseLight, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_CyanDiagnostic.M_NC_CyanDiagnostic"));
 	ApplyRiderLocalPose();
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Visual alignment bikeRot=%s riderRot=%s"),
+		ImportedMotorcycle ? *ImportedMotorcycle->GetRelativeRotation().ToCompactString() : TEXT("None"),
+		RiderMesh ? *RiderMesh->GetRelativeRotation().ToCompactString() : TEXT("None"));
 
 	for (TActorIterator<AActor> It(GetWorld()); It; ++It)
 	{

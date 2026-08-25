@@ -33,6 +33,14 @@ def assert_between(name, value, low, high):
         raise RuntimeError(f"{name}={value:.1f} outside expected range {low:.1f}-{high:.1f}")
 
 
+def assert_near_angle(name, value, expected, tolerance):
+    delta = abs(((value - expected + 180.0) % 360.0) - 180.0)
+    if delta > tolerance:
+        raise RuntimeError(
+            f"{name}={value:.1f} not aligned to expected {expected:.1f} +/- {tolerance:.1f}"
+        )
+
+
 def main():
     unreal.EditorLevelLibrary.load_level(LEVEL_PATH)
     actors = unreal.EditorLevelLibrary.get_all_level_actors()
@@ -76,6 +84,9 @@ def main():
     component_mesh = imported_component.get_editor_property("static_mesh")
     if component_mesh is None or component_mesh.get_path_name() != EXPECTED_IMPORTED_BIKE:
         raise RuntimeError("Motorcycle pawn is not using the imported player-motorcycle mesh")
+    imported_rotation = imported_component.get_editor_property("relative_rotation")
+    assert_near_angle("imported motorcycle relative yaw", imported_rotation.yaw, 0.0, 2.0)
+    assert_near_angle("rider relative yaw", skeletal.get_editor_property("relative_rotation").yaw, 270.0, 2.0)
 
     target = by_label["Gate3_ChaseTarget_Body"]
     if unreal.Name("Gate3ChaseTarget") not in target.get_editor_property("tags"):
@@ -107,6 +118,7 @@ def main():
     log(f"pawn={pawn.get_name()} loc={pawn.get_actor_location().to_tuple()}")
     log(f"rider_mesh={mesh.get_path_name()}")
     log(f"motorcycle_mesh={imported_mesh.get_path_name()}")
+    log(f"motorcycle_relative_yaw={imported_rotation.yaw:.1f}")
     log(f"target_distance={target_distance:.1f}")
     log(f"obstacle_count={obstacle_count}")
     log("Validation passed")
