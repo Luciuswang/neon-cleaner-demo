@@ -129,3 +129,14 @@ Codex should:
 Recurring progress reports must follow `docs/biweekly-reporting.md`. They should
 pull GitHub, read repo-local handoff docs, and summarize commits from the
 reporting window instead of relying on one computer's Codex chat history.
+
+## Codex Workstation Environment
+
+To make another PC's Codex environment match this one, follow:
+
+```text
+docs/codex-workstation-setup.md
+```
+
+Do not copy the whole `.codex` directory between machines because it contains
+tokens, logs, local sessions, caches, and machine-specific state.
