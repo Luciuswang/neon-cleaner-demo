@@ -313,3 +313,11 @@ Gate 3 motorcycle chase build / validation / smoke passed after aligning the imp
 ## Cross-PC Sync Note - 2026-08-25 20:49 +08:00
 
 Gate 3 motorcycle chase: aligned imported motorcycle yaw to pawn forward, added visual alignment markers to validation/smoke, and documented lock-screen visual QA blocker.
+
+## Cross-PC Sync Note - 2026-08-26 11:39 +08:00
+
+Gate 3 now has an in-game chase HUD showing speed, target distance, pursuit status, and controls. Added `ue/Capture-LinxiaMotorcycleChase.ps1` for UE-rendered proof captures; current proof is `source/reference/linxia/ue-captures/linxia_motorcycle_capture_2026-08-26.png`. Build / validation / smoke passed. QA verdict: playable chase feedback PASS, rider pose remains prototype CONDITIONAL until a real seated riding animation or IK pass is added.
+
+## Cross-PC Sync Note - 2026-08-26 11:39 +08:00
+
+Gate 3 playable chase feedback pass: added in-game HUD, UE-rendered capture script, proof image, and validation coverage for HUD binding.

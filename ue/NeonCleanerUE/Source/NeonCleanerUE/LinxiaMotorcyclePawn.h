@@ -18,6 +18,9 @@ class NEONCLEANERUE_API ALinxiaMotorcyclePawn : public APawn
 public:
 	ALinxiaMotorcyclePawn();
 	virtual void CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult) override;
+	float GetCurrentSpeedKmh() const;
+	float GetChaseTargetDistance() const;
+	bool HasCaughtChaseTarget() const { return bTargetCaught; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -30,6 +33,7 @@ private:
 	void UpdateMotorcycleMotion(float DeltaSeconds);
 	void UpdateVisuals(float DeltaSeconds);
 	void RunSmokeTest(float DeltaSeconds);
+	void RunCaptureTest(float DeltaSeconds);
 	void ResetToStart();
 	void UpdateTargetDistanceLog();
 	void ApplyRiderLocalPose();
@@ -44,13 +48,18 @@ private:
 	float LastTargetDistance = 0.0f;
 	float TargetLogElapsed = 0.0f;
 	float SmokeTestElapsed = 0.0f;
+	float CaptureTestElapsed = 0.0f;
 	float WheelSpinDegrees = 0.0f;
 
 	bool bHandbrakeHeld = false;
 	bool bLoggedPossession = false;
 	bool bSmokeTestActive = false;
 	bool bSmokeTestCompleted = false;
+	bool bCaptureTestActive = false;
+	bool bCaptureRequested = false;
+	bool bTargetCaught = false;
 
+	FString CaptureOutputPath;
 	FVector StartLocation = FVector::ZeroVector;
 	FRotator StartRotation = FRotator::ZeroRotator;
 	FVector SmokeTestStartLocation = FVector::ZeroVector;

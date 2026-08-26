@@ -4,6 +4,7 @@ import unreal
 LEVEL_PATH = "/Game/LinxiaChase/LVL_Linxia_MotorcycleChase"
 EXPECTED_PAWN_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcyclePawn"
 EXPECTED_GAMEMODE_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcycleChaseGameMode"
+EXPECTED_HUD_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcycleHud"
 EXPECTED_IMPORTED_BIKE = "/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle"
 REQUIRED_LABELS = {
     "Linxia_MotorcyclePawn",
@@ -52,8 +53,11 @@ def main():
     pawn = by_label["Linxia_MotorcyclePawn"]
     pawn_class = unreal.load_class(None, EXPECTED_PAWN_CLASS)
     game_mode_class = unreal.load_class(None, EXPECTED_GAMEMODE_CLASS)
+    hud_class = unreal.load_class(None, EXPECTED_HUD_CLASS)
     if not pawn_class or not pawn.get_class().get_path_name().startswith(pawn_class.get_path_name()):
         raise RuntimeError("Linxia_MotorcyclePawn is not the expected C++ pawn class")
+    if not hud_class:
+        raise RuntimeError("Linxia motorcycle HUD class is missing")
     if pawn.get_editor_property("auto_possess_player") != unreal.AutoReceiveInput.PLAYER0:
         raise RuntimeError("Motorcycle pawn is not set to auto possess Player0")
 
@@ -112,6 +116,9 @@ def main():
         current_game_mode = world_settings.get_editor_property("default_game_mode")
         if game_mode_class and current_game_mode != game_mode_class:
             raise RuntimeError("World game mode override is not LinxiaMotorcycleChaseGameMode")
+        game_mode_defaults = unreal.get_default_object(game_mode_class)
+        if game_mode_defaults.get_editor_property("hud_class") != hud_class:
+            raise RuntimeError("LinxiaMotorcycleChaseGameMode is not using LinxiaMotorcycleHud")
     except Exception as exc:
         raise RuntimeError("Unable to validate world game mode override: " + str(exc))
 

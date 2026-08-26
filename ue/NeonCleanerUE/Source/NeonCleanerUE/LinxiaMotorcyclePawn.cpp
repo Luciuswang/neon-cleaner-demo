@@ -6,13 +6,16 @@
 #include "Engine/SkeletalMesh.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
+#include "HAL/FileManager.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "InputCoreTypes.h"
 #include "Kismet/GameplayStatics.h"
 #include "Materials/MaterialInterface.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
+#include "Misc/Paths.h"
 #include "UObject/ConstructorHelpers.h"
+#include "UnrealClient.h"
 
 namespace
 {
@@ -26,6 +29,9 @@ constexpr float CameraMouseYawScale = 0.18f;
 constexpr float CameraMousePitchScale = 0.12f;
 constexpr float CameraFollowInterp = 7.5f;
 constexpr float SmokeTestDuration = 4.0f;
+constexpr float CaptureRequestTime = 2.0f;
+constexpr float CaptureExitTime = 3.8f;
+constexpr float ChaseCatchDistance = 520.0f;
 
 const TCHAR* PhaseMeshPath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC");
 }
@@ -174,6 +180,21 @@ void ALinxiaMotorcyclePawn::CalcCamera(float DeltaTime, FMinimalViewInfo& OutRes
 	Super::CalcCamera(DeltaTime, OutResult);
 }
 
+float ALinxiaMotorcyclePawn::GetCurrentSpeedKmh() const
+{
+	return FMath::Abs(CurrentSpeed) * 0.036f;
+}
+
+float ALinxiaMotorcyclePawn::GetChaseTargetDistance() const
+{
+	if (!ChaseTarget)
+	{
+		return -1.0f;
+	}
+
+	return FVector::Dist2D(GetActorLocation(), ChaseTarget->GetActorLocation());
+}
+
 void ALinxiaMotorcyclePawn::BeginPlay()
 {
 	Super::BeginPlay();
@@ -182,6 +203,11 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	StartRotation = GetActorRotation();
 	SmokeTestStartLocation = StartLocation;
 	bSmokeTestActive = FParse::Param(FCommandLine::Get(), TEXT("LinxiaMotorcycleSmokeTest"));
+	bCaptureTestActive = FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCapture="), CaptureOutputPath);
+	if (bCaptureTestActive && CaptureOutputPath.IsEmpty())
+	{
+		CaptureOutputPath = FPaths::ProjectSavedDir() / TEXT("Screenshots/LinxiaMotorcycleCapture.png");
+	}
 
 	ApplyMaterial(BikeBody, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_TacticalBlack.M_NC_TacticalBlack"));
 	ApplyMaterial(Seat, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
@@ -218,6 +244,7 @@ void ALinxiaMotorcyclePawn::Tick(float DeltaSeconds)
 	EnsurePlayerPossession();
 	PollDirectPlayerInput(DeltaSeconds);
 	RunSmokeTest(DeltaSeconds);
+	RunCaptureTest(DeltaSeconds);
 	UpdateMotorcycleMotion(DeltaSeconds);
 	UpdateVisuals(DeltaSeconds);
 	UpdateTargetDistanceLog();
@@ -287,6 +314,7 @@ void ALinxiaMotorcyclePawn::PollDirectPlayerInput(float DeltaSeconds)
 	if (PlayerController->IsInputKeyDown(EKeys::BackSpace) || PlayerController->IsInputKeyDown(EKeys::R))
 	{
 		ResetToStart();
+		bTargetCaught = false;
 	}
 }
 
@@ -361,6 +389,29 @@ void ALinxiaMotorcyclePawn::RunSmokeTest(float DeltaSeconds)
 	}
 }
 
+void ALinxiaMotorcyclePawn::RunCaptureTest(float DeltaSeconds)
+{
+	if (!bCaptureTestActive)
+	{
+		return;
+	}
+
+	CaptureTestElapsed += DeltaSeconds;
+	if (!bCaptureRequested && CaptureTestElapsed >= CaptureRequestTime)
+	{
+		IFileManager::Get().MakeDirectory(*FPaths::GetPath(CaptureOutputPath), true);
+		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycleCapture] Requesting screenshot %s"), *CaptureOutputPath);
+		FScreenshotRequest::RequestScreenshot(CaptureOutputPath, true, false);
+		bCaptureRequested = true;
+	}
+
+	if (bCaptureRequested && CaptureTestElapsed >= CaptureExitTime)
+	{
+		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycleCapture] Completed"));
+		FPlatformMisc::RequestExit(false);
+	}
+}
+
 void ALinxiaMotorcyclePawn::ResetToStart()
 {
 	SetActorLocation(StartLocation, false);
@@ -387,6 +438,13 @@ void ALinxiaMotorcyclePawn::UpdateTargetDistanceLog()
 	TargetLogElapsed = 0.0f;
 
 	const float Distance = FVector::Dist2D(GetActorLocation(), ChaseTarget->GetActorLocation());
+	if (!bTargetCaught && Distance <= ChaseCatchDistance)
+	{
+		bTargetCaught = true;
+		CurrentSpeed = FMath::Min(CurrentSpeed, MaxForwardSpeed * 0.42f);
+		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Chase target caught distance=%.1f"), Distance);
+	}
+
 	if (FMath::Abs(Distance - LastTargetDistance) > 75.0f)
 	{
 		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] ChaseTargetDistance=%.1f"), Distance);

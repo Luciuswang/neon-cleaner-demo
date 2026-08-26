@@ -14,6 +14,11 @@ Status: `PLAYABLE PROTOTYPE PASS / RIDER POSE CONDITIONAL`.
   - Mouse: camera yaw / pitch.
   - `Space`: brake.
   - `R` or `Backspace`: reset.
+- HUD:
+  - Speed readout.
+  - Target distance.
+  - Pursuit / caught status.
+  - Control reminder with a dark readability strip.
 - Chase route includes a readable forward lane, five obstacle beats, and a visible target ahead.
 
 ## Motorcycle Asset
@@ -80,6 +85,12 @@ Run in a visible window:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-LinxiaMotorcycleChase.ps1
 ```
 
+Capture a reproducible UE-rendered proof frame:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Capture-LinxiaMotorcycleChase.ps1
+```
+
 ## Latest Verification
 
 - C++ build succeeded.
@@ -94,6 +105,11 @@ powershell -ExecutionPolicy Bypass -File .\ue\Run-LinxiaMotorcycleChase.ps1
   - `Player0 now controls LinxiaMotorcyclePawn_0`
   - `Visual alignment bikeRot=R(0) riderRot=R(P=-11.00, Y=-90.00)`
   - `LinxiaMotorcycleSmokeTest Completed distance=6954.2 targetDistance=3235.6 speed=2049.9`
+- 2026-08-26 update:
+  - Added `ALinxiaMotorcycleHud` and set it as the chase game mode HUD.
+  - Added `ue/Capture-LinxiaMotorcycleChase.ps1`, which uses UE's own screenshot request path instead of unreliable Windows foreground capture.
+  - Visual QA proof frame:
+    `source/reference/linxia/ue-captures/linxia_motorcycle_capture_2026-08-26.png`
 - 2026-08-25 update:
   - Imported motorcycle relative yaw changed from `90` to `0` to align the vehicle with pawn forward movement.
   - `validate_linxia_motorcycle_chase_level.py` now fails if the imported motorcycle yaw drifts away from `0` or the Phase rider yaw drifts away from `270` / `-90`.
