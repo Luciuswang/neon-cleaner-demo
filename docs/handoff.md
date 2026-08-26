@@ -321,3 +321,7 @@ Gate 3 now has an in-game chase HUD showing speed, target distance, pursuit stat
 ## Cross-PC Sync Note - 2026-08-26 11:39 +08:00
 
 Gate 3 playable chase feedback pass: added in-game HUD, UE-rendered capture script, proof image, and validation coverage for HUD binding.
+
+## Cross-PC Sync Note - 2026-08-26 20:04 +08:00
+
+Added the private cross-PC asset vault workflow for Baidu Netdisk. Paragon: Phase is saved in Fab My Library but still needs Launcher installation. Next session: install the Windows C++ toolchain and restore ParagonPhase, then run UE build and validation.

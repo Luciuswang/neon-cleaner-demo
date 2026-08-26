@@ -105,6 +105,15 @@ ue/NeonCleanerUE/Content/ParagonPhase/
 It contains Epic/Fab Marketplace assets and must be restored from the user's
 Epic/Fab library on each PC instead of being uploaded to the public GitHub repo.
 
+For a private cross-PC backup/transport option, see:
+
+```text
+docs/asset-vault-baidu.md
+```
+
+Baidu Netdisk may hold private, versioned asset archives, but the live UE
+project should not be placed inside a bidirectional sync folder.
+
 ## Current Project Shortcut
 
 When the user says any of:
