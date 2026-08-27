@@ -91,6 +91,12 @@ Capture a reproducible UE-rendered proof frame:
 powershell -ExecutionPolicy Bypass -File .\ue\Capture-LinxiaMotorcycleChase.ps1
 ```
 
+Run the full Gate 3 quality check:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1
+```
+
 ## Latest Verification
 
 - C++ build succeeded.
@@ -110,6 +116,12 @@ powershell -ExecutionPolicy Bypass -File .\ue\Capture-LinxiaMotorcycleChase.ps1
   - Added `ue/Capture-LinxiaMotorcycleChase.ps1`, which uses UE's own screenshot request path instead of unreliable Windows foreground capture.
   - Visual QA proof frame:
     `source/reference/linxia/ue-captures/linxia_motorcycle_capture_2026-08-26.png`
+- 2026-08-27 update:
+  - Added `ue/Run-Gate3QualityCheck.ps1` as the one-command quality gate for build, validation, smoke, UE proof capture, and proof-frame sanity checks.
+  - QA report:
+    `docs/qa/gate3-quality-report-2026-08-27.md`
+  - Latest proof frame:
+    `source/reference/linxia/ue-captures/linxia_motorcycle_gate3_quality_2026-08-27_123649.png`
 - 2026-08-25 update:
   - Imported motorcycle relative yaw changed from `90` to `0` to align the vehicle with pawn forward movement.
   - `validate_linxia_motorcycle_chase_level.py` now fails if the imported motorcycle yaw drifts away from `0` or the Phase rider yaw drifts away from `270` / `-90`.
@@ -127,8 +139,8 @@ The current rider pose now uses `UPoseableMeshComponent` with local
 bone-space deltas copied from the Phase reference pose. This avoids the earlier
 component-space pose failure that could rotate the whole character sideways.
 It has passed background build / validation / smoke tests. A visual QA pass is
-still required after the Windows desktop is unlocked because the 2026-08-25
-foreground screenshot attempt captured the lock screen instead of the UE window.
+now captured by `Run-Gate3QualityCheck.ps1`, but the rider pose remains a
+prototype-quality conditional rather than an AI-video-ready animation.
 
 Next quality step:
 

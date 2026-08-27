@@ -1,10 +1,17 @@
+param(
+    [string]$OutputPath = ""
+)
+
 $ErrorActionPreference = "Stop"
 
 $ProjectRoot = Split-Path -Parent $PSScriptRoot
 $UProject = Join-Path $PSScriptRoot "NeonCleanerUE\NeonCleanerUE.uproject"
 $Editor = "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe"
 $Map = "/Game/LinxiaChase/LVL_Linxia_MotorcycleChase"
-$OutputPath = Join-Path $ProjectRoot "source\reference\linxia\ue-captures\linxia_motorcycle_capture_2026-08-26.png"
+if ($OutputPath.Trim().Length -eq 0) {
+    $stamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
+    $OutputPath = Join-Path $ProjectRoot "source\reference\linxia\ue-captures\linxia_motorcycle_capture_$stamp.png"
+}
 
 if (-not (Test-Path $Editor)) {
     throw "UnrealEditor.exe not found: $Editor"

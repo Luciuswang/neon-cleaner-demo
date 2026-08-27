@@ -76,6 +76,8 @@ try {
     "docs/handoff.md",
     "docs/sprint-2026-08-24.md",
     "docs/agent-production-workflow.md",
+    "docs/quality-control.md",
+    "docs/qa/gate3-quality-report-2026-08-27.md",
     "source/reference/linxia/README.md"
   ) | ForEach-Object { Write-Host $_ }
 

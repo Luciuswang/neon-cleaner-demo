@@ -25,6 +25,8 @@ of truth.
 docs/handoff.md
 docs/sprint-2026-08-24.md
 docs/agent-production-workflow.md
+docs/quality-control.md
+docs/qa/gate3-quality-report-2026-08-27.md
 source/reference/linxia/README.md
 ```
 
@@ -47,6 +49,17 @@ Producer Agent -> QA Director Agent -> Fix Pass -> QA Sign-off -> Next Step
 
 No major slice moves forward without a QA verdict: `PASS`,
 `CONDITIONAL PASS`, or `BLOCKED`.
+
+Read `docs/quality-control.md` before quality-sensitive work. When touching
+Gate 3 motorcycle chase behavior, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1
+```
+
+Treat automated script `PASS` and visual/art `PASS` as separate things. The
+current rider pose remains `CONDITIONAL`; do not use it as final AI-video
+continuity until the seated riding animation or IK pass is complete.
 
 ## UE Asset Rule
 

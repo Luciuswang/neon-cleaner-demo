@@ -325,3 +325,11 @@ Gate 3 playable chase feedback pass: added in-game HUD, UE-rendered capture scri
 ## Cross-PC Sync Note - 2026-08-26 20:04 +08:00
 
 Added the private cross-PC asset vault workflow for Baidu Netdisk. Paragon: Phase is saved in Fab My Library but still needs Launcher installation. Next session: install the Windows C++ toolchain and restore ParagonPhase, then run UE build and validation.
+
+## Cross-PC Sync Note - 2026-08-27 12:37 +08:00
+
+Added hard Gate 3 quality control: `ue/Run-Gate3QualityCheck.ps1`, `docs/quality-control.md`, and `docs/qa/gate3-quality-report-2026-08-27.md`. The one-command check passed build, validation, smoke, UE-rendered proof capture, and proof-frame sanity checks. QA verdict remains: playable feedback PASS, engineering recoverability PASS, rider pose CONDITIONAL, AI-video continuity BLOCKED until a real seated riding animation or IK pass.
+
+## Cross-PC Sync Note - 2026-08-27 12:40 +08:00
+
+Strengthened quality control: added Gate 3 one-command QA script, quality-control rules, QA report, dynamic capture output, and startup context entries so every PC reads the same gate status.
