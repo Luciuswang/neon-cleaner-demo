@@ -97,6 +97,12 @@ Run the full Gate 3 quality check:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1
 ```
 
+For rider pose / IK changes:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA
+```
+
 ## Latest Verification
 
 - C++ build succeeded.
@@ -109,8 +115,13 @@ powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1
   - `obstacle_count=5`
 - Smoke test passed:
   - `Player0 now controls LinxiaMotorcyclePawn_0`
-  - `Visual alignment bikeRot=R(0) riderRot=R(P=-11.00, Y=-90.00)`
+  - `Visual alignment bikeRot=R(0) riderRot=R(P=4.00, Y=-90.00)`
+  - `Rider contact pose handL=... handR=... footL=... footR=...`
   - `LinxiaMotorcycleSmokeTest Completed distance=6954.2 targetDistance=3235.6 speed=2049.9`
+- 2026-08-27 rider pose update:
+  - Rejected direct hand / foot component-space position locks after QA showed limb stretching.
+  - Kept a safer local bone-space seated pose with rider root pitch `4` and contact-pose logging.
+  - `Run-Gate3QualityCheck.ps1 -FullVisualQA` now captures default, side, and rear views for rider pose checks.
 - 2026-08-26 update:
   - Added `ALinxiaMotorcycleHud` and set it as the chase game mode HUD.
   - Added `ue/Capture-LinxiaMotorcycleChase.ps1`, which uses UE's own screenshot request path instead of unreliable Windows foreground capture.

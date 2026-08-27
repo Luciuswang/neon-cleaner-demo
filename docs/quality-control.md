@@ -30,6 +30,12 @@ powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 `
   -CaptureOutputPath .\source\reference\linxia\ue-captures\linxia_motorcycle_gate3_quality_<date>.png
 ```
 
+For rider pose or IK changes, run the stricter multi-view check:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA
+```
+
 This command must pass before treating Gate 3 as recoverable. It checks:
 
 - UE editor C++ build.
@@ -40,6 +46,9 @@ This command must pass before treating Gate 3 as recoverable. It checks:
 - Chase HUD binding.
 - UE-rendered proof-frame creation.
 - Proof-frame sanity: not blank, not mostly black, expected HUD colors visible.
+
+With `-FullVisualQA`, it also captures side and rear rider QA frames so the pose
+cannot pass only because the chase camera hides a bad silhouette.
 
 The script may return `PASS` for engineering stability while still reporting a
 `CONDITIONAL` art or animation limitation. That conditional note is important

@@ -137,7 +137,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 		RiderMesh->SetSkinnedAssetAndUpdate(PhaseMesh.Object);
 	}
 	RiderMesh->SetRelativeLocation(FVector(8.0f, 0.0f, 20.0f));
-	RiderMesh->SetRelativeRotation(FRotator(-11.0f, 270.0f, 0.0f));
+	RiderMesh->SetRelativeRotation(FRotator(4.0f, 270.0f, 0.0f));
 	RiderMesh->SetRelativeScale3D(FVector(0.88f, 0.88f, 0.88f));
 	RiderMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
@@ -207,6 +207,11 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	if (bCaptureTestActive && CaptureOutputPath.IsEmpty())
 	{
 		CaptureOutputPath = FPaths::ProjectSavedDir() / TEXT("Screenshots/LinxiaMotorcycleCapture.png");
+	}
+	if (bCaptureTestActive)
+	{
+		FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCaptureView="), CaptureViewMode);
+		ConfigureCaptureCamera();
 	}
 
 	ApplyMaterial(BikeBody, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_TacticalBlack.M_NC_TacticalBlack"));
@@ -485,28 +490,78 @@ void ALinxiaMotorcyclePawn::ApplyRiderLocalPose()
 		}
 	};
 
-	// Keep the pose conservative: a readable forward lean and bent limbs without overwriting absolute bone axes.
-	AddLocalRotation(TEXT("pelvis"), FRotator(-8.0f, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("spine_01"), FRotator(-10.0f, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("spine_02"), FRotator(-10.0f, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("spine_03"), FRotator(-8.0f, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("neck_01"), FRotator(8.0f, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("head"), FRotator(4.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("pelvis"), FRotator(-10.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("spine_01"), FRotator(-12.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("spine_02"), FRotator(-12.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("spine_03"), FRotator(-10.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("neck_01"), FRotator(9.0f, 0.0f, 0.0f));
+	AddLocalRotation(TEXT("head"), FRotator(5.0f, 0.0f, 0.0f));
 
 	for (const TPair<FString, float>& Side : { TPair<FString, float>(TEXT("l"), -1.0f), TPair<FString, float>(TEXT("r"), 1.0f) })
 	{
 		const FString& Suffix = Side.Key;
 		const float Sign = Side.Value;
-		AddLocalRotation(*FString::Printf(TEXT("clavicle_%s"), *Suffix), FRotator(-10.0f, Sign * 5.0f, 0.0f));
-		AddLocalRotation(*FString::Printf(TEXT("upperarm_%s"), *Suffix), FRotator(-28.0f, Sign * 10.0f, 0.0f));
-		AddLocalRotation(*FString::Printf(TEXT("lowerarm_%s"), *Suffix), FRotator(-30.0f, Sign * 4.0f, 0.0f));
-		AddLocalRotation(*FString::Printf(TEXT("thigh_%s"), *Suffix), FRotator(-38.0f, Sign * 5.0f, 0.0f));
-		AddLocalRotation(*FString::Printf(TEXT("calf_%s"), *Suffix), FRotator(52.0f, 0.0f, 0.0f));
-		AddLocalRotation(*FString::Printf(TEXT("foot_%s"), *Suffix), FRotator(-14.0f, 0.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("clavicle_%s"), *Suffix), FRotator(-12.0f, Sign * 8.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("upperarm_%s"), *Suffix), FRotator(-34.0f, Sign * 14.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("lowerarm_%s"), *Suffix), FRotator(-40.0f, Sign * 6.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("thigh_%s"), *Suffix), FRotator(-34.0f, Sign * 4.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("calf_%s"), *Suffix), FRotator(42.0f, Sign * 2.0f, 0.0f));
+		AddLocalRotation(*FString::Printf(TEXT("foot_%s"), *Suffix), FRotator(-12.0f, 0.0f, 0.0f));
 	}
 
 	RiderMesh->MarkRefreshTransformDirty();
 	RiderMesh->RefreshBoneTransforms();
+	LogRiderContactPose();
+}
+
+void ALinxiaMotorcyclePawn::LogRiderContactPose()
+{
+	if (!RiderMesh)
+	{
+		return;
+	}
+
+	const FVector HandL = RiderMesh->GetBoneLocationByName(TEXT("hand_l"), EBoneSpaces::ComponentSpace);
+	const FVector HandR = RiderMesh->GetBoneLocationByName(TEXT("hand_r"), EBoneSpaces::ComponentSpace);
+	const FVector FootL = RiderMesh->GetBoneLocationByName(TEXT("foot_l"), EBoneSpaces::ComponentSpace);
+	const FVector FootR = RiderMesh->GetBoneLocationByName(TEXT("foot_r"), EBoneSpaces::ComponentSpace);
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider contact pose handL=%s handR=%s footL=%s footR=%s"),
+		*HandL.ToCompactString(),
+		*HandR.ToCompactString(),
+		*FootL.ToCompactString(),
+		*FootR.ToCompactString());
+}
+
+void ALinxiaMotorcyclePawn::ConfigureCaptureCamera()
+{
+	if (!CameraBoom)
+	{
+		return;
+	}
+
+	const FString View = CaptureViewMode.ToLower();
+	if (View == TEXT("side"))
+	{
+		CameraYawOffset = 82.0f;
+		CameraPitch = -5.0f;
+		CameraBoom->TargetArmLength = 650.0f;
+		CameraBoom->SocketOffset = FVector(0.0f, 0.0f, 18.0f);
+		FollowCamera->SetFieldOfView(54.0f);
+	}
+	else if (View == TEXT("rear"))
+	{
+		CameraYawOffset = -24.0f;
+		CameraPitch = -7.0f;
+		CameraBoom->TargetArmLength = 560.0f;
+		CameraBoom->SocketOffset = FVector(0.0f, 26.0f, 24.0f);
+		FollowCamera->SetFieldOfView(62.0f);
+	}
+
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycleCapture] View=%s yawOffset=%.1f pitch=%.1f arm=%.1f"),
+		*CaptureViewMode,
+		CameraYawOffset,
+		CameraPitch,
+		CameraBoom->TargetArmLength);
 }
 
 void ALinxiaMotorcyclePawn::ApplyMaterial(UStaticMeshComponent* Component, const TCHAR* MaterialPath)

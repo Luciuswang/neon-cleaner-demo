@@ -337,3 +337,11 @@ Strengthened quality control: added Gate 3 one-command QA script, quality-contro
 ## Cross-PC Sync Note - 2026-08-27 12:44 +08:00
 
 Adjusted Gate 3 quality check default proof output to ignored Saved/Quality so routine QA does not dirty the Git worktree; verified with -SkipBuild.
+
+## Cross-PC Sync Note - 2026-08-27 13:14 +08:00
+
+Rider IK spike completed. Direct component-space hand/foot locking was rejected after QA because it stretched limbs. Current committed direction keeps a safer local bone-space riding pose with rider pitch `4`, rider contact-pose logging, and `Run-Gate3QualityCheck.ps1 -FullVisualQA` for default / side / rear captures. Next slice should use a real seated motorcycle FBX, Control Rig, or a two-bone IK solver; AI-video continuity remains blocked.
+
+## Cross-PC Sync Note - 2026-08-27 13:18 +08:00
+
+Rider IK spike: rejected direct leaf-bone locks after QA because they stretched limbs; kept safer local bone-space rider pitch 4 pose, added contact-pose logging, and added FullVisualQA default/side/rear captures for Gate 3. AI-video continuity remains blocked until seated animation, Control Rig, or two-bone IK.

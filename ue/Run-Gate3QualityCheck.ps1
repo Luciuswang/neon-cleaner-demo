@@ -1,6 +1,7 @@
 param(
     [switch]$SkipBuild,
-    [string]$CaptureOutputPath = ""
+    [string]$CaptureOutputPath = "",
+    [switch]$FullVisualQA
 )
 
 $ErrorActionPreference = "Stop"
@@ -129,10 +130,21 @@ try {
     }
 
     Write-Step "Capture UE proof frame"
-    powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $CaptureOutputPath
+    powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $CaptureOutputPath -View Default
 
     Write-Step "Inspect proof frame"
     Test-CaptureImage $CaptureOutputPath
+
+    if ($FullVisualQA) {
+        $baseName = [System.IO.Path]::GetFileNameWithoutExtension($CaptureOutputPath)
+        $dirName = Split-Path -Parent $CaptureOutputPath
+        foreach ($view in @("Side", "Rear")) {
+            $viewPath = Join-Path $dirName "$baseName-$($view.ToLower()).png"
+            Write-Step "Capture $view rider QA frame"
+            powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $viewPath -View $view
+            Test-CaptureImage $viewPath
+        }
+    }
 
     Write-Step "Gate 3 QA Verdict"
     Write-Host "PASS: build, map validation, smoke test, HUD binding, visual alignment markers, and proof-frame sanity checks passed." -ForegroundColor Green

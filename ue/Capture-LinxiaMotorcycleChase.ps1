@@ -1,5 +1,7 @@
 param(
-    [string]$OutputPath = ""
+    [string]$OutputPath = "",
+    [ValidateSet("Default", "Side", "Rear")]
+    [string]$View = "Default"
 )
 
 $ErrorActionPreference = "Stop"
@@ -32,7 +34,8 @@ $process = Start-Process -FilePath $Editor -ArgumentList @(
     "-ResY=720",
     "-nop4",
     "-nosplash",
-    "-LinxiaMotorcycleCapture=`"$OutputPath`""
+    "-LinxiaMotorcycleCapture=`"$OutputPath`"",
+    "-LinxiaMotorcycleCaptureView=$View"
 ) -PassThru
 
 if (-not $process.WaitForExit(90000)) {

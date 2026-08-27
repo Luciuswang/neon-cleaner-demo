@@ -37,6 +37,8 @@ private:
 	void ResetToStart();
 	void UpdateTargetDistanceLog();
 	void ApplyRiderLocalPose();
+	void LogRiderContactPose();
+	void ConfigureCaptureCamera();
 	void ApplyMaterial(UStaticMeshComponent* Component, const TCHAR* MaterialPath);
 
 	float CurrentSpeed = 0.0f;
@@ -60,6 +62,7 @@ private:
 	bool bTargetCaught = false;
 
 	FString CaptureOutputPath;
+	FString CaptureViewMode;
 	FVector StartLocation = FVector::ZeroVector;
 	FRotator StartRotation = FRotator::ZeroRotator;
 	FVector SmokeTestStartLocation = FVector::ZeroVector;
