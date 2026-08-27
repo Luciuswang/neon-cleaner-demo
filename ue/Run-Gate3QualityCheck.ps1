@@ -125,7 +125,7 @@ try {
 
     if ($CaptureOutputPath.Trim().Length -eq 0) {
         $stamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
-        $CaptureOutputPath = Join-Path $RepoRoot "source\reference\linxia\ue-captures\linxia_motorcycle_gate3_quality_$stamp.png"
+        $CaptureOutputPath = Join-Path $PSScriptRoot "NeonCleanerUE\Saved\Quality\linxia_motorcycle_gate3_quality_$stamp.png"
     }
 
     Write-Step "Capture UE proof frame"

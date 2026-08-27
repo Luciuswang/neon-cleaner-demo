@@ -21,6 +21,15 @@ For the playable Lin Xia motorcycle chase, run:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1
 ```
 
+By default the proof capture is written under the ignored UE `Saved/Quality`
+folder so routine QA does not dirty the Git worktree. To create a commit-worthy
+proof frame, pass an explicit repository path:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 `
+  -CaptureOutputPath .\source\reference\linxia\ue-captures\linxia_motorcycle_gate3_quality_<date>.png
+```
+
 This command must pass before treating Gate 3 as recoverable. It checks:
 
 - UE editor C++ build.

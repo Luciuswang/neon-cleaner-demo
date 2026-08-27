@@ -333,3 +333,7 @@ Added hard Gate 3 quality control: `ue/Run-Gate3QualityCheck.ps1`, `docs/quality
 ## Cross-PC Sync Note - 2026-08-27 12:40 +08:00
 
 Strengthened quality control: added Gate 3 one-command QA script, quality-control rules, QA report, dynamic capture output, and startup context entries so every PC reads the same gate status.
+
+## Cross-PC Sync Note - 2026-08-27 12:44 +08:00
+
+Adjusted Gate 3 quality check default proof output to ignored Saved/Quality so routine QA does not dirty the Git worktree; verified with -SkipBuild.
