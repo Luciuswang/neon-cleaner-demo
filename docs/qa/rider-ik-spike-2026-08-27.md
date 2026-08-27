@@ -11,7 +11,8 @@ motorcycle mesh, player input, or camera behavior.
 ENGINEERING: PASS
 RIDER POSE: CONDITIONAL
 DIRECT LEAF-BONE IK: REJECTED
-NEXT METHOD: seated animation / Control Rig / two-bone IK
+C++ QUICK TWO-BONE IK: REJECTED
+NEXT METHOD: seated animation / Control Rig asset pass
 ```
 
 ## What Was Tried
@@ -30,6 +31,11 @@ NEXT METHOD: seated animation / Control Rig / two-bone IK
   - stronger but conservative arm bend
   - conservative leg bend
   - runtime contact-pose logging for hands and feet
+- After commit `f92d03c`, tested a quick C++ two-bone IK solver against handlebar
+  and footpeg target points.
+- QA rejected the quick solver because side / rear captures showed the arm and
+  leg chains bending in unreliable directions. It avoided stretch, but it made
+  the rider silhouette worse than the safer local pose.
 
 ## Verification
 
@@ -64,7 +70,8 @@ step should use one of:
 
 - a proper seated motorcycle FBX animation retargeted to `phase_Skeleton`,
 - a Control Rig with pelvis, hand, and foot effectors,
-- a small C++ two-bone IK solver for upper/lower arms and thighs/calves.
+- a C++ solver only after its bone-axis assumptions are validated in an isolated
+  pose test map.
 
 Acceptance criteria remain:
 

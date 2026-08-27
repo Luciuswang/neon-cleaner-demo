@@ -345,3 +345,11 @@ Rider IK spike completed. Direct component-space hand/foot locking was rejected 
 ## Cross-PC Sync Note - 2026-08-27 13:18 +08:00
 
 Rider IK spike: rejected direct leaf-bone locks after QA because they stretched limbs; kept safer local bone-space rider pitch 4 pose, added contact-pose logging, and added FullVisualQA default/side/rear captures for Gate 3. AI-video continuity remains blocked until seated animation, Control Rig, or two-bone IK.
+
+## Cross-PC Sync Note - 2026-08-27 13:29 +08:00
+
+Follow-up quick C++ two-bone IK attempt was rejected by side / rear capture QA. It avoided limb stretch but bent the Phase arm / leg chains in unreliable directions, so the mainline remains on the safer local pose from `f92d03c`. Next real pass should use a seated animation source or a UE Control Rig asset pass, not more blind C++ target-point tuning.
+
+## Cross-PC Sync Note - 2026-08-27 13:26 +08:00
+
+Quick C++ two-bone IK follow-up was rejected by side/rear QA because it bent Phase limbs in unreliable directions; keep f92d03c safe local pose and move next to seated animation source or UE Control Rig asset pass.
