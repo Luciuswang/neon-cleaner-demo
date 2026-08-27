@@ -36,6 +36,19 @@ For rider pose or IK changes, run the stricter multi-view check:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA
 ```
 
+For a rider pose / IK change to advance as a formal quality pass, use the strict
+review gate after inspecting the default, side, and rear frames:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 `
+  -FullVisualQA `
+  -StrictRiderPoseGate `
+  -RiderPoseVerdict PASS
+```
+
+Use `-RiderPoseVerdict REJECT` when a tested pose should be recorded as failed.
+The strict gate fails unless the verdict is `PASS`.
+
 This command must pass before treating Gate 3 as recoverable. It checks:
 
 - UE editor C++ build.
@@ -50,9 +63,9 @@ This command must pass before treating Gate 3 as recoverable. It checks:
 With `-FullVisualQA`, it also captures side and rear rider QA frames so the pose
 cannot pass only because the chase camera hides a bad silhouette.
 
-The script may return `PASS` for engineering stability while still reporting a
-`CONDITIONAL` art or animation limitation. That conditional note is important
-and must not be hidden in status reports.
+The script may return `PASS` for engineering stability while rider pose remains
+`CONDITIONAL`. For animation / IK slices, that is not a production pass unless
+the strict rider pose gate also passes.
 
 ## Visual QA Rule
 

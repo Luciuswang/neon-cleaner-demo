@@ -353,3 +353,7 @@ Follow-up quick C++ two-bone IK attempt was rejected by side / rear capture QA. 
 ## Cross-PC Sync Note - 2026-08-27 13:26 +08:00
 
 Quick C++ two-bone IK follow-up was rejected by side/rear QA because it bent Phase limbs in unreliable directions; keep f92d03c safe local pose and move next to seated animation source or UE Control Rig asset pass.
+
+## Cross-PC Sync Note - 2026-08-27 13:29 +08:00
+
+Strengthened Gate 3 rider pose quality gate: FullVisualQA can now carry explicit rider pose PASS/CONDITIONAL/REJECT verdicts, and StrictRiderPoseGate fails unless reviewer verdict is PASS.

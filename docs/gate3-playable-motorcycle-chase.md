@@ -103,6 +103,19 @@ For rider pose / IK changes:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA
 ```
 
+To sign off a rider pose / IK slice as production-ready, inspect the default,
+side, and rear frames, then run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 `
+  -FullVisualQA `
+  -StrictRiderPoseGate `
+  -RiderPoseVerdict PASS
+```
+
+If the pose fails visual review, use `-RiderPoseVerdict REJECT` or record the
+rejection in `docs/qa/`.
+
 ## Latest Verification
 
 - C++ build succeeded.

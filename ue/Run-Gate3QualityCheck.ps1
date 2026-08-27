@@ -1,7 +1,10 @@
 param(
     [switch]$SkipBuild,
     [string]$CaptureOutputPath = "",
-    [switch]$FullVisualQA
+    [switch]$FullVisualQA,
+    [ValidateSet("PASS", "CONDITIONAL", "REJECT")]
+    [string]$RiderPoseVerdict = "CONDITIONAL",
+    [switch]$StrictRiderPoseGate
 )
 
 $ErrorActionPreference = "Stop"
@@ -148,7 +151,24 @@ try {
 
     Write-Step "Gate 3 QA Verdict"
     Write-Host "PASS: build, map validation, smoke test, HUD binding, visual alignment markers, and proof-frame sanity checks passed." -ForegroundColor Green
-    Write-Host "CONDITIONAL: rider pose still needs a real seated riding animation or IK pass before AI-video continuity sign-off." -ForegroundColor Yellow
+    if ($FullVisualQA) {
+        if ($RiderPoseVerdict -eq "PASS") {
+            Write-Host "RIDER POSE: PASS by explicit multi-view reviewer verdict." -ForegroundColor Green
+        }
+        elseif ($RiderPoseVerdict -eq "REJECT") {
+            Write-Host "RIDER POSE: REJECT by explicit multi-view reviewer verdict." -ForegroundColor Red
+        }
+        else {
+            Write-Host "RIDER POSE: CONDITIONAL by explicit multi-view reviewer verdict." -ForegroundColor Yellow
+        }
+
+        if ($StrictRiderPoseGate -and $RiderPoseVerdict -ne "PASS") {
+            throw "Strict rider pose gate failed: set -RiderPoseVerdict PASS only after default/side/rear visual review passes."
+        }
+    }
+    else {
+        Write-Host "CONDITIONAL: rider pose still needs -FullVisualQA before AI-video continuity sign-off." -ForegroundColor Yellow
+    }
     Write-Host "Proof: $CaptureOutputPath"
 }
 finally {
