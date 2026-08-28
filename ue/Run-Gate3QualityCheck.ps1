@@ -6,7 +6,8 @@ param(
     [string]$RiderPoseProfile = "Default",
     [ValidateSet("PASS", "CONDITIONAL", "REJECT")]
     [string]$RiderPoseVerdict = "CONDITIONAL",
-    [switch]$StrictRiderPoseGate
+    [switch]$StrictRiderPoseGate,
+    [switch]$SkipRigAssetValidation
 )
 
 $ErrorActionPreference = "Stop"
@@ -18,6 +19,7 @@ $BuildBat = "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.ba
 $ValidateScript = Join-Path $PSScriptRoot "scripts\validate_linxia_motorcycle_chase_level.py"
 $SmokeScript = Join-Path $PSScriptRoot "SmokeTest-LinxiaMotorcycleChase.ps1"
 $CaptureScript = Join-Path $PSScriptRoot "Capture-LinxiaMotorcycleChase.ps1"
+$RigAssetScript = Join-Path $PSScriptRoot "Setup-LinxiaRigAssets.ps1"
 $LogPath = Join-Path $PSScriptRoot "NeonCleanerUE\Saved\Logs\NeonCleanerUE.log"
 
 function Write-Step($message) {
@@ -98,6 +100,7 @@ try {
     Assert-Exists $ValidateScript "Gate 3 validation script"
     Assert-Exists $SmokeScript "Gate 3 smoke script"
     Assert-Exists $CaptureScript "Gate 3 capture script"
+    Assert-Exists $RigAssetScript "Linxia rig asset setup script"
 
     Get-Process UnrealEditor -ErrorAction SilentlyContinue | Stop-Process -Force
 
@@ -126,16 +129,40 @@ try {
         }
     }
 
-    Write-Step "Run motorcycle smoke test"
-    powershell -ExecutionPolicy Bypass -File $SmokeScript
+    if (-not $SkipRigAssetValidation) {
+        Invoke-CheckedNative "Validate Linxia rig assets" "powershell" @(
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            $RigAssetScript,
+            "-ValidateOnly"
+        )
+    }
+
+    Invoke-CheckedNative "Run motorcycle smoke test" "powershell" @(
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        $SmokeScript
+    )
 
     if ($CaptureOutputPath.Trim().Length -eq 0) {
         $stamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
         $CaptureOutputPath = Join-Path $PSScriptRoot "NeonCleanerUE\Saved\Quality\linxia_motorcycle_gate3_quality_$stamp.png"
     }
 
-    Write-Step "Capture UE proof frame"
-    powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $CaptureOutputPath -View Default -Pose $RiderPoseProfile
+    Invoke-CheckedNative "Capture UE proof frame" "powershell" @(
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        $CaptureScript,
+        "-OutputPath",
+        $CaptureOutputPath,
+        "-View",
+        "Default",
+        "-Pose",
+        $RiderPoseProfile
+    )
 
     Write-Step "Inspect proof frame"
     Test-CaptureImage $CaptureOutputPath
@@ -145,8 +172,18 @@ try {
         $dirName = Split-Path -Parent $CaptureOutputPath
         foreach ($view in @("Side", "Rear")) {
             $viewPath = Join-Path $dirName "$baseName-$($view.ToLower()).png"
-            Write-Step "Capture $view rider QA frame"
-            powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $viewPath -View $view -Pose $RiderPoseProfile
+            Invoke-CheckedNative "Capture $view rider QA frame" "powershell" @(
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                $CaptureScript,
+                "-OutputPath",
+                $viewPath,
+                "-View",
+                $view,
+                "-Pose",
+                $RiderPoseProfile
+            )
             Test-CaptureImage $viewPath
         }
     }

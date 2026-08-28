@@ -63,6 +63,7 @@ This command must pass before treating Gate 3 as recoverable. It checks:
 
 - UE editor C++ build.
 - `/Game/LinxiaChase/LVL_Linxia_MotorcycleChase` validation.
+- Lin Xia Phase IK Rig and Control Rig asset validation.
 - Player 0 motorcycle possession.
 - Automatic chase movement completion.
 - Imported motorcycle visual yaw marker.

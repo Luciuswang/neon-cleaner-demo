@@ -18,6 +18,10 @@ next quality step is an asset-level animation / rig pass:
   `/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC`
 - Lin Xia current skeleton:
   `/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/phase_Skeleton`
+- Lin Xia target IK Rig:
+  `/Game/LinxiaRig/IKR_Linxia_Phase`
+- Lin Xia target Control Rig:
+  `/Game/LinxiaRig/CR_Linxia_Phase`
 - Existing Paragon Phase animation set has combat, locomotion, aim offset, and
   ability clips, but no dedicated seated / motorcycle riding animation.
 - UE template Control Rig assets exist for Mannequin, not for Phase:
@@ -49,6 +53,18 @@ Use the project as-is and do one of:
 - If no source is immediately available, create a Phase-specific Control Rig /
   IK Rig asset and drive the current rider mesh from visible controls instead of
   C++ bone deltas.
+
+The Phase rig asset baseline now exists. Rebuild / validate it on any PC with:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Setup-LinxiaRigAssets.ps1
+```
+
+Validate only:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Setup-LinxiaRigAssets.ps1 -ValidateOnly
+```
 
 ## Acceptance Gate
 

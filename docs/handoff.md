@@ -365,3 +365,7 @@ Continued rider animation / IK work. Added command-line rider pose profiles and 
 ## Cross-PC Sync Note - 2026-08-28 19:35 +08:00
 
 Rider animation/IK continuation: added reproducible rider pose profile capture tooling, verified Default remains stable while Compact/Bars/AsymBars are not accepted, enabled ControlRig/IKRig plugins, and documented next path as seated FBX or Phase-specific Control Rig asset pass.
+
+## Cross-PC Sync Note - 2026-08-28 20:04 +08:00
+
+Asset route started for Lin Xia rider quality. Added Phase-specific IK Rig and Control Rig assets under `/Game/LinxiaRig`, added one-command setup / validation scripts, and wired rig asset validation into Gate 3. Full Gate 3 with `-SkipBuild -FullVisualQA -RiderPoseProfile Default` passed engineering checks; rider pose remains CONDITIONAL until a seated FBX or authored Control Rig riding pose passes strict review.
