@@ -2,6 +2,8 @@ param(
     [switch]$SkipBuild,
     [string]$CaptureOutputPath = "",
     [switch]$FullVisualQA,
+    [ValidateSet("Default", "Compact", "Bars", "AsymBars")]
+    [string]$RiderPoseProfile = "Default",
     [ValidateSet("PASS", "CONDITIONAL", "REJECT")]
     [string]$RiderPoseVerdict = "CONDITIONAL",
     [switch]$StrictRiderPoseGate
@@ -133,7 +135,7 @@ try {
     }
 
     Write-Step "Capture UE proof frame"
-    powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $CaptureOutputPath -View Default
+    powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $CaptureOutputPath -View Default -Pose $RiderPoseProfile
 
     Write-Step "Inspect proof frame"
     Test-CaptureImage $CaptureOutputPath
@@ -144,7 +146,7 @@ try {
         foreach ($view in @("Side", "Rear")) {
             $viewPath = Join-Path $dirName "$baseName-$($view.ToLower()).png"
             Write-Step "Capture $view rider QA frame"
-            powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $viewPath -View $view
+            powershell -ExecutionPolicy Bypass -File $CaptureScript -OutputPath $viewPath -View $view -Pose $RiderPoseProfile
             Test-CaptureImage $viewPath
         }
     }

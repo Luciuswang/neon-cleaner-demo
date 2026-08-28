@@ -36,6 +36,16 @@ For rider pose or IK changes, run the stricter multi-view check:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA
 ```
 
+To compare experimental rider pose profiles without dirtying the repo, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\ue\Test-LinxiaRiderPoseProfiles.ps1
+```
+
+The current experimental profiles are `Default`, `Compact`, `Bars`, and
+`AsymBars`. They are screenshot candidates only. Do not treat a profile as
+accepted until the side and rear frames pass visual review.
+
 For a rider pose / IK change to advance as a formal quality pass, use the strict
 review gate after inspecting the default, side, and rear frames:
 

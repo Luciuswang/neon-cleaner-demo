@@ -63,6 +63,7 @@ private:
 
 	FString CaptureOutputPath;
 	FString CaptureViewMode;
+	FString RiderPoseProfile;
 	FVector StartLocation = FVector::ZeroVector;
 	FRotator StartRotation = FRotator::ZeroRotator;
 	FVector SmokeTestStartLocation = FVector::ZeroVector;

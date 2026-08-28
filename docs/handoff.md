@@ -357,3 +357,11 @@ Quick C++ two-bone IK follow-up was rejected by side/rear QA because it bent Pha
 ## Cross-PC Sync Note - 2026-08-27 13:29 +08:00
 
 Strengthened Gate 3 rider pose quality gate: FullVisualQA can now carry explicit rider pose PASS/CONDITIONAL/REJECT verdicts, and StrictRiderPoseGate fails unless reviewer verdict is PASS.
+
+## Cross-PC Sync Note - 2026-08-28 19:38 +08:00
+
+Continued rider animation / IK work. Added command-line rider pose profiles and `ue/Test-LinxiaRiderPoseProfiles.ps1` so candidate poses can be captured side/rear into ignored `Saved/Quality` without dirtying Git. Tested `Compact`, `Bars`, and `AsymBars`; all remain rejected / conditional, so `Default` remains the stable fallback. Explicitly enabled UE `ControlRig` and `IKRig` plugins and added `docs/rider-animation-source-plan-2026-08-28.md`; next production path is a seated riding FBX or a Phase-specific Control Rig / IK Rig asset pass.
+
+## Cross-PC Sync Note - 2026-08-28 19:35 +08:00
+
+Rider animation/IK continuation: added reproducible rider pose profile capture tooling, verified Default remains stable while Compact/Bars/AsymBars are not accepted, enabled ControlRig/IKRig plugins, and documented next path as seated FBX or Phase-specific Control Rig asset pass.
