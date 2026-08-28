@@ -36,15 +36,20 @@ For rider pose or IK changes, run the stricter multi-view check:
 powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA
 ```
 
-To compare experimental rider pose profiles without dirtying the repo, run:
+Legacy C++ rider pose profiles are no longer the main production path. The
+current playable rider source is the generated animation asset:
+`/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle`.
+
+To compare old experimental rider pose profile captures without dirtying the
+repo, run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\ue\Test-LinxiaRiderPoseProfiles.ps1
 ```
 
-The current experimental profiles are `Default`, `Compact`, `Bars`, and
-`AsymBars`. They are screenshot candidates only. Do not treat a profile as
-accepted until the side and rear frames pass visual review.
+The old experimental profiles are `Default`, `Compact`, `Bars`, and `AsymBars`.
+They are retained only for capture-script compatibility. Do not treat a profile
+as accepted; use the animation asset and strict multi-view review instead.
 
 For a rider pose / IK change to advance as a formal quality pass, use the strict
 review gate after inspecting the default, side, and rear frames:
@@ -63,7 +68,7 @@ This command must pass before treating Gate 3 as recoverable. It checks:
 
 - UE editor C++ build.
 - `/Game/LinxiaChase/LVL_Linxia_MotorcycleChase` validation.
-- Lin Xia Phase IK Rig and Control Rig asset validation.
+- Lin Xia Phase IK Rig, Control Rig, and motorcycle ride animation validation.
 - Player 0 motorcycle possession.
 - Automatic chase movement completion.
 - Imported motorcycle visual yaw marker.
@@ -94,8 +99,8 @@ Current Gate 3 visual verdict:
 
 ```text
 PLAYABLE FEEDBACK: PASS
-RIDER POSE: CONDITIONAL
-AI VIDEO CONTINUITY: BLOCKED until seated riding animation or IK pass
+RIDER POSE: CONDITIONAL PASS for playable prototype
+AI VIDEO CONTINUITY: BLOCKED until the ride animation clears strict visual QA
 ```
 
 ## Efficiency Rule

@@ -114,6 +114,7 @@ try {
         )
     }
 
+    Remove-Item -LiteralPath $LogPath -ErrorAction SilentlyContinue
     Invoke-CheckedNative "Validate Gate 3 map" $EditorCmd @(
         $UProject,
         "-unattended",
@@ -122,11 +123,16 @@ try {
         "-ExecutePythonScript=$ValidateScript"
     )
 
-    if (Test-Path $LogPath) {
-        $validation = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycleChaseValidate\] Validation passed" | Select-Object -Last 1
-        if (-not $validation) {
-            throw "Gate 3 validation marker not found in UE log"
-        }
+    if (-not (Test-Path -LiteralPath $LogPath)) {
+        throw "Gate 3 validation did not produce a UE log: $LogPath"
+    }
+    $pythonError = Select-String -Path $LogPath -Pattern "LogPython: Error|Traceback" | Select-Object -Last 1
+    if ($pythonError) {
+        throw "Gate 3 validation failed with Python error: $($pythonError.Line)"
+    }
+    $validation = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycleChaseValidate\] Validation passed" | Select-Object -Last 1
+    if (-not $validation) {
+        throw "Gate 3 validation marker not found in UE log"
     }
 
     if (-not $SkipRigAssetValidation) {

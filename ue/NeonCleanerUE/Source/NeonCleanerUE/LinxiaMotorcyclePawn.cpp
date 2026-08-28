@@ -1,7 +1,8 @@
 #include "LinxiaMotorcyclePawn.h"
 
 #include "Camera/CameraComponent.h"
-#include "Components/PoseableMeshComponent.h"
+#include "Components/SkeletalMeshComponent.h"
+#include "Animation/AnimationAsset.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 #include "EngineUtils.h"
@@ -34,6 +35,7 @@ constexpr float CaptureExitTime = 3.8f;
 constexpr float ChaseCatchDistance = 520.0f;
 
 const TCHAR* PhaseMeshPath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC");
+const TCHAR* LinxiaRideAnimationPath = TEXT("/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle.AN_Linxia_MotorcycleRide_Idle");
 }
 
 ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
@@ -53,6 +55,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ImportedBikeMesh(TEXT("/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle"));
 	static ConstructorHelpers::FObjectFinder<USkeletalMesh> PhaseMesh(PhaseMeshPath);
+	static ConstructorHelpers::FObjectFinder<UAnimationAsset> RideAnimation(LinxiaRideAnimationPath);
 
 	const bool bHasImportedBike = ImportedBikeMesh.Succeeded();
 
@@ -130,14 +133,20 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	NoseLight->SetVisibility(!bHasImportedBike, true);
 	NoseLight->SetHiddenInGame(bHasImportedBike);
 
-	RiderMesh = CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("LinxiaRiderMesh"));
+	RiderMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LinxiaRiderMesh"));
 	RiderMesh->SetupAttachment(VisualRoot);
 	if (PhaseMesh.Succeeded())
 	{
-		RiderMesh->SetSkinnedAssetAndUpdate(PhaseMesh.Object);
+		RiderMesh->SetSkeletalMesh(PhaseMesh.Object);
 	}
-	RiderMesh->SetRelativeLocation(FVector(8.0f, 0.0f, 20.0f));
-	RiderMesh->SetRelativeRotation(FRotator(4.0f, 270.0f, 0.0f));
+	if (RideAnimation.Succeeded())
+	{
+		RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+		RiderMesh->SetAnimation(RideAnimation.Object);
+		RiderMesh->PlayAnimation(RideAnimation.Object, true);
+	}
+	RiderMesh->SetRelativeLocation(FVector(28.0f, 0.0f, -16.0f));
+	RiderMesh->SetRelativeRotation(FRotator(10.0f, 270.0f, 0.0f));
 	RiderMesh->SetRelativeScale3D(FVector(0.88f, 0.88f, 0.88f));
 	RiderMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
@@ -213,8 +222,6 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 		FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCaptureView="), CaptureViewMode);
 		ConfigureCaptureCamera();
 	}
-	FParse::Value(FCommandLine::Get(), TEXT("LinxiaRiderPose="), RiderPoseProfile);
-
 	ApplyMaterial(BikeBody, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_TacticalBlack.M_NC_TacticalBlack"));
 	ApplyMaterial(Seat, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(FrontFairing, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_TacticalBlack.M_NC_TacticalBlack"));
@@ -222,7 +229,7 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	ApplyMaterial(RearWheel, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_RubberBlack.M_NC_RubberBlack"));
 	ApplyMaterial(Handlebar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(NoseLight, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_CyanDiagnostic.M_NC_CyanDiagnostic"));
-	ApplyRiderLocalPose();
+	StartRiderAnimation();
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Visual alignment bikeRot=%s riderRot=%s"),
 		ImportedMotorcycle ? *ImportedMotorcycle->GetRelativeRotation().ToCompactString() : TEXT("None"),
 		RiderMesh ? *RiderMesh->GetRelativeRotation().ToCompactString() : TEXT("None"));
@@ -458,131 +465,24 @@ void ALinxiaMotorcyclePawn::UpdateTargetDistanceLog()
 	}
 }
 
-void ALinxiaMotorcyclePawn::ApplyRiderLocalPose()
+void ALinxiaMotorcyclePawn::StartRiderAnimation()
 {
 	if (!RiderMesh)
 	{
 		return;
 	}
 
-	const USkeletalMesh* SkeletalMesh = Cast<USkeletalMesh>(RiderMesh->GetSkinnedAsset());
-	if (!SkeletalMesh)
+	UAnimationAsset* RideAnimation = LoadObject<UAnimationAsset>(nullptr, LinxiaRideAnimationPath);
+	if (!RideAnimation)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("[LinxiaMotorcycle] Missing rider animation asset: %s"), LinxiaRideAnimationPath);
 		return;
 	}
 
-	const FReferenceSkeleton& ReferenceSkeleton = SkeletalMesh->GetRefSkeleton();
-	const TArray<FTransform>& RefPose = ReferenceSkeleton.GetRefBonePose();
-	if (RefPose.Num() == 0)
-	{
-		return;
-	}
-
-	RiderMesh->BoneSpaceTransforms = RefPose;
-
-	struct FRiderPoseTuning
-	{
-		float PelvisPitch = -10.0f;
-		float Spine01Pitch = -12.0f;
-		float Spine02Pitch = -12.0f;
-		float Spine03Pitch = -10.0f;
-		float NeckPitch = 9.0f;
-		float HeadPitch = 5.0f;
-		FRotator Clavicle = FRotator(-12.0f, 8.0f, 0.0f);
-		FRotator UpperArm = FRotator(-34.0f, 14.0f, 0.0f);
-		FRotator LowerArm = FRotator(-40.0f, 6.0f, 0.0f);
-		FRotator Thigh = FRotator(-34.0f, 4.0f, 0.0f);
-		FRotator Calf = FRotator(42.0f, 2.0f, 0.0f);
-		FRotator Foot = FRotator(-12.0f, 0.0f, 0.0f);
-	};
-
-	FRiderPoseTuning Pose;
-	const FString NormalizedProfile = RiderPoseProfile.ToLower();
-	if (NormalizedProfile == TEXT("compact"))
-	{
-		Pose.PelvisPitch = -15.0f;
-		Pose.Spine01Pitch = -18.0f;
-		Pose.Spine02Pitch = -15.0f;
-		Pose.Spine03Pitch = -10.0f;
-		Pose.NeckPitch = 12.0f;
-		Pose.HeadPitch = 8.0f;
-		Pose.Clavicle = FRotator(-16.0f, 0.0f, 16.0f);
-		Pose.UpperArm = FRotator(-44.0f, -4.0f, 26.0f);
-		Pose.LowerArm = FRotator(-58.0f, 0.0f, -18.0f);
-		Pose.Thigh = FRotator(-42.0f, 2.0f, 8.0f);
-		Pose.Calf = FRotator(56.0f, 0.0f, -6.0f);
-		Pose.Foot = FRotator(-16.0f, 0.0f, 0.0f);
-	}
-	else if (NormalizedProfile == TEXT("bars"))
-	{
-		Pose.PelvisPitch = -18.0f;
-		Pose.Spine01Pitch = -21.0f;
-		Pose.Spine02Pitch = -16.0f;
-		Pose.Spine03Pitch = -8.0f;
-		Pose.NeckPitch = 14.0f;
-		Pose.HeadPitch = 10.0f;
-		Pose.Clavicle = FRotator(-22.0f, -6.0f, 24.0f);
-		Pose.UpperArm = FRotator(-58.0f, -8.0f, 32.0f);
-		Pose.LowerArm = FRotator(-68.0f, 0.0f, -28.0f);
-		Pose.Thigh = FRotator(-46.0f, 0.0f, 12.0f);
-		Pose.Calf = FRotator(62.0f, 0.0f, -8.0f);
-		Pose.Foot = FRotator(-18.0f, 0.0f, 0.0f);
-	}
-	else if (NormalizedProfile == TEXT("asymbars"))
-	{
-		Pose.PelvisPitch = -18.0f;
-		Pose.Spine01Pitch = -21.0f;
-		Pose.Spine02Pitch = -16.0f;
-		Pose.Spine03Pitch = -8.0f;
-		Pose.NeckPitch = 14.0f;
-		Pose.HeadPitch = 10.0f;
-		Pose.Clavicle = FRotator(-22.0f, -6.0f, 24.0f);
-		Pose.UpperArm = FRotator(-58.0f, -8.0f, 32.0f);
-		Pose.LowerArm = FRotator(-68.0f, 0.0f, -28.0f);
-		Pose.Thigh = FRotator(-46.0f, 0.0f, 12.0f);
-		Pose.Calf = FRotator(62.0f, 0.0f, -8.0f);
-		Pose.Foot = FRotator(-18.0f, 0.0f, 0.0f);
-	}
-
-	const auto AddLocalRotation = [this, &ReferenceSkeleton](const FName BoneName, const FRotator DeltaRotation)
-	{
-		const int32 BoneIndex = ReferenceSkeleton.FindBoneIndex(BoneName);
-		if (RiderMesh->BoneSpaceTransforms.IsValidIndex(BoneIndex))
-		{
-			FTransform& Transform = RiderMesh->BoneSpaceTransforms[BoneIndex];
-			const FQuat Rotated = (DeltaRotation.Quaternion() * Transform.GetRotation()).GetNormalized();
-			Transform.SetRotation(Rotated);
-		}
-	};
-
-	AddLocalRotation(TEXT("pelvis"), FRotator(Pose.PelvisPitch, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("spine_01"), FRotator(Pose.Spine01Pitch, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("spine_02"), FRotator(Pose.Spine02Pitch, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("spine_03"), FRotator(Pose.Spine03Pitch, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("neck_01"), FRotator(Pose.NeckPitch, 0.0f, 0.0f));
-	AddLocalRotation(TEXT("head"), FRotator(Pose.HeadPitch, 0.0f, 0.0f));
-
-	for (const TPair<FString, float>& Side : { TPair<FString, float>(TEXT("l"), -1.0f), TPair<FString, float>(TEXT("r"), 1.0f) })
-	{
-		const FString& Suffix = Side.Key;
-		float ArmSign = Side.Value;
-		const float LegSign = Side.Value;
-		if (NormalizedProfile == TEXT("asymbars") && Suffix == TEXT("l"))
-		{
-			ArmSign = 1.0f;
-		}
-
-		AddLocalRotation(*FString::Printf(TEXT("clavicle_%s"), *Suffix), FRotator(Pose.Clavicle.Pitch, ArmSign * Pose.Clavicle.Yaw, ArmSign * Pose.Clavicle.Roll));
-		AddLocalRotation(*FString::Printf(TEXT("upperarm_%s"), *Suffix), FRotator(Pose.UpperArm.Pitch, ArmSign * Pose.UpperArm.Yaw, ArmSign * Pose.UpperArm.Roll));
-		AddLocalRotation(*FString::Printf(TEXT("lowerarm_%s"), *Suffix), FRotator(Pose.LowerArm.Pitch, ArmSign * Pose.LowerArm.Yaw, ArmSign * Pose.LowerArm.Roll));
-		AddLocalRotation(*FString::Printf(TEXT("thigh_%s"), *Suffix), FRotator(Pose.Thigh.Pitch, LegSign * Pose.Thigh.Yaw, LegSign * Pose.Thigh.Roll));
-		AddLocalRotation(*FString::Printf(TEXT("calf_%s"), *Suffix), FRotator(Pose.Calf.Pitch, LegSign * Pose.Calf.Yaw, LegSign * Pose.Calf.Roll));
-		AddLocalRotation(*FString::Printf(TEXT("foot_%s"), *Suffix), Pose.Foot);
-	}
-
-	RiderMesh->MarkRefreshTransformDirty();
-	RiderMesh->RefreshBoneTransforms();
-	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider pose profile=%s"), RiderPoseProfile.IsEmpty() ? TEXT("Default") : *RiderPoseProfile);
+	RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+	RiderMesh->SetAnimation(RideAnimation);
+	RiderMesh->PlayAnimation(RideAnimation, true);
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider animation=%s"), LinxiaRideAnimationPath);
 	LogRiderContactPose();
 }
 
@@ -593,10 +493,10 @@ void ALinxiaMotorcyclePawn::LogRiderContactPose()
 		return;
 	}
 
-	const FVector HandL = RiderMesh->GetBoneLocationByName(TEXT("hand_l"), EBoneSpaces::ComponentSpace);
-	const FVector HandR = RiderMesh->GetBoneLocationByName(TEXT("hand_r"), EBoneSpaces::ComponentSpace);
-	const FVector FootL = RiderMesh->GetBoneLocationByName(TEXT("foot_l"), EBoneSpaces::ComponentSpace);
-	const FVector FootR = RiderMesh->GetBoneLocationByName(TEXT("foot_r"), EBoneSpaces::ComponentSpace);
+	const FVector HandL = RiderMesh->GetBoneLocation(TEXT("hand_l"), EBoneSpaces::ComponentSpace);
+	const FVector HandR = RiderMesh->GetBoneLocation(TEXT("hand_r"), EBoneSpaces::ComponentSpace);
+	const FVector FootL = RiderMesh->GetBoneLocation(TEXT("foot_l"), EBoneSpaces::ComponentSpace);
+	const FVector FootR = RiderMesh->GetBoneLocation(TEXT("foot_r"), EBoneSpaces::ComponentSpace);
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider contact pose handL=%s handR=%s footL=%s footR=%s"),
 		*HandL.ToCompactString(),
 		*HandR.ToCompactString(),

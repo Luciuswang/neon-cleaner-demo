@@ -6,6 +6,7 @@ EXPECTED_PAWN_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcyclePawn"
 EXPECTED_GAMEMODE_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcycleChaseGameMode"
 EXPECTED_HUD_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcycleHud"
 EXPECTED_IMPORTED_BIKE = "/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle"
+EXPECTED_RIDE_ANIMATION = "/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle.AN_Linxia_MotorcycleRide_Idle"
 REQUIRED_LABELS = {
     "Linxia_MotorcyclePawn",
     "Gate3_Road_Main",
@@ -61,12 +62,15 @@ def main():
     if pawn.get_editor_property("auto_possess_player") != unreal.AutoReceiveInput.PLAYER0:
         raise RuntimeError("Motorcycle pawn is not set to auto possess Player0")
 
-    skeletal = pawn.get_component_by_class(unreal.PoseableMeshComponent)
+    skeletal = pawn.get_component_by_class(unreal.SkeletalMeshComponent)
     if skeletal is None:
         raise RuntimeError("Motorcycle pawn has no visible Lin Xia skeletal mesh")
     mesh = skeletal.get_editor_property("skeletal_mesh")
     if mesh is None or "ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC" not in mesh.get_path_name():
         raise RuntimeError("Unexpected Lin Xia rider mesh")
+    ride_animation = unreal.EditorAssetLibrary.load_asset(EXPECTED_RIDE_ANIMATION)
+    if ride_animation is None:
+        raise RuntimeError("Missing Lin Xia motorcycle ride animation")
 
     spring_arm = pawn.get_component_by_class(unreal.SpringArmComponent)
     camera = pawn.get_component_by_class(unreal.CameraComponent)
@@ -124,6 +128,7 @@ def main():
 
     log(f"pawn={pawn.get_name()} loc={pawn.get_actor_location().to_tuple()}")
     log(f"rider_mesh={mesh.get_path_name()}")
+    log(f"rider_animation={ride_animation.get_path_name()}")
     log(f"motorcycle_mesh={imported_mesh.get_path_name()}")
     log(f"motorcycle_relative_yaw={imported_rotation.yaw:.1f}")
     log(f"target_distance={target_distance:.1f}")

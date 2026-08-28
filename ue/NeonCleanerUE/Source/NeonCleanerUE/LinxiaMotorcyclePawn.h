@@ -5,7 +5,7 @@
 #include "LinxiaMotorcyclePawn.generated.h"
 
 class UCameraComponent;
-class UPoseableMeshComponent;
+class USkeletalMeshComponent;
 class USceneComponent;
 class USpringArmComponent;
 class UStaticMeshComponent;
@@ -36,7 +36,7 @@ private:
 	void RunCaptureTest(float DeltaSeconds);
 	void ResetToStart();
 	void UpdateTargetDistanceLog();
-	void ApplyRiderLocalPose();
+	void StartRiderAnimation();
 	void LogRiderContactPose();
 	void ConfigureCaptureCamera();
 	void ApplyMaterial(UStaticMeshComponent* Component, const TCHAR* MaterialPath);
@@ -63,7 +63,6 @@ private:
 
 	FString CaptureOutputPath;
 	FString CaptureViewMode;
-	FString RiderPoseProfile;
 	FVector StartLocation = FVector::ZeroVector;
 	FRotator StartRotation = FRotator::ZeroRotator;
 	FVector SmokeTestStartLocation = FVector::ZeroVector;
@@ -102,7 +101,7 @@ private:
 	TObjectPtr<UStaticMeshComponent> NoseLight;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
-	TObjectPtr<UPoseableMeshComponent> RiderMesh;
+	TObjectPtr<USkeletalMeshComponent> RiderMesh;
 
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 	TObjectPtr<USpringArmComponent> CameraBoom;

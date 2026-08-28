@@ -22,6 +22,8 @@ next quality step is an asset-level animation / rig pass:
   `/Game/LinxiaRig/IKR_Linxia_Phase`
 - Lin Xia target Control Rig:
   `/Game/LinxiaRig/CR_Linxia_Phase`
+- Lin Xia generated ride animation:
+  `/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle`
 - Existing Paragon Phase animation set has combat, locomotion, aim offset, and
   ability clips, but no dedicated seated / motorcycle riding animation.
 - UE template Control Rig assets exist for Mannequin, not for Phase:
@@ -50,9 +52,8 @@ Use the project as-is and do one of:
 
 - Find or download a permitted seated riding FBX, then retarget it to
   `phase_Skeleton` in UE.
-- If no source is immediately available, create a Phase-specific Control Rig /
-  IK Rig asset and drive the current rider mesh from visible controls instead of
-  C++ bone deltas.
+- Improve the generated Phase ride animation by authoring visible hand, foot,
+  pelvis, elbow, and knee controls in `CR_Linxia_Phase`.
 
 The Phase rig asset baseline now exists. Rebuild / validate it on any PC with:
 

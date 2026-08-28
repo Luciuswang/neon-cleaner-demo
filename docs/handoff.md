@@ -369,3 +369,7 @@ Rider animation/IK continuation: added reproducible rider pose profile capture t
 ## Cross-PC Sync Note - 2026-08-28 20:04 +08:00
 
 Asset route started for Lin Xia rider quality. Added Phase-specific IK Rig and Control Rig assets under `/Game/LinxiaRig`, added one-command setup / validation scripts, and wired rig asset validation into Gate 3. Full Gate 3 with `-SkipBuild -FullVisualQA -RiderPoseProfile Default` passed engineering checks; rider pose remains CONDITIONAL until a seated FBX or authored Control Rig riding pose passes strict review.
+
+## Cross-PC Sync Note - 2026-08-28 20:39 +08:00
+
+First playable animation asset pass completed. Added `/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle`, switched the Gate 3 rider from runtime `UPoseableMeshComponent` bone deltas to `USkeletalMeshComponent` single-node animation playback, and strengthened setup / Gate 3 log-marker validation so UE Python errors cannot silently pass. Full Gate 3 passed with build, rig/animation validation, smoke, and default/side/rear proof captures. Verdict: playable ride animation CONDITIONAL PASS; AI-video continuity still blocked until hand-bar and leg-bike contact pass strict visual QA.

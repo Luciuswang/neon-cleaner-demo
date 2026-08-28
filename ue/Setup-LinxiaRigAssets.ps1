@@ -6,8 +6,9 @@ $ErrorActionPreference = "Stop"
 
 $UProject = Join-Path $PSScriptRoot "NeonCleanerUE\NeonCleanerUE.uproject"
 $EditorCmd = "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
+$LogPath = Join-Path $PSScriptRoot "NeonCleanerUE\Saved\Logs\NeonCleanerUE.log"
 
-function Invoke-UEScript($label, $scriptName) {
+function Invoke-UEScript($label, $scriptName, $successPattern) {
     $scriptPath = Join-Path $PSScriptRoot "scripts\$scriptName"
     if (-not (Test-Path -LiteralPath $scriptPath)) {
         throw "$label script not found: $scriptPath"
@@ -15,9 +16,21 @@ function Invoke-UEScript($label, $scriptName) {
 
     Write-Host ""
     Write-Host "== $label ==" -ForegroundColor Cyan
+    Remove-Item -LiteralPath $LogPath -ErrorAction SilentlyContinue
     & $EditorCmd $UProject -unattended -nop4 -nosplash "-ExecutePythonScript=$scriptPath"
     if ($LASTEXITCODE -ne 0) {
         throw "$label failed with exit code $LASTEXITCODE"
+    }
+    if (-not (Test-Path -LiteralPath $LogPath)) {
+        throw "$label did not produce a UE log: $LogPath"
+    }
+    $pythonError = Select-String -Path $LogPath -Pattern "LogPython: Error|Traceback" | Select-Object -Last 1
+    if ($pythonError) {
+        throw "$label failed with Python error: $($pythonError.Line)"
+    }
+    $success = Select-String -Path $LogPath -Pattern $successPattern | Select-Object -Last 1
+    if (-not $success) {
+        throw "$label success marker not found: $successPattern"
     }
 }
 
@@ -29,12 +42,14 @@ if (-not (Test-Path -LiteralPath $UProject)) {
 }
 
 if (-not $ValidateOnly) {
-    Invoke-UEScript "Create Linxia Phase IK Rig" "create_linxia_phase_ik_rig.py"
-    Invoke-UEScript "Create Linxia Phase Control Rig" "create_linxia_phase_control_rig.py"
+    Invoke-UEScript "Create Linxia Phase IK Rig" "create_linxia_phase_ik_rig.py" "\[LinxiaPhaseIKRig\] Saved"
+    Invoke-UEScript "Create Linxia Phase Control Rig" "create_linxia_phase_control_rig.py" "\[LinxiaPhaseControlRig\] Saved"
+    Invoke-UEScript "Create Linxia Motorcycle Ride Animation" "create_linxia_motorcycle_ride_anim.py" "\[LinxiaRideAnim\] Saved"
 }
 
-Invoke-UEScript "Validate Linxia Phase IK Rig" "validate_linxia_phase_ik_rig.py"
-Invoke-UEScript "Validate Linxia Phase Control Rig" "validate_linxia_phase_control_rig.py"
+Invoke-UEScript "Validate Linxia Phase IK Rig" "validate_linxia_phase_ik_rig.py" "\[LinxiaPhaseIKRigValidate\] Validation passed"
+Invoke-UEScript "Validate Linxia Phase Control Rig" "validate_linxia_phase_control_rig.py" "\[LinxiaPhaseControlRigValidate\] Validation passed"
+Invoke-UEScript "Validate Linxia Motorcycle Ride Animation" "validate_linxia_motorcycle_ride_anim.py" "\[LinxiaRideAnimValidate\] Validation passed"
 
 Write-Host ""
 Write-Host "Linxia rig assets are ready."

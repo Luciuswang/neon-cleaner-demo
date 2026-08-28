@@ -33,6 +33,8 @@ $possessionLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] P
     Select-Object -Last 4
 $alignmentLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Visual alignment" |
     Select-Object -Last 4
+$animationLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider animation=" |
+    Select-Object -Last 4
 $contactLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider contact pose" |
     Select-Object -Last 4
 $completedLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycleSmokeTest\] Completed" |
@@ -43,6 +45,9 @@ if (-not $possessionLines) {
 if (-not $alignmentLines) {
     throw "Smoke-test visual alignment marker not found in log"
 }
+if (-not $animationLines) {
+    throw "Smoke-test rider animation marker not found in log"
+}
 if (-not $contactLines) {
     throw "Smoke-test rider contact pose marker not found in log"
 }
@@ -52,5 +57,6 @@ if (-not $completedLines) {
 
 $possessionLines | ForEach-Object { $_.Line }
 $alignmentLines | ForEach-Object { $_.Line }
+$animationLines | ForEach-Object { $_.Line }
 $contactLines | ForEach-Object { $_.Line }
 $completedLines | ForEach-Object { $_.Line }

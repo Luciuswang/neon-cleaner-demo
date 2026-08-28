@@ -159,17 +159,21 @@ rejection in `docs/qa/`.
 combat / locomotion animations, but no motorcycle / seated / riding animation
 was found in the local asset set.
 
-The current rider pose now uses `UPoseableMeshComponent` with local
-bone-space deltas copied from the Phase reference pose. This avoids the earlier
-component-space pose failure that could rotate the whole character sideways.
-It has passed background build / validation / smoke tests. A visual QA pass is
-now captured by `Run-Gate3QualityCheck.ps1`, but the rider pose remains a
-prototype-quality conditional rather than an AI-video-ready animation.
+The current rider pose now uses `USkeletalMeshComponent` single-node playback
+of `/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle`. This moves the
+ride pose out of runtime-only C++ bone deltas and into a reusable UE animation
+asset generated for the Phase skeleton.
+
+It has passed build / validation / smoke tests, and visual QA is captured by
+`Run-Gate3QualityCheck.ps1`. The rider pose is now a playable prototype
+conditional pass, but it remains short of AI-video-ready quality until hand-bar
+and leg-bike contact are cleaned up in a strict multi-view review.
 
 Next quality step:
 
-- Import or create a seated motorcycle rider animation.
-- Retarget it onto `phase_Skeleton`.
-- Replace or refine the local rider pose in `ALinxiaMotorcyclePawn`.
+- Import a stronger seated motorcycle rider animation, or refine
+  `AN_Linxia_MotorcycleRide_Idle` through `CR_Linxia_Phase`.
+- Keep it on `phase_Skeleton`.
+- Keep `ALinxiaMotorcyclePawn` playing the animation asset.
 - Re-run visual QA before using this frame as the final AI-video continuity
 reference.
