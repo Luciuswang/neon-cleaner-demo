@@ -71,3 +71,17 @@ balance.
 3. Run `-FullVisualQA` and inspect default, side, and rear frames.
 4. Only then decide whether one bounded animation/Control Rig writer task is
    justified.
+
+## Recovery Progress Later On 2026-08-31
+
+- `Paragon: Phase` was successfully added to the user's Fab library and is
+  visible there as `Saved in My Library`.
+- Epic Launcher and UE 5.8 now discover the project container. The registration
+  is reproducible with `ue/Register-EpicProjectForFab.ps1 -ValidateOnly`.
+- The Nanite warning was corrected in `DefaultEngine.ini` with DX12 plus the UE
+  5.8 template-compatible `-PCD3D_SM5` / `+PCD3D_SM6` array override. The
+  maker/independent-reviewer loop returned `PASS` after one rework.
+- Checkpoint: `9f5281b` on `codex/character-continuity-pipeline`.
+- Local Phase files are still absent. Native Launcher installation could not be
+  completed while Windows remained on `LockApp`; therefore the engineering and
+  visual verdicts above remain unchanged and no strict PASS is claimed.
