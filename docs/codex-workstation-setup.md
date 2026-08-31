@@ -75,16 +75,20 @@ The sidebar subagents are not project files. They are runtime helpers available
 inside the Codex app/session. Their names and availability can differ between
 machines or sessions.
 
-For Neon Cleaner, the portable part is the workflow:
+For Neon Cleaner, the portable part is the workflow and task packet, not the
+runtime Agent process:
 
 ```text
-Producer Agent -> QA Director Agent -> Fix Pass -> QA Sign-off -> Next Step
+Intake -> Planner -> Gatekeeper -> bounded workers -> Producer -> QA Director
+                                                              -> handoff
 ```
 
-That workflow is stored in:
+Those rules are stored in:
 
 ```text
 docs/agent-production-workflow.md
+docs/multi-agent-production-system.md
+docs/agent-task-template.md
 ```
 
 When continuing on another PC, tell Codex:

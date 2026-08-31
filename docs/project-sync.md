@@ -25,6 +25,10 @@ AGENTS.md
 docs/handoff.md
 docs/sprint-2026-08-24.md
 docs/agent-production-workflow.md
+docs/quality-control.md
+docs/multi-agent-production-system.md
+docs/agent-task-template.md
+docs/tasks/gate3-rider-pose-strict-qa.md
 ```
 
 ## First Setup On A New PC

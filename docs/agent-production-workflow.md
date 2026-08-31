@@ -1,14 +1,27 @@
 # Neon Cleaner Agent Production Workflow
 
-This project now uses a two-agent production loop:
+This project uses an adaptive multi-agent production loop with a mandatory QA
+gate:
 
 ```text
-Producer Agent -> QA Director Agent -> Fix Pass -> QA Sign-off -> Next Step
+Intake -> Planner -> Gatekeeper -> bounded workers -> Producer -> QA Director
+                                      ^                         |
+                                      +-------- Rework ----------+
 ```
 
-The goal is speed with control. The Producer is allowed to build quickly, but
-no milestone moves forward until the QA Director has checked the result against
-the current quality gate.
+The goal is speed with control. Small changes may stay with one Producer, while
+larger slices can use parallel read-only specialist reviews. UE implementation
+and shared project files remain single-writer operations. No milestone moves
+forward until the QA Director has checked the result against the current
+quality gate.
+
+The detailed state machine, task packet, role permissions, human-approval
+boundaries, and cross-PC rules live in:
+
+```text
+docs/multi-agent-production-system.md
+docs/agent-task-template.md
+```
 
 ## Roles
 
@@ -50,17 +63,41 @@ Owns sequencing.
 - Decides whether a slice is good enough for prototype progress.
 - Keeps the GitHub branch complete enough for handoff.
 
+### Planner And Gatekeeper
+
+For any normal or large slice, the Planner and Gatekeeper run before the
+Producer writes implementation files.
+
+- Planner defines the objective, scope, out-of-scope items, dependencies,
+  acceptance criteria, write set, verification command, and rollback path.
+- Gatekeeper independently returns `PASS`, `REWORK`, or `BLOCKED`.
+- The Gatekeeper rejects missing proof plans, unsafe concurrent writes, unclear
+  Marketplace/license boundaries, and work that bypasses a quality gate.
+
+### Specialist Reviewers
+
+Use only the specialists needed by the slice. UE Engineering, Visual/Gameplay
+QA, Asset/License/Sync, and Docs/Release may inspect different evidence in
+parallel. Their findings go back to the Orchestrator; they do not silently
+modify the same UE or status file.
+
 ## Standard Loop
 
-Every production slice follows this order:
+Every normal or large production slice follows this order:
 
-1. Define the slice and its quality gate.
-2. Producer implements the smallest useful version.
-3. Producer runs local validation and records results.
-4. QA Director reviews the output against the quality gate.
-5. Producer fixes all blocking issues.
-6. QA Director signs off or sends the slice back.
-7. Orchestrator updates docs and moves to the next slice.
+1. Capture the request in a task packet and define the quality gate.
+2. Planner decomposes the smallest useful slice and declares the write set.
+3. Gatekeeper reviews scope, risk, dependencies, and proof; vetoes if needed.
+4. Orchestrator dispatches bounded specialists; parallel work is read-only
+   unless each worker has a disjoint write set.
+5. Producer implements one coherent change and records validation evidence.
+6. QA Director reviews the output against the quality gate.
+7. Producer fixes blocking issues; the packet returns to `REWORK` or `BLOCKED`
+   instead of silently expanding.
+8. QA Director signs off and the Orchestrator updates handoff/sprint docs.
+
+Micro-fixes may use `Producer -> self-check -> QA evidence -> commit` when they
+have no visual, license, external-side-effect, or shared-file risk.
 
 QA verdict meanings:
 

@@ -1,6 +1,6 @@
 # Project Handoff
 
-Last updated: 2026-06-08
+Last updated: 2026-08-31
 
 ## Away contact
 
@@ -242,16 +242,19 @@ Marketplace blueprint warnings.
 
 ## Agent Workflow - 2026-08-24
 
-This project now uses a two-agent production loop:
+This project now uses an adaptive multi-agent production loop with a mandatory
+QA gate:
 
 ```text
-Producer Agent -> QA Director Agent -> Fix Pass -> QA Sign-off -> Next Step
+INTAKE -> PLAN -> REVIEW/VETO -> DISPATCH -> EXECUTE -> QA -> DONE
 ```
 
 Workflow and quality gates live in:
 
 ```text
 docs/agent-production-workflow.md
+docs/multi-agent-production-system.md
+docs/agent-task-template.md
 docs/sprint-2026-08-24.md
 ```
 
@@ -373,3 +376,7 @@ Asset route started for Lin Xia rider quality. Added Phase-specific IK Rig and C
 ## Cross-PC Sync Note - 2026-08-28 20:39 +08:00
 
 First playable animation asset pass completed. Added `/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle`, switched the Gate 3 rider from runtime `UPoseableMeshComponent` bone deltas to `USkeletalMeshComponent` single-node animation playback, and strengthened setup / Gate 3 log-marker validation so UE Python errors cannot silently pass. Full Gate 3 passed with build, rig/animation validation, smoke, and default/side/rear proof captures. Verdict: playable ride animation CONDITIONAL PASS; AI-video continuity still blocked until hand-bar and leg-bike contact pass strict visual QA.
+
+## Cross-PC Sync Note - 2026-08-31 13:31 +08:00
+
+Adopted a lightweight Edict-inspired multi-agent workflow: repo-portable task packets, INTAKE-to-QA state flow, pre-execution Gatekeeper veto, bounded read-only parallel reviews, single-writer UE rules, evidence contract, human approval boundaries, and a Gate 3 rider-pose task packet. No Redis/Postgres/dashboard or credential syncing was added. Next: run the task packet's parallel reviews, then only dispatch one bounded UE writer if visual evidence identifies a concrete rider-contact defect.

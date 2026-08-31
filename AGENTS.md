@@ -27,6 +27,11 @@ docs/sprint-2026-08-24.md
 docs/agent-production-workflow.md
 docs/quality-control.md
 docs/qa/gate3-quality-report-2026-08-27.md
+docs/qa/linxia-rig-assets-2026-08-28.md
+docs/rider-animation-source-plan-2026-08-28.md
+docs/multi-agent-production-system.md
+docs/agent-task-template.md
+docs/tasks/gate3-rider-pose-strict-qa.md
 source/reference/linxia/README.md
 ```
 
@@ -41,14 +46,25 @@ codex/character-continuity-pipeline
 
 ## Current Production Rule
 
-Use the two-agent gate:
+Use the adaptive multi-agent loop, while keeping the existing QA gate:
 
 ```text
-Producer Agent -> QA Director Agent -> Fix Pass -> QA Sign-off -> Next Step
+INTAKE -> PLAN -> REVIEW/VETO -> DISPATCH -> EXECUTE -> QA -> DONE
+                                      |                  |
+                                      +-> REWORK/BLOCKED <-+
 ```
 
-No major slice moves forward without a QA verdict: `PASS`,
-`CONDITIONAL PASS`, or `BLOCKED`.
+For a micro-fix, Producer + self-check is enough. For a normal slice, use
+Planner -> Gatekeeper -> Producer -> QA Director. For a large slice, parallelize
+independent read-only reviews, then use one writer for each UE/code path and
+one Orchestrator for final integration. No major slice moves forward without a
+QA verdict: `PASS`, `CONDITIONAL PASS`, or `BLOCKED`.
+
+Read `docs/multi-agent-production-system.md` and copy
+`docs/agent-task-template.md` for any slice that needs multiple workers,
+multiple evidence types, or an external side effect. Never let two Agents
+write the same `.uproject`, `.umap`, `.uasset`, C++ file, or active status doc
+at the same time.
 
 Read `docs/quality-control.md` before quality-sensitive work. When touching
 Gate 3 motorcycle chase behavior, run:
