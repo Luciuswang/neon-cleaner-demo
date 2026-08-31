@@ -41,6 +41,19 @@ function Invoke-CheckedNative($label, $filePath, [string[]]$arguments) {
     }
 }
 
+function Invoke-UEPythonScript($label, $scriptPath) {
+    Write-Step $label
+    # PowerShell passes -ExecutePythonScript= as a single native argument, but
+    # Unreal's commandlet parser truncates a script path containing spaces.
+    # The documented -run=pythonscript form preserves the quoted path.
+    $normalizedScriptPath = $scriptPath.Replace('\', '/')
+    $command = '"' + $EditorCmd + '" "' + $UProject + '" -unattended -nop4 -nosplash -run=pythonscript -script="' + $normalizedScriptPath + '"'
+    & cmd.exe /d /s /c $command
+    if ($LASTEXITCODE -ne 0) {
+        throw "$label failed with exit code $LASTEXITCODE"
+    }
+}
+
 function Test-CaptureImage($path) {
     Add-Type -AssemblyName System.Drawing
     $bitmap = [System.Drawing.Bitmap]::FromFile($path)
@@ -115,13 +128,7 @@ try {
     }
 
     Remove-Item -LiteralPath $LogPath -ErrorAction SilentlyContinue
-    Invoke-CheckedNative "Validate Gate 3 map" $EditorCmd @(
-        $UProject,
-        "-unattended",
-        "-nop4",
-        "-nosplash",
-        "-ExecutePythonScript=$ValidateScript"
-    )
+    Invoke-UEPythonScript "Validate Gate 3 map" $ValidateScript
 
     if (-not (Test-Path -LiteralPath $LogPath)) {
         throw "Gate 3 validation did not produce a UE log: $LogPath"

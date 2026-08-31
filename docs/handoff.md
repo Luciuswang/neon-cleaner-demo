@@ -384,3 +384,7 @@ Adopted a lightweight Edict-inspired multi-agent workflow: repo-portable task pa
 ## Cross-PC Sync Note - 2026-08-31 13:43 +08:00
 
 Closed the local Codex Neon Cleaner biweekly report automation (the other two PCs remain unchanged). Continued Gate 3 rider-pose strict QA using the new multi-agent task packet: two read-only reviews were dispatched, the local -SkipBuild -FullVisualQA check was run, and the result is ENGINEERING BLOCKED because Win64 SDK 10.0.22621.0 is invalid and the NeonCleanerUE compiled module plus local ParagonPhase asset are missing. Existing visual proof remains conditional; AI-video continuity remains blocked. Next: restore the C++/Windows SDK toolchain and ParagonPhase, then rerun the full Gate 3 check before any pose implementation.
+
+## Cross-PC Sync Note - 2026-08-31 18:01 +08:00
+
+2026-08-31: 恢复本机 UE 5.8 C++/MSVC/Windows SDK/.NET 工具链并验证完整编辑器构建通过。修复两个 UE Python 自动化脚本在带空格工作区路径下的调用方式，Gate 3 已进入真实 Python 资产校验；当前唯一工程阻塞是本机缺少 ParagonPhase（Phase_GDC 与 Phase_AnimBlueprint），因此未生成新的多视角截图。下一步从 Epic/Fab 恢复资产后运行完整 Gate 3。

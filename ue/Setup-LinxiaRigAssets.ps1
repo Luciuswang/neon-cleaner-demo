@@ -17,7 +17,12 @@ function Invoke-UEScript($label, $scriptName, $successPattern) {
     Write-Host ""
     Write-Host "== $label ==" -ForegroundColor Cyan
     Remove-Item -LiteralPath $LogPath -ErrorAction SilentlyContinue
-    & $EditorCmd $UProject -unattended -nop4 -nosplash "-ExecutePythonScript=$scriptPath"
+    # PowerShell passes -ExecutePythonScript= as a single native argument, but
+    # Unreal's commandlet parser truncates a script path containing spaces.
+    # The documented -run=pythonscript form preserves the quoted path.
+    $normalizedScriptPath = $scriptPath.Replace('\', '/')
+    $command = '"' + $EditorCmd + '" "' + $UProject + '" -unattended -nop4 -nosplash -run=pythonscript -script="' + $normalizedScriptPath + '"'
+    & cmd.exe /d /s /c $command
     if ($LASTEXITCODE -ne 0) {
         throw "$label failed with exit code $LASTEXITCODE"
     }

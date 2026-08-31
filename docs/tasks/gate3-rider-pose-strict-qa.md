@@ -1,6 +1,6 @@
 # Task Packet: G3-RIDER-POSE Strict Visual QA
 
-- State: `INTAKE`
+- State: `BLOCKED`
 - Owner: `Orchestrator / Producer`
 - Created: `2026-08-31`
 - Target branch: `codex/character-continuity-pipeline`
@@ -31,8 +31,8 @@ changing Lin Xia's identity source or introducing another blind C++ pose hack.
 ## Dependencies And Risks
 
 - Local `ParagonPhase` Marketplace content must be restored from Epic/Fab.
-- UE 5.8 C++ toolchain must be available for a full build; `-SkipBuild` is
-  allowed only when the current build is unchanged and that exception is noted.
+- UE 5.8 C++ toolchain must be available for a full build; this machine now has
+  a verified Visual Studio/MSVC/Windows SDK/.NET toolchain.
 - `.uasset`, `.umap`, `.uproject`, rig, animation, and shared status files need
   one writer at a time.
 - AI-video continuity remains `BLOCKED` until the strict visual verdict is
@@ -83,21 +83,23 @@ plus a repo QA note when the slice is complete.
 ## Review Decision
 
 - Gatekeeper: `BLOCKED`
-- Reason: the local UE 5.8 Win64 SDK is invalid and the compiled
-  `NeonCleanerUE` module plus local ParagonPhase content are missing. No new
-  implementation should start until the environment is restored.
+- Reason: the local UE 5.8 toolchain and compiled module are restored, but the
+  local ParagonPhase content is still missing. No new implementation should
+  start until the Phase asset is restored.
 
 ## Result
 
 - State: `BLOCKED`
-- Changed files: none yet
-- Commands and results: `Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA`
-  stopped at map validation with Win64 SDK invalid / module unavailable.
+- Changed files: `ue/Run-Gate3QualityCheck.ps1`,
+  `ue/Setup-LinxiaRigAssets.ps1`, and this QA/task documentation update.
+- Commands and results: the full UE editor build passed. Then
+  `Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA` reached the Python map
+  validator and stopped on the missing `Phase_GDC` mesh / `Phase_AnimBlueprint`.
+  The script-path-with-spaces issue is fixed and verified.
 - Evidence: `docs/qa/gate3-quality-report-2026-08-31.md` and the existing
   `source/reference/linxia/ue-captures/linxia_motorcycle_gate3_quality_2026-08-27_123649.png`
 - QA verdict: `ENGINEERING: BLOCKED`; `VISUAL: CONDITIONAL`; `CONTINUITY: BLOCKED`
 - Remaining risks: seated contact and AI-video continuity remain unresolved
 - Commit: pending
-- Next action: install the compatible C++/Windows SDK toolchain and restore
-  ParagonPhase, then rerun the full Gate 3 check before considering any pose
-  implementation.
+- Next action: restore ParagonPhase from Epic/Fab, then rerun the full Gate 3
+  check before considering any pose implementation.

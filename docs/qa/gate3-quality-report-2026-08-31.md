@@ -15,19 +15,24 @@ powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 `
   -RiderPoseVerdict CONDITIONAL
 ```
 
-Result: `BLOCKED` before map validation completed.
+Result: `BLOCKED` during map validation, after the local UE toolchain and
+compiled game module were restored.
 
 Observed blockers:
 
-- UnrealBuildTool reports `Win64 INVALID 10.0.22621.0`; the local Windows SDK
-  installation has no usable SDK library/toolchain for UE 5.8.
-- The current worktree has no `ue/NeonCleanerUE/Binaries/Win64` compiled module,
-  so `-SkipBuild` cannot load the `NeonCleanerUE` game module.
-- `ParagonPhase` Marketplace content is still missing locally.
-- This machine has no Visual Studio C++ toolchain detected. The full build must
-  wait for the Windows C++ workload and compatible Windows SDK.
+- The full UE 5.8 editor build now passes with Visual Studio Build Tools 2022
+  17.14.39, MSVC 14.44, Windows SDK 10.0.26100.0, and .NET Framework
+  Developer Pack 4.8.1. `UnrealEditor-NeonCleanerUE.dll` is present.
+- The validation command now reaches
+  `validate_linxia_motorcycle_chase_level.py` correctly even though the repo
+  path contains spaces. The PowerShell wrappers were fixed to use UE's
+  `-run=pythonscript -script=` commandlet form.
+- `ParagonPhase` Marketplace content is still missing locally. The validator
+  reports the missing `Phase_GDC` skeletal mesh and `Phase_AnimBlueprint`, so
+  the Lin Xia rider cannot pass construction or animation validation.
 
-The command did not produce new default/side/rear captures on this machine.
+The command did not produce new default/side/rear captures because the required
+Phase assets are not available yet.
 
 ## Existing Visual Evidence
 
@@ -49,7 +54,7 @@ Human visual read of that frame:
 ## Verdict
 
 ```text
-ENGINEERING: BLOCKED by local UE build/module/SDK environment
+ENGINEERING: BLOCKED by missing local ParagonPhase content
 VISUAL: CONDITIONAL based on existing single proof frame
 AI VIDEO CONTINUITY: BLOCKED
 ```
@@ -61,9 +66,8 @@ balance.
 
 ## Unblock Plan
 
-1. Install Visual Studio C++ tools and a Windows SDK accepted by UE 5.8.
-2. Restore `Paragon: Phase` from Epic/Fab into the local UE project.
-3. Run Gate 3 once without `-SkipBuild`.
-4. Run `-FullVisualQA` and inspect default, side, and rear frames.
-5. Only then decide whether one bounded animation/Control Rig writer task is
+1. Restore `Paragon: Phase` from Epic/Fab into the local UE project.
+2. Run Gate 3 once without `-SkipBuild`.
+3. Run `-FullVisualQA` and inspect default, side, and rear frames.
+4. Only then decide whether one bounded animation/Control Rig writer task is
    justified.
