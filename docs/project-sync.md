@@ -46,11 +46,20 @@ git checkout codex/character-continuity-pipeline
 git lfs pull
 ```
 
-4. In Epic/Fab Library, add `Paragon: Phase` to:
+4. Register the UE project with Epic Launcher/Fab (safe to rerun):
+
+```powershell
+.\ue\Register-EpicProjectForFab.ps1
+```
+
+Then, in Epic/Fab Library, add `Paragon: Phase` to:
 
 ```text
 ue/NeonCleanerUE/NeonCleanerUE.uproject
 ```
+
+`Paragon: Phase` is licensed for Unreal Engine project use but its Fab listing
+disallows AI usage. Do not upload it to AI image/video generation services.
 
 5. Run:
 
