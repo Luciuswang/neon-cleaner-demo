@@ -27,6 +27,7 @@ docs/sprint-2026-08-24.md
 docs/agent-production-workflow.md
 docs/quality-control.md
 docs/qa/gate3-quality-report-2026-08-27.md
+docs/qa/gate3-quality-report-2026-08-31.md
 docs/qa/linxia-rig-assets-2026-08-28.md
 docs/rider-animation-source-plan-2026-08-28.md
 docs/multi-agent-production-system.md

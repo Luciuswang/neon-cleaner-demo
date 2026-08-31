@@ -82,18 +82,22 @@ plus a repo QA note when the slice is complete.
 
 ## Review Decision
 
-- Gatekeeper: `PENDING`
-- Reason: the task is ready for a fresh multi-view review, but no new
-  implementation should start until the evidence shows a specific defect.
+- Gatekeeper: `BLOCKED`
+- Reason: the local UE 5.8 Win64 SDK is invalid and the compiled
+  `NeonCleanerUE` module plus local ParagonPhase content are missing. No new
+  implementation should start until the environment is restored.
 
 ## Result
 
-- State: `INTAKE`
+- State: `BLOCKED`
 - Changed files: none yet
-- Commands and results: pending
-- Evidence: pending
-- QA verdict: pending
+- Commands and results: `Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA`
+  stopped at map validation with Win64 SDK invalid / module unavailable.
+- Evidence: `docs/qa/gate3-quality-report-2026-08-31.md` and the existing
+  `source/reference/linxia/ue-captures/linxia_motorcycle_gate3_quality_2026-08-27_123649.png`
+- QA verdict: `ENGINEERING: BLOCKED`; `VISUAL: CONDITIONAL`; `CONTINUITY: BLOCKED`
 - Remaining risks: seated contact and AI-video continuity remain unresolved
 - Commit: pending
-- Next action: run the parallel read-only checks, then either close as a
-  review-only result or dispatch one bounded UE writer fix.
+- Next action: install the compatible C++/Windows SDK toolchain and restore
+  ParagonPhase, then rerun the full Gate 3 check before considering any pose
+  implementation.

@@ -78,6 +78,7 @@ try {
     "docs/agent-production-workflow.md",
     "docs/quality-control.md",
     "docs/qa/gate3-quality-report-2026-08-27.md",
+    "docs/qa/gate3-quality-report-2026-08-31.md",
     "docs/multi-agent-production-system.md",
     "docs/agent-task-template.md",
     "docs/tasks/gate3-rider-pose-strict-qa.md",
