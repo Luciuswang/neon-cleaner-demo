@@ -30,8 +30,8 @@ constexpr float CameraMouseYawScale = 0.18f;
 constexpr float CameraMousePitchScale = 0.12f;
 constexpr float CameraFollowInterp = 7.5f;
 constexpr float SmokeTestDuration = 4.0f;
-constexpr float CaptureRequestTime = 2.0f;
-constexpr float CaptureExitTime = 3.8f;
+constexpr float CaptureRequestTime = 8.0f;
+constexpr float CaptureExitTime = 10.5f;
 constexpr float ChaseCatchDistance = 520.0f;
 
 const TCHAR* PhaseMeshPath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC");
@@ -145,9 +145,9 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 		RiderMesh->SetAnimation(RideAnimation.Object);
 		RiderMesh->PlayAnimation(RideAnimation.Object, true);
 	}
-	RiderMesh->SetRelativeLocation(FVector(28.0f, 0.0f, -16.0f));
-	RiderMesh->SetRelativeRotation(FRotator(10.0f, 270.0f, 0.0f));
-	RiderMesh->SetRelativeScale3D(FVector(0.88f, 0.88f, 0.88f));
+	RiderMesh->SetRelativeLocation(FVector(24.0f, 0.0f, 8.0f));
+	RiderMesh->SetRelativeRotation(FRotator(18.0f, 270.0f, 0.0f));
+	RiderMesh->SetRelativeScale3D(FVector(0.82f, 0.82f, 0.82f));
 	RiderMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
@@ -258,6 +258,15 @@ void ALinxiaMotorcyclePawn::Tick(float DeltaSeconds)
 	PollDirectPlayerInput(DeltaSeconds);
 	RunSmokeTest(DeltaSeconds);
 	RunCaptureTest(DeltaSeconds);
+	if (!bLoggedRiderContactPoseAfterAnimation)
+	{
+		RiderPoseLogElapsed += DeltaSeconds;
+		if (RiderPoseLogElapsed >= 0.5f)
+		{
+			LogRiderContactPose();
+			bLoggedRiderContactPoseAfterAnimation = true;
+		}
+	}
 	UpdateMotorcycleMotion(DeltaSeconds);
 	UpdateVisuals(DeltaSeconds);
 	UpdateTargetDistanceLog();
@@ -483,7 +492,6 @@ void ALinxiaMotorcyclePawn::StartRiderAnimation()
 	RiderMesh->SetAnimation(RideAnimation);
 	RiderMesh->PlayAnimation(RideAnimation, true);
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider animation=%s"), LinxiaRideAnimationPath);
-	LogRiderContactPose();
 }
 
 void ALinxiaMotorcyclePawn::LogRiderContactPose()
@@ -497,11 +505,23 @@ void ALinxiaMotorcyclePawn::LogRiderContactPose()
 	const FVector HandR = RiderMesh->GetBoneLocation(TEXT("hand_r"), EBoneSpaces::ComponentSpace);
 	const FVector FootL = RiderMesh->GetBoneLocation(TEXT("foot_l"), EBoneSpaces::ComponentSpace);
 	const FVector FootR = RiderMesh->GetBoneLocation(TEXT("foot_r"), EBoneSpaces::ComponentSpace);
+	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
+	const FVector HandLVisual = RiderToVisual.TransformPosition(HandL);
+	const FVector HandRVisual = RiderToVisual.TransformPosition(HandR);
+	const FVector FootLVisual = RiderToVisual.TransformPosition(FootL);
+	const FVector FootRVisual = RiderToVisual.TransformPosition(FootR);
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider contact pose handL=%s handR=%s footL=%s footR=%s"),
 		*HandL.ToCompactString(),
 		*HandR.ToCompactString(),
 		*FootL.ToCompactString(),
 		*FootR.ToCompactString());
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider contact visual handL=%s handR=%s footL=%s footR=%s handlebar=%s seat=%s"),
+		*HandLVisual.ToCompactString(),
+		*HandRVisual.ToCompactString(),
+		*FootLVisual.ToCompactString(),
+		*FootRVisual.ToCompactString(),
+		Handlebar ? *Handlebar->GetRelativeLocation().ToCompactString() : TEXT("None"),
+		Seat ? *Seat->GetRelativeLocation().ToCompactString() : TEXT("None"));
 }
 
 void ALinxiaMotorcyclePawn::ConfigureCaptureCamera()

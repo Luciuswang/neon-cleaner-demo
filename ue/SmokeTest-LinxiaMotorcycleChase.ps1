@@ -14,6 +14,8 @@ $process = Start-Process -FilePath $Editor -ArgumentList @(
     "-game",
     "-nullrhi",
     "-unattended",
+    "-ddc=NoZenLocalFallback",
+    "-DDC-ForceMemoryCache",
     "-nop4",
     "-nosplash",
     "-LinxiaMotorcycleSmokeTest"
@@ -37,6 +39,8 @@ $animationLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Ri
     Select-Object -Last 4
 $contactLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider contact pose" |
     Select-Object -Last 4
+$contactVisualLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider contact visual" |
+    Select-Object -Last 4
 $completedLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycleSmokeTest\] Completed" |
     Select-Object -Last 4
 if (-not $possessionLines) {
@@ -51,6 +55,9 @@ if (-not $animationLines) {
 if (-not $contactLines) {
     throw "Smoke-test rider contact pose marker not found in log"
 }
+if (-not $contactVisualLines) {
+    throw "Smoke-test rider contact visual marker not found in log"
+}
 if (-not $completedLines) {
     throw "Smoke-test completion marker not found in log"
 }
@@ -59,4 +66,5 @@ $possessionLines | ForEach-Object { $_.Line }
 $alignmentLines | ForEach-Object { $_.Line }
 $animationLines | ForEach-Object { $_.Line }
 $contactLines | ForEach-Object { $_.Line }
+$contactVisualLines | ForEach-Object { $_.Line }
 $completedLines | ForEach-Object { $_.Line }

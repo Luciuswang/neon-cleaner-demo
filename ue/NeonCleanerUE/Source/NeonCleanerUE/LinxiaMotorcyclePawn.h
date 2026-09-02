@@ -51,6 +51,7 @@ private:
 	float TargetLogElapsed = 0.0f;
 	float SmokeTestElapsed = 0.0f;
 	float CaptureTestElapsed = 0.0f;
+	float RiderPoseLogElapsed = 0.0f;
 	float WheelSpinDegrees = 0.0f;
 
 	bool bHandbrakeHeld = false;
@@ -59,6 +60,7 @@ private:
 	bool bSmokeTestCompleted = false;
 	bool bCaptureTestActive = false;
 	bool bCaptureRequested = false;
+	bool bLoggedRiderContactPoseAfterAnimation = false;
 	bool bTargetCaught = false;
 
 	FString CaptureOutputPath;

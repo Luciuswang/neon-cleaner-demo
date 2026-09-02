@@ -388,3 +388,7 @@ Closed the local Codex Neon Cleaner biweekly report automation (the other two PC
 ## Cross-PC Sync Note - 2026-08-31 18:01 +08:00
 
 2026-08-31: 恢复本机 UE 5.8 C++/MSVC/Windows SDK/.NET 工具链并验证完整编辑器构建通过。修复两个 UE Python 自动化脚本在带空格工作区路径下的调用方式，Gate 3 已进入真实 Python 资产校验；当前唯一工程阻塞是本机缺少 ParagonPhase（Phase_GDC 与 Phase_AnimBlueprint），因此未生成新的多视角截图。下一步从 Epic/Fab 恢复资产后运行完整 Gate 3。
+
+## Cross-PC Sync Note - 2026-09-02 19:10 +08:00
+
+Gate 3 rider animation continuation on the office PC: local ParagonPhase is restored and the asset route is active. Refined `AN_Linxia_MotorcycleRide_Idle`, adjusted the motorcycle pawn rider attach transform, delayed rider contact logging until after animation update, and hardened UE automation for DDC / first-run shader delays. Full Gate 3 passed build, map validation, LinxiaRig validation, smoke, and default / side / rear proof captures using `Run-Gate3QualityCheck.ps1 -FullVisualQA -RiderPoseVerdict CONDITIONAL`. Latest proof frames are under ignored `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_190548*.png`. QA verdict: engineering PASS, playable rider CONDITIONAL PASS, AI-video continuity still BLOCKED until Control Rig / IK or a stronger seated source animation locks hands to bars and feet to pegs.

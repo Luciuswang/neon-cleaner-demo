@@ -1,6 +1,6 @@
 # Task Packet: G3-RIDER-POSE Strict Visual QA
 
-- State: `BLOCKED`
+- State: `QA`
 - Owner: `Orchestrator / Producer`
 - Created: `2026-08-31`
 - Target branch: `codex/character-continuity-pipeline`
@@ -40,13 +40,13 @@ changing Lin Xia's identity source or introducing another blind C++ pose hack.
 
 ## Acceptance Criteria
 
-- [ ] The rider reads as Lin Xia / Phase in all required views.
+- [x] The rider reads as Lin Xia / Phase in all required views.
 - [ ] Hips, torso, hands, feet, bars, pegs, and seat relate believably.
-- [ ] Motorcycle wheels remain grounded and the rider reads as balanced.
-- [ ] Automated build/validation/smoke checks pass, or the skipped check is
+- [x] Motorcycle wheels remain grounded and the rider reads as balanced.
+- [x] Automated build/validation/smoke checks pass, or the skipped check is
       explicitly justified.
-- [ ] `FullVisualQA` produces default, side, and rear proof frames.
-- [ ] `StrictRiderPoseGate` receives an explicit `PASS`, `CONDITIONAL`, or
+- [x] `FullVisualQA` produces default, side, and rear proof frames.
+- [x] `StrictRiderPoseGate` receives an explicit `PASS`, `CONDITIONAL`, or
       `REJECT` decision from visual QA.
 
 ## Write Set
@@ -82,24 +82,32 @@ plus a repo QA note when the slice is complete.
 
 ## Review Decision
 
-- Gatekeeper: `BLOCKED`
-- Reason: the local UE 5.8 toolchain and compiled module are restored, but the
-  local ParagonPhase content is still missing. No new implementation should
-  start until the Phase asset is restored.
+- Gatekeeper: `CONDITIONAL`
+- Reason: local ParagonPhase content, UE 5.8, C++ build, generated LinxiaRig
+  assets, smoke test, and default/side/rear proof captures are available on the
+  current PC. The rider now reads as a playable mounted prototype, but hand-bar
+  and leg-bike contact are not strict AI-video continuity quality yet.
 
 ## Result
 
-- State: `BLOCKED`
-- Changed files: `ue/Run-Gate3QualityCheck.ps1`,
-  `ue/Setup-LinxiaRigAssets.ps1`, and this QA/task documentation update.
-- Commands and results: the full UE editor build passed. Then
-  `Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA` reached the Python map
-  validator and stopped on the missing `Phase_GDC` mesh / `Phase_AnimBlueprint`.
-  The script-path-with-spaces issue is fixed and verified.
-- Evidence: `docs/qa/gate3-quality-report-2026-08-31.md` and the existing
-  `source/reference/linxia/ue-captures/linxia_motorcycle_gate3_quality_2026-08-27_123649.png`
-- QA verdict: `ENGINEERING: BLOCKED`; `VISUAL: CONDITIONAL`; `CONTINUITY: BLOCKED`
-- Remaining risks: seated contact and AI-video continuity remain unresolved
-- Commit: pending
-- Next action: restore ParagonPhase from Epic/Fab, then rerun the full Gate 3
-  check before considering any pose implementation.
+- State: `CONDITIONAL PASS / REWORK NEXT`
+- Changed files: rider animation generation script, generated ride animation
+  asset, motorcycle pawn rider transform/logging, Gate 3 automation scripts,
+  and QA/handoff documentation.
+- Commands and results:
+  - `powershell -ExecutionPolicy Bypass -File .\ue\Setup-LinxiaRigAssets.ps1`
+    regenerated and validated the IK Rig, Control Rig, and ride animation.
+  - `powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -FullVisualQA -RiderPoseVerdict CONDITIONAL`
+    passed C++ build, map validation, rig/animation validation, smoke test,
+    HUD proof checks, and default/side/rear captures.
+- Evidence: `docs/qa/gate3-rider-animation-report-2026-09-02.md` and ignored
+  proof frames under
+  `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_190548*.png`.
+- QA verdict: `ENGINEERING: PASS`; `PLAYABLE RIDER: CONDITIONAL PASS`;
+  `AI VIDEO CONTINUITY: BLOCKED`.
+- Remaining risks: hands are still not locked to the handlebars and the leg / foot
+  pose needs a real Control Rig / IK contact pass before strict visual `PASS`.
+- Next action: use `CR_Linxia_Phase` or an imported seated motorcycle animation
+  source to author explicit hand-bar and foot-peg contact, then rerun the strict
+  Gate 3 command with `-StrictRiderPoseGate -RiderPoseVerdict PASS` only after
+  multi-view review accepts the result.

@@ -83,6 +83,12 @@ The script may return `PASS` for engineering stability while rider pose remains
 `CONDITIONAL`. For animation / IK slices, that is not a production pass unless
 the strict rider pose gate also passes.
 
+The local `Paragon: Phase` Marketplace package can emit UE 5.8 compatibility
+errors from its old `PhasePlayerCharacter` blueprint during commandlet startup.
+Gate scripts treat those as non-blocking only when the target script success
+marker is present and no Python traceback occurred. Real missing asset,
+validation, smoke, or screenshot failures still fail the gate.
+
 ## Visual QA Rule
 
 Screenshot sanity is not an art pass. A visual QA pass must inspect the proof

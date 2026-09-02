@@ -16,6 +16,9 @@ if ($OutputPath.Trim().Length -eq 0) {
     $stamp = Get-Date -Format "yyyy-MM-dd_HHmmss"
     $OutputPath = Join-Path $ProjectRoot "source\reference\linxia\ue-captures\linxia_motorcycle_capture_$stamp.png"
 }
+elseif (-not [System.IO.Path]::IsPathRooted($OutputPath)) {
+    $OutputPath = [System.IO.Path]::GetFullPath((Join-Path (Get-Location) $OutputPath))
+}
 
 if (-not (Test-Path $Editor)) {
     throw "UnrealEditor.exe not found: $Editor"
@@ -34,6 +37,8 @@ $process = Start-Process -FilePath $Editor -ArgumentList @(
     "-windowed",
     "-ResX=1280",
     "-ResY=720",
+    "-ddc=NoZenLocalFallback",
+    "-DDC-ForceMemoryCache",
     "-nop4",
     "-nosplash",
     "-LinxiaMotorcycleCapture=`"$OutputPath`"",
@@ -41,9 +46,9 @@ $process = Start-Process -FilePath $Editor -ArgumentList @(
     "-LinxiaRiderPose=$Pose"
 ) -PassThru
 
-if (-not $process.WaitForExit(90000)) {
+if (-not $process.WaitForExit(240000)) {
     Stop-Process -Id $process.Id -Force
-    throw "Motorcycle capture did not exit within 90 seconds"
+    throw "Motorcycle capture did not exit within 240 seconds"
 }
 
 if (-not (Test-Path $OutputPath)) {

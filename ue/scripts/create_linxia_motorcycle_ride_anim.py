@@ -29,12 +29,12 @@ def eased_breath(base, amplitude):
 
 
 POSE_ROTATIONS = {
-    "pelvis": eased_breath(-10.0, 0.7),
-    "spine_01": eased_breath(-12.0, 1.0),
-    "spine_02": eased_breath(-12.0, 0.8),
-    "spine_03": eased_breath(-10.0, 0.5),
-    "neck_01": eased_breath(9.0, 0.4),
-    "head": eased_breath(5.0, 0.3),
+    "pelvis": eased_breath(-16.0, 0.6),
+    "spine_01": eased_breath(-20.0, 0.9),
+    "spine_02": eased_breath(-18.0, 0.7),
+    "spine_03": eased_breath(-14.0, 0.5),
+    "neck_01": eased_breath(13.0, 0.4),
+    "head": eased_breath(8.0, 0.3),
 }
 
 
@@ -49,20 +49,20 @@ def eased_rotator(pitch, yaw=0.0, roll=0.0, amp_pitch=0.0, amp_yaw=0.0, amp_roll
 
 POSE_ROTATIONS.update(
     {
-        "clavicle_l": eased_rotator(-12.0, -8.0, 0.0, 0.3, 0.0, 0.3),
-        "upperarm_l": eased_rotator(-34.0, -14.0, 0.0, 0.6, 0.2, 0.5),
-        "lowerarm_l": eased_rotator(-40.0, -6.0, 0.0, 0.4, 0.0, 0.4),
-        "hand_l": eased_rotator(-6.0, -3.0, -4.0, 0.2, 0.0, 0.3),
-        "clavicle_r": eased_rotator(-12.0, 8.0, 0.0, 0.3, 0.0, -0.3),
-        "upperarm_r": eased_rotator(-34.0, 14.0, 0.0, 0.6, -0.2, -0.5),
-        "lowerarm_r": eased_rotator(-40.0, 6.0, 0.0, 0.4, 0.0, -0.4),
-        "hand_r": eased_rotator(-6.0, 3.0, 4.0, 0.2, 0.0, -0.3),
-        "thigh_l": eased_rotator(-34.0, -4.0, 0.0, 0.5, 0.0, 0.4),
-        "calf_l": eased_rotator(42.0, -2.0, 0.0, 0.4, 0.0, 0.0),
-        "foot_l": eased_rotator(-12.0, 0.0, 0.0, 0.2, 0.0, 0.0),
-        "thigh_r": eased_rotator(-34.0, 4.0, 0.0, 0.5, 0.0, -0.4),
-        "calf_r": eased_rotator(42.0, 2.0, 0.0, 0.4, 0.0, 0.0),
-        "foot_r": eased_rotator(-12.0, 0.0, 0.0, 0.2, 0.0, 0.0),
+        "clavicle_l": eased_rotator(-18.0, -10.0, -4.0, 0.3, 0.0, 0.2),
+        "upperarm_l": eased_rotator(-52.0, -22.0, -8.0, 0.5, 0.2, 0.3),
+        "lowerarm_l": eased_rotator(-68.0, -8.0, -4.0, 0.4, 0.0, 0.2),
+        "hand_l": eased_rotator(-14.0, -6.0, -8.0, 0.2, 0.0, 0.2),
+        "clavicle_r": eased_rotator(-18.0, 10.0, 4.0, 0.3, 0.0, -0.2),
+        "upperarm_r": eased_rotator(-52.0, 22.0, 8.0, 0.5, -0.2, -0.3),
+        "lowerarm_r": eased_rotator(-68.0, 8.0, 4.0, 0.4, 0.0, -0.2),
+        "hand_r": eased_rotator(-14.0, 6.0, 8.0, 0.2, 0.0, -0.2),
+        "thigh_l": eased_rotator(-58.0, -16.0, -6.0, 0.4, 0.0, 0.3),
+        "calf_l": eased_rotator(74.0, -5.0, 0.0, 0.3, 0.0, 0.0),
+        "foot_l": eased_rotator(-28.0, 0.0, -5.0, 0.2, 0.0, 0.0),
+        "thigh_r": eased_rotator(-58.0, 16.0, 6.0, 0.4, 0.0, -0.3),
+        "calf_r": eased_rotator(74.0, 5.0, 0.0, 0.3, 0.0, 0.0),
+        "foot_r": eased_rotator(-28.0, 0.0, 5.0, 0.2, 0.0, 0.0),
     }
 )
 

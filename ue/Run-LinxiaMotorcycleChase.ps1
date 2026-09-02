@@ -21,6 +21,8 @@ Start-Process -FilePath $Editor -ArgumentList @(
     "-windowed",
     "-ResX=1280",
     "-ResY=720",
+    "-ddc=NoZenLocalFallback",
+    "-DDC-ForceMemoryCache",
     "-nop4",
     "-nosplash"
 )

@@ -118,6 +118,14 @@ rejection in `docs/qa/`.
 
 ## Latest Verification
 
+- 2026-09-02 asset-route rider animation update:
+  - `AN_Linxia_MotorcycleRide_Idle` was regenerated with a stronger riding tuck.
+  - `ALinxiaMotorcyclePawn` now uses rider pitch `18`, scale `0.82`, delayed
+    contact logging, and a slightly raised attach transform to reduce foot-to-ground read.
+  - Gate 3 capture waits longer before taking screenshots so first-run shader
+    preparation text does not pollute visual proof frames.
+  - Latest proof frames:
+    `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_190548*.png`
 - C++ build succeeded.
 - `validate_linxia_motorcycle_chase_level.py` passed.
 - Validation confirmed:
@@ -128,9 +136,10 @@ rejection in `docs/qa/`.
   - `obstacle_count=5`
 - Smoke test passed:
   - `Player0 now controls LinxiaMotorcyclePawn_0`
-  - `Visual alignment bikeRot=R(0) riderRot=R(P=4.00, Y=-90.00)`
+  - `Visual alignment bikeRot=R(0) riderRot=R(P=18.00, Y=-90.00)`
   - `Rider contact pose handL=... handR=... footL=... footR=...`
-  - `LinxiaMotorcycleSmokeTest Completed distance=6954.2 targetDistance=3235.6 speed=2049.9`
+  - `Rider contact visual handL=... handR=... footL=... footR=... handlebar=... seat=...`
+  - `LinxiaMotorcycleSmokeTest Completed distance=6963.0 targetDistance=3241.7 speed=2049.9`
 - 2026-08-27 rider pose update:
   - Rejected direct hand / foot component-space position locks after QA showed limb stretching.
   - Kept a safer local bone-space seated pose with rider root pitch `4` and contact-pose logging.
