@@ -66,7 +66,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 		ImportedMotorcycle->SetStaticMesh(ImportedBikeMesh.Object);
 	}
 	ImportedMotorcycle->SetRelativeLocation(FVector(6.0f, 0.0f, 58.0f));
-	ImportedMotorcycle->SetRelativeRotation(FRotator(0.0f, 0.0f, 0.0f));
+	ImportedMotorcycle->SetRelativeRotation(FRotator(0.0f, 0.0f, 90.0f));
 	ImportedMotorcycle->SetRelativeScale3D(FVector(230.0f, 230.0f, 230.0f));
 	ImportedMotorcycle->SetVisibility(bHasImportedBike, true);
 	ImportedMotorcycle->SetHiddenInGame(!bHasImportedBike);
@@ -86,9 +86,9 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	Seat->SetStaticMesh(CubeMesh.Object);
 	Seat->SetRelativeLocation(FVector(-64.0f, 0.0f, 88.0f));
 	Seat->SetRelativeRotation(FRotator(-5.0f, 0.0f, 0.0f));
-	Seat->SetRelativeScale3D(FVector(1.0f, 0.38f, 0.1f));
-	Seat->SetVisibility(!bHasImportedBike, true);
-	Seat->SetHiddenInGame(bHasImportedBike);
+	Seat->SetRelativeScale3D(FVector(0.74f, 0.3f, 0.07f));
+	Seat->SetVisibility(true, true);
+	Seat->SetHiddenInGame(false);
 
 	FrontFairing = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FrontFairing"));
 	FrontFairing->SetupAttachment(VisualRoot);
@@ -120,10 +120,19 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	Handlebar = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Handlebar"));
 	Handlebar->SetupAttachment(VisualRoot);
 	Handlebar->SetStaticMesh(CubeMesh.Object);
-	Handlebar->SetRelativeLocation(FVector(86.0f, 0.0f, 118.0f));
-	Handlebar->SetRelativeScale3D(FVector(0.08f, 0.78f, 0.055f));
-	Handlebar->SetVisibility(!bHasImportedBike, true);
-	Handlebar->SetHiddenInGame(bHasImportedBike);
+	Handlebar->SetRelativeLocation(FVector(28.0f, 48.0f, 94.0f));
+	Handlebar->SetRelativeRotation(FRotator(0.0f, 0.0f, -10.0f));
+	Handlebar->SetRelativeScale3D(FVector(0.07f, 0.48f, 0.04f));
+	Handlebar->SetVisibility(true, true);
+	Handlebar->SetHiddenInGame(false);
+
+	FootPegBar = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FootPegBar"));
+	FootPegBar->SetupAttachment(VisualRoot);
+	FootPegBar->SetStaticMesh(CubeMesh.Object);
+	FootPegBar->SetRelativeLocation(FVector(36.0f, 2.0f, 23.0f));
+	FootPegBar->SetRelativeScale3D(FVector(0.14f, 0.46f, 0.032f));
+	FootPegBar->SetVisibility(true, true);
+	FootPegBar->SetHiddenInGame(false);
 
 	NoseLight = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("NoseLight"));
 	NoseLight->SetupAttachment(VisualRoot);
@@ -228,6 +237,7 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	ApplyMaterial(FrontWheel, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_RubberBlack.M_NC_RubberBlack"));
 	ApplyMaterial(RearWheel, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_RubberBlack.M_NC_RubberBlack"));
 	ApplyMaterial(Handlebar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
+	ApplyMaterial(FootPegBar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(NoseLight, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_CyanDiagnostic.M_NC_CyanDiagnostic"));
 	StartRiderAnimation();
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Visual alignment bikeRot=%s riderRot=%s"),
@@ -522,6 +532,8 @@ void ALinxiaMotorcyclePawn::LogRiderContactPose()
 		*FootRVisual.ToCompactString(),
 		Handlebar ? *Handlebar->GetRelativeLocation().ToCompactString() : TEXT("None"),
 		Seat ? *Seat->GetRelativeLocation().ToCompactString() : TEXT("None"));
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider contact anchors footpeg=%s"),
+		FootPegBar ? *FootPegBar->GetRelativeLocation().ToCompactString() : TEXT("None"));
 }
 
 void ALinxiaMotorcyclePawn::ConfigureCaptureCamera()

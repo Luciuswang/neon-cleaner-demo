@@ -112,6 +112,7 @@ def main():
         raise RuntimeError("Motorcycle pawn is not using the imported player-motorcycle mesh")
     imported_rotation = imported_component.get_editor_property("relative_rotation")
     assert_near_angle("imported motorcycle relative yaw", imported_rotation.yaw, 0.0, 2.0)
+    assert_near_angle("imported motorcycle relative roll", imported_rotation.roll, 90.0, 2.0)
     assert_near_angle("rider relative yaw", skeletal.get_editor_property("relative_rotation").yaw, 270.0, 2.0)
 
     target = by_label["Gate3_ChaseTarget_Body"]
@@ -151,6 +152,7 @@ def main():
     log(f"rider_animation={ride_animation.get_path_name()}")
     log(f"motorcycle_mesh={imported_mesh.get_path_name()}")
     log(f"motorcycle_relative_yaw={imported_rotation.yaw:.1f}")
+    log(f"motorcycle_relative_roll={imported_rotation.roll:.1f}")
     log(f"target_distance={target_distance:.1f}")
     log(f"obstacle_count={obstacle_count}")
     log("Validation passed")

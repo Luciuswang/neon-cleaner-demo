@@ -100,6 +100,9 @@ private:
 	TObjectPtr<UStaticMeshComponent> Handlebar;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
+	TObjectPtr<UStaticMeshComponent> FootPegBar;
+
+	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
 	TObjectPtr<UStaticMeshComponent> NoseLight;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")

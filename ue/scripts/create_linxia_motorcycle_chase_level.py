@@ -36,8 +36,8 @@ def look_at(location, target):
 def create_material(name, color, emissive=False):
     unreal.EditorAssetLibrary.make_directory(MATERIAL_DIR)
     path = MATERIAL_DIR + "/" + name
-    existing = unreal.EditorAssetLibrary.load_asset(path + "." + name)
-    if existing:
+    asset_path = path + "." + name
+    if unreal.EditorAssetLibrary.does_asset_exist(asset_path):
         unreal.EditorAssetLibrary.delete_asset(path + "." + name)
 
     asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
@@ -118,12 +118,17 @@ def setup_level():
     if not all([cube, sphere, pawn_class, game_mode_class]):
         raise RuntimeError("Missing motorcycle chase class or engine shape")
 
-    mat_road = create_material("M_NC_ChaseWetRoad", (0.012, 0.014, 0.018, 0.35))
+    mat_road = create_material("M_NC_ChaseWetRoad", (0.002, 0.003, 0.006, 0.46))
+    mat_road_edge = create_material("M_NC_ChaseWetRoadEdge", (0.01, 0.012, 0.017, 0.54))
     mat_lane = create_material("M_NC_ChaseLaneCyan", (0.0, 0.75, 1.0, 0.15), True)
     mat_magenta = create_material("M_NC_ChaseMagenta", (0.95, 0.02, 0.38, 0.12), True)
-    mat_barrier = create_material("M_NC_ChaseConcrete", (0.22, 0.23, 0.24, 0.66))
-    mat_debris = create_material("M_NC_ChaseDebris", (0.06, 0.06, 0.065, 0.72))
+    mat_barrier = create_material("M_NC_ChaseConcrete", (0.055, 0.06, 0.07, 0.74))
+    mat_debris = create_material("M_NC_ChaseDebris", (0.035, 0.035, 0.04, 0.78))
     mat_target = create_material("M_NC_ChaseTargetAmber", (1.0, 0.48, 0.06, 0.18), True)
+    mat_city = create_material("M_NC_ChaseCityMass", (0.018, 0.021, 0.028, 0.82))
+    mat_city_far = create_material("M_NC_ChaseCityFar", (0.008, 0.011, 0.016, 0.88))
+    mat_window_cyan = create_material("M_NC_ChaseWindowCyan", (0.0, 0.54, 0.85, 0.16), True)
+    mat_underpass = create_material("M_NC_ChaseUnderpassSteel", (0.025, 0.028, 0.034, 0.58))
 
     pawn = spawn_actor(pawn_class, unreal.Vector(0.0, 0.0, 0.0), unreal.Rotator(0.0, 0.0, 0.0), "Linxia_MotorcyclePawn")
     set_prop(pawn, "auto_possess_player", unreal.AutoReceiveInput.PLAYER0)
@@ -131,14 +136,64 @@ def setup_level():
     # Straight first, then gentle slalom. This keeps the first playable frame readable.
     add_box("Gate3_Road_Main", cube, mat_road, 1850.0, 0.0, -5.0, 42.0, 8.0, 0.06)
     add_box("Gate3_Road_Extension", cube, mat_road, 4750.0, 160.0, -5.0, 24.0, 8.0, 0.06, yaw=6.0)
+    add_box("Gate3_Road_LeftWetShoulder", cube, mat_road_edge, 2100.0, -520.0, -4.0, 46.0, 1.6, 0.045)
+    add_box("Gate3_Road_RightWetShoulder", cube, mat_road_edge, 2100.0, 520.0, -4.0, 46.0, 1.6, 0.045)
+    add_box("Gate3_Road_LeftWetShoulder_Ext", cube, mat_road_edge, 4860.0, -330.0, -4.0, 24.0, 1.6, 0.045, yaw=6.0)
+    add_box("Gate3_Road_RightWetShoulder_Ext", cube, mat_road_edge, 4860.0, 700.0, -4.0, 24.0, 1.6, 0.045, yaw=6.0)
     for i, x in enumerate(range(300, 5200, 420)):
         y = 0.0 if x < 2300 else (x - 2300) * 0.08
         add_box(f"Gate3_CenterGuide_{i:02d}", cube, mat_lane, float(x), y, 2.0, 0.42, 0.035, 0.012, yaw=6.0 if x >= 2300 else 0.0)
+        add_box(f"Gate3_LeftEdgeGlow_{i:02d}", cube, mat_lane, float(x), y - 392.0, 4.0, 0.32, 0.025, 0.018, yaw=6.0 if x >= 2300 else 0.0)
+        add_box(f"Gate3_RightEdgeGlow_{i:02d}", cube, mat_magenta, float(x), y + 392.0, 4.0, 0.32, 0.025, 0.018, yaw=6.0 if x >= 2300 else 0.0)
 
     for i, x in enumerate(range(-300, 5600, 560)):
         lane_y = 0.0 if x < 2300 else (x - 2300) * 0.08
         add_box(f"Gate3_LeftBarrier_{i:02d}", cube, mat_barrier, float(x), lane_y - 445.0, 52.0, 2.8, 0.14, 0.52, yaw=-2.0)
         add_box(f"Gate3_RightBarrier_{i:02d}", cube, mat_barrier, float(x), lane_y + 445.0, 52.0, 2.8, 0.14, 0.52, yaw=2.0)
+
+    city_heights = [4.2, 6.8, 5.4, 9.0, 7.5, 11.0, 6.2, 8.4, 5.8]
+    for i, x in enumerate(range(180, 6100, 620)):
+        for side, y_base in [(-1, -1060.0), (1, 1120.0)]:
+            height_scale = city_heights[i % len(city_heights)]
+            y_offset = side * float((i % 3) * 85)
+            label_side = "L" if side < 0 else "R"
+            add_box(
+                f"Gate3_CityMass_{label_side}_{i:02d}",
+                cube,
+                mat_city if i < 6 else mat_city_far,
+                float(x),
+                y_base + y_offset,
+                42.0 + height_scale * 50.0,
+                1.6 + (i % 2) * 0.8,
+                1.0 + (i % 4) * 0.28,
+                height_scale,
+                yaw=float((i % 5) * 3 - 6),
+            )
+            if i % 2 == 0:
+                add_box(
+                    f"Gate3_CityWindow_{label_side}_{i:02d}",
+                    cube,
+                    mat_window_cyan if side < 0 else mat_magenta,
+                    float(x - 45),
+                    y_base - side * 64.0 + y_offset,
+                    125.0 + height_scale * 62.0,
+                    0.06,
+                    0.018,
+                    0.72,
+                    yaw=float((i % 5) * 3 - 6),
+                )
+
+    for i, x in enumerate(range(620, 4900, 920)):
+        add_box(f"Gate3_OverheadSignalBar_{i:02d}", cube, mat_barrier, float(x), 0.0, 210.0, 0.16, 8.4, 0.08)
+        add_box(f"Gate3_OverheadSignalCyan_{i:02d}", cube, mat_lane, float(x), -240.0, 216.0, 0.08, 0.72, 0.045)
+        add_box(f"Gate3_OverheadSignalMagenta_{i:02d}", cube, mat_magenta, float(x), 240.0, 216.0, 0.08, 0.72, 0.045)
+
+    for i, x in enumerate(range(1040, 4240, 1280)):
+        add_box(f"Gate3_UnderpassRoof_{i:02d}", cube, mat_underpass, float(x), 0.0, 245.0, 4.6, 9.4, 0.11)
+        add_box(f"Gate3_UnderpassLeftColumn_{i:02d}", cube, mat_underpass, float(x - 270), -585.0, 118.0, 0.12, 0.18, 1.16)
+        add_box(f"Gate3_UnderpassRightColumn_{i:02d}", cube, mat_underpass, float(x - 270), 585.0, 118.0, 0.12, 0.18, 1.16)
+        add_box(f"Gate3_UnderpassCyanStrip_{i:02d}", cube, mat_lane, float(x), -360.0, 236.0, 2.8, 0.04, 0.035)
+        add_box(f"Gate3_UnderpassMagentaStrip_{i:02d}", cube, mat_magenta, float(x), 360.0, 236.0, 2.8, 0.04, 0.035)
 
     obstacle_specs = [
         ("Gate3_DebrisGap_Left_01", 820.0, -170.0, 38.0, 0.9, 0.9, 0.24, 18.0),
@@ -159,27 +214,49 @@ def setup_level():
     key = spawn_actor(unreal.DirectionalLight, unreal.Vector(-520.0, -420.0, 720.0), unreal.Rotator(-38.0, -28.0, 0.0), "Gate3_KeyLight_Cold")
     key_comp = key.get_component_by_class(unreal.DirectionalLightComponent)
     set_prop(key_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(key_comp, "intensity", 2.1)
-    set_prop(key_comp, "light_color", unreal.LinearColor(0.62, 0.76, 1.0, 1.0))
+    set_prop(key_comp, "intensity", 0.44)
+    set_prop(key_comp, "light_color", unreal.LinearColor(0.52, 0.7, 1.0, 1.0))
 
     sky = spawn_actor(unreal.SkyLight, unreal.Vector(0.0, 0.0, 340.0), label="Gate3_SkyLight")
     sky_comp = sky.get_component_by_class(unreal.SkyLightComponent)
     set_prop(sky_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(sky_comp, "intensity", 0.68)
+    set_prop(sky_comp, "intensity", 0.12)
 
     start_rim = spawn_actor(unreal.PointLight, unreal.Vector(-90.0, -210.0, 175.0), label="Gate3_StartMagentaRim")
     start_rim_comp = start_rim.get_component_by_class(unreal.PointLightComponent)
     set_prop(start_rim_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(start_rim_comp, "intensity", 1200.0)
+    set_prop(start_rim_comp, "intensity", 620.0)
     set_prop(start_rim_comp, "attenuation_radius", 780.0)
     set_prop(start_rim_comp, "light_color", unreal.LinearColor(1.0, 0.08, 0.44, 1.0))
 
     start_fill = spawn_actor(unreal.PointLight, unreal.Vector(120.0, 180.0, 150.0), label="Gate3_StartCyanFill")
     start_fill_comp = start_fill.get_component_by_class(unreal.PointLightComponent)
     set_prop(start_fill_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(start_fill_comp, "intensity", 900.0)
+    set_prop(start_fill_comp, "intensity", 480.0)
     set_prop(start_fill_comp, "attenuation_radius", 700.0)
     set_prop(start_fill_comp, "light_color", unreal.LinearColor(0.18, 0.74, 1.0, 1.0))
+
+    for i, x in enumerate(range(760, 4680, 840)):
+        cyan = spawn_actor(unreal.PointLight, unreal.Vector(float(x), -330.0, 118.0), label=f"Gate3_CyanPoolLight_{i:02d}")
+        cyan_comp = cyan.get_component_by_class(unreal.PointLightComponent)
+        set_prop(cyan_comp, "mobility", unreal.ComponentMobility.MOVABLE)
+        set_prop(cyan_comp, "intensity", 340.0)
+        set_prop(cyan_comp, "attenuation_radius", 520.0)
+        set_prop(cyan_comp, "light_color", unreal.LinearColor(0.04, 0.62, 1.0, 1.0))
+
+        magenta = spawn_actor(unreal.PointLight, unreal.Vector(float(x + 220), 320.0, 128.0), label=f"Gate3_MagentaPoolLight_{i:02d}")
+        magenta_comp = magenta.get_component_by_class(unreal.PointLightComponent)
+        set_prop(magenta_comp, "mobility", unreal.ComponentMobility.MOVABLE)
+        set_prop(magenta_comp, "intensity", 280.0)
+        set_prop(magenta_comp, "attenuation_radius", 480.0)
+        set_prop(magenta_comp, "light_color", unreal.LinearColor(1.0, 0.05, 0.36, 1.0))
+
+    fog = spawn_actor(unreal.ExponentialHeightFog, unreal.Vector(0.0, 0.0, 0.0), label="Gate3_NightMist")
+    fog_comp = fog.get_component_by_class(unreal.ExponentialHeightFogComponent)
+    if fog_comp:
+        set_prop(fog_comp, "fog_density", 0.018)
+        set_prop(fog_comp, "fog_height_falloff", 0.26)
+        set_prop(fog_comp, "fog_inscattering_color", unreal.LinearColor(0.08, 0.12, 0.18, 1.0))
 
     start_camera = spawn_actor(
         unreal.CameraActor,

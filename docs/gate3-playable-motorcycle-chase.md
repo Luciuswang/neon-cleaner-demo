@@ -118,6 +118,24 @@ rejection in `docs/qa/`.
 
 ## Latest Verification
 
+- 2026-09-02 22:32 motorcycle axis / scene readability correction:
+  - `SM_PlayerMotorcycle` source OBJ was confirmed to use baked vertices with
+    X as vehicle length, Y as height, and Z as width. `ALinxiaMotorcyclePawn`
+    now applies `Roll=90` to map the imported mesh into UE's Z-up space while
+    keeping pawn forward yaw at `0`.
+  - The imported bike remains the primary motorcycle visual. Small dark seat /
+    handlebar contact anchors stay visible to improve the mounted rider read.
+  - `LVL_Linxia_MotorcycleChase` was regenerated with a darker wet road,
+    reduced global/key lighting, fog, underpass pieces, city mass silhouettes,
+    and cyan / magenta guide lights.
+  - Latest proof frames:
+    `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_223644*.png`
+  - Full Gate 3 passed with:
+    `powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA -RiderPoseVerdict CONDITIONAL`
+  - Current verdict: engineering `PASS`, playable motorcycle/rider read
+    `CONDITIONAL PASS`, strict AI-video rider continuity still pending real IK
+    hand / foot locking.
+
 - 2026-09-02 asset-route rider animation update:
   - `AN_Linxia_MotorcycleRide_Idle` was regenerated with a stronger riding tuck.
   - `ALinxiaMotorcyclePawn` now uses rider pitch `18`, scale `0.82`, delayed

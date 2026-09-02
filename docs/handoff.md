@@ -392,3 +392,15 @@ Closed the local Codex Neon Cleaner biweekly report automation (the other two PC
 ## Cross-PC Sync Note - 2026-09-02 19:10 +08:00
 
 Gate 3 rider animation continuation on the office PC: local ParagonPhase is restored and the asset route is active. Refined `AN_Linxia_MotorcycleRide_Idle`, adjusted the motorcycle pawn rider attach transform, delayed rider contact logging until after animation update, and hardened UE automation for DDC / first-run shader delays. Full Gate 3 passed build, map validation, LinxiaRig validation, smoke, and default / side / rear proof captures using `Run-Gate3QualityCheck.ps1 -FullVisualQA -RiderPoseVerdict CONDITIONAL`. Latest proof frames are under ignored `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_190548*.png`. QA verdict: engineering PASS, playable rider CONDITIONAL PASS, AI-video continuity still BLOCKED until Control Rig / IK or a stronger seated source animation locks hands to bars and feet to pegs.
+
+## Cross-PC Sync Note - 2026-09-02 22:32 +08:00
+
+Gate 3 motorcycle/rider correction pass: fixed the imported motorcycle's baked OBJ axis mismatch by setting the player bike visual to `Roll=90`, kept the player pawn forward yaw at `0`, and exposed small dark seat/handlebar contact anchors so the Phase rider reads as mounted rather than standing beside the bike. Rebuilt `LVL_Linxia_MotorcycleChase` with a darker wet road, city mass silhouettes, underpass pieces, neon guide strips, fog, and reduced lighting to move away from the previous whitebox/overexposed read. Full Gate 3 passed with `powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA -RiderPoseVerdict CONDITIONAL`. Latest proof frames are under ignored `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_222854*.png`. QA verdict: engineering PASS, playable motorcycle/rider read CONDITIONAL PASS, strict AI-video continuity still not signed off because hands/feet are visually acceptable for gameplay but not yet true IK-locked.
+
+## Cross-PC Sync Note - 2026-09-02 22:39 +08:00
+
+Final Gate 3 proof after footpeg anchor: C++ build passed, map regenerated, and `Run-Gate3QualityCheck.ps1 -SkipBuild -FullVisualQA -RiderPoseVerdict CONDITIONAL` passed. Latest ignored proof frames are `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_223644*.png`. This is the current cross-PC baseline: motorcycle orientation fixed, Lin Xia mounted on the bike, controls/smoke test pass, scene has dark neon prototype art. Remaining quality work is environment asset replacement and true IK/source-animation hand-foot locking before strict AI-video continuity sign-off.
+
+## Cross-PC Sync Note - 2026-09-02 22:39 +08:00
+
+Gate 3 motorcycle axis and mounted rider baseline fixed; final proof 2026-09-02_223644 passed FullVisualQA conditional.

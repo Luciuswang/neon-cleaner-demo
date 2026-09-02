@@ -63,6 +63,59 @@ not locked cleanly to the handlebars, and leg / foot contact should be solved by
 Control Rig / IK targets or a stronger seated motorcycle source animation before
 running the strict rider pose gate as `PASS`.
 
+## 22:32 Follow-Up Correction
+
+The imported motorcycle was found to have a baked OBJ axis mismatch: X is the
+vehicle length, Y is height, and Z is width. The player bike visual now uses a
+`Roll=90` correction, and Gate 3 validation explicitly checks that roll so the
+motorcycle cannot silently return to the sideways / inverted read.
+
+Additional changes:
+
+- Kept the imported motorcycle as the primary bike visual, with small dark seat
+  handlebar, and footpeg anchors visible for rider contact readability.
+- Regenerated the chase map with darker road / barrier materials, reduced key
+  and sky lighting, fog, city silhouettes, underpass structures, and cyan /
+  magenta guide lights.
+- Second-pass proof frames:
+  `ue/NeonCleanerUE/Saved/Quality/linxia_motorcycle_gate3_quality_2026-09-02_223644*.png`
+
+Verification:
+
+```powershell
+& "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.bat" `
+  NeonCleanerUEEditor Win64 Development `
+  -Project="E:\codex_project\neon-cleaner-demo\ue\NeonCleanerUE\NeonCleanerUE.uproject" `
+  -WaitMutex
+
+powershell -ExecutionPolicy Bypass -File .\ue\Run-Gate3QualityCheck.ps1 `
+  -SkipBuild `
+  -FullVisualQA `
+  -RiderPoseVerdict CONDITIONAL
+```
+
+Results:
+
+- C++ build: `PASS` after disabling the problematic UBA executor in local UBT
+  configuration.
+- Gate 3 map validation: `PASS`.
+- Smoke test: `PASS`; Player0 controls `LinxiaMotorcyclePawn_0` and bike visual
+  alignment logs `bikeRot=R(R=90.00)`.
+- Default / side / rear screenshot sanity checks: `PASS`.
+- Visual review: motorcycle direction and rider placement are now acceptable for
+  playable iteration. The scene is no longer the previous whitebox-only read,
+  though final art still needs real environment assets.
+
+Updated decision:
+
+```text
+ENGINEERING: PASS
+PLAYABLE MOTORCYCLE/RIDER READ: CONDITIONAL PASS
+STRICT RIDER POSE: NOT PASS
+AI VIDEO CONTINUITY: BLOCKED UNTIL IK / BETTER SOURCE ANIMATION
+SCENE ART: PROTOTYPE BASELINE, NEEDS ASSET REPLACEMENT
+```
+
 ## Next Step
 
 Author an explicit contact pass through `CR_Linxia_Phase` or an imported seated
