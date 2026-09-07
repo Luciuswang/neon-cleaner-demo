@@ -1,8 +1,8 @@
 #include "LinxiaMotorcyclePawn.h"
 
 #include "Camera/CameraComponent.h"
+#include "Animation/AnimSequence.h"
 #include "Components/SkeletalMeshComponent.h"
-#include "Animation/AnimationAsset.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 #include "EngineUtils.h"
@@ -34,8 +34,8 @@ constexpr float CaptureRequestTime = 8.0f;
 constexpr float CaptureExitTime = 10.5f;
 constexpr float ChaseCatchDistance = 520.0f;
 
-const TCHAR* PhaseMeshPath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC");
-const TCHAR* LinxiaRideAnimationPath = TEXT("/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle.AN_Linxia_MotorcycleRide_Idle");
+const TCHAR* KellyMeshPath = TEXT("/Game/KellySource/rig.rig");
+const TCHAR* KellyRideAnimationRoot = TEXT("/Game/KellySource/Animations/AN_Kelly_MotorcycleRide_");
 }
 
 ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
@@ -54,8 +54,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CubeMesh(TEXT("/Engine/BasicShapes/Cube.Cube"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> CylinderMesh(TEXT("/Engine/BasicShapes/Cylinder.Cylinder"));
 	static ConstructorHelpers::FObjectFinder<UStaticMesh> ImportedBikeMesh(TEXT("/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle"));
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> PhaseMesh(PhaseMeshPath);
-	static ConstructorHelpers::FObjectFinder<UAnimationAsset> RideAnimation(LinxiaRideAnimationPath);
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> KellyMesh(KellyMeshPath);
 
 	const bool bHasImportedBike = ImportedBikeMesh.Succeeded();
 
@@ -144,19 +143,14 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 
 	RiderMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LinxiaRiderMesh"));
 	RiderMesh->SetupAttachment(VisualRoot);
-	if (PhaseMesh.Succeeded())
+	if (KellyMesh.Succeeded())
 	{
-		RiderMesh->SetSkeletalMesh(PhaseMesh.Object);
+		RiderMesh->SetSkeletalMesh(KellyMesh.Object);
 	}
-	if (RideAnimation.Succeeded())
-	{
-		RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-		RiderMesh->SetAnimation(RideAnimation.Object);
-		RiderMesh->PlayAnimation(RideAnimation.Object, true);
-	}
-	RiderMesh->SetRelativeLocation(FVector(24.0f, 0.0f, 8.0f));
-	RiderMesh->SetRelativeRotation(FRotator(18.0f, 270.0f, 0.0f));
-	RiderMesh->SetRelativeScale3D(FVector(0.82f, 0.82f, 0.82f));
+	RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+	RiderMesh->SetRelativeLocation(FVector(-30.0f, 0.0f, 5.0f));
+	RiderMesh->SetRelativeRotation(FRotator(4.0f, 270.0f, 0.0f));
+	RiderMesh->SetRelativeScale3D(FVector(1.0f, 1.0f, 1.0f));
 	RiderMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
@@ -491,17 +485,40 @@ void ALinxiaMotorcyclePawn::StartRiderAnimation()
 		return;
 	}
 
-	UAnimationAsset* RideAnimation = LoadObject<UAnimationAsset>(nullptr, LinxiaRideAnimationPath);
-	if (!RideAnimation)
+	USkeletalMesh* KellyMesh = LoadObject<USkeletalMesh>(nullptr, KellyMeshPath);
+	if (!KellyMesh)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[LinxiaMotorcycle] Missing rider animation asset: %s"), LinxiaRideAnimationPath);
+		UE_LOG(LogTemp, Error, TEXT("[LinxiaMotorcycle] Missing Kelly rider mesh: %s"), KellyMeshPath);
 		return;
 	}
 
+	RiderMesh->SetSkeletalMesh(KellyMesh);
+	FString PoseProfile = TEXT("Default");
+	FParse::Value(FCommandLine::Get(), TEXT("LinxiaRiderPose="), PoseProfile);
+	if (PoseProfile != TEXT("Default") && PoseProfile != TEXT("Compact")
+		&& PoseProfile != TEXT("Bars") && PoseProfile != TEXT("AsymBars"))
+	{
+		PoseProfile = TEXT("Default");
+	}
+
+	const FString AnimationPath = FString(KellyRideAnimationRoot) + PoseProfile
+		+ TEXT(".AN_Kelly_MotorcycleRide_") + PoseProfile;
+	UAnimSequence* RideAnimation = LoadObject<UAnimSequence>(nullptr, *AnimationPath);
 	RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-	RiderMesh->SetAnimation(RideAnimation);
-	RiderMesh->PlayAnimation(RideAnimation, true);
-	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider animation=%s"), LinxiaRideAnimationPath);
+	if (RideAnimation)
+	{
+		RiderMesh->SetAnimation(RideAnimation);
+		RiderMesh->Play(true);
+		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider source=%s pose=%s animation=%s"),
+			KellyMeshPath, *PoseProfile, *AnimationPath);
+	}
+	else
+	{
+		RiderMesh->SetAnimation(nullptr);
+		RiderMesh->Stop();
+		UE_LOG(LogTemp, Warning, TEXT("[LinxiaMotorcycle] Rider source=%s pose=KellyReference missingAnimation=%s"),
+			KellyMeshPath, *AnimationPath);
+	}
 }
 
 void ALinxiaMotorcyclePawn::LogRiderContactPose()
@@ -511,10 +528,10 @@ void ALinxiaMotorcyclePawn::LogRiderContactPose()
 		return;
 	}
 
-	const FVector HandL = RiderMesh->GetBoneLocation(TEXT("hand_l"), EBoneSpaces::ComponentSpace);
-	const FVector HandR = RiderMesh->GetBoneLocation(TEXT("hand_r"), EBoneSpaces::ComponentSpace);
-	const FVector FootL = RiderMesh->GetBoneLocation(TEXT("foot_l"), EBoneSpaces::ComponentSpace);
-	const FVector FootR = RiderMesh->GetBoneLocation(TEXT("foot_r"), EBoneSpaces::ComponentSpace);
+	const FVector HandL = RiderMesh->GetBoneLocation(TEXT("Wrist_L"), EBoneSpaces::ComponentSpace);
+	const FVector HandR = RiderMesh->GetBoneLocation(TEXT("Wrist_R"), EBoneSpaces::ComponentSpace);
+	const FVector FootL = RiderMesh->GetBoneLocation(TEXT("Ankle_L"), EBoneSpaces::ComponentSpace);
+	const FVector FootR = RiderMesh->GetBoneLocation(TEXT("Ankle_R"), EBoneSpaces::ComponentSpace);
 	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
 	const FVector HandLVisual = RiderToVisual.TransformPosition(HandL);
 	const FVector HandRVisual = RiderToVisual.TransformPosition(HandR);

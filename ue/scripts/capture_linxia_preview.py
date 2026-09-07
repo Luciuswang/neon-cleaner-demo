@@ -5,8 +5,8 @@ import unreal
 
 LEVEL = "/Game/LinxiaPreview/LVL_Linxia_CharacterPreview"
 CAMERA_LABEL = "Linxia_CharacterPreviewCamera"
-CHARACTER_LABEL = "Linxia_Phase_Visible"
-OUT_NAME = "linxia_phase_preview_2026_08_24"
+CHARACTER_LABEL = "Linxia_Kelly_Visible"
+OUT_NAME = "linxia_kelly_preview_2026_09_07"
 
 
 def log(message):

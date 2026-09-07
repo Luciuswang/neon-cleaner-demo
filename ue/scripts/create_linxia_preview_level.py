@@ -2,7 +2,7 @@ import unreal
 
 
 LEVEL_PATH = "/Game/LinxiaPreview/LVL_Linxia_CharacterPreview"
-HEROINE_MESH = "/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC"
+HEROINE_MESH = "/Game/KellySource/rig.rig"
 HEROINE_PAWN_CLASS = "/Script/NeonCleanerUE.PlayablePhaseCharacter"
 GRID_MATERIAL = "/Engine/EngineMaterials/WorldGridMaterial.WorldGridMaterial"
 
@@ -64,7 +64,7 @@ def setup_preview_level():
         pawn_class,
         unreal.Vector(0.0, 0.0, 96.0),
         unreal.Rotator(0.0, 0.0, 0.0),
-        "Linxia_Phase_Visible",
+        "Linxia_Kelly_Visible",
     )
     set_prop(character, "auto_possess_player", unreal.AutoReceiveInput.PLAYER0)
     skel = character.get_component_by_class(unreal.SkeletalMeshComponent)
@@ -76,7 +76,7 @@ def setup_preview_level():
     key = spawn_actor(unreal.DirectionalLight, unreal.Vector(-260.0, -320.0, 520.0), unreal.Rotator(-38.0, -42.0, 0.0), "Linxia_KeyLight")
     key_comp = key.get_component_by_class(unreal.DirectionalLightComponent)
     set_prop(key_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(key_comp, "intensity", 8.0)
+    set_prop(key_comp, "intensity", 3.0)
     set_prop(key_comp, "light_color", unreal.LinearColor(1.0, 0.95, 0.88, 1.0))
     set_prop(key_comp, "cast_shadows", True)
     set_prop(key_comp, "contact_shadow_length", 0.18)
@@ -84,14 +84,14 @@ def setup_preview_level():
     fill = spawn_actor(unreal.PointLight, unreal.Vector(180.0, -220.0, 170.0), label="Linxia_FillLight")
     fill_comp = fill.get_component_by_class(unreal.PointLightComponent)
     set_prop(fill_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(fill_comp, "intensity", 120.0)
+    set_prop(fill_comp, "intensity", 1800.0)
     set_prop(fill_comp, "attenuation_radius", 700.0)
     set_prop(fill_comp, "light_color", unreal.LinearColor(0.55, 0.75, 1.0, 1.0))
 
     sky = spawn_actor(unreal.SkyLight, unreal.Vector(0.0, 0.0, 260.0), label="Linxia_SoftSkyLight")
     sky_comp = sky.get_component_by_class(unreal.SkyLightComponent)
     set_prop(sky_comp, "mobility", unreal.ComponentMobility.MOVABLE)
-    set_prop(sky_comp, "intensity", 0.35)
+    set_prop(sky_comp, "intensity", 1.0)
     set_prop(sky_comp, "light_color", unreal.LinearColor(0.78, 0.86, 1.0, 1.0))
 
     camera_location = unreal.Vector(-250.0, 170.0, 125.0)

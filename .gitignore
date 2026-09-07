@@ -19,3 +19,8 @@ ue/**/.vsconfig
 
 # Third-party Epic/Fab Marketplace assets are restored from the user's Epic library.
 ue/NeonCleanerUE/Content/ParagonPhase/
+
+# User-provided Kelly source character and all derived rigs/animations stay local.
+ue/NeonCleanerUE/Content/KellySource/
+__pycache__/
+*.pyc

@@ -3,14 +3,14 @@ import unreal
 
 LEVEL_PATH = "/Game/LinxiaPreview/LVL_Linxia_CharacterPreview"
 REQUIRED = {
-    "Linxia_Phase_Visible",
+    "Linxia_Kelly_Visible",
     "Linxia_CharacterPreviewCamera",
     "Linxia_KeyLight",
     "Linxia_FillLight",
     "Linxia_SoftSkyLight",
     "Linxia_NeutralGreyFloor",
 }
-EXPECTED_MESH = "/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC"
+EXPECTED_MESH = "/Game/KellySource/rig.rig"
 
 
 def log(message):
@@ -25,7 +25,7 @@ def main():
     if missing:
         raise RuntimeError("Missing preview actors: " + ", ".join(missing))
 
-    character = by_label["Linxia_Phase_Visible"]
+    character = by_label["Linxia_Kelly_Visible"]
     if not isinstance(character, unreal.Pawn):
         raise RuntimeError("Preview character is not a playable Pawn")
     auto_possess = character.get_editor_property("auto_possess_player")

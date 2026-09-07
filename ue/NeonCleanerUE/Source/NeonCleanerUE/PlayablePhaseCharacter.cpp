@@ -1,6 +1,5 @@
 #include "PlayablePhaseCharacter.h"
 
-#include "Animation/AnimationAsset.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -9,15 +8,18 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "InputCoreTypes.h"
 #include "Kismet/GameplayStatics.h"
+#include "HAL/FileManager.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
+#include "Misc/Paths.h"
 #include "UObject/ConstructorHelpers.h"
+#include "UnrealClient.h"
 
 namespace
 {
-constexpr float PhaseInitialCameraYawDegrees = -90.0f;
+constexpr float InitialCameraYawDegrees = -135.0f;
 constexpr float KeyboardCameraFollowSpeed = 7.0f;
-const TCHAR* PhaseReferenceIdlePath = TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Animations/Idle_Straight.Idle_Straight");
+const TCHAR* KellyMeshPath = TEXT("/Game/KellySource/rig.rig");
 }
 
 APlayablePhaseCharacter::APlayablePhaseCharacter()
@@ -41,28 +43,21 @@ APlayablePhaseCharacter::APlayablePhaseCharacter()
 	Movement->MinAnalogWalkSpeed = 20.0f;
 	Movement->BrakingDecelerationWalking = 2000.0f;
 
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> PhaseMesh(
-		TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC"));
-	if (PhaseMesh.Succeeded())
+	static ConstructorHelpers::FObjectFinder<USkeletalMesh> KellyMesh(KellyMeshPath);
+	if (KellyMesh.Succeeded())
 	{
-		GetMesh()->SetSkeletalMesh(PhaseMesh.Object);
-	}
-
-	static ConstructorHelpers::FClassFinder<UAnimInstance> PhaseAnim(
-		TEXT("/Game/ParagonPhase/Characters/Heroes/Phase/Phase_AnimBlueprint"));
-	if (PhaseAnim.Succeeded())
-	{
-		GetMesh()->SetAnimInstanceClass(PhaseAnim.Class);
+		GetMesh()->SetSkeletalMesh(KellyMesh.Object);
 	}
 
 	GetMesh()->SetRelativeLocation(FVector(0.0f, 0.000856f, -97.0f));
 	GetMesh()->SetRelativeRotation(FRotator(0.0f, 270.0f, 0.0f));
+	GetMesh()->SetAnimationMode(EAnimationMode::AnimationSingleNode);
 
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, 72.0f));
-	CameraBoom->TargetArmLength = 430.0f;
-	CameraBoom->SocketOffset = FVector(0.0f, 55.0f, 0.0f);
+	CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, -10.0f));
+	CameraBoom->TargetArmLength = 450.0f;
+	CameraBoom->SocketOffset = FVector(0.0f, 18.0f, 0.0f);
 	CameraBoom->bUsePawnControlRotation = true;
 	CameraBoom->bDoCollisionTest = false;
 
@@ -70,6 +65,7 @@ APlayablePhaseCharacter::APlayablePhaseCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 	FollowCamera->bAutoActivate = true;
+	FollowCamera->SetFieldOfView(38.0f);
 }
 
 void APlayablePhaseCharacter::CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult)
@@ -87,8 +83,10 @@ void APlayablePhaseCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 	ApplyReferencePoseIfRequested();
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaPlayable] Rider source=%s pose=KellyReference"), KellyMeshPath);
 	EnsurePlayerPossession();
 	bSmokeTestActive = FParse::Param(FCommandLine::Get(), TEXT("LinxiaSmokeTest"));
+	bCaptureTestActive = FParse::Value(FCommandLine::Get(), TEXT("LinxiaCharacterCapture="), CaptureOutputPath);
 	if (bSmokeTestActive)
 	{
 		SmokeTestStartLocation = GetActorLocation();
@@ -103,15 +101,10 @@ void APlayablePhaseCharacter::ApplyReferencePoseIfRequested()
 		return;
 	}
 
-	UAnimationAsset* ReferenceIdle = LoadObject<UAnimationAsset>(nullptr, PhaseReferenceIdlePath);
-	if (!ReferenceIdle)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("[LinxiaReferencePose] Missing reference idle: %s"), PhaseReferenceIdlePath);
-		return;
-	}
-
-	GetMesh()->PlayAnimation(ReferenceIdle, true);
-	UE_LOG(LogTemp, Display, TEXT("[LinxiaReferencePose] Using %s"), *ReferenceIdle->GetPathName());
+	GetMesh()->SetAnimationMode(EAnimationMode::AnimationSingleNode);
+	GetMesh()->SetAnimation(nullptr);
+	GetMesh()->Stop();
+	UE_LOG(LogTemp, Display, TEXT("[LinxiaReferencePose] Using Kelly skeletal reference pose"));
 }
 
 void APlayablePhaseCharacter::Tick(float DeltaSeconds)
@@ -119,6 +112,7 @@ void APlayablePhaseCharacter::Tick(float DeltaSeconds)
 	Super::Tick(DeltaSeconds);
 	EnsurePlayerPossession();
 	RunSmokeTest(DeltaSeconds);
+	RunCaptureTest(DeltaSeconds);
 	PollDirectPlayerInput(DeltaSeconds);
 }
 
@@ -146,7 +140,7 @@ void APlayablePhaseCharacter::EnsurePlayerPossession()
 	PlayerController->SetViewTarget(this);
 	if (!bLoggedPossession && PlayerController->GetPawn() == this)
 	{
-		PlayerController->SetControlRotation(FRotator(-8.0f, PhaseInitialCameraYawDegrees, 0.0f));
+		PlayerController->SetControlRotation(FRotator(0.0f, InitialCameraYawDegrees, 0.0f));
 		UE_LOG(LogTemp, Display, TEXT("[LinxiaPlayable] Player0 now controls %s at %s"),
 			*GetName(),
 			*GetActorLocation().ToCompactString());
@@ -234,6 +228,29 @@ void APlayablePhaseCharacter::RunSmokeTest(float DeltaSeconds)
 			*SmokeTestStartLocation.ToCompactString(),
 			*GetActorLocation().ToCompactString());
 		bSmokeTestCompleted = true;
+		FPlatformMisc::RequestExit(false);
+	}
+}
+
+void APlayablePhaseCharacter::RunCaptureTest(float DeltaSeconds)
+{
+	if (!bCaptureTestActive)
+	{
+		return;
+	}
+
+	CaptureTestElapsed += DeltaSeconds;
+	if (!bCaptureRequested && CaptureTestElapsed >= 4.0f)
+	{
+		IFileManager::Get().MakeDirectory(*FPaths::GetPath(CaptureOutputPath), true);
+		UE_LOG(LogTemp, Display, TEXT("[LinxiaCharacterCapture] Requesting screenshot %s"), *CaptureOutputPath);
+		FScreenshotRequest::RequestScreenshot(CaptureOutputPath, true, false);
+		bCaptureRequested = true;
+	}
+
+	if (bCaptureRequested && CaptureTestElapsed >= 6.0f)
+	{
+		UE_LOG(LogTemp, Display, TEXT("[LinxiaCharacterCapture] Completed"));
 		FPlatformMisc::RequestExit(false);
 	}
 }

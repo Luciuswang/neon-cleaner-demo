@@ -35,7 +35,7 @@ $possessionLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] P
     Select-Object -Last 4
 $alignmentLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Visual alignment" |
     Select-Object -Last 4
-$animationLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider animation=" |
+$animationLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider source=/Game/KellySource/rig.rig pose=Default animation=/Game/KellySource/Animations/AN_Kelly_MotorcycleRide_Default" |
     Select-Object -Last 4
 $contactLines = Select-String -Path $LogPath -Pattern "\[LinxiaMotorcycle\] Rider contact pose" |
     Select-Object -Last 4
@@ -50,7 +50,7 @@ if (-not $alignmentLines) {
     throw "Smoke-test visual alignment marker not found in log"
 }
 if (-not $animationLines) {
-    throw "Smoke-test rider animation marker not found in log"
+    throw "Smoke-test Kelly rider identity marker not found in log"
 }
 if (-not $contactLines) {
     throw "Smoke-test rider contact pose marker not found in log"

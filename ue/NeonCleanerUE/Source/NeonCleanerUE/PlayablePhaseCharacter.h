@@ -27,6 +27,7 @@ private:
 	void EnsurePlayerPossession();
 	void PollDirectPlayerInput(float DeltaSeconds);
 	void RunSmokeTest(float DeltaSeconds);
+	void RunCaptureTest(float DeltaSeconds);
 	void AutoAlignCameraToMovement(APlayerController* PlayerController, const FVector& MoveDirection, float DeltaSeconds);
 	FRotator GetMovementYawRotation() const;
 	void MoveForward(float Value);
@@ -38,7 +39,11 @@ private:
 	bool bLoggedPossession = false;
 	bool bSmokeTestActive = false;
 	bool bSmokeTestCompleted = false;
+	bool bCaptureTestActive = false;
+	bool bCaptureRequested = false;
 	float SmokeTestElapsed = 0.0f;
+	float CaptureTestElapsed = 0.0f;
+	FString CaptureOutputPath;
 	FVector SmokeTestStartLocation = FVector::ZeroVector;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))

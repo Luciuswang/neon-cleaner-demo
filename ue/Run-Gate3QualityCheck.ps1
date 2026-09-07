@@ -19,7 +19,7 @@ $BuildBat = "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.ba
 $ValidateScript = Join-Path $PSScriptRoot "scripts\validate_linxia_motorcycle_chase_level.py"
 $SmokeScript = Join-Path $PSScriptRoot "SmokeTest-LinxiaMotorcycleChase.ps1"
 $CaptureScript = Join-Path $PSScriptRoot "Capture-LinxiaMotorcycleChase.ps1"
-$RigAssetScript = Join-Path $PSScriptRoot "Setup-LinxiaRigAssets.ps1"
+$KellyAssetScript = Join-Path $PSScriptRoot "scripts\validate_kelly_migration.py"
 $LogPath = Join-Path $PSScriptRoot "NeonCleanerUE\Saved\Logs\NeonCleanerUE.log"
 
 function Write-Step($message) {
@@ -113,7 +113,7 @@ try {
     Assert-Exists $ValidateScript "Gate 3 validation script"
     Assert-Exists $SmokeScript "Gate 3 smoke script"
     Assert-Exists $CaptureScript "Gate 3 capture script"
-    Assert-Exists $RigAssetScript "Linxia rig asset setup script"
+    Assert-Exists $KellyAssetScript "Kelly asset validation script"
 
     Get-Process UnrealEditor -ErrorAction SilentlyContinue | Stop-Process -Force
 
@@ -143,13 +143,19 @@ try {
     }
 
     if (-not $SkipRigAssetValidation) {
-        Invoke-CheckedNative "Validate Linxia rig assets" "powershell" @(
-            "-ExecutionPolicy",
-            "Bypass",
-            "-File",
-            $RigAssetScript,
-            "-ValidateOnly"
-        )
+        Remove-Item -LiteralPath $LogPath -ErrorAction SilentlyContinue
+        Invoke-UEPythonScript "Validate Kelly migrated assets" $KellyAssetScript
+        if (-not (Test-Path -LiteralPath $LogPath)) {
+            throw "Kelly validation did not produce a UE log: $LogPath"
+        }
+        $kellyPythonError = Select-String -Path $LogPath -Pattern "LogPython: Error|Traceback" | Select-Object -Last 1
+        if ($kellyPythonError) {
+            throw "Kelly asset validation failed: $($kellyPythonError.Line)"
+        }
+        $kellyValidation = Select-String -Path $LogPath -Pattern "\[KellyMigrationValidate\] Validation passed" | Select-Object -Last 1
+        if (-not $kellyValidation) {
+            throw "Kelly asset validation marker not found in UE log"
+        }
     }
 
     Invoke-CheckedNative "Run motorcycle smoke test" "powershell" @(

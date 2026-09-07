@@ -10,7 +10,7 @@ $remote = "origin"
 $ueRoot = "C:\Program Files\Epic Games\UE_5.8"
 $editorCmd = Join-Path $ueRoot "Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
 $project = Join-Path $repo "ue\NeonCleanerUE\NeonCleanerUE.uproject"
-$paragon = Join-Path $repo "ue\NeonCleanerUE\Content\ParagonPhase"
+$kelly = Join-Path $repo "ue\NeonCleanerUE\Content\KellySource"
 
 function Write-Step($message) {
   Write-Host ""
@@ -57,28 +57,32 @@ try {
   Write-Step "Local environment"
   Write-Host ("UE 5.8: " + ($(if (Test-Path -LiteralPath $ueRoot) { "OK" } else { "MISSING: $ueRoot" })))
   Write-Host ("UE project: " + ($(if (Test-Path -LiteralPath $project) { "OK" } else { "MISSING: $project" })))
-  Write-Host ("ParagonPhase local asset: " + ($(if (Test-Path -LiteralPath $paragon) { "OK" } else { "MISSING: restore from Epic/Fab library" })))
+  Write-Host ("Kelly local asset: " + ($(if (Test-Path -LiteralPath $kelly) { "OK" } else { "MISSING: run ue\Migrate-KellyCharacter.ps1 from the private source" })))
 
   if ($ValidateUE) {
     Write-Step "UE validation"
     if (-not (Test-Path -LiteralPath $editorCmd)) {
       throw "UnrealEditor-Cmd.exe was not found: $editorCmd"
     }
-    if (-not (Test-Path -LiteralPath $paragon)) {
-      throw "ParagonPhase is missing. Add Paragon: Phase from Epic/Fab Library before validation."
+    if (-not (Test-Path -LiteralPath $kelly)) {
+      throw "KellySource is missing. Run ue\Migrate-KellyCharacter.ps1 before validation."
     }
-    & $editorCmd $project -unattended -nop4 -nullrhi -nosplash "-ExecutePythonScript=$repo\ue\scripts\validate_linxia_preview_level.py"
+    $validateScript = (Join-Path $repo "ue\scripts\validate_linxia_preview_level.py").Replace('\', '/')
+    $command = '"' + $editorCmd + '" "' + $project + '" -unattended -nop4 -nullrhi -nosplash -run=pythonscript -script="' + $validateScript + '"'
+    & cmd.exe /d /s /c $command
   }
 
   Write-Step "Codex context to read"
   @(
     "AGENTS.md",
     "docs/handoff.md",
+    "docs/handoff-kelly-2026-09-07.md",
     "docs/sprint-2026-08-24.md",
     "docs/agent-production-workflow.md",
     "docs/quality-control.md",
     "docs/qa/gate3-quality-report-2026-08-27.md",
     "docs/qa/gate3-quality-report-2026-08-31.md",
+    "docs/qa/gate3-kelly-migration-report-2026-09-07.md",
     "docs/multi-agent-production-system.md",
     "docs/agent-task-template.md",
     "docs/tasks/gate3-rider-pose-strict-qa.md",

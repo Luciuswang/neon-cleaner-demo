@@ -2,7 +2,7 @@ import unreal
 
 
 LEVEL = "/Game/LinxiaPreview/LVL_Linxia_CharacterPreview"
-TARGET_LABEL = "Linxia_Phase_Visible"
+TARGET_LABEL = "Linxia_Kelly_Visible"
 
 
 def log(message):

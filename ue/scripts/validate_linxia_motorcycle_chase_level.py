@@ -6,9 +6,11 @@ EXPECTED_PAWN_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcyclePawn"
 EXPECTED_GAMEMODE_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcycleChaseGameMode"
 EXPECTED_HUD_CLASS = "/Script/NeonCleanerUE.LinxiaMotorcycleHud"
 EXPECTED_IMPORTED_BIKE = "/Game/LinxiaChase/Imported/SM_PlayerMotorcycle.SM_PlayerMotorcycle"
-EXPECTED_RIDE_ANIMATION = "/Game/LinxiaRig/Animations/AN_Linxia_MotorcycleRide_Idle.AN_Linxia_MotorcycleRide_Idle"
-SOURCE_PHASE_MESH = "/Game/ParagonPhase/Characters/Heroes/Phase/Meshes/Phase_GDC.Phase_GDC"
-SOURCE_PHASE_ANIM_BLUEPRINT = "/Game/ParagonPhase/Characters/Heroes/Phase/Phase_AnimBlueprint.Phase_AnimBlueprint"
+SOURCE_KELLY_MESH = "/Game/KellySource/rig.rig"
+EXPECTED_RIDE_ANIMATION = (
+    "/Game/KellySource/Animations/"
+    "AN_Kelly_MotorcycleRide_Default.AN_Kelly_MotorcycleRide_Default"
+)
 REQUIRED_LABELS = {
     "Linxia_MotorcyclePawn",
     "Gate3_Road_Main",
@@ -67,28 +69,25 @@ def main():
     skeletal = pawn.get_component_by_class(unreal.SkeletalMeshComponent)
     if skeletal is None:
         raise RuntimeError("Motorcycle pawn has no visible Lin Xia skeletal mesh")
-    source_phase_mesh = unreal.EditorAssetLibrary.load_asset(SOURCE_PHASE_MESH)
-    if source_phase_mesh is None:
+    source_kelly_mesh = unreal.EditorAssetLibrary.load_asset(SOURCE_KELLY_MESH)
+    if source_kelly_mesh is None:
         raise RuntimeError(
-            "Missing required Fab asset from Paragon: Phase: "
-            f"source skeletal mesh {SOURCE_PHASE_MESH}"
-        )
-    source_phase_anim_blueprint = unreal.EditorAssetLibrary.load_asset(SOURCE_PHASE_ANIM_BLUEPRINT)
-    if source_phase_anim_blueprint is None:
-        raise RuntimeError(
-            "Missing required Fab asset from Paragon: Phase: "
-            f"source animation blueprint {SOURCE_PHASE_ANIM_BLUEPRINT}"
+            "Missing migrated Kelly skeletal mesh: "
+            f"{SOURCE_KELLY_MESH}"
         )
     mesh = skeletal.get_editor_property("skeletal_mesh")
-    if mesh != source_phase_mesh:
+    if mesh != source_kelly_mesh:
         actual_mesh_path = mesh.get_path_name() if mesh is not None else "None"
         raise RuntimeError(
-            "Motorcycle pawn is not using the exact Paragon: Phase Fab source skeletal mesh: "
-            f"expected {SOURCE_PHASE_MESH}, got {actual_mesh_path}"
+            "Motorcycle pawn is not using the migrated Kelly skeletal mesh: "
+            f"expected {SOURCE_KELLY_MESH}, got {actual_mesh_path}"
         )
     ride_animation = unreal.EditorAssetLibrary.load_asset(EXPECTED_RIDE_ANIMATION)
     if ride_animation is None:
-        raise RuntimeError("Missing Lin Xia motorcycle ride animation")
+        raise RuntimeError(
+            "Missing generated Kelly motorcycle ride animation: "
+            f"{EXPECTED_RIDE_ANIMATION}"
+        )
 
     spring_arm = pawn.get_component_by_class(unreal.SpringArmComponent)
     camera = pawn.get_component_by_class(unreal.CameraComponent)
@@ -146,8 +145,7 @@ def main():
         raise RuntimeError("Unable to validate world game mode override: " + str(exc))
 
     log(f"pawn={pawn.get_name()} loc={pawn.get_actor_location().to_tuple()}")
-    log(f"source_phase_mesh={source_phase_mesh.get_path_name()}")
-    log(f"source_phase_anim_blueprint={source_phase_anim_blueprint.get_path_name()}")
+    log(f"source_kelly_mesh={source_kelly_mesh.get_path_name()}")
     log(f"rider_mesh={mesh.get_path_name()}")
     log(f"rider_animation={ride_animation.get_path_name()}")
     log(f"motorcycle_mesh={imported_mesh.get_path_name()}")
