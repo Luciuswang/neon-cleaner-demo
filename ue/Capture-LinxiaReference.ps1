@@ -5,7 +5,7 @@ $repo = Split-Path -Parent $root
 $project = Join-Path $root "NeonCleanerUE\NeonCleanerUE.uproject"
 $editor = "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe"
 $outDir = Join-Path $repo "source\reference\linxia\ue-captures"
-$outFile = Join-Path $outDir "linxia_kelly_preview_2026-09-07.png"
+$outFile = Join-Path $outDir "linxia_kelly_low_preview_2026-09-08.png"
 
 if (-not (Test-Path -LiteralPath $editor)) {
   throw "UnrealEditor.exe was not found: $editor"

@@ -19,7 +19,7 @@ $BuildBat = "C:\Program Files\Epic Games\UE_5.8\Engine\Build\BatchFiles\Build.ba
 $ValidateScript = Join-Path $PSScriptRoot "scripts\validate_linxia_motorcycle_chase_level.py"
 $SmokeScript = Join-Path $PSScriptRoot "SmokeTest-LinxiaMotorcycleChase.ps1"
 $CaptureScript = Join-Path $PSScriptRoot "Capture-LinxiaMotorcycleChase.ps1"
-$KellyAssetScript = Join-Path $PSScriptRoot "scripts\validate_kelly_migration.py"
+$KellyAssetScript = Join-Path $PSScriptRoot "scripts\validate_kelly_low_migration.py"
 $LogPath = Join-Path $PSScriptRoot "NeonCleanerUE\Saved\Logs\NeonCleanerUE.log"
 
 function Write-Step($message) {
@@ -152,7 +152,7 @@ try {
         if ($kellyPythonError) {
             throw "Kelly asset validation failed: $($kellyPythonError.Line)"
         }
-        $kellyValidation = Select-String -Path $LogPath -Pattern "\[KellyMigrationValidate\] Validation passed" | Select-Object -Last 1
+        $kellyValidation = Select-String -Path $LogPath -Pattern "\[KellyLowMigrationValidate\] Validation passed" | Select-Object -Last 1
         if (-not $kellyValidation) {
             throw "Kelly asset validation marker not found in UE log"
         }

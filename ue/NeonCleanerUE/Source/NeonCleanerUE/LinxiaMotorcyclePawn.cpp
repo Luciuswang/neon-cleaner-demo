@@ -1,8 +1,7 @@
 #include "LinxiaMotorcyclePawn.h"
 
 #include "Camera/CameraComponent.h"
-#include "Animation/AnimSequence.h"
-#include "Components/SkeletalMeshComponent.h"
+#include "Components/PoseableMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
 #include "EngineUtils.h"
@@ -33,9 +32,14 @@ constexpr float SmokeTestDuration = 4.0f;
 constexpr float CaptureRequestTime = 8.0f;
 constexpr float CaptureExitTime = 10.5f;
 constexpr float ChaseCatchDistance = 520.0f;
+constexpr float RiderContactToleranceCm = 3.0f;
 
-const TCHAR* KellyMeshPath = TEXT("/Game/KellySource/rig.rig");
-const TCHAR* KellyRideAnimationRoot = TEXT("/Game/KellySource/Animations/AN_Kelly_MotorcycleRide_");
+const TCHAR* KellyMeshPath = TEXT("/Game/KellyLowSource/asda.asda");
+const FVector RiderLeftGripVisual(9.07f, -34.74f, 115.24f);
+const FVector RiderRightGripVisual(12.0f, 38.0f, 111.0f);
+const FVector RiderLeftFootVisual(-4.0f, -32.0f, 48.0f);
+const FVector RiderRightFootVisual(-4.0f, 32.0f, 48.0f);
+const FVector RiderFootPegCenterVisual(-4.0f, 0.0f, 44.0f);
 }
 
 ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
@@ -119,17 +123,18 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	Handlebar = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Handlebar"));
 	Handlebar->SetupAttachment(VisualRoot);
 	Handlebar->SetStaticMesh(CubeMesh.Object);
-	Handlebar->SetRelativeLocation(FVector(28.0f, 48.0f, 94.0f));
-	Handlebar->SetRelativeRotation(FRotator(0.0f, 0.0f, -10.0f));
-	Handlebar->SetRelativeScale3D(FVector(0.07f, 0.48f, 0.04f));
+	const FVector HandlebarVector = RiderRightGripVisual - RiderLeftGripVisual;
+	Handlebar->SetRelativeLocation((RiderLeftGripVisual + RiderRightGripVisual) * 0.5f);
+	Handlebar->SetRelativeRotation(FRotationMatrix::MakeFromY(HandlebarVector).Rotator());
+	Handlebar->SetRelativeScale3D(FVector(0.07f, HandlebarVector.Size() / 100.0f, 0.04f));
 	Handlebar->SetVisibility(true, true);
 	Handlebar->SetHiddenInGame(false);
 
 	FootPegBar = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FootPegBar"));
 	FootPegBar->SetupAttachment(VisualRoot);
 	FootPegBar->SetStaticMesh(CubeMesh.Object);
-	FootPegBar->SetRelativeLocation(FVector(36.0f, 2.0f, 23.0f));
-	FootPegBar->SetRelativeScale3D(FVector(0.14f, 0.46f, 0.032f));
+	FootPegBar->SetRelativeLocation(RiderFootPegCenterVisual);
+	FootPegBar->SetRelativeScale3D(FVector(0.14f, 0.64f, 0.032f));
 	FootPegBar->SetVisibility(true, true);
 	FootPegBar->SetHiddenInGame(false);
 
@@ -141,14 +146,13 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	NoseLight->SetVisibility(!bHasImportedBike, true);
 	NoseLight->SetHiddenInGame(bHasImportedBike);
 
-	RiderMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("LinxiaRiderMesh"));
+	RiderMesh = CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("LinxiaRiderMesh"));
 	RiderMesh->SetupAttachment(VisualRoot);
 	if (KellyMesh.Succeeded())
 	{
-		RiderMesh->SetSkeletalMesh(KellyMesh.Object);
+		RiderMesh->SetSkinnedAssetAndUpdate(KellyMesh.Object);
 	}
-	RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-	RiderMesh->SetRelativeLocation(FVector(-30.0f, 0.0f, 5.0f));
+	RiderMesh->SetRelativeLocation(FVector(-30.0f, 0.0f, -5.0f));
 	RiderMesh->SetRelativeRotation(FRotator(4.0f, 270.0f, 0.0f));
 	RiderMesh->SetRelativeScale3D(FVector(1.0f, 1.0f, 1.0f));
 	RiderMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
@@ -492,33 +496,167 @@ void ALinxiaMotorcyclePawn::StartRiderAnimation()
 		return;
 	}
 
-	RiderMesh->SetSkeletalMesh(KellyMesh);
-	FString PoseProfile = TEXT("Default");
-	FParse::Value(FCommandLine::Get(), TEXT("LinxiaRiderPose="), PoseProfile);
-	if (PoseProfile != TEXT("Default") && PoseProfile != TEXT("Compact")
-		&& PoseProfile != TEXT("Bars") && PoseProfile != TEXT("AsymBars"))
+	RiderMesh->SetSkinnedAssetAndUpdate(KellyMesh);
+	RiderMesh->RefreshBoneTransforms();
+
+	for (const TPair<FName, float>& SpineLean : {
+		TPair<FName, float>(TEXT("bone_Spine"), -20.0f),
+		TPair<FName, float>(TEXT("bone_Spine1"), -18.0f)})
 	{
-		PoseProfile = TEXT("Default");
+		const FTransform Current = RiderMesh->GetBoneTransformByName(
+			SpineLean.Key, EBoneSpaces::ComponentSpace);
+		const FQuat Lean(
+			FVector::ForwardVector,
+			FMath::DegreesToRadians(SpineLean.Value));
+		RiderMesh->SetBoneRotationByName(
+			SpineLean.Key,
+			(Lean * Current.GetRotation()).Rotator(),
+			EBoneSpaces::ComponentSpace);
+		RiderMesh->RefreshBoneTransforms();
 	}
 
-	const FString AnimationPath = FString(KellyRideAnimationRoot) + PoseProfile
-		+ TEXT(".AN_Kelly_MotorcycleRide_") + PoseProfile;
-	UAnimSequence* RideAnimation = LoadObject<UAnimSequence>(nullptr, *AnimationPath);
-	RiderMesh->SetAnimationMode(EAnimationMode::AnimationSingleNode);
-	if (RideAnimation)
+	const bool bLeftHandPassed = SolveRiderTwoBoneIK(
+		TEXT("LeftHand"),
+		TEXT("bone_LeftArm"), TEXT("bone_LeftForeArm"), TEXT("bone_LeftHand"),
+		RiderLeftGripVisual,
+		FVector(-2.0f, -66.0f, 116.0f));
+	const bool bRightHandPassed = SolveRiderTwoBoneIK(
+		TEXT("RightHand"),
+		TEXT("bone_RightArm"), TEXT("bone_RightForeArm"), TEXT("bone_RightHand"),
+		RiderRightGripVisual,
+		FVector(-2.0f, 66.0f, 116.0f));
+	const bool bLeftFootPassed = SolveRiderTwoBoneIK(
+		TEXT("LeftFoot"),
+		TEXT("bone_LeftLegUpper"), TEXT("bone_LeftLeg"), TEXT("bone_LeftAnkle"),
+		RiderLeftFootVisual,
+		FVector(24.0f, -24.0f, 76.0f));
+	const bool bRightFootPassed = SolveRiderTwoBoneIK(
+		TEXT("RightFoot"),
+		TEXT("bone_RightLegUpper"), TEXT("bone_RightLeg"), TEXT("bone_RightAnkle"),
+		RiderRightFootVisual,
+		FVector(24.0f, 24.0f, 76.0f));
+
+	const bool bAllContactsPassed =
+		bLeftHandPassed && bRightHandPassed && bLeftFootPassed && bRightFootPassed;
+	UE_LOG(LogTemp, Display,
+		TEXT("[LinxiaMotorcycle] Rider source=%s pose=ProceduralTwoBoneIK contacts=%s"),
+		KellyMeshPath,
+		bAllContactsPassed ? TEXT("PASS") : TEXT("FAIL"));
+}
+
+bool ALinxiaMotorcyclePawn::SolveRiderTwoBoneIK(
+	FName ChainName,
+	FName UpperBone,
+	FName LowerBone,
+	FName EndBone,
+	const FVector& TargetInVisualSpace,
+	const FVector& BendHintInVisualSpace)
+{
+	if (!RiderMesh)
 	{
-		RiderMesh->SetAnimation(RideAnimation);
-		RiderMesh->Play(true);
-		UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider source=%s pose=%s animation=%s"),
-			KellyMeshPath, *PoseProfile, *AnimationPath);
+		UE_LOG(LogTemp, Error,
+			TEXT("[LinxiaMotorcycleIK] chain=%s error=-1.000 passed=0 reason=MissingRiderMesh"),
+			*ChainName.ToString());
+		return false;
 	}
-	else
+
+	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
+	const FVector Target = RiderToVisual.InverseTransformPosition(TargetInVisualSpace);
+	const FVector BendHint = RiderToVisual.InverseTransformPosition(BendHintInVisualSpace);
+	const FVector Root = RiderMesh->GetBoneLocationByName(
+		UpperBone, EBoneSpaces::ComponentSpace);
+	const FVector Joint = RiderMesh->GetBoneLocationByName(
+		LowerBone, EBoneSpaces::ComponentSpace);
+	const FVector End = RiderMesh->GetBoneLocationByName(
+		EndBone, EBoneSpaces::ComponentSpace);
+	const float UpperLength = FVector::Distance(Root, Joint);
+	const float LowerLength = FVector::Distance(Joint, End);
+	const FVector RootToTarget = Target - Root;
+	const float RawDistance = RootToTarget.Size();
+	if (UpperLength < 1.0f || LowerLength < 1.0f || RawDistance < 1.0f)
 	{
-		RiderMesh->SetAnimation(nullptr);
-		RiderMesh->Stop();
-		UE_LOG(LogTemp, Warning, TEXT("[LinxiaMotorcycle] Rider source=%s pose=KellyReference missingAnimation=%s"),
-			KellyMeshPath, *AnimationPath);
+		UE_LOG(LogTemp, Error,
+			TEXT("[LinxiaMotorcycle] Invalid IK chain %s -> %s -> %s"),
+			*UpperBone.ToString(), *LowerBone.ToString(), *EndBone.ToString());
+		UE_LOG(LogTemp, Error,
+			TEXT("[LinxiaMotorcycleIK] chain=%s error=-1.000 passed=0 reason=InvalidChain"),
+			*ChainName.ToString());
+		return false;
 	}
+
+	const FVector Direction = RootToTarget / RawDistance;
+	const float Distance = FMath::Clamp(
+		RawDistance,
+		FMath::Abs(UpperLength - LowerLength) + 0.1f,
+		UpperLength + LowerLength - 0.1f);
+	const float Along = (
+		UpperLength * UpperLength
+		- LowerLength * LowerLength
+		+ Distance * Distance) / (2.0f * Distance);
+	const float Height = FMath::Sqrt(FMath::Max(
+		0.0f, UpperLength * UpperLength - Along * Along));
+	FVector BendDirection = BendHint - Root;
+	BendDirection -= Direction * FVector::DotProduct(BendDirection, Direction);
+	if (!BendDirection.Normalize())
+	{
+		BendDirection = FVector::UpVector;
+	}
+	const FVector DesiredJoint = Root + Direction * Along + BendDirection * Height;
+
+	auto AimBoneAtChild = [this](FName Bone, FName ChildBone, const FVector& AimDirection)
+	{
+		const FTransform Current = RiderMesh->GetBoneTransformByName(
+			Bone, EBoneSpaces::ComponentSpace);
+		const FVector BoneLocation = RiderMesh->GetBoneLocationByName(
+			Bone, EBoneSpaces::ComponentSpace);
+		const FVector ChildLocation = RiderMesh->GetBoneLocationByName(
+			ChildBone, EBoneSpaces::ComponentSpace);
+		const FVector CurrentDirection = (ChildLocation - BoneLocation).GetSafeNormal();
+		const FVector DesiredDirection = AimDirection.GetSafeNormal();
+		if (CurrentDirection.IsNearlyZero() || DesiredDirection.IsNearlyZero())
+		{
+			return false;
+		}
+		const FQuat DeltaRotation = FQuat::FindBetweenNormals(
+			CurrentDirection, DesiredDirection);
+		const FQuat Rotation = DeltaRotation * Current.GetRotation();
+		RiderMesh->SetBoneRotationByName(
+			Bone, Rotation.Rotator(), EBoneSpaces::ComponentSpace);
+		RiderMesh->RefreshBoneTransforms();
+		return true;
+	};
+
+	if (!AimBoneAtChild(UpperBone, LowerBone, DesiredJoint - Root))
+	{
+		UE_LOG(LogTemp, Error,
+			TEXT("[LinxiaMotorcycleIK] chain=%s error=-1.000 passed=0 reason=UpperAimFailed"),
+			*ChainName.ToString());
+		return false;
+	}
+	const FVector UpdatedJoint = RiderMesh->GetBoneLocationByName(
+		LowerBone, EBoneSpaces::ComponentSpace);
+	if (!AimBoneAtChild(LowerBone, EndBone, Target - UpdatedJoint))
+	{
+		UE_LOG(LogTemp, Error,
+			TEXT("[LinxiaMotorcycleIK] chain=%s error=-1.000 passed=0 reason=LowerAimFailed"),
+			*ChainName.ToString());
+		return false;
+	}
+
+	const FVector SolvedEnd = RiderMesh->GetBoneLocationByName(
+		EndBone, EBoneSpaces::ComponentSpace);
+	const FVector SolvedEndVisual = RiderToVisual.TransformPosition(SolvedEnd);
+	const float EndpointError = FVector::Distance(SolvedEndVisual, TargetInVisualSpace);
+	const bool bPassed = FMath::IsFinite(EndpointError)
+		&& EndpointError <= RiderContactToleranceCm;
+	UE_LOG(LogTemp, Display,
+		TEXT("[LinxiaMotorcycleIK] chain=%s target=%s solved=%s error=%.3f passed=%d"),
+		*ChainName.ToString(),
+		*TargetInVisualSpace.ToCompactString(),
+		*SolvedEndVisual.ToCompactString(),
+		EndpointError,
+		bPassed ? 1 : 0);
+	return bPassed;
 }
 
 void ALinxiaMotorcyclePawn::LogRiderContactPose()
@@ -528,10 +666,10 @@ void ALinxiaMotorcyclePawn::LogRiderContactPose()
 		return;
 	}
 
-	const FVector HandL = RiderMesh->GetBoneLocation(TEXT("Wrist_L"), EBoneSpaces::ComponentSpace);
-	const FVector HandR = RiderMesh->GetBoneLocation(TEXT("Wrist_R"), EBoneSpaces::ComponentSpace);
-	const FVector FootL = RiderMesh->GetBoneLocation(TEXT("Ankle_L"), EBoneSpaces::ComponentSpace);
-	const FVector FootR = RiderMesh->GetBoneLocation(TEXT("Ankle_R"), EBoneSpaces::ComponentSpace);
+	const FVector HandL = RiderMesh->GetBoneLocationByName(TEXT("bone_LeftHand"), EBoneSpaces::ComponentSpace);
+	const FVector HandR = RiderMesh->GetBoneLocationByName(TEXT("bone_RightHand"), EBoneSpaces::ComponentSpace);
+	const FVector FootL = RiderMesh->GetBoneLocationByName(TEXT("bone_LeftAnkle"), EBoneSpaces::ComponentSpace);
+	const FVector FootR = RiderMesh->GetBoneLocationByName(TEXT("bone_RightAnkle"), EBoneSpaces::ComponentSpace);
 	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
 	const FVector HandLVisual = RiderToVisual.TransformPosition(HandL);
 	const FVector HandRVisual = RiderToVisual.TransformPosition(HandR);
@@ -549,7 +687,13 @@ void ALinxiaMotorcyclePawn::LogRiderContactPose()
 		*FootRVisual.ToCompactString(),
 		Handlebar ? *Handlebar->GetRelativeLocation().ToCompactString() : TEXT("None"),
 		Seat ? *Seat->GetRelativeLocation().ToCompactString() : TEXT("None"));
-	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Rider contact anchors footpeg=%s"),
+	UE_LOG(LogTemp, Display,
+		TEXT("[LinxiaMotorcycle] Rider contact anchors gripL=%s gripR=%s footL=%s footR=%s handlebar=%s footpeg=%s"),
+		*RiderLeftGripVisual.ToCompactString(),
+		*RiderRightGripVisual.ToCompactString(),
+		*RiderLeftFootVisual.ToCompactString(),
+		*RiderRightFootVisual.ToCompactString(),
+		Handlebar ? *Handlebar->GetRelativeLocation().ToCompactString() : TEXT("None"),
 		FootPegBar ? *FootPegBar->GetRelativeLocation().ToCompactString() : TEXT("None"));
 }
 

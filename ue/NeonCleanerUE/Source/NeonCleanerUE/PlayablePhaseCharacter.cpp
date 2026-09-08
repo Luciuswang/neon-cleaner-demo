@@ -19,7 +19,7 @@ namespace
 {
 constexpr float InitialCameraYawDegrees = -135.0f;
 constexpr float KeyboardCameraFollowSpeed = 7.0f;
-const TCHAR* KellyMeshPath = TEXT("/Game/KellySource/rig.rig");
+const TCHAR* KellyMeshPath = TEXT("/Game/KellyLowSource/asda.asda");
 }
 
 APlayablePhaseCharacter::APlayablePhaseCharacter()
@@ -55,9 +55,9 @@ APlayablePhaseCharacter::APlayablePhaseCharacter()
 
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, -10.0f));
-	CameraBoom->TargetArmLength = 450.0f;
-	CameraBoom->SocketOffset = FVector(0.0f, 18.0f, 0.0f);
+	CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, 0.0f));
+	CameraBoom->TargetArmLength = 500.0f;
+	CameraBoom->SocketOffset = FVector(0.0f, 18.0f, 8.0f);
 	CameraBoom->bUsePawnControlRotation = true;
 	CameraBoom->bDoCollisionTest = false;
 
@@ -65,7 +65,7 @@ APlayablePhaseCharacter::APlayablePhaseCharacter()
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
 	FollowCamera->bAutoActivate = true;
-	FollowCamera->SetFieldOfView(38.0f);
+	FollowCamera->SetFieldOfView(45.0f);
 }
 
 void APlayablePhaseCharacter::CalcCamera(float DeltaTime, FMinimalViewInfo& OutResult)

@@ -10,7 +10,7 @@ REQUIRED = {
     "Linxia_SoftSkyLight",
     "Linxia_NeutralGreyFloor",
 }
-EXPECTED_MESH = "/Game/KellySource/rig.rig"
+EXPECTED_MESH = "/Game/KellyLowSource/asda.asda"
 
 
 def log(message):
