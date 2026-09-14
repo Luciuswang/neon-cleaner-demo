@@ -115,7 +115,9 @@ try {
     Assert-Exists $CaptureScript "Gate 3 capture script"
     Assert-Exists $KellyAssetScript "Kelly asset validation script"
 
-    Get-Process UnrealEditor -ErrorAction SilentlyContinue | Stop-Process -Force
+    if (Get-Process UnrealEditor -ErrorAction SilentlyContinue) {
+        throw "Close the running Unreal Editor/game before starting serialized Gate 3 verification."
+    }
 
     if (-not $SkipBuild) {
         Invoke-CheckedNative "Build NeonCleanerUEEditor" $BuildBat @(
@@ -123,6 +125,8 @@ try {
             "Win64",
             "Development",
             "-Project=$UProject",
+            "-NoUBA",
+            "-MaxParallelActions=2",
             "-WaitMutex"
         )
     }

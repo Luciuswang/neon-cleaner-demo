@@ -1,5 +1,9 @@
 # Kelly Character Handoff - 2026-09-07
 
+Historical note: commit `5019f8b` replaced this source with textured low-poly
+Kelly under `/Game/KellyLowSource`. For current recovery instructions, read
+`docs/handoff-kelly-low-2026-09-14.md`.
+
 Paragon Phase has been replaced by the user's private Kelly character from
 `D:\kelly-UE`.
 

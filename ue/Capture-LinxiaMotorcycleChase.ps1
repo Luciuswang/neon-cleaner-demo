@@ -3,7 +3,8 @@ param(
     [ValidateSet("Default", "Side", "Rear")]
     [string]$View = "Default",
     [ValidateSet("Default", "Compact", "Bars", "AsymBars")]
-    [string]$Pose = "Default"
+    [string]$Pose = "Default",
+    [switch]$GameplayProof
 )
 
 $ErrorActionPreference = "Stop"
@@ -30,7 +31,7 @@ if (-not (Test-Path $UProject)) {
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $OutputPath) | Out-Null
 Remove-Item -LiteralPath $OutputPath -ErrorAction SilentlyContinue
 
-$process = Start-Process -FilePath $Editor -ArgumentList @(
+$arguments = @(
     "`"$UProject`"",
     $Map,
     "-game",
@@ -40,11 +41,25 @@ $process = Start-Process -FilePath $Editor -ArgumentList @(
     "-ddc=NoZenLocalFallback",
     "-DDC-ForceMemoryCache",
     "-nop4",
-    "-nosplash",
-    "-LinxiaMotorcycleCapture=`"$OutputPath`"",
-    "-LinxiaMotorcycleCaptureView=$View",
-    "-LinxiaRiderPose=$Pose"
-) -PassThru
+    "-nosplash"
+)
+if ($GameplayProof) {
+    $arguments += @(
+        "-NeonChaseProofCapture=`"$OutputPath`"",
+        "-NeonChaseSmoke=Damaged",
+        "-NeonSkipFilms",
+        "-NeonChaseSmokeSpeed=5"
+    )
+}
+else {
+    $arguments += @(
+        "-LinxiaMotorcycleCapture=`"$OutputPath`"",
+        "-LinxiaMotorcycleCaptureView=$View",
+        "-LinxiaRiderPose=$Pose"
+    )
+}
+
+$process = Start-Process -FilePath $Editor -ArgumentList $arguments -WindowStyle Hidden -PassThru
 
 if (-not $process.WaitForExit(240000)) {
     Stop-Process -Id $process.Id -Force

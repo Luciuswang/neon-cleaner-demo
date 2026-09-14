@@ -19,7 +19,7 @@ $process = Start-Process -FilePath $Editor -ArgumentList @(
     "-nop4",
     "-nosplash",
     "-LinxiaMotorcycleSmokeTest"
-) -PassThru
+) -WindowStyle Hidden -PassThru
 
 if (-not $process.WaitForExit(90000)) {
     Stop-Process -Id $process.Id -Force

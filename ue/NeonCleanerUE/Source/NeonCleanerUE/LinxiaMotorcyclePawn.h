@@ -5,9 +5,12 @@
 #include "LinxiaMotorcyclePawn.generated.h"
 
 class UCameraComponent;
+class UBoxComponent;
+class UPointLightComponent;
 class UPoseableMeshComponent;
 class USceneComponent;
 class USpringArmComponent;
+class USpotLightComponent;
 class UStaticMeshComponent;
 
 UCLASS()
@@ -21,6 +24,23 @@ public:
 	float GetCurrentSpeedKmh() const;
 	float GetChaseTargetDistance() const;
 	bool HasCaughtChaseTarget() const { return bTargetCaught; }
+	float GetHealth() const { return Health; }
+	float GetBoostEnergy() const { return BoostEnergy; }
+	float GetBoostCooldown() const { return BoostCooldown; }
+	float GetDamageFlash() const { return DamageFlash; }
+	float GetHitFlash() const { return HitFlash; }
+	float GetForwardSpeed() const { return CurrentSpeed; }
+	bool IsBoosting() const { return bBoosting; }
+	bool IsLegacyTest() const { return bSmokeTestActive || bCaptureTestActive; }
+	bool IsGameplayReady() const;
+	void PrepareForEncounter();
+	void ResetEncounter();
+	void FreezeGameplay();
+	void StepGameplay(float DeltaSeconds, bool bAutomated, float Forward, float Steer, bool bFire, bool bBoost);
+	void ReceiveChaseDamage(float Amount, FName Source);
+	void SetChaseTarget(AActor* Target) { ChaseTarget = Target; }
+	void MarkConvoyDisabled() { bTargetCaught = true; }
+	void ShowWeaponTrace(const FVector& Start, const FVector& End, bool bHit);
 
 protected:
 	virtual void BeginPlay() override;
@@ -32,6 +52,8 @@ private:
 	void PollDirectPlayerInput(float DeltaSeconds);
 	void UpdateMotorcycleMotion(float DeltaSeconds);
 	void UpdateVisuals(float DeltaSeconds);
+	void UpdateGroundAlignment(float DeltaSeconds);
+	void UpdateCamera();
 	void RunSmokeTest(float DeltaSeconds);
 	void RunCaptureTest(float DeltaSeconds);
 	void ResetToStart();
@@ -60,6 +82,18 @@ private:
 	float CaptureTestElapsed = 0.0f;
 	float RiderPoseLogElapsed = 0.0f;
 	float WheelSpinDegrees = 0.0f;
+	float Health = 100.0f;
+	float BoostEnergy = 100.0f;
+	float BoostCooldown = 0.0f;
+	float DamageCooldown = 0.0f;
+	float DamageFlash = 0.0f;
+	float HitFlash = 0.0f;
+	float WeaponCooldown = 0.0f;
+	float WeaponTraceTime = 0.0f;
+	bool bFireHeld = false;
+	bool bBoostHeld = false;
+	bool bBoosting = false;
+	bool bGameplayFrozen = true;
 
 	bool bHandbrakeHeld = false;
 	bool bLoggedPossession = false;
@@ -80,7 +114,13 @@ private:
 	TObjectPtr<AActor> ChaseTarget;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
-	TObjectPtr<USceneComponent> SceneRoot;
+	TObjectPtr<UBoxComponent> SceneRoot;
+
+	UPROPERTY()
+	TObjectPtr<UStaticMeshComponent> WeaponTrace;
+
+	UPROPERTY()
+	TObjectPtr<UStaticMeshComponent> WeaponBarrel;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
 	TObjectPtr<USceneComponent> VisualRoot;
@@ -111,6 +151,12 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
 	TObjectPtr<UStaticMeshComponent> NoseLight;
+
+	UPROPERTY(VisibleAnywhere, Category = "Lighting")
+	TObjectPtr<USpotLightComponent> Headlight;
+
+	UPROPERTY(VisibleAnywhere, Category = "Lighting")
+	TObjectPtr<UPointLightComponent> Underglow;
 
 	UPROPERTY(VisibleAnywhere, Category = "Motorcycle")
 	TObjectPtr<UPoseableMeshComponent> RiderMesh;

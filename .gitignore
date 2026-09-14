@@ -21,6 +21,7 @@ ue/**/.vsconfig
 ue/NeonCleanerUE/Content/ParagonPhase/
 
 # User-provided Kelly source character and all derived rigs/animations stay local.
+source/kelly-UE/
 ue/NeonCleanerUE/Content/KellySource/
 ue/NeonCleanerUE/Content/KellyLowSource/
 source/reference/linxia/ue-captures/linxia_kelly_low_contact_gate3_*.png

@@ -1,15 +1,20 @@
 #include "LinxiaMotorcyclePawn.h"
 
 #include "Camera/CameraComponent.h"
+#include "Components/BoxComponent.h"
+#include "Components/PointLightComponent.h"
 #include "Components/PoseableMeshComponent.h"
+#include "Components/SpotLightComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Engine/SkeletalMesh.h"
+#include "Engine/World.h"
 #include "EngineUtils.h"
 #include "GameFramework/PlayerController.h"
 #include "HAL/FileManager.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "InputCoreTypes.h"
 #include "Kismet/GameplayStatics.h"
+#include "LinxiaMotorcycleChaseGameMode.h"
 #include "Materials/MaterialInterface.h"
 #include "Misc/CommandLine.h"
 #include "Misc/Parse.h"
@@ -20,11 +25,14 @@
 namespace
 {
 constexpr float MaxForwardSpeed = 2050.0f;
+constexpr float MaxBoostSpeed = 2750.0f;
 constexpr float MaxReverseSpeed = -420.0f;
 constexpr float AccelerationInterp = 2.4f;
 constexpr float BrakeInterp = 5.2f;
 constexpr float CoastingInterp = 1.15f;
 constexpr float MaxTurnRateDegrees = 92.0f;
+constexpr float MaxLaneOffset = 480.0f;
+constexpr float MaxLaneSpeed = 760.0f;
 constexpr float CameraMouseYawScale = 0.18f;
 constexpr float CameraMousePitchScale = 0.12f;
 constexpr float CameraFollowInterp = 7.5f;
@@ -48,7 +56,14 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	AutoPossessPlayer = EAutoReceiveInput::Player0;
 	bFindCameraComponentWhenViewTarget = true;
 
-	SceneRoot = CreateDefaultSubobject<USceneComponent>(TEXT("SceneRoot"));
+	SceneRoot = CreateDefaultSubobject<UBoxComponent>(TEXT("VehicleCollision"));
+	SceneRoot->InitBoxExtent(FVector(165.0f, 62.0f, 64.0f));
+	SceneRoot->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	SceneRoot->SetCollisionObjectType(ECC_Pawn);
+	SceneRoot->SetCollisionResponseToAllChannels(ECR_Ignore);
+	SceneRoot->SetCollisionResponseToChannel(ECC_WorldStatic, ECR_Block);
+	SceneRoot->SetCollisionResponseToChannel(ECC_WorldDynamic, ECR_Block);
+	SceneRoot->SetCanEverAffectNavigation(false);
 	SetRootComponent(SceneRoot);
 
 	VisualRoot = CreateDefaultSubobject<USceneComponent>(TEXT("VisualRoot"));
@@ -146,6 +161,43 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	NoseLight->SetVisibility(!bHasImportedBike, true);
 	NoseLight->SetHiddenInGame(bHasImportedBike);
 
+	Headlight = CreateDefaultSubobject<USpotLightComponent>(TEXT("MotorcycleHeadlight"));
+	Headlight->SetupAttachment(VisualRoot);
+	Headlight->SetRelativeLocation(FVector(155.0f, 0.0f, 100.0f));
+	Headlight->SetRelativeRotation(FRotator(-6.0f, 0.0f, 0.0f));
+	Headlight->SetIntensityUnits(ELightUnits::Lumens);
+	Headlight->SetIntensity(9500.0f);
+	Headlight->SetLightColor(FLinearColor(0.55f, 0.76f, 1.0f), false);
+	Headlight->SetAttenuationRadius(3400.0f);
+	Headlight->SetInnerConeAngle(17.0f);
+	Headlight->SetOuterConeAngle(29.0f);
+	Headlight->SetCastShadows(false);
+	Headlight->SetVolumetricScatteringIntensity(0.35f);
+
+	Underglow = CreateDefaultSubobject<UPointLightComponent>(TEXT("MotorcycleUnderglow"));
+	Underglow->SetupAttachment(VisualRoot);
+	Underglow->SetRelativeLocation(FVector(-20.0f, 0.0f, 42.0f));
+	Underglow->SetIntensityUnits(ELightUnits::Lumens);
+	Underglow->SetIntensity(550.0f);
+	Underglow->SetLightColor(FLinearColor(0.0f, 0.72f, 1.0f), false);
+	Underglow->SetAttenuationRadius(380.0f);
+	Underglow->SetCastShadows(false);
+	Underglow->SetVolumetricScatteringIntensity(0.1f);
+
+	WeaponBarrel = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponBarrel"));
+	WeaponBarrel->SetupAttachment(VisualRoot);
+	WeaponBarrel->SetStaticMesh(CylinderMesh.Object);
+	WeaponBarrel->SetRelativeLocation(FVector(126.0f, 0.0f, 78.0f));
+	WeaponBarrel->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
+	WeaponBarrel->SetRelativeScale3D(FVector(0.055f, 0.055f, 0.48f));
+
+	WeaponTrace = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponTrace"));
+	WeaponTrace->SetupAttachment(SceneRoot);
+	WeaponTrace->SetStaticMesh(CubeMesh.Object);
+	WeaponTrace->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	WeaponTrace->SetCastShadow(false);
+	WeaponTrace->SetVisibility(false);
+
 	RiderMesh = CreateDefaultSubobject<UPoseableMeshComponent>(TEXT("LinxiaRiderMesh"));
 	RiderMesh->SetupAttachment(VisualRoot);
 	if (KellyMesh.Succeeded())
@@ -180,7 +232,10 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	{
 		if (UPrimitiveComponent* Primitive = Cast<UPrimitiveComponent>(Component))
 		{
-			Primitive->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			if (Primitive != SceneRoot)
+			{
+				Primitive->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+			}
 		}
 	}
 }
@@ -211,6 +266,175 @@ float ALinxiaMotorcyclePawn::GetChaseTargetDistance() const
 	return FVector::Dist2D(GetActorLocation(), ChaseTarget->GetActorLocation());
 }
 
+bool ALinxiaMotorcyclePawn::IsGameplayReady() const
+{
+	return SceneRoot && RiderMesh && RiderMesh->GetSkinnedAsset();
+}
+
+void ALinxiaMotorcyclePawn::PrepareForEncounter()
+{
+	SceneRoot->SetCollisionEnabled(IsLegacyTest() ? ECollisionEnabled::NoCollision : ECollisionEnabled::QueryOnly);
+	bGameplayFrozen = true;
+	ThrottleInput = 0.0f;
+	SteerInput = 0.0f;
+	bHandbrakeHeld = false;
+	bFireHeld = false;
+	bBoostHeld = false;
+	bBoosting = false;
+	UpdateCamera();
+}
+
+void ALinxiaMotorcyclePawn::ResetEncounter()
+{
+	SetActorLocationAndRotation(StartLocation, StartRotation, false, nullptr, ETeleportType::TeleportPhysics);
+	CurrentSpeed = 0.0f;
+	TargetSpeed = 0.0f;
+	ThrottleInput = 0.0f;
+	SteerInput = 0.0f;
+	CameraYawOffset = 0.0f;
+	CameraPitch = -8.0f;
+	Health = 100.0f;
+	BoostEnergy = 100.0f;
+	BoostCooldown = 0.0f;
+	DamageCooldown = 0.0f;
+	DamageFlash = 0.0f;
+	HitFlash = 0.0f;
+	WeaponCooldown = 0.0f;
+	WeaponTraceTime = 0.0f;
+	bFireHeld = false;
+	bBoostHeld = false;
+	bBoosting = false;
+	bHandbrakeHeld = false;
+	bTargetCaught = false;
+	bGameplayFrozen = true;
+	ChaseTarget = nullptr;
+	VisualRoot->SetRelativeRotation(FRotator::ZeroRotator);
+	WeaponTrace->SetVisibility(false);
+	UpdateCamera();
+	UE_LOG(LogTemp, Display, TEXT("[NeonChase] RiderReset location=%s"), *StartLocation.ToCompactString());
+}
+
+void ALinxiaMotorcyclePawn::FreezeGameplay()
+{
+	bGameplayFrozen = true;
+	ThrottleInput = 0.0f;
+	SteerInput = 0.0f;
+	bHandbrakeHeld = false;
+	bFireHeld = false;
+	bBoostHeld = false;
+	bBoosting = false;
+	WeaponTraceTime = 0.0f;
+	if (WeaponTrace)
+	{
+		WeaponTrace->SetVisibility(false);
+	}
+}
+
+void ALinxiaMotorcyclePawn::StepGameplay(
+	float DeltaSeconds,
+	bool bAutomated,
+	float Forward,
+	float Steer,
+	bool bFire,
+	bool bBoost)
+{
+	ALinxiaMotorcycleChaseGameMode* Mode = GetWorld()
+		? GetWorld()->GetAuthGameMode<ALinxiaMotorcycleChaseGameMode>()
+		: nullptr;
+	if (!Mode || !Mode->IsPlaying())
+	{
+		return;
+	}
+
+	bGameplayFrozen = false;
+	if (bAutomated)
+	{
+		ThrottleInput = FMath::Clamp(Forward, -1.0f, 1.0f);
+		SteerInput = FMath::Clamp(Steer, -1.0f, 1.0f);
+		bFireHeld = bFire;
+		bBoostHeld = bBoost;
+		bHandbrakeHeld = Forward < -0.5f && CurrentSpeed > 120.0f;
+	}
+
+	BoostCooldown = FMath::Max(0.0f, BoostCooldown - DeltaSeconds);
+	DamageCooldown = FMath::Max(0.0f, DamageCooldown - DeltaSeconds);
+	DamageFlash = FMath::Max(0.0f, DamageFlash - DeltaSeconds * 2.1f);
+	HitFlash = FMath::Max(0.0f, HitFlash - DeltaSeconds * 3.5f);
+	WeaponCooldown = FMath::Max(0.0f, WeaponCooldown - DeltaSeconds);
+	WeaponTraceTime = FMath::Max(0.0f, WeaponTraceTime - DeltaSeconds);
+	if (WeaponTraceTime <= 0.0f && WeaponTrace)
+	{
+		WeaponTrace->SetVisibility(false);
+	}
+
+	bBoosting = bBoostHeld && ThrottleInput > 0.25f && !bHandbrakeHeld
+		&& BoostCooldown <= 0.0f && BoostEnergy > 0.0f;
+	if (bBoosting)
+	{
+		BoostEnergy = FMath::Max(0.0f, BoostEnergy - DeltaSeconds * 31.0f);
+		if (BoostEnergy <= 0.0f)
+		{
+			bBoosting = false;
+			BoostCooldown = 2.0f;
+		}
+	}
+	else if (BoostCooldown <= 0.0f)
+	{
+		BoostEnergy = FMath::Min(100.0f, BoostEnergy + DeltaSeconds * 17.0f);
+	}
+
+	if (bFireHeld && WeaponCooldown <= 0.0f)
+	{
+		WeaponCooldown = 0.18f;
+		Mode->FirePlayerWeapon();
+	}
+
+	UpdateMotorcycleMotion(DeltaSeconds);
+	UpdateGroundAlignment(DeltaSeconds);
+	UpdateVisuals(DeltaSeconds);
+	UpdateCamera();
+}
+
+void ALinxiaMotorcyclePawn::ReceiveChaseDamage(float Amount, FName Source)
+{
+	ALinxiaMotorcycleChaseGameMode* Mode = GetWorld()
+		? GetWorld()->GetAuthGameMode<ALinxiaMotorcycleChaseGameMode>()
+		: nullptr;
+	if (!Mode || !Mode->IsPlaying() || DamageCooldown > 0.0f || Amount <= 0.0f)
+	{
+		return;
+	}
+
+	Health = FMath::Max(0.0f, Health - Amount);
+	DamageCooldown = 0.42f;
+	DamageFlash = 1.0f;
+	CurrentSpeed *= 0.72f;
+	UE_LOG(LogTemp, Display, TEXT("[NeonChase] RiderDamage amount=%.1f health=%.1f source=%s"),
+		Amount, Health, *Source.ToString());
+}
+
+void ALinxiaMotorcyclePawn::ShowWeaponTrace(const FVector& Start, const FVector& End, bool bHit)
+{
+	if (!WeaponTrace)
+	{
+		return;
+	}
+
+	const FVector Delta = End - Start;
+	WeaponTrace->SetWorldLocation((Start + End) * 0.5f);
+	WeaponTrace->SetWorldRotation(FRotationMatrix::MakeFromX(Delta).Rotator());
+	WeaponTrace->SetWorldScale3D(FVector(
+		FMath::Max(0.01f, Delta.Size() / 100.0f),
+		bHit ? 0.045f : 0.025f,
+		bHit ? 0.045f : 0.025f));
+	WeaponTrace->SetVisibility(true);
+	WeaponTraceTime = bHit ? 0.09f : 0.045f;
+	if (bHit)
+	{
+		HitFlash = 1.0f;
+	}
+}
+
 void ALinxiaMotorcyclePawn::BeginPlay()
 {
 	Super::BeginPlay();
@@ -237,6 +461,8 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	ApplyMaterial(Handlebar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(FootPegBar, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
 	ApplyMaterial(NoseLight, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_CyanDiagnostic.M_NC_CyanDiagnostic"));
+	ApplyMaterial(WeaponBarrel, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_BattleGraphite.M_NC_BattleGraphite"));
+	ApplyMaterial(WeaponTrace, TEXT("/Game/LinxiaRiderProxy/Materials/M_NC_CyanDiagnostic.M_NC_CyanDiagnostic"));
 	StartRiderAnimation();
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Visual alignment bikeRot=%s riderRot=%s"),
 		ImportedMotorcycle ? *ImportedMotorcycle->GetRelativeRotation().ToCompactString() : TEXT("None"),
@@ -262,10 +488,23 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 void ALinxiaMotorcyclePawn::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
-	EnsurePlayerPossession();
-	PollDirectPlayerInput(DeltaSeconds);
-	RunSmokeTest(DeltaSeconds);
-	RunCaptureTest(DeltaSeconds);
+	ALinxiaMotorcycleChaseGameMode* Mode = GetWorld()
+		? GetWorld()->GetAuthGameMode<ALinxiaMotorcycleChaseGameMode>()
+		: nullptr;
+	if (IsLegacyTest())
+	{
+		EnsurePlayerPossession();
+		PollDirectPlayerInput(DeltaSeconds);
+		RunSmokeTest(DeltaSeconds);
+		RunCaptureTest(DeltaSeconds);
+		UpdateMotorcycleMotion(DeltaSeconds);
+		UpdateVisuals(DeltaSeconds);
+		UpdateTargetDistanceLog();
+	}
+	else if (Mode && Mode->IsPlaying())
+	{
+		PollDirectPlayerInput(DeltaSeconds);
+	}
 	if (!bLoggedRiderContactPoseAfterAnimation)
 	{
 		RiderPoseLogElapsed += DeltaSeconds;
@@ -275,9 +514,7 @@ void ALinxiaMotorcyclePawn::Tick(float DeltaSeconds)
 			bLoggedRiderContactPoseAfterAnimation = true;
 		}
 	}
-	UpdateMotorcycleMotion(DeltaSeconds);
-	UpdateVisuals(DeltaSeconds);
-	UpdateTargetDistanceLog();
+	UpdateCamera();
 }
 
 void ALinxiaMotorcyclePawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -329,6 +566,10 @@ void ALinxiaMotorcyclePawn::PollDirectPlayerInput(float DeltaSeconds)
 	ThrottleInput = FMath::Clamp(Forward, -1.0f, 1.0f);
 	SteerInput = FMath::Clamp(Right, -1.0f, 1.0f);
 	bHandbrakeHeld = PlayerController->IsInputKeyDown(EKeys::SpaceBar);
+	bFireHeld = PlayerController->IsInputKeyDown(EKeys::LeftMouseButton)
+		|| PlayerController->IsInputKeyDown(EKeys::LeftControl);
+	bBoostHeld = PlayerController->IsInputKeyDown(EKeys::LeftShift)
+		|| PlayerController->IsInputKeyDown(EKeys::RightShift);
 
 	float MouseX = 0.0f;
 	float MouseY = 0.0f;
@@ -341,7 +582,8 @@ void ALinxiaMotorcyclePawn::PollDirectPlayerInput(float DeltaSeconds)
 		CameraYawOffset = FMath::FInterpTo(CameraYawOffset, 0.0f, DeltaSeconds, CameraFollowInterp);
 	}
 
-	if (PlayerController->IsInputKeyDown(EKeys::BackSpace) || PlayerController->IsInputKeyDown(EKeys::R))
+	if (IsLegacyTest()
+		&& (PlayerController->IsInputKeyDown(EKeys::BackSpace) || PlayerController->IsInputKeyDown(EKeys::R)))
 	{
 		ResetToStart();
 		bTargetCaught = false;
@@ -352,7 +594,7 @@ void ALinxiaMotorcyclePawn::UpdateMotorcycleMotion(float DeltaSeconds)
 {
 	if (ThrottleInput > 0.05f)
 	{
-		TargetSpeed = MaxForwardSpeed * ThrottleInput;
+		TargetSpeed = (bBoosting ? MaxBoostSpeed : MaxForwardSpeed) * ThrottleInput;
 		CurrentSpeed = FMath::FInterpTo(CurrentSpeed, TargetSpeed, DeltaSeconds, AccelerationInterp);
 	}
 	else if (ThrottleInput < -0.05f)
@@ -372,13 +614,34 @@ void ALinxiaMotorcyclePawn::UpdateMotorcycleMotion(float DeltaSeconds)
 	}
 
 	const float SpeedFactor = FMath::Clamp(FMath::Abs(CurrentSpeed) / MaxForwardSpeed, 0.0f, 1.0f);
-	const float DirectionSign = CurrentSpeed >= 0.0f ? 1.0f : -1.0f;
-	const float TurnAmount = SteerInput * MaxTurnRateDegrees * (0.18f + SpeedFactor * 0.82f) * DirectionSign * DeltaSeconds;
-	AddActorWorldRotation(FRotator(0.0f, TurnAmount, 0.0f));
-	AddActorWorldOffset(GetActorForwardVector() * CurrentSpeed * DeltaSeconds, false);
+	if (IsLegacyTest())
+	{
+		const float DirectionSign = CurrentSpeed >= 0.0f ? 1.0f : -1.0f;
+		const float TurnAmount = SteerInput * MaxTurnRateDegrees
+			* (0.18f + SpeedFactor * 0.82f) * DirectionSign * DeltaSeconds;
+		AddActorWorldRotation(FRotator(0.0f, TurnAmount, 0.0f));
+		AddActorWorldOffset(GetActorForwardVector() * CurrentSpeed * DeltaSeconds, false);
+		return;
+	}
 
-	const FRotator CameraRotation(CameraPitch, GetActorRotation().Yaw + CameraYawOffset, 0.0f);
-	CameraBoom->SetWorldRotation(CameraRotation);
+	const float LaneSpeed = SteerInput * MaxLaneSpeed * (0.35f + SpeedFactor * 0.65f);
+	const FVector Before = GetActorLocation();
+	FVector Delta(CurrentSpeed * DeltaSeconds, LaneSpeed * DeltaSeconds, 0.0f);
+	const float TargetY = FMath::Clamp(Before.Y + Delta.Y, -MaxLaneOffset, MaxLaneOffset);
+	Delta.Y = TargetY - Before.Y;
+	FHitResult MoveHit;
+	AddActorWorldOffset(Delta, true, &MoveHit);
+	if (MoveHit.bBlockingHit)
+	{
+		CurrentSpeed *= 0.38f;
+		ReceiveChaseDamage(
+			12.0f,
+			MoveHit.GetActor() && MoveHit.GetActor()->ActorHasTag(TEXT("NeonChaseEnemy"))
+				? FName(TEXT("VehicleImpact"))
+				: FName(TEXT("ObstacleImpact")));
+	}
+	const float DesiredYaw = SteerInput * 5.0f * FMath::Clamp(SpeedFactor * 1.4f, 0.0f, 1.0f);
+	SetActorRotation(FRotator(0.0f, DesiredYaw, 0.0f));
 }
 
 void ALinxiaMotorcyclePawn::UpdateVisuals(float DeltaSeconds)
@@ -391,6 +654,43 @@ void ALinxiaMotorcyclePawn::UpdateVisuals(float DeltaSeconds)
 	WheelSpinDegrees = FMath::Fmod(WheelSpinDegrees + (CurrentSpeed * DeltaSeconds / WheelCircumference) * 360.0f, 360.0f);
 	FrontWheel->SetRelativeRotation(FRotator(WheelSpinDegrees, SteerInput * 18.0f, 90.0f));
 	RearWheel->SetRelativeRotation(FRotator(WheelSpinDegrees, 0.0f, 90.0f));
+}
+
+void ALinxiaMotorcyclePawn::UpdateGroundAlignment(float DeltaSeconds)
+{
+	if (IsLegacyTest() || !GetWorld() || !SceneRoot)
+	{
+		return;
+	}
+
+	const FVector Location = GetActorLocation();
+	FHitResult GroundHit;
+	FCollisionQueryParams Query(SCENE_QUERY_STAT(NeonChaseGround), false, this);
+	const FVector TraceStart(Location.X, Location.Y, Location.Z + 180.0f);
+	const FVector TraceEnd(Location.X, Location.Y, Location.Z - 360.0f);
+	if (GetWorld()->LineTraceSingleByChannel(GroundHit, TraceStart, TraceEnd, ECC_Visibility, Query)
+		&& GroundHit.ImpactNormal.Z > 0.65f
+		&& (!GroundHit.GetActor() || !GroundHit.GetActor()->ActorHasTag(TEXT("NeonChaseObstacle"))))
+	{
+		const float TargetZ = GroundHit.ImpactPoint.Z + SceneRoot->GetScaledBoxExtent().Z;
+		FVector Aligned = Location;
+		Aligned.Z = FMath::FInterpTo(Location.Z, TargetZ, DeltaSeconds, 12.0f);
+		SetActorLocation(Aligned, false);
+	}
+}
+
+void ALinxiaMotorcyclePawn::UpdateCamera()
+{
+	if (!CameraBoom)
+	{
+		return;
+	}
+
+	const FRotator CameraRotation(
+		CameraPitch,
+		GetActorRotation().Yaw + CameraYawOffset,
+		0.0f);
+	CameraBoom->SetWorldRotation(CameraRotation);
 }
 
 void ALinxiaMotorcyclePawn::RunSmokeTest(float DeltaSeconds)
@@ -468,7 +768,7 @@ void ALinxiaMotorcyclePawn::UpdateTargetDistanceLog()
 	TargetLogElapsed = 0.0f;
 
 	const float Distance = FVector::Dist2D(GetActorLocation(), ChaseTarget->GetActorLocation());
-	if (!bTargetCaught && Distance <= ChaseCatchDistance)
+	if (IsLegacyTest() && !bTargetCaught && Distance <= ChaseCatchDistance)
 	{
 		bTargetCaught = true;
 		CurrentSpeed = FMath::Min(CurrentSpeed, MaxForwardSpeed * 0.42f);

@@ -17,5 +17,12 @@ public class NeonCleanerUE : ModuleRules
 			"SlateCore",
 			"UMG"
 		});
+
+		PrivateDependencyModuleNames.AddRange(new[]
+		{
+			"AudioMixer",
+			"Media",
+			"MediaUtils"
+		});
 	}
 }
