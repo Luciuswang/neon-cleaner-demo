@@ -21,9 +21,11 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 import neon_environment_materials
 import neon_environment_city
+import neon_cinematic_surfaces
 
 importlib.reload(neon_environment_materials)
 importlib.reload(neon_environment_city)
+importlib.reload(neon_cinematic_surfaces)
 
 
 def setup_level():
@@ -34,6 +36,7 @@ def setup_level():
     meshes = neon_environment_city.load_meshes()
     # Materials keep their asset identities, preserving other maps' references.
     materials = neon_environment_materials.build_materials(MATERIAL_DIR)
+    neon_cinematic_surfaces.apply_surfaces(materials, MATERIAL_DIR, neon_environment_materials.Graph)
     missing_materials = REQUIRED_MATERIAL_KEYS - set(materials)
     if missing_materials:
         raise RuntimeError(
@@ -68,6 +71,8 @@ def setup_level():
     unreal.get_editor_subsystem(unreal.EditorActorSubsystem).set_selected_level_actors([pawn])
     # Save only this generation's assets, never every dirty package in the editor.
     for material in materials.values():
+        material.set_editor_property("used_with_instanced_static_meshes", True)
+        unreal.MaterialEditingLibrary.recompile_material(material)
         if not unreal.EditorAssetLibrary.save_loaded_asset(material):
             raise RuntimeError("Cannot save material " + material.get_path_name())
     if not unreal.EditorLevelLibrary.save_current_level():

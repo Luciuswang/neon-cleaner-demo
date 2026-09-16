@@ -1,5 +1,13 @@
 # Neon Cleaner Quality Control
 
+## Cinematic gate — effective 2026-09-16
+
+`cinematic-quality-contract.md` is the current authoritative acceptance standard.
+Seven domains must be independently reviewed against current-build hashed
+evidence. Existing Gate 3/Neon checks are engineering checks only. A supplied
+RiderPoseVerdict or screenshot existence cannot authorize AI video generation.
+Current cinematic verdict: REWORK; AI-video readiness: BLOCKED.
+
 This project uses repo-local quality gates so every PC and every Codex session
 can judge progress from the same evidence.
 

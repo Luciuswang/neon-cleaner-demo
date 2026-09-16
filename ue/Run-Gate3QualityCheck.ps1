@@ -12,6 +12,13 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+if ($StrictRiderPoseGate -and -not $FullVisualQA) {
+    throw "StrictRiderPoseGate requires FullVisualQA; a skipped visual review cannot pass."
+}
+if ($RiderPoseVerdict -eq "PASS") {
+    Write-Warning "A caller-supplied rider verdict is legacy prototype evidence only. Final cinematic/AI readiness requires tools/qa/verify_cinematic_evidence.py and independent hashed evidence."
+}
+
 $RepoRoot = Split-Path -Parent $PSScriptRoot
 $UProject = Join-Path $PSScriptRoot "NeonCleanerUE\NeonCleanerUE.uproject"
 $EditorCmd = "C:\Program Files\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
@@ -79,15 +86,26 @@ function Test-CaptureImage($path) {
                 if ($luma -gt 12.0) {
                     $nonBlack += 1
                 }
-                if ($x -lt 380 -and $y -lt 155 -and $c.R -lt 80 -and $c.G -gt 150 -and $c.B -gt 150) {
+                if ($x -lt ($bitmap.Width * 0.40) -and $y -lt ($bitmap.Height * 0.24) -and $c.R -lt 100 -and $c.G -gt 130 -and $c.B -gt 130) {
                     $cyanHud += 1
                 }
-                if ($x -lt 380 -and $y -lt 170 -and $c.R -gt 170 -and $c.G -lt 130 -and $c.B -gt 90) {
+                if ($x -lt ($bitmap.Width * 0.40) -and $y -lt ($bitmap.Height * 0.25) -and $c.R -gt 170 -and $c.G -lt 130 -and $c.B -gt 90) {
                     $magentaHud += 1
                 }
             }
         }
 
+        # Thin HUD glyphs can fall entirely between the coarse luminance samples
+        # at 1080p. Inspect their bounded region densely instead of missing text.
+        $cyanHud = 0
+        $magentaHud = 0
+        for ($y = 20; $y -lt [Math]::Min(260, $bitmap.Height); $y += 2) {
+            for ($x = 20; $x -lt [Math]::Min(650, $bitmap.Width); $x += 2) {
+                $c = $bitmap.GetPixel($x, $y)
+                if ($c.R -lt 100 -and $c.G -gt 130 -and $c.B -gt 130) { $cyanHud++ }
+                if ($c.R -gt 170 -and $c.G -lt 130 -and $c.B -gt 90) { $magentaHud++ }
+            }
+        }
         $meanLuma = $lumaSum / [Math]::Max(1, $samples)
         $nonBlackRatio = $nonBlack / [double][Math]::Max(1, $samples)
         Write-Host ("Capture metrics: {0}x{1}, meanLuma={2:N1}, nonBlack={3:P1}, cyanHudSamples={4}, magentaHudSamples={5}" -f `
@@ -212,7 +230,7 @@ try {
     }
 
     Write-Step "Gate 3 QA Verdict"
-    Write-Host "PASS: build, map validation, smoke test, HUD binding, visual alignment markers, and proof-frame sanity checks passed." -ForegroundColor Green
+    Write-Host "ENGINEERING PASS: build, map validation, smoke test, HUD binding and capture sanity. CINEMATIC / AI VIDEO: NOT ACCEPTED by this script." -ForegroundColor Green
     if ($FullVisualQA) {
         if ($RiderPoseVerdict -eq "PASS") {
             Write-Host "RIDER POSE: PASS by explicit multi-view reviewer verdict." -ForegroundColor Green

@@ -582,13 +582,18 @@ void ALinxiaMotorcycleChaseGameMode::BuildSmokeInput(float& Forward, float& Stee
 		{
 			if (!IsValid(Enemy) || Enemy->IsDisabled() || !Enemy->IsCharging()) continue;
 			SmokeDesiredLane = Enemy->GetLockedLane();
-			Steer = FMath::Clamp((SmokeDesiredLane - static_cast<float>(Position.Y)) / 105.0f, -1.0f, 1.0f);
+            Steer = FMath::Clamp((SmokeDesiredLane - static_cast<float>(Position.Y) - Rider->GetLateralSpeed() * .55f) / 200.0f, -1.0f, 1.0f);
 			bFire = false;
 			bBoost = false;
 			return;
 		}
 	}
 	const float DesiredLane = Target ? Target->GetActorLocation().Y : 0.0f;
+	// The authored cars occupy roughly 480cm longitudinally. Combined with
+	// the rider's 330cm collision box, 780cm was only ~0.4s of useful clearance
+	// at chase speed, shorter than the steering response. Plan the lane change
+	// before that collision envelope, and keep clear until a car is behind us.
+	const float VehicleLookAhead = FMath::Max(1800.0f, 420.0f + FMath::Abs(Rider->GetForwardSpeed()) * 0.65f);
 	float BestScore = TNumericLimits<float>::Max();
 	float BestLane = SmokeDesiredLane;
 	for (float Lane : {-420.0f, -280.0f, -140.0f, 0.0f, 140.0f, 280.0f, 420.0f})
@@ -607,22 +612,52 @@ void ALinxiaMotorcycleChaseGameMode::BuildSmokeInput(float& Forward, float& Stee
 			const float Gap = Enemy->GetActorLocation().X - Position.X;
 			if (Enemy->IsCharging() && Gap > -100 && Gap < 3900 && !bAcceptFirstHit
 				&& FMath::Abs(Lane - Enemy->GetLockedLane()) < 155) Score += 20000;
-			if (Gap > -420 && Gap < (Enemy->IsDisabled() ? 1500 : 780)
+			if (Gap > -1000.0f && Gap < (Enemy->IsDisabled() ? 1500.0f : VehicleLookAhead)
 				&& FMath::Abs(Lane - Enemy->GetActorLocation().Y) < Enemy->GetHalfWidth() + 90) Score += 50000;
 		}
 		if (Score < BestScore) { BestScore = Score; BestLane = Lane; }
 	}
 	SmokeDesiredLane = BestLane;
-	Steer = FMath::Clamp((BestLane - static_cast<float>(Position.Y)) / 105.0f, -1.0f, 1.0f);
-	bFire = Target && !bAcceptFirstHit && FMath::Abs(Steer) < .10f
-		&& FMath::Abs(Target->GetActorLocation().Y - Position.Y) < Target->GetHalfWidth() + 10;
+    // The automatic driver must anticipate the same steering inertia as a player.
+    Steer = FMath::Clamp((BestLane - static_cast<float>(Position.Y) - Rider->GetLateralSpeed() * .55f) / 200.0f, -1.0f, 1.0f);
+    const float AimY = Position.Y + FMath::Tan(FMath::DegreesToRadians(Rider->GetActorRotation().Yaw)) * Nearest;
+    bFire = Target && !bAcceptFirstHit
+        && FMath::Abs(Target->GetActorLocation().Y - AimY) < Target->GetHalfWidth() + 10;
 	bBoost = !Target && BestScore < 1000 && Rider->GetBoostEnergy() > 65 && EncounterTime > 4.0f;
-	if (Target == Convoy && Nearest < 3000.0f && Rider->GetForwardSpeed() > 1050.0f)
+    if (Target && Nearest < 2200.0f)
+    {
+        Forward = .43f;
+        bBoost = false;
+    }
+    if (Target == Convoy && Nearest < 3000.0f && Rider->GetForwardSpeed() > 1050.0f)
 	{
 		Forward = -1.0f;
 		bBoost = false;
 	}
 	if (BestScore >= 100000) Forward = -1;
+	// Emergency braking is based on our current and near-future lateral body
+	// position, not just the selected destination lane. A safe destination does
+	// not make the in-progress lane change safe against a stopped vehicle.
+	if (!bAcceptFirstHit)
+	{
+		const float CurrentY = static_cast<float>(Position.Y);
+		const float PredictedY = CurrentY + Rider->GetLateralSpeed() * 0.45f;
+		for (ANeonChaseEnemy* Enemy : Enemies)
+		{
+			if (!IsValid(Enemy) || Enemy->IsDisabled()) continue;
+			const float Gap = Enemy->GetActorLocation().X - Position.X;
+			const float ClearanceY = Enemy->GetHalfWidth() + 100.0f;
+			const float EnemyY = Enemy->GetActorLocation().Y;
+			const bool bBodyOverlapsLane = FMath::Min(CurrentY, PredictedY) - ClearanceY < EnemyY
+				&& FMath::Max(CurrentY, PredictedY) + ClearanceY > EnemyY;
+			if (Gap > 0.0f && Gap < 1100.0f && bBodyOverlapsLane)
+			{
+				Forward = -1.0f;
+				bBoost = false;
+				break;
+			}
+		}
+	}
 }
 
 void ALinxiaMotorcycleChaseGameMode::CompleteSmoke(bool bTimedOut)

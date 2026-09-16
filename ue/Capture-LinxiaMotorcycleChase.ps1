@@ -1,6 +1,6 @@
 param(
     [string]$OutputPath = "",
-    [ValidateSet("Default", "Side", "Rear")]
+    [ValidateSet("Default", "Side", "Rear", "Hands", "HandsRight", "Bridge", "Establishing")]
     [string]$View = "Default",
     [ValidateSet("Default", "Compact", "Bars", "AsymBars")]
     [string]$Pose = "Default",
@@ -36,8 +36,8 @@ $arguments = @(
     $Map,
     "-game",
     "-windowed",
-    "-ResX=1280",
-    "-ResY=720",
+    "-ResX=1920",
+    "-ResY=1080",
     "-ddc=NoZenLocalFallback",
     "-DDC-ForceMemoryCache",
     "-nop4",

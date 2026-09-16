@@ -3,6 +3,8 @@ param(
     [string[]]$GameArguments = @(),
     [string]$LogName = "neon-run",
     [int]$TimeoutSeconds = 300,
+    [int]$ResX = 1920,
+    [int]$ResY = 1080,
     [switch]$NullRhi
 )
 
@@ -23,7 +25,7 @@ if ($PythonScript) {
     $arguments += @('-run=pythonscript', ('-script="' + $scriptPath + '"'))
 } else {
     $arguments += @('/Game/LinxiaChase/LVL_Linxia_MotorcycleChase', '-game',
-        '-windowed', '-ResX=1280', '-ResY=720') + $GameArguments
+        '-windowed', "-ResX=$ResX", "-ResY=$ResY") + $GameArguments
 }
 if ($NullRhi) { $arguments += '-nullrhi' }
 if (Test-Path -LiteralPath $log) { Remove-Item -LiteralPath $log }

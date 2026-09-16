@@ -1,4 +1,4 @@
-"""Seeded industrial waterfront chase, in centimetres along the +X route.
+"""Elevated industrial expressway, in centimetres along the +X route.
 
 The integrator runs this through create_linxia_motorcycle_chase_level.py.
 Repeated meshes are batched by 100 m sector/material, with persistent editor
@@ -21,6 +21,7 @@ SEED = 9142026
 ACTOR_BUDGET = 750
 INSTANCE_BUDGET = 30000
 LIGHT_BUDGET = 64
+GROUND_Z = -1800
 
 
 def load_meshes():
@@ -58,15 +59,17 @@ class City:
         self.actor_count = 0
         self.instance_count = 0
         self.light_count = 0
+        self.z_offset = 0
 
     def spawn(self, cls, label, xyz, rotation=(0, 0, 0)):
         actor = unreal.EditorLevelLibrary.spawn_actor_from_class(
-            cls, unreal.Vector(*xyz), unreal.Rotator(*rotation)
+            cls, unreal.Vector(xyz[0], xyz[1], xyz[2] + self.z_offset),
+            unreal.Rotator(pitch=rotation[0], yaw=rotation[1], roll=rotation[2])
         )
         if actor is None:
             raise RuntimeError("Cannot spawn " + label)
         actor.set_actor_label(label)
-        actor.set_actor_location(unreal.Vector(*xyz), False, True)
+        actor.set_actor_location(unreal.Vector(xyz[0], xyz[1], xyz[2] + self.z_offset), False, True)
         actor.set_editor_property("tags", [unreal.Name("NeonEnvironment")])
         self.actor_count += 1
         if self.actor_count > ACTOR_BUDGET:
@@ -91,7 +94,8 @@ class City:
         sector = max(0, int((xyz[0] - START_X) // 10000))
         key = (sector, material, shape, shadow, distant)
         self.batches[key].append(unreal.Transform(
-            location=unreal.Vector(*xyz), rotation=unreal.Rotator(*rotation),
+            location=unreal.Vector(xyz[0], xyz[1], xyz[2] + self.z_offset),
+            rotation=unreal.Rotator(pitch=rotation[0], yaw=rotation[1], roll=rotation[2]),
             scale=unreal.Vector(*(s / 100 for s in size))
         ))
         self.instance_count += 1
@@ -147,8 +151,32 @@ class City:
                                    ("Gate3_Road_Extension", 30000, END_X)):
             self.solid(label, "road", ((left + right) / 2, 0, ROAD_Z),
                        (right - left, ROAD_WIDTH, ROAD_THICKNESS), collision=True)
-        # Thick substructure is below the six-centimetre wearing course.
-        self.solid("NC_RoadSubstructure", "concrete", (54000, 0, -107), (112000, 1200, 198), True)
+        # Continuous deck with believable 1.8 m deep box girders over an 18 m drop.
+        self.solid("NC_RoadSubstructure", "concrete", (54000, 0, -47), (112000, 1560, 78), True)
+        for y in (-470, 470):
+            self.part("concrete", (54000, y, -145), (112000, 200, 150))
+        for x in range(-1000, END_X, 3200):
+            self.part("concrete", (x, 0, -265), (260, 1510, 150))
+            for y in (-430, 430):
+                self.part("concrete", (x, y, (GROUND_Z - 330) / 2), (175, 210, -GROUND_Z - 330))
+                self.part("concrete", (x, y, GROUND_Z + 70), (380, 430, 140))
+                self.part("rubber", (x, y, -194), (150, 180, 18))
+        self.solid("NC_LowerCityGround", "concrete", (54000, -6500, GROUND_Z - 30),
+                   (140000, 16000, 60))
+        self.solid("NC_BridgeWaterBelow", "water", (54000, 15000, GROUND_Z - 65),
+                   (140000, 27000, 20))
+        for x in range(2000, END_X, 13000):
+            self.part("road", (x, -4000, GROUND_Z + 2), (1350, 20000, 8))
+            for y in range(-13000, 6000, 700):
+                self.part("paint", (x, y, GROUND_Z + 7), (10, 280, 1), shadow=False)
+        # Expansion joints and concrete safety parapets define a highway deck.
+        for x in range(START_X, END_X, 3200):
+            self.part("rubber", (x, 0, -1), (12, 1200, 1), shadow=False)
+        for x in range(START_X, END_X, 800):
+            for side in (-1, 1):
+                self.part("concrete", (x + 398, side * 684, 39), (792, 60, 80))
+                self.part("concrete", (x + 398, side * 677, 86), (792, 32, 20))
+                self.part("amber", (x + 398, side * 650, 83), (12, 3, 8), shadow=False)
         for x in range(START_X, END_X, 2000):
             for side in (-1, 1):
                 self.part("concrete", (x + 1000, side * 790, 8), (2000, 380, 20))
@@ -389,6 +417,7 @@ class City:
         self.part("yellow", (x, y - 2850, 1550), (130, 240, 60))
 
     def landmarks(self):
+        self.gantry(4200, "NC_ElevatedEntry_Sign", "NORTH VIADUCT  /  PORT 09")
         self.gantry(18000, "NC_Encounter01_Sign", "01   NORTH QUAY")
         self.gantry(75000, "NC_Encounter03_Sign", "03   CONTAINER TERMINAL")
         self.gantry(100000, "NC_Finish_Sign", "PORT 09   /   CUSTOMS")
@@ -402,7 +431,8 @@ class City:
         for y in range(-6800, 7200, 800):
             self.part("steel", (45000, y, 1300), (2460, 12, 110))
         self.text("NC_Encounter02_Sign", "02 / VIADUCT", (43785, 0, 1150), 86)
-        # Water and quay wall run beside the open middle zone, never under road.
+        # Harbor and cranes belong at city ground level below the expressway.
+        self.z_offset = GROUND_Z
         self.part("water", (55500, 10500, -170), (52000, 18000, 20), distant=True, shadow=False)
         self.part("concrete", (55500, 1200, -180), (52000, 260, 400), distant=True)
         for x in range(30500, 80000, 1500):
@@ -410,6 +440,7 @@ class City:
             self.part("rubber", (x, 1350, -120), (130, 130, 45), (0, 0, 90), "cylinder")
         for x, y in ((74000, 4900), (90500, 5200), (103000, 5100)):
             self.crane(x, y)
+        self.z_offset = 0
         # Terminal checkpoint cabins flank the through route at the finish.
         for side in (-1, 1):
             self.part("concrete", (100500, side * 1160, 170), (560, 420, 340))
@@ -418,7 +449,9 @@ class City:
         for dx in range(0, 600, 100):
             for side in (-1, 1):
                 self.part("paint", (100000 + dx, side * 340, -1.2), (45, 250, 0.5), shadow=False)
+        self.z_offset = GROUND_Z
         self.broken_suspension_bridge()
+        self.z_offset = 0
 
     def hazards(self):
         specs = (("Gate3_Debris_01", 15500, -345), ("Gate3_Debris_02", 24800, 340),
@@ -468,13 +501,13 @@ class City:
         key = self.spawn(unreal.DirectionalLight, "Gate3_KeyLight_Cold", (0, 0, 2000), (-24, -35, 0))
         light = key.get_component_by_class(unreal.DirectionalLightComponent)
         light.set_mobility(unreal.ComponentMobility.MOVABLE)
-        light.set_intensity(1.2)
+        light.set_intensity(2.2)
         light.set_light_color(unreal.LinearColor(0.52, 0.65, 1.0, 1), False)
         light.set_editor_property("light_source_angle", 5.0)
         sky = self.spawn(unreal.SkyLight, "Gate3_SkyLight", (0, 0, 3000))
         sky_light = sky.get_component_by_class(unreal.SkyLightComponent)
         sky_light.set_mobility(unreal.ComponentMobility.MOVABLE)
-        sky_light.set_intensity(0.38)
+        sky_light.set_intensity(0.65)
         sky_light.set_editor_property("sky_distance_threshold", 150000.0)
         sky_light.set_editor_property("lower_hemisphere_is_black", True)
         sky_light.set_editor_property("real_time_capture", True)
@@ -531,14 +564,19 @@ class City:
 
     def build(self):
         self.road()
-        self.puddles()
+        # Wetness is blended in the PBR road shader; separate perfect discs read
+        # as decals/geometry and introduce artificial edges in hero frames.
+        self.z_offset = GROUND_Z
         self.architecture()
         self.damaged_city_dressing()
         self.roadside()
+        self.z_offset = 0
         self.landmarks()
         self.hazards()
         self.lighting()
         self.flush()
+        self.camera("NC_ElevatedHighwayEvidence", (-2400, -3400, 1500), (1600, 0, -700), 66)
+        unreal.log(f"[NeonEnvironment] elevated_deck_z=-2 lower_ground_z={GROUND_Z} clearance_cm={-GROUND_Z-330}")
         unreal.log(f"[NeonEnvironment] seed={SEED} route={START_X}..{END_X}cm "
                    f"road={ROAD_WIDTH}cm actors={self.actor_count} "
                    f"instances={self.instance_count} local_lights={self.light_count}")

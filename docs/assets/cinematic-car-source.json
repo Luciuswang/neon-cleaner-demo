@@ -1,0 +1,1727 @@
+{
+  "schema": 1,
+  "asset": "CarConcept",
+  "license": "CC-BY-4.0",
+  "attribution": "Car Concept by Eric Chadwick / Darmstadt Graphics Group GmbH (2024), CC BY 4.0. Modified: logos removed, UE axis conversion, 480cm length/220cm width normalization, wheel separation, DirectX normals, pursuit graphite materials.",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "sources": [
+    {
+      "file": "CarConcept.glb",
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CarConcept/glTF-Binary/CarConcept.glb",
+      "bytes": 11778688,
+      "sha256": "c272098089d78c5cd9fd9f24ff50ee8acf8d932c55f2d55fc10adb6c8998966b"
+    },
+    {
+      "file": "README.md",
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/Models/CarConcept/README.md",
+      "bytes": 20383,
+      "sha256": "2f1869f099a77c8d15a10bf882e447ff1f55d3f7552375a11e2eaef253a54b4b"
+    },
+    {
+      "file": "Khronos-trademark.txt",
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/LICENSES/LicenseRef-LegalMark-Khronos.txt",
+      "bytes": 589,
+      "sha256": "2ea9821de870cf8d3faaa115ffc47f56632bf9f98d54d2ac1ce61592040b765c"
+    },
+    {
+      "file": "CC-BY-4.0.txt",
+      "url": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Assets/main/LICENSES/CC-BY-4.0.txt",
+      "bytes": 13034,
+      "sha256": "c8041334a99cb48852b2139253cbde5f8ac87e27f124aed51223e0d5bf0080eb"
+    }
+  ],
+  "axis": "+X forward, +Y right, +Z up",
+  "units": "centimeters",
+  "length_cm": 480,
+  "dimensions_cm": [
+    480.0,
+    220.0,
+    126.55985571761794
+  ],
+  "removed_nodes": [
+    "InteriorSteeringEmblem",
+    "License Plate"
+  ],
+  "exported_uv_channels": [
+    0
+  ],
+  "texture_transform_convention": "glTF UV: offset + rotation * (scale * UV); OBJ V flip is reversed by UE import; material UV0 matches glTF UV0.",
+  "source_bounds": [
+    [
+      -1.940231204032898,
+      -1.2709126943464768,
+      -0.0002410734226865885
+    ],
+    [
+      2.4171547889709473,
+      1.2714082962213737,
+      1.1486550569534302
+    ]
+  ],
+  "parts": [
+    {
+      "name": "SM_CC_Body",
+      "file": "SM_CC_Body.obj",
+      "pivot_cm": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "triangles": 147955,
+      "materials": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        28
+      ]
+    },
+    {
+      "name": "SM_CC_WheelFrontL",
+      "file": "SM_CC_WheelFrontL.obj",
+      "pivot_cm": [
+        137.3908621000923,
+        -84.43584401444612,
+        42.30060086096734
+      ],
+      "triangles": 16310,
+      "materials": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "name": "SM_CC_WheelFrontR",
+      "file": "SM_CC_WheelFrontR.obj",
+      "pivot_cm": [
+        137.20226273495615,
+        84.49521746071525,
+        42.30059429505155
+      ],
+      "triangles": 16310,
+      "materials": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "name": "SM_CC_WheelRearL",
+      "file": "SM_CC_WheelRearL.obj",
+      "pivot_cm": [
+        -171.02262524299698,
+        -85.04336138592657,
+        42.30059429505155
+      ],
+      "triangles": 16310,
+      "materials": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "name": "SM_CC_WheelRearR",
+      "file": "SM_CC_WheelRearR.obj",
+      "pivot_cm": [
+        -171.02262524299698,
+        84.93048180854258,
+        42.30059429505155
+      ],
+      "triangles": 16310,
+      "materials": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "index": 0,
+      "name": "M_CC_00",
+      "source_name": "Mechanical",
+      "base_color": [
+        0.05112205445766449,
+        0.05112205445766449,
+        0.05112205445766449,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 1,
+      "color_texture": null,
+      "orm_texture": "T_CC_01",
+      "normal_texture": "T_CC_00_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 1,
+      "name": "M_CC_01",
+      "source_name": "Glass",
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": true,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": null
+      }
+    },
+    {
+      "index": 2,
+      "name": "M_CC_02",
+      "source_name": "Panel",
+      "base_color": [
+        0.002932318253442645,
+        0.002932318253442645,
+        0.002932318253442645,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.8,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_03",
+      "emissive": [
+        1,
+        1,
+        1
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 3,
+      "name": "M_CC_03",
+      "source_name": "Interior 1",
+      "base_color": [
+        0.003697239328175783,
+        0.003697239328175783,
+        0.003697239328175783,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_04_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            200,
+            400
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 4,
+      "name": "M_CC_04",
+      "source_name": "Floormat",
+      "base_color": [
+        0.0012017396511510017,
+        0.0012017396511510017,
+        0.0012017396511510017,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.5,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_04_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            2,
+            3
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 5,
+      "name": "M_CC_05",
+      "source_name": "Hardware",
+      "base_color": [
+        0.2715774476528168,
+        0.2715774476528168,
+        0.2715774476528168,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.5,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_03",
+      "emissive": [
+        1,
+        1,
+        1
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 6,
+      "name": "M_CC_06",
+      "source_name": "Interior 3 Carmine",
+      "base_color": [
+        0.21576441824436188,
+        0.005,
+        0,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_04_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            200,
+            400
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 7,
+      "name": "M_CC_07",
+      "source_name": "Interior 2",
+      "base_color": [
+        0.003697239328175783,
+        0.003697239328175783,
+        0.003697239328175783,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_05_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            100,
+            100
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 8,
+      "name": "M_CC_08",
+      "source_name": "Dashboard",
+      "base_color": [
+        0.0012017396511510017,
+        0.0012017396511510017,
+        0.0012017396511510017,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.5,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_06",
+      "emissive": [
+        1,
+        0.259027361869812,
+        0
+      ],
+      "emissive_strength": 3,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 9,
+      "name": "M_CC_09",
+      "source_name": "License",
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.8,
+      "color_texture": "T_CC_03",
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 10,
+      "name": "M_CC_10",
+      "source_name": "Paint 2 Carmine",
+      "base_color": [
+        0.03775528281927109,
+        0.03775528281927109,
+        0.03775528281927109,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.3,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_07_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0.25,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            30,
+            30
+          ],
+          "rotation_radians": 0.585398,
+          "normal_strength": 0.30000001192092896
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 11,
+      "name": "M_CC_11",
+      "source_name": "Paint 1 Carmine",
+      "base_color": [
+        0.666,
+        0,
+        0,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.25,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_07_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 1,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            30,
+            30
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 0.30000001192092896
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 12,
+      "name": "M_CC_12",
+      "source_name": "Signallight",
+      "base_color": [
+        0.0012017396511510017,
+        0.0012017396511510017,
+        0.0012017396511510017,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.5,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0.8,
+        0.35,
+        0
+      ],
+      "emissive_strength": 2,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": null
+      }
+    },
+    {
+      "index": 13,
+      "name": "M_CC_13",
+      "source_name": "Brakelight",
+      "base_color": [
+        0.0012017396511510017,
+        0.0012017396511510017,
+        0.0012017396511510017,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.5,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0.7,
+        0,
+        0
+      ],
+      "emissive_strength": 2,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": null
+      }
+    },
+    {
+      "index": 14,
+      "name": "M_CC_14",
+      "source_name": "Headlight",
+      "base_color": [
+        0.0012017396511510017,
+        0.0012017396511510017,
+        0.0012017396511510017,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.5,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0.54179847240448,
+        0.737204909324646,
+        1
+      ],
+      "emissive_strength": 10,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": null
+      }
+    },
+    {
+      "index": 15,
+      "name": "M_CC_15",
+      "source_name": "Mirror",
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_03",
+      "emissive": [
+        1,
+        1,
+        1
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 16,
+      "name": "M_CC_16",
+      "source_name": "Brake",
+      "base_color": [
+        0.6523702144622803,
+        0,
+        0,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.2,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_03",
+      "emissive": [
+        1,
+        1,
+        1
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 17,
+      "name": "M_CC_17",
+      "source_name": "Disc",
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.73,
+      "color_texture": "T_CC_08",
+      "orm_texture": null,
+      "normal_texture": "T_CC_09_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            20,
+            10
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            20,
+            10
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 18,
+      "name": "M_CC_18",
+      "source_name": "Tireside",
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": "T_CC_10",
+      "orm_texture": null,
+      "normal_texture": "T_CC_11_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 19,
+      "name": "M_CC_19",
+      "source_name": "Tiretread",
+      "base_color": [
+        0.009021492674946783,
+        0.009021492674946783,
+        0.009021492674946783,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.6,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_12_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0,
+            1.5
+          ],
+          "scale": [
+            1,
+            4
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 20,
+      "name": "M_CC_20",
+      "source_name": "Rim2",
+      "base_color": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.049,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_03",
+      "emissive": [
+        1,
+        1,
+        1
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 21,
+      "name": "M_CC_21",
+      "source_name": "Rim1",
+      "base_color": [
+        0.000992374261841178,
+        0.000992374261841178,
+        0.000992374261841178,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": "T_CC_03",
+      "emissive": [
+        1,
+        1,
+        1
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 22,
+      "name": "M_CC_22",
+      "source_name": "Paint 1 Pearl",
+      "base_color": [
+        0.5,
+        0.5,
+        0.5,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.35,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_07_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0.1,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            30,
+            30
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 0.05
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 23,
+      "name": "M_CC_23",
+      "source_name": "Paint 1 Graphite",
+      "base_color": [
+        0.15,
+        0.15,
+        0.15,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.3,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 24,
+      "name": "M_CC_24",
+      "source_name": "Paint 2 Pearl",
+      "base_color": [
+        0.4,
+        0.4,
+        0.4,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.25,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 25,
+      "name": "M_CC_25",
+      "source_name": "Paint 2 Graphite",
+      "base_color": [
+        0.1,
+        0.1,
+        0.1,
+        1
+      ],
+      "metallic": 1,
+      "roughness": 0.2,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": null,
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": null,
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 26,
+      "name": "M_CC_26",
+      "source_name": "Interior 3 Pearl",
+      "base_color": [
+        0.98,
+        0.98,
+        0.98,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_04_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            200,
+            400
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 27,
+      "name": "M_CC_27",
+      "source_name": "Interior 3 Graphite",
+      "base_color": [
+        0.02,
+        0.05,
+        0.1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_04_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": true,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            200,
+            400
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    },
+    {
+      "index": 28,
+      "name": "M_CC_28",
+      "source_name": "Panel Sides",
+      "base_color": [
+        0.003697239328175783,
+        0.003697239328175783,
+        0.003697239328175783,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.4,
+      "color_texture": null,
+      "orm_texture": null,
+      "normal_texture": "T_CC_04_DX",
+      "emissive_texture": null,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "emissive_strength": 1,
+      "clearcoat": 0,
+      "glass": false,
+      "double_sided": false,
+      "texture_infos": {
+        "color_texture": null,
+        "orm_texture": null,
+        "normal_texture": {
+          "tex_coord": 0,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 0
+        },
+        "emissive_texture": null,
+        "occlusion_texture": {
+          "tex_coord": 1,
+          "offset": [
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0
+          ],
+          "rotation_radians": 0.0,
+          "normal_strength": 1.0
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "No skeletal rig or source animation; animate wheel components around local Y.",
+    "glTF AO on UV1 is not baked into UV0; skipped to avoid incorrect shading.",
+    "No runtime or visual quality verdict is implied by asset preparation."
+  ]
+}

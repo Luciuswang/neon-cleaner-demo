@@ -1,6 +1,45 @@
 # Project Handoff
 
-Last updated: 2026-08-31
+Last updated: 2026-09-16
+
+
+## Authoritative continuation - cinematic upgrade 2026-09-16
+
+Branch: `codex/character-continuity-pipeline`. Read
+`docs/qa/cinematic-upgrade-2026-09-16.md`, its evidence JSON and
+`docs/cinematic-quality-contract.md` before using older prototype acceptance.
+
+This PC now has private low Kelly restored and can run UE 5.8.1. The playable
+chase has an actual elevated deck above lowered city/harbor, 4K CC0 PBR surfaces,
+corrected instanced materials/rotations, authored enemy bodies and separate
+wheels, measured grip-driven rider fitting, smoother steering and swept collision
+sliding. Build, full Gate 3 engineering and Clean/Damaged/Lost encounter smoke pass.
+The automatic-driver regression caused by larger cars was fixed with earlier
+avoidance and braking, without weakening damage/outcome tests.
+
+**CINEMATIC REWORK / AI VIDEO BLOCKED.** Independent review rejects remaining
+prototype architecture/lighting, low hero closeup quality, unnatural wrist/finger
+contact and unarticulated bike wheels/fork. Palm-proxy 0 and engineering PASS do
+not grant visual acceptance. Production and QA agents now use seven independent
+domains and schema 2 evidence integrity. Current evidence is local under
+`ue/NeonCleanerUE/Saved/Quality/`; no final AI reference pack/film is approved.
+
+Resources/source checksums are recorded in `docs/assets/`. High-bike candidate
+with 4K maps is imported privately under `/Game/CinematicBike` but needs mechanical
+rig, cleanup/LODs and rider refit before activation. High Kelly source has 47
+missing images plus groom dependencies; see the hero resource audit. Local city
+FBX lacks source material associations. Restore or author these properly; do not
+switch untextured high geometry into the final build.
+
+Next production: detailed mechanically rigged motorcycle/contact animation;
+high-Kelly identity/material/groom restoration; detailed foreground architecture
+and motivated relighting; vehicle dressing/LODs; current-build independent visual,
+temporal and AI-reference acceptance. User authorized routine downloads and
+production on 2026-09-16, so repeated permission requests are unnecessary.
+
+Keep pre-existing user edit `ue/Register-EpicProjectForFab.ps1` separate from this
+slice. Private Kelly, candidate bike, caches and captures remain ignored. No push
+or publishing requested. Older continuation sections below are historical.
 
 ## Away contact
 

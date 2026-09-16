@@ -56,4 +56,7 @@ if (-not $SkipVisualProof) {
     if (-not (Test-Path -LiteralPath $proof)) { throw "Final proof was not created." }
 }
 
-Write-Host "Neon chase quality check PASS."
+Write-Host "ENGINEERING CHECKS: PASS (subject to the listed skips)."
+Write-Host "CINEMATIC VISUAL / AI VIDEO: UNVERIFIED. Run independent evidence review per docs/cinematic-quality-contract.md."
+if ($SkipVisualProof) { Write-Warning "Visual evidence was skipped; no visual PASS is permitted." }
+if ($SkipBuild) { Write-Warning "Build was skipped; verify the runtime binary belongs to the reviewed source." }

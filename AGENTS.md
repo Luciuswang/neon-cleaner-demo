@@ -1,5 +1,14 @@
 # Codex Project Entry: Neon Cleaner
 
+## Current cinematic mandate — 2026-09-16
+
+Read `docs/cinematic-quality-contract.md` and
+`docs/tasks/cinematic-upgrade-2026-09-16.md` before production or QA.
+These supersede prototype quality concessions below. User authorizes autonomous
+permitted asset downloads/restoration; do not repeatedly request confirmation.
+Final cinematic/AI-video acceptance remains BLOCKED until independent current-build
+visual, dynamic-contact, vehicle, environment and performance evidence passes.
+
 When the user says to start or continue the Neon Cleaner project, first treat
 this repository as the source of truth. Do not rely on prior chat memory alone.
 If the user says "开始 Neon Cleaner", "开始 Neon Cleaner 项目",

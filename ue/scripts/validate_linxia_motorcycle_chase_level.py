@@ -17,6 +17,9 @@ REQUIRED_LABELS = {
     "Gate3_TargetPreviewCamera",
     "Gate3_KeyLight_Cold",
     "Gate3_SkyLight",
+    "NC_LowerCityGround",
+    "NC_BridgeWaterBelow",
+    "NC_ElevatedHighwayEvidence",
 }
 
 
@@ -110,6 +113,17 @@ def main():
     target_distance = distance_2d(pawn.get_actor_location(), target.get_actor_location())
     assert_between("starting chase target distance", target_distance, 3600.0, 4800.0)
     assert_between("pawn start z", pawn.get_actor_location().z, -5.0, 5.0)
+    deck_z = by_label['Gate3_Road_Main'].get_actor_location().z
+    lower_z = by_label['NC_LowerCityGround'].get_actor_location().z
+    assert_between('deck elevation above city', deck_z - lower_z, 1700, 1900)
+    for name in ['SM_CC_Body', 'SM_CC_WheelFrontL', 'SM_CC_WheelFrontR', 'SM_CC_WheelRearL', 'SM_CC_WheelRearR']:
+        vehicle_mesh = unreal.load_asset('/Game/LinxiaChase/CinematicCar/' + name)
+        if not vehicle_mesh:
+            raise RuntimeError('Missing authored enemy vehicle: ' + name)
+    for name in ['M_NC_CinematicRoadPBR_v2', 'M_NC_CinematicConcretePBR_v2', 'M_PlayerMotorcycle_PBR']:
+        if not unreal.load_asset('/Game/CinematicSurfaces/' + name):
+            raise RuntimeError('Missing source-backed PBR material: ' + name)
+    log(f'elevated_highway_cm={deck_z-lower_z:.1f}; authored vehicle and PBR dependencies present; VISUAL UNVERIFIED')
 
     obstacle_count = len(
         [

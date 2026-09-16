@@ -1,5 +1,14 @@
 # Neon Cleaner Agent Production Workflow
 
+## Current requirement — 2026-09-16
+
+Producer and QA Director must follow `cinematic-quality-contract.md`.
+Its cinematic asset, elevated-highway, dynamic rider-contact and evidence
+requirements supersede all prototype deferrals below. Do not accept low-detail
+hero assets, primitive enemy cars, stiff riding, or incorrect scale for final
+UE references. Numeric IK PASS is not hand contact or art PASS. Downloads and
+permitted asset restoration are already authorized by the user.
+
 This project uses an adaptive multi-agent production loop with a mandatory QA
 gate:
 

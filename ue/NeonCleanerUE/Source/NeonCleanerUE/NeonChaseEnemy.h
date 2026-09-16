@@ -25,7 +25,7 @@ public:
 	bool IsCharging() const { return ChargeTime > 0.0f; }
 	float GetLockedLane() const { return LockedLane; }
 	float GetChargeFraction() const { return FMath::Clamp(ChargeTime / 1.25f, 0.0f, 1.0f); }
-	float GetHalfWidth() const { return bConvoy ? 106.0f : 76.0f; }
+	float GetHalfWidth() const { return bConvoy ? 114.0f : 108.0f; }
 	float GetDistanceToPlayer() const { return DistanceToPlayer; }
 	void ClearCombatEffects();
 

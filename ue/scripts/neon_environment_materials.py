@@ -78,6 +78,7 @@ class Graph:
         return noise
 
     def finish(self):
+        self.material.set_editor_property("used_with_instanced_static_meshes", True)
         unreal.MaterialEditingLibrary.layout_material_expressions(self.material)
         unreal.MaterialEditingLibrary.recompile_material(self.material)
         return self.material

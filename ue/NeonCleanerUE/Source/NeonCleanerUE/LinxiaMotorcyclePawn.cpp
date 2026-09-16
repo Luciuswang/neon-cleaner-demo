@@ -17,6 +17,7 @@
 #include "LinxiaMotorcycleChaseGameMode.h"
 #include "Materials/MaterialInterface.h"
 #include "Misc/CommandLine.h"
+#include "Misc/App.h"
 #include "Misc/Parse.h"
 #include "Misc/Paths.h"
 #include "UObject/ConstructorHelpers.h"
@@ -43,8 +44,11 @@ constexpr float ChaseCatchDistance = 520.0f;
 constexpr float RiderContactToleranceCm = 3.0f;
 
 const TCHAR* KellyMeshPath = TEXT("/Game/KellyLowSource/asda.asda");
-const FVector RiderLeftGripVisual(9.07f, -34.74f, 115.24f);
-const FVector RiderRightGripVisual(12.0f, 38.0f, 111.0f);
+// Measured on source OBJ grip geometry, not fitted to the rider's wrist.
+// Import transform: visual = (6 + 230*x, -230*z, 58 + 230*y).
+const FVector RiderLeftGripVisual(38.5f, -38.5f, 108.5f);
+const FVector RiderRightGripVisual(38.5f, 38.5f, 108.5f);
+const FVector WristToGripVisual(5.3f, 0.0f, -1.8f);
 const FVector RiderLeftFootVisual(-4.0f, -32.0f, 48.0f);
 const FVector RiderRightFootVisual(-4.0f, 32.0f, 48.0f);
 const FVector RiderFootPegCenterVisual(-4.0f, 0.0f, 44.0f);
@@ -105,8 +109,8 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	Seat->SetRelativeLocation(FVector(-64.0f, 0.0f, 88.0f));
 	Seat->SetRelativeRotation(FRotator(-5.0f, 0.0f, 0.0f));
 	Seat->SetRelativeScale3D(FVector(0.74f, 0.3f, 0.07f));
-	Seat->SetVisibility(true, true);
-	Seat->SetHiddenInGame(false);
+	Seat->SetVisibility(!bHasImportedBike, true);
+	Seat->SetHiddenInGame(bHasImportedBike);
 
 	FrontFairing = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FrontFairing"));
 	FrontFairing->SetupAttachment(VisualRoot);
@@ -142,8 +146,8 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	Handlebar->SetRelativeLocation((RiderLeftGripVisual + RiderRightGripVisual) * 0.5f);
 	Handlebar->SetRelativeRotation(FRotationMatrix::MakeFromY(HandlebarVector).Rotator());
 	Handlebar->SetRelativeScale3D(FVector(0.07f, HandlebarVector.Size() / 100.0f, 0.04f));
-	Handlebar->SetVisibility(true, true);
-	Handlebar->SetHiddenInGame(false);
+	Handlebar->SetVisibility(!bHasImportedBike, true);
+	Handlebar->SetHiddenInGame(bHasImportedBike);
 
 	FootPegBar = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("FootPegBar"));
 	FootPegBar->SetupAttachment(VisualRoot);
@@ -166,19 +170,20 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	Headlight->SetRelativeLocation(FVector(155.0f, 0.0f, 100.0f));
 	Headlight->SetRelativeRotation(FRotator(-6.0f, 0.0f, 0.0f));
 	Headlight->SetIntensityUnits(ELightUnits::Lumens);
-	Headlight->SetIntensity(9500.0f);
-	Headlight->SetLightColor(FLinearColor(0.55f, 0.76f, 1.0f), false);
+	Headlight->SetIntensity(1600.0f);
+	Headlight->SetLightColor(FLinearColor(0.82f, 0.90f, 1.0f), false);
 	Headlight->SetAttenuationRadius(3400.0f);
 	Headlight->SetInnerConeAngle(17.0f);
 	Headlight->SetOuterConeAngle(29.0f);
-	Headlight->SetCastShadows(false);
+	Headlight->SetCastShadows(true);
+	Headlight->SetSourceRadius(9.0f);
 	Headlight->SetVolumetricScatteringIntensity(0.35f);
 
 	Underglow = CreateDefaultSubobject<UPointLightComponent>(TEXT("MotorcycleUnderglow"));
 	Underglow->SetupAttachment(VisualRoot);
 	Underglow->SetRelativeLocation(FVector(-20.0f, 0.0f, 42.0f));
 	Underglow->SetIntensityUnits(ELightUnits::Lumens);
-	Underglow->SetIntensity(550.0f);
+	Underglow->SetIntensity(18.0f);
 	Underglow->SetLightColor(FLinearColor(0.0f, 0.72f, 1.0f), false);
 	Underglow->SetAttenuationRadius(380.0f);
 	Underglow->SetCastShadows(false);
@@ -188,7 +193,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 	WeaponBarrel->SetupAttachment(VisualRoot);
 	WeaponBarrel->SetStaticMesh(CylinderMesh.Object);
 	WeaponBarrel->SetRelativeLocation(FVector(126.0f, 0.0f, 78.0f));
-	WeaponBarrel->SetRelativeRotation(FRotator(0.0f, 90.0f, 0.0f));
+	WeaponBarrel->SetRelativeRotation(FRotator(90.0f, 0.0f, 0.0f));
 	WeaponBarrel->SetRelativeScale3D(FVector(0.055f, 0.055f, 0.48f));
 
 	WeaponTrace = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("WeaponTrace"));
@@ -205,7 +210,7 @@ ALinxiaMotorcyclePawn::ALinxiaMotorcyclePawn()
 		RiderMesh->SetSkinnedAssetAndUpdate(KellyMesh.Object);
 	}
 	RiderMesh->SetRelativeLocation(FVector(-30.0f, 0.0f, -5.0f));
-	RiderMesh->SetRelativeRotation(FRotator(4.0f, 270.0f, 0.0f));
+	RiderMesh->SetRelativeRotation(FRotator(0.0f, 270.0f, 0.0f));
 	RiderMesh->SetRelativeScale3D(FVector(1.0f, 1.0f, 1.0f));
 	RiderMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
@@ -291,6 +296,8 @@ void ALinxiaMotorcyclePawn::ResetEncounter()
 	TargetSpeed = 0.0f;
 	ThrottleInput = 0.0f;
 	SteerInput = 0.0f;
+	SmoothedSteer = 0.0f;
+	LateralSpeed = 0.0f;
 	CameraYawOffset = 0.0f;
 	CameraPitch = -8.0f;
 	Health = 100.0f;
@@ -442,6 +449,8 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	StartLocation = GetActorLocation();
 	StartRotation = GetActorRotation();
 	SmokeTestStartLocation = StartLocation;
+	bRiderMotionCapture = FParse::Param(FCommandLine::Get(), TEXT("LinxiaRiderMotionCapture"));
+	bRiderVideoCapture = FParse::Param(FCommandLine::Get(), TEXT("LinxiaRiderVideo"));
 	bSmokeTestActive = FParse::Param(FCommandLine::Get(), TEXT("LinxiaMotorcycleSmokeTest"));
 	bCaptureTestActive = FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCapture="), CaptureOutputPath);
 	if (bCaptureTestActive && CaptureOutputPath.IsEmpty())
@@ -450,6 +459,13 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	}
 	if (bCaptureTestActive)
 	{
+		if (bRiderVideoCapture)
+		{
+			bRiderMotionCapture = true;
+			FApp::SetUseFixedTimeStep(true);
+			FApp::SetFixedDeltaTime(1.0 / 30.0);
+			UE_LOG(LogTemp, Display, TEXT("[NeonRiderVideo] FixedSimulationStep=30fps requestedFrames=360 NOT_A_PERFORMANCE_BENCHMARK"));
+		}
 		FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCaptureView="), CaptureViewMode);
 		ConfigureCaptureCamera();
 	}
@@ -614,17 +630,20 @@ void ALinxiaMotorcyclePawn::UpdateMotorcycleMotion(float DeltaSeconds)
 	}
 
 	const float SpeedFactor = FMath::Clamp(FMath::Abs(CurrentSpeed) / MaxForwardSpeed, 0.0f, 1.0f);
-	if (IsLegacyTest())
+	SmoothedSteer = FMath::FInterpTo(SmoothedSteer, SteerInput, DeltaSeconds, 4.5f);
+	if (IsLegacyTest() && !bRiderMotionCapture)
 	{
 		const float DirectionSign = CurrentSpeed >= 0.0f ? 1.0f : -1.0f;
-		const float TurnAmount = SteerInput * MaxTurnRateDegrees
+		const float TurnAmount = SmoothedSteer * MaxTurnRateDegrees
 			* (0.18f + SpeedFactor * 0.82f) * DirectionSign * DeltaSeconds;
 		AddActorWorldRotation(FRotator(0.0f, TurnAmount, 0.0f));
 		AddActorWorldOffset(GetActorForwardVector() * CurrentSpeed * DeltaSeconds, false);
 		return;
 	}
 
-	const float LaneSpeed = SteerInput * MaxLaneSpeed * (0.35f + SpeedFactor * 0.65f);
+	const float DesiredLaneSpeed = SmoothedSteer * MaxLaneSpeed * SpeedFactor;
+	LateralSpeed = FMath::FInterpTo(LateralSpeed, DesiredLaneSpeed, DeltaSeconds, 5.0f);
+	const float LaneSpeed = LateralSpeed;
 	const FVector Before = GetActorLocation();
 	FVector Delta(CurrentSpeed * DeltaSeconds, LaneSpeed * DeltaSeconds, 0.0f);
 	const float TargetY = FMath::Clamp(Before.Y + Delta.Y, -MaxLaneOffset, MaxLaneOffset);
@@ -633,6 +652,30 @@ void ALinxiaMotorcyclePawn::UpdateMotorcycleMotion(float DeltaSeconds)
 	AddActorWorldOffset(Delta, true, &MoveHit);
 	if (MoveHit.bBlockingHit)
 	{
+		// A blocked diagonal sweep must not discard its free tangential motion.
+		// Retain the unconsumed movement and sweep along the contact plane so
+		// steering can clear a vehicle's rear/side without tunnelling through it.
+		FVector SurfaceNormal = MoveHit.Normal;
+		SurfaceNormal.Z = 0.0f;
+		if (SurfaceNormal.Normalize())
+		{
+			if (MoveHit.bStartPenetrating && MoveHit.PenetrationDepth > 0.0f)
+			{
+				FVector Separation = SurfaceNormal * (MoveHit.PenetrationDepth + 0.5f);
+				Separation.Y = FMath::Clamp(GetActorLocation().Y + Separation.Y, -MaxLaneOffset, MaxLaneOffset) - GetActorLocation().Y;
+				FHitResult SeparationHit;
+				AddActorWorldOffset(Separation, true, &SeparationHit);
+			}
+			const FVector RemainingDelta = Delta * (1.0f - FMath::Clamp(MoveHit.Time, 0.0f, 1.0f));
+			FVector SlideDelta = FVector::VectorPlaneProject(RemainingDelta, SurfaceNormal);
+			SlideDelta.Z = 0.0f;
+			SlideDelta.Y = FMath::Clamp(GetActorLocation().Y + SlideDelta.Y, -MaxLaneOffset, MaxLaneOffset) - GetActorLocation().Y;
+			if (!SlideDelta.IsNearlyZero())
+			{
+				FHitResult SlideHit;
+				AddActorWorldOffset(SlideDelta, true, &SlideHit);
+			}
+		}
 		CurrentSpeed *= 0.38f;
 		ReceiveChaseDamage(
 			12.0f,
@@ -640,20 +683,37 @@ void ALinxiaMotorcyclePawn::UpdateMotorcycleMotion(float DeltaSeconds)
 				? FName(TEXT("VehicleImpact"))
 				: FName(TEXT("ObstacleImpact")));
 	}
-	const float DesiredYaw = SteerInput * 5.0f * FMath::Clamp(SpeedFactor * 1.4f, 0.0f, 1.0f);
-	SetActorRotation(FRotator(0.0f, DesiredYaw, 0.0f));
+	const float ActualLateralSpeed = (GetActorLocation().Y - Before.Y) / FMath::Max(DeltaSeconds, 0.001f);
+	const float DesiredYaw = FMath::RadiansToDegrees(FMath::Atan2(ActualLateralSpeed, FMath::Max(FMath::Abs(CurrentSpeed), 350.0f)));
+	SetActorRotation(FMath::RInterpTo(GetActorRotation(), FRotator(0.0f, DesiredYaw, 0.0f), DeltaSeconds, 6.0f));
+	// At a lane boundary the bike settles instead of leaning into a stationary slide.
+	LateralSpeed = ActualLateralSpeed;
 }
 
 void ALinxiaMotorcyclePawn::UpdateVisuals(float DeltaSeconds)
 {
-	const float LeanRoll = FMath::Clamp(-SteerInput * 13.0f * FMath::Clamp(FMath::Abs(CurrentSpeed) / 900.0f, 0.0f, 1.0f), -13.0f, 13.0f);
+	const float EffectiveSteer = IsLegacyTest() && !bRiderMotionCapture ? SmoothedSteer : LateralSpeed / MaxLaneSpeed;
+	const float LeanRoll = FMath::Clamp(-EffectiveSteer * 17.0f * FMath::Clamp(FMath::Abs(CurrentSpeed) / 900.0f, 0.0f, 1.0f), -17.0f, 17.0f);
 	const float NosePitch = FMath::Clamp(-ThrottleInput * 2.0f + (bHandbrakeHeld ? 3.0f : 0.0f), -4.0f, 4.0f);
 	VisualRoot->SetRelativeRotation(FMath::RInterpTo(VisualRoot->GetRelativeRotation(), FRotator(NosePitch, 0.0f, LeanRoll), DeltaSeconds, 7.0f));
 
 	const float WheelCircumference = 2.0f * PI * 37.0f;
 	WheelSpinDegrees = FMath::Fmod(WheelSpinDegrees + (CurrentSpeed * DeltaSeconds / WheelCircumference) * 360.0f, 360.0f);
-	FrontWheel->SetRelativeRotation(FRotator(WheelSpinDegrees, SteerInput * 18.0f, 90.0f));
+	FrontWheel->SetRelativeRotation(FRotator(WheelSpinDegrees, SmoothedSteer * 8.0f, 90.0f));
 	RearWheel->SetRelativeRotation(FRotator(WheelSpinDegrees, 0.0f, 90.0f));
+	UpdateRiderPose();
+	RiderMotionElapsed += DeltaSeconds;
+	RiderMotionLogElapsed += DeltaSeconds;
+	if (RiderMotionLogElapsed >= 0.5f)
+	{
+		RiderMotionLogElapsed = 0.0f;
+		const FTransform ToVisual = RiderMesh->GetRelativeTransform();
+		const FVector Left = ToVisual.TransformPosition(RiderMesh->GetBoneLocationByName(TEXT("bone_LeftHand"), EBoneSpaces::ComponentSpace)) + WristToGripVisual;
+		const FVector Right = ToVisual.TransformPosition(RiderMesh->GetBoneLocationByName(TEXT("bone_RightHand"), EBoneSpaces::ComponentSpace)) + WristToGripVisual;
+		UE_LOG(LogTemp, Display, TEXT("[NeonRiderMotion] t=%.3f input=%.3f steer=%.3f lateral=%.2f yaw=%.2f lean=%.2f palmProxyErrorL=%.3f palmProxyErrorR=%.3f actualSurfaceContact=UNVERIFIED location=%s braking=%d speed=%.2f"),
+			RiderMotionElapsed, SteerInput, SmoothedSteer, LateralSpeed, GetActorRotation().Yaw, VisualRoot->GetRelativeRotation().Roll,
+			FVector::Distance(Left, RiderLeftGripVisual), FVector::Distance(Right, RiderRightGripVisual), *GetActorLocation().ToCompactString(), bHandbrakeHeld ? 1 : 0, CurrentSpeed);
+	}
 }
 
 void ALinxiaMotorcyclePawn::UpdateGroundAlignment(float DeltaSeconds)
@@ -670,9 +730,13 @@ void ALinxiaMotorcyclePawn::UpdateGroundAlignment(float DeltaSeconds)
 	const FVector TraceEnd(Location.X, Location.Y, Location.Z - 360.0f);
 	if (GetWorld()->LineTraceSingleByChannel(GroundHit, TraceStart, TraceEnd, ECC_Visibility, Query)
 		&& GroundHit.ImpactNormal.Z > 0.65f
-		&& (!GroundHit.GetActor() || !GroundHit.GetActor()->ActorHasTag(TEXT("NeonChaseObstacle"))))
+		&& (!GroundHit.GetActor() || (!GroundHit.GetActor()->ActorHasTag(TEXT("NeonChaseObstacle"))
+			&& !GroundHit.GetActor()->ActorHasTag(TEXT("NeonChaseEnemy")))))
 	{
-		const float TargetZ = GroundHit.ImpactPoint.Z + SceneRoot->GetScaledBoxExtent().Z;
+		// GameMode sets decorative road geometry to ignore ECC_Pawn. Keep the
+		// collision box for obstacles; align actual tire bottom, not box bottom.
+		// Imported OBJ minimum visual Z is -4.666cm at the current mesh transform.
+		const float TargetZ = GroundHit.ImpactPoint.Z + 4.666f;
 		FVector Aligned = Location;
 		Aligned.Z = FMath::FInterpTo(Location.Z, TargetZ, DeltaSeconds, 12.0f);
 		SetActorLocation(Aligned, false);
@@ -727,6 +791,43 @@ void ALinxiaMotorcyclePawn::RunCaptureTest(float DeltaSeconds)
 	}
 
 	CaptureTestElapsed += DeltaSeconds;
+	if (bRiderMotionCapture)
+	{
+		// Settle, steer through both directions, then brake and recover to neutral.
+		const bool bBraking = CaptureTestElapsed >= 14.0f && CaptureTestElapsed < 16.5f;
+		const bool bBrakeRecovery = CaptureTestElapsed >= 14.0f;
+		bHandbrakeHeld = bBraking;
+		ThrottleInput = bBrakeRecovery ? 0.0f : 0.65f;
+		SteerInput = CaptureTestElapsed < 4.0f || bBrakeRecovery ? 0.0f : 0.42f * FMath::Sin((CaptureTestElapsed - 4.0f) * 2.0f * PI / 6.0f);
+		if (bRiderVideoCapture)
+		{
+			if (CaptureTestElapsed >= 4.0f && VideoCaptureFrame < 360 && !FScreenshotRequest::IsScreenshotRequested())
+			{
+				IFileManager::Get().MakeDirectory(*FPaths::GetPath(CaptureOutputPath), true);
+				const FString FramePath = FPaths::GetPath(CaptureOutputPath) / FString::Printf(TEXT("video-%05d.png"), VideoCaptureFrame);
+				FScreenshotRequest::RequestScreenshot(FramePath, false, false);
+				UE_LOG(LogTemp, Display, TEXT("[NeonRiderVideo] frame=%d t=%.6f path=%s"), VideoCaptureFrame, CaptureTestElapsed, *FramePath);
+				++VideoCaptureFrame;
+			}
+			if (VideoCaptureFrame >= 360 && CaptureTestElapsed >= 17.0f)
+			{
+				UE_LOG(LogTemp, Display, TEXT("[NeonRiderVideo] Completed requestedFrames=%d"), VideoCaptureFrame);
+				FPlatformMisc::RequestExit(false);
+			}
+			return;
+		}
+		const float Times[] = {4.0f, 5.5f, 7.0f, 8.5f, 10.0f, 11.5f, 13.0f, 14.5f, 16.0f};
+		if (MotionCaptureFrame < UE_ARRAY_COUNT(Times) && CaptureTestElapsed >= Times[MotionCaptureFrame])
+		{
+			IFileManager::Get().MakeDirectory(*FPaths::GetPath(CaptureOutputPath), true);
+			const FString FramePath = FPaths::GetPath(CaptureOutputPath) / FString::Printf(TEXT("%s-motion-%02d.png"), *FPaths::GetBaseFilename(CaptureOutputPath), MotionCaptureFrame);
+			FScreenshotRequest::RequestScreenshot(FramePath, false, false);
+			UE_LOG(LogTemp, Display, TEXT("[NeonRiderMotionCapture] frame=%d t=%.3f path=%s"), MotionCaptureFrame, CaptureTestElapsed, *FramePath);
+			++MotionCaptureFrame;
+		}
+		if (CaptureTestElapsed >= 17.0f) FPlatformMisc::RequestExit(false);
+		return;
+	}
 	if (!bCaptureRequested && CaptureTestElapsed >= CaptureRequestTime)
 	{
 		IFileManager::Get().MakeDirectory(*FPaths::GetPath(CaptureOutputPath), true);
@@ -748,6 +849,8 @@ void ALinxiaMotorcyclePawn::ResetToStart()
 	SetActorRotation(StartRotation);
 	CurrentSpeed = 0.0f;
 	TargetSpeed = 0.0f;
+	SmoothedSteer = 0.0f;
+	LateralSpeed = 0.0f;
 	CameraYawOffset = 0.0f;
 	VisualRoot->SetRelativeRotation(FRotator::ZeroRotator);
 	UE_LOG(LogTemp, Display, TEXT("[LinxiaMotorcycle] Reset to start"));
@@ -799,9 +902,23 @@ void ALinxiaMotorcyclePawn::StartRiderAnimation()
 	RiderMesh->SetSkinnedAssetAndUpdate(KellyMesh);
 	RiderMesh->RefreshBoneTransforms();
 
+	bRiderPoseInitialized = true;
+	UpdateRiderPose();
+	bLogIK = false;
+}
+
+void ALinxiaMotorcyclePawn::UpdateRiderPose()
+{
+	if (!bRiderPoseInitialized || !RiderMesh) return;
+	// Rebuild from reference bones each update: never integrate yesterday's IK pose.
+	for (int32 BoneIndex = 0; BoneIndex < RiderMesh->GetNumBones(); ++BoneIndex)
+	{
+		RiderMesh->ResetBoneTransformByName(RiderMesh->GetBoneName(BoneIndex));
+	}
+	RiderMesh->RefreshBoneTransforms();
 	for (const TPair<FName, float>& SpineLean : {
-		TPair<FName, float>(TEXT("bone_Spine"), -20.0f),
-		TPair<FName, float>(TEXT("bone_Spine1"), -18.0f)})
+		TPair<FName, float>(TEXT("bone_Spine"), -42.0f),
+		TPair<FName, float>(TEXT("bone_Spine1"), -38.0f)})
 	{
 		const FTransform Current = RiderMesh->GetBoneTransformByName(
 			SpineLean.Key, EBoneSpaces::ComponentSpace);
@@ -810,20 +927,25 @@ void ALinxiaMotorcyclePawn::StartRiderAnimation()
 			FMath::DegreesToRadians(SpineLean.Value));
 		RiderMesh->SetBoneRotationByName(
 			SpineLean.Key,
-			(Lean * Current.GetRotation()).Rotator(),
+			(FQuat(FVector::RightVector, FMath::DegreesToRadians(SmoothedSteer * 2.5f)) * Lean * Current.GetRotation()).Rotator(),
 			EBoneSpaces::ComponentSpace);
 		RiderMesh->RefreshBoneTransforms();
 	}
 
+	// Counter-rotate the neck so the seated forward flex keeps gaze on the road.
+	const FTransform Neck = RiderMesh->GetBoneTransformByName(TEXT("bone_Neck"), EBoneSpaces::ComponentSpace);
+	RiderMesh->SetBoneRotationByName(TEXT("bone_Neck"),
+		(FQuat(FVector::ForwardVector, FMath::DegreesToRadians(32.0f)) * Neck.GetRotation()).Rotator(), EBoneSpaces::ComponentSpace);
+	RiderMesh->RefreshBoneTransforms();
 	const bool bLeftHandPassed = SolveRiderTwoBoneIK(
 		TEXT("LeftHand"),
 		TEXT("bone_LeftArm"), TEXT("bone_LeftForeArm"), TEXT("bone_LeftHand"),
-		RiderLeftGripVisual,
+		RiderLeftGripVisual - WristToGripVisual,
 		FVector(-2.0f, -66.0f, 116.0f));
 	const bool bRightHandPassed = SolveRiderTwoBoneIK(
 		TEXT("RightHand"),
 		TEXT("bone_RightArm"), TEXT("bone_RightForeArm"), TEXT("bone_RightHand"),
-		RiderRightGripVisual,
+		RiderRightGripVisual - WristToGripVisual,
 		FVector(-2.0f, 66.0f, 116.0f));
 	const bool bLeftFootPassed = SolveRiderTwoBoneIK(
 		TEXT("LeftFoot"),
@@ -836,12 +958,58 @@ void ALinxiaMotorcyclePawn::StartRiderAnimation()
 		RiderRightFootVisual,
 		FVector(24.0f, 24.0f, 76.0f));
 
+	OrientRiderHand(true);
+	OrientRiderHand(false);
 	const bool bAllContactsPassed =
 		bLeftHandPassed && bRightHandPassed && bLeftFootPassed && bRightFootPassed;
-	UE_LOG(LogTemp, Display,
-		TEXT("[LinxiaMotorcycle] Rider source=%s pose=ProceduralTwoBoneIK contacts=%s"),
+	if (bLogIK) UE_LOG(LogTemp, Display,
+		TEXT("[LinxiaMotorcycle] Rider source=%s pose=ProceduralTwoBoneIK contacts=%s metric=WristSolverOnly visualContact=UNVERIFIED gripSource=ImportedOBJ"),
 		KellyMeshPath,
 		bAllContactsPassed ? TEXT("PASS") : TEXT("FAIL"));
+}
+
+void ALinxiaMotorcyclePawn::OrientRiderHand(bool bLeft)
+{
+	// Kelly low rig has three deforming finger chains. Use its measured knuckle
+	// frame, not guessed bone Euler axes, to put the palm over the existing grip.
+	const FString Side = bLeft ? TEXT("Left") : TEXT("Right");
+	const FName Hand(*FString::Printf(TEXT("bone_%sHand"), *Side));
+	const FName Index(*FString::Printf(TEXT("bone_%s_Finger11"), *Side));
+	const FName Outer(*FString::Printf(TEXT("bone_%s_Finger21"), *Side));
+	const FVector Wrist = RiderMesh->GetBoneLocationByName(Hand, EBoneSpaces::ComponentSpace);
+	const FVector A = RiderMesh->GetBoneLocationByName(Index, EBoneSpaces::ComponentSpace);
+	const FVector B = RiderMesh->GetBoneLocationByName(Outer, EBoneSpaces::ComponentSpace);
+	const FQuat SourceFrame = FRotationMatrix::MakeFromXY((A + B) * 0.5f - Wrist, A - B).ToQuat();
+	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
+	const FVector Forward = RiderToVisual.InverseTransformVectorNoScale(FVector::ForwardVector);
+	const FVector Across = RiderToVisual.InverseTransformVectorNoScale(FVector(0.0f, bLeft ? 1.0f : -1.0f, 0.0f));
+	const FQuat DesiredFrame = FRotationMatrix::MakeFromXY(Forward, Across).ToQuat();
+	const FQuat Existing = RiderMesh->GetBoneTransformByName(Hand, EBoneSpaces::ComponentSpace).GetRotation();
+	RiderMesh->SetBoneRotationByName(Hand, (DesiredFrame * SourceFrame.Inverse() * Existing).Rotator(), EBoneSpaces::ComponentSpace);
+	RiderMesh->RefreshBoneTransforms();
+
+	auto AimFinger = [this, &RiderToVisual](FName Bone, FName Child, const FVector& VisualDirection)
+	{
+		const FVector From = RiderMesh->GetBoneLocationByName(Bone, EBoneSpaces::ComponentSpace);
+		const FVector To = RiderMesh->GetBoneLocationByName(Child, EBoneSpaces::ComponentSpace);
+		const FQuat ExistingRotation = RiderMesh->GetBoneTransformByName(Bone, EBoneSpaces::ComponentSpace).GetRotation();
+		const FQuat Aim = FQuat::FindBetweenNormals((To - From).GetSafeNormal(), RiderToVisual.InverseTransformVectorNoScale(VisualDirection).GetSafeNormal());
+		RiderMesh->SetBoneRotationByName(Bone, (Aim * ExistingRotation).Rotator(), EBoneSpaces::ComponentSpace);
+		RiderMesh->RefreshBoneTransforms();
+	};
+	for (int32 Finger = 1; Finger <= 2; ++Finger)
+	{
+		const FName Proximal(*FString::Printf(TEXT("bone_%s_Finger%d1"), *Side, Finger));
+		const FName Distal(*FString::Printf(TEXT("bone_%s_Finger%d2"), *Side, Finger));
+		const FName Tip(*FString::Printf(TEXT("Bip01-%s-Finger%dNub"), bLeft ? TEXT("L") : TEXT("R"), Finger));
+		AimFinger(Proximal, Distal, FVector(0.15f, 0.0f, -0.99f));
+		AimFinger(Distal, Tip, FVector(-0.96f, 0.0f, -0.28f));
+	}
+	const FName Thumb(*FString::Printf(TEXT("bone_%s_Finger01"), *Side));
+	const FName ThumbEnd(*FString::Printf(TEXT("bone_%s_Finger02"), *Side));
+	const FName ThumbTip(*FString::Printf(TEXT("Bip01-%s-Finger0Nub"), bLeft ? TEXT("L") : TEXT("R")));
+	AimFinger(Thumb, ThumbEnd, FVector(0.65f, bLeft ? -0.35f : 0.35f, -0.68f));
+	AimFinger(ThumbEnd, ThumbTip, FVector(0.65f, bLeft ? -0.55f : 0.55f, 0.20f));
 }
 
 bool ALinxiaMotorcyclePawn::SolveRiderTwoBoneIK(
@@ -949,7 +1117,7 @@ bool ALinxiaMotorcyclePawn::SolveRiderTwoBoneIK(
 	const float EndpointError = FVector::Distance(SolvedEndVisual, TargetInVisualSpace);
 	const bool bPassed = FMath::IsFinite(EndpointError)
 		&& EndpointError <= RiderContactToleranceCm;
-	UE_LOG(LogTemp, Display,
+	if (bLogIK) UE_LOG(LogTemp, Display,
 		TEXT("[LinxiaMotorcycleIK] chain=%s target=%s solved=%s error=%.3f passed=%d"),
 		*ChainName.ToString(),
 		*TargetInVisualSpace.ToCompactString(),
@@ -1012,6 +1180,33 @@ void ALinxiaMotorcyclePawn::ConfigureCaptureCamera()
 		CameraBoom->TargetArmLength = 650.0f;
 		CameraBoom->SocketOffset = FVector(0.0f, 0.0f, 18.0f);
 		FollowCamera->SetFieldOfView(54.0f);
+	}
+	else if (View == TEXT("hands") || View == TEXT("handsright"))
+	{
+		CameraYawOffset = View == TEXT("handsright") ? -125.0f : 125.0f;
+		CameraPitch = -14.0f;
+		CameraBoom->SetRelativeLocation(FVector(25.0f, 0.0f, 110.0f));
+		CameraBoom->TargetArmLength = 230.0f;
+		CameraBoom->SocketOffset = FVector::ZeroVector;
+		FollowCamera->SetFieldOfView(36.0f);
+	}
+	else if (View == TEXT("bridge"))
+	{
+		CameraYawOffset = 58.0f;
+		CameraPitch = -18.0f;
+		CameraBoom->SetRelativeLocation(FVector(0.0f, 0.0f, -650.0f));
+		CameraBoom->TargetArmLength = 4000.0f;
+		CameraBoom->SocketOffset = FVector::ZeroVector;
+		CameraBoom->bDoCollisionTest = false;
+		FollowCamera->SetFieldOfView(58.0f);
+	}
+	else if (View == TEXT("establishing"))
+	{
+		CameraYawOffset = 58.0f;
+		CameraPitch = -12.0f;
+		CameraBoom->TargetArmLength = 1450.0f;
+		CameraBoom->SocketOffset = FVector(0.0f, 0.0f, 180.0f);
+		FollowCamera->SetFieldOfView(58.0f);
 	}
 	else if (View == TEXT("rear"))
 	{

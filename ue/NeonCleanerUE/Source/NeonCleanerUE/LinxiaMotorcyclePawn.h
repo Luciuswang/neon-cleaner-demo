@@ -30,6 +30,7 @@ public:
 	float GetDamageFlash() const { return DamageFlash; }
 	float GetHitFlash() const { return HitFlash; }
 	float GetForwardSpeed() const { return CurrentSpeed; }
+	float GetLateralSpeed() const { return LateralSpeed; }
 	bool IsBoosting() const { return bBoosting; }
 	bool IsLegacyTest() const { return bSmokeTestActive || bCaptureTestActive; }
 	bool IsGameplayReady() const;
@@ -59,6 +60,8 @@ private:
 	void ResetToStart();
 	void UpdateTargetDistanceLog();
 	void StartRiderAnimation();
+	void UpdateRiderPose();
+	void OrientRiderHand(bool bLeft);
 	bool SolveRiderTwoBoneIK(
 		FName ChainName,
 		FName UpperBone,
@@ -74,6 +77,16 @@ private:
 	float TargetSpeed = 0.0f;
 	float ThrottleInput = 0.0f;
 	float SteerInput = 0.0f;
+	float SmoothedSteer = 0.0f;
+	float LateralSpeed = 0.0f;
+	float RiderMotionLogElapsed = 0.0f;
+	float RiderMotionElapsed = 0.0f;
+	bool bRiderPoseInitialized = false;
+	bool bLogIK = true;
+	bool bRiderMotionCapture = false;
+	bool bRiderVideoCapture = false;
+	int32 VideoCaptureFrame = 0;
+	int32 MotionCaptureFrame = 0;
 	float CameraYawOffset = 0.0f;
 	float CameraPitch = -8.0f;
 	float LastTargetDistance = 0.0f;

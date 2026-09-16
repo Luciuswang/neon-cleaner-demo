@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "source": "web/models/player-motorcycle.glb",
+  "source_bytes": 56233204,
+  "source_sha256": "ab4c6c76929325838044d0598a0c399636d47fa375a8ba61b2e9c424c94d6332",
+  "source_asset_metadata": {
+    "generator": "Khronos glTF Blender I/O v4.0.43",
+    "version": "2.0"
+  },
+  "rights_status": "Existing project/user-provided local asset. GLB has no copyright/license metadata; external distribution rights not verified.",
+  "candidate_only": true,
+  "target": "/Game/CinematicBike/SM_CinematicBike.SM_CinematicBike",
+  "axis": "+X forward, +Y right, +Z up; XY centered; ground Z0. Front sign visually verified from source_side_inspection.png: fork/headlight/front wheel on +X, saddle/tail on -X.",
+  "dimensions_cm": [
+    229.99999999999997,
+    90.30984758680734,
+    124.57169774444873
+  ],
+  "vertices": 491687,
+  "triangles": 799914,
+  "maps": {
+    "Color": {
+      "file": "T_CinematicBike_Color.png",
+      "dimensions": [
+        4096,
+        4096
+      ],
+      "source_sha256": "075082ff363769f959a6edcfb10afeca19da50e5053895196c918e0d8d8b63a9"
+    },
+    "NormalDX": {
+      "file": "T_CinematicBike_NormalDX.png",
+      "dimensions": [
+        4096,
+        4096
+      ],
+      "source_sha256": "e91215a792594ee2ae8fcac8963914b40c3dbf79b8a4099ff3b7611b5b606d36"
+    },
+    "MetalRough": {
+      "file": "T_CinematicBike_MetalRough.png",
+      "dimensions": [
+        4096,
+        4096
+      ],
+      "source_sha256": "d6c07df59a61f6da65e941d16c93021233b2d4a49ec77881811afebe5f263e4e"
+    }
+  },
+  "skins": 0,
+  "animations": 0,
+  "welded_component_count": 1,
+  "largest_components": [
+    {
+      "vertices": 491687,
+      "min_cm": [
+        -114.99999999999999,
+        -45.15492379340367,
+        0.0
+      ],
+      "max_cm": [
+        114.99999999999999,
+        45.15492379340367,
+        124.57169774444873
+      ]
+    }
+  ],
+  "wheel_split_status": "Not segmented: connectivity audit does not establish semantic wheel/steering ownership. Requires inspected component selection or DCC retopology; no blind spatial cutting.",
+  "contact_status": "Old motorcycle grip, seat, footpeg and wheel anchors are invalid until recalibrated.",
+  "render_status": "Offline candidate prepared; UE import, material validation, LOD budget and dynamic contacts not yet verified."
+}

@@ -1,5 +1,10 @@
 # Neon Cleaner Multi-Agent Production System
 
+Current production/QA contract: `cinematic-quality-contract.md` (2026-09-16).
+The user's explicit autonomous asset-download/restoration authorization applies;
+historical approval boundaries below do not require asking again for those actions.
+Final QA is independent and must reject placeholder art and missing motion evidence.
+
 This is the lightweight, repo-portable multi-agent layer for Neon Cleaner. It
 borrows the useful governance ideas from [Edict](https://github.com/cft0808/edict)
 without requiring OpenClaw, Redis, PostgreSQL, a dashboard, or a permanently

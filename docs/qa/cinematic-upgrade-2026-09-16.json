@@ -1,0 +1,289 @@
+{
+  "schema": 2,
+  "producer": "root + rider_producer + asset_scout",
+  "reviewer": "quality_gatekeeper",
+  "reviewed_at": "2026-09-16T05:33:48.471719+00:00",
+  "engine": "Unreal Engine5.8.1",
+  "build": {
+    "runtime_binary": {
+      "path": "ue/NeonCleanerUE/Binaries/Win64/UnrealEditor-NeonCleanerUE.dll",
+      "sha256": "2599d557c34483543a97b8d9d8d59e26ea7981adb31bb38cb3dcf5f5eb933955"
+    },
+    "map": {
+      "path": "ue/NeonCleanerUE/Content/LinxiaChase/LVL_Linxia_MotorcycleChase.umap",
+      "sha256": "2342b63480794179e89d6d9e0a9755b28d8366b659da47f7fab9a7d70da1f6bb"
+    },
+    "dependencies_sha256": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e"
+  },
+  "evidence": [
+    {
+      "id": "gameplay",
+      "view": "gameplay",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gameplay.png",
+      "sha256": "3d89d82aae99442063072b45b909c728e7b1156e614a6e365d9de68924709c7e",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Modeled car and elevated road visible; blurred small hero cannot certify contact."
+    },
+    {
+      "id": "bridge",
+      "view": "bridge_side",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-bridge.png",
+      "sha256": "25db2728dd023c339fb6c03a839901e28d0905795d0ba24bdd647ae487860c7f",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Elevated deck/piers confirmed; lower half dark and foreground architecture occludes."
+    },
+    {
+      "id": "wide",
+      "view": "bridge_wide",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-establishing.png",
+      "sha256": "35f454d904889ac5ad2f50eb0916b480acb7da0a6483ed1372757e367d8c63b5",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Blank repetitive architecture, foreground lamp obstruction and weak lower-city lighting; REWORK."
+    },
+    {
+      "id": "front",
+      "view": "rider_front",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3.png",
+      "sha256": "9720a9b015a69e8b4486d4dc0442de1dd68c3485821ad284761f5a2543f15422",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Current mounted character visible; low fidelity, not cinematic PASS."
+    },
+    {
+      "id": "side",
+      "view": "rider_side",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3-side.png",
+      "sha256": "86011a0293c2e4d2e93b2d1a714ff2ce616304346d2c750a4d14a7adb0230d60",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Seat proxy removed; low hero faceting, gloss, downward head persist."
+    },
+    {
+      "id": "rear",
+      "view": "rider_rear",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3-rear.png",
+      "sha256": "bccd8d7e1b38f06e3d2ec9c9d0557b593d3171e6fe57aa1360eff7633ec95a52",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Current rider rear evidence; not all foot/seat/hand surfaces verified."
+    },
+    {
+      "id": "left",
+      "view": "palm_left",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-hands.png",
+      "sha256": "46a1b1d4688f6c5de1402b54de67804062ff39b6150390df2e0bda912a04b54a",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "REWORK: severe wrist bend, crossing finger chains and unclear natural wrap."
+    },
+    {
+      "id": "right",
+      "view": "palm_right",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-handsright.png",
+      "sha256": "35d0bf190f578ac6b87bb6c05e5f7cf59d8286f80c66adf312af8074670fee4c",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "REWORK: severe wrist bend, crossing finger chains and unclear natural wrap."
+    },
+    {
+      "id": "build",
+      "view": "build_log",
+      "path": ".local/cinematic-build.txt",
+      "sha256": "3e270ce90207ec39d1ef939f8dcf4cebfec16e8da78a98178cfb72c24ee39bd1",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Final Development build succeeded; root verification."
+    },
+    {
+      "id": "map",
+      "view": "map_validation",
+      "path": ".local/cinematic-gate3-run.txt",
+      "sha256": "b5c56c69d4d86aa0a4187ac9d677bc0c4f56f5dee8ca72e5328374fe53c5c6f7",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Full Gate3 validates map; legacy engineering only."
+    },
+    {
+      "id": "rig",
+      "view": "asset_validation",
+      "path": ".local/cinematic-gate3-run.txt",
+      "sha256": "b5c56c69d4d86aa0a4187ac9d677bc0c4f56f5dee8ca72e5328374fe53c5c6f7",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Kelly rig validation included; not an art verdict."
+    },
+    {
+      "id": "clean",
+      "view": "smoke_clean",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Clean.log",
+      "sha256": "076199969a4bf687162621e73e5749f14990128181e218f91461638e5d087e00",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained."
+    },
+    {
+      "id": "damaged",
+      "view": "smoke_damaged",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Damaged.log",
+      "sha256": "bebd8128efc0d522b8b38f6211befb32e751e0117ad7b0931ae834bdc4e52132",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained."
+    },
+    {
+      "id": "lost",
+      "view": "smoke_lost",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Lost.log",
+      "sha256": "6cd01702f584b39710e8711604867bf8bb5244cce37bd26da8f450dd7249cf85",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained."
+    },
+    {
+      "id": "collision",
+      "view": "input_collision",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Damaged.log",
+      "sha256": "bebd8128efc0d522b8b38f6211befb32e751e0117ad7b0931ae834bdc4e52132",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Damaged run demonstrates real contact damage and recovery; isolated motion does not certify encounter."
+    },
+    {
+      "id": "sources",
+      "view": "asset_manifest",
+      "path": "docs/assets/cinematic-car-source.json",
+      "sha256": "14c18609fe48e782bed94bcd3451c4783432bed15d63c94b172eb242e84c3349",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Source/license/hash/dimensions and conversion recorded; asset_scout source audit."
+    },
+    {
+      "id": "car_size",
+      "view": "vehicle_measurements",
+      "path": "docs/assets/cinematic-car-source.json",
+      "sha256": "14c18609fe48e782bed94bcd3451c4783432bed15d63c94b172eb242e84c3349",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "480 x220 x126.56cm, wheel pivots preserved and engine import validated."
+    },
+    {
+      "id": "motion",
+      "view": "rider_motion",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-motion-reviewed/rider-side-30fps.mp4",
+      "sha256": "16536a9e8020d743bad375de8f0079a4fe76c2edd18774b8780c78783ee16f08",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": false,
+      "notes": "Decoded12s/30fps/1080p, UE timing valid. Reviewer sampled frames0/45/90/180/270/359 only; full continuous approval NOT given. Wheel/fork not articulated.",
+      "ue_frame_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-motion-reviewed/runtime.log",
+        "sha256": "e9d2542abc386b64fd3bb295117a3e28b352aacfbfd07e8163090c5da69ef821"
+      },
+      "actions_reviewed": []
+    },
+    {
+      "id": "performance",
+      "view": "performance",
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-performance/frame-times.csv",
+      "sha256": "d8cabffe0058c534e12a566545faaafeae7814a20a75a5b5c130533211c8342f",
+      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "reviewed": true,
+      "notes": "Independent CSV/runtime audit:35.33s,p95 16.89ms meets numeric target;350.14ms and55.65ms hitches remain.100% screen percentage, dynamic resolution0."
+    }
+  ],
+  "domains": {
+    "engineering": {
+      "verdict": "PASS",
+      "notes": "Build and fullGate3 engineering verified; Clean100/Damaged88/Lost outcomes pass. These do not imply cinematic acceptance.",
+      "evidence": [
+        "gameplay",
+        "build",
+        "map",
+        "rig",
+        "clean",
+        "damaged",
+        "lost",
+        "collision"
+      ]
+    },
+    "environment": {
+      "verdict": "REWORK",
+      "notes": "Deck elevation exists; repeated box facades, uniform windows, dark lower structure and obstructed composition rejected.",
+      "evidence": [
+        "gameplay",
+        "bridge",
+        "wide"
+      ]
+    },
+    "assets": {
+      "verdict": "REWORK",
+      "notes": "Low Kelly/bike unsuitable for closeups. HighKelly47 missing maps/groom. Private highbike candidate inactive, no rig/LODs. Car lacks neutral/detail approval.",
+      "evidence": [
+        "front",
+        "sources"
+      ]
+    },
+    "rider": {
+      "verdict": "REWORK",
+      "notes": "Both hand closeups fail natural wrist/finger anatomy and grip contact; active bike fork/wheels remain static.",
+      "evidence": [
+        "front",
+        "side",
+        "rear",
+        "left",
+        "right",
+        "motion"
+      ]
+    },
+    "vehicles": {
+      "verdict": "CONDITIONAL",
+      "notes": "Authored body/rolling wheel components improve cubes/scale; detailed neutral/lit views and tire contact/dynamic approval absent; LOD0 only.",
+      "evidence": [
+        "car_size",
+        "motion"
+      ]
+    },
+    "temporal": {
+      "verdict": "REWORK",
+      "notes": "Motion decode/timing verified, only six visual samples reviewed;350ms and55.6ms real-time hitches, full contact continuity unapproved.",
+      "evidence": [
+        "motion",
+        "performance"
+      ]
+    },
+    "ai_handoff": {
+      "verdict": "BLOCKED",
+      "notes": "No accepted HUD-free first/last/camera reference pack. Final AI generation remains blocked by UE visual failures.",
+      "evidence": []
+    }
+  },
+  "performance": {
+    "source": "C:\\Users\\baomin.wang\\AppData\\Local\\UnrealEngine\\5.8\\Saved\\Profiling\\CSV\\Profile(20260916_132637).csv",
+    "original_sha256": "72b9d385e051d2ed0a927f8c9797a1132f44a6c46b7b0b55781133852c1e2b26",
+    "original_frames": 2400,
+    "excluded_boot_warmup_frames": 300,
+    "retained_frames": 2100,
+    "duration_seconds": 35.32984930000002,
+    "p50_frame_ms": 16.665300000000002,
+    "p95_frame_ms": 16.891435,
+    "max_frame_ms": 350.138,
+    "fixed_timestep": false,
+    "note": "UE wall-clock FrameTime, including frame cap waits; not fixed-step video FPS. Runtime invocation and settings must be independently verified.",
+    "width": 1920,
+    "height": 1080,
+    "hardware": "RTX5070; Core Ultra7 265K;32GB; driver591.74",
+    "settings": "UE5.8.1 WindowsEditor -game DX12/SM6; Epic scalability3; software Lumen;1920x1080; r.ScreenPercentage100; DynamicRes.OperationMode0; t.MaxFPS60; real-time automatic driver speed1, no fixed engine timestep"
+  },
+  "blockers": [
+    "Deck elevation exists; repeated box facades, uniform windows, dark lower structure and obstructed composition rejected.",
+    "Low Kelly/bike unsuitable for closeups. HighKelly47 missing maps/groom. Private highbike candidate inactive, no rig/LODs. Car lacks neutral/detail approval.",
+    "Both hand closeups fail natural wrist/finger anatomy and grip contact; active bike fork/wheels remain static.",
+    "Authored body/rolling wheel components improve cubes/scale; detailed neutral/lit views and tire contact/dynamic approval absent; LOD0 only.",
+    "Motion decode/timing verified, only six visual samples reviewed;350ms and55.6ms real-time hitches, full contact continuity unapproved.",
+    "No accepted HUD-free first/last/camera reference pack. Final AI generation remains blocked by UE visual failures."
+  ],
+  "status": "CINEMATIC_REWORK_AI_BLOCKED",
+  "note": "Partial rejected pack, not a passing submission. False reviewed flags deliberately preserve incomplete independent review. Historical captures outside this report are not current evidence."
+}

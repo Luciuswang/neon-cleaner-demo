@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "asset": "asphalt_02",
+      "channel": "diff",
+      "tile_metres": 3,
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_url": "https://polyhaven.com/a/asphalt_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/asphalt_02/asphalt_02_diff_4k.jpg",
+      "source": ".local/assets/surfaces/asphalt_02_diff_4k.jpg",
+      "bytes": 11654128,
+      "sha256": "d1601354507b6c4a46aa741b9134f9f23f738596a2bdcd20792e50ca554018e0",
+      "ue_path": "/Game/CinematicSurfaces/asphalt_02_diff_4k"
+    },
+    {
+      "asset": "asphalt_02",
+      "channel": "rough",
+      "tile_metres": 3,
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_url": "https://polyhaven.com/a/asphalt_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/asphalt_02/asphalt_02_rough_4k.jpg",
+      "source": ".local/assets/surfaces/asphalt_02_rough_4k.jpg",
+      "bytes": 8506335,
+      "sha256": "62e0461c25fe1cb411abf8ef3afaf080e16bf96ef7fd2acd180e9867ce95aabd",
+      "ue_path": "/Game/CinematicSurfaces/asphalt_02_rough_4k"
+    },
+    {
+      "asset": "asphalt_02",
+      "channel": "nor_dx",
+      "tile_metres": 3,
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_url": "https://polyhaven.com/a/asphalt_02",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/asphalt_02/asphalt_02_nor_dx_4k.png",
+      "source": ".local/assets/surfaces/asphalt_02_nor_dx_4k.png",
+      "bytes": 34046778,
+      "sha256": "822f49078461e352b7fc329e0b1087c3415b6f328d107209e040b0e1b9a0a502",
+      "ue_path": "/Game/CinematicSurfaces/asphalt_02_nor_dx_4k"
+    },
+    {
+      "asset": "concrete_wall_006",
+      "channel": "diff",
+      "tile_metres": 2,
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_url": "https://polyhaven.com/a/concrete_wall_006",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/concrete_wall_006/concrete_wall_006_diff_4k.jpg",
+      "source": ".local/assets/surfaces/concrete_wall_006_diff_4k.jpg",
+      "bytes": 11141472,
+      "sha256": "30b457cca51834accc505c25a684b6b2b51ebba1be6f363e6fd9361d7fce5862",
+      "ue_path": "/Game/CinematicSurfaces/concrete_wall_006_diff_4k"
+    },
+    {
+      "asset": "concrete_wall_006",
+      "channel": "rough",
+      "tile_metres": 2,
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_url": "https://polyhaven.com/a/concrete_wall_006",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/4k/concrete_wall_006/concrete_wall_006_rough_4k.jpg",
+      "source": ".local/assets/surfaces/concrete_wall_006_rough_4k.jpg",
+      "bytes": 3966520,
+      "sha256": "9c5f399c909c6cb6468d13da6cbb07d164b1a220e9cce9c4e5d2328385ea4ad2",
+      "ue_path": "/Game/CinematicSurfaces/concrete_wall_006_rough_4k"
+    },
+    {
+      "asset": "concrete_wall_006",
+      "channel": "nor_dx",
+      "tile_metres": 2,
+      "license": "CC0-1.0",
+      "license_url": "https://polyhaven.com/license",
+      "source_url": "https://polyhaven.com/a/concrete_wall_006",
+      "download_url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/4k/concrete_wall_006/concrete_wall_006_nor_dx_4k.png",
+      "source": ".local/assets/surfaces/concrete_wall_006_nor_dx_4k.png",
+      "bytes": 37028322,
+      "sha256": "506944d243fca4c9e551384ab4342744919f7364f71607bfc68200114333dea5",
+      "ue_path": "/Game/CinematicSurfaces/concrete_wall_006_nor_dx_4k"
+    }
+  ]
+}
