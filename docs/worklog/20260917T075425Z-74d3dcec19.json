@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20260917T075425Z-74d3dcec19",
+  "task_id": "crosspc-sync-2026-09-17",
+  "timestamp_utc": "2026-09-17T07:54:25.836904+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Make cross-PC checkpoints automatic with private assets and complete reporting",
+  "commit_shas": [
+    "12dd72269d3e5a5096eeee5e28da58aa456c47db"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

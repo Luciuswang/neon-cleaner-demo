@@ -131,14 +131,19 @@ function Write-TextFileAtomically {
         [Buffer]::BlockCopy($textBytes, 0, $outputBytes, $Preamble.Length, $textBytes.Length)
     }
 
-    $temporaryPath = "$Path.codex-$PID-$([Guid]::NewGuid().ToString('N')).tmp"
+    $operationId = "$PID-$([Guid]::NewGuid().ToString('N'))"
+    $temporaryPath = "$Path.codex-$operationId.tmp"
+    $replaceBackupPath = "$Path.codex-$operationId.bak"
     try {
         [IO.File]::WriteAllBytes($temporaryPath, $outputBytes)
-        [IO.File]::Replace($temporaryPath, $Path, $null, $true)
+        [IO.File]::Replace($temporaryPath, $Path, $replaceBackupPath, $true)
     }
     finally {
         if (Test-Path -LiteralPath $temporaryPath) {
             Remove-Item -LiteralPath $temporaryPath -Force
+        }
+        if (Test-Path -LiteralPath $replaceBackupPath) {
+            Remove-Item -LiteralPath $replaceBackupPath -Force
         }
     }
 }

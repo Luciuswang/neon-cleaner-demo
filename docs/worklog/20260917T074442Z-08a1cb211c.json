@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "event_id": "20260917T074442Z-08a1cb211c",
+  "task_id": "cinematic-upgrade-2026-09-16",
+  "timestamp_utc": "2026-09-17T07:44:42.629150+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "rework",
+  "summary": "Implemented elevated highway,4K PBR,authored enemy vehicles and smoother rider motion; engineering passes but cinematic QA rejects hand anatomy,hero detail and static motorcycle articulation.",
+  "commit_shas": [
+    "12dd722"
+  ],
+  "evidence": [
+    "docs/qa/cinematic-upgrade-2026-09-16.md",
+    "docs/qa/cinematic-upgrade-2026-09-16.json"
+  ],
+  "blockers": [
+    "Cinematic and AI reference acceptance remain blocked; highKelly textures/groom absent; two performance hitches."
+  ],
+  "next_action": "Use backed-up source assets,rig detailed bike and correct hand local axes; do not repeat completed imports or source inventory.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

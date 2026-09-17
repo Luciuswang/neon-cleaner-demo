@@ -1,5 +1,7 @@
 param(
-  [switch]$ValidateUE
+  [switch]$ValidateUE,
+  [switch]$RestorePrivateAssets,
+  [string]$UEPath = $env:NEON_UE_ROOT
 )
 
 $ErrorActionPreference = "Stop"
@@ -7,7 +9,12 @@ $ErrorActionPreference = "Stop"
 $repo = Split-Path -Parent $MyInvocation.MyCommand.Path
 $branch = "codex/character-continuity-pipeline"
 $remote = "origin"
-$ueRoot = "C:\Program Files\Epic Games\UE_5.8"
+$ueRoot = $UEPath
+if (-not $ueRoot) {
+  $ueRoot = @('C:\Program Files\Epic Games\UE_5.8','D:\Program Files\Epic Games\UE_5.8','D:\EpicGames\UE_5.8') |
+    Where-Object { Test-Path -LiteralPath (Join-Path $_ 'Engine\Binaries\Win64\UnrealEditor-Cmd.exe') } | Select-Object -First 1
+}
+if (-not $ueRoot) { $ueRoot = 'C:\Program Files\Epic Games\UE_5.8' }
 $editorCmd = Join-Path $ueRoot "Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
 $project = Join-Path $repo "ue\NeonCleanerUE\NeonCleanerUE.uproject"
 $kelly = Join-Path $repo "ue\NeonCleanerUE\Content\KellyLowSource\asda.uasset"
@@ -29,14 +36,14 @@ try {
   Write-Step "Neon Cleaner sync start"
   Write-Host "Repo: $repo"
 
-  if (-not (Test-Path -LiteralPath ".git")) {
-    throw "This script must be run from the Neon Cleaner git repository."
-  }
+  Invoke-CheckedGit rev-parse --show-toplevel | Out-Null
 
   $currentBranch = (Invoke-CheckedGit branch --show-current).Trim()
-  if ($currentBranch -ne $branch) {
-    Write-Host "Switching branch: $currentBranch -> $branch"
-    Invoke-CheckedGit checkout $branch
+  if (-not $currentBranch) { throw 'Detached HEAD: choose an explicit task branch first.' }
+  $branch = $currentBranch
+  foreach ($marker in @('MERGE_HEAD','rebase-merge','rebase-apply','CHERRY_PICK_HEAD')) {
+    $markerPath = Invoke-CheckedGit rev-parse --git-path $marker
+    if (Test-Path -LiteralPath $markerPath) { throw "Unfinished Git operation: $marker" }
   }
 
   Write-Step "Checking local worktree"
@@ -44,11 +51,12 @@ try {
   if ($dirty) {
     Write-Warning "Local changes exist. Fetching remote, but not pulling over local work."
     $dirty | ForEach-Object { Write-Host $_ }
-    Invoke-CheckedGit fetch $remote
+    Invoke-CheckedGit fetch $remote '+refs/heads/*:refs/remotes/origin/*' --prune
   }
   else {
-    Invoke-CheckedGit fetch $remote
-    Invoke-CheckedGit pull --ff-only $remote $branch
+    Invoke-CheckedGit fetch $remote '+refs/heads/*:refs/remotes/origin/*' --prune
+    $remoteBranch = Invoke-CheckedGit for-each-ref --format='%(refname)' "refs/remotes/$remote/$branch"
+    if ($remoteBranch) { Invoke-CheckedGit merge --ff-only "$remote/$branch" }
   }
 
   Write-Step "Git LFS"
@@ -58,7 +66,12 @@ try {
     Invoke-CheckedGit lfs pull
   }
   else {
-    Write-Warning "Git LFS is not available. Install Git LFS before working with UE assets."
+    throw "Git LFS is required before working with UE assets."
+  }
+
+  if ($RestorePrivateAssets -or (Test-Path 'docs/sync/private-assets-lock.json')) {
+    & python (Join-Path $repo 'tools/sync/private_assets.py') restore
+    if ($LASTEXITCODE -ne 0) { throw 'Private asset restore failed; do not redo production to compensate for an incomplete sync.' }
   }
 
   Write-Step "Local environment"
@@ -75,13 +88,23 @@ try {
       throw "KellyLowSource/asda.uasset is missing. Run ue\Migrate-KellyLowCharacter.ps1 -SourceProject <private-source.uproject> before validation."
     }
     $validateScript = (Join-Path $repo "ue\scripts\validate_linxia_preview_level.py").Replace('\', '/')
-    $command = '"' + $editorCmd + '" "' + $project + '" -unattended -nop4 -nullrhi -nosplash -run=pythonscript -script="' + $validateScript + '"'
-    & cmd.exe /d /s /c $command
+    $validationLog = Join-Path $repo 'ue/NeonCleanerUE/Saved/Quality/sync-validate.log'
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $validationLog) | Out-Null
+    Remove-Item -LiteralPath $validationLog -ErrorAction SilentlyContinue
+    & $editorCmd $project -unattended -nop4 -nullrhi -nosplash -run=pythonscript "-script=$validateScript" "-abslog=$validationLog"
+    if ($LASTEXITCODE -ne 0) { throw "UE validation failed with exit $LASTEXITCODE" }
+    if (-not (Test-Path -LiteralPath $validationLog) -or
+        (Select-String -LiteralPath $validationLog -Pattern 'LogPython: Error|Traceback|Fatal error:' -Quiet) -or
+        -not (Select-String -LiteralPath $validationLog -Pattern 'Validation passed' -Quiet)) {
+      throw "UE validation did not produce a clean success marker: $validationLog"
+    }
   }
 
   Write-Step "Codex context to read"
   @(
     "AGENTS.md",
+    "docs/project-sync.md",
+    "docs/biweekly-reporting.md",
     "docs/handoff.md",
     "docs/handoff-kelly-low-2026-09-14.md",
     "docs/handoff-kelly-2026-09-07.md",

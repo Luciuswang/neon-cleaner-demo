@@ -1,7 +1,36 @@
 # Project Handoff
 
-Last updated: 2026-09-16
+Last updated: 2026-09-17
 
+
+## Authoritative cross-PC continuation - 2026-09-17
+
+The user now requires automatic save/upload at every completed checkpoint, with
+no repeated permission or routine announcements. This supersedes older "no push
+requested" and local-only instructions. Read docs/project-sync.md and AGENTS.md.
+
+Code/public assets: origin/codex/character-continuity-pipeline and task branches.
+Private resources: Luciuswang/neon-cleaner-private-assets, pinned by
+docs/sync/private-assets-lock.json. The private snapshot has 745 files, including
+editable Kelly/city source, current private Content, exact checkpoint module,
+and current video/image/log/performance evidence. Restore it before redoing work.
+Use sync_project_start.ps1 -RestorePrivateAssets on another computer; no drive-D
+source assumption is required. Original missing Kelly maps/groom are still missing.
+
+Before parallel writes, claim stable task ID and explicit paths using
+tools/sync/claim_task.py; use separate task branches and renew leases before expiry.
+Finish updates worklog/QA/handoff and calls sync_project_finish.ps1 (push defaults
+on); verify remote/LFS/private snapshot, then release claim. Never force push.
+The prior Fab registration-script local edit is included in this save as requested.
+
+Biweekly reports MUST fetch all remote branches using tools/sync/collect_biweekly.py
+and combine all machines' published commits and immutable docs/worklog events.
+Deduplicate task/event/commit IDs; include unintegrated work and failed QA. Unknown
+offline work cannot be called absent. Do not report only this PC or this chat.
+
+Cinematic implementation 12dd722 remains ENGINEERING PASS / CINEMATIC REWORK /
+AI VIDEO BLOCKED. Resource portability is not visual acceptance. Continue from
+docs/qa/cinematic-upgrade-2026-09-16.md, without repeating completed asset imports.
 
 ## Authoritative continuation - cinematic upgrade 2026-09-16
 

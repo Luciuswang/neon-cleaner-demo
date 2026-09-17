@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "event_id": "20260917T074442Z-1e46c4a6b5",
+  "task_id": "crosspc-sync-2026-09-17",
+  "timestamp_utc": "2026-09-17T07:44:42.793606+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "implemented_pending_verification",
+  "summary": "Standing automatic Git/LFS/private-snapshot publishing,atomic task/path claims and all-remote-branch biweekly collection implemented. Private snapshot contains745files including editable sources and QA evidence.",
+  "commit_shas": [
+    "12dd72269d3e5a5096eeee5e28da58aa456c47db"
+  ],
+  "evidence": [
+    "docs/project-sync.md",
+    "docs/sync/private-assets-lock.json"
+  ],
+  "blockers": [],
+  "next_action": "Finish isolated failure tests and fresh-clone restore verification,then publish and release claim.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

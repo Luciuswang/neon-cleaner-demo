@@ -1,5 +1,40 @@
 # Codex Project Entry: Neon Cleaner
 
+## Standing cross-PC rule - 2026-09-17
+
+The user authorizes normal commits, Git LFS uploads and private-asset backups at
+every completed work checkpoint. Do this automatically without asking again or
+repeating routine sync announcements. Report only failures that affect continuity.
+This supersedes older "no push requested" notes and confirmation requirements.
+
+- At start, fetch ALL origin branches, preserve the current task branch, read
+  remote worklogs/task packets and current QA before implementing. Do not redo
+  work already committed on another computer. Distinguish missing local resources
+  from unperformed production; restore the pinned private snapshot first.
+- Before parallel production, acquire the stable task ID and explicit write
+  paths with `python tools/sync/claim_task.py acquire <task-id> --scope <path>`.
+  A rejected claim/push means another workstation won; reread instead of writing.
+  Renew the 8-hour lease before expiry; release only after the checkpoint uploads.
+  Use separate `work/<task-id>/<workstation>` branches for concurrent tasks.
+  Never concurrently edit the same UE binary asset, map, or claimed code path.
+- Before ending, update the task's actual status, QA, blockers and next concrete
+  action; append an immutable `docs/worklog/*.json` event, update handoff and run
+  `sync_project_finish.ps1 -CommitMessage "..."` (push is now the default).
+  Inspect the staged scope first. The current save instruction includes the
+  previously preserved Fab registration-script change; preserve its contents.
+- Finish uploads a private immutable snapshot and verifies normal Git push/LFS
+  acknowledgement. No force pushes, silent conflicts or false "uploaded" claims.
+  Retry safely or publish an explicit recovery branch when concurrent work stops
+  fast-forward; never reset another computer's changes. `-LocalOnly` is only for
+  an explicitly requested offline checkpoint and is not cross-PC completion.
+- Every biweekly report must use `tools/sync/collect_biweekly.py` to fetch all
+  remote branches, deduplicate commits/events/task IDs, include other machines'
+  unintegrated work and QA failures, and disclose unknown/offline work. Never
+  infer machine identity from Git author or use one chat/local HEAD as the report.
+
+See `docs/project-sync.md`, `docs/biweekly-reporting.md` and the private asset
+lock. Routine publishing to these configured repositories is already authorized.
+
 ## Current cinematic mandate — 2026-09-16
 
 Read `docs/cinematic-quality-contract.md` and
@@ -104,9 +139,9 @@ one of:
 .\sync_project_finish.ps1 -Note "what changed / what is next" -CommitMessage "short commit message" -Push
 ```
 
-If `sync_project_finish.ps1` says the repo is dirty and no commit message was
-provided, summarize the exact pending files to the user and ask whether to
-commit now.
+Normal checkpoint upload is authorized and mandatory. Inspect/classify changes,
+choose an accurate commit message and finish without another confirmation.
+If upload fails, preserve work and clearly record the unresolved sync failure.
 
 ## Reporting Rule
 

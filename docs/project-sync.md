@@ -1,164 +1,122 @@
-# Cross-PC Project Sync
+# Cross-PC project continuity
 
-Use this page to continue Neon Cleaner from any of the user's three PCs.
+Standing user instruction, 2026-09-17: save and upload every completed checkpoint
+automatically; do not ask repeatedly or narrate successful routine synchronization.
+All computers contribute to one project history and one complete biweekly report.
 
-## One Source Of Truth
+## Authoritative stores
 
-GitHub is the project source of truth:
+| Store | Contents |
+| --- | --- |
+| [Public project](https://github.com/Luciuswang/neon-cleaner-demo) | Code, scripts, public assets via Git LFS, task packets, worklogs, QA decisions and reports |
+| [Private asset vault](https://github.com/Luciuswang/neon-cleaner-private-assets) | Immutable, checksummed private Kelly/bike assets, editable sources, selected evidence and exact checkpoint DLL |
+| Epic/Fab account | Marketplace entitlement and restore; do not publish restricted assets into the public repository |
 
-```text
-https://github.com/Luciuswang/neon-cleaner-demo.git
-```
+Canonical integration branch: `codex/character-continuity-pipeline`. Concurrent
+tasks use separate `work/<task-id>/<workstation>` branches. Git is version control,
+not live bidirectional editing of UE maps. Never sync the live project through a
+consumer cloud folder. Share completed checkpoints and claim disjoint write paths.
 
-Use this branch for current UE / Lin Xia work:
+## Start on another computer
 
-```text
-codex/character-continuity-pipeline
-```
-
-Codex chat history and local workspaces may differ between PCs. Codex is not a
-single shared live workspace just because the same account is signed in. The
-project state lives in GitHub and this repo, especially:
-
-```text
-AGENTS.md
-docs/handoff.md
-docs/sprint-2026-08-24.md
-docs/agent-production-workflow.md
-docs/quality-control.md
-docs/multi-agent-production-system.md
-docs/agent-task-template.md
-docs/tasks/gate3-rider-pose-strict-qa.md
-```
-
-## First Setup On A New PC
-
-1. Install Git and Git LFS.
-2. Install Unreal Engine 5.8.
-3. Clone the repo:
+Install Git, Git LFS, Python3.10+ and UE5.8.1 with its C++ build prerequisites.
+Authenticate Git Credential Manager to the same GitHub account (private vault
+access is required). Then:
 
 ```powershell
-mkdir E:\codex_project
-cd E:\codex_project
-git clone https://github.com/Luciuswang/neon-cleaner-demo.git
+git clone --branch codex/character-continuity-pipeline https://github.com/Luciuswang/neon-cleaner-demo.git
 cd neon-cleaner-demo
-git checkout codex/character-continuity-pipeline
 git lfs pull
+.\sync_project_start.ps1 -RestorePrivateAssets
 ```
 
-4. Register the UE project with Epic Launcher/Fab (safe to rerun):
+The private snapshot is pinned by `docs/sync/private-assets-lock.json`, not a
+machine-specific drive letter. Restore verifies every checksum and preflights all
+conflicts before copying; differing local files are never silently overwritten.
+Private source projects restore under `.local/private-sources/`. Some original
+Maya absolute texture references remain missing; consult the resource audit before
+recreating work. Private vault access failure is a restore blocker, not a reason
+to reconstruct the character again.
+
+Restored DLL/modules are the exact UE5.8.1 checkpoint. They preserve historical
+evidence identity, but do not promise compatibility with a different engine patch
+or toolchain. Rebuild when necessary, then run current-build validation. Rebuilding
+invalidates prior runtime evidence; it does not erase the recorded completed work.
+
+The start script fetches every remote head, preserves current task branches and
+dirty work, fast-forwards only clean branches, pulls LFS, and verifies/restores the
+entire pinned private set whenever a lock exists. An existing but stale Kelly mesh
+cannot silently skip verification. Differing local files stop restore for inspection;
+exclusive file creation also prevents overwriting a file created by another session.
+Use `-UEPath <engine-root>` or `NEON_UE_ROOT` when UE is installed elsewhere.
+
+## Avoid duplicate and conflicting work
+
+1. Read `AGENTS.md`, latest handoff, relevant `docs/tasks/`, `docs/worklog/` and
+   remote branch changes. Keep the same task ID across PCs and retries.
+2. Read/acquire the remote lease **before production writes**:
 
 ```powershell
-.\ue\Register-EpicProjectForFab.ps1
+python tools/sync/claim_task.py list
+python tools/sync/claim_task.py acquire rider-grip-refit --scope ue/NeonCleanerUE/Source/NeonCleanerUE/LinxiaMotorcyclePawn.cpp --scope ue/NeonCleanerUE/Source/NeonCleanerUE/LinxiaMotorcyclePawn.h
 ```
 
-Then, in Epic/Fab Library, add `Paragon: Phase` to:
+3. Claims are kept on `coordination/task-claims`, not mixed into game sources.
+   A normal fast-forward push atomically publishes the registry update. A racing
+   claim loses and must reread; never bypass the rejection with force push.
+   Task IDs and parent/child file scopes cannot overlap an active lease. Default
+   lease is8hours, maximum24hours. Renew before expiry and immediately before
+   resuming a suspended long task. Do not claim a task completed in its worklog.
+4. Use separate branches/worktrees for concurrent tasks. Claim the entire content
+   directory/map when a UE operation writes broad binary dependencies. Integration
+   into the canonical branch is serialized and preserves remote commits.
+5. On non-fast-forward push: fetch, inspect and integrate compatible text changes;
+   preserve conflicting binaries on a uniquely named recovery branch and record
+   REWORK/BLOCKED. No resets, force pushes or "last computer wins" overwrite.
 
-```text
-ue/NeonCleanerUE/NeonCleanerUE.uproject
-```
+## Finish every checkpoint
 
-`Paragon: Phase` is licensed for Unreal Engine project use but its Fab listing
-disallows AI usage. Do not upload it to AI image/video generation services.
-
-5. Run:
+Update QA/handoff and append an immutable worklog event. Include task ID, UTC
+timestamp, anonymized workstation ID, actual result, commit references, evidence,
+known blockers and next action. Agent chat memory is not the handoff record.
 
 ```powershell
-.\sync_project_start.ps1 -ValidateUE
+.\sync_project_finish.ps1 -CommitMessage "Describe the actual checkpoint"
+python tools/sync/claim_task.py release rider-grip-refit
 ```
 
-## Every Time You Start Work
+Finish verifies each Git command, publishes private snapshot first, stages/commits
+reviewed work and pushes the current branch by default. It verifies the remote
+contains the local commit; Git LFS's pre-push hook uploads binary objects. Failures
+stop the script with nonzero exit. A clean but locally-ahead branch is still pushed.
 
-From the repo root:
+`-StagedOnly` lets the integrator explicitly select files; unclassified leftover
+changes stop completion. `-LocalOnly` requires an explicit offline request.
+`-SkipPrivateAssets` is for isolated tests or a documented code-only checkpoint
+with an already-verified resource lock; it cannot establish full asset portability.
+No normal synchronization asks for repeated user approval.
 
-```powershell
-.\sync_project_start.ps1
-```
+## Private snapshot details
 
-Then tell Codex:
+`python tools/sync/private_assets.py publish` snapshots the explicit allowlist,
+verifies GitHub repository privacy, hashes/copied bytes, uploads through Git LFS,
+then writes the public lock containing the acknowledged vault commit/snapshot.
+No credentials are saved. Existing snapshots are immutable; private sources remain
+excluded from public Git. Current snapshot includes active/inactive character/bike
+content needed by the current evidence fingerprint, original editable Kelly/city
+sources and current report-linked video/images/logs/performance CSV. Superseded
+captures, caches, raw360-frame PNG duplicates and PDBs are omitted.
 
-```text
-开始 Neon Cleaner 项目，按 AGENTS.md 和 docs/handoff.md 继续。
-```
+If a transfer is interrupted, inspect `.local/private-vault` before resuming;
+never discard unknown local changes. New evidence views/private dependency roots
+must be added to the allowlist when the production scope changes. A private lock
+is not a cinematic acceptance certificate.
 
-The start script will:
+## Complete cross-PC biweekly reporting
 
-- confirm the repo and branch
-- fetch latest GitHub state
-- pull if the working tree is clean
-- pull Git LFS objects
-- check UE 5.8 and the UE project
-- check whether local `ParagonPhase` assets are present
-- print the handoff files Codex should read
-
-## Every Time You Finish Work
-
-If Codex changed the project, end with:
-
-```powershell
-.\sync_project_finish.ps1 -Note "short handoff note" -CommitMessage "short commit message" -Push
-```
-
-The finish script will:
-
-- optionally append a timestamped note to `docs/handoff.md`
-- run `git diff --check`
-- stage and commit changed files when a commit message is provided
-- push the current branch when `-Push` is set
-- print the final branch and commit
-
-## Important UE Asset Note
-
-This folder is intentionally ignored and local-only:
-
-```text
-ue/NeonCleanerUE/Content/ParagonPhase/
-```
-
-It contains Epic/Fab Marketplace assets and must be restored from the user's
-Epic/Fab library on each PC instead of being uploaded to the public GitHub repo.
-
-For a private cross-PC backup/transport option, see:
-
-```text
-docs/asset-vault-baidu.md
-```
-
-Baidu Netdisk may hold private, versioned asset archives, but the live UE
-project should not be placed inside a bidirectional sync folder.
-
-## Current Project Shortcut
-
-When the user says any of:
-
-```text
-开始 Neon Cleaner
-开始 Neon Cleaner 项目
-开始霓虹清道夫
-开始这个项目
-继续这个项目
-```
-
-Codex should:
-
-1. find this repo
-2. run `.\sync_project_start.ps1`
-3. read `AGENTS.md` and the handoff files
-4. continue from the latest pushed branch state
-
-## Reports
-
-Recurring progress reports must follow `docs/biweekly-reporting.md`. They should
-pull GitHub, read repo-local handoff docs, and summarize commits from the
-reporting window instead of relying on one computer's Codex chat history.
-
-## Codex Workstation Environment
-
-To make another PC's Codex environment match this one, follow:
-
-```text
-docs/codex-workstation-setup.md
-```
-
-Do not copy the whole `.codex` directory between machines because it contains
-tokens, logs, local sessions, caches, and machine-specific state.
+Follow `docs/biweekly-reporting.md`. Fetch all origin branches, gather worklogs
+from each remote tree, deduplicate commitSHA/event/taskID and separately list
+unintegrated work, failed QA, blockers and local setup issues. Record cutoff and
+frozen remote heads. Offline/unpushed work is unknown, never "no work happened".
+Do not infer machine identity for old commits. Report generation does not send
+messages or create a schedule; delivery requires its own existing authorization.
