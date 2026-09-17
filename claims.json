@@ -1,21 +1,4 @@
 {
-  "claims": {
-    "crosspc-sync-2026-09-17": {
-      "base_commit": "12dd72269d3e5a5096eeee5e28da58aa456c47db",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-09-17T15:48:28.716243+00:00",
-      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
-      "scopes": [
-        "tools/sync",
-        "docs",
-        "AGENTS.md",
-        "sync_project_start.ps1",
-        "sync_project_finish.ps1",
-        "ue/Register-EpicProjectForFab.ps1"
-      ],
-      "task_id": "crosspc-sync-2026-09-17",
-      "updated_at": "2026-09-17T07:48:28.716243+00:00"
-    }
-  },
+  "claims": {},
   "schema": 1
 }
