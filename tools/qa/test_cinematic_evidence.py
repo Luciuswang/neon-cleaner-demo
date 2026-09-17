@@ -33,6 +33,84 @@ class EvidenceGateTests(unittest.TestCase):
     def record(self, path):
         return {'path': path.relative_to(self.root).as_posix(), 'sha256': gate.sha256(path)}
 
+    def dependency_fixture(self):
+        for folder in ('Content', 'Config', 'Source'):
+            (self.root / gate.PROJECT / folder).mkdir(parents=True, exist_ok=True)
+        self.write(gate.PROJECT + 'NeonCleanerUE.uproject', b'{}\n')
+        self.write(gate.BUILD_PATHS['runtime_binary'], b'fake PE fixture\n')
+
+    def test_text_lf_crlf_and_mixed_newlines_are_equivalent(self):
+        self.dependency_fixture()
+        names = ['NeonCleanerUE.uproject'] + [
+            folder + '/Nested/Example' + extension
+            for folder in ('Source', 'Config')
+            for extension in sorted(gate.TEXT_DEPENDENCY_EXTENSIONS)]
+        for name in names:
+            with self.subTest(path=name):
+                path = self.write(gate.PROJECT + name, b'first\nsecond\nthird\n')
+                initial = gate.fingerprint(self.root)
+                for payload in (b'first\r\nsecond\r\nthird\r\n', b'first\r\nsecond\nthird\r\n'):
+                    path.write_bytes(payload)
+                    self.assertEqual(initial, gate.fingerprint(self.root))
+
+    def test_text_whitespace_bom_lone_cr_and_content_remain_significant(self):
+        self.dependency_fixture()
+        for name in ('NeonCleanerUE.uproject', 'Source/Example.cpp', 'Config/DefaultEngine.ini'):
+            path = self.write(gate.PROJECT + name, b'first\nsecond\n')
+            initial = gate.fingerprint(self.root)
+            for payload in (b'first \nsecond\n', b'\xef\xbb\xbffirst\nsecond\n',
+                            b'first\rsecond\n', b'First\nsecond\n', b'first\nsecond'):
+                with self.subTest(path=name, payload=payload):
+                    path.write_bytes(payload)
+                    self.assertNotEqual(initial, gate.fingerprint(self.root))
+
+    def test_binary_and_content_text_newlines_remain_byte_exact(self):
+        self.dependency_fixture()
+        names = [gate.BUILD_PATHS['runtime_binary'], gate.BUILD_PATHS['map']] + [
+            gate.PROJECT + name for name in ('Content/Example.uasset', 'Content/Example.ini',
+                                             'Content/Example.json', 'Source/Example.png', 'Config/Example.uasset')]
+        for name in names:
+            with self.subTest(path=name):
+                path = self.write(name, b'first\nsecond\n')
+                initial = gate.fingerprint(self.root)
+                path.write_bytes(b'first\r\nsecond\r\n')
+                self.assertNotEqual(initial, gate.fingerprint(self.root))
+
+    def test_dependency_add_rename_and_delete_change_fingerprint(self):
+        self.dependency_fixture()
+        initial = gate.fingerprint(self.root)
+        path = self.write(gate.PROJECT + 'Source/Example.cpp', b'content\n')
+        added = gate.fingerprint(self.root)
+        self.assertNotEqual(initial, added)
+        renamed = path.with_name('Renamed.cpp')
+        path.rename(renamed)
+        self.assertNotEqual(added, gate.fingerprint(self.root))
+        renamed.unlink()
+        self.assertEqual(initial, gate.fingerprint(self.root))
+
+    def test_legacy_algorithm_retains_historical_exact_bytes(self):
+        self.dependency_fixture()
+        path = self.write(gate.PROJECT + 'Source/Example.cpp', b'first\nsecond\n')
+        paths = [self.root / gate.PROJECT / 'NeonCleanerUE.uproject',
+                 self.root / gate.BUILD_PATHS['runtime_binary'], path]
+        historical = hashlib.sha256()
+        for dependency in sorted(paths, key=lambda p: p.as_posix()):
+            historical.update((dependency.relative_to(self.root).as_posix() + '\0' +
+                               gate.sha256(dependency) + '\n').encode('utf-8'))
+        legacy = gate.fingerprint(self.root, format=gate.LEGACY_DEPENDENCY_HASH_FORMAT)
+        self.assertEqual(historical.hexdigest(), legacy)
+        self.assertNotEqual(legacy, gate.fingerprint(self.root))
+        path.write_bytes(b'first\r\nsecond\r\n')
+        self.assertNotEqual(legacy, gate.fingerprint(self.root, format=gate.LEGACY_DEPENDENCY_HASH_FORMAT))
+
+    def test_unknown_or_absent_format_is_not_inferred(self):
+        self.dependency_fixture()
+        for value in (None, '', 'unknown', 'neon-deps-v3', [], {}):
+            with self.subTest(format=value):
+                with self.assertRaises(ValueError): gate.fingerprint(self.root, format=value)
+                errors = gate.verify({'build': {'dependency_hash_format': value}}, self.root)
+                self.assertIn('Explicit recognized dependency_hash_format required', errors)
+
     def test_valid_png_and_corruption(self):
         path = self.write('view.png', png())
         self.assertEqual(gate.png_dimensions(path), (2, 2))
@@ -139,11 +217,24 @@ class EvidenceGateTests(unittest.TestCase):
                 item.update(ue_frame_log=self.record(log), actions_reviewed=['neutral', 'left', 'right', 'return', 'brake'])
             evidence.append(item)
         report = {'schema': 2, 'producer': 'fixture-producer', 'reviewer': 'fixture-reviewer', 'reviewed_at': '2026-09-16', 'engine': 'UE5',
-                  'build': {'runtime_binary': self.record(dll), 'map': self.record(level), 'dependencies_sha256': fingerprint},
+                  'build': {'runtime_binary': self.record(dll), 'map': self.record(level), 'dependencies_sha256': fingerprint,
+                            'dependency_hash_format': gate.DEPENDENCY_HASH_FORMAT},
                   'evidence': evidence, 'domains': {domain: {'verdict': 'PASS', 'notes': 'Synthetic fixture', 'evidence': list(views)} for domain, views in gate.DOMAIN_VIEWS.items()},
                   'performance': {'hardware': 'fixture', 'settings': 'fixture', 'width': 1920, 'height': 1080, 'fixed_timestep': False}}
         with patch.object(gate, 'video_metadata', return_value=(12, 30, 1920, 1080)):
             self.assertEqual(gate.verify(report, self.root), [])
+            # A report may intentionally retain the historical algorithm, but
+            # cannot silently choose it by omitting its format declaration.
+            legacy = gate.fingerprint(self.root, format=gate.LEGACY_DEPENDENCY_HASH_FORMAT)
+            report['build'].update(dependency_hash_format=gate.LEGACY_DEPENDENCY_HASH_FORMAT,
+                                   dependencies_sha256=legacy)
+            for item in evidence: item['build_fingerprint'] = legacy
+            self.assertEqual(gate.verify(report, self.root), [])
+            del report['build']['dependency_hash_format']
+            self.assertIn('Explicit recognized dependency_hash_format required', gate.verify(report, self.root))
+            report['build']['dependency_hash_format'] = gate.LEGACY_DEPENDENCY_HASH_FORMAT
+            evidence[0]['dependency_hash_format'] = gate.DEPENDENCY_HASH_FORMAT
+            self.assertTrue(any('mixed dependency_hash_format' in error for error in gate.verify(report, self.root)))
 
 
 if __name__ == '__main__': unittest.main()

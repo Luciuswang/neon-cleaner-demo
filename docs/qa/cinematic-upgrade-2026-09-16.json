@@ -13,7 +13,8 @@
       "path": "ue/NeonCleanerUE/Content/LinxiaChase/LVL_Linxia_MotorcycleChase.umap",
       "sha256": "2342b63480794179e89d6d9e0a9755b28d8366b659da47f7fab9a7d70da1f6bb"
     },
-    "dependencies_sha256": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e"
+    "dependencies_sha256": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
+    "dependency_hash_format": "neon-deps-v2-lf-source-config"
   },
   "evidence": [
     {
@@ -21,176 +22,195 @@
       "view": "gameplay",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gameplay.png",
       "sha256": "3d89d82aae99442063072b45b909c728e7b1156e614a6e365d9de68924709c7e",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Modeled car and elevated road visible; blurred small hero cannot certify contact."
+      "notes": "Modeled car and elevated road visible; blurred small hero cannot certify contact.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "bridge",
       "view": "bridge_side",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-bridge.png",
       "sha256": "25db2728dd023c339fb6c03a839901e28d0905795d0ba24bdd647ae487860c7f",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Elevated deck/piers confirmed; lower half dark and foreground architecture occludes."
+      "notes": "Elevated deck/piers confirmed; lower half dark and foreground architecture occludes.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "wide",
       "view": "bridge_wide",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-establishing.png",
       "sha256": "35f454d904889ac5ad2f50eb0916b480acb7da0a6483ed1372757e367d8c63b5",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Blank repetitive architecture, foreground lamp obstruction and weak lower-city lighting; REWORK."
+      "notes": "Blank repetitive architecture, foreground lamp obstruction and weak lower-city lighting; REWORK.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "front",
       "view": "rider_front",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3.png",
       "sha256": "9720a9b015a69e8b4486d4dc0442de1dd68c3485821ad284761f5a2543f15422",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Current mounted character visible; low fidelity, not cinematic PASS."
+      "notes": "Current mounted character visible; low fidelity, not cinematic PASS.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "side",
       "view": "rider_side",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3-side.png",
       "sha256": "86011a0293c2e4d2e93b2d1a714ff2ce616304346d2c750a4d14a7adb0230d60",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Seat proxy removed; low hero faceting, gloss, downward head persist."
+      "notes": "Seat proxy removed; low hero faceting, gloss, downward head persist.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "rear",
       "view": "rider_rear",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3-rear.png",
       "sha256": "bccd8d7e1b38f06e3d2ec9c9d0557b593d3171e6fe57aa1360eff7633ec95a52",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Current rider rear evidence; not all foot/seat/hand surfaces verified."
+      "notes": "Current rider rear evidence; not all foot/seat/hand surfaces verified.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "left",
       "view": "palm_left",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-hands.png",
       "sha256": "46a1b1d4688f6c5de1402b54de67804062ff39b6150390df2e0bda912a04b54a",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "REWORK: severe wrist bend, crossing finger chains and unclear natural wrap."
+      "notes": "REWORK: severe wrist bend, crossing finger chains and unclear natural wrap.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "right",
       "view": "palm_right",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-handsright.png",
       "sha256": "35d0bf190f578ac6b87bb6c05e5f7cf59d8286f80c66adf312af8074670fee4c",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "REWORK: severe wrist bend, crossing finger chains and unclear natural wrap."
+      "notes": "REWORK: severe wrist bend, crossing finger chains and unclear natural wrap.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "build",
       "view": "build_log",
       "path": ".local/cinematic-build.txt",
       "sha256": "3e270ce90207ec39d1ef939f8dcf4cebfec16e8da78a98178cfb72c24ee39bd1",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Final Development build succeeded; root verification."
+      "notes": "Final Development build succeeded; root verification.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "map",
       "view": "map_validation",
       "path": ".local/cinematic-gate3-run.txt",
       "sha256": "b5c56c69d4d86aa0a4187ac9d677bc0c4f56f5dee8ca72e5328374fe53c5c6f7",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Full Gate3 validates map; legacy engineering only."
+      "notes": "Full Gate3 validates map; legacy engineering only.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "rig",
       "view": "asset_validation",
       "path": ".local/cinematic-gate3-run.txt",
       "sha256": "b5c56c69d4d86aa0a4187ac9d677bc0c4f56f5dee8ca72e5328374fe53c5c6f7",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Kelly rig validation included; not an art verdict."
+      "notes": "Kelly rig validation included; not an art verdict.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "clean",
       "view": "smoke_clean",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Clean.log",
       "sha256": "076199969a4bf687162621e73e5749f14990128181e218f91461638e5d087e00",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained."
+      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "damaged",
       "view": "smoke_damaged",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Damaged.log",
       "sha256": "bebd8128efc0d522b8b38f6211befb32e751e0117ad7b0931ae834bdc4e52132",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained."
+      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "lost",
       "view": "smoke_lost",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Lost.log",
       "sha256": "6cd01702f584b39710e8711604867bf8bb5244cce37bd26da8f450dd7249cf85",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained."
+      "notes": "Current encounter PASS marker verified by root; actual damage/outcome rules retained.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "collision",
       "view": "input_collision",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Damaged.log",
       "sha256": "bebd8128efc0d522b8b38f6211befb32e751e0117ad7b0931ae834bdc4e52132",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Damaged run demonstrates real contact damage and recovery; isolated motion does not certify encounter."
+      "notes": "Damaged run demonstrates real contact damage and recovery; isolated motion does not certify encounter.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "sources",
       "view": "asset_manifest",
       "path": "docs/assets/cinematic-car-source.json",
       "sha256": "14c18609fe48e782bed94bcd3451c4783432bed15d63c94b172eb242e84c3349",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "Source/license/hash/dimensions and conversion recorded; asset_scout source audit."
+      "notes": "Source/license/hash/dimensions and conversion recorded; asset_scout source audit.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "car_size",
       "view": "vehicle_measurements",
       "path": "docs/assets/cinematic-car-source.json",
       "sha256": "14c18609fe48e782bed94bcd3451c4783432bed15d63c94b172eb242e84c3349",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
-      "notes": "480 x220 x126.56cm, wheel pivots preserved and engine import validated."
+      "notes": "480 x220 x126.56cm, wheel pivots preserved and engine import validated.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "motion",
       "view": "rider_motion",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-motion-reviewed/rider-side-30fps.mp4",
       "sha256": "16536a9e8020d743bad375de8f0079a4fe76c2edd18774b8780c78783ee16f08",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": false,
       "notes": "Decoded12s/30fps/1080p, UE timing valid. Reviewer sampled frames0/45/90/180/270/359 only; full continuous approval NOT given. Wheel/fork not articulated.",
       "ue_frame_log": {
         "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-motion-reviewed/runtime.log",
         "sha256": "e9d2542abc386b64fd3bb295117a3e28b352aacfbfd07e8163090c5da69ef821"
       },
-      "actions_reviewed": []
+      "actions_reviewed": [],
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     },
     {
       "id": "performance",
       "view": "performance",
       "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-performance/frame-times.csv",
       "sha256": "d8cabffe0058c534e12a566545faaafeae7814a20a75a5b5c130533211c8342f",
-      "build_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+      "build_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
       "reviewed": true,
-      "notes": "Independent CSV/runtime audit:35.33s,p95 16.89ms meets numeric target;350.14ms and55.65ms hitches remain.100% screen percentage, dynamic resolution0."
+      "notes": "Independent CSV/runtime audit:35.33s,p95 16.89ms meets numeric target;350.14ms and55.65ms hitches remain.100% screen percentage, dynamic resolution0.",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config"
     }
   ],
   "domains": {
@@ -285,5 +305,16 @@
     "No accepted HUD-free first/last/camera reference pack. Final AI generation remains blocked by UE visual failures."
   ],
   "status": "CINEMATIC_REWORK_AI_BLOCKED",
-  "note": "Partial rejected pack, not a passing submission. False reviewed flags deliberately preserve incomplete independent review. Historical captures outside this report are not current evidence."
+  "note": "Partial rejected pack, not a passing submission. False reviewed flags deliberately preserve incomplete independent review. Historical captures outside this report are not current evidence.",
+  "dependency_hash_migration": {
+    "migrated_at": "2026-09-17T08:08:08.881750+00:00",
+    "reason": "Fresh Git checkout changes three mixed-CRLF source/config files to CRLF. Only CRLF-to-LF canonicalization is permitted; all binary and report artifacts match exactly. This is an integrity-format migration, not a new artistic review.",
+    "original_hash_format": "neon-deps-v1-raw",
+    "original_dependencies_sha256": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+    "new_hash_format": "neon-deps-v2-lf-source-config",
+    "new_dependencies_sha256": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
+    "evidence": "docs/qa/crosspc-restore-evidence-2026-09-17.json",
+    "preserved_reviewed_at": "2026-09-16T05:33:48.471719+00:00",
+    "verdicts_changed": false
+  }
 }

@@ -34,11 +34,33 @@ without overwriting. Full asset verification is distinct from artistic acceptanc
 
 ## Fresh-computer simulation
 
-A fresh clone from the actual public origin and a private restore from the
-acknowledged vault are in progress. Results will be appended before this task is
-marked complete. Do not interpret local-cache verification as a completed remote
-download test. No original raw360-frame PNG duplicates are required by the stored
-video/log evidence; selected source video and all report-linked artifacts are kept.
+A fresh clone from the actual public GitHub origin downloaded 679 LFS files
+(approximately 627 MiB). A new private Git/LFS cache restored all 745 pinned files;
+all checksums passed. This was an isolated checkout on the producing Windows PC,
+not a test on a second physical computer. UE5.8.1 map validation passed with zero
+errors and the Clean gameplay smoke passed, both with UE exit code 0. The first
+orchestration wrapper falsely failed after successful map validation because it
+checked stale PowerShell LASTEXITCODE after a script; the UE exit and actual log
+confirmed success. Clean smoke was then run and checked independently.
+
+Portable dependency fingerprints match between the two working trees. All 725
+Content binary/media files and 22 report artifact records (including DLL/map and
+motion log) match byte-for-byte. Three Source/Config files differ only by Git
+checkout CRLF conversion. Explicit `neon-deps-v2-lf-source-config` canonicalizes
+only CRLF in recognized Source/Config text and the project descriptor. All other
+bytes remain significant. The historical raw fingerprint, differing raw hashes,
+shared normalized hashes and UE log markers are preserved in
+`crosspc-restore-evidence-2026-09-17.json` and the report migration record.
+
+All 16 evidence-verifier tests passed. The migrated cinematic report retains its
+original review timestamp, artifact hashes, findings and REWORK/BLOCKED verdicts;
+the verifier has no stale dependency, corrupt artifact or binding errors. Missing
+views, incomplete independent reviews and existing art blockers still block it.
+
+Historical public checkout warned that 24 older MP4/GLB/SPZ blobs predate current
+LFS attributes. Actual files are present and the checkout is clean; no historical
+rewrite was performed. No original raw360-frame PNG duplicates are required by
+the stored video/log evidence; selected video and report-linked artifacts are kept.
 
 ## Remaining project limitations
 

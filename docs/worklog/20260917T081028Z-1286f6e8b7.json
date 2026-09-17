@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20260917T081028Z-1286f6e8b7",
+  "task_id": "crosspc-sync-2026-09-17",
+  "timestamp_utc": "2026-09-17T08:10:28.974082+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Verify fresh cross-PC restore and preserve portable QA evidence",
+  "commit_shas": [
+    "95e48ece098bd192171f53a79634a945fc1b923d"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

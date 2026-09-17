@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "event_id": "20260917T080943Z-f62f9423f0",
+  "task_id": "crosspc-sync-2026-09-17",
+  "timestamp_utc": "2026-09-17T08:09:43.059237+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "done",
+  "summary": "Cross-PC continuity verified by actual GitHub clone, 745-file private restore, UE map validation and Clean smoke; automatic publication and all-branch biweekly rules implemented. Cinematic remains REWORK/AI BLOCKED.",
+  "commit_shas": [
+    "95e48ece098bd192171f53a79634a945fc1b923d"
+  ],
+  "evidence": [
+    "docs/qa/crosspc-sync-2026-09-17.md",
+    "docs/qa/crosspc-restore-evidence-2026-09-17.json",
+    "docs/reports/biweekly-2026-09-04-to-2026-09-17.md"
+  ],
+  "blockers": [],
+  "next_action": "Continue cinematic-upgrade-2026-09-16 from current QA, claim write scopes and restore the pinned assets before production.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

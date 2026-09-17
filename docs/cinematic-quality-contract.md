@@ -63,6 +63,16 @@ Every domain has concrete review notes and artifact IDs.
 Record producer/reviewer separately; this is an audit trail, not a cryptographic
 reviewer identity signature. Rebuilds/map edits invalidate that evidence pack.
 
+Reports must explicitly set `build.dependency_hash_format`. The portable format
+`neon-deps-v2-lf-source-config` hashes actual working files and normalizes only
+CRLF to LF for recognized Source/Config text and the exact project descriptor.
+Content, binaries and evidence remain byte-exact. Paths and per-file modes are
+included in the versioned hash. Missing/unknown/mixed formats fail closed.
+Historical `neon-deps-v1-raw` remains explicitly reproducible. A format migration
+must retain the original fingerprint, review timestamp and verdicts, record the
+reason/date and compare raw/normalized files plus unchanged binaries/artifacts;
+it does not constitute a new review or promote artistic acceptance.
+
 The tool fails closed when evidence is absent, changed, below target resolution,
 unreviewed, skipped, or any domain is not PASS. Image existence, HUD colors,
 bright pixels, a caller-supplied PASS or `contacts=PASS` cannot clear this contract.

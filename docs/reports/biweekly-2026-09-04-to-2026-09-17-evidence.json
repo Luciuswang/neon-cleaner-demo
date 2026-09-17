@@ -1,0 +1,245 @@
+{
+  "schema": 1,
+  "generated_at_utc": "2026-09-17T07:55:47.454803+00:00",
+  "window": {
+    "since_inclusive": "2026-09-04T00:00:00+08:00",
+    "until_inclusive": "2026-09-17T23:59:59.999999+08:00",
+    "timezone": "Asia/Shanghai",
+    "commit_timestamp_basis": "committer time",
+    "worklog_timestamp_basis": "explicit record timestamp"
+  },
+  "remote": "origin",
+  "canonical_branch": "codex/character-continuity-pipeline",
+  "branch_heads": {
+    "codex/character-continuity-pipeline": "95e48ece098bd192171f53a79634a945fc1b923d",
+    "codex/cinematic-bridge-3d-takeover": "2c6107dbcf36a25b2aa017c1de6c0eac79fb0e5f",
+    "codex/ue-day1-pc-prototype": "6c1dc482c7d31c2682589653069be745ed22561f",
+    "coordination/task-claims": "857abe0cf217a3fabf6cd96bc7287ae8016b7f14",
+    "feat/film-3d-world-handoff": "bfee235f80b686331c531af85a0d1cdd97e03c18",
+    "feat/seamless-3d-world": "ef77d8ba07e61ba79a4ff050e4456eab62227bc5",
+    "feature/linxia-rider-redesign": "44ba13eeb070fff1dc13b590cd1f5487475622e0",
+    "linxia-chase-prompts-main": "6895fd009dace9ee5546632dad908051fd597b6c",
+    "linxia-entrance-shot-plan": "525d8a61d762e21fc47b196d3962ea0023d75a85",
+    "main": "bde0b2011374404b167b72624003c345f49db41d",
+    "restore-friday-version": "2f1f05dc69b2c1cc37f1555fc6ed127f6f3957ca",
+    "worldlabs-handoff-pack": "65e7e3cb6ec1270dcba78d7f372f7a8d2d4475bf"
+  },
+  "complete_remote_fetch": true,
+  "local_head_used_as_evidence": false,
+  "commits": [
+    {
+      "sha": "9ebb3186e33038cd1cb16a301216181af2ec6809",
+      "committed_at": "2026-09-07T19:20:02+08:00",
+      "author": "Baomin Wang",
+      "subject": "feat: replace Lin Xia with local Kelly character",
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ],
+      "integration": "integrated"
+    },
+    {
+      "sha": "5019f8b793382c42e10bee0fd2c38aa2c5e70142",
+      "committed_at": "2026-09-08T16:57:09+08:00",
+      "author": "Baomin Wang",
+      "subject": "Replace Linxia with textured low-poly Kelly",
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ],
+      "integration": "integrated"
+    },
+    {
+      "sha": "602e15d1cbe0a5d5df20cfe6a8625baf397e1607",
+      "committed_at": "2026-09-14T14:11:20+08:00",
+      "author": "Luciuswang",
+      "subject": "feat: add playable Kelly film chase",
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ],
+      "integration": "integrated"
+    },
+    {
+      "sha": "12dd72269d3e5a5096eeee5e28da58aa456c47db",
+      "committed_at": "2026-09-16T13:35:05+08:00",
+      "author": "Baomin Wang",
+      "subject": "Improve elevated chase assets and rider motion with strict cinematic QA",
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ],
+      "integration": "integrated"
+    },
+    {
+      "sha": "f502c09ce4ba29042caf6c136882977d13d02bb8",
+      "committed_at": "2026-09-17T15:38:01+08:00",
+      "author": "Baomin Wang",
+      "subject": "acquire crosspc-sync-2026-09-17",
+      "branches": [
+        "coordination/task-claims"
+      ],
+      "integration": "unintegrated"
+    },
+    {
+      "sha": "857abe0cf217a3fabf6cd96bc7287ae8016b7f14",
+      "committed_at": "2026-09-17T15:48:29+08:00",
+      "author": "Baomin Wang",
+      "subject": "renew crosspc-sync-2026-09-17",
+      "branches": [
+        "coordination/task-claims"
+      ],
+      "integration": "unintegrated"
+    },
+    {
+      "sha": "95e48ece098bd192171f53a79634a945fc1b923d",
+      "committed_at": "2026-09-17T15:54:26+08:00",
+      "author": "Baomin Wang",
+      "subject": "Make cross-PC checkpoints automatic with private assets and complete reporting",
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ],
+      "integration": "integrated"
+    }
+  ],
+  "worklogs": [
+    {
+      "event_id": "20260917T074442Z-08a1cb211c",
+      "payload_sha256": "f2eaaa17cf193bdbe18fd38e6b3e7be88f23d82fd688e71d20c58a618872d056",
+      "recorded_at": "2026-09-17T07:44:42.629150+00:00",
+      "record": {
+        "schema": 1,
+        "event_id": "20260917T074442Z-08a1cb211c",
+        "task_id": "cinematic-upgrade-2026-09-16",
+        "timestamp_utc": "2026-09-17T07:44:42.629150+00:00",
+        "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+        "branch": "codex/character-continuity-pipeline",
+        "status": "rework",
+        "summary": "Implemented elevated highway,4K PBR,authored enemy vehicles and smoother rider motion; engineering passes but cinematic QA rejects hand anatomy,hero detail and static motorcycle articulation.",
+        "commit_shas": [
+          "12dd722"
+        ],
+        "evidence": [
+          "docs/qa/cinematic-upgrade-2026-09-16.md",
+          "docs/qa/cinematic-upgrade-2026-09-16.json"
+        ],
+        "blockers": [
+          "Cinematic and AI reference acceptance remain blocked; highKelly textures/groom absent; two performance hitches."
+        ],
+        "next_action": "Use backed-up source assets,rig detailed bike and correct hand local axes; do not repeat completed imports or source inventory.",
+        "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+      },
+      "sources": [
+        {
+          "branch": "codex/character-continuity-pipeline",
+          "head": "95e48ece098bd192171f53a79634a945fc1b923d",
+          "path": "docs/worklog/20260917T074442Z-08a1cb211c.json"
+        }
+      ],
+      "missing_provenance": []
+    },
+    {
+      "event_id": "20260917T074442Z-1e46c4a6b5",
+      "payload_sha256": "7680fc2c02c1b0270f4516f6a9cf5b2a0c716d9cd66c86f6dec208aabec6bf3f",
+      "recorded_at": "2026-09-17T07:44:42.793606+00:00",
+      "record": {
+        "schema": 1,
+        "event_id": "20260917T074442Z-1e46c4a6b5",
+        "task_id": "crosspc-sync-2026-09-17",
+        "timestamp_utc": "2026-09-17T07:44:42.793606+00:00",
+        "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+        "branch": "codex/character-continuity-pipeline",
+        "status": "implemented_pending_verification",
+        "summary": "Standing automatic Git/LFS/private-snapshot publishing,atomic task/path claims and all-remote-branch biweekly collection implemented. Private snapshot contains745files including editable sources and QA evidence.",
+        "commit_shas": [
+          "12dd72269d3e5a5096eeee5e28da58aa456c47db"
+        ],
+        "evidence": [
+          "docs/project-sync.md",
+          "docs/sync/private-assets-lock.json"
+        ],
+        "blockers": [],
+        "next_action": "Finish isolated failure tests and fresh-clone restore verification,then publish and release claim.",
+        "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+      },
+      "sources": [
+        {
+          "branch": "codex/character-continuity-pipeline",
+          "head": "95e48ece098bd192171f53a79634a945fc1b923d",
+          "path": "docs/worklog/20260917T074442Z-1e46c4a6b5.json"
+        }
+      ],
+      "missing_provenance": []
+    },
+    {
+      "event_id": "20260917T075425Z-74d3dcec19",
+      "payload_sha256": "b0c0ccc4f94b9ea386e5d14ca0f12de8cd94cf41b9ed4d0240d2172f2caadb1f",
+      "recorded_at": "2026-09-17T07:54:25.836904+00:00",
+      "record": {
+        "schema": 1,
+        "event_id": "20260917T075425Z-74d3dcec19",
+        "task_id": "crosspc-sync-2026-09-17",
+        "timestamp_utc": "2026-09-17T07:54:25.836904+00:00",
+        "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+        "branch": "codex/character-continuity-pipeline",
+        "status": "checkpoint",
+        "summary": "Make cross-PC checkpoints automatic with private assets and complete reporting",
+        "commit_shas": [
+          "12dd72269d3e5a5096eeee5e28da58aa456c47db"
+        ],
+        "evidence": [],
+        "blockers": [],
+        "next_action": "Read the task packet and latest QA before continuing.",
+        "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+      },
+      "sources": [
+        {
+          "branch": "codex/character-continuity-pipeline",
+          "head": "95e48ece098bd192171f53a79634a945fc1b923d",
+          "path": "docs/worklog/20260917T075425Z-74d3dcec19.json"
+        }
+      ],
+      "missing_provenance": []
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "cinematic-upgrade-2026-09-16",
+      "events": [
+        {
+          "event_id": "20260917T074442Z-08a1cb211c",
+          "payload_sha256": "f2eaaa17cf193bdbe18fd38e6b3e7be88f23d82fd688e71d20c58a618872d056"
+        }
+      ],
+      "commit_shas": [
+        "12dd722"
+      ],
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ]
+    },
+    {
+      "task_id": "crosspc-sync-2026-09-17",
+      "events": [
+        {
+          "event_id": "20260917T074442Z-1e46c4a6b5",
+          "payload_sha256": "7680fc2c02c1b0270f4516f6a9cf5b2a0c716d9cd66c86f6dec208aabec6bf3f"
+        },
+        {
+          "event_id": "20260917T075425Z-74d3dcec19",
+          "payload_sha256": "b0c0ccc4f94b9ea386e5d14ca0f12de8cd94cf41b9ed4d0240d2172f2caadb1f"
+        }
+      ],
+      "commit_shas": [
+        "12dd72269d3e5a5096eeee5e28da58aa456c47db"
+      ],
+      "branches": [
+        "codex/character-continuity-pipeline"
+      ]
+    }
+  ],
+  "disagreements": [],
+  "unknown_worklogs": [],
+  "limitations": [
+    "Unpushed/offline work on other computers is not observable through GitHub.",
+    "Git author is not computer provenance. Missing machine_id remains unknown.",
+    "Integration status describes commit ancestry, not QA acceptance or task completion.",
+    "Worklog task IDs group updates; different SHAs are retained even if cherry-picked from the same task."
+  ]
+}

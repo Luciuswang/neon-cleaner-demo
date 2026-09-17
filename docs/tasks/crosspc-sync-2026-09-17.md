@@ -6,7 +6,8 @@
 - Root owns sync scripts, private snapshot publisher/restorer, claims and handoff.
   Independent QA owns reporting collector and isolated failure tests. Asset scout
   inventoried private/source/evidence dependencies read-only.
-- State: implemented, final fresh-checkout verification in progress.
+- State: DONE. Fresh GitHub clone/private restore, UE map validation and Clean
+  gameplay smoke passed. This accepts cross-PC continuity, not cinematic quality.
 
 ## Current checkpoint
 
@@ -42,6 +43,14 @@ Reporting collector:8 disposable bare-origin tests passed, including branch-only
 events, local-only exclusion, dedup, conflicts, timezone boundary and fetch failure.
 PowerShell syntax and Python compile checks passed. Sync/lease/restore failure
 tests and fresh remote clone results are added to the cross-PC QA record.
+All 745 private files restored from GitHub into a new cache. Portable fingerprints
+match; 725 Content asset/media files and 22 report artifact entries match byte-for-byte.
+The explicit evidence-format migration fixes checkout newline differences while
+preserving original review verdicts. All 16 evidence-integrity tests pass.
+
+The September 4-17 biweekly report was generated from all 12 remote branches at
+2026-09-17 07:55:47 UTC; its evidence snapshot retains 7 unique commits and 3
+worklog variants. The stated cutoff excludes later validation/publication commits.
 
 ## Follow-up
 

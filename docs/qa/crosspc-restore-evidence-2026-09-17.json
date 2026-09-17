@@ -1,0 +1,147 @@
+{
+  "schema": 1,
+  "verified_at": "2026-09-17T08:08:08.881750+00:00",
+  "verification": "Actual GitHub public clone plus fresh private Git/LFS restore on the producing Windows machine; not a second physical PC.",
+  "private_file_count": 745,
+  "private_bytes": 778348323,
+  "original_dependency_fingerprint": "0219c2401e17b9071a2fc082e0f6834677a3e08b71452d57aa3d443bc5d2862e",
+  "original_hash_format": "neon-deps-v1-raw",
+  "portable_dependency_fingerprint": "3e35df0e89ad27c5758a7c03fb6f73c042ea714f457a9d7a0015edc85395d869",
+  "portable_hash_format": "neon-deps-v2-lf-source-config",
+  "normalized_source_config_files": 32,
+  "newline_only_differences": [
+    {
+      "path": "ue/NeonCleanerUE/Source/NeonCleanerUE/PlayablePhaseCharacter.cpp",
+      "producing_raw_sha256": "c5cb856079da563e389c6c9c9fe6d386729abe1abb2e32d2f3693d6407b288c3",
+      "restored_raw_sha256": "be8c02221b626905608464900555dbf43a3f31add84d6dc08216b1a80a4bac1d",
+      "shared_lf_sha256": "ada5fb4e6abe9fb9b9595faf7421082644d9fa5904a88a20f53fd410768127e4"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Source/NeonCleanerUE/PlayablePhaseCharacter.h",
+      "producing_raw_sha256": "2f4832900e437b7e708659f5975e5d506f540304efac3165a18686af45818284",
+      "restored_raw_sha256": "2eb1ffb1fca2ec7169ea3be29abb412c5a07b419eac036b3639a4d09689725db",
+      "shared_lf_sha256": "72ee7f4fbf8d54ff15f7b9c8d1c0089611adef2c596f8724973a87a2b2e93339"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Config/DefaultEngine.ini",
+      "producing_raw_sha256": "ed2a9800e4f626afeda83838166b725f9fe36b6973dcafd7672204f74631f9f8",
+      "restored_raw_sha256": "62dc15ec2e19c993867b065267c7462c00a49a9925104929181bd453266efba1",
+      "shared_lf_sha256": "44463a8d9bf5a5d40898780cb56c326f4da676fe1396b02984e113e8a891f884"
+    }
+  ],
+  "byte_exact_content_files": 725,
+  "byte_exact_content_manifest_sha256": "4ab5d997051be4743c211b5b041fc6a1a608c7488975985310d5f0c83cc84a8b",
+  "byte_exact_report_artifacts": [
+    {
+      "path": "ue/NeonCleanerUE/Binaries/Win64/UnrealEditor-NeonCleanerUE.dll",
+      "sha256": "2599d557c34483543a97b8d9d8d59e26ea7981adb31bb38cb3dcf5f5eb933955"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Content/LinxiaChase/LVL_Linxia_MotorcycleChase.umap",
+      "sha256": "2342b63480794179e89d6d9e0a9755b28d8366b659da47f7fab9a7d70da1f6bb"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gameplay.png",
+      "sha256": "3d89d82aae99442063072b45b909c728e7b1156e614a6e365d9de68924709c7e"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-bridge.png",
+      "sha256": "25db2728dd023c339fb6c03a839901e28d0905795d0ba24bdd647ae487860c7f"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-establishing.png",
+      "sha256": "35f454d904889ac5ad2f50eb0916b480acb7da0a6483ed1372757e367d8c63b5"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3.png",
+      "sha256": "9720a9b015a69e8b4486d4dc0442de1dd68c3485821ad284761f5a2543f15422"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3-side.png",
+      "sha256": "86011a0293c2e4d2e93b2d1a714ff2ce616304346d2c750a4d14a7adb0230d60"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-gate3-rear.png",
+      "sha256": "bccd8d7e1b38f06e3d2ec9c9d0557b593d3171e6fe57aa1360eff7633ec95a52"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-hands.png",
+      "sha256": "46a1b1d4688f6c5de1402b54de67804062ff39b6150390df2e0bda912a04b54a"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-handsright.png",
+      "sha256": "35d0bf190f578ac6b87bb6c05e5f7cf59d8286f80c66adf312af8074670fee4c"
+    },
+    {
+      "path": ".local/cinematic-build.txt",
+      "sha256": "3e270ce90207ec39d1ef939f8dcf4cebfec16e8da78a98178cfb72c24ee39bd1"
+    },
+    {
+      "path": ".local/cinematic-gate3-run.txt",
+      "sha256": "b5c56c69d4d86aa0a4187ac9d677bc0c4f56f5dee8ca72e5328374fe53c5c6f7"
+    },
+    {
+      "path": ".local/cinematic-gate3-run.txt",
+      "sha256": "b5c56c69d4d86aa0a4187ac9d677bc0c4f56f5dee8ca72e5328374fe53c5c6f7"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Clean.log",
+      "sha256": "076199969a4bf687162621e73e5749f14990128181e218f91461638e5d087e00"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Damaged.log",
+      "sha256": "bebd8128efc0d522b8b38f6211befb32e751e0117ad7b0931ae834bdc4e52132"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Lost.log",
+      "sha256": "6cd01702f584b39710e8711604867bf8bb5244cce37bd26da8f450dd7249cf85"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-smoke-Damaged.log",
+      "sha256": "bebd8128efc0d522b8b38f6211befb32e751e0117ad7b0931ae834bdc4e52132"
+    },
+    {
+      "path": "docs/assets/cinematic-car-source.json",
+      "sha256": "14c18609fe48e782bed94bcd3451c4783432bed15d63c94b172eb242e84c3349"
+    },
+    {
+      "path": "docs/assets/cinematic-car-source.json",
+      "sha256": "14c18609fe48e782bed94bcd3451c4783432bed15d63c94b172eb242e84c3349"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-motion-reviewed/rider-side-30fps.mp4",
+      "sha256": "16536a9e8020d743bad375de8f0079a4fe76c2edd18774b8780c78783ee16f08"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-motion-reviewed/runtime.log",
+      "sha256": "e9d2542abc386b64fd3bb295117a3e28b352aacfbfd07e8163090c5da69ef821"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/cinematic-performance/frame-times.csv",
+      "sha256": "d8cabffe0058c534e12a566545faaafeae7814a20a75a5b5c130533211c8342f"
+    }
+  ],
+  "ue_validation": [
+    {
+      "name": "crosspc-map-validation",
+      "source_log_sha256": "cac43be01d188cdecf32cfb0ec35ab481c70ca9c62b1ea588aec6f3fc43d4466",
+      "markers": [
+        "[2026.09.17-08.03.14:490][  0]LogPython: [LinxiaMotorcycleChaseValidate] Validation passed",
+        "[2026.09.17-08.03.14:490][  0]LogCore: Engine exit requested (reason: Commandlet PythonScriptCommandlet_0 finished execution (result 0))",
+        "[2026.09.17-08.03.14:491][  0]LogInit: Display: Success - 0 error(s), 7 warning(s)",
+        "[2026.09.17-08.03.14:491][  0]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)"
+      ]
+    },
+    {
+      "name": "crosspc-smoke-Clean",
+      "source_log_sha256": "f999d1332a8bcb5104c951161dc7754a024ffaa6c9ccdc8d38c333f63a3435f4",
+      "markers": [
+        "[2026.09.17-08.06.55:398][340]LogTemp: Display: [NeonChaseSmoke] PASS scenario=Clean outcome=Clean phase=Results health=100.0 time=58.033 x=100030.5 convoy=1 zones=3 shots=69 hits=68 reason=VerifiedSimulation",
+        "[2026.09.17-08.06.55:398][340]LogCore: Engine exit requested (reason: Win RequestExit)",
+        "[2026.09.17-08.06.55:398][341]LogCore: Engine exit requested (reason: EngineExit() was called; note: exit was already requested)"
+      ]
+    }
+  ],
+  "cinematic_verdict": "REWORK",
+  "ai_video_verdict": "BLOCKED"
+}

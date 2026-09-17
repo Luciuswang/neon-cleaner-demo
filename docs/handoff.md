@@ -3,6 +3,19 @@
 Last updated: 2026-09-17
 
 
+## Cross-PC verification completed - 2026-09-17
+
+Task crosspc-sync-2026-09-17 is DONE. Actual GitHub clone and fresh private
+restore recovered all 745 files. UE5.8.1 map validation and Clean smoke passed.
+All 725 Content binary/media files and 22 report artifact entries match exactly.
+Portable QA fingerprint is explicit/versioned; only source/config/project CRLF
+normalization is allowed. Historical evidence/verdicts remain unchanged.
+Read docs/qa/crosspc-sync-2026-09-17.md and its restore evidence JSON.
+
+The September 4-17 biweekly report in docs/reports/ covers all 12 remote branches
+as of its stated cutoff. Future reports must fetch all branches again. Continue
+the cinematic task from current REWORK/BLOCKED findings, not source discovery.
+
 ## Authoritative cross-PC continuation - 2026-09-17
 
 The user now requires automatic save/upload at every completed checkpoint, with

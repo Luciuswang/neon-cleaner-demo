@@ -1,13 +1,21 @@
 """Evidence integrity gate, schema 2. Reviewer identity/art verdicts remain assertions.
 
+build.dependency_hash_format must explicitly select a recognized algorithm.
 build.dependencies_sha256 and each evidence.build_fingerprint must equal
-fingerprint(root). Motion requires hashed ue_frame_log and actions_reviewed.
+fingerprint(root, format=build.dependency_hash_format). Motion requires hashed
+ue_frame_log and actions_reviewed.
 Performance artifact CSV columns: timestamp_seconds,frame_ms (real-time samples).
 """
 import argparse, csv, hashlib, json, math, re, shutil, struct, subprocess, sys, zlib
 from pathlib import Path
 
 PROJECT = 'ue/NeonCleanerUE/'
+DEPENDENCY_HASH_FORMAT = 'neon-deps-v2-lf-source-config'
+LEGACY_DEPENDENCY_HASH_FORMAT = 'neon-deps-v1-raw'
+DEPENDENCY_HASH_FORMATS = (DEPENDENCY_HASH_FORMAT, LEGACY_DEPENDENCY_HASH_FORMAT)
+# Only these extensions in Source/Config, plus the exact project descriptor,
+# receive CRLF-to-LF canonicalization. Content and runtime binaries stay raw.
+TEXT_DEPENDENCY_EXTENSIONS = frozenset({'.ini','.cpp','.h','.hpp','.inl','.cs','.usf','.ush','.json'})
 BUILD_PATHS = {'runtime_binary': PROJECT+'Binaries/Win64/UnrealEditor-NeonCleanerUE.dll',
                'map': PROJECT+'Content/LinxiaChase/LVL_Linxia_MotorcycleChase.umap'}
 DOMAIN_VIEWS = {
@@ -29,7 +37,9 @@ def sha256(path):
         for chunk in iter(lambda: stream.read(1024*1024), b''): digest.update(chunk)
     return digest.hexdigest()
 
-def fingerprint(root):
+def fingerprint(root, format=DEPENDENCY_HASH_FORMAT):
+    if format not in DEPENDENCY_HASH_FORMATS:
+        raise ValueError('Unrecognized dependency_hash_format: '+str(format))
     root = Path(root).resolve()
     base = root / PROJECT
     paths = [base/'NeonCleanerUE.uproject', root/BUILD_PATHS['runtime_binary']]
@@ -40,8 +50,22 @@ def fingerprint(root):
         if not directory.is_dir(): raise ValueError('Missing dependency directory: '+folder)
         paths += [p for p in directory.rglob('*') if p.is_file() and p.suffix.lower() in extensions]
     digest = hashlib.sha256()
+    if format == DEPENDENCY_HASH_FORMAT:
+        digest.update((format+'\0').encode('utf-8'))
     for p in sorted(set(paths), key=lambda x:x.as_posix()):
-        digest.update((p.relative_to(root).as_posix()+'\0'+sha256(p)+'\n').encode())
+        relative = p.relative_to(root).as_posix()
+        if format == LEGACY_DEPENDENCY_HASH_FORMAT:
+            # Keep historical exact-byte fingerprints reproducible for explicit
+            # legacy review/migration; never infer this format from its absence.
+            digest.update((relative+'\0'+sha256(p)+'\n').encode('utf-8'))
+            continue
+        canonical_text = p == base/'NeonCleanerUE.uproject' or (
+            p.relative_to(base).parts[0] in ('Source','Config') and
+            p.suffix.lower() in TEXT_DEPENDENCY_EXTENSIONS)
+        mode = 'crlf-to-lf' if canonical_text else 'raw'
+        file_digest = (hashlib.sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest()
+                       if canonical_text else sha256(p))
+        digest.update((relative+'\0'+mode+'\0'+file_digest+'\n').encode('utf-8'))
     return digest.hexdigest()
 
 def png_dimensions(path):
@@ -147,7 +171,9 @@ def verify(report,root):
                         stream.seek(struct.unpack_from('<I',header,60)[0]); valid=stream.read(4)==b'PE\0\0'
                 else: valid=header[:4]==b'\xc1\x83\x2a\x9e'
             require(valid,'build/'+name+': invalid binary signature')
-    current=inspect(fingerprint,'dependencies',root)
+    hash_format=build.get('dependency_hash_format')
+    require(hash_format in DEPENDENCY_HASH_FORMATS,'Explicit recognized dependency_hash_format required')
+    current=inspect(fingerprint,'dependencies',root,hash_format)
     require(bool(current) and current==build.get('dependencies_sha256'),'Dependency fingerprint missing/stale')
     evidence=report.get('evidence',[]); ids=[e.get('id') for e in evidence]
     require(all(isinstance(i,str) and i.strip() for i in ids) and len(ids)==len(set(ids)),'Unique artifact IDs required')
@@ -158,6 +184,7 @@ def verify(report,root):
         require(view in REQUIRED_VIEWS,label+': unknown view')
         require(item.get('reviewed') is True and bool(item.get('notes')),label+': independent review notes required')
         require(bool(current) and item.get('build_fingerprint')==current,label+': build not bound')
+        require(item.get('dependency_hash_format',hash_format)==hash_format,label+': mixed dependency_hash_format')
         if view in IMAGE_VIEWS:
             require(path.suffix.lower()=='.png',label+': image view requires PNG')
             size=inspect(png_dimensions,label,path)
