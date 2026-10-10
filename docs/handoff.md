@@ -489,3 +489,7 @@ Gate 3 motorcycle axis and mounted rider baseline fixed; final proof 2026-09-02_
 ## Cross-PC Sync Note - 2026-09-14 13:40 +08:00
 
 2026-09-14: playable Kelly film chase engineering PASS. Added wet-night industrial scene, combat enemies/outcomes/HUD, robust film bridge and four HUD-free MP4s, real gameplay proof capture, motorcycle lighting, and final quality automation. Run-NeonChaseQualityCheck PASS; Gate 3 PASS with rider pose CONDITIONAL. Independent QA pending because sub-agent usage limit was reached.
+
+## Sync note - 2026-10-10T17:34:57.8306531+08:00
+
+Generated repository-facts-only Chinese biweekly report for 2026-09-26 through 2026-10-10; email delivery remains blocked by prior Gmail safety review; next action is rerun from an email-capable session after explicit authorization.
