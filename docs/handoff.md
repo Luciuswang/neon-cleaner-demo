@@ -493,3 +493,15 @@ Gate 3 motorcycle axis and mounted rider baseline fixed; final proof 2026-09-02_
 ## Sync note - 2026-10-10T17:34:57.8306531+08:00
 
 Generated repository-facts-only Chinese biweekly report for 2026-09-26 through 2026-10-10; email delivery remains blocked by prior Gmail safety review; next action is rerun from an email-capable session after explicit authorization.
+
+## Sync note - 2026-10-24
+
+Generated the repository-facts-only Chinese biweekly report for 2026-10-10 through 2026-10-24. The remote dossier covered 12 origin branches, one window commit (36d3d2e), and zero new worklog events. Current status remains engineering PASS, rider pose CONDITIONAL, cinematic REWORK, and AI-video continuity BLOCKED. Email delivery remains blocked by the prior Gmail safety review; do not retry without explicit user authorization in an email-capable session.
+
+## Sync note - 2026-10-24T17:35:14.1401898+08:00
+
+Generated repository-facts-only biweekly report for 2026-10-10 through 2026-10-24; remote dossier covered 12 branches, one commit, and zero worklog events. Email remains blocked by prior Gmail safety review.
+
+## Sync note - 2026-10-24T17:36:16.8740631+08:00
+
+Generated repository-facts-only biweekly report for 2026-10-10 through 2026-10-24; remote dossier covered 12 branches, one commit, and zero worklog events. Email remains blocked by prior Gmail safety review.

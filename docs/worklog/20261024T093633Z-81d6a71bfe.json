@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261024T093633Z-81d6a71bfe",
+  "task_id": "codex/character-continuity-pipeline",
+  "timestamp_utc": "2026-10-24T09:36:33.636890+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Generated repository-facts-only biweekly report for 2026-10-10 through 2026-10-24; remote dossier covered 12 branches, one commit, and zero worklog events. Email remains blocked by prior Gmail safety review.",
+  "commit_shas": [
+    "36d3d2e3ac59771c47d0632bd7dc8d7d641e6924"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
