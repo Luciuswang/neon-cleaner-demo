@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261029T120604Z-4b30a72bcd",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T12:06:04.149696+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Persist Kelly PBR assignments and verify final offscreen evidence",
+  "commit_shas": [
+    "3273cb8e3ee0f2583fd0daecd886bd6e6771fe64"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

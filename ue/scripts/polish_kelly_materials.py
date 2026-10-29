@@ -20,9 +20,11 @@ SLOTS={
 }
 mesh=unreal.load_asset('/Game/KellyLowSource/asda')
 assert mesh is not None
+mesh.modify()
 slots=mesh.get_editor_property('materials')
 assert {str(s.get_editor_property('material_slot_name')) for s in slots}==set(SLOTS)
 unreal.EditorAssetLibrary.make_directory(DEST)
+new_slots=[]
 for slot in slots:
     name=str(slot.get_editor_property('material_slot_name'))
     source,roughness,specular=SLOTS[name]
@@ -42,7 +44,9 @@ for slot in slots:
         material=g.finish()
         assert unreal.EditorAssetLibrary.save_loaded_asset(material)
     slot.set_editor_property('material_interface',material)
+    new_slots.append(slot)
     unreal.log('[KellyMaterialPolish] slot=%s originalTexture=%s roughness=%.2f specular=%.2f metallic=0 missingNormals=UNRESOLVED' % (name,source,roughness,specular))
-mesh.set_editor_property('materials',slots)
-assert unreal.EditorAssetLibrary.save_loaded_asset(mesh)
+mesh.set_editor_property('materials',new_slots)
+assert all(s.get_editor_property('material_interface').get_path_name().startswith(DEST+'/') for s in mesh.get_editor_property('materials'))
+assert unreal.EditorAssetLibrary.save_loaded_asset(mesh, only_if_is_dirty=False)
 unreal.log('[KellyMaterialPolish] Saved six dielectric materials; original Phong instances retained for rollback')

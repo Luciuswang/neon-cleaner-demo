@@ -127,14 +127,21 @@ def load_manifest(snapshot, expected=None):
     return path,json.loads(raw)
 
 
-def installed_snapshot(lock):
+def snapshot_lineage(lock):
+    older=lock.get('previous_snapshots',[])
+    if not isinstance(older,list): raise ValueError('Invalid previous snapshot lineage')
+    candidates=([lock['previous_snapshot']] if 'previous_snapshot' in lock else [])+older
+    return list(dict.fromkeys(snapshot_id(value) for value in candidates))
+
+
+def installed_snapshots(lock):
     marker=safe_path(ROOT,'.local/private-assets-installed.json')
     if marker.exists():
         data=json.loads(marker.read_text(encoding='utf8'))
         if data.get('remote')!=URL: raise ValueError('Unexpected installed private-vault marker')
-        return snapshot_id(data.get('snapshot'))
-    previous=lock.get('previous_snapshot')
-    return snapshot_id(previous) if previous is not None else None
+        # A known installation must not authorize unrelated historical hashes.
+        return [snapshot_id(data.get('snapshot'))]
+    return snapshot_lineage(lock)
 
 
 def record_installed(snapshot):
@@ -208,6 +215,9 @@ def publish(extra=None):
     if previous_lock and previous_lock.get('remote')!=URL: raise ValueError('Unexpected vault in previous lock file')
     for field in ('snapshot','previous_snapshot'):
         if field in previous_lock: snapshot_id(previous_lock[field])
+    lineage=snapshot_lineage(previous_lock)
+    if 'snapshot' in previous_lock:
+        lineage=list(dict.fromkeys([previous_lock['snapshot']]+lineage))
     files = inventory(extra)
     manifest = dict(schema=1, engine='5.8.1', files=[dict(path=k,bytes=v.stat().st_size,sha256=sha(v)) for k,v in sorted(files.items())])
     payload = json.dumps(manifest,sort_keys=True,indent=2)+'\n'
@@ -235,9 +245,10 @@ def publish(extra=None):
     LOCK.parent.mkdir(parents=True,exist_ok=True)
     lock = dict(schema=1,remote=URL,commit=commit,snapshot=snapshot,manifest_sha256=snapshot,
                 file_count=len(files),bytes=sum(e['bytes'] for e in manifest['files']),engine='5.8.1')
-    previous=previous_lock.get('snapshot')
-    if previous==snapshot: previous=previous_lock.get('previous_snapshot')
-    if previous is not None: lock['previous_snapshot']=snapshot_id(previous)
+    lineage=[previous for previous in lineage if previous!=snapshot]
+    if lineage:
+        lock['previous_snapshot']=lineage[0]
+        lock['previous_snapshots']=lineage
     LOCK.write_text(json.dumps(lock,indent=2)+'\n',encoding='utf8')
     record_installed(snapshot)
     print('PRIVATE SNAPSHOT VERIFIED',snapshot[:16],len(files),'files',lock['bytes'],'bytes')
@@ -248,11 +259,12 @@ def restore():
     if lock['remote'] != URL: raise ValueError('Unexpected vault in lock file')
     snapshot=snapshot_id(lock['snapshot'])
     manifest_path,manifest=load_manifest(snapshot,lock['manifest_sha256'])
-    previous=installed_snapshot(lock)
     old_entries={}
-    if previous:
+    for previous in installed_snapshots(lock):
         _,old_manifest=load_manifest(previous)
-        old_entries={os.path.normcase(str(safe_path(ROOT,e['path']))): e for e in old_manifest['files']}
+        for old in old_manifest['files']:
+            key=os.path.normcase(str(safe_path(ROOT,old['path'])))
+            old_entries.setdefault(key,{}).setdefault(old['sha256'],previous)
     git('lfs','pull','origin','--include=snapshots/'+snapshot+'/payload/**','--exclude=',cwd=VAULT)
     actions=[]
     seen=set()
@@ -268,9 +280,10 @@ def restore():
         if destination.exists():
             actual=sha(destination)
             if actual==entry['sha256']: continue
-            old_hash=old_entries.get(key,{}).get('sha256')
-            if not old_hash or actual!=old_hash:
+            previous=old_entries.get(key,{}).get(actual)
+            if not previous:
                 raise RuntimeError('Preserving differing local file; inspect before restoring: '+entry['path'])
+            old_hash=actual
             backup=safe_path(ROOT,'.local/private-restore-backups/'+previous+'/'+entry['path'])
             if backup.exists():
                 raise RuntimeError('Preserving existing restore backup; inspect before retry: '+str(backup))

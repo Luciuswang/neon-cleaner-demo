@@ -263,6 +263,55 @@ class PrivateRestoreTests(unittest.TestCase):
         self.assertFalse((self.root / '.local/private-restore-backups').exists())
         self.assertEqual(self.installed(), old.name)
 
+    def test_two_hop_legacy_upgrade_matches_explicit_lineage_per_file(self):
+        oldest = self.snapshot({'mesh.uasset': b'mesh zero', 'engine.dll': b'dll zero'})
+        middle = self.snapshot({'mesh.uasset': b'mesh one', 'engine.dll': b'dll one'})
+        current = self.snapshot({'mesh.uasset': b'mesh two', 'engine.dll': b'dll one'})
+        (self.root / 'mesh.uasset').write_bytes(b'mesh one')
+        (self.root / 'engine.dll').write_bytes(b'dll zero')
+        lock = json.loads(self.lock.read_text())
+        lock.update(previous_snapshot=middle.name, previous_snapshots=[middle.name, oldest.name])
+        self.lock.write_text(json.dumps(lock))
+        private.restore()
+        backups = self.root / '.local/private-restore-backups'
+        self.assertEqual((backups / middle.name / 'mesh.uasset').read_bytes(), b'mesh one')
+        self.assertEqual((backups / oldest.name / 'engine.dll').read_bytes(), b'dll zero')
+        self.assertEqual((self.root / 'mesh.uasset').read_bytes(), b'mesh two')
+        self.assertEqual((self.root / 'engine.dll').read_bytes(), b'dll one')
+        self.assertEqual(self.installed(), current.name)
+
+    def test_tampered_lineage_manifest_rejected_before_transport_or_writes(self):
+        oldest = self.snapshot({'mesh.uasset': b'oldest'})
+        middle = self.snapshot({'mesh.uasset': b'middle'})
+        self.snapshot({'added.uasset': b'added', 'mesh.uasset': b'latest'})
+        (self.root / 'mesh.uasset').write_bytes(b'oldest')
+        lock = json.loads(self.lock.read_text())
+        lock.update(previous_snapshot=middle.name, previous_snapshots=[middle.name, oldest.name])
+        self.lock.write_text(json.dumps(lock))
+        (oldest / 'manifest.json').write_bytes(b'{}')
+        with self.assertRaisesRegex(ValueError, 'Manifest checksum mismatch'):
+            private.restore()
+        self.transport.assert_not_called()
+        self.assertFalse((self.root / 'added.uasset').exists())
+        self.assertFalse((self.root / '.local/private-restore-backups').exists())
+        self.assertEqual((self.root / 'mesh.uasset').read_bytes(), b'oldest')
+
+    def test_installed_marker_rejects_historical_hash_outside_installation(self):
+        oldest = self.snapshot({'mesh.uasset': b'oldest'})
+        middle = self.snapshot({'mesh.uasset': b'middle'})
+        private.restore()
+        self.snapshot({'added.uasset': b'added', 'mesh.uasset': b'latest'})
+        (self.root / 'mesh.uasset').write_bytes(b'oldest')
+        lock = json.loads(self.lock.read_text())
+        lock.update(previous_snapshot=middle.name, previous_snapshots=[middle.name, oldest.name])
+        self.lock.write_text(json.dumps(lock))
+        with self.assertRaisesRegex(RuntimeError, 'Preserving differing local file'):
+            private.restore()
+        self.assertFalse((self.root / 'added.uasset').exists())
+        self.assertFalse((self.root / '.local/private-restore-backups').exists())
+        self.assertEqual((self.root / 'mesh.uasset').read_bytes(), b'oldest')
+        self.assertEqual(self.installed(), middle.name)
+
     def test_existing_backup_blocks_entire_upgrade(self):
         old = self.snapshot({'mesh.uasset': b'old'})
         private.restore()
@@ -305,9 +354,16 @@ class PrivateRestoreTests(unittest.TestCase):
             private.publish()
             first = json.loads(self.lock.read_text())
             self.assertEqual(first['previous_snapshot'], old.name)
+            self.assertEqual(first['previous_snapshots'], [old.name])
             self.assertEqual(self.installed(), first['snapshot'])
             private.publish()
             self.assertEqual(json.loads(self.lock.read_text())['previous_snapshot'], old.name)
+            self.assertEqual(json.loads(self.lock.read_text())['previous_snapshots'], [old.name])
+            local.write_bytes(b'newer')
+            private.publish()
+            latest = json.loads(self.lock.read_text())
+            self.assertEqual(latest['previous_snapshot'], first['snapshot'])
+            self.assertEqual(latest['previous_snapshots'], [first['snapshot'], old.name])
 
     def test_failed_publish_does_not_advance_lock_or_install_marker(self):
         old = self.snapshot({'mesh.uasset': b'old'})

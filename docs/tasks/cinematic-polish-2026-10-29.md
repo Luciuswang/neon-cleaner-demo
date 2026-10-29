@@ -36,7 +36,10 @@ immutable worklog at checkpoint; release path claim only after remote confirmati
   not accepted contact: final closeups still show open fingers and stretched skin.
 - Replaced six legacy Phong responses with dielectric materials using existing
   private Kelly diffuse textures. Original instances retained. Missing high-detail
-  maps/groom and baked highlight appearance remain unresolved.
+  maps/groom remain unresolved. Fresh-process verification caught the original
+  slot-array copy/dirty-save bug; new slot structs and forced asset save now persist
+  all six PBR assignments on both mesh and placed rider. V3 visibly reduces
+  plastic-like cloth/hair response. V1/v2 did not prove those assignments active.
 - Near-building endwalls/windows, sills, blinds, roof vents, distant facade bands;
   less orange lamps, lower fog/bloom and more neutral fill. Final map393actors,
   21,629instances,54local lights, within existing budgets. Prototype skyline remains.
@@ -49,21 +52,25 @@ immutable worklog at checkpoint; release path claim only after remote confirmati
 ## Validation
 
 Final UE5.8.1 build succeeds. Map and Kelly asset validators and actual
-Clean/Damaged/Lost scenario regressions pass. No legacy screenshot QA was used.
+Clean/Damaged/Lost scenario regressions pass. No legacy screenshot QA was used. The asset validator now checks exact PBR
+slot identities and each original texture dependency, retaining skeleton and
+closed dependency-set checks; outdated legacy-material-only assertions were fixed.
 21 evidence-verifier tests pass. Current source/artifact fingerprint is
-`3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808`.
+`416a82e964645c8d0291ea71a6b26208ac4cde69c29f25fec6c5e79897a249aa`.
 
 Private snapshot upgrades now preserve known-clean old DLL/material files before
 installing a new pinned version; locally edited/unknown files still stop restore.
-22isolated synchronization/restore tests pass, including update/backups and races.
+Explicit checksummed snapshot lineage supports multi-hop legacy restoration; an
+existing installed marker remains authoritative.
+25isolated synchronization/restore tests pass, including update/backups and races.
 
-Final `polish-2026-10-29-*-v2` output: side12s, hands12s, bridge4s,
+Final `polish-2026-10-29-*-v3` output: side12s, hands12s, bridge4s,
 1080p30fps; all840render-target PNGs and videos decode. Independent reviewer
 inspected representative full-resolution frames; full subjective continuous
 viewing is NOT claimed. Bridge framing remains occluded and cannot pass.
 
-Separate real-time sample:34.991s/2087samples, p50 16.667ms, p95 16.820ms,
-p99 16.954ms, max240.692ms;1frame>50ms. Strict performance FAIL. Fixed-step
+Separate real-time sample:34.977s/2086samples, p50 16.665ms, p95 16.812ms,
+p99 16.977ms, max241.070ms;1frame>50ms. Strict performance FAIL. Fixed-step
 renders are never used for FPS. See final machine report and independent review.
 
 ## Required next work

@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "event_id": "20261029T120451Z-332c8642bb",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T12:04:51.724101+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "rework",
+  "summary": "Correction to earlier checkpoint: generated PBR assets were not assigned after reload. Fixed slot struct copies and forced asset save; fresh process verifies six mesh and six placed-component slots. V3 offscreen videos replace v1/v2; matte cloth/hair improvement independently visible. Build/map/assets and Clean/Damaged/Lost pass;21 QA and25 sync tests pass. Strict QA remains REWORK; realtime max241.070ms fails.",
+  "commit_shas": [
+    "3273cb8e3ee0f2583fd0daecd886bd6e6771fe64"
+  ],
+  "evidence": [
+    "docs/qa/polish-2026-10-29.json",
+    "docs/qa/polish-2026-10-29-review.md"
+  ],
+  "blockers": [
+    "Open hand contact/skin deformation, static bike mechanics, coarse assets and bridge occlusion remain; no cinematic or AI-video approval."
+  ],
+  "next_action": "Repair hand skin and bone-chain mapping in source; segment and rig motorcycle mechanics; profile the runtime hitch. Read current v3 evidence before any further work.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

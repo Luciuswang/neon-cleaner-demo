@@ -16,17 +16,22 @@ The standalone SceneCapture2D renderer works without desktop screenshots or
 window focus; direct bone-tracking fixes moving closeups. Use Render-NeonOffscreen
 and the strict offscreen-cinematic-v1 evidence profile, not legacy screenshot QA.
 
+Fresh-process verification caught and fixed material slot-array/save persistence.
+V3 is authoritative: all six PBR assignments survive mesh/map reload; matte
+cloth/hair improvement is visible. V1/v2 did not have those assignments active.
+The asset validator now checks exact approved PBR slots and texture dependencies.
+
 Final build, map/assets and Clean/Damaged/Lost gameplay outcomes PASS. Offscreen
 side/hands videos are12s each, bridge4s, all1080p30fps. Independent QA still
 REWORK / AI BLOCKED: visible hand skin deformation/open fingers, low-detail hero
 and motorcycle, static wheel/fork, prototype architecture and bridge occlusion.
-Real-time p99=16.954ms but max=240.692ms; one hitch exceeds50ms. Full continuous
+Real-time p99=16.977ms but max=241.070ms; one hitch exceeds50ms. Full continuous
 subjective review remains incomplete; successful decode cannot substitute it.
 
 Next: repair source hand skin/chain mapping and author mechanically segmented
 bike/LODs; restore hero maps/groom; improve architecture and profile the hitch.
 Do not replace this work with another blind joint-angle tweak or declare cinema
-quality from numeric endpoint tests. Current report fingerprint starts3b6960b7.
+quality from numeric endpoint tests. Current report fingerprint starts416a82e9.
 Sources, private resources and evidence are published by the mandatory checkpoint
 workflow; other PCs restore the pinned snapshot and read immutable worklogs.
 

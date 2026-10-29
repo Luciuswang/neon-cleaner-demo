@@ -36,7 +36,11 @@ conflicts before copying. Unknown or edited local files are never overwritten.
 When a file still exactly matches the locally recorded previous snapshot, restore
 preserves it under `.local/private-restore-backups/<old-snapshot>/` and installs
 the new pinned version with exclusive creation and checksum verification. The
-public lock's `previous_snapshot` supports the first upgrade of older clients.
+public lock's `previous_snapshot` and `previous_snapshots` record explicit
+checksummed lineage for older clients that skip checkpoints. If an installed
+marker exists, only that recorded snapshot authorizes managed-file replacement;
+lineage fallback is used only without a marker. No arbitrary vault-history scan
+can authorize overwriting a differing local file.
 Installed state advances only after complete successful restore/publication.
 Private source projects restore under `.local/private-sources/`. Some original
 Maya absolute texture references remain missing; consult the resource audit before
@@ -54,7 +58,7 @@ entire pinned private set whenever a lock exists. An existing but stale Kelly me
 cannot silently skip verification. Unrecognized local changes stop restore for inspection;
 exclusive file creation also prevents overwriting a file created by another session.
 
-The 2026-10-29 upgrade path has22isolated safety tests, including byte-clean
+The 2026-10-29 upgrade path has25isolated safety tests, including byte-clean
 managed upgrade/backups, modified-file whole-preflight refusal, legacy lock
 fallback, existing backup preservation and concurrent destination protection.
 Use `-UEPath <engine-root>` or `NEON_UE_ROOT` when UE is installed elsewhere.

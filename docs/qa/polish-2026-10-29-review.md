@@ -3,6 +3,88 @@
 Reviewer: quality_gatekeeper. Producers: root integrator and bounded environment/
 rider specialists. Review profile: `offscreen-cinematic-v1`, schema 2.
 
+## Authoritative material correction and v3 review
+
+**V1 and v2 are superseded.** Their visual observations accurately describe those
+exports, but their assumption that corrected Kelly PBR slots were active was
+wrong. Root found that modifying iterated Unreal material structs changed copies,
+leaving the original Phong assignments saved on `asda`. The corrected material
+array was explicitly assigned and saved before v3.
+
+QA independently read `ue/scripts/validate_kelly_material_polish.py` and the
+fresh-process `polish-2026-10-29-material-reopen-final.log`. The log confirms all
+six mesh slots and all six placed map-component slots point to saved
+`/Game/KellyLowSource/Polish20261029/` materials, with validation success and zero
+errors. This verifies saved assignments; it does not alone establish art quality.
+
+Actual v3 side and hand frames 0/45/135/359 show a visible improvement over the
+same v2 frame indices: clothing has broader matte shading, the hard gold-looking
+trouser highlights are reduced, and hair loses the sharp white chrome-like
+streaks. The previous suggestion that persistent v2 sheen might be baked into
+textures must not be treated as a diagnosis; v2 was still using old materials.
+
+V3 remains **CINEMATIC REWORK / AI VIDEO BLOCKED**. Open fingers below the grip,
+the thin skin-colored strip between wrist/sleeve and hand, coarse motorcycle
+facets and texture stretch, static wheel/fork geometry, and prototype buildings
+remain plainly visible. More matte clothing is a verified improvement, not
+cinematic textile/hair fidelity or natural contact acceptance.
+
+Final v3 dependency fingerprint:
+`416a82e964645c8d0291ea71a6b26208ac4cde69c29f25fec6c5e79897a249aa`.
+The source/material correction changes the bound dependency set; v2 hashes and
+performance measurements below are historical only.
+
+**Actual v3 evidence verification:** side and hands MP4s decoded completely at
+12s/30fps/1920x1080; bridge MP4 decoded completely at 4s/30fps/1920x1080. All
+840 source PNGs passed CRC/decompression/dimension checks. Side/hands capture
+IDs, continuous frame indices, simulation timing and 360-frame completion
+matched their logs. The 4s bridge clip is a diagnostic, not rider-motion proof.
+Visual inspection was limited to side/hands **0,45,135,359** and bridge
+**0,60,90,119**. No full continuous subjective viewing or PASS is claimed;
+`full_continuous_review` remains false.
+
+| V3 domain | Independent decision |
+| --- | --- |
+| Materials/assets | **REWORK with verified response improvement.** Side/hands samples show more matte cloth and softer hair response after actual slot correction. Hero detail remains limited; hands0/135 reveal large motorcycle facets and stretched surface detail. Neutral-light/skin/eyes/material diagnostics are incomplete. |
+| Rider | **REWORK.** Hands0/45/135/359 show fingers hanging below grip and a thin stretched skin-colored strip at the sleeve/wrist/hand region. Natural skin contact is not established; exact deformation cause requires source diagnosis. |
+| Environment | **REWORK.** Road texture, markings, drainage and closer facade frames are readable in side samples. Slab towers and sparse flat windows remain. Bridge0 is obscured by a wall; bridge60/90/119 are heavily occluded and dark. None proves readable deck-plus-piers-plus-lower-level composition. |
+| Vehicles/mechanics | **REWORK.** Wheel/fork geometry remains unarticulated, primitive weapon barrel conspicuous, enemy detail/rolling-contact proof absent from this pack. |
+| Temporal/performance | **REWORK/BLOCKED.** One actual 241.069801ms frame violates the strict maximum. Sparse visual samples cannot clear continuous contact, flicker or rolling. |
+| Engineering | Final v3 map/asset and three-outcome regression validation belongs to root; this QA does not self-certify the unreviewed input/collision pack. |
+| AI handoff | **BLOCKED.** Cinematic quality has not been achieved. |
+
+**Final v3 real-time measurement:** 2086 samples across **34.977213401s** after
+declared 5s warm-up. Independently recomputed p50 **16.665ms**, p95
+**16.81197625ms**, p99 **16.9773437ms**, max **241.069801ms**, **1 frame >50ms**
+at runtime t=**15.223149002s**. P95/p99 pass; maximum/hitch limit fails.
+Runtime reports real-time 1920x1080, fixedTimestep=0, engineFixedFrameRate=0,
+benchmarking=0 and overrideFPS=0. The real-time CSV is separate from fixed-step
+SceneCapture readback; source guards were inspected in the unchanged v2 code.
+
+Final paths use `ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-` followed by
+the table suffix. The reopen log is in that same Quality directory.
+
+| Authoritative v3 artifact | SHA256 |
+| --- | --- |
+| side-v3/render.mp4 | `1ab28e43b90307e0aac89090ec8145c9a667542c1fea99e2a5547d016f9b7e25` |
+| side-v3/runtime.log | `7ef1142af088590fa3581034b780d44cf72c80a9ed6048e8c7dc70b092026632` |
+| side-v3/frame-00000.png | `b6df2dd82557554ce458b9ec6fd71adccd14c553a792df60897963fc5a301cb9` |
+| hands-v3/render.mp4 | `c3d52c09bfe32453af182408b5182fc8919a147fdfd47740aba411b8cca0193c` |
+| hands-v3/runtime.log | `647a04c77f4fa6e4884574a6a9c796c9d0f76de4c41c573697a041e7c966d8f7` |
+| hands-v3/frame-00000.png | `e0d681fbdff7977c5ca1cf99aeff6abf7e1cd33b6e2e28428768fb2cbf8a538c` |
+| bridge-v3/render.mp4 | `4d2720296ececfd3e32813f9cf60a31f3e2a15d1bd971683d17a57817e03417b` |
+| bridge-v3/runtime.log | `9bcd234ac33125a829c788c43c256b8ab704a134bd5f7ea070a2df354b286eba` |
+| bridge-v3/frame-00090.png | `9853375b979ac365ce8daca01cb4832886a95b77cb69f190cafbc73d3809c647` |
+| realtime-v3/realtime.csv | `91b96c4b00782ba71c6a0d23dbb9b81439d2320a2717b5086e25ab55095170a3` |
+| realtime-v3/runtime.log | `cae2039c400e7700fdfb099d9febad15be62db5dd60cf3861675ad4d21ce82fd` |
+| material-reopen-final.log | `190b0123af4fd7de3457e1c1752a9421b32e9cdc26df1ffd23b16044dacdab19` |
+
+Next production priority remains actual hand skin/chain mapping and a motorcycle
+with separate working wheels/fork, followed by unobstructed elevated-scene
+lighting/composition and hitch diagnosis. Retain the newly verified saved PBR
+assignments and fresh-process regression; do not regress to material-existence-only
+checks. No further UE runs were initiated by this reviewer.
+
 ## Plan review
 
 PASS TO IMPLEMENT, not cinematic acceptance. Scope is facade/light readability,
@@ -30,9 +112,10 @@ capture ID/method/dimensions, incomplete frame provenance, desktop capture,
 missing tail metrics, fixed-step performance provenance and profile downgrade.
 These are synthetic integrity tests, not a project art or performance PASS.
 
-## Current independent artifact decision
+## Superseded-v2 independent artifact decision
 
-CINEMATIC: REWORK after actual final-v2 evidence review. AI VIDEO: BLOCKED.
+CINEMATIC: REWORK after actual v2 evidence review. AI VIDEO: BLOCKED.
+This subsection is historical; v3 above is authoritative after saved-material repair.
 The first offscreen pack below is superseded by the final-v2 review. Camera
 tracking and real-time settings checks were corrected and recaptured. The final
 artifacts still demonstrate visible defects; this is not a missing-tool-only
@@ -48,9 +131,9 @@ Required next evidence: actual offscreen wide/gameplay/side and both palm views,
 continuous neutral-left-right-return-brake motion, neutral/lit materials, and
 same-build real-time performance. No final AI generation acceptance is issued.
 
-## Final-v2 independent review
+## Superseded-v2 independent review
 
-Current dependency fingerprint:
+Historical v2 dependency fingerprint:
 `3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808`.
 All final paths below are relative to `ue/NeonCleanerUE/Saved/Quality/`.
 No desktop or window screenshots were acquired. The reviewer read actual

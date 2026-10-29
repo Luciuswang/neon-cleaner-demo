@@ -13,6 +13,10 @@ MATERIAL_TEXTURES = {
     "Material__1337": "female_hair_sc_runner_d",
     "Material__1362": "Female_Head_Sc_Kelly_Awakening_Facial_D_new",
 }
+POLISHED_MATERIALS = {
+    name: ROOT + "/Polish20261029/M_Kelly_" + name.replace("-", "_") + "_PBR_v1"
+    for name in MATERIAL_TEXTURES
+}
 REQUIRED_BONES = {
     "bone_Root",
     "bone_Hips",
@@ -118,16 +122,19 @@ def main():
                     len(slots), len(MATERIAL_TEXTURES)
                 )
             )
-        slot_paths = set()
+        slot_paths = {}
         for index, slot in enumerate(slots):
             material = slot.get_editor_property("material_interface")
             if not material:
                 errors.append("Low Kelly material slot {} is empty".format(index))
             else:
-                slot_paths.add(material.get_path_name())
-        expected_paths = {object_path(name) for name in MATERIAL_TEXTURES}
+                slot_paths[str(slot.get_editor_property("material_slot_name"))] = material.get_path_name()
+        expected_paths = {
+            name: package + "." + package.rsplit("/", 1)[1]
+            for name, package in POLISHED_MATERIALS.items()
+        }
         if slot_paths != expected_paths:
-            errors.append("Low Kelly mesh material set is incomplete")
+            errors.append("Low Kelly mesh slots do not match the six approved PBR materials")
 
         reference_pose = skeleton.get_reference_pose() if skeleton else None
         bones = (
@@ -181,7 +188,15 @@ def main():
                     )
                 )
 
-    allowed = {package_path(name) for name in ASSET_NAMES}
+    for name, package in POLISHED_MATERIALS.items():
+        material = unreal.EditorAssetLibrary.load_asset(package)
+        if not isinstance(material, unreal.Material):
+            errors.append("Missing approved PBR material: " + package)
+        dependencies = {str(value) for value in registry.get_dependencies(package, dependency_options())}
+        if package_path(MATERIAL_TEXTURES[name]) not in dependencies:
+            errors.append(package + " is missing its original diffuse texture dependency")
+
+    allowed = {package_path(name) for name in ASSET_NAMES} | set(POLISHED_MATERIALS.values())
     for package in allowed:
         for dependency in registry.get_dependencies(package, dependency_options()):
             dependency = str(dependency)
