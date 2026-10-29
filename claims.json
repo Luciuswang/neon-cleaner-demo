@@ -1,4 +1,21 @@
 {
-  "claims": {},
+  "claims": {
+    "cinematic-polish-2026-10-29": {
+      "base_commit": "4642bb44355e2c9e87d3956a3ae5b6edf03dae52",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-10-29T19:18:04.342255+00:00",
+      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+      "scopes": [
+        "ue",
+        "tools/qa",
+        "tools/assets",
+        "tools/sync/private_assets.py",
+        "docs",
+        "AGENTS.md"
+      ],
+      "task_id": "cinematic-polish-2026-10-29",
+      "updated_at": "2026-10-29T11:18:04.342255+00:00"
+    }
+  },
   "schema": 1
 }
