@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261029T114934Z-20a6ed3078",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T11:49:34.207560+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Preserve byte-exact material evidence across Windows checkouts",
+  "commit_shas": [
+    "978161687ba9e06411d9162a4810ce4fed254d5f"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
