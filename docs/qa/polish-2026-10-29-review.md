@@ -85,6 +85,14 @@ lighting/composition and hitch diagnosis. Retain the newly verified saved PBR
 assignments and fresh-process regression; do not regress to material-existence-only
 checks. No further UE runs were initiated by this reviewer.
 
+Final machine-report sanity review: all **29** artifact hash references in
+`docs/qa/polish-2026-10-29.json` match actual files, its v3 dependency fingerprint
+matches the current working build, and all six performance statistics match the
+raw CSV exactly. Motion remains explicitly not fully continuously reviewed.
+Root reports final map/assets and Clean/Damaged/Lost regressions passed after
+updating the legacy asset validator for the actual six saved PBR assignments;
+that engineering result does not change the visual/AI verdict above.
+
 ## Plan review
 
 PASS TO IMPLEMENT, not cinematic acceptance. Scope is facade/light readability,
