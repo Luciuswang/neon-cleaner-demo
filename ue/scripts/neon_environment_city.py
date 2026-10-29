@@ -237,9 +237,16 @@ class City:
             for col in range(columns):
                 wx = x - width / 2 + pitch * (col + 0.5)
                 self.part("steel", (wx, face - side * 12, z), (pitch - 36, 18, 202), shadow=False)
-                window = self.rng.choices(("glass", "window", "cool_window"), (0.63, 0.29, 0.08))[0]
+                window = self.rng.choices(("glass", "window", "cool_window"), (0.76, 0.20, 0.04))[0]
                 self.part(window, (wx, face - side * 23, z), (pitch - 58, 6, 174), shadow=False)
                 self.part("steel", (wx, face - side * 28, z), (6, 9, 182), shadow=False)
+                # Recessed lintel/sill and partial blinds prevent glowing flat cards.
+                self.part("concrete", (wx, face - side * 34, z - 94),
+                          (pitch - 38, 42, 12))
+                if window != "glass":
+                    blind_height = self.rng.choice((36, 65, 95))
+                    self.part("facade", (wx, face - side * 28, z + 87 - blind_height / 2),
+                              (pitch - 64, 3, blind_height), shadow=False)
         for edge in (-1, 1):
             self.part("concrete", (x + edge * (width / 2 - 26), face - side * 22, height / 2),
                       (48, 36, height))
@@ -248,6 +255,27 @@ class City:
         self.part("concrete", (x, face + side * 16, height + 86), (width + 24, 35, 120))
         self.part("steel", (x - width * 0.31, face - side * 30, height / 2),
                   (12, 12, height), shape="cylinder")
+        # End walls are prominent in moving three-quarter views. Model them too.
+        side_columns = max(2, int(depth / 300))
+        for end in (-1, 1):
+            wall_x = x + end * (width / 2 + 8)
+            for floor in range(floors):
+                z = 260 + floor * 320
+                self.part("concrete", (wall_x, y, z - 125), (30, depth + 20, 26))
+                for col in range(side_columns):
+                    wy = y - depth / 2 + (col + 0.5) * depth / side_columns
+                    self.part("steel", (wall_x + end * 8, wy, z), (16, 190, 195), shadow=False)
+                    mat = "window" if self.rng.random() < 0.14 else "glass"
+                    self.part(mat, (wall_x + end * 18, wy, z), (4, 166, 168), shadow=False)
+                    self.part("steel", (wall_x + end * 22, wy, z), (6, 5, 174), shadow=False)
+            self.part("concrete", (wall_x, y, height + 86), (35, depth, 120))
+        # Roof equipment has vents, collars and supported ducts, not just a box.
+        for vent in (-1, 1):
+            vx = x + width * 0.17 + vent * width * 0.09
+            self.part("rubber", (vx, y, height + 190), (120, 120, 8), shape="cylinder")
+            for grille in range(5):
+                self.part("steel", (vx - 44 + grille * 22, y, height + 196),
+                          (5, 105, 6), shadow=False)
         if floors <= 5:
             self.part("steel", (x, face - side * 100, 310), (width * 0.65, 200, 18), (side * 4, 0, 0))
             self.part("glass", (x, face - side * 20, 160), (220, 12, 270))
@@ -276,6 +304,12 @@ class City:
                 for z in range(600, h - 300, 900):
                     self.part("glass", (x, y - side * 1108, z), (width * 0.88, 8, 90),
                               shadow=False, distant=True)
+                    for end in (-1, 1):
+                        self.part("glass", (x + end * (width / 2 + 4), y, z),
+                                  (8, 1980, 150), shadow=False, distant=True)
+                for divider in (-.32, 0, .32):
+                    self.part("steel", (x + width * divider, y - side * 1116, h / 2),
+                              (24, 24, h), shadow=False, distant=True)
 
     def damaged_city_dressing(self):
         # Broken infrastructure stays beyond the collision rail, preserving a
@@ -472,7 +506,7 @@ class City:
             if label.endswith("Body"):
                 marker.set_editor_property("tags", [unreal.Name("Gate3ChaseTarget"), unreal.Name("NeonEnvironment")])
 
-    def spot(self, label, xyz, target, lumens=6500, color=(1.0, 0.73, 0.44), shadow=False):
+    def spot(self, label, xyz, target, lumens=4800, color=(1.0, 0.84, 0.66), shadow=False):
         rotation = unreal.MathLibrary.find_look_at_rotation(unreal.Vector(*xyz), unreal.Vector(*target))
         actor = self.spawn(unreal.SpotLight, label, xyz, (rotation.pitch, rotation.yaw, rotation.roll))
         light = actor.get_component_by_class(unreal.SpotLightComponent)
@@ -481,10 +515,10 @@ class City:
         light.set_intensity(lumens)
         light.set_light_color(unreal.LinearColor(*color, 1), False)
         light.set_editor_property("attenuation_radius", 2600.0)
-        light.set_editor_property("inner_cone_angle", 48.0)
-        light.set_editor_property("outer_cone_angle", 68.0)
-        light.set_editor_property("source_radius", 14.0)
-        light.set_editor_property("soft_source_radius", 25.0)
+        light.set_editor_property("inner_cone_angle", 34.0)
+        light.set_editor_property("outer_cone_angle", 60.0)
+        light.set_editor_property("source_radius", 5.0)
+        light.set_editor_property("soft_source_radius", 12.0)
         light.set_editor_property("cast_shadows", shadow)
         light.set_editor_property("max_draw_distance", 14000.0)
         light.set_editor_property("max_distance_fade_range", 2200.0)
@@ -501,15 +535,15 @@ class City:
         key = self.spawn(unreal.DirectionalLight, "Gate3_KeyLight_Cold", (0, 0, 2000), (-24, -35, 0))
         light = key.get_component_by_class(unreal.DirectionalLightComponent)
         light.set_mobility(unreal.ComponentMobility.MOVABLE)
-        light.set_intensity(2.2)
-        light.set_light_color(unreal.LinearColor(0.52, 0.65, 1.0, 1), False)
+        light.set_intensity(3.0)
+        light.set_light_color(unreal.LinearColor(0.72, 0.80, 1.0, 1), False)
         light.set_editor_property("light_source_angle", 5.0)
         sky = self.spawn(unreal.SkyLight, "Gate3_SkyLight", (0, 0, 3000))
         sky_light = sky.get_component_by_class(unreal.SkyLightComponent)
         sky_light.set_mobility(unreal.ComponentMobility.MOVABLE)
-        sky_light.set_intensity(0.65)
+        sky_light.set_intensity(0.9)
         sky_light.set_editor_property("sky_distance_threshold", 150000.0)
-        sky_light.set_editor_property("lower_hemisphere_is_black", True)
+        sky_light.set_editor_property("lower_hemisphere_is_black", False)
         sky_light.set_editor_property("real_time_capture", True)
 
         for i, x in enumerate(range(-500, END_X, 2200)):
@@ -531,9 +565,9 @@ class City:
             self.spot("NC_ViaductFlood_" + str(x), (x, 0, 990), (x, 0, 0), 7500)
         fog = self.spawn(unreal.ExponentialHeightFog, "Gate3_NightMist", (0, 0, -80))
         fog_component = fog.get_component_by_class(unreal.ExponentialHeightFogComponent)
-        fog_component.set_editor_property("fog_density", 0.018)
+        fog_component.set_editor_property("fog_density", 0.009)
         fog_component.set_editor_property("fog_height_falloff", 0.18)
-        fog_component.set_editor_property("start_distance", 600.0)
+        fog_component.set_editor_property("start_distance", 1200.0)
         fog_component.set_editor_property("fog_max_opacity", 0.82)
         fog_component.set_fog_inscattering_color(
             unreal.LinearColor(0.05, 0.075, 0.11, 1)
@@ -548,10 +582,10 @@ class City:
         overrides = {
             "auto_exposure_method": unreal.AutoExposureMethod.AEM_MANUAL,
             "auto_exposure_apply_physical_camera_exposure": False,
-            "auto_exposure_bias": -0.75,
-            "bloom_intensity": 0.38,
+            "auto_exposure_bias": -0.25,
+            "bloom_intensity": 0.24,
             "bloom_threshold": 1.0,
-            "vignette_intensity": 0.18,
+            "vignette_intensity": 0.12,
             "motion_blur_amount": 0.18,
             "screen_space_reflection_intensity": 80.0,
             "screen_space_reflection_quality": 70.0,

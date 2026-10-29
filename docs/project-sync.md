@@ -32,7 +32,12 @@ git lfs pull
 
 The private snapshot is pinned by `docs/sync/private-assets-lock.json`, not a
 machine-specific drive letter. Restore verifies every checksum and preflights all
-conflicts before copying; differing local files are never silently overwritten.
+conflicts before copying. Unknown or edited local files are never overwritten.
+When a file still exactly matches the locally recorded previous snapshot, restore
+preserves it under `.local/private-restore-backups/<old-snapshot>/` and installs
+the new pinned version with exclusive creation and checksum verification. The
+public lock's `previous_snapshot` supports the first upgrade of older clients.
+Installed state advances only after complete successful restore/publication.
 Private source projects restore under `.local/private-sources/`. Some original
 Maya absolute texture references remain missing; consult the resource audit before
 recreating work. Private vault access failure is a restore blocker, not a reason
@@ -46,8 +51,12 @@ invalidates prior runtime evidence; it does not erase the recorded completed wor
 The start script fetches every remote head, preserves current task branches and
 dirty work, fast-forwards only clean branches, pulls LFS, and verifies/restores the
 entire pinned private set whenever a lock exists. An existing but stale Kelly mesh
-cannot silently skip verification. Differing local files stop restore for inspection;
+cannot silently skip verification. Unrecognized local changes stop restore for inspection;
 exclusive file creation also prevents overwriting a file created by another session.
+
+The 2026-10-29 upgrade path has22isolated safety tests, including byte-clean
+managed upgrade/backups, modified-file whole-preflight refusal, legacy lock
+fallback, existing backup preservation and concurrent destination protection.
 Use `-UEPath <engine-root>` or `NEON_UE_ROOT` when UE is installed elsewhere.
 
 ## Avoid duplicate and conflicting work

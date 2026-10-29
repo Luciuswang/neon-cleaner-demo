@@ -453,7 +453,15 @@ void ALinxiaMotorcyclePawn::BeginPlay()
 	bRiderVideoCapture = FParse::Param(FCommandLine::Get(), TEXT("LinxiaRiderVideo"));
 	bSmokeTestActive = FParse::Param(FCommandLine::Get(), TEXT("LinxiaMotorcycleSmokeTest"));
 	bCaptureTestActive = FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCapture="), CaptureOutputPath);
-	if (bCaptureTestActive && CaptureOutputPath.IsEmpty())
+	FString OffscreenOutputDirectory;
+	bOffscreenVideoCapture = FParse::Value(FCommandLine::Get(), TEXT("NeonOffscreenVideo="), OffscreenOutputDirectory);
+	if (bOffscreenVideoCapture)
+	{
+		bCaptureTestActive = true;
+		bRiderMotionCapture = true;
+		bRiderVideoCapture = false;
+	}
+	if (bCaptureTestActive && !bOffscreenVideoCapture && CaptureOutputPath.IsEmpty())
 	{
 		CaptureOutputPath = FPaths::ProjectSavedDir() / TEXT("Screenshots/LinxiaMotorcycleCapture.png");
 	}
@@ -708,11 +716,11 @@ void ALinxiaMotorcyclePawn::UpdateVisuals(float DeltaSeconds)
 	{
 		RiderMotionLogElapsed = 0.0f;
 		const FTransform ToVisual = RiderMesh->GetRelativeTransform();
-		const FVector Left = ToVisual.TransformPosition(RiderMesh->GetBoneLocationByName(TEXT("bone_LeftHand"), EBoneSpaces::ComponentSpace)) + WristToGripVisual;
-		const FVector Right = ToVisual.TransformPosition(RiderMesh->GetBoneLocationByName(TEXT("bone_RightHand"), EBoneSpaces::ComponentSpace)) + WristToGripVisual;
-		UE_LOG(LogTemp, Display, TEXT("[NeonRiderMotion] t=%.3f input=%.3f steer=%.3f lateral=%.2f yaw=%.2f lean=%.2f palmProxyErrorL=%.3f palmProxyErrorR=%.3f actualSurfaceContact=UNVERIFIED location=%s braking=%d speed=%.2f"),
+		const FVector Left = ToVisual.TransformPosition(RiderMesh->GetBoneLocationByName(TEXT("bone_LeftHand"), EBoneSpaces::ComponentSpace)) + PalmContactOffsetVisual[0];
+		const FVector Right = ToVisual.TransformPosition(RiderMesh->GetBoneLocationByName(TEXT("bone_RightHand"), EBoneSpaces::ComponentSpace)) + PalmContactOffsetVisual[1];
+		UE_LOG(LogTemp, Display, TEXT("[NeonRiderMotion] t=%.3f input=%.3f steer=%.3f lateral=%.2f yaw=%.2f lean=%.2f palmProxyErrorL=%.3f palmProxyErrorR=%.3f actualSurfaceContact=UNVERIFIED location=%s braking=%d speed=%.2f wristDeviationL=%.3f wristDeviationR=%.3f"),
 			RiderMotionElapsed, SteerInput, SmoothedSteer, LateralSpeed, GetActorRotation().Yaw, VisualRoot->GetRelativeRotation().Roll,
-			FVector::Distance(Left, RiderLeftGripVisual), FVector::Distance(Right, RiderRightGripVisual), *GetActorLocation().ToCompactString(), bHandbrakeHeld ? 1 : 0, CurrentSpeed);
+			FVector::Distance(Left, RiderLeftGripVisual), FVector::Distance(Right, RiderRightGripVisual), *GetActorLocation().ToCompactString(), bHandbrakeHeld ? 1 : 0, CurrentSpeed, WristDeviationDegrees[0], WristDeviationDegrees[1]);
 	}
 }
 
@@ -799,6 +807,8 @@ void ALinxiaMotorcyclePawn::RunCaptureTest(float DeltaSeconds)
 		bHandbrakeHeld = bBraking;
 		ThrottleInput = bBrakeRecovery ? 0.0f : 0.65f;
 		SteerInput = CaptureTestElapsed < 4.0f || bBrakeRecovery ? 0.0f : 0.42f * FMath::Sin((CaptureTestElapsed - 4.0f) * 2.0f * PI / 6.0f);
+		// Offscreen subsystem owns render-target capture, timing and exit.
+		if (bOffscreenVideoCapture) return;
 		if (bRiderVideoCapture)
 		{
 			if (CaptureTestElapsed >= 4.0f && VideoCaptureFrame < 360 && !FScreenshotRequest::IsScreenshotRequested())
@@ -937,16 +947,8 @@ void ALinxiaMotorcyclePawn::UpdateRiderPose()
 	RiderMesh->SetBoneRotationByName(TEXT("bone_Neck"),
 		(FQuat(FVector::ForwardVector, FMath::DegreesToRadians(32.0f)) * Neck.GetRotation()).Rotator(), EBoneSpaces::ComponentSpace);
 	RiderMesh->RefreshBoneTransforms();
-	const bool bLeftHandPassed = SolveRiderTwoBoneIK(
-		TEXT("LeftHand"),
-		TEXT("bone_LeftArm"), TEXT("bone_LeftForeArm"), TEXT("bone_LeftHand"),
-		RiderLeftGripVisual - WristToGripVisual,
-		FVector(-2.0f, -66.0f, 116.0f));
-	const bool bRightHandPassed = SolveRiderTwoBoneIK(
-		TEXT("RightHand"),
-		TEXT("bone_RightArm"), TEXT("bone_RightForeArm"), TEXT("bone_RightHand"),
-		RiderRightGripVisual - WristToGripVisual,
-		FVector(-2.0f, 66.0f, 116.0f));
+	const bool bLeftHandPassed = SolveRiderHandContact(true);
+	const bool bRightHandPassed = SolveRiderHandContact(false);
 	const bool bLeftFootPassed = SolveRiderTwoBoneIK(
 		TEXT("LeftFoot"),
 		TEXT("bone_LeftLegUpper"), TEXT("bone_LeftLeg"), TEXT("bone_LeftAnkle"),
@@ -968,12 +970,49 @@ void ALinxiaMotorcyclePawn::UpdateRiderPose()
 		bAllContactsPassed ? TEXT("PASS") : TEXT("FAIL"));
 }
 
+bool ALinxiaMotorcyclePawn::SolveRiderHandContact(bool bLeft)
+{
+	const int32 SideIndex = bLeft ? 0 : 1;
+	const FName Upper = bLeft ? TEXT("bone_LeftArm") : TEXT("bone_RightArm");
+	const FName Lower = bLeft ? TEXT("bone_LeftForeArm") : TEXT("bone_RightForeArm");
+	const FName Hand = bLeft ? TEXT("bone_LeftHand") : TEXT("bone_RightHand");
+	const FVector Grip = bLeft ? RiderLeftGripVisual : RiderRightGripVisual;
+	const FVector Pole(-2.0f, bLeft ? -66.0f : 66.0f, 116.0f);
+	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
+	// Rebuild the palm offset from reference each frame. Solve wrist position
+	// and palm orientation together; never rotate a hand after fixing its wrist
+	// to a target derived from a different orientation.
+	FVector Offset = WristToGripVisual;
+	FVector Forward = FVector::ForwardVector;
+	const bool bRequestedLog = bLogIK;
+	bool bPassed = false;
+	for (int32 Iteration = 0; Iteration < 4; ++Iteration)
+	{
+		bLogIK = bRequestedLog && Iteration == 3;
+		bPassed = SolveRiderTwoBoneIK(bLeft ? TEXT("LeftHand") : TEXT("RightHand"), Upper, Lower, Hand, Grip - Offset, Pole);
+		if (Iteration == 3) break;
+		const FVector Elbow = RiderMesh->GetBoneLocationByName(Lower, EBoneSpaces::ComponentSpace);
+		const FVector Wrist = RiderMesh->GetBoneLocationByName(Hand, EBoneSpaces::ComponentSpace);
+		FVector Forearm = RiderToVisual.TransformVectorNoScale(Wrist - Elbow).GetSafeNormal();
+		// Keep fingers across the grip, following forearm pitch. A small forward
+		// bias retains extension without the previous forced horizontal palm.
+		Forearm.Y = 0.0f;
+		Forward = (Forearm.GetSafeNormal() + FVector::ForwardVector * 0.2f).GetSafeNormal();
+		if (Forward.X < 0.1f) Forward = FVector::ForwardVector;
+		Offset = FQuat::FindBetweenNormals(FVector::ForwardVector, Forward).RotateVector(WristToGripVisual);
+	}
+	bLogIK = bRequestedLog;
+	PalmForwardVisual[SideIndex] = Forward;
+	PalmContactOffsetVisual[SideIndex] = Offset;
+	return bPassed;
+}
+
 void ALinxiaMotorcyclePawn::OrientRiderHand(bool bLeft)
 {
-	// Kelly low rig has three deforming finger chains. Use its measured knuckle
-	// frame, not guessed bone Euler axes, to put the palm over the existing grip.
+	const int32 SideIndex = bLeft ? 0 : 1;
 	const FString Side = bLeft ? TEXT("Left") : TEXT("Right");
 	const FName Hand(*FString::Printf(TEXT("bone_%sHand"), *Side));
+	const FName Forearm(*FString::Printf(TEXT("bone_%sForeArm"), *Side));
 	const FName Index(*FString::Printf(TEXT("bone_%s_Finger11"), *Side));
 	const FName Outer(*FString::Printf(TEXT("bone_%s_Finger21"), *Side));
 	const FVector Wrist = RiderMesh->GetBoneLocationByName(Hand, EBoneSpaces::ComponentSpace);
@@ -981,35 +1020,38 @@ void ALinxiaMotorcyclePawn::OrientRiderHand(bool bLeft)
 	const FVector B = RiderMesh->GetBoneLocationByName(Outer, EBoneSpaces::ComponentSpace);
 	const FQuat SourceFrame = FRotationMatrix::MakeFromXY((A + B) * 0.5f - Wrist, A - B).ToQuat();
 	const FTransform RiderToVisual = RiderMesh->GetRelativeTransform();
-	const FVector Forward = RiderToVisual.InverseTransformVectorNoScale(FVector::ForwardVector);
+	const FVector Forward = RiderToVisual.InverseTransformVectorNoScale(PalmForwardVisual[SideIndex]);
 	const FVector Across = RiderToVisual.InverseTransformVectorNoScale(FVector(0.0f, bLeft ? 1.0f : -1.0f, 0.0f));
 	const FQuat DesiredFrame = FRotationMatrix::MakeFromXY(Forward, Across).ToQuat();
 	const FQuat Existing = RiderMesh->GetBoneTransformByName(Hand, EBoneSpaces::ComponentSpace).GetRotation();
 	RiderMesh->SetBoneRotationByName(Hand, (DesiredFrame * SourceFrame.Inverse() * Existing).Rotator(), EBoneSpaces::ComponentSpace);
 	RiderMesh->RefreshBoneTransforms();
 
-	auto AimFinger = [this, &RiderToVisual](FName Bone, FName Child, const FVector& VisualDirection)
-	{
-		const FVector From = RiderMesh->GetBoneLocationByName(Bone, EBoneSpaces::ComponentSpace);
-		const FVector To = RiderMesh->GetBoneLocationByName(Child, EBoneSpaces::ComponentSpace);
-		const FQuat ExistingRotation = RiderMesh->GetBoneTransformByName(Bone, EBoneSpaces::ComponentSpace).GetRotation();
-		const FQuat Aim = FQuat::FindBetweenNormals((To - From).GetSafeNormal(), RiderToVisual.InverseTransformVectorNoScale(VisualDirection).GetSafeNormal());
-		RiderMesh->SetBoneRotationByName(Bone, (Aim * ExistingRotation).Rotator(), EBoneSpaces::ComponentSpace);
-		RiderMesh->RefreshBoneTransforms();
-	};
+	// Preserve source finger splay and twist with limited flexion in the palm
+	// frame. Three-chain skin mapping remains unverified: retain the reference
+	// thumb rather than forcing it across the two grouped finger chains.
+	const FVector FlexAxis = DesiredFrame.GetAxisY() * (bLeft ? 1.0f : -1.0f);
 	for (int32 Finger = 1; Finger <= 2; ++Finger)
 	{
-		const FName Proximal(*FString::Printf(TEXT("bone_%s_Finger%d1"), *Side, Finger));
-		const FName Distal(*FString::Printf(TEXT("bone_%s_Finger%d2"), *Side, Finger));
-		const FName Tip(*FString::Printf(TEXT("Bip01-%s-Finger%dNub"), bLeft ? TEXT("L") : TEXT("R"), Finger));
-		AimFinger(Proximal, Distal, FVector(0.15f, 0.0f, -0.99f));
-		AimFinger(Distal, Tip, FVector(-0.96f, 0.0f, -0.28f));
+		for (int32 Segment = 1; Segment <= 2; ++Segment)
+		{
+			const FName Bone(*FString::Printf(TEXT("bone_%s_Finger%d%d"), *Side, Finger, Segment));
+			const FQuat ReferenceRotation = RiderMesh->GetBoneTransformByName(Bone, EBoneSpaces::ComponentSpace).GetRotation();
+			RiderMesh->SetBoneRotationByName(Bone,
+				(FQuat(FlexAxis, FMath::DegreesToRadians(25.0f)) * ReferenceRotation).Rotator(), EBoneSpaces::ComponentSpace);
+			RiderMesh->RefreshBoneTransforms();
+		}
 	}
-	const FName Thumb(*FString::Printf(TEXT("bone_%s_Finger01"), *Side));
-	const FName ThumbEnd(*FString::Printf(TEXT("bone_%s_Finger02"), *Side));
-	const FName ThumbTip(*FString::Printf(TEXT("Bip01-%s-Finger0Nub"), bLeft ? TEXT("L") : TEXT("R")));
-	AimFinger(Thumb, ThumbEnd, FVector(0.65f, bLeft ? -0.35f : 0.35f, -0.68f));
-	AimFinger(ThumbEnd, ThumbTip, FVector(0.65f, bLeft ? -0.55f : 0.55f, 0.20f));
+	const FVector Elbow = RiderMesh->GetBoneLocationByName(Forearm, EBoneSpaces::ComponentSpace);
+	const FVector ActualPalm = ((RiderMesh->GetBoneLocationByName(Index, EBoneSpaces::ComponentSpace)
+		+ RiderMesh->GetBoneLocationByName(Outer, EBoneSpaces::ComponentSpace)) * 0.5f - Wrist).GetSafeNormal();
+	WristDeviationDegrees[SideIndex] = FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(
+		FVector::DotProduct((Wrist - Elbow).GetSafeNormal(), ActualPalm), -1.0, 1.0)));
+	if (bLogIK)
+	{
+		UE_LOG(LogTemp, Display, TEXT("[NeonRiderAnatomy] side=%s wristDeviationDeg=%.3f addedFingerFlexDeg=25 thumb=ReferencePose meshSurfaceContact=UNVERIFIED skinWeights=UNVERIFIED"),
+			*Side, WristDeviationDegrees[SideIndex]);
+	}
 }
 
 bool ALinxiaMotorcyclePawn::SolveRiderTwoBoneIK(

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261029T114806Z-36d95a35f8",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T11:48:06.593637+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Polish rider materials and city detail with strict offscreen cinematic QA",
+  "commit_shas": [
+    "4642bb44355e2c9e87d3956a3ae5b6edf03dae52"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

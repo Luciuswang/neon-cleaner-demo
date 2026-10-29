@@ -62,6 +62,7 @@ private:
 	void StartRiderAnimation();
 	void UpdateRiderPose();
 	void OrientRiderHand(bool bLeft);
+	bool SolveRiderHandContact(bool bLeft);
 	bool SolveRiderTwoBoneIK(
 		FName ChainName,
 		FName UpperBone,
@@ -84,6 +85,10 @@ private:
 	bool bRiderPoseInitialized = false;
 	bool bLogIK = true;
 	bool bRiderMotionCapture = false;
+	bool bOffscreenVideoCapture = false;
+	FVector PalmForwardVisual[2] = {FVector::ForwardVector, FVector::ForwardVector};
+	FVector PalmContactOffsetVisual[2] = {FVector::ZeroVector, FVector::ZeroVector};
+	float WristDeviationDegrees[2] = {0.0f, 0.0f};
 	bool bRiderVideoCapture = false;
 	int32 VideoCaptureFrame = 0;
 	int32 MotionCaptureFrame = 0;

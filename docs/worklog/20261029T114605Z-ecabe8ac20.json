@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "event_id": "20261029T114605Z-ecabe8ac20",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T11:46:05.008739+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "rework",
+  "summary": "Implemented rider wrist/PBR material and city detail polish; independent offscreen render-target QA with strict hitch gating. Build/map/assets/Clean/Damaged/Lost pass. Cinematic REWORK and AI BLOCKED: actual hand skin/contact, low hero/bike geometry, static wheel/fork, occluded bridge and 240.69ms hitch.",
+  "commit_shas": [
+    "4642bb44355e2c9e87d3956a3ae5b6edf03dae52"
+  ],
+  "evidence": [
+    "docs/qa/polish-2026-10-29.json",
+    "docs/qa/polish-2026-10-29-review.md",
+    "docs/research/ue-ai-2026-10-29.md"
+  ],
+  "blockers": [
+    "Source hand skin and mechanical bike rig unresolved; cinematic gate does not pass."
+  ],
+  "next_action": "Repair actual Kelly hand skin/chain mapping and mechanically segment/rig bike; do not repeat completed AI research, material import or offscreen capture setup.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

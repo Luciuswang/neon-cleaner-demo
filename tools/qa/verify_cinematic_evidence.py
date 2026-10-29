@@ -8,8 +8,12 @@ Performance artifact CSV columns: timestamp_seconds,frame_ms (real-time samples)
 """
 import argparse, csv, hashlib, json, math, re, shutil, struct, subprocess, sys, zlib
 from pathlib import Path
+from datetime import date
 
 PROJECT = 'ue/NeonCleanerUE/'
+OFFSCREEN_PROFILE = 'offscreen-cinematic-v1'
+HISTORICAL_PROFILE = 'historical-v1'
+OFFSCREEN_METHOD = 'ue-scene-capture-render-target'
 DEPENDENCY_HASH_FORMAT = 'neon-deps-v2-lf-source-config'
 LEGACY_DEPENDENCY_HASH_FORMAT = 'neon-deps-v1-raw'
 DEPENDENCY_HASH_FORMATS = (DEPENDENCY_HASH_FORMAT, LEGACY_DEPENDENCY_HASH_FORMAT)
@@ -116,15 +120,19 @@ def video_metadata(path,root):
     if decoded.returncode: raise ValueError('Video decode failed')
     return int(duration[1])*3600+int(duration[2])*60+float(duration[3]),float(rate[1]),int(size[1]),int(size[2])
 
-def motion_log_valid(path,seconds,fps):
+def motion_log_valid(path,seconds,fps,offscreen=False):
     text = path.read_text(encoding='utf8',errors='replace')
-    frames = [(int(a),float(b)) for a,b in re.findall(r'\[NeonRiderVideo\] frame=(\d+) t=([\d.]+)',text)]
-    if len(frames)<math.ceil(10*fps) or '[NeonRiderVideo] Completed requestedFrames=' not in text: raise ValueError('Missing complete UE frame provenance')
+    prefix = 'NeonOffscreenFrame' if offscreen else 'NeonRiderVideo'
+    frames = [(int(a),float(b)) for a,b in re.findall(r'\['+prefix+r'\] frame=(\d+) t=([\d.]+)',text)]
+    completion = (r'\[NeonOffscreenCapture\] Completed frames=(\d+)' if offscreen
+                  else r'\[NeonRiderVideo\] Completed requestedFrames=(\d+)')
+    completed = re.findall(completion,text)
+    if len(frames)<math.ceil(10*fps) or completed!=[str(len(frames))]: raise ValueError('Missing complete UE frame provenance')
     for i,(index,timestamp) in enumerate(frames):
         if index!=i or not math.isfinite(timestamp) or (i and abs(timestamp-frames[i-1][1]-1/fps)>.003): raise ValueError('UE frame gaps/timing mismatch')
     if abs(len(frames)/fps-seconds)>max(.1,1/fps): raise ValueError('UE log/video durations disagree')
 
-def performance_stats(path):
+def performance_stats(path,detailed=False):
     with path.open(encoding='utf-8-sig',newline='') as stream: rows=list(csv.DictReader(stream))
     if len(rows)<2: raise ValueError('Raw performance samples missing')
     times=[float(row['timestamp_seconds']) for row in rows]
@@ -137,7 +145,36 @@ def performance_stats(path):
     def percentile(q):
         p=(len(ordered)-1)*q; lo=int(p); hi=min(lo+1,len(ordered)-1)
         return ordered[lo]+(ordered[hi]-ordered[lo])*(p-lo)
+    if detailed:
+        return {'duration_seconds':duration,'p50_frame_ms':percentile(.5),
+                'p95_frame_ms':percentile(.95),'p99_frame_ms':percentile(.99),
+                'max_frame_ms':max(values),'hitches_over_50ms':sum(v>50 for v in values)}
     return duration,percentile(.5),percentile(.95)
+
+def quality_profile(report):
+    profile=report.get('quality_profile')
+    if profile==OFFSCREEN_PROFILE: return profile
+    # Existing dated reports retain their original interpretation. New reports
+    # cannot silently downgrade by omitting or choosing the historical profile.
+    if profile not in (None,HISTORICAL_PROFILE): raise ValueError('Unknown quality_profile')
+    reviewed=date.fromisoformat(str(report.get('reviewed_at',''))[:10])
+    if reviewed>=date(2026,10,29): raise ValueError('New reviews require '+OFFSCREEN_PROFILE)
+    return HISTORICAL_PROFILE
+
+def offscreen_log_valid(path,capture_id,size):
+    if not isinstance(capture_id,str) or not re.fullmatch(r'[A-Za-z0-9_-]+',capture_id):
+        raise ValueError('Explicit safe capture_id required')
+    text=path.read_text(encoding='utf8',errors='replace')
+    matches=re.findall(r'\[NeonOffscreenCapture\] id=([A-Za-z0-9_-]+) method=(\S+) width=(\d+) height=(\d+)',text)
+    expected=(capture_id,'SceneCapture2D',str(size[0]),str(size[1]))
+    if not matches or any(match!=expected for match in matches):
+        raise ValueError('Offscreen runtime capture ID/method/dimensions mismatch')
+
+def performance_log_valid(path,width,height):
+    text=path.read_text(encoding='utf8',errors='replace')
+    matches=re.findall(r'\[NeonPerformance\] realtime=(\d+) fixedTimestep=(\d+) width=(\d+) height=(\d+)',text)
+    if not matches or any(m!=('1','0',str(width),str(height)) for m in matches):
+        raise ValueError('Real-time performance runtime provenance missing/mismatched')
 
 def verify(report,root):
     root=Path(root).resolve(); errors=[]
@@ -155,6 +192,8 @@ def verify(report,root):
         except (OSError,ValueError,TypeError,KeyError,struct.error,zlib.error,subprocess.SubprocessError) as exc:
             errors.append(label+': '+str(exc)); return None
     require(report.get('schema')==2,'Schema 2 required')
+    profile=inspect(quality_profile,'quality profile',report)
+    offscreen=profile==OFFSCREEN_PROFILE
     a,b=report.get('producer'),report.get('reviewer')
     require(isinstance(a,str) and isinstance(b,str) and a.strip() and b.strip() and a.strip().casefold()!=b.strip().casefold(),'Independent named reviewer required')
     require(bool(report.get('reviewed_at')) and bool(report.get('engine')),'Review timestamp/engine required')
@@ -185,10 +224,16 @@ def verify(report,root):
         require(item.get('reviewed') is True and bool(item.get('notes')),label+': independent review notes required')
         require(bool(current) and item.get('build_fingerprint')==current,label+': build not bound')
         require(item.get('dependency_hash_format',hash_format)==hash_format,label+': mixed dependency_hash_format')
+        capture_log=None
+        if offscreen and (view in IMAGE_VIEWS or view=='rider_motion'):
+            require(item.get('capture_method')==OFFSCREEN_METHOD,label+': desktop/unknown capture method forbidden')
+            capture_log=record(item.get('capture_log',{}),label+'/capture_log')
+            require(capture_log.parent==path.parent,label+': capture log must belong to artifact directory')
         if view in IMAGE_VIEWS:
             require(path.suffix.lower()=='.png',label+': image view requires PNG')
             size=inspect(png_dimensions,label,path)
             require(size and size[0]>=1920 and size[1]>=1080,label+': requires decoded 1920x1080 image')
+            if offscreen and size: inspect(offscreen_log_valid,label,capture_log,item.get('capture_id'),size)
             image_hashes.setdefault(item.get('sha256'),set()).add(view)
         elif view=='rider_motion':
             require(path.suffix.lower() in ('.mp4','.mov','.mkv'),label+': motion must be video')
@@ -198,17 +243,27 @@ def verify(report,root):
             if metadata:
                 seconds,fps,w,h=metadata
                 require(seconds>=10 and fps>=24 and w>=1920 and h>=1080,label+': actual video below target')
-                inspect(motion_log_valid,label,log,seconds,fps)
+                inspect(motion_log_valid,label,log,seconds,fps,offscreen)
+                if offscreen: inspect(offscreen_log_valid,label,capture_log,item.get('capture_id'),(w,h))
+            if offscreen:
+                require(capture_log==log,label+': motion provenance must use the same runtime log')
+                require(item.get('full_continuous_review') is True,label+': full continuous independent review required')
             require({'neutral','left','right','return','brake'}<=set(item.get('actions_reviewed',[])),label+': full action review missing')
         elif view=='performance':
             require(path.suffix.lower()=='.csv',label+': raw performance CSV required')
-            stats=inspect(performance_stats,label,path)
+            stats=inspect(performance_stats,label,path,True)
             if stats:
-                duration,p50,p95=stats
-                require(duration>=30 and p95<=33.3,label+': measured duration/p95 misses target')
-                for key,value in [('duration_seconds',duration),('p50_frame_ms',p50),('p95_frame_ms',p95)]:
+                require(stats['duration_seconds']>=30 and stats['p95_frame_ms']<=33.3,label+': measured duration/p95 misses target')
+                if offscreen:
+                    require(stats['p99_frame_ms']<=33.3 and stats['max_frame_ms']<=50,label+': severe hitches/p99 miss cinematic target')
+                for key,value in stats.items():
                     claimed=report.get('performance',{}).get(key)
-                    if claimed is not None: require(isinstance(claimed,(int,float)) and abs(claimed-value)<=.1,label+': claimed '+key+' differs from raw data')
+                    if offscreen or claimed is not None:
+                        require(type(claimed) in (int,float) and math.isfinite(claimed) and abs(claimed-value)<=.1,label+': claimed '+key+' missing/differs from raw data')
+            if offscreen:
+                perf=report.get('performance',{})
+                runtime_log=record(item.get('runtime_log',{}),label+'/runtime_log')
+                inspect(performance_log_valid,label,runtime_log,perf.get('width'),perf.get('height'))
         else:
             require(path.suffix.lower() in ('.log','.json','.txt','.csv'),label+': structured metadata/log required')
             require(path.is_file() and path.stat().st_size>0,label+': empty evidence')

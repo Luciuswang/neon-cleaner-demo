@@ -1,0 +1,309 @@
+{
+  "schema": 2,
+  "quality_profile": "offscreen-cinematic-v1",
+  "producer": "root + rider_producer",
+  "reviewer": "quality_gatekeeper",
+  "reviewed_at": "2026-10-29T11:46:04.855637+00:00",
+  "engine": "Unreal Engine5.8.1",
+  "build": {
+    "runtime_binary": {
+      "path": "ue/NeonCleanerUE/Binaries/Win64/UnrealEditor-NeonCleanerUE.dll",
+      "sha256": "eabdd68f95ff679c18a52de75496331d4e325c10908dcb748d9a07342e2882bf"
+    },
+    "map": {
+      "path": "ue/NeonCleanerUE/Content/LinxiaChase/LVL_Linxia_MotorcycleChase.umap",
+      "sha256": "8c1e83ff6395342c5bdcdfa39c99f6c0c9308bffdcb55310708093a9223d3fa3"
+    },
+    "dependency_hash_format": "neon-deps-v2-lf-source-config",
+    "dependencies_sha256": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808"
+  },
+  "evidence": [
+    {
+      "id": "side-frame",
+      "view": "rider_side",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-side-v2/frame-00000.png",
+      "sha256": "645856834c1b165594be8d8eb925f1a9316ed76e5d213358903b6bbed5953198",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": true,
+      "notes": "Independent sampled review: centered diagnostic view; low hero/vehicle fidelity and static mechanical components remain REWORK.",
+      "capture_method": "ue-scene-capture-render-target",
+      "capture_id": "polish-2026-10-29-side-v2",
+      "capture_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-side-v2/runtime.log",
+        "sha256": "0aa9433ac45d56d8ca8afc07e658be08bcfa6ae813f96f7ce568c4310b1403ee"
+      }
+    },
+    {
+      "id": "side-motion",
+      "view": "rider_motion",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-side-v2/render.mp4",
+      "sha256": "8ecf6500c70d983eeea6de6797f799cb846f8b46f57ea7148c645dbe272bc4f5",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": true,
+      "notes": "Independent decode, timing and sampled-frame review only. Full subjective continuous review has not been completed; visible defects reject cinematic acceptance.",
+      "capture_method": "ue-scene-capture-render-target",
+      "capture_id": "polish-2026-10-29-side-v2",
+      "capture_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-side-v2/runtime.log",
+        "sha256": "0aa9433ac45d56d8ca8afc07e658be08bcfa6ae813f96f7ce568c4310b1403ee"
+      },
+      "ue_frame_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-side-v2/runtime.log",
+        "sha256": "0aa9433ac45d56d8ca8afc07e658be08bcfa6ae813f96f7ce568c4310b1403ee"
+      },
+      "full_continuous_review": false,
+      "actions_reviewed": []
+    },
+    {
+      "id": "hands-frame",
+      "view": "palm_left",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-hands-v2/frame-00000.png",
+      "sha256": "63b927f41961be2eb568a85c06e1ffcaf2cc2ea376f6cfd23aae74b16464a8c2",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": true,
+      "notes": "Independent sampled review: camera now tracks hand, but open fingers and long thin skin-colored deformation remain severe REWORK; no surface-contact acceptance.",
+      "capture_method": "ue-scene-capture-render-target",
+      "capture_id": "polish-2026-10-29-hands-v2",
+      "capture_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-hands-v2/runtime.log",
+        "sha256": "530fe15ebf4c5bf7cd4ca0442e10efc30fada1358fdc4aed39d81d9e83acd64e"
+      }
+    },
+    {
+      "id": "hands-motion",
+      "view": "rider_motion",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-hands-v2/render.mp4",
+      "sha256": "2b94a18cc10562a665c3d1461d71c95a74d25919df25373d6d93c269d4fe9bba",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": true,
+      "notes": "Independent decode, timing and sampled-frame review only. Full subjective continuous review has not been completed; visible defects reject cinematic acceptance.",
+      "capture_method": "ue-scene-capture-render-target",
+      "capture_id": "polish-2026-10-29-hands-v2",
+      "capture_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-hands-v2/runtime.log",
+        "sha256": "530fe15ebf4c5bf7cd4ca0442e10efc30fada1358fdc4aed39d81d9e83acd64e"
+      },
+      "ue_frame_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-hands-v2/runtime.log",
+        "sha256": "530fe15ebf4c5bf7cd4ca0442e10efc30fada1358fdc4aed39d81d9e83acd64e"
+      },
+      "full_continuous_review": false,
+      "actions_reviewed": []
+    },
+    {
+      "id": "bridge-frame",
+      "view": "bridge_side",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-bridge-v2/frame-00090.png",
+      "sha256": "4d1de57603e0ac6d4d3f2aa7cac7472a3730d87bfc074a6367b8c6a77f774a6e",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": true,
+      "notes": "REJECTED: frame90 is almost entirely occluded/black; cannot certify deck/piers. Frame60 is supporting context only and also does not pass.",
+      "capture_method": "ue-scene-capture-render-target",
+      "capture_id": "polish-2026-10-29-bridge-v2",
+      "capture_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-bridge-v2/runtime.log",
+        "sha256": "5921f038a756c9f777128913714a8855ec069d807e03258b00cbd7f5e6a17f6e"
+      }
+    },
+    {
+      "id": "build",
+      "view": "build_log",
+      "path": ".local/polish-2026-10-29-build.txt",
+      "sha256": "3c0488cbd4b2b1e549756d1676f6f77de85e8a8d1b5d74389fa55ebb67bede81",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Final UE5.8.1 Development editor build succeeded; integrator verification."
+    },
+    {
+      "id": "map",
+      "view": "map_validation",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-map.log",
+      "sha256": "f2baf7361f00d86a25310bd5302a038dd138828a6ffc47a51e7fe96d80d1a026",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Current-build engine validation completed; distinct from independent artistic acceptance."
+    },
+    {
+      "id": "assets",
+      "view": "asset_validation",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-assets.log",
+      "sha256": "c0d3ea4bbf77059ec33be2572ae4cbc67bc9c7d23d3ad4b6752bc78b5f169456",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Current-build engine validation completed; distinct from independent artistic acceptance."
+    },
+    {
+      "id": "smoke-Clean",
+      "view": "smoke_clean",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-smoke-Clean.log",
+      "sha256": "4d4846fee090f01fbde712ae9be76c2cfc0ca57d731791db8019af3df4da3403",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Current-build engine validation completed; distinct from independent artistic acceptance."
+    },
+    {
+      "id": "smoke-Damaged",
+      "view": "smoke_damaged",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-smoke-Damaged.log",
+      "sha256": "990c9dab2b042b400ae5ff5df88bdc418d69b0017a75f3786910ab8bc2772751",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Current-build engine validation completed; distinct from independent artistic acceptance."
+    },
+    {
+      "id": "smoke-Lost",
+      "view": "smoke_lost",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-smoke-Lost.log",
+      "sha256": "31a776b856a34189090d83e9198caa65d87d1c4acff3fe5386a8b5bf3c610f65",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Current-build engine validation completed; distinct from independent artistic acceptance."
+    },
+    {
+      "id": "performance",
+      "view": "performance",
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-realtime-v2/realtime.csv",
+      "sha256": "8eab57ff71af54dd6b8e25761a16c5ef3248b19331726081e584a00678faab4d",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": true,
+      "notes": "Independent raw-data audit; real-time samples kept separate from render-target readback. Severe hitches remain disqualifying if max>50ms.",
+      "runtime_log": {
+        "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-realtime-v2/runtime.log",
+        "sha256": "c8c117f124bf7ef1851b323de688c012fff62cf597d8efcd43deadaa2bc3a961"
+      }
+    },
+    {
+      "id": "materials",
+      "view": "asset_manifest",
+      "path": "docs/assets/polish-materials-2026-10-29.json",
+      "sha256": "ad4af363506d1bc3acf804ddb9136986cf31304afbe4fd4985df62d3435308b1",
+      "build_fingerprint": "3b6960b7e711540ed804f6b1d5e01d5ea407290461241bca2bbadb41cd8ab808",
+      "dependency_hash_format": "neon-deps-v2-lf-source-config",
+      "reviewed": false,
+      "notes": "Original identity textures retained; imported Phong response replaced with bounded dielectric materials. Missing high-detail maps remain unresolved."
+    }
+  ],
+  "performance": {
+    "duration_seconds": 34.9913725,
+    "p50_frame_ms": 16.6669,
+    "p95_frame_ms": 16.8204086,
+    "p99_frame_ms": 16.9544277,
+    "max_frame_ms": 240.692399,
+    "hitches_over_50ms": 1,
+    "width": 1920,
+    "height": 1080,
+    "hardware": "NVIDIA GeForce RTX 5070, driver 591.74; existing workstation",
+    "settings": "DX12/SM6; screen percentage100; dynamic resolution off; 60fps cap; RenderOffscreen main viewport; Clean automated encounter speed1; 5s warmup; independent wall-clock samples. Engine fixed frame rate/benchmark/t.OverrideFPS excluded during sampling.",
+    "fixed_timestep": false
+  },
+  "domains": {
+    "engineering": {
+      "verdict": "CONDITIONAL PASS",
+      "evidence": [
+        "build",
+        "map",
+        "assets",
+        "smoke-Clean",
+        "smoke-Damaged",
+        "smoke-Lost"
+      ],
+      "notes": "Build, map/assets and actual three-outcome gameplay regressions passed. Current keyboard/input-specific proof and independent engineering pack review incomplete."
+    },
+    "environment": {
+      "verdict": "REWORK",
+      "evidence": [
+        "bridge-frame"
+      ],
+      "notes": "Facade sides/sills/blinds/roof details and less orange light implemented; low-detail skyline, surface repetition, framing/illumination require further authoring."
+    },
+    "assets": {
+      "verdict": "REWORK",
+      "evidence": [
+        "side-frame",
+        "materials"
+      ],
+      "notes": "Corrected Phong parameters do not restore missing high Kelly texture/groom detail or bike topology. Baked-looking highlights/plastic appearance persists; exact texture/shading cause is not independently established."
+    },
+    "rider": {
+      "verdict": "REWORK",
+      "evidence": [
+        "hands-frame",
+        "hands-motion",
+        "side-frame",
+        "side-motion"
+      ],
+      "notes": "Wrist alignment numeric improvement is not contact acceptance; open hanging fingers and stretched thin skin geometry remain decisive visible defects."
+    },
+    "vehicles": {
+      "verdict": "REWORK",
+      "evidence": [
+        "side-frame",
+        "side-motion"
+      ],
+      "notes": "Existing car bodies retained. Bike is still a connected static mesh; independent wheel/fork animation is absent. Gun remains primitive."
+    },
+    "temporal": {
+      "verdict": "BLOCKED",
+      "evidence": [
+        "side-motion",
+        "hands-motion",
+        "performance"
+      ],
+      "notes": "Continuous file decode and frame provenance checked; full subjective continuity review incomplete, and strict maximum-frame budget must pass."
+    },
+    "ai_handoff": {
+      "verdict": "BLOCKED",
+      "evidence": [],
+      "notes": "No cinematic acceptance; no final AI footage generated or approved."
+    }
+  },
+  "blockers": [
+    "Hand skin/chain mapping and actual palm/finger contact unresolved",
+    "Low-detail hero, hair and motorcycle topology",
+    "Static wheel/fork geometry",
+    "Prototype skyline/materials and incomplete neutral-light/all-angle proof",
+    "Incomplete full continuous subjective review",
+    "No accepted complete cinematic reference pack",
+    "Real-time maximum frame exceeds50ms: 240.692399"
+  ],
+  "supporting_artifacts": [
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-bridge-v2/render.mp4",
+      "sha256": "e7689c5417635717561e778454eb5c1cd4cf7b9350119a5be1f2c8f4cf286189"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-bridge-v2/frame-00060.png",
+      "sha256": "dafc28c0923309daeb423d18d2af1f5ba28d80d49d83c7d42d7eab489958a427"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-generate-final.log",
+      "sha256": "b53b9ed6ae4b98c62c96c784b6cd85f533f836107bd1217ae3a761ab0c03f655"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-kelly-materials.log",
+      "sha256": "dfece558c3bd141065ca2e6e71972ace7b150c37b9bbc22dbd2faf90fe83554f"
+    },
+    {
+      "path": "ue/NeonCleanerUE/Saved/Quality/polish-2026-10-29-material-audit2.log",
+      "sha256": "3390f7d241a09a7af5d2118c3c6423fe65883147fbd50545cea36ce764353383"
+    }
+  ],
+  "limitations": [
+    "Render targets are engine-produced, never desktop screenshots. Actual locked-session operation was not separately exercised.",
+    "Superseded first captures have different DLL fingerprints and cannot certify this build.",
+    "Side and hands videos are isolated motion diagnostics, not gameplay-performance benchmarks.",
+    "Engineering regressions do not establish cinematic PASS."
+  ]
+}

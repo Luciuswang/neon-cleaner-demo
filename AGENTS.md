@@ -1,5 +1,16 @@
 # Codex Project Entry: Neon Cleaner
 
+## Locked-screen cinematic work - 2026-10-29
+
+Use `ue/Render-NeonOffscreen.ps1` for new visual evidence. The user locks the
+desktop: no desktop screenshots, window focus, clicks or legacy screenshot QA.
+Review engine render-target video sequences, current runtime logs and actual
+assets. A representative frame review cannot claim full continuous review.
+Run map/asset validation and gameplay regressions separately from rendering.
+New reports use `offscreen-cinematic-v1`; never lower thresholds to pass a
+prototype. Current task/evidence: `docs/tasks/cinematic-polish-2026-10-29.md` and
+`docs/qa/polish-2026-10-29.json`. AI-video completion remains independently gated.
+
 ## Standing cross-PC rule - 2026-09-17
 
 The user authorizes normal commits, Git LFS uploads and private-asset backups at

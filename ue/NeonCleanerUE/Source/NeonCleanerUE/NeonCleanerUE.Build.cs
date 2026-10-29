@@ -22,7 +22,9 @@ public class NeonCleanerUE : ModuleRules
 		{
 			"AudioMixer",
 			"Media",
-			"MediaUtils"
+			"MediaUtils",
+			"RenderCore",
+			"RHI"
 		});
 	}
 }

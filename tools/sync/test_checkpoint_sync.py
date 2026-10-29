@@ -222,6 +222,109 @@ class PrivateRestoreTests(unittest.TestCase):
         self.assertFalse((self.root / 'first.uasset').exists())
         self.assertEqual((self.root / 'conflict.uasset').read_bytes(), b'local work')
 
+    def installed(self):
+        return json.loads((self.root / '.local/private-assets-installed.json').read_text())['snapshot']
+
+    def test_clean_managed_upgrade_preserves_backup_and_advances_marker(self):
+        old = self.snapshot({'Content/mesh.uasset': b'old mesh', 'engine.dll': b'old dll'})
+        private.restore()
+        current = self.snapshot({'Content/mesh.uasset': b'new mesh', 'engine.dll': b'new dll'})
+        private.restore()
+        for relative, old_data, new_data in [('Content/mesh.uasset', b'old mesh', b'new mesh'),
+                                             ('engine.dll', b'old dll', b'new dll')]:
+            self.assertEqual((self.root / relative).read_bytes(), new_data)
+            self.assertEqual((self.root / '.local/private-restore-backups' / old.name / relative).read_bytes(), old_data)
+        self.assertEqual(self.installed(), current.name)
+        with patch.object(private, 'copy_file', side_effect=AssertionError('Already installed')):
+            private.restore()
+
+    def test_legacy_lock_previous_snapshot_allows_clean_upgrade(self):
+        old = self.snapshot({'mesh.uasset': b'old'})
+        (self.root / 'mesh.uasset').write_bytes(b'old')
+        current = self.snapshot({'mesh.uasset': b'new'})
+        lock = json.loads(self.lock.read_text())
+        lock['previous_snapshot'] = old.name
+        self.lock.write_text(json.dumps(lock))
+        private.restore()
+        self.assertEqual((self.root / 'mesh.uasset').read_bytes(), b'new')
+        self.assertEqual((self.root / '.local/private-restore-backups' / old.name / 'mesh.uasset').read_bytes(), b'old')
+        self.assertEqual(self.installed(), current.name)
+
+    def test_modified_managed_file_blocks_entire_upgrade_before_changes(self):
+        old = self.snapshot({'first.uasset': b'old first', 'second.uasset': b'old second'})
+        private.restore()
+        (self.root / 'second.uasset').write_bytes(b'user edited')
+        self.snapshot({'first.uasset': b'new first', 'added.uasset': b'new asset', 'second.uasset': b'new second'})
+        with self.assertRaisesRegex(RuntimeError, 'Preserving differing local file'):
+            private.restore()
+        self.assertEqual((self.root / 'first.uasset').read_bytes(), b'old first')
+        self.assertEqual((self.root / 'second.uasset').read_bytes(), b'user edited')
+        self.assertFalse((self.root / 'added.uasset').exists())
+        self.assertFalse((self.root / '.local/private-restore-backups').exists())
+        self.assertEqual(self.installed(), old.name)
+
+    def test_existing_backup_blocks_entire_upgrade(self):
+        old = self.snapshot({'mesh.uasset': b'old'})
+        private.restore()
+        self.snapshot({'added.uasset': b'new asset', 'mesh.uasset': b'new'})
+        backup = self.root / '.local/private-restore-backups' / old.name / 'mesh.uasset'
+        backup.parent.mkdir(parents=True)
+        backup.write_bytes(b'precious prior backup')
+        with self.assertRaisesRegex(RuntimeError, 'Preserving existing restore backup'):
+            private.restore()
+        self.assertFalse((self.root / 'added.uasset').exists())
+        self.assertEqual((self.root / 'mesh.uasset').read_bytes(), b'old')
+        self.assertEqual(backup.read_bytes(), b'precious prior backup')
+        self.assertEqual(self.installed(), old.name)
+
+    def test_new_destination_race_keeps_competing_file_and_backup(self):
+        old = self.snapshot({'mesh.uasset': b'old'})
+        private.restore()
+        self.snapshot({'mesh.uasset': b'new'})
+        preserve = private.preserve_file
+        def insert_competing_file(source, backup):
+            preserve(source, backup)
+            source.write_bytes(b'concurrent work')
+        with patch.object(private, 'preserve_file', side_effect=insert_competing_file):
+            with self.assertRaises(FileExistsError):
+                private.restore()
+        self.assertEqual((self.root / 'mesh.uasset').read_bytes(), b'concurrent work')
+        self.assertEqual((self.root / '.local/private-restore-backups' / old.name / 'mesh.uasset').read_bytes(), b'old')
+        self.assertEqual(self.installed(), old.name)
+
+    def test_publish_retains_previous_snapshot_and_records_install_after_ack(self):
+        old = self.snapshot({'mesh.uasset': b'old'})
+        local = self.root / 'mesh.uasset'
+        local.write_bytes(b'new')
+        def transport(*args, **kwargs):
+            if args[:2] == ('rev-parse', 'HEAD'): return 'verified-commit'
+            if args[:2] == ('ls-remote', 'origin'): return 'verified-commit\trefs/heads/main'
+            return ''
+        with patch.object(private, 'inventory', return_value={'mesh.uasset': local}), \
+             patch.object(private, 'git', side_effect=transport):
+            private.publish()
+            first = json.loads(self.lock.read_text())
+            self.assertEqual(first['previous_snapshot'], old.name)
+            self.assertEqual(self.installed(), first['snapshot'])
+            private.publish()
+            self.assertEqual(json.loads(self.lock.read_text())['previous_snapshot'], old.name)
+
+    def test_failed_publish_does_not_advance_lock_or_install_marker(self):
+        old = self.snapshot({'mesh.uasset': b'old'})
+        private.restore()
+        local = self.root / 'mesh.uasset'
+        local.write_bytes(b'new')
+        previous_lock = self.lock.read_bytes()
+        def rejected_push(*args, **kwargs):
+            if args[0] == 'push': raise RuntimeError('rejected push')
+            return ''
+        with patch.object(private, 'inventory', return_value={'mesh.uasset': local}), \
+             patch.object(private, 'git', side_effect=rejected_push):
+            with self.assertRaisesRegex(RuntimeError, 'rejected push'):
+                private.publish()
+        self.assertEqual(self.lock.read_bytes(), previous_lock)
+        self.assertEqual(self.installed(), old.name)
+
     def test_corrupt_later_source_prevents_earlier_write(self):
         folder = self.snapshot({'first.uasset': b'new', 'second.uasset': b'expected'})
         (folder / 'payload/second.uasset').write_bytes(b'corrupt')

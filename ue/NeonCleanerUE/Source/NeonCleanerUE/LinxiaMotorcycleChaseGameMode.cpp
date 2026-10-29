@@ -60,7 +60,8 @@ void ALinxiaMotorcycleChaseGameMode::BeginPlay()
 	Super::BeginPlay();
 	FString Capture;
 	bLegacyTest = FParse::Param(FCommandLine::Get(), TEXT("LinxiaMotorcycleSmokeTest"))
-		|| FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCapture="), Capture);
+		|| FParse::Value(FCommandLine::Get(), TEXT("LinxiaMotorcycleCapture="), Capture)
+		|| FParse::Value(FCommandLine::Get(), TEXT("NeonOffscreenVideo="), Capture);
 	FString RecordFilm;
 	bFilmRecording = FParse::Value(FCommandLine::Get(), TEXT("NeonRecordFilm="), RecordFilm);
 	FParse::Value(FCommandLine::Get(), TEXT("NeonChaseSmoke="), SmokeScenario);

@@ -1,7 +1,34 @@
 # Project Handoff
 
-Last updated: 2026-09-17
+Last updated: 2026-10-29
 
+
+## Current continuation - cinematic polish 2026-10-29
+
+Read docs/tasks/cinematic-polish-2026-10-29.md, docs/qa/polish-2026-10-29.json
+and docs/qa/polish-2026-10-29-review.md. Do not repeat completed source research,
+material imports or offscreen setup. Epic5.8 AI tools are documented in
+docs/research/ue-ai-2026-10-29.md; no external AI server/plugin is needed here.
+
+Implemented actual forearm-driven wrist alignment, private Kelly dielectric
+material response, facade/endwall/window/roof details and lighting refinement.
+The standalone SceneCapture2D renderer works without desktop screenshots or
+window focus; direct bone-tracking fixes moving closeups. Use Render-NeonOffscreen
+and the strict offscreen-cinematic-v1 evidence profile, not legacy screenshot QA.
+
+Final build, map/assets and Clean/Damaged/Lost gameplay outcomes PASS. Offscreen
+side/hands videos are12s each, bridge4s, all1080p30fps. Independent QA still
+REWORK / AI BLOCKED: visible hand skin deformation/open fingers, low-detail hero
+and motorcycle, static wheel/fork, prototype architecture and bridge occlusion.
+Real-time p99=16.954ms but max=240.692ms; one hitch exceeds50ms. Full continuous
+subjective review remains incomplete; successful decode cannot substitute it.
+
+Next: repair source hand skin/chain mapping and author mechanically segmented
+bike/LODs; restore hero maps/groom; improve architecture and profile the hitch.
+Do not replace this work with another blind joint-angle tweak or declare cinema
+quality from numeric endpoint tests. Current report fingerprint starts3b6960b7.
+Sources, private resources and evidence are published by the mandatory checkpoint
+workflow; other PCs restore the pinned snapshot and read immutable worklogs.
 
 ## Cross-PC verification completed - 2026-09-17
 

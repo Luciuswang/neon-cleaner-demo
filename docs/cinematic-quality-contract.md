@@ -1,4 +1,4 @@
-# Neon Cleaner cinematic production contract — 2026-09-16
+# Neon Cleaner cinematic production contract — updated 2026-10-29
 
 This supersedes prototype concessions in older sprint, agent and QA documents.
 Target: a convincing, playable UE5 elevated-highway chase whose actual rendered
@@ -81,3 +81,61 @@ bright pixels, a caller-supplied PASS or `contacts=PASS` cannot clear this contr
 
 CINEMATIC: REWORK. AI VIDEO: BLOCKED pending accepted UE reference pack.
 Historic engineering PASS and prototype CONDITIONAL PASS do not override this.
+
+## Locked-screen capture and stricter review — effective 2026-10-29
+
+New reviews use schema 2 with `quality_profile: offscreen-cinematic-v1`.
+Desktop screenshots, window grabs, screen recording and synthetic AI footage
+cannot serve as UE evidence. Use the actual scene's SceneCapture2D render target,
+with a fixed camera, recorded capture ID, engine log and decoded output. The user
+may lock the desktop; production and verification must not require unlocking it.
+Render-target post-processing, exposure and Lumen behavior must be checked in the
+export itself; offscreen provenance does not establish visual equivalence or art
+quality. Do not substitute UI pixels if the offscreen path fails.
+
+The existing dated September reports retain historical interpretation, including
+their REWORK/BLOCKED conclusions. The verifier recognizes `historical-v1` only
+for review dates before 2026-10-29 (an omitted profile is supported for these
+existing reports). New reviews cannot omit the profile or select the historical
+one. Changing dates to bypass the gate is invalid review practice.
+
+| Criterion | New acceptance requirement |
+| --- | --- |
+| Hand anatomy/contact | Inspect both palms, thumbs and all visible finger chains at full-resolution neutral and steering extremes. Zero visible finger crossing, inverted bends, floating palm, wrist kink or grip penetration. Measure skin-to-grip separation/penetration where possible; bone endpoint errors alone cannot clear this row. Record any unmeasurable contact as UNVERIFIED. |
+| Mechanical motion | A continuous >=10s, >=24fps sequence must include neutral, left, right, return and brake. Visible wheel and fork geometry must move independently; confirm rolling direction, speed/radius relationship and steering direction from the actual mesh. Hidden proxy components or changing transforms of an invisible component do not count. |
+| Environment | Wide, side and gameplay views must reveal deck thickness, piers and lower city. Zero visible placeholder foreground buildings; facades need readable structure, scale variation, windows with depth and plausible materials. Repeated blocks, added trim alone, black crush, bloom or fog concealment do not establish cinematic quality. |
+| Materials | Neutral and intended-light diagnostics for Kelly skin/eyes/hair/clothing, motorcycle and enemy car. Zero missing maps, default checker materials, obvious UV stretch or accidental mirror/plastic response. Inspect at actual framing and full resolution; metadata and polycount are insufficient. |
+| Temporal | Independent reviewer watches the full continuous sequence; still samples alone cannot clear continuity. Zero observed contact break, joint pop, wheel freeze, ghost trail, lighting flicker or disocclusion failure. Record timestamps and severity for each defect. |
+| Real-time performance | Separate >=30s actual gameplay CSV at >=1920x1080; p95 and p99 <=33.3ms, max <=50ms, zero frames >50ms. Report p50/p95/p99/max and count >50ms, derived from every retained frame. Warm-up exclusions must be contiguous, declared before measurement and preserved in the original CSV; do not trim hitches. Fixed-step video FPS never substitutes for this run. |
+
+For every new image/video evidence item, record `capture_method` as
+`ue-scene-capture-render-target`, `capture_id`, and `capture_log` containing its
+repository-relative `path` and exact `sha256`. The log must sit beside the output
+and contain the runtime marker (ID and dimensions must match the artifact):
+
+```text
+[NeonOffscreenCapture] id=polish-2026-10-29-side method=SceneCapture2D width=1920 height=1080
+[NeonOffscreenFrame] frame=0 t=0.000000
+...
+[NeonOffscreenCapture] Completed frames=360
+```
+
+Motion evidence uses that same log as `ue_frame_log`, requires uninterrupted
+zero-based indices, correct simulation intervals and exact completed-frame count,
+plus `full_continuous_review: true` only after the independent full review.
+The existing `actions_reviewed` list remains mandatory. Fixed simulation time is
+valid for motion comparison but must be described as such.
+
+Performance evidence supplies a hashed `runtime_log` and the runtime must report
+the effective real-time settings, for example:
+
+```text
+[NeonPerformance] realtime=1 fixedTimestep=0 width=1920 height=1080
+```
+
+Its report `performance` object must include `duration_seconds`, `p50_frame_ms`,
+`p95_frame_ms`, `p99_frame_ms`, `max_frame_ms` and `hitches_over_50ms`; the verifier
+checks these against the raw CSV. Runtime logs and manifest declarations are
+audit evidence, not cryptographic attestation. A producer cannot clear its own
+visual work merely by emitting markers or setting review flags. All existing
+same-build hashes, independent domain decisions and missing-evidence vetoes apply.

@@ -111,6 +111,52 @@ def safe_path(base, relative):
     return Path(native_path(target))
 
 
+def snapshot_id(value):
+    if not isinstance(value,str) or len(value)!=64 or any(c not in '0123456789abcdef' for c in value):
+        raise ValueError('Invalid snapshot ID')
+    return value
+
+
+def load_manifest(snapshot, expected=None):
+    snapshot=snapshot_id(snapshot)
+    path=safe_path(VAULT,'snapshots/'+snapshot+'/manifest.json')
+    raw=path.read_bytes().replace(b'\r\n',b'\n')
+    digest=hashlib.sha256(raw).hexdigest()
+    if digest!=snapshot or (expected is not None and digest!=expected):
+        raise ValueError('Manifest checksum mismatch')
+    return path,json.loads(raw)
+
+
+def installed_snapshot(lock):
+    marker=safe_path(ROOT,'.local/private-assets-installed.json')
+    if marker.exists():
+        data=json.loads(marker.read_text(encoding='utf8'))
+        if data.get('remote')!=URL: raise ValueError('Unexpected installed private-vault marker')
+        return snapshot_id(data.get('snapshot'))
+    previous=lock.get('previous_snapshot')
+    return snapshot_id(previous) if previous is not None else None
+
+
+def record_installed(snapshot):
+    marker=safe_path(ROOT,'.local/private-assets-installed.json')
+    marker.parent.mkdir(parents=True,exist_ok=True)
+    marker.write_text(json.dumps(dict(schema=1,remote=URL,snapshot=snapshot_id(snapshot)),indent=2)+'\n',encoding='utf8')
+
+
+def preserve_file(source, backup):
+    # Both paths are validated by safe_path before this individual file move.
+    # Windows rename is atomic and fails if the backup already exists.
+    if os.name=='nt':
+        os.rename(native_path(source),native_path(backup))
+    else:
+        # POSIX rename would overwrite an existing backup; exclusive hardlink
+        # creation instead preserves the original inode without clobbering.
+        os.link(native_path(source),native_path(backup))
+        if not os.path.samestat(source.stat(),backup.stat()):
+            raise RuntimeError('Local file changed while preserving backup: '+str(source))
+        source.unlink()
+
+
 def inventory(extra=None):
     files = {}
     if not (ROOT/REQUIRED_MESH).is_file():
@@ -123,11 +169,12 @@ def inventory(extra=None):
     for name in ('UnrealEditor-NeonCleanerUE.dll','UnrealEditor.modules','NeonCleanerUEEditor.target'):
         relative = 'ue/NeonCleanerUE/Binaries/Win64/'+name
         if (ROOT/relative).is_file(): files[relative] = ROOT/relative
-    report = ROOT/'docs/qa/cinematic-upgrade-2026-09-16.json'
-    if report.is_file():
+    for report_name in ('cinematic-upgrade-2026-09-16.json','polish-2026-10-29.json'):
+        report = ROOT/'docs/qa'/report_name
+        if not report.is_file(): continue
         data = json.loads(report.read_text(encoding='utf8'))
-        for item in data.get('evidence',[]):
-            for entry in [item,item.get('ue_frame_log',{})]:
+        for item in data.get('evidence',[]) + data.get('supporting_artifacts',[]):
+            for entry in [item,item.get('ue_frame_log',{}),item.get('capture_log',{}),item.get('runtime_log',{})]:
                 if entry.get('path'):
                     relative = entry['path']
                     path = safe_path(ROOT,relative)
@@ -157,6 +204,10 @@ def inventory(extra=None):
 
 
 def publish(extra=None):
+    previous_lock=json.loads(LOCK.read_text(encoding='utf8')) if LOCK.is_file() else {}
+    if previous_lock and previous_lock.get('remote')!=URL: raise ValueError('Unexpected vault in previous lock file')
+    for field in ('snapshot','previous_snapshot'):
+        if field in previous_lock: snapshot_id(previous_lock[field])
     files = inventory(extra)
     manifest = dict(schema=1, engine='5.8.1', files=[dict(path=k,bytes=v.stat().st_size,sha256=sha(v)) for k,v in sorted(files.items())])
     payload = json.dumps(manifest,sort_keys=True,indent=2)+'\n'
@@ -184,33 +235,59 @@ def publish(extra=None):
     LOCK.parent.mkdir(parents=True,exist_ok=True)
     lock = dict(schema=1,remote=URL,commit=commit,snapshot=snapshot,manifest_sha256=snapshot,
                 file_count=len(files),bytes=sum(e['bytes'] for e in manifest['files']),engine='5.8.1')
+    previous=previous_lock.get('snapshot')
+    if previous==snapshot: previous=previous_lock.get('previous_snapshot')
+    if previous is not None: lock['previous_snapshot']=snapshot_id(previous)
     LOCK.write_text(json.dumps(lock,indent=2)+'\n',encoding='utf8')
+    record_installed(snapshot)
     print('PRIVATE SNAPSHOT VERIFIED',snapshot[:16],len(files),'files',lock['bytes'],'bytes')
 
 
 def restore():
     lock = json.loads(LOCK.read_text(encoding='utf8'))
     if lock['remote'] != URL: raise ValueError('Unexpected vault in lock file')
-    snapshot = lock['snapshot']
-    if len(snapshot)!=64 or any(c not in '0123456789abcdef' for c in snapshot): raise ValueError('Invalid snapshot ID')
-    manifest_path = VAULT/'snapshots'/snapshot/'manifest.json'
-    raw = manifest_path.read_bytes().replace(b'\r\n',b'\n')
-    if hashlib.sha256(raw).hexdigest()!=lock['manifest_sha256']: raise ValueError('Manifest checksum mismatch')
-    manifest = json.loads(raw)
+    snapshot=snapshot_id(lock['snapshot'])
+    manifest_path,manifest=load_manifest(snapshot,lock['manifest_sha256'])
+    previous=installed_snapshot(lock)
+    old_entries={}
+    if previous:
+        _,old_manifest=load_manifest(previous)
+        old_entries={os.path.normcase(str(safe_path(ROOT,e['path']))): e for e in old_manifest['files']}
     git('lfs','pull','origin','--include=snapshots/'+snapshot+'/payload/**','--exclude=',cwd=VAULT)
     actions=[]
+    seen=set()
     for entry in manifest['files']:
         source=safe_path(manifest_path.parent/'payload',entry['path'])
         destination=safe_path(ROOT,entry['path'])
+        key=os.path.normcase(str(destination))
+        if key in seen: raise ValueError('Duplicate snapshot destination: '+entry['path'])
+        seen.add(key)
         if sha(source)!=entry['sha256']: raise ValueError('Corrupt vault content: '+entry['path'])
+        backup=None
+        old_hash=None
         if destination.exists():
-            if sha(destination)!=entry['sha256']:
+            actual=sha(destination)
+            if actual==entry['sha256']: continue
+            old_hash=old_entries.get(key,{}).get('sha256')
+            if not old_hash or actual!=old_hash:
                 raise RuntimeError('Preserving differing local file; inspect before restoring: '+entry['path'])
-        else: actions.append((source,destination,entry['sha256']))
-    for source,destination,expected in actions:
+            backup=safe_path(ROOT,'.local/private-restore-backups/'+previous+'/'+entry['path'])
+            if backup.exists():
+                raise RuntimeError('Preserving existing restore backup; inspect before retry: '+str(backup))
+        actions.append((source,destination,entry['sha256'],backup,old_hash))
+    # All sources and local conflicts are checked before any file replacement.
+    for source,destination,expected,backup,old_hash in actions:
+        if backup:
+            if sha(destination)!=old_hash:
+                raise RuntimeError('Local file changed after restore preflight: '+str(destination))
+            backup.parent.mkdir(parents=True,exist_ok=True)
+            preserve_file(destination,backup)
+            if sha(backup)!=old_hash:
+                raise RuntimeError('Local file changed during move; preserved at '+str(backup))
         destination.parent.mkdir(parents=True,exist_ok=True)
         copy_file(source,destination)
         if sha(destination)!=expected: raise RuntimeError('Restored file checksum mismatch: '+str(destination))
+    record_installed(snapshot)
     print('PRIVATE RESTORE VERIFIED',len(manifest['files']),'files;',len(actions),'restored')
 
 

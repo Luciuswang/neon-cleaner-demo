@@ -1,5 +1,6 @@
 """Adversarial regression tests: no UE process, no project mutations."""
 import hashlib
+import copy
 from pathlib import Path
 import struct
 import tempfile
@@ -166,6 +167,49 @@ class EvidenceGateTests(unittest.TestCase):
         path.write_text('Historical AI video, no UE render provenance')
         with self.assertRaises(ValueError): gate.motion_log_valid(path, 12, 30)
 
+    def test_offscreen_motion_requires_real_sequence_and_exact_completion(self):
+        text = ''.join(f'[NeonOffscreenFrame] frame={i} t={i/30:.6f}\n' for i in range(360))
+        path = self.write('offscreen.log', (text + '[NeonOffscreenCapture] Completed frames=360\n').encode())
+        gate.motion_log_valid(path,12,30,True)
+        for payload in (text+'[NeonOffscreenCapture] Completed frames=359\n',
+                        text.replace('frame=99 ','frame=100 ')+'[NeonOffscreenCapture] Completed frames=360\n',
+                        text.replace('NeonOffscreenFrame','NeonRiderVideo')+'[NeonOffscreenCapture] Completed frames=360\n'):
+            path.write_bytes(payload.encode())
+            with self.assertRaises(ValueError): gate.motion_log_valid(path,12,30,True)
+
+    def test_profile_cannot_downgrade_new_review(self):
+        for profile in (None,gate.HISTORICAL_PROFILE,'unknown'):
+            with self.subTest(profile=profile):
+                with self.assertRaises(ValueError):
+                    gate.quality_profile({'quality_profile':profile,'reviewed_at':'2026-10-29T12:00:00Z'})
+        self.assertEqual(gate.quality_profile({'reviewed_at':'2026-09-16'}),gate.HISTORICAL_PROFILE)
+        self.assertEqual(gate.quality_profile({'quality_profile':gate.OFFSCREEN_PROFILE}),gate.OFFSCREEN_PROFILE)
+
+    def test_offscreen_provenance_rejects_wrong_id_method_dimensions(self):
+        text='[NeonOffscreenCapture] id=side method=SceneCapture2D width=1920 height=1080\n'
+        path=self.write('capture.log',text.encode())
+        gate.offscreen_log_valid(path,'side',(1920,1080))
+        for payload in (text.replace('id=side','id=other'),text.replace('SceneCapture2D','Desktop'),
+                        text.replace('width=1920','width=1280'),text+'[NeonOffscreenCapture] id=other method=SceneCapture2D width=1920 height=1080\n'):
+            path.write_bytes(payload.encode())
+            with self.assertRaises(ValueError): gate.offscreen_log_valid(path,'side',(1920,1080))
+
+    def test_detailed_performance_keeps_single_severe_hitch(self):
+        values=[20.0]*1601; values[800]=350.138
+        timestamp=0; rows=['timestamp_seconds,frame_ms']
+        for index,value in enumerate(values):
+            if index: timestamp+=value/1000
+            rows.append(f'{timestamp:.6f},{value}')
+        path=self.write('perf.csv', ('\n'.join(rows)+'\n').encode())
+        stats=gate.performance_stats(path,True)
+        self.assertEqual(stats['p99_frame_ms'],20)
+        self.assertEqual(stats['max_frame_ms'],350.138)
+        self.assertEqual(stats['hitches_over_50ms'],1)
+        item=self.record(path); item.update(id='performance',view='performance')
+        errors=gate.verify({'schema':2,'quality_profile':gate.OFFSCREEN_PROFILE,'evidence':[item],
+                            'performance':stats},self.root)
+        self.assertTrue(any('severe hitches/p99' in e for e in errors))
+
     def test_original_false_pass_report_rejected(self):
         fake = self.record(self.write('notes.md', b'not an image, DLL, map, or CSV'))
         video = self.record(self.write('historical-ai.mp4', b'not an actual video'))
@@ -188,7 +232,7 @@ class EvidenceGateTests(unittest.TestCase):
     def test_missing_report_is_blocked(self):
         self.assertTrue(gate.verify({}, self.root))
 
-    def test_complete_synthetic_schema_can_pass_integrity_checks(self):
+    def synthetic_report(self):
         # Synthetic fixture tests schema mechanics, never represents an art pass.
         for folder in ('Content', 'Config', 'Source'):
             (self.root / gate.PROJECT / folder).mkdir(parents=True)
@@ -221,6 +265,10 @@ class EvidenceGateTests(unittest.TestCase):
                             'dependency_hash_format': gate.DEPENDENCY_HASH_FORMAT},
                   'evidence': evidence, 'domains': {domain: {'verdict': 'PASS', 'notes': 'Synthetic fixture', 'evidence': list(views)} for domain, views in gate.DOMAIN_VIEWS.items()},
                   'performance': {'hardware': 'fixture', 'settings': 'fixture', 'width': 1920, 'height': 1080, 'fixed_timestep': False}}
+        return report
+
+    def test_complete_synthetic_schema_can_pass_integrity_checks(self):
+        report=self.synthetic_report(); evidence=report['evidence']
         with patch.object(gate, 'video_metadata', return_value=(12, 30, 1920, 1080)):
             self.assertEqual(gate.verify(report, self.root), [])
             # A report may intentionally retain the historical algorithm, but
@@ -235,6 +283,38 @@ class EvidenceGateTests(unittest.TestCase):
             report['build']['dependency_hash_format'] = gate.LEGACY_DEPENDENCY_HASH_FORMAT
             evidence[0]['dependency_hash_format'] = gate.DEPENDENCY_HASH_FORMAT
             self.assertTrue(any('mixed dependency_hash_format' in error for error in gate.verify(report, self.root)))
+
+    def test_strict_offscreen_report_and_adversarial_changes(self):
+        report=self.synthetic_report()
+        report.update(quality_profile=gate.OFFSCREEN_PROFILE,reviewed_at='2026-10-29')
+        text='[NeonOffscreenCapture] id=fixture method=SceneCapture2D width=1920 height=1080\n'
+        text+=''.join(f'[NeonOffscreenFrame] frame={i} t={i/30:.6f}\n' for i in range(360))
+        text+='[NeonOffscreenCapture] Completed frames=360\n'
+        log=self.write('offscreen.log',text.encode())
+        runtime=self.write('performance.log',b'[NeonPerformance] realtime=1 fixedTimestep=0 width=1920 height=1080\n')
+        for item in report['evidence']:
+            if item['view'] in gate.IMAGE_VIEWS or item['view']=='rider_motion':
+                item.update(capture_method=gate.OFFSCREEN_METHOD,capture_id='fixture',capture_log=self.record(log))
+            if item['view']=='rider_motion':
+                item.update(ue_frame_log=self.record(log),full_continuous_review=True)
+            if item['view']=='performance':
+                item['runtime_log']=self.record(runtime)
+                report['performance'].update(gate.performance_stats(self.root/item['path'],True))
+        with patch.object(gate,'video_metadata',return_value=(12,30,1920,1080)):
+            self.assertEqual(gate.verify(report,self.root),[])
+            mutations=[('capture_method','desktop','desktop/unknown capture'),
+                       ('capture_id','different','capture ID/method/dimensions'),
+                       ('full_continuous_review',False,'full continuous independent review')]
+            for key,value,expected in mutations:
+                altered=copy.deepcopy(report)
+                next(e for e in altered['evidence'] if e['view']=='rider_motion')[key]=value
+                self.assertTrue(any(expected in e for e in gate.verify(altered,self.root)),key)
+            for key in ('p99_frame_ms','max_frame_ms','hitches_over_50ms'):
+                altered=copy.deepcopy(report); del altered['performance'][key]
+                self.assertTrue(any('claimed '+key in e for e in gate.verify(altered,self.root)),key)
+            runtime.write_bytes(b'[NeonPerformance] realtime=1 fixedTimestep=1 width=1920 height=1080\n')
+            next(e for e in report['evidence'] if e['view']=='performance')['runtime_log']=self.record(runtime)
+            self.assertTrue(any('Real-time performance runtime provenance' in e for e in gate.verify(report,self.root)))
 
 
 if __name__ == '__main__': unittest.main()

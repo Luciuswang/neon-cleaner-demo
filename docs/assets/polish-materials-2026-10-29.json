@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "source": "Existing user-provided KellyLowSource diffuse textures; identity and texture files unchanged",
+  "scope": "Material response correction, not high-resolution asset restoration",
+  "generator": "ue/scripts/polish_kelly_materials.py",
+  "private_destination": "/Game/KellyLowSource/Polish20261029",
+  "observed_legacy_issue": "FBXLegacyPhongSurfaceMaterial: bottom/head/hair Shininess=1024, SpecularColor=(2,2,2); visible hard plastic-like highlights",
+  "slots": [
+    {"slot":"15_-_Default", "roughness":0.52, "specular":0.35, "metallic":0},
+    {"slot":"Material__1205", "roughness":0.78, "specular":0.30, "metallic":0},
+    {"slot":"Material__1335", "roughness":0.72, "specular":0.30, "metallic":0},
+    {"slot":"Material__1207", "roughness":0.68, "specular":0.30, "metallic":0},
+    {"slot":"Material__1362", "roughness":0.48, "specular":0.35, "metallic":0},
+    {"slot":"Material__1337", "roughness":0.55, "specular":0.35, "metallic":0}
+  ],
+  "preserved": "Original Phong instances remain on disk for rollback; no restricted textures committed publicly",
+  "unresolved": ["Baked diffuse lighting/highlights", "Missing detailed normal/roughness maps", "Hero mesh and hand skin weights", "Hair groom", "Cinematic acceptance"]
+}
