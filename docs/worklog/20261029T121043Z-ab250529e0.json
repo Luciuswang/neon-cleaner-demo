@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261029T121043Z-ab250529e0",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T12:10:43.665954+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Verify final v3 restore and preserved prior Kelly mesh",
+  "commit_shas": [
+    "c2ad0757ac6e772b57254b2ec9568aca6607c011"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

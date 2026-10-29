@@ -75,6 +75,11 @@ renders are never used for FPS. See final machine report and independent review.
 
 ## Required next work
 
+Final alternate-checkout restoration from actual GitHub is verified: 773 private
+files, 25 unique artifact paths (29 references), exact current fingerprint and
+preserved previous Kelly mesh. See `docs/qa/polish-2026-10-29-restore.md`.
+This was an isolated checkout on this workstation, not a second-PC runtime test.
+
 Repair actual Kelly hand skin/chain mapping in the source rig and test palm/finger
 surfaces, then author segmented bike wheel/fork rig with LODs. Do not repeat blind
 joint-angle tweaking or merely substitute the connected800k-face bike candidate.

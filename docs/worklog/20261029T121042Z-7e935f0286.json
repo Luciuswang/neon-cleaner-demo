@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "event_id": "20261029T121042Z-7e935f0286",
+  "task_id": "cinematic-polish-2026-10-29",
+  "timestamp_utc": "2026-10-29T12:10:42.827843+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "rework",
+  "summary": "Final v3 checkpoint restored from GitHub in an isolated older checkout:773 private files verified,20 restoration actions,29 artifact references across25 unique paths match; exact current build fingerprint and old Kelly mesh backup verified. Checkout clean. Same workstation test, not a second physical PC. Cinematic REWORK unchanged.",
+  "commit_shas": [
+    "c2ad0757ac6e772b57254b2ec9568aca6607c011"
+  ],
+  "evidence": [
+    "docs/qa/polish-2026-10-29-restore.md"
+  ],
+  "blockers": [],
+  "next_action": "Continue from current v3 failures and pinned snapshot; repair hand skin/contact and bike mechanical rig without repeating completed import/research work.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
