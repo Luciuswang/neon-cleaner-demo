@@ -537,3 +537,15 @@ Generated repository-facts-only biweekly report for 2026-10-10 through 2026-10-2
 ## Sync note - 2026-10-24T17:36:16.8740631+08:00
 
 Generated repository-facts-only biweekly report for 2026-10-10 through 2026-10-24; remote dossier covered 12 branches, one commit, and zero worklog events. Email remains blocked by prior Gmail safety review.
+
+## Biweekly reporting checkpoint - 2026-11-07
+
+The repository-facts-only report for 2026-10-24 through 2026-11-07 is in docs/reports/biweekly-2026-10-24-to-2026-11-07.md. The all-origin dossier covered 12 branches, 9 unique commits and 10 worklog event variants. This period's cinematic polish, PBR persistence and V3 restore/audit work are published and verified. Keep the current verdict as engineering PASS, cinematic REWORK, AI VIDEO BLOCKED: hand contact, hero/bike detail and rigging, architecture/occlusion and the 241.070 ms hitch still require rework. Email delivery was not retried because the prior Gmail safety review requires explicit user authorization for this nonpublic automation report.
+
+## Sync note - 2026-11-07T17:34:56.8851383+08:00
+
+Generated repository-facts-only biweekly report for 2026-10-24 through 2026-11-07; remote dossier covered 12 branches, 9 unique commits, and 10 worklog event variants. Cinematic polish and V3 restore/audit are published; cinematic remains REWORK and AI video BLOCKED. Email delivery remains blocked by prior Gmail safety review.
+
+## Sync note - 2026-11-07T17:35:36.2448822+08:00
+
+Generated repository-facts-only biweekly report for 2026-10-24 through 2026-11-07; remote dossier covered 12 branches, 9 unique commits, and 10 worklog event variants. Cinematic polish and V3 restore/audit are published; cinematic remains REWORK and AI video BLOCKED. Email delivery remains blocked by prior Gmail safety review.

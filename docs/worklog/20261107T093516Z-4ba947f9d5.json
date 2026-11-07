@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261107T093516Z-4ba947f9d5",
+  "task_id": "codex/character-continuity-pipeline",
+  "timestamp_utc": "2026-11-07T09:35:16.096915+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Generated repository-facts-only biweekly report for 2026-10-24 through 2026-11-07; remote dossier covered 12 branches, 9 unique commits, and 10 worklog event variants. Cinematic polish and V3 restore/audit are published; cinematic remains REWORK and AI video BLOCKED. Email delivery remains blocked by prior Gmail safety review.",
+  "commit_shas": [
+    "5a973cb04f08d42c55e716e8243e970b261b591a"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
