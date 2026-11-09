@@ -18,19 +18,23 @@
     "metahuman-setup-2026-11-09": {
       "base_commit": "cd03dfcb0d49321b4be7803879b8a424f8330502",
       "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-09T15:57:04.798666+00:00",
+      "expires_at": "2026-11-09T15:57:55.050993+00:00",
       "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
       "scopes": [
         "ue/NeonCleanerUE/NeonCleanerUE.uproject",
         "ue/scripts/metahuman",
         "ue/Start-MetaHuman.ps1",
+        "ue/Start-MetaHuman.bat",
         "docs/metahuman-quickstart.md",
         "docs/tasks/metahuman-setup-2026-11-09.md",
         "docs/worklog",
-        "docs/handoff.md"
+        "docs/handoff.md",
+        "tools/sync/private_assets.py",
+        "tools/sync/test_checkpoint_sync.py",
+        ".gitignore"
       ],
       "task_id": "metahuman-setup-2026-11-09",
-      "updated_at": "2026-11-09T07:57:04.798666+00:00"
+      "updated_at": "2026-11-09T07:57:55.050993+00:00"
     }
   },
   "schema": 1
