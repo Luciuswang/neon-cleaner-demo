@@ -14,20 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "metahuman-starter-2026-11-09": {
-      "base_commit": "a63e94848c127a34b05d996c9cd5f38913962a97",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-09T18:52:15.560697+00:00",
-      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
-      "scopes": [
-        "ue/NeonCleanerUE/Content/MetaHumanWorkspace",
-        "docs/tasks/metahuman-setup-2026-11-09.md",
-        "docs/handoff.md",
-        "docs/worklog"
-      ],
-      "task_id": "metahuman-starter-2026-11-09",
-      "updated_at": "2026-11-09T10:52:15.560697+00:00"
     }
   },
   "schema": 1
