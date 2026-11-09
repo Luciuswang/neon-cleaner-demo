@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261109T105427Z-dd58169efd",
+  "task_id": "metahuman-starter-2026-11-09",
+  "timestamp_utc": "2026-11-09T10:54:27.850959+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Create editable MetaHuman starter after Core Data installation",
+  "commit_shas": [
+    "a63e94848c127a34b05d996c9cd5f38913962a97"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

@@ -39,3 +39,13 @@ the project descriptor changes the cinematic dependency fingerprint; prior
 offscreen QA is historical and needs fresh evidence before any new acceptance.
 Next: complete Core Data installation and restart, run launcher, create/assemble
 the character, then test webcam or a saved audio asset end to end.
+
+## Starter created after Core Data installation
+
+On 2026-11-09 the user installed Core Data; the launcher readiness check passed.
+The actual project commandlet created `/Game/MetaHumanWorkspace/Characters/Heroine_MetaHuman`
+and exited successfully, then started the Unreal editor. This is a default editable
+starting asset, not yet an assembled character or a Kelly identity match. Webcam,
+audio performance, in-editor Creator usability and facial animation remain untested.
+Next: open the asset in Creator, edit and save; assemble before using in a level;
+then validate an expression via the camera or an audio clip.

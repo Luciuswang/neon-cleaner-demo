@@ -3,6 +3,14 @@
 Last updated: 2026-10-29
 
 
+## MetaHuman starter created - 2026-11-09
+
+Core Data readiness passed after user installation. The actual project now has
+/Game/MetaHumanWorkspace/Characters/Heroine_MetaHuman, created and saved by
+the starter commandlet; editor was launched. See docs/metahuman-quickstart.md.
+This is a starting asset, not Kelly or a completed assembled character.
+Creator, camera and audio expression still need interactive validation.
+
 ## MetaHuman creation setup - 2026-11-09
 
 User wants a simple Creator and facial-expression workflow. Read
