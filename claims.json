@@ -14,6 +14,21 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "metahuman-leather-2026-11-09": {
+      "base_commit": "d883964f5320932318b3d161c82023167cae1452",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-09T19:37:02.503559+00:00",
+      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+      "scopes": [
+        "ue/NeonCleanerUE/Content/MetaHumanWorkspace",
+        "ue/NeonCleanerUE/Config/DefaultEngine.ini",
+        "docs/tasks/metahuman-leather-2026-11-09.md",
+        "docs/worklog",
+        "docs/handoff.md"
+      ],
+      "task_id": "metahuman-leather-2026-11-09",
+      "updated_at": "2026-11-09T11:37:02.503559+00:00"
     }
   },
   "schema": 1
