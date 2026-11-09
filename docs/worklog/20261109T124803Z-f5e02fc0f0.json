@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "event_id": "20261109T124803Z-f5e02fc0f0",
+  "task_id": "metahuman-rider-2026-11-09",
+  "timestamp_utc": "2026-11-09T12:48:03.180588+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "blocked",
+  "summary": "Preserved custom Heroine; prepared CC BY leather source, imported and freshly validated seven unfitted static candidate assets. Exported actual body reference FBX (342 bones) from isolated copy. Saved experimental A-pose fit; Max Skin transfer failed. Epic device authorization timed out. No runtime assembly, garment skinning, rider swap or new-game verification completed.",
+  "commit_shas": [
+    "b4f94cebf03f8dc854cdec25ec38d703f082cc4e"
+  ],
+  "evidence": [
+    "docs/tasks/metahuman-rider-2026-11-09.md",
+    "docs/assets/metahuman-leather-jacket-2026-11-09.md"
+  ],
+  "blockers": [
+    "Epic account device authorization and correct body Skin import/garment weight transfer remain unresolved."
+  ],
+  "next_action": "Retry Epic auto-rig with account holder, assemble user character; resolve Skin transfer and riding animation; implement and validate actual game replacement before launch.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

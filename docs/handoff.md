@@ -3,6 +3,16 @@
 Last updated: 2026-10-29
 
 
+## Custom MetaHuman rider checkpoint - 2026-11-09
+
+User explicitly wants the saved MetaHuman to replace the old motorcycle rider.
+Read docs/tasks/metahuman-rider-2026-11-09.md before continuing. Original
+character and prior rider remain intact. Jacket source/PBR imported as an
+UNFITTED, UNRIGGED candidate, body reference FBX exported and initial A-pose
+fit experiment preserved privately. Max skin transfer failed; no game-ready
+jacket, assembled rider, riding pose or game replacement exists yet.
+Epic device authorization timed out; retry after account-holder action.
+
 ## MetaHuman leather outfit request - 2026-11-09
 
 The user has customized and saved Heroine_MetaHuman. Preserve that face and body.
