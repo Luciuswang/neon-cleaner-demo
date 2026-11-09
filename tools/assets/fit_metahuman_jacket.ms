@@ -37,8 +37,13 @@ try (
  FBXImporterSetParam "Mode" #create
  format "FBX import Skin=% Mode=%\n" (FBXImporterGetParam "Skin") (FBXImporterGetParam "Mode") to:report
  importFile bodyPath #noPrompt using:FBXIMP
- local body = getNodeByName "Heroine_MetaHuman_FittingCopy_Body"
- if body==undefined do throw "Expected body mesh Heroine_MetaHuman_FittingCopy_Body missing"
+ local bodyName="Heroine_MetaHuman_FittingCopy_Body"
+ local firstByName=getNodeByName bodyName
+ format "BODY_NAME_LOOKUP class=% superclass=%\n" (classOf firstByName) (superClassOf firstByName) to:report
+ for node in objects where node.name==bodyName do format "BODY_NAMED_NODE class=% superclass=% handle=%\n" (classOf node) (superClassOf node) node.handle to:report
+ local bodyMatches=for node in geometry where node.name==bodyName collect node
+ if bodyMatches.count!=1 do throw "Expected exactly one matching body geometry node"
+ local body=bodyMatches[1]
  local bodySkin=undefined
  for md in body.modifiers where classOf md==Skin do bodySkin=md
  format "BODY_BEFORE_JACKET modifiers=% hasSkin=%\n" body.modifiers.count (bodySkin!=undefined) to:report
@@ -52,8 +57,9 @@ try (
   saveMaxFile (dst + @"\body-skin-lost-on-jacket-import.max") quiet:true
   throw "Jacket import removed body Skin; refusing garment fitting/transfer"
  )
- local jacket = getNodeByName "polySurface4"
- if jacket==undefined do throw "Expected jacket mesh polySurface4 missing"
+ local jacketMatches=for node in geometry where node.name=="polySurface4" collect node
+ if jacketMatches.count!=1 do throw "Expected exactly one matching jacket geometry node"
+ local jacket=jacketMatches[1]
  jacket.name = "Experimental_MetaHuman_LeatherJacket"
  format "Imported bounds % % transform % objectTransform %\n" jacket.min jacket.max jacket.transform jacket.objectTransform to:report
  local csv = createFile (dst + @"\jacket-fitted-world-vertices.csv")
@@ -141,12 +147,37 @@ try (
  format "unweighted % nonNormalized % maxInfluences %\n" unweighted badsum maxInfluences to:report
  if unweighted>0 or badsum>0 or (skinOps.GetNumberVertices skinMod)!=originalCount do throw "Skin coverage/normalization invalid; refusing skinned export"
  for b=1 to skinOps.GetNumberBones skinMod do format "Bone % %\n" b (skinOps.GetBoneName skinMod b 0) to:report
+ -- Export only the real skeleton and garment. The FBX body container Dummy
+ -- must not become an extra root bone when UE merges with MetaHuman Skeleton.
+ local rigNodes=#()
+ for b=1 to skinOps.GetNumberBones bodySkin do (
+  local boneName=skinOps.GetBoneName bodySkin b 0
+  local matches=for node in objects where node.name==boneName collect node
+  if matches.count!=1 do throw ("Ambiguous reference skeleton bone: "+boneName)
+  append rigNodes matches[1]
+ )
+ local rigRoots=for node in rigNodes where node.name=="root" collect node
+ if rigRoots.count!=1 do throw "Expected unique MetaHuman root bone"
+ local rigRoot=rigRoots[1]
+ for node in rigNodes where node!=rigRoot do (
+  if findItem rigNodes node.parent==0 do throw ("Unexpected skeleton helper parent on "+node.name)
+ )
+ format "EXPORT rootParentBefore=% rigNodes=%\n" (if rigRoot.parent==undefined then "none" else rigRoot.parent.name) rigNodes.count to:report
+ local rootTM=rigRoot.transform
+ rigRoot.parent=undefined
+ rigRoot.transform=rootTM
+ local jacketTM=jacket.transform
+ jacket.parent=undefined
+ jacket.transform=jacketTM
+ -- Skin Wrap is a fitting driver, never an exported runtime dependency.
+ deleteModifier jacket sw
+ format "EXPORT rootParentAfter=% garmentModifiers=%\n" rigRoot.parent jacket.modifiers.count to:report
  saveMaxFile (dst + @"\jacket-fitted-experimental.max") quiet:true
- local nodes=for o in objects where o!=body collect o
- select nodes
+ select (join #(jacket) rigNodes)
  FBXExporterSetParam "Animation" false
  FBXExporterSetParam "Skin" true
  FBXExporterSetParam "EmbedTextures" false
+ FBXExporterSetParam "UpAxis" "Z"
  exportFile (dst + @"\jacket-fitted-experimental.fbx") #noPrompt selectedOnly:true using:FBXEXP
  format "FIT_EXPORT_DONE\n" to:report
 ) catch (

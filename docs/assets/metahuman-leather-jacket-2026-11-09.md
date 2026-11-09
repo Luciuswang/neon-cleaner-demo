@@ -1,8 +1,11 @@
 # MetaHuman leather jacket source preparation — 2026-11-09
 
-Status: **SOURCE PREPARED; unrigged, unfitted, not gameplay-ready.**
-This record covers source inspection and preparation only. The integrator owns
-Unreal import, fitting, skinning, character assembly and gameplay verification.
+Status: **EXPERIMENTAL weighted candidate; not gameplay-ready.** This document's
+source inspection remains valid. Later fitting and weight-transfer experiments,
+including corrected UE skeletal import and fresh-reopen checks, are recorded in
+`docs/tasks/metahuman-rider-2026-11-09.md` and `tools/assets/fit_metahuman_jacket.md`.
+The original supplied FBX itself remains unrigged. Visual fit and actual riding
+deformation are still unverified.
 
 ## Source and credit
 

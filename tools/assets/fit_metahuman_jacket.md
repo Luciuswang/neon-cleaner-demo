@@ -30,20 +30,37 @@ node `polySurface4`, and the MetaHuman upperarm/lowerarm/hand bones. Its garment
 dimensions and sleeve centerline are specific to the inspected leather jacket;
 path portability does not make it a general clothing fitter. Units are centimeters.
 
-The executed geometry experiment preserved 2,521 finite vertices and deformed
-1,151 sleeve vertices, but Skin Wrap evaluation returned zero control points and
-created no Skin. The saved unskinned and failed-wrap scenes are diagnostic assets.
-No skinned candidate, clipping review, animation verification or visual acceptance
-exists.
+Actual Max batch testing on 2026-11-09 fixed catch syntax, argument key type and
+Windows path escaping. Controlled import probes retain 342-bone Skin with both
+default inches and explicit centimeters, and with `Mode=#create`.
 
-Actual portable Max batch testing on 2026-11-09 fixed the catch syntax, argument
-key type and Windows path escaping. The forward-slash fixture reached fitting,
-preserved both experimental scenes, then failed closed with Max exit -130 and
-runner exit 1. Its driver list remained at one item before/after reset, but the
-body had no Skin. A separate fresh fixture explicitly set/read back `Skin=true`
-and `Mode=#create`: the body already had zero modifiers **before** jacket import.
-It stopped at the new required-body-Skin assertion without importing the jacket.
-This differs from an earlier inspection of the identical body FBX that found Skin;
-the importer/context discrepancy remains unresolved. Neither failure is acceptance.
-The script checks body Skin both before and after the jacket import. Existing
-candidate files were preserved; each test used a fresh output directory.
+The confirmed transfer failure was ambiguous node lookup: the body FBX contains a
+Dummy and an Editable_mesh with the identical body name. `getNodeByName` selected
+the Dummy, so earlier zero-modifier diagnostics did not describe the body mesh.
+The script now requires exactly one matching **geometry** node and checks its
+Skin before and after jacket import. It also resolves the jacket via geometry.
+
+The corrected portable run preserved 2,521 garment vertices and explicitly
+deformed 1,151 sleeve vertices into the measured shoulder/elbow/wrist pose. Skin
+Wrap received all 32,334 body control points and generated Skin with 342 bones,
+zero unweighted vertices, zero non-normalized sums and at most five influences
+per vertex. It exported the experimental `.max` and skinned `.fbx`; runner exit
+was zero. Historical failed outputs remain preserved, each test in a fresh folder.
+
+The first skinned export included the outer body Dummy and was rejected by UE's
+skeleton merge. The corrected export detaches the actual `root` and garment while
+preserving world transforms, removes the Skin Wrap fitting modifier, exports only
+the garment and 342 reference skeleton nodes, and explicitly uses Z-up. The source
+body and original files remain unchanged; this occurs only in the scratch scene.
+
+Fresh Max reimport of this corrected FBX retains all 342 skeleton node names with
+`root` parentless; Skin keeps the 64 bones actually used by garment weights. The
+2,521 vertices have no zero/non-normalized weights and at most five influences.
+Four separate 12-degree left/right upperarm and lowerarm perturbations move
+230–660 vertices by up to 4.88–9.61 cm, with finite positions and restoration error
+below 0.000046 cm. Snapshot world bounds are cross-checked against node bounds.
+These are bounded numeric checks; they do not assess visual distortion or clipping.
+
+These are experimental numeric results. Garment allowance, clipping, materials,
+runtime compatibility and full riding-motion appearance still need independent
+review. A fitted and weighted candidate is not a cinematic or production pass.

@@ -51,25 +51,32 @@ no credentials or codes are recorded. Work on jacket preparation can continue.
   was shutting down, after the script had logged successful export and written
   the FBX/manifest; Max subsequently imported and inspected the reference.
   This is an unassembled fitting reference, not the final runtime character.
-- A separate Max experiment adjusted 1,151 of 2,521 jacket vertices for the
-  reference arm pose. The unskinned and failed-wrap `.max` scenes and reports
-  are preserved privately. They are **experimental, visually unreviewed and not
-  game-ready**. Skin Wrap produced zero control points and no Skin modifier.
-  Reproducible batch runner is `tools/assets/Run-MetaHumanJacketFit.ps1`; it
-  now refuses an imported body with no Skin instead of producing a false result.
-  The FBX had Skin in an earlier batch inspection but not subsequent automated
-  imports; the context difference remains unresolved.
+- Initial Skin Wrap failures were traced to two same-named FBX nodes: a Dummy
+  was selected instead of the 342-bone skinned body geometry. The corrected
+  reproducible runner (`tools/assets/Run-MetaHumanJacketFit.ps1`) selects the
+  unique geometry, fits 1,151 of 2,521 vertices and transfers weights. A fresh
+  Max reimport reports 2,521 weighted vertices, max five influences, and actual
+  sleeve movement under four +/-12-degree arm/elbow tests. The old failed
+  experiments remain preserved as historical diagnostics.
+- An initial skinned FBX export failed UE skeleton merge due to an extra Dummy
+  parent; the corrected root-only export imported successfully into isolated UE
+  and a fresh process verified the actual saved body skeleton and material.
+  The UE importer warned that FBX smoothing groups were absent; visual impact
+  is unverified. A separately named `SK_LeatherJacket_Experimental_V2` copy is
+  under `/Game/MetaHumanWorkspace/Clothing/LeatherJacketCandidate` as a private
+  **experimental candidate only**. No wardrobe or rider assignment was made.
+  Fit, clipping, smoothing and actual riding animation remain unreviewed.
 - The attempted official face rig/texture preparation ran on the isolated copy.
   Epic requested account-holder device authorization; after it remained pending,
   the bounded test timed out. No account credentials or device codes are stored
   in project artifacts. A new request is needed after the account holder is ready.
-- **Not done:** no skinned/fitted jacket, no MetaHuman runtime assembly, no
+- **Not done:** no accepted wearable jacket, no MetaHuman runtime assembly, no
   riding animation/retarget, no replacement of the Kelly pawn, and no new-game
   visual, input or performance verification. The original game was not presented
   as the requested replacement. The current editor and original character remain.
 
 Next: retry the Epic binding request after interactive device authorization,
-assemble and persist the actual character, resolve the 3ds Max FBX Skin import
-context, transfer/validate jacket weights and rider pose, implement the runtime
+assemble and persist the actual character, review the weighted candidate's fit,
+clipping and smoothing and author a riding pose, implement the runtime
 integration, run current-build QA and then launch the actual game. Do not redo
 the completed source acquisition, FBX texture extraction or body fitting export.

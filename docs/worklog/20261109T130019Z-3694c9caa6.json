@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "event_id": "20261109T130019Z-3694c9caa6",
+  "task_id": "metahuman-rider-2026-11-09",
+  "timestamp_utc": "2026-11-09T13:00:19.711972+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "rework",
+  "summary": "Correction to earlier garment investigation: resolved duplicate FBX Dummy lookup and removed extra export root. Experimental jacket has2521 weighted vertices and passes four bounded arm/elbow numeric deformation checks; root-only FBX imported into scratch UE with exit0 and fresh reload verified base skeleton and material. A privately backed-up experimental V2 candidate was added; smoothing-group warning and visual fit/clipping remain unverified. No assembled MetaHuman or game replacement yet; Epic authorization required.",
+  "commit_shas": [
+    "22d6c4cbe818f7611b7d34225cf0fe0591d0c7b3"
+  ],
+  "evidence": [
+    "docs/tasks/metahuman-rider-2026-11-09.md",
+    "tools/assets/fit_metahuman_jacket.md"
+  ],
+  "blockers": [
+    "Epic account-holder device authorization and full riding/visual integration remain outstanding."
+  ],
+  "next_action": "Complete Epic authorization and assemble user character; verify garment visually, solve full riding pose, integrate and test game.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

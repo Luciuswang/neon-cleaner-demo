@@ -3,7 +3,19 @@
 Last updated: 2026-10-29
 
 
-## Custom MetaHuman rider checkpoint - 2026-11-09
+## Weighted leather jacket candidate - 2026-11-09
+
+After the earlier checkpoint, resolved same-named FBX Dummy versus skinned
+body and removed an extra export root. A 2521-vertex jacket candidate has
+complete numerical weights and four arm/elbow deformation checks. Root-only
+FBX imported in scratch UE and a new process confirmed persisted skeleton and
+material. Copy is SK_LeatherJacket_Experimental_V2 in private workspace.
+UE warns about absent smoothing groups; visual fit, clipping and actual riding
+are NOT checked. See task packet and tools/assets/fit_metahuman_jacket.md.
+No assembled MetaHuman, in-game replacement or final game test exists. Epic
+device authorization is needed for the official rig/texture assembly.
+
+## Historical checkpoint before weighted candidate - 2026-11-09
 
 User explicitly wants the saved MetaHuman to replace the old motorcycle rider.
 Read docs/tasks/metahuman-rider-2026-11-09.md before continuing. Original
