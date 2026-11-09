@@ -18,7 +18,7 @@ REMOTE = 'Luciuswang/neon-cleaner-private-assets'
 URL = 'https://github.com/' + REMOTE + '.git'
 VAULT = ROOT / '.local/private-vault'
 LOCK = ROOT / 'docs/sync/private-assets-lock.json'
-PRIVATE_DIRS = ['ue/NeonCleanerUE/Content/' + s for s in ('KellyLowSource','KellySource','CinematicBike')]
+PRIVATE_DIRS = ['ue/NeonCleanerUE/Content/' + s for s in ('KellyLowSource','KellySource','CinematicBike','MetaHumanWorkspace','MetaHumans')]
 REQUIRED_MESH = 'ue/NeonCleanerUE/Content/KellyLowSource/asda.uasset'
 
 

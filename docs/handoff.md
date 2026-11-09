@@ -3,6 +3,18 @@
 Last updated: 2026-10-29
 
 
+## MetaHuman creation setup - 2026-11-09
+
+User wants a simple Creator and facial-expression workflow. Read
+docs/metahuman-quickstart.md and docs/tasks/metahuman-setup-2026-11-09.md.
+Creator/Animator/Live Link configured; starter creation verified twice in an
+isolated project. Core Data is missing and the active editor has not restarted.
+Install via Epic Launcher after saving and closing UE, then start with
+ue/Start-MetaHuman.bat. Webcam/audio expression is not yet end-to-end tested.
+Both workspace and default MetaHumans folders are private snapshot inputs.
+Changing the project descriptor invalidates current-build cinematic fingerprint;
+previous quality evidence is historical, and cinematic approval stays blocked.
+
 ## Current continuation - cinematic polish 2026-10-29
 
 Read docs/tasks/cinematic-polish-2026-10-29.md, docs/qa/polish-2026-10-29.json

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261109T080515Z-a5ebf90b16",
+  "task_id": "metahuman-setup-2026-11-09",
+  "timestamp_utc": "2026-11-09T08:05:15.980088+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Configure MetaHuman Creator and expression starter workflow",
+  "commit_shas": [
+    "cd03dfcb0d49321b4be7803879b8a424f8330502"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

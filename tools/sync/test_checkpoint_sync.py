@@ -29,6 +29,26 @@ private = load('private_assets')
 claims = load('claim_task')
 
 
+class MetaHumanInventoryTest(unittest.TestCase):
+    def test_custom_and_default_assembly_folders_are_in_private_snapshot(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            mesh = root / private.REQUIRED_MESH
+            mesh.parent.mkdir(parents=True)
+            mesh.write_bytes(b'fixture')
+            paths = [
+                'ue/NeonCleanerUE/Content/MetaHumanWorkspace/Characters/Starter.uasset',
+                'ue/NeonCleanerUE/Content/MetaHumans/Common/Face.uasset',
+            ]
+            for path in paths:
+                destination = root / path
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_bytes(b'private')
+            with patch.object(private, 'ROOT', root):
+                files = private.inventory()
+            self.assertTrue(all(path in files for path in paths))
+
+
 def command(repo, *args, check=True):
     env = dict(os.environ, GIT_TERMINAL_PROMPT='0', GCM_INTERACTIVE='never')
     result = subprocess.run(args, cwd=repo, env=env, text=True, capture_output=True,

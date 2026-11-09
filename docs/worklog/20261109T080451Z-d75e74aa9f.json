@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "event_id": "20261109T080451Z-d75e74aa9f",
+  "task_id": "metahuman-setup-2026-11-09",
+  "timestamp_utc": "2026-11-09T08:04:51.565071+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "blocked",
+  "summary": "Configured UE5.8 Creator, Animator, Live Link and private character backup; added one-click launcher and Chinese guide. Isolated UE validates create and non-overwrite in two fresh processes. Core Data absent; current editor is still open and has not loaded new plugins. Actual face/audio end-to-end awaits Core Data install and restart.",
+  "commit_shas": [
+    "cd03dfcb0d49321b4be7803879b8a424f8330502"
+  ],
+  "evidence": [
+    "docs/tasks/metahuman-setup-2026-11-09.md",
+    "docs/metahuman-quickstart.md"
+  ],
+  "blockers": [
+    "Epic Launcher and editor computer use not approved; Core Data missing; preserving open UE session."
+  ],
+  "next_action": "Save and close Unreal project, install MetaHuman Creator Core Data using Epic Launcher UE5.8 Options, then run ue/Start-MetaHuman.bat and validate expression workflow.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
