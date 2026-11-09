@@ -1,14 +1,15 @@
 {
   "schema": 1,
   "remote": "https://github.com/Luciuswang/neon-cleaner-private-assets.git",
-  "commit": "e4907302cb7eaefdf8828762052a3eee11722c47",
-  "snapshot": "c90a1482506571fb1515ccca148f7cf5926e2cba13fd05f78576a37af5004164",
-  "manifest_sha256": "c90a1482506571fb1515ccca148f7cf5926e2cba13fd05f78576a37af5004164",
+  "commit": "13e2c288dc950a873ea5c41713c475124e9118a5",
+  "snapshot": "a579b190d543d5dd3593447b14c5d2bffa828eb0748abf6fb95bd1e645f9b6f8",
+  "manifest_sha256": "a579b190d543d5dd3593447b14c5d2bffa828eb0748abf6fb95bd1e645f9b6f8",
   "file_count": 774,
-  "bytes": 890773182,
+  "bytes": 898990316,
   "engine": "5.8.1",
-  "previous_snapshot": "0342edcc3cacbc9b9fb81e43efb363ce277346f541145f17919270df925cbf58",
+  "previous_snapshot": "c90a1482506571fb1515ccca148f7cf5926e2cba13fd05f78576a37af5004164",
   "previous_snapshots": [
+    "c90a1482506571fb1515ccca148f7cf5926e2cba13fd05f78576a37af5004164",
     "0342edcc3cacbc9b9fb81e43efb363ce277346f541145f17919270df925cbf58",
     "70638302957de0d17a78d9ba8cca3d626361f3bc7f543fbc7677c723334e68bf",
     "d85fce7ece4b428a4cc43cc1c5ccabbd55c4deedf67196f9aa56f576c8763357"

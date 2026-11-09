@@ -3,6 +3,13 @@
 Last updated: 2026-10-29
 
 
+## MetaHuman leather outfit request - 2026-11-09
+
+The user has customized and saved Heroine_MetaHuman. Preserve that face and body.
+No leather clothing has been applied yet. See docs/tasks/metahuman-leather-2026-11-09.md
+for free CC-BY FBX and paid parametric Fab candidates and access limitations.
+Obtain a licensed garment and test fit/identity/clipping; do not recreate the character.
+
 ## MetaHuman starter created - 2026-11-09
 
 Core Data readiness passed after user installation. The actual project now has

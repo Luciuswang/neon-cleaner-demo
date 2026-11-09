@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261109T113935Z-f2896a6ec9",
+  "task_id": "metahuman-leather-2026-11-09",
+  "timestamp_utc": "2026-11-09T11:39:35.586516+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Preserve custom MetaHuman and record leather outfit candidates",
+  "commit_shas": [
+    "d883964f5320932318b3d161c82023167cae1452"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
