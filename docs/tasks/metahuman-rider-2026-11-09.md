@@ -90,3 +90,31 @@ A hash-verified isolated copy is under `.local/metahuman-rider-nov10/` for
 non-destructive inspection. The private snapshot must preserve the new saved
 character before any restore or production changes. Actual runtime assembly,
 face/groom, texture availability and jacket compatibility remain to be verified.
+
+## 2026-11-10: authorized rig assembled in isolated project
+
+Epic authorization succeeded. The saved user character hash remains
+`2937b6c199ad30405ca2fa5315fe7dd0923eedc6167e9fd82526a449d808cb85`.
+The isolated copy received official 2K texture sources and was assembled with
+OPTIMIZED/MEDIUM as a gameplay integration preview, not final cinematic quality.
+A fresh null-RHI process loaded all 283 generated assets, including the character
+blueprint, face animation assets, DNA, groom and groom bindings, without missing
+assets. This is an asset-load check, not proof that Blueprint components, facial
+animation or grooming work in gameplay. A hash-verified copy of all 283 generated
+files and both assembly reports is preserved in the private snapshot under
+`.local/private-sources/metahuman-rider-2026-11-10/assembled-optimized-medium-2k/`.
+The original 8K character settings and original project editor were untouched.
+
+The old fitting body and newly bound body were read in separate UE processes.
+Their reference bone names, hierarchy and transforms match within the script's
+tolerances; geometry topology differs, so indexed shape comparison is
+INCOMPARABLE. Jacket clearance and fit remain unassessed. The comparison evidence
+is preserved privately. This cannot approve wearing the experimental jacket.
+
+Status: REWORK / AI VIDEO BLOCKED. No replacement, riding animation, jacket fit,
+continuous render or gameplay verification has been completed. The old game was
+not launched as a substitute. Next: inspect assembled Blueprint component wiring
+and all external dependencies; fit jacket to this actual body and review offscreen;
+create MetaHuman riding/steering/braking with grip contact; integrate full Blueprint
+without deleting Kelly; run current-build gameplay, performance and continuous
+18-second offscreen QA; launch the actual new-character game only after validation.

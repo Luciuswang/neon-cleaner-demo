@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261110T113914Z-ba24aae5b0",
+  "task_id": "metahuman-rider-2026-11-10",
+  "timestamp_utc": "2026-11-10T11:39:14.825442+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "checkpoint: assemble authorized MetaHuman preview",
+  "commit_shas": [
+    "5b4cda3eafe233a7a5d7b32db444e645449c4c46"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

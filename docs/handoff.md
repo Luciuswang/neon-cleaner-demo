@@ -598,3 +598,14 @@ Generated repository-facts-only biweekly report for 2026-10-24 through 2026-11-0
 ## Sync note - 2026-11-07T17:35:36.2448822+08:00
 
 Generated repository-facts-only biweekly report for 2026-10-24 through 2026-11-07; remote dossier covered 12 branches, 9 unique commits, and 10 worklog event variants. Cinematic polish and V3 restore/audit are published; cinematic remains REWORK and AI video BLOCKED. Email delivery remains blocked by prior Gmail safety review.
+
+## MetaHuman rider assembly checkpoint - 2026-11-10
+
+Epic binding and 2K preview texture download succeeded on a verified isolated copy.
+The optimized medium assembly generated 283 assets; a fresh UE process reloaded
+all of them. Generated assets and comparison evidence are in the private snapshot.
+Old and newly bound body reference bones match, but topology differs and jacket fit
+is not established. No rider replacement or playable new-character test exists yet.
+Original saved character and open editor remain intact. See
+`docs/tasks/metahuman-rider-2026-11-09.md` for the precise next steps and limits.
+QA remains REWORK; cinematic/AI-video use remains BLOCKED.

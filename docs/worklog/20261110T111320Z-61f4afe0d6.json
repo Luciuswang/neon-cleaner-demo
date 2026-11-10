@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "event_id": "20261110T111320Z-61f4afe0d6",
+  "task_id": "metahuman-rider-2026-11-10",
+  "timestamp_utc": "2026-11-10T11:13:20.427803+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Correction to 20261110T111151Z-1353e8105e: saved Heroine asset SHA256 is 2937b6c199ad30405ca2fa5315fe7dd0923eedc6167e9fd82526a449d808cb85 (the earlier summary had one extra d). The task packet already recorded the correct SHA.",
+  "commit_shas": [
+    "5b4cda3eafe233a7a5d7b32db444e645449c4c46"
+  ],
+  "evidence": [
+    "docs/tasks/metahuman-rider-2026-11-09.md"
+  ],
+  "blockers": [],
+  "next_action": "Inspect saved rig and assemble in isolated project.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
