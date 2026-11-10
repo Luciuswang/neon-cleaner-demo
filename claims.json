@@ -14,20 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "metahuman-rider-2026-11-10": {
-      "base_commit": "21750b0b443b9c9d7a987f460141c6367b905ba8",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-10T19:10:48.472354+00:00",
-      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
-      "scopes": [
-        "ue",
-        "tools/assets",
-        "tools/qa",
-        "docs"
-      ],
-      "task_id": "metahuman-rider-2026-11-10",
-      "updated_at": "2026-11-10T11:10:48.472354+00:00"
     }
   },
   "schema": 1
