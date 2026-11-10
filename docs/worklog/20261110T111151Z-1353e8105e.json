@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "event_id": "20261110T111151Z-1353e8105e",
+  "task_id": "metahuman-rider-2026-11-10",
+  "timestamp_utc": "2026-11-10T11:11:51.892735+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "User reports Epic rigging completed. Saved Heroine asset now 47421186 bytes with SHA256 2937b6c199ad30405ca2fa5315fe7dd0923eeddc6167e9fd82526a449d808cb85; isolated copy hash verified. User editor remains open. Assemble, jacket/body compatibility, ride and game are not yet verified.",
+  "commit_shas": [
+    "21750b0b443b9c9d7a987f460141c6367b905ba8"
+  ],
+  "evidence": [
+    "docs/tasks/metahuman-rider-2026-11-09.md"
+  ],
+  "blockers": [],
+  "next_action": "Inspect new saved character copy; verify rig and textures, assemble in scratch, integrate and validate rider and jacket.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

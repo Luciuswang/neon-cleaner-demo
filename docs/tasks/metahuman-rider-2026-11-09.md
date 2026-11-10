@@ -80,3 +80,13 @@ assemble and persist the actual character, review the weighted candidate's fit,
 clipping and smoothing and author a riding pose, implement the runtime
 integration, run current-build QA and then launch the actual game. Do not redo
 the completed source acquisition, FBX texture extraction or body fitting export.
+
+## 2026-11-10: user completed rigging
+
+User reports Epic binding complete. The active project is still open; saved
+`Heroine_MetaHuman.uasset` is 47,421,186 bytes and SHA256
+`2937b6c199ad30405ca2fa5315fe7dd0923eedc6167e9fd82526a449d808cb85`.
+A hash-verified isolated copy is under `.local/metahuman-rider-nov10/` for
+non-destructive inspection. The private snapshot must preserve the new saved
+character before any restore or production changes. Actual runtime assembly,
+face/groom, texture availability and jacket compatibility remain to be verified.
