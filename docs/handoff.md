@@ -609,3 +609,12 @@ is not established. No rider replacement or playable new-character test exists y
 Original saved character and open editor remain intact. See
 `docs/tasks/metahuman-rider-2026-11-09.md` for the precise next steps and limits.
 QA remains REWORK; cinematic/AI-video use remains BLOCKED.
+
+## UE 5.9 AI preview research — 2026-11-11
+
+Epic's 5.9 MegaJam Preview adds experimental agent tooling, animation generation
+and retargeting features relevant to the rider. The machine has 5.8.1, not 5.9;
+launcher automation was rejected, so no 5.9 installation or test occurred.
+A blank 5.8 isolated MCP probe connected and enumerated toolsets. See
+`docs/tasks/ue59-ai-evaluation-2026-11-11.md` for sources, limits and next steps.
+Production remains on 5.8 and the rider and cinematic QA remain unfinished.
