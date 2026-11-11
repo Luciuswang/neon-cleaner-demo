@@ -14,6 +14,17 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "ue59-ai-evaluation-2026-11-11": {
+      "base_commit": "7ba14468fe79bbf3e6fcb02645e54eb9d0691208",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-11T17:00:02.161084+00:00",
+      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+      "scopes": [
+        "docs"
+      ],
+      "task_id": "ue59-ai-evaluation-2026-11-11",
+      "updated_at": "2026-11-11T09:00:02.161084+00:00"
     }
   },
   "schema": 1
