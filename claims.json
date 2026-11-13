@@ -14,6 +14,18 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "ue59-preview-validation-2026-11-13": {
+      "base_commit": "d07497b84e13b90be409d731cc2ee707b4bd1b25",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-13T17:14:38.208310+00:00",
+      "owner": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+      "scopes": [
+        "docs",
+        "ue/scripts/metahuman"
+      ],
+      "task_id": "ue59-preview-validation-2026-11-13",
+      "updated_at": "2026-11-13T09:14:38.208310+00:00"
     }
   },
   "schema": 1
