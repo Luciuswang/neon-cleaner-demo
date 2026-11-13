@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261113T092015Z-4da63b26a5",
+  "task_id": "ue59-preview-validation-2026-11-13",
+  "timestamp_utc": "2026-11-13T09:20:15.243705+00:00",
+  "machine_id": "c96f47c9-7bc2-4e2d-a416-fda623ab8163",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "UE 5.9 isolated MetaHuman asset reload and read-only MCP Blueprint inspection passed; animation generation and gameplay remain untested; preserved changed jacket material and existing editor config in private snapshot.",
+  "commit_shas": [
+    "d07497b84e13b90be409d731cc2ee707b4bd1b25"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

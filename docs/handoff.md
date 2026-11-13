@@ -618,3 +618,14 @@ launcher automation was rejected, so no 5.9 installation or test occurred.
 A blank 5.8 isolated MCP probe connected and enumerated toolsets. See
 `docs/tasks/ue59-ai-evaluation-2026-11-11.md` for sources, limits and next steps.
 Production remains on 5.8 and the rider and cinematic QA remain unfinished.
+
+## UE 5.9 isolated MetaHuman and MCP validation — 2026-11-13
+
+5.9.0 CL 60351404 is installed. An isolated copy loaded all 283 assembled
+MetaHuman assets and a 5.9 MCP read-only call returned the character Blueprint's
+five graphs. No migration, generated animation or game test was performed.
+Kimodo needs additional model dependencies and gated access; investigate before
+claiming a working animation workflow. See `docs/tasks/ue59-ai-evaluation-2026-11-11.md`.
+Private restore preflight preserved one locally changed jacket source material;
+its earlier snapshot must also be retained. A pre-existing editor configuration
+change remains local. Cinematic QA remains REWORK and AI video BLOCKED.
