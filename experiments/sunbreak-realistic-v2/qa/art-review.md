@@ -2,6 +2,13 @@
 
 Date: 2026-11-16
 
+Audio-only follow-up note: the verdict and source table below describe the
+pre-audio checkpoint `6aa4387`. The subsequent recorded-audio slice leaves
+`world.js` and `weapon.js` unchanged and refreshes the eight technical captures
+and their metadata for the new audio/UI source hashes. That refresh is not a
+new independent art review and does not upgrade the reference-quality verdict.
+The historically reviewed images remain recoverable from `6aa4387`.
+
 ## Verdict
 
 - Strict realism screen: **REVISE**, high confidence.

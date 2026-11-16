@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-16T06:30:55.904Z",
+  "date": "2026-11-16T09:17:47.278Z",
   "capture_method": "browser-webgl-canvas",
   "name": "final-overcast",
   "qa": {
@@ -71,10 +71,10 @@
     "style": 0,
     "source": "browser WebGL realtime",
     "renderFrames": 152,
-    "p50_ms": 16.699999809265137,
-    "p95_ms": 16.800000190734863,
-    "p99_ms": 16.800000190734863,
-    "max_ms": 16.800000190734863,
+    "p50_ms": 16.600000381469727,
+    "p95_ms": 16.90000009536743,
+    "p99_ms": 16.90000009536743,
+    "max_ms": 16.90000009536743,
     "samples": 31,
     "triangles": 21304,
     "textureErrors": [],
@@ -86,7 +86,7 @@
       "bark"
     ],
     "loadedHDR": true,
-    "elapsed": 4412.900000095367,
+    "elapsed": 4542.199999809265,
     "features": [
       "PBR normal/roughness",
       "environment lighting",
@@ -109,9 +109,9 @@
   "pixel_check": {
     "samples": 5814,
     "minLuma": 0.0722,
-    "maxLuma": 222.9902,
-    "meanLuma": 94.18466990024045,
-    "nonBlackRatio": 0.9865841073271414,
+    "maxLuma": 223.0624,
+    "meanLuma": 94.22993869969007,
+    "nonBlackRatio": 0.9867561059511524,
     "colorBins": 109,
     "nonblank": true
   },
@@ -163,6 +163,14 @@
       "y": 18,
       "width": 73.65625,
       "height": 36
+    },
+    {
+      "id": "soundControls",
+      "visible": true,
+      "x": 24,
+      "y": 64,
+      "width": 262,
+      "height": 38.5
     }
   ],
   "colliders": [
@@ -384,10 +392,15 @@
     }
   ],
   "buildHashes": {
-    "index.html": "52fef5c3484e3f37bdb064d8ce26b90bd333b7e6a051421f0bed4b9ced0ac206",
+    "index.html": "761c48f0b63a542c48f2f29d5b2021464736f583acda5f43244bc896deb7c991",
     "world.js": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621",
     "weapon.js": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
-    "qa-hooks.js": "2cbae8e12969e9dc16cd28523ffd5af2bcd7a32a9eff0941c2036a4a77703573",
-    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0"
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "389304ac48a588d7f9a6fc092135b329da0bb8133d95f00fed84eddb7a6af891",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/audio-checks.js": "351ee804b21954e3ccc5f714372c9c90c618867c12e16d2ec2ccd30ae5c5fbfc",
+    "qa/audio-failure-checks.js": "b2adb0f4d2d086cab618dbf966dd3bc39835f6dca1808be2a3f76266e69fdfd2",
+    "serve.mjs": "e8971990ea7c83701c70df32219a88a238c2bf2683135899ef9a1886222df7ca"
   }
 }

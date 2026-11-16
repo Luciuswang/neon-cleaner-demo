@@ -1,0 +1,536 @@
+{
+  "schema": "sunbreak-browser-audio-qa-v1",
+  "date": "2026-11-16T09:16:01.328Z",
+  "method": "trusted browser gesture, actual decoding/playback counters and production graph offline render",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "gesture unlock and five local samples decoded",
+      "pass": true,
+      "detail": {
+        "unlocked": true,
+        "failed": false,
+        "loaded": 5,
+        "ready": true,
+        "muted": false,
+        "volume": 0.65,
+        "droppedBeforeReady": 0,
+        "events": 0,
+        "started": 0,
+        "ended": 0,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 0,
+        "peakVoices": 0,
+        "byType": {},
+        "errors": 0,
+        "active": false,
+        "voices": 0,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "name": "volume and mute controls do not fire or mutate gameplay",
+      "pass": true
+    },
+    {
+      "name": "audio controls allow already-held movement and fire key releases",
+      "pass": true
+    },
+    {
+      "name": "new control keystrokes never trigger gameplay fire",
+      "pass": true
+    },
+    {
+      "name": "WAV MIME player",
+      "pass": true
+    },
+    {
+      "name": "WAV MIME magin",
+      "pass": true
+    },
+    {
+      "name": "WAV MIME magout",
+      "pass": true
+    },
+    {
+      "name": "WAV MIME confirm",
+      "pass": true
+    },
+    {
+      "name": "WAV MIME enemy",
+      "pass": true
+    },
+    {
+      "name": "finite nonblank decoded sample player",
+      "pass": true,
+      "detail": {
+        "duration": 1.8,
+        "peak": 0.8677595853805542,
+        "rms": 0.023410336113051513
+      }
+    },
+    {
+      "name": "finite nonblank decoded sample enemy",
+      "pass": true,
+      "detail": {
+        "duration": 1.7,
+        "peak": 0.7407594323158264,
+        "rms": 0.028977018763143098
+      }
+    },
+    {
+      "name": "finite nonblank decoded sample magout",
+      "pass": true,
+      "detail": {
+        "duration": 0.233625,
+        "peak": 0.6094496250152588,
+        "rms": 0.10270669695003617
+      }
+    },
+    {
+      "name": "finite nonblank decoded sample magin",
+      "pass": true,
+      "detail": {
+        "duration": 0.16295833333333334,
+        "peak": 0.6584732532501221,
+        "rms": 0.04734013639470824
+      }
+    },
+    {
+      "name": "finite nonblank decoded sample confirm",
+      "pass": true,
+      "detail": {
+        "duration": 0.19808333333333333,
+        "peak": 0.48198238015174866,
+        "rms": 0.025609011055585558
+      }
+    },
+    {
+      "name": "distance attenuation, lowpass and stereo direction",
+      "pass": true,
+      "detail": {
+        "left": {
+          "distance": 10,
+          "pan": -1,
+          "gain": 0.3263157894736842,
+          "cutoff": 9677.41935483871
+        },
+        "right": {
+          "distance": 10,
+          "pan": 1,
+          "gain": 0.3263157894736842,
+          "cutoff": 9677.41935483871
+        },
+        "far": {
+          "distance": 30,
+          "pan": 1,
+          "gain": 0.16756756756756758,
+          "cutoff": 5660.377358490567
+        }
+      }
+    },
+    {
+      "name": "listener heading rotates directional sound",
+      "pass": true
+    },
+    {
+      "name": "real running player routes fire/enemy/reload/confirm",
+      "pass": true,
+      "detail": {
+        "events": 4,
+        "started": 5,
+        "ended": 0,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 0,
+        "peakVoices": 5,
+        "byType": {
+          "player": 1,
+          "enemy": 1,
+          "magout": 1,
+          "magin": 1,
+          "confirm": 1
+        },
+        "errors": 0,
+        "active": true,
+        "muted": false,
+        "volume": 0.65,
+        "voices": 5,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "name": "ended voices and nodes cleaned",
+      "pass": true,
+      "detail": {
+        "events": 4,
+        "started": 5,
+        "ended": 5,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 0,
+        "peakVoices": 5,
+        "byType": {
+          "player": 1,
+          "enemy": 1,
+          "magout": 1,
+          "magin": 1,
+          "confirm": 1
+        },
+        "errors": 0,
+        "active": true,
+        "muted": false,
+        "volume": 0.65,
+        "voices": 0,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "name": "bounded polyphony under burst stress",
+      "pass": true,
+      "detail": {
+        "events": 164,
+        "started": 165,
+        "ended": 141,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 136,
+        "peakVoices": 24,
+        "byType": {
+          "player": 161,
+          "enemy": 1,
+          "magout": 1,
+          "magin": 1,
+          "confirm": 1
+        },
+        "errors": 0,
+        "active": true,
+        "muted": false,
+        "volume": 0.65,
+        "voices": 24,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "name": "mute cancels active voices",
+      "pass": true
+    },
+    {
+      "name": "muted events never schedule",
+      "pass": true
+    },
+    {
+      "name": "pause cancels both present and future reload voices",
+      "pass": true
+    },
+    {
+      "name": "resume never replays queued events",
+      "pass": true
+    },
+    {
+      "name": "zero volume cleans voices",
+      "pass": true
+    },
+    {
+      "name": "suspend/resume does not accumulate events",
+      "pass": true
+    },
+    {
+      "name": "audio never consumes gameplay RNG",
+      "pass": true
+    },
+    {
+      "name": "unavailable samples fail silently with explicit status",
+      "pass": true
+    },
+    {
+      "name": "unsupported Web Audio cannot break combat",
+      "pass": true
+    },
+    {
+      "name": "enabled/muted/unavailable preserve actual shot outcomes and RNG",
+      "pass": true,
+      "detail": [
+        {
+          "mode": "enabled",
+          "hp": 8904,
+          "mag": 30,
+          "res": 60,
+          "kills": 0,
+          "reloadDuration": 1.2,
+          "rngCalls": 462,
+          "seed": 1918276279
+        },
+        {
+          "mode": "muted",
+          "hp": 8904,
+          "mag": 30,
+          "res": 60,
+          "kills": 0,
+          "reloadDuration": 1.2,
+          "rngCalls": 462,
+          "seed": 1918276279
+        },
+        {
+          "mode": "unavailable",
+          "hp": 8904,
+          "mag": 30,
+          "res": 60,
+          "kills": 0,
+          "reloadDuration": 1.2,
+          "rngCalls": 462,
+          "seed": 1918276279
+        }
+      ]
+    },
+    {
+      "name": "integrated original snd adapter plays decoded recording",
+      "pass": true
+    },
+    {
+      "name": "presentation mode drains integrated voices",
+      "pass": true
+    },
+    {
+      "name": "focus loss cancels scheduled integrated reload",
+      "pass": true
+    },
+    {
+      "name": "trusted restart resumes actual suspended context and plays",
+      "pass": true
+    },
+    {
+      "name": "production graph offline stress finite nonblank unclipped",
+      "pass": true,
+      "detail": {
+        "finite": true,
+        "peak": 0.6615257859230042,
+        "rms": 0.039569495890727516,
+        "clipped": 0,
+        "channels": [
+          0.001435929985587222,
+          0.0016955600245053106
+        ],
+        "voice": {
+          "events": 200,
+          "started": 200,
+          "ended": 176,
+          "dropped": 0,
+          "cancelled": 0,
+          "stolen": 176,
+          "peakVoices": 24,
+          "byType": {
+            "enemy": 67,
+            "player": 133
+          },
+          "errors": 0,
+          "active": true,
+          "muted": false,
+          "volume": 1,
+          "voices": 24,
+          "maxVoices": 24,
+          "context": "suspended"
+        },
+        "voicesAfter": 0
+      }
+    },
+    {
+      "name": "rendered stereo channels confirm real routing",
+      "pass": true,
+      "detail": {
+        "left": [
+          0.00006906564900694979,
+          0
+        ],
+        "right": [
+          0,
+          0.00006906564900694979
+        ]
+      }
+    },
+    {
+      "name": "rendered far enemy quieter than near enemy",
+      "pass": true,
+      "detail": {
+        "near": 0.007869662485461983,
+        "far": 0.0027579060911641015
+      }
+    },
+    {
+      "name": "zero-volume output is silent",
+      "pass": true,
+      "detail": {
+        "finite": true,
+        "peak": 0,
+        "rms": 0,
+        "clipped": 0,
+        "channels": [
+          0,
+          0
+        ],
+        "voice": {
+          "events": 1,
+          "started": 0,
+          "ended": 0,
+          "dropped": 1,
+          "cancelled": 0,
+          "stolen": 0,
+          "peakVoices": 0,
+          "byType": {},
+          "errors": 0,
+          "active": true,
+          "muted": false,
+          "volume": 0,
+          "voices": 0,
+          "maxVoices": 24,
+          "context": "suspended"
+        },
+        "voicesAfter": 0
+      }
+    },
+    {
+      "name": "separate original page returns exact untouched baseline bytes",
+      "pass": true,
+      "detail": {
+        "originalHash": "4b0de43249fd1c787554ea1735c84669b1df687fc9e03aba263571c48a101a85"
+      }
+    }
+  ],
+  "artifacts": {
+    "outcomes": [
+      {
+        "mode": "enabled",
+        "hp": 8904,
+        "mag": 30,
+        "res": 60,
+        "kills": 0,
+        "reloadDuration": 1.2,
+        "rngCalls": 462,
+        "seed": 1918276279
+      },
+      {
+        "mode": "muted",
+        "hp": 8904,
+        "mag": 30,
+        "res": 60,
+        "kills": 0,
+        "reloadDuration": 1.2,
+        "rngCalls": 462,
+        "seed": 1918276279
+      },
+      {
+        "mode": "unavailable",
+        "hp": 8904,
+        "mag": 30,
+        "res": 60,
+        "kills": 0,
+        "reloadDuration": 1.2,
+        "rngCalls": 462,
+        "seed": 1918276279
+      }
+    ],
+    "stress": {
+      "finite": true,
+      "peak": 0.6615257859230042,
+      "rms": 0.039569495890727516,
+      "clipped": 0,
+      "channels": [
+        0.001435929985587222,
+        0.0016955600245053106
+      ],
+      "voice": {
+        "events": 200,
+        "started": 200,
+        "ended": 176,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 176,
+        "peakVoices": 24,
+        "byType": {
+          "enemy": 67,
+          "player": 133
+        },
+        "errors": 0,
+        "active": true,
+        "muted": false,
+        "volume": 1,
+        "voices": 24,
+        "maxVoices": 24,
+        "context": "suspended"
+      },
+      "voicesAfter": 0
+    },
+    "samplePlayer": {
+      "events": 179,
+      "started": 179,
+      "ended": 179,
+      "dropped": 2,
+      "cancelled": 38,
+      "stolen": 136,
+      "peakVoices": 24,
+      "byType": {
+        "player": 163,
+        "enemy": 11,
+        "magout": 2,
+        "magin": 2,
+        "confirm": 1
+      },
+      "errors": 0,
+      "active": false,
+      "muted": false,
+      "volume": 0.65,
+      "voices": 0,
+      "maxVoices": 24,
+      "context": "running"
+    },
+    "integrated": {
+      "unlocked": true,
+      "failed": false,
+      "loaded": 5,
+      "ready": true,
+      "muted": false,
+      "volume": 0.65,
+      "droppedBeforeReady": 0,
+      "events": 125,
+      "started": 66,
+      "ended": 66,
+      "dropped": 61,
+      "cancelled": 28,
+      "stolen": 38,
+      "peakVoices": 24,
+      "byType": {
+        "player": 32,
+        "confirm": 30,
+        "magout": 2,
+        "magin": 2
+      },
+      "errors": 0,
+      "active": false,
+      "voices": 0,
+      "maxVoices": 24,
+      "context": "running"
+    }
+  },
+  "limitations": [
+    "No subjective listening approval.",
+    "No measured hearing-safety certification.",
+    "Deterministic battle fixtures cover actual player shot/reload functions; not a manual full-playthrough."
+  ],
+  "buildHashes": {
+    "index.html": "761c48f0b63a542c48f2f29d5b2021464736f583acda5f43244bc896deb7c991",
+    "world.js": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621",
+    "weapon.js": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "389304ac48a588d7f9a6fc092135b329da0bb8133d95f00fed84eddb7a6af891",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/audio-checks.js": "351ee804b21954e3ccc5f714372c9c90c618867c12e16d2ec2ccd30ae5c5fbfc",
+    "qa/audio-failure-checks.js": "b2adb0f4d2d086cab618dbf966dd3bc39835f6dca1808be2a3f76266e69fdfd2",
+    "serve.mjs": "e8971990ea7c83701c70df32219a88a238c2bf2683135899ef9a1886222df7ca"
+  }
+}

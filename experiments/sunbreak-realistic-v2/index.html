@@ -44,6 +44,9 @@ canvas{display:block}
 .bar b,#ammo em{font:600 11px/1.7 "Segoe UI",sans-serif;letter-spacing:.13em}
 #cross{opacity:.65;transform:translate(-50%,-50%) scale(.65)}
 .btn,.panel h1,.bar b,#ammo em,#kills{letter-spacing:0}
+#soundControls{position:absolute;left:24px;top:64px;display:flex;align-items:center;gap:8px;pointer-events:auto;font:11px/1.5 "Segoe UI",sans-serif;color:#c7d2ce;background:#101719c9;padding:5px 8px;border:1px solid #6b7b7955;border-radius:3px}
+#soundControls input{width:72px;accent-color:#9aada3}#soundControls button{padding:4px 7px}#audioStatus{max-width:125px}
+.compare{display:block;margin-top:17px;font-size:11px;color:#bdcfc7}
 @media(max-width:640px){
  .btns{left:12px;top:12px;max-width:calc(100vw - 24px);gap:4px}
  .btn{padding:7px 9px;font-size:11px}
@@ -53,6 +56,8 @@ canvas{display:block}
  #ammo{right:12px;bottom:16px}#ammo i{font-size:34px}
  .panel{width:min(390px,calc(100vw - 32px));padding:22px 16px}
  .panel h1{font-size:30px}
+ #soundControls{left:12px;top:56px;gap:5px;max-width:calc(100vw - 124px);font-size:10px}
+ #soundControls input{width:50px}#audioStatus{max-width:76px}
 }
 </style>
 </head>
@@ -60,6 +65,7 @@ canvas{display:block}
 <div id="app"></div>
 <div id="hud">
   <div class="btns"><button class="btn" id="bStyle" title="切换色调 (V)">切换色调</button><button class="btn" id="bWeather" title="切换天气 (T)">天气</button><button class="btn" id="bPause" title="暂停或继续 (P)">暂停/继续</button><button class="btn" id="bPres" title="演示模式 (G)">演示</button><button class="btn hide" id="bPresOff">退出演示</button></div>
+  <div id="soundControls"><button class="btn" id="bMute" aria-pressed="false">静音</button><label for="soundVolume">音量</label><input id="soundVolume" type="range" min="0" max="100" value="65" aria-label="音效音量"/><span id="audioStatus" role="status">点击开始启用音效</span></div>
   <div id="quality">AFTER RAIN · SECTOR 12<br><span id="weatherName">雨后放晴</span></div><div id="tip"></div>
   <div class="bar"><b id="styleName">热带竞技</b><b>生命值 HP</b><div class="track"><div class="fill" id="hpf"></div></div></div>
   <div id="ammo"><i id="am">30</i><s>/90</s><em>弹匣 · R 换弹</em></div>
@@ -67,7 +73,7 @@ canvas{display:block}
   <div id="cross"><div style="left:12px;top:0;width:2px;height:8px"></div><div style="left:12px;top:18px;width:2px;height:8px"></div><div style="left:0;top:12px;width:8px;height:2px"></div><div style="left:18px;top:12px;width:8px;height:2px"></div></div>
   <div id="flash"></div>
 </div>
-<div class="panel" id="menu"><h1>SUNBREAK</h1><p>AFTER RAIN · 海岸旧城<br>清除六名敌对作战单元</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换色调</button></div>
+<div class="panel" id="menu"><h1>SUNBREAK</h1><p>AFTER RAIN · 海岸旧城<br>清除六名敌对作战单元 · 实录枪声</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换色调</button><a class="compare" href="/original/" target="_blank" rel="noopener">打开最早原版 · 独立页面对比 ↗</a></div>
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
@@ -297,14 +303,28 @@ addEventListener('mousemove',e=>{
 function look(dx,dy){const k=.0024*(1-S.aim*.45);S.yaw-=dx*k;S.pitch=Math.max(-1.3,Math.min(1.3,S.pitch-dy*k))}
 
 // audio
-let AC=null;
-function snd(type){
- if(!AC)return;const t=AC.currentTime,g=AC.createGain(),o=AC.createOscillator();
- if(type==='shot'){o.type='square';o.frequency.setValueAtTime(260,t);o.frequency.exponentialRampToValueAtTime(48,t+.12);g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.14);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.15);}
- else if(type==='hit'){o.type='triangle';o.frequency.setValueAtTime(900,t);o.frequency.exponentialRampToValueAtTime(400,t+.08);g.gain.setValueAtTime(.1,t);g.gain.exponentialRampToValueAtTime(.001,t+.1);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.11);}
- else{o.type='sawtooth';o.frequency.setValueAtTime(140,t);g.gain.setValueAtTime(.12,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26);}
-}
-function initAudio(){if(!AC)try{AC=new (window.AudioContext||webkitAudioContext)()}catch(e){}}
+let createGameAudio;
+try{({createGameAudio}=await Promise.race([import('./audio.js'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
+catch{createGameAudio=({onStatus})=>{
+ const info={failed:true,ready:false,unlocked:false,loaded:0,muted:false,volume:.65};
+ queueMicrotask(()=>onStatus({...info}));
+ return{unlock(){onStatus({...info})},notify(){},setScene(){},silence(){},setMuted(v){info.muted=!!v;onStatus({...info})},setVolume(v){if(Number.isFinite(v))info.volume=Math.max(0,Math.min(1,v));onStatus({...info})},snapshot(){return{...info}}};
+}}
+const sound=createGameAudio({onStatus:info=>{
+ document.getElementById('audioStatus').textContent=info.failed?'音效不可用':!info.unlocked?'点击开始启用音效':!info.ready?'音效加载中':info.muted?'已静音':info.context!=='running'?'点击继续恢复音效':'实录音效已启用';
+ document.getElementById('bMute').textContent=info.muted?'开启声音':'静音';
+ document.getElementById('bMute').setAttribute('aria-pressed',String(info.muted));
+}});
+function snd(type,origin){try{sound.notify(type,origin)}catch{}}
+function initAudio(){sound.unlock()}
+const soundControls=document.getElementById('soundControls');
+for(const type of ['pointerdown','mousedown','click','keydown'])soundControls.addEventListener(type,e=>e.stopPropagation());
+document.getElementById('bMute').onclick=()=>{initAudio();sound.setMuted(!sound.snapshot().muted)};
+document.getElementById('soundVolume').oninput=e=>{initAudio();sound.setVolume(Number(e.target.value)/100)};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)sound.silence()});
+addEventListener('blur',()=>sound.silence());
+document.addEventListener('pointerdown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});
+document.addEventListener('keydown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});
 
 // combat
 const ray=new THREE.Raycaster();const tmp=new THREE.Vector3();
@@ -363,7 +383,7 @@ function resetGame(){
  pos.copy(SPAWNPOS);vel.set(0,0,0);vy=0;onGround=true;bob=0;recoil=0;clearKeys();
  enemies.forEach((e,i)=>{e.alive=true;e.hp=100;e.g.rotation.set(0,0,0);e.wg2.rotation.set(0,0,0);e.g.position.set(SPAWN[i][0],0,SPAWN[i][1]);e.cd=1+Math.random()*2;e.ph=Math.random()*6;e.warn=0});
  fl.style.opacity=0;updHUD();}
-document.getElementById('bAgain').onclick=()=>{resetGame();over.classList.add('hide');S.state='play';lockReq()};
+document.getElementById('bAgain').onclick=()=>{initAudio();resetGame();over.classList.add('hide');S.state='play';lockReq()};
 updHUD();
 
 // movement + loop
@@ -376,6 +396,7 @@ function tick(){
  requestAnimationFrame(tick);
  const dt=Math.min(clock.getDelta(),.05);
  const live=S.state==='play'&&!pres;
+ sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);
  if(live){
   if(keys.ArrowLeft)S.yaw+=1.8*dt;if(keys.ArrowRight)S.yaw-=1.8*dt;
   if(keys.ArrowUp)S.pitch=Math.min(1.3,S.pitch+1.3*dt);if(keys.ArrowDown)S.pitch=Math.max(-1.3,S.pitch-1.3*dt);
@@ -415,7 +436,7 @@ function tick(){
       const hitp=pos.clone().add(new THREE.Vector3((Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7));
       const eg=new THREE.BufferGeometry().setFromPoints([o,hitp]);
       const el=new THREE.Line(eg,new THREE.LineBasicMaterial({color:0xffc070,transparent:true,opacity:.95}));
-      scene.add(el);tracers.push({l:el,t:.1});snd('shot');
+      scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);
       if(Math.random()<.55-Math.min(.3,d*.012)){S.hp-=5+Math.random()*7;fl.style.opacity=.9;updHUD();
        if(S.hp<=0){S.hp=0;S.state='dead';updHUD();showOver('作战失败','你已倒下。击倒数 '+S.kills+'/6')}}}}
    }

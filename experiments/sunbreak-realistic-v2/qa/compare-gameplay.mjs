@@ -20,12 +20,41 @@ const moduleOf = html => {
 // Each exception is a complete exact string, required exactly once. No broad
 // regex deletion, whitespace/comment stripping, or gameplay region exemptions.
 const bootstrap = "const {buildWorld}=await import('./world.js');\nvisual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies});\nvisual.setStyle(si);\ndocument.getElementById('bWeather').onclick=()=>visual.cycleWeather();\naddEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});\n";
+const audioAdapter = String.raw`// audio
+let createGameAudio;
+try{({createGameAudio}=await Promise.race([import('./audio.js'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
+catch{createGameAudio=({onStatus})=>{
+ const info={failed:true,ready:false,unlocked:false,loaded:0,muted:false,volume:.65};
+ queueMicrotask(()=>onStatus({...info}));
+ return{unlock(){onStatus({...info})},notify(){},setScene(){},silence(){},setMuted(v){info.muted=!!v;onStatus({...info})},setVolume(v){if(Number.isFinite(v))info.volume=Math.max(0,Math.min(1,v));onStatus({...info})},snapshot(){return{...info}}};
+}}
+const sound=createGameAudio({onStatus:info=>{
+ document.getElementById('audioStatus').textContent=info.failed?'音效不可用':!info.unlocked?'点击开始启用音效':!info.ready?'音效加载中':info.muted?'已静音':info.context!=='running'?'点击继续恢复音效':'实录音效已启用';
+ document.getElementById('bMute').textContent=info.muted?'开启声音':'静音';
+ document.getElementById('bMute').setAttribute('aria-pressed',String(info.muted));
+}});
+function snd(type,origin){try{sound.notify(type,origin)}catch{}}
+function initAudio(){sound.unlock()}
+const soundControls=document.getElementById('soundControls');
+for(const type of ['pointerdown','mousedown','click','keydown'])soundControls.addEventListener(type,e=>e.stopPropagation());
+document.getElementById('bMute').onclick=()=>{initAudio();sound.setMuted(!sound.snapshot().muted)};
+document.getElementById('soundVolume').oninput=e=>{initAudio();sound.setVolume(Number(e.target.value)/100)};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)sound.silence()});
+addEventListener('blur',()=>sound.silence());
+document.addEventListener('pointerdown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});
+document.addEventListener('keydown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});
+`;
+const originalAudio=section(moduleOf(readFileSync(baselineURL,'utf8')),'// audio','\n// combat');
 const exceptions = [
   ['visual handle', 'let THREE;\nlet visual=null;', 'let THREE;'],
   ['capture buffer option', "powerPreference:'high-performance',preserveDrawingBuffer:true", "powerPreference:'high-performance'"],
   ['style notification', ' if(visual)visual.setStyle(si);\n', ''],
   ['render/update hook', ' if(visual)visual.update(dt,{S,pres,cam,gun,live});\n rnd.autoClear=true;\n if(visual)visual.render();else rnd.render(scene,cam);', ' rnd.autoClear=true;rnd.render(scene,cam);'],
   ['world initialization/weather input', bootstrap, ''],
+  ['sample audio adapter',audioAdapter,originalAudio],
+  ['enemy sound event only',"scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);","scene.add(el);tracers.push({l:el,t:.1});snd('shot');"],
+  ['copied listener and active flag',' sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);\n',''],
+  ['restart gesture audio unlock',"document.getElementById('bAgain').onclick=()=>{initAudio();resetGame();","document.getElementById('bAgain').onclick=()=>{resetGame();"],
 ];
 function restoreCandidate(source) {
   let restored = source;
@@ -135,6 +164,7 @@ const regionChecks = regions.map(([name, start, end]) => {
   return {name, pass: a === b, baselineSha256: hash(a), candidateRestoredSha256: hash(b), difference: firstDifference(a, b)};
 });
 const visualChecks = scanVisual(lf(worldBytes.toString()));
+const audioChecks=scanVisual(lf(readFileSync(new URL('../audio.js',import.meta.url),'utf8')));
 const colliderChecks = colliderContract(base);
 const proxyContractPass = colliderContractPass(colliderChecks);
 const visibleStackLayout = {sites: colliderChecks.staticCrates.length, visibleCrates: colliderChecks.staticCrates.reduce((n, c) => n + c.count, 0), originalSolids: 5 + 1 + colliderChecks.staticCrates.length + colliderChecks.originalPalmCalls, stackedSites: colliderChecks.staticCrates.filter(c => c.count > 1).length, upperCratesWithoutOriginalProxy: colliderChecks.staticCrates.reduce((n, c) => n + Math.max(0, c.count - 1), 0)};
@@ -157,6 +187,10 @@ if (process.argv.includes('--self-test')) {
   }
   assert.notEqual(restoreCandidate(candidate + '\nS.hp=0;').restored, base);
   assert.ok(!restoreCandidate(candidate.replace('visual.setStyle(si)', 'visual.setStyle(si+1)')).hooks.every(h => h.pass));
+  for(const [from,to] of [["sound.notify(type,origin)","sound.notify(type,origin);S.hp=0"],["S.reload=1.2;snd('rel')","S.reload=1.3;snd('rel')"],["tracers.push({l:el,t:.1});snd('enemy'","S.hp=0;tracers.push({l:el,t:.1});snd('enemy'"]]){
+   assert.ok(candidate.includes(from));assert.notEqual(restoreCandidate(candidate.replace(from,to)).restored,base,'Missed audio-adjacent mutation');
+  }
+  for(const mutation of ['Math.random()','S.mag--','e.cd=0'])assert.ok(scanVisual(mutation).some(c=>!c.pass));
   for (const mutation of ['Math.random();', 'S.hp=0;', 'solids.push(mesh);', 'e.cd=0;', 'fire();', 'e.g.position.set(0,0,0);']) {
     assert.ok(scanVisual(mutation).some(c => !c.pass), `Missed visual mutation: ${mutation}`);
   }
@@ -187,7 +221,7 @@ const result = {
   wholeModuleEqualAfterExactRenderExceptions: restored === base,
   unexpectedDifference: firstDifference(base, restored),
   acceptedRenderHooks: hooks,
-  functionChecks, regionChecks, visualChecks, colliderChecks, visibleStackLayout, selfTest,
+  functionChecks, regionChecks, visualChecks, audioChecks, colliderChecks, visibleStackLayout, selfTest,
   recordedAudit: {path: 'experiments/sunbreak-realistic-v2/qa/gameplay-audit.json', staleForCurrentHashes: staleEvidence.length > 0, staleFiles: staleEvidence},
   limits: [
     'Exact inline-module comparison covers original functions, data, constants, callbacks and order; HTML/CSS appearance is outside preservation verdict.',
@@ -200,4 +234,4 @@ const result = {
   ],
 };
 console.log(JSON.stringify(result, null, 2));
-if (!sourcePass || visualChecks.some(c => !c.pass)) process.exitCode = 1;
+if (!sourcePass || visualChecks.some(c => !c.pass)||audioChecks.some(c=>!c.pass)) process.exitCode = 1;

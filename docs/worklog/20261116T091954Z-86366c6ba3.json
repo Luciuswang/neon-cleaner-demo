@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261116T091954Z-86366c6ba3",
+  "task_id": "sunbreak-audio-2026-11-16",
+  "timestamp_utc": "2026-11-16T09:19:54.081256+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK recorded-audio slice complete. Realistic page http://127.0.0.1:5187/ and byte-identical earliest demo http://127.0.0.1:5187/original/ are separate. Added local CC0 recorded AR-15/M4 shots, mechanical reload/confirm cues, directional-distance mixing, volume/mute and lifecycle cleanup without gameplay changes. Independent bounded audio/gameplay QA PASS; release85/85, audio38/38, missing-module fallback5/5, original smoke19/19, runtime217/217; staged source/media/evidence bytes37/37 match. Final actual1080p rain30.0163s P95/P99~16.8ms max17.3ms, audio errors0. See docs/tasks/sunbreak-audio-2026-11-16.md and experiments/sunbreak-realistic-v2/qa/audio-review.md. Next: user audition and original-vs-realistic comparison; subjective listening and reference-art parity remain unapproved. Isolated browser/public-assets checkpoint; pre-existing private-vault restore modifications preserved, no UE/private portability claim.",
+  "commit_shas": [
+    "6aa438761f7caa3b6a45e994ea188dee52c83215"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

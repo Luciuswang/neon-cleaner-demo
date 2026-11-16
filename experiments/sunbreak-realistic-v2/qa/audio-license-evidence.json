@@ -1,0 +1,30 @@
+{
+  "schema": "sunbreak-audio-source-evidence-v1",
+  "retrieved": "2026-11-16",
+  "distribution": "Preserved OpenGameArt author/distribution pages, not a currently reachable original firearm-team website.",
+  "pages": [
+    {
+      "url": "https://opengameart.org/content/the-free-firearm-sound-library",
+      "local": "assets/audio/provenance/firearm-source.html.txt",
+      "sha256": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868",
+      "licenseLabel": "CC0",
+      "credit": "Ben Jaszczak, Brian Nelson, Kevin Heras, Matthew Nanney",
+      "submitter": "bart",
+      "verifiedFields": ["author credit", "CC0 license label", "team rights statement", "archive download URL"]
+    },
+    {
+      "url": "https://opengameart.org/content/gun-reload-sound-effects",
+      "local": "assets/audio/provenance/reload-source.html.txt",
+      "sha256": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1",
+      "licenseLabel": "CC0",
+      "author": "BMacZero",
+      "optionalCredit": "Brian MacIntosh",
+      "verifiedFields": ["author", "CC0 license label", "optional credit", "three WAV download URLs"]
+    }
+  ],
+  "limits": [
+    "Gunfire recording provenance comes from the preserved distribution description and archive master sheet.",
+    "Mechanical source does not explicitly document recording method.",
+    "This records observed permission statements, not legal advice."
+  ]
+}

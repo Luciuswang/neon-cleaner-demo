@@ -10,7 +10,7 @@
     },
     "candidate": {
       "path": "experiments/sunbreak-realistic-v2/index.html",
-      "sha256": "52fef5c3484e3f37bdb064d8ce26b90bd333b7e6a051421f0bed4b9ced0ac206"
+      "sha256": "761c48f0b63a542c48f2f29d5b2021464736f583acda5f43244bc896deb7c991"
     },
     "world": {
       "path": "experiments/sunbreak-realistic-v2/world.js",
@@ -66,6 +66,34 @@
       "pass": true,
       "candidate": "const {buildWorld}=await import('./world.js');\nvisual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies});\nvisual.setStyle(si);\ndocument.getElementById('bWeather').onclick=()=>visual.cycleWeather();\naddEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});\n",
       "baseline": ""
+    },
+    {
+      "name": "sample audio adapter",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": "// audio\nlet createGameAudio;\ntry{({createGameAudio}=await Promise.race([import('./audio.js'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}\ncatch{createGameAudio=({onStatus})=>{\n const info={failed:true,ready:false,unlocked:false,loaded:0,muted:false,volume:.65};\n queueMicrotask(()=>onStatus({...info}));\n return{unlock(){onStatus({...info})},notify(){},setScene(){},silence(){},setMuted(v){info.muted=!!v;onStatus({...info})},setVolume(v){if(Number.isFinite(v))info.volume=Math.max(0,Math.min(1,v));onStatus({...info})},snapshot(){return{...info}}};\n}}\nconst sound=createGameAudio({onStatus:info=>{\n document.getElementById('audioStatus').textContent=info.failed?'音效不可用':!info.unlocked?'点击开始启用音效':!info.ready?'音效加载中':info.muted?'已静音':info.context!=='running'?'点击继续恢复音效':'实录音效已启用';\n document.getElementById('bMute').textContent=info.muted?'开启声音':'静音';\n document.getElementById('bMute').setAttribute('aria-pressed',String(info.muted));\n}});\nfunction snd(type,origin){try{sound.notify(type,origin)}catch{}}\nfunction initAudio(){sound.unlock()}\nconst soundControls=document.getElementById('soundControls');\nfor(const type of ['pointerdown','mousedown','click','keydown'])soundControls.addEventListener(type,e=>e.stopPropagation());\ndocument.getElementById('bMute').onclick=()=>{initAudio();sound.setMuted(!sound.snapshot().muted)};\ndocument.getElementById('soundVolume').oninput=e=>{initAudio();sound.setVolume(Number(e.target.value)/100)};\ndocument.addEventListener('visibilitychange',()=>{if(document.hidden)sound.silence()});\naddEventListener('blur',()=>sound.silence());\ndocument.addEventListener('pointerdown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});\ndocument.addEventListener('keydown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});\n",
+      "baseline": "// audio\nlet AC=null;\nfunction snd(type){\n if(!AC)return;const t=AC.currentTime,g=AC.createGain(),o=AC.createOscillator();\n if(type==='shot'){o.type='square';o.frequency.setValueAtTime(260,t);o.frequency.exponentialRampToValueAtTime(48,t+.12);g.gain.setValueAtTime(.16,t);g.gain.exponentialRampToValueAtTime(.001,t+.14);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.15);}\n else if(type==='hit'){o.type='triangle';o.frequency.setValueAtTime(900,t);o.frequency.exponentialRampToValueAtTime(400,t+.08);g.gain.setValueAtTime(.1,t);g.gain.exponentialRampToValueAtTime(.001,t+.1);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.11);}\n else{o.type='sawtooth';o.frequency.setValueAtTime(140,t);g.gain.setValueAtTime(.12,t);g.gain.exponentialRampToValueAtTime(.001,t+.25);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.26);}\n}\nfunction initAudio(){if(!AC)try{AC=new (window.AudioContext||webkitAudioContext)()}catch(e){}}\n"
+    },
+    {
+      "name": "enemy sound event only",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": "scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);",
+      "baseline": "scene.add(el);tracers.push({l:el,t:.1});snd('shot');"
+    },
+    {
+      "name": "copied listener and active flag",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": " sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);\n",
+      "baseline": ""
+    },
+    {
+      "name": "restart gesture audio unlock",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": "document.getElementById('bAgain').onclick=()=>{initAudio();resetGame();",
+      "baseline": "document.getElementById('bAgain').onclick=()=>{resetGame();"
     }
   ],
   "functionChecks": [
@@ -163,19 +191,27 @@
     },
     {
       "name": "snd",
-      "rawEqual": true,
+      "rawEqual": false,
       "equalAfterExactRenderExceptions": true,
       "baselineSha256": "67a6564889b1edcb3271b059a95c6331bc74538b62bca56fb1f820499d31ee85",
-      "candidateSha256": "67a6564889b1edcb3271b059a95c6331bc74538b62bca56fb1f820499d31ee85",
-      "difference": null
+      "candidateSha256": "4af7e4bce2995bf9e2fbbc5e04e2096f70ff17c35b2ab4b1eff96ff2b9d3af57",
+      "difference": {
+        "line": 1,
+        "baseline": "function snd(type){\n if(!AC)return;const t=AC.currentTime,g=AC.createGain(),o=AC.createOscillator();\n if(type==='shot'){o.type='square';o.frequency.setValueAtTime(260,t);o.frequency.exponentialRampToValueAtTime(48,t+.",
+        "candidate": "function snd(type,origin){try{sound.notify(type,origin)}catch{}}"
+      }
     },
     {
       "name": "initAudio",
-      "rawEqual": true,
+      "rawEqual": false,
       "equalAfterExactRenderExceptions": true,
       "baselineSha256": "cdedf8ac79dae10db3729a1789a653187031de8cd7a6d5c2a5e077c3ff293c59",
-      "candidateSha256": "cdedf8ac79dae10db3729a1789a653187031de8cd7a6d5c2a5e077c3ff293c59",
-      "difference": null
+      "candidateSha256": "ab80b98291c88b5e57a4ca75da28be87472420ade27d831d8d82fb4b70e880ae",
+      "difference": {
+        "line": 1,
+        "baseline": "function initAudio(){if(!AC)try{AC=new (window.AudioContext||webkitAudioContext)()}catch(e){}}",
+        "candidate": "function initAudio(){sound.unlock()}"
+      }
     },
     {
       "name": "fire",
@@ -286,11 +322,11 @@
       "rawEqual": false,
       "equalAfterExactRenderExceptions": true,
       "baselineSha256": "5852969bd95a6941225b735961e96f848411a120bddf4a40307e180b2c3b2a8d",
-      "candidateSha256": "aaddd34ddc15905c42651aa78a4a63ac1ec2427e58b46f1a209bb57996b5456f",
+      "candidateSha256": "ea6f7ae504f055683716c31b2eb055170075e195550e36bfd8ca2b1e05404753",
       "difference": {
-        "line": 64,
-        "baseline": "ob*.5)*.01+rdip*.6,.1-S.aim*.1,Math.cos(bob)*.014-S.aim*.014+rdip*.32);\n gun.scale.setScalar(.78);\n rnd.autoClear=true;rnd.render(scene,cam);\n rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);\n rnd.autoClear=true;\n}",
-        "candidate": "ob*.5)*.01+rdip*.6,.1-S.aim*.1,Math.cos(bob)*.014-S.aim*.014+rdip*.32);\n gun.scale.setScalar(.78);\n if(visual)visual.update(dt,{S,pres,cam,gun,live});\n rnd.autoClear=true;\n if(visual)visual.render();else rnd.render(scene,cam);\n rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);\n rnd.autoC"
+        "line": 5,
+        "baseline": "imationFrame(tick);\n const dt=Math.min(clock.getDelta(),.05);\n const live=S.state==='play'&&!pres;\n if(live){\n  if(keys.ArrowLeft)S.yaw+=1.8*dt;if(keys.ArrowRight)S.yaw-=1.8*dt;\n  if(keys.ArrowUp)S.pitch=Math.min(1.3,S.pitch+1.3*dt);if(keys.ArrowDown)S.pitch=Math.max(-1.3,S.pitch-1.3*dt);\n  if(keys.",
+        "candidate": "imationFrame(tick);\n const dt=Math.min(clock.getDelta(),.05);\n const live=S.state==='play'&&!pres;\n sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);\n if(live){\n  if(keys.ArrowLeft)S.yaw+=1.8*dt;if(keys.ArrowRight)S.yaw-=1.8*dt;\n  if(keys.ArrowUp)S.pitch=Math.min(1.3,S.pitch+1.3*dt);if(keys.ArrowDown)"
       }
     }
   ],
@@ -346,6 +382,38 @@
     }
   ],
   "visualChecks": [
+    {
+      "name": "direct global RNG references",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "direct game state writes",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "proxy container operations",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "enemy combat field writes",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "gameplay invocation",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "original enemy anchor transform writes",
+      "pass": true,
+      "hits": []
+    }
+  ],
+  "audioChecks": [
     {
       "name": "direct global RNG references",
       "pass": true,

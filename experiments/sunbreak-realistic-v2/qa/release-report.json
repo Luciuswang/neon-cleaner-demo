@@ -1,14 +1,19 @@
 {
   "schema": "sunbreak-current-build-qa-v1",
-  "date": "2026-11-16T06:37:44.869Z",
+  "date": "2026-11-16T09:18:09.901Z",
   "engineering": "PASS",
   "visual": "INDEPENDENT_REVIEW_REQUIRED",
   "sourceHashes": {
-    "index.html": "52fef5c3484e3f37bdb064d8ce26b90bd333b7e6a051421f0bed4b9ced0ac206",
+    "index.html": "761c48f0b63a542c48f2f29d5b2021464736f583acda5f43244bc896deb7c991",
     "world.js": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621",
     "weapon.js": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
-    "qa-hooks.js": "2cbae8e12969e9dc16cd28523ffd5af2bcd7a32a9eff0941c2036a4a77703573",
-    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0"
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "389304ac48a588d7f9a6fc092135b329da0bb8133d95f00fed84eddb7a6af891",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/audio-checks.js": "351ee804b21954e3ccc5f714372c9c90c618867c12e16d2ec2ccd30ae5c5fbfc",
+    "qa/audio-failure-checks.js": "b2adb0f4d2d086cab618dbf966dd3bc39835f6dca1808be2a3f76266e69fdfd2",
+    "serve.mjs": "e8971990ea7c83701c70df32219a88a238c2bf2683135899ef9a1886222df7ca"
   },
   "checks": [
     {
@@ -17,6 +22,34 @@
     },
     {
       "name": "static audit and mutation self-tests",
+      "pass": true
+    },
+    {
+      "name": "preserved audio license page assets/audio/provenance/firearm-source.html.txt",
+      "pass": true
+    },
+    {
+      "name": "preserved audio license page assets/audio/provenance/reload-source.html.txt",
+      "pass": true
+    },
+    {
+      "name": "recorded audio integrity assets/audio/player.wav",
+      "pass": true
+    },
+    {
+      "name": "recorded audio integrity assets/audio/enemy.wav",
+      "pass": true
+    },
+    {
+      "name": "recorded audio integrity assets/audio/magout.wav",
+      "pass": true
+    },
+    {
+      "name": "recorded audio integrity assets/audio/magin.wav",
+      "pass": true
+    },
+    {
+      "name": "recorded audio integrity assets/audio/confirm.wav",
       "pass": true
     },
     {
@@ -88,6 +121,10 @@
       "pass": true
     },
     {
+      "name": "final-hero requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-hero valid PNG header",
       "pass": true
     },
@@ -98,9 +135,9 @@
         "samples": 5814,
         "minLuma": 0.0722,
         "maxLuma": 218.50140000000002,
-        "meanLuma": 90.15957344341209,
-        "nonBlackRatio": 0.9857241142070864,
-        "colorBins": 170,
+        "meanLuma": 90.1822739250083,
+        "nonBlackRatio": 0.9858961128310973,
+        "colorBins": 167,
         "nonblank": true
       }
     },
@@ -117,6 +154,10 @@
       "pass": true
     },
     {
+      "name": "final-courtyard requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-courtyard valid PNG header",
       "pass": true
     },
@@ -127,9 +168,9 @@
         "samples": 5814,
         "minLuma": 0.0722,
         "maxLuma": 232.1404,
-        "meanLuma": 99.37873388372856,
+        "meanLuma": 99.25580804953519,
         "nonBlackRatio": 0.9920880632954936,
-        "colorBins": 172,
+        "colorBins": 175,
         "nonblank": true
       }
     },
@@ -146,6 +187,10 @@
       "pass": true
     },
     {
+      "name": "final-wall requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-wall valid PNG header",
       "pass": true
     },
@@ -156,9 +201,9 @@
         "samples": 5814,
         "minLuma": 0.0722,
         "maxLuma": 218.50140000000002,
-        "meanLuma": 86.15708503611951,
+        "meanLuma": 86.09210292397643,
         "nonBlackRatio": 0.9712762297901617,
-        "colorBins": 153,
+        "colorBins": 154,
         "nonblank": true
       }
     },
@@ -175,6 +220,10 @@
       "pass": true
     },
     {
+      "name": "final-ground requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-ground valid PNG header",
       "pass": true
     },
@@ -183,11 +232,11 @@
       "pass": true,
       "detail": {
         "samples": 5814,
-        "minLuma": 2.6470000000000002,
+        "minLuma": 1.9317999999999997,
         "maxLuma": 201.8068,
-        "meanLuma": 50.42765507395898,
+        "meanLuma": 50.40523553491537,
         "nonBlackRatio": 0.998624011007912,
-        "colorBins": 75,
+        "colorBins": 73,
         "nonblank": true
       }
     },
@@ -204,6 +253,10 @@
       "pass": true
     },
     {
+      "name": "final-weapon requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-weapon valid PNG header",
       "pass": true
     },
@@ -214,9 +267,9 @@
         "samples": 5814,
         "minLuma": 0,
         "maxLuma": 216.706,
-        "meanLuma": 82.28004877880983,
-        "nonBlackRatio": 0.9900240798073615,
-        "colorBins": 164,
+        "meanLuma": 82.19348737530098,
+        "nonBlackRatio": 0.9901960784313726,
+        "colorBins": 162,
         "nonblank": true
       }
     },
@@ -233,6 +286,10 @@
       "pass": true
     },
     {
+      "name": "final-rain requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-rain valid PNG header",
       "pass": true
     },
@@ -242,8 +299,8 @@
       "detail": {
         "samples": 5814,
         "minLuma": 0.0722,
-        "maxLuma": 223.0624,
-        "meanLuma": 95.23119360165087,
+        "maxLuma": 222.9902,
+        "meanLuma": 95.1915324389402,
         "nonBlackRatio": 0.9858961128310973,
         "colorBins": 105,
         "nonblank": true
@@ -262,6 +319,10 @@
       "pass": true
     },
     {
+      "name": "final-overcast requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-overcast valid PNG header",
       "pass": true
     },
@@ -271,9 +332,9 @@
       "detail": {
         "samples": 5814,
         "minLuma": 0.0722,
-        "maxLuma": 222.9902,
-        "meanLuma": 94.18466990024045,
-        "nonBlackRatio": 0.9865841073271414,
+        "maxLuma": 223.0624,
+        "meanLuma": 94.22993869969007,
+        "nonBlackRatio": 0.9867561059511524,
         "colorBins": 109,
         "nonblank": true
       }
@@ -291,6 +352,10 @@
       "pass": true
     },
     {
+      "name": "final-mobile requested viewport",
+      "pass": true
+    },
+    {
       "name": "final-mobile valid PNG header",
       "pass": true
     },
@@ -301,9 +366,9 @@
         "samples": 945,
         "minLuma": 0,
         "maxLuma": 219.4292,
-        "meanLuma": 96.04579809523801,
+        "meanLuma": 96.03264550264542,
         "nonBlackRatio": 0.9957671957671957,
-        "colorBins": 92,
+        "colorBins": 93,
         "nonblank": true
       }
     },
@@ -346,80 +411,140 @@
     {
       "name": "combat frame pacing",
       "pass": true
+    },
+    {
+      "name": "benchmark actually played recorded audio",
+      "pass": true,
+      "detail": {
+        "unlocked": true,
+        "failed": false,
+        "loaded": 5,
+        "ready": true,
+        "muted": false,
+        "volume": 0.65,
+        "droppedBeforeReady": 0,
+        "events": 223,
+        "started": 227,
+        "ended": 227,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 0,
+        "peakVoices": 24,
+        "byType": {
+          "enemy": 51,
+          "player": 160,
+          "confirm": 8,
+          "magout": 4,
+          "magin": 4
+        },
+        "errors": 0,
+        "active": true,
+        "voices": 0,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "name": "audio-current same source build",
+      "pass": true
+    },
+    {
+      "name": "browser gesture, lifecycle, offline audio stress and original page",
+      "pass": true,
+      "detail": {
+        "checks": 38,
+        "failed": []
+      }
+    },
+    {
+      "name": "audio-load-failure-current same source build",
+      "pass": true
+    },
+    {
+      "name": "missing audio module never prevents original combat",
+      "pass": true
     }
   ],
   "artifacts": [
     {
       "path": "qa/evidence/final-hero.json",
-      "sha256": "1e603ad778f5a4be7e3fc0f3455e81009d9545468e5f671f42f1f0291aa2706a"
+      "sha256": "6fe19e964e6d183c40c02cd32da4d81d7d8a6ae2f9ce06727982eb54de0958bb"
     },
     {
       "path": "qa/evidence/final-hero.png",
-      "sha256": "f3f1b9cf450c686634d5195df32ec8a74f475ca1387c556a3e465d06563b569f"
+      "sha256": "9cdd130e4f458938113bf4fb85bd2afaf04d1713855cf1751e2c471af2512f57"
     },
     {
       "path": "qa/evidence/final-courtyard.json",
-      "sha256": "3606fbf7e15fac4ac145e809983d552c71bc44e6b8f437ab753513aef7545c7c"
+      "sha256": "40b6a22548077990ff9aa2bb7cd1400fcbfae88346b0882d0c9a5a63594d79bd"
     },
     {
       "path": "qa/evidence/final-courtyard.png",
-      "sha256": "d178460a657cf13c69cab645457f7f920031901904c917ea1f57b09fbd2c4c61"
+      "sha256": "6a3bf2c2140c12c4730b4640116564ba684056a4df5dde0a3ef62da0c3a36a51"
     },
     {
       "path": "qa/evidence/final-wall.json",
-      "sha256": "f85dba3a58218709558a032d061cbb1e367f6470ddab94f41b01d0c877505149"
+      "sha256": "5a55316fc4f50c5999028045b9726805a8f4b4ba2803d6ae68cc19b0e7045cfa"
     },
     {
       "path": "qa/evidence/final-wall.png",
-      "sha256": "e67db227195556fd1fca3e61ba33c8fc56c837f3efac5a5ccbe4f95caf10b51f"
+      "sha256": "426be217329e73ec4324fdbb3b3c1fcdb3afa6e85d1ee24a3d4e3baa15b3d564"
     },
     {
       "path": "qa/evidence/final-ground.json",
-      "sha256": "79f72d62e303d653db5cd83d1806cbcc736b16bc3893d029749bdca2d72e634c"
+      "sha256": "3f2d9bcbf7a3e884a2b67411d91ed45fc2d9ee33f6ae4e4293075d4b6bc95d63"
     },
     {
       "path": "qa/evidence/final-ground.png",
-      "sha256": "561a54c4e49fb371e09f6ebcbafa13aa4e78b1b912ca774bd2d81adf07d7d98b"
+      "sha256": "712ea8905965386067b048a4248c3af01bb3dc58c6a8266a3bf01e486812aa3f"
     },
     {
       "path": "qa/evidence/final-weapon.json",
-      "sha256": "8e908b6dca61f5659b052198d2cf496b1abaa73be601749ced84c72bfae79187"
+      "sha256": "7e93ed6a2c7f38343541a28433b8c91907a592f3f9d784f8ead34eda158400a1"
     },
     {
       "path": "qa/evidence/final-weapon.png",
-      "sha256": "31658866786510caeca19cebccaac2484f76c250c2467c8780986a1571cd912f"
+      "sha256": "6f2c38e9c229fee271875edb7c5c4f84a42b90b87805595a0904b4c4d1e57c8b"
     },
     {
       "path": "qa/evidence/final-rain.json",
-      "sha256": "b013bb971741bc3a45ecbbad639c867e48c27d8a8e13dd720aa1ec6515cc8076"
+      "sha256": "f6890ae84c44d6c879eb484c3660f5ee086246244ba617f7bd9d113f2f6d52b5"
     },
     {
       "path": "qa/evidence/final-rain.png",
-      "sha256": "60e858fcd250578ae9c04be307dcc5fccc87fe22ad1c6c323ccfcf985461e517"
+      "sha256": "4824c3a1c7880163401d3ff1c46c2cc7b3ebdfa53210bd58a6872fdbce8059a7"
     },
     {
       "path": "qa/evidence/final-overcast.json",
-      "sha256": "abd29663885d3156b2d04eba1910ec0a1aed697914cac0796529dd0bc6f6ef7f"
+      "sha256": "54d4fc09d83cb69d9ab4feba1e0df0210d264cc13671b5e758aca15829bbe718"
     },
     {
       "path": "qa/evidence/final-overcast.png",
-      "sha256": "6a829476811d788d801d60d4f6d19c50475ad0204465761276c947c2b723a8ab"
+      "sha256": "9faf38adc870fd123955070f81cf8b515d040f60aabf7348317e8f65a37c99f9"
     },
     {
       "path": "qa/evidence/final-mobile.json",
-      "sha256": "5f50520caffbca581bdfeee7979f3fb4aa48ca3221c046ec41e4533e9dae31d9"
+      "sha256": "3b5f2024c6005fb4b450f8ef092f19f450386b1dca721322cc8894ae82162c52"
     },
     {
       "path": "qa/evidence/final-mobile.png",
-      "sha256": "9e94fd4cb7858da19e75ec3bc62b764acb01d5eac697a948f9591c7054f4c8e4"
+      "sha256": "4f62fe930559b4a475ab096d9a2d4b398f946fc5c3906ab791e9dd56960ee89d"
     },
     {
       "path": "qa/evidence/runtime-current.json",
-      "sha256": "26bd58a83aa91ca784b0cc908782d094f9a01c2bd77eff3c41d3e1c1cc1d6699"
+      "sha256": "f1a67b6a1804a4f7d68d49a9801315581a50db922a08d19737568eacd5392d1a"
     },
     {
       "path": "qa/evidence/performance-current.json",
-      "sha256": "4837a843c82512583bb61deabd41017da781f39fa2b8d9162dd34c3783085126"
+      "sha256": "75a81ad5a841b6f09627dc0e4a3ee6c2615b52f4cb6cf1192a205b8a9d318f2c"
+    },
+    {
+      "path": "qa/evidence/audio-current.json",
+      "sha256": "d34c78fbd299e637c4875eba64dd1cbcc93f8abdde9d4da73347d9e01449c84d"
+    },
+    {
+      "path": "qa/evidence/audio-load-failure-current.json",
+      "sha256": "041cdfe30a7904db70039fd5149180c6ab161e9019da27559c2abbd7fb977b1b"
     }
   ],
   "limitations": [

@@ -2,6 +2,12 @@
 
 Date: 2026-11-16
 
+Historical verdict notice: the review below applies to pre-audio commit
+`6aa4387`, not the subsequently edited index. The original historical evidence
+is recoverable at that commit. Current recorded-audio evidence is under
+`qa/evidence/`, source-bound by the current `qa/release-report.json`; consult
+`qa/audio-review.md` for this slice's separate review and coverage limits.
+
 ## Verdict
 
 **Final-build engineering: PASS. Gameplay source/proxy preservation: PASS.**

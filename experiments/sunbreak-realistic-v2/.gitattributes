@@ -3,3 +3,8 @@
 *.html text eol=lf
 *.md text eol=lf
 *.json text eol=lf
+.gitattributes text eol=lf
+*.py text eol=lf
+# Preserve downloaded licensing evidence byte-for-byte, including whitespace.
+assets/audio/provenance/*.txt binary
+assets/audio/*.wav binary

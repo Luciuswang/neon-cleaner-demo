@@ -12,7 +12,7 @@ if(captureName){
   let minLuma=255,maxLuma=0,sum=0,nonBlack=0,samples=0;const colorBins=new Set();
   for(let y=0;y<cv.height;y+=19)for(let x=0;x<cv.width;x+=19){const i=(y*cv.width+x)*4,r=pixels[i],g=pixels[i+1],b=pixels[i+2],l=r*.2126+g*.7152+b*.0722;minLuma=Math.min(minLuma,l);maxLuma=Math.max(maxLuma,l);sum+=l;nonBlack+=l>8?1:0;samples++;colorBins.add((r>>4)*256+(g>>4)*16+(b>>4))}
   const rect=id=>{const e=document.getElementById(id),r=e.getBoundingClientRect();return{id,visible:getComputedStyle(e).display!=='none',x:r.x,y:r.y,width:r.width,height:r.height}};
-  const metadata={date:new Date().toISOString(),capture_method:'browser-webgl-canvas',name:captureName,qa:window.demoQA.snapshot(),render:visual.info(),viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,pixel_check:{samples,minLuma,maxLuma,meanLuma:sum/samples,nonBlackRatio:nonBlack/samples,colorBins:colorBins.size,nonblank:colorBins.size>24&&maxLuma-minLuma>45},ui_bounds:['bStyle','bWeather','bPause','bPresOff','ammo','kills'].map(rect),colliders:colliders.map(b=>({min:b.min.toArray(),max:b.max.toArray()}))};
+  const metadata={date:new Date().toISOString(),capture_method:'browser-webgl-canvas',name:captureName,qa:window.demoQA.snapshot(),render:visual.info(),viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,pixel_check:{samples,minLuma,maxLuma,meanLuma:sum/samples,nonBlackRatio:nonBlack/samples,colorBins:colorBins.size,nonblank:colorBins.size>24&&maxLuma-minLuma>45},ui_bounds:['bStyle','bWeather','bPause','bPresOff','ammo','kills','soundControls'].map(rect),colliders:colliders.map(b=>({min:b.min.toArray(),max:b.max.toArray()}))};
   const r=await fetch('/qa/capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:captureName,png:cv.toDataURL('image/png'),metadata})});
   document.body.dataset.capture=r.ok?'saved':'failed';
  },2500);
@@ -29,6 +29,7 @@ if(location.pathname==='/test'){
  const observer=new MutationObserver(saveResults);observer.observe(document.body,{childList:true,subtree:true,characterData:true});
 }
 if(qaParams.get('bench')==='1'){
+ const runBenchmark=()=>{
  const combat=qaParams.get('combat')==='1';let restarts=0;
  if(combat){setPres(false);resetGame();S.state='play';hideMenu()}
  visual.setWeather(Number(qaParams.get('weather')||0));
@@ -49,8 +50,14 @@ if(qaParams.get('bench')==='1'){
   if(now-origin<30000){requestAnimationFrame(sample);return}
   const sorted=raw.map(s=>s.frame_ms).sort((a,b)=>a-b),pct=p=>sorted[Math.min(sorted.length-1,Math.floor(sorted.length*p))];
   if(combat){clearKeys();S.state='pause';showMenu('继续作战')}
-  const report={date:new Date().toISOString(),method:'browser-requestAnimationFrame-realtime',warmup_frames:180,duration_ms:raw.at(-1).elapsed_ms,viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,settings:visual.info(),p50_ms:pct(.5),p95_ms:pct(.95),p99_ms:pct(.99),max_ms:sorted.at(-1),hitches_over_50ms:raw.filter(s=>s.frame_ms>50).length,mode:combat?'scripted real combat via original movement/fire/reload/AI, auto-restart after outcomes':'normal animated menu; no combat simulation',restarts,raw};
+  const report={date:new Date().toISOString(),method:'browser-requestAnimationFrame-realtime',warmup_frames:180,duration_ms:raw.at(-1).elapsed_ms,viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,settings:visual.info(),audio:sound.snapshot(),p50_ms:pct(.5),p95_ms:pct(.95),p99_ms:pct(.99),max_ms:sorted.at(-1),hitches_over_50ms:raw.filter(s=>s.frame_ms>50).length,mode:combat?'scripted real combat via original movement/fire/reload/AI, auto-restart after outcomes':'normal animated menu; no combat simulation',restarts,raw};
   fetch('/qa/report',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:'performance-current',report})}).then(r=>{document.body.dataset.benchmark=r.ok?'saved':'failed'});
  };
  requestAnimationFrame(sample);
+ };
+ if(qaParams.get('audio')==='1'){
+  const begin=document.createElement('button');begin.id='audioBenchmark';begin.textContent='开始有声音性能测试';begin.style.cssText='position:fixed;left:24px;top:110px;z-index:100;padding:12px';document.body.append(begin);
+  begin.onclick=async()=>{initAudio();begin.disabled=true;for(let i=0;i<100&&!sound.snapshot().ready&&!sound.snapshot().failed;i++)await new Promise(r=>setTimeout(r,50));
+   if(!sound.snapshot().ready){begin.textContent='音效未就绪，未运行';return}begin.remove();runBenchmark()};
+ }else runBenchmark();
 }

@@ -1,0 +1,40 @@
+{
+  "schema": "sunbreak-audio-module-failure-v1",
+  "date": "2026-11-16T09:16:03.616Z",
+  "verdict": "PASS",
+  "method": "actual browser; exact server test-route import URL substitution to an intentional HTTP404; unmodified production fallback and original combat functions",
+  "checks": [
+    {
+      "name": "missing audio module exposes explicit unavailable status",
+      "pass": true
+    },
+    {
+      "name": "actual original firing works with absent audio module",
+      "pass": true
+    },
+    {
+      "name": "reload remains original 1.2 seconds without audio module",
+      "pass": true
+    },
+    {
+      "name": "reload ammo outcome preserved",
+      "pass": true
+    },
+    {
+      "name": "fallback controls and notifications do not throw",
+      "pass": true
+    }
+  ],
+  "buildHashes": {
+    "index.html": "761c48f0b63a542c48f2f29d5b2021464736f583acda5f43244bc896deb7c991",
+    "world.js": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621",
+    "weapon.js": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "389304ac48a588d7f9a6fc092135b329da0bb8133d95f00fed84eddb7a6af891",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/audio-checks.js": "351ee804b21954e3ccc5f714372c9c90c618867c12e16d2ec2ccd30ae5c5fbfc",
+    "qa/audio-failure-checks.js": "b2adb0f4d2d086cab618dbf966dd3bc39835f6dca1808be2a3f76266e69fdfd2",
+    "serve.mjs": "e8971990ea7c83701c70df32219a88a238c2bf2683135899ef9a1886222df7ca"
+  }
+}

@@ -12,6 +12,15 @@ node experiments/sunbreak-realistic-v2/serve.mjs
 Open `http://127.0.0.1:5187/`. First load requires access to the pinned
 Three.js 0.160 CDN. All surface maps and HDR environment are local.
 
+Separate comparison pages, served concurrently:
+
+- Realistic / recorded-audio version: `http://127.0.0.1:5187/`
+- Earliest unchanged demo: `http://127.0.0.1:5187/original/`
+
+The latter serves the original file's exact bytes, without audio changes,
+injection or rewriting. A link in the realistic version's menu opens it in
+another tab. Neither version overwrites the other.
+
 WASD moves, mouse or arrows look, left mouse/F fires, right mouse aims,
 R reloads, Shift sprints, Space jumps, P/Escape pauses, V changes lighting,
 T changes weather, and G freezes the scene for inspection. Mouse dragging
@@ -26,6 +35,16 @@ demo; narrow-screen layout verification does not imply touch controls.
 - Recessed windows, soffits, tile geometry, drainage, signs and background facades.
 - A more detailed first-person carbine, gloves and sleeves.
 - Gateway production and independent gameplay/art review.
+- Local CC0 AR-15/M4 recordings, mechanical reload effects, quiet hit-confirm
+  cue, distance filtering and stereo direction for enemy fire.
+- Gesture-unlocked audio with volume/mute, bounded voices and pause/focus
+  cancellation. If samples or Web Audio fail, gameplay remains available;
+  no synthesized gunshot fallback. Start at a moderate device volume.
+
+Audio sources, credits, archive/member hashes and reproducible preparation:
+`assets/audio/NOTICE.md`, `assets/audio/manifest.json`, `tools/prepare-audio.py`.
+Playback variation uses an independent seed and does not alter combat RNG.
+The near and mid perspectives are two recorded singles, not many unique takes.
 
 This is rasterized WebGL, not hardware ray tracing, Lumen or a global-illumination
 solver. Its weapon and characters remain authored procedural geometry unless
@@ -49,7 +68,12 @@ No UE cinematic or private-asset acceptance is implied.
 Open `/test` for the original 19 integration fixtures and additional frozen-state
 geometry/raycast/weather invariants. Reports are saved locally under
 `qa/captures/`. `?bench=1&combat=1&weather=2` runs a 180-frame warm-up and 30-second
-scripted real-combat rain benchmark. Outcomes restart naturally; every measured
+scripted real-combat rain benchmark. Add `&audio=1`, then click the explicit
+benchmark button, for the recorded-audio performance gate. `/audio-test` provides
+a separate explicit-click audio/decode/lifecycle/offline-stress test.
+That suite pauses for a second real click on "重新开始" to verify recovery from
+a suspended audio context. `/audio-load-failure` tests absent-module fallback.
+Outcomes restart naturally; every measured
 frame is retained, including hitches. This is not a human full-playthrough.
 
 Selected current evidence is preserved in `qa/evidence/`. Verify source binding,
