@@ -18,7 +18,7 @@
     "sunbreak-realistic-v2-2026-11-16": {
       "base_commit": "35a42e9a5bc617a27f87933c0bfd7b1114653365",
       "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-16T12:53:48.996327+00:00",
+      "expires_at": "2026-11-16T13:55:51.609087+00:00",
       "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
       "scopes": [
         "experiments/sunbreak-realistic-v2",
@@ -26,7 +26,7 @@
         "docs/handoff.md"
       ],
       "task_id": "sunbreak-realistic-v2-2026-11-16",
-      "updated_at": "2026-11-16T04:53:48.996327+00:00"
+      "updated_at": "2026-11-16T05:55:51.609087+00:00"
     }
   },
   "schema": 1
