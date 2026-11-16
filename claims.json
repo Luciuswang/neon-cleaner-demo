@@ -18,17 +18,17 @@
     "sunbreak-timber-house-2026-11-16": {
       "base_commit": "02f7476f61c369a2d31f2eaa5e818a3f1783ffd0",
       "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-16T20:03:51.209557+00:00",
+      "expires_at": "2026-11-16T20:41:41.918725+00:00",
       "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
       "scopes": [
         "experiments/sunbreak-storm-v3",
         "docs/tasks/sunbreak-timber-house-2026-11-16.md",
         "docs/reports/sunbreak-daily-2026-11-16.md",
-        "docs/worklog/sunbreak-timber-house-2026-11-16.json",
+        "docs/worklog",
         "docs/handoff.md"
       ],
       "task_id": "sunbreak-timber-house-2026-11-16",
-      "updated_at": "2026-11-16T12:03:51.209557+00:00"
+      "updated_at": "2026-11-16T12:41:41.918725+00:00"
     }
   },
   "schema": 1
