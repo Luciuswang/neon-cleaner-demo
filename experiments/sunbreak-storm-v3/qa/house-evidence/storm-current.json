@@ -1,0 +1,384 @@
+{
+  "date": "2026-11-16T12:38:15.103Z",
+  "method": "actual browser, synthetic rendering/lifecycle fixtures; time stepping is not real-time footage",
+  "checks": [
+    {
+      "name": "default storm weather",
+      "pass": true
+    },
+    {
+      "name": "honest engine identity",
+      "pass": true
+    },
+    {
+      "name": "licensed MP5 loaded",
+      "pass": true,
+      "detail": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      }
+    },
+    {
+      "name": "actual transformed muzzle matches original tracer origin",
+      "pass": true,
+      "detail": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ]
+    },
+    {
+      "name": "six licensed tactical display skins loaded",
+      "pass": true,
+      "detail": {
+        "loaded": true,
+        "count": 6,
+        "license": "CC-BY-4.0",
+        "author": "DanlyVostok",
+        "trianglesEach": 25887,
+        "uniformFit": 0.9774769696424419,
+        "height": 1.8,
+        "animation": "authored bent-arm grip pose; visual leg swing follows original pivots, no imported animation clips",
+        "combat": "original six anchors and invisible hit proxies unchanged"
+      }
+    },
+    {
+      "name": "no missing render assets",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "storm HDR loaded",
+      "pass": true
+    },
+    {
+      "name": "weather 0 style 0 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 1 style 0 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 2 style 0 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 0 style 1 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 1 style 1 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 2 style 1 draws",
+      "pass": true
+    },
+    {
+      "name": "weather and style preserve all combat/layout state",
+      "pass": true
+    },
+    {
+      "name": "post-processing can disable",
+      "pass": true
+    },
+    {
+      "name": "post-processing restores",
+      "pass": true
+    },
+    {
+      "name": "flash-reduction control works",
+      "pass": true
+    },
+    {
+      "name": "reduced-flash steps remain dark",
+      "pass": true
+    },
+    {
+      "name": "storm updates preserve game/layout state",
+      "pass": true
+    },
+    {
+      "name": "storm updates do not consume combat RNG",
+      "pass": true,
+      "detail": {
+        "rngCalls": 0
+      }
+    },
+    {
+      "name": "lightning can re-enable",
+      "pass": true
+    },
+    {
+      "name": "lightning event occurs and is bounded",
+      "pass": true,
+      "detail": {
+        "peak": 0.8869204367171575,
+        "events": 1
+      }
+    },
+    {
+      "name": "eight legacy facade lights, two real room lamps and four practicals",
+      "pass": true
+    },
+    {
+      "name": "peripheral vegetation installed",
+      "pass": true
+    },
+    {
+      "name": "weather audio remains inactive after blurred update",
+      "pass": true
+    },
+    {
+      "name": "stormControls does not break held KeyW",
+      "pass": true
+    },
+    {
+      "name": "stormControls allows held KeyW release",
+      "pass": true
+    },
+    {
+      "name": "stormControls isolates fresh KeyW",
+      "pass": true
+    },
+    {
+      "name": "stormControls does not break held KeyF",
+      "pass": true
+    },
+    {
+      "name": "stormControls allows held KeyF release",
+      "pass": true
+    },
+    {
+      "name": "stormControls isolates fresh KeyF",
+      "pass": true
+    },
+    {
+      "name": "soundControls does not break held KeyW",
+      "pass": true
+    },
+    {
+      "name": "soundControls allows held KeyW release",
+      "pass": true
+    },
+    {
+      "name": "soundControls isolates fresh KeyW",
+      "pass": true
+    },
+    {
+      "name": "soundControls does not break held KeyF",
+      "pass": true
+    },
+    {
+      "name": "soundControls allows held KeyF release",
+      "pass": true
+    },
+    {
+      "name": "soundControls isolates fresh KeyF",
+      "pass": true
+    },
+    {
+      "name": "diagnostic state still preserved",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "settings": {
+    "version": "storm-v3-timber",
+    "weather": "降雨 · 湿表面",
+    "weatherIndex": 2,
+    "style": 0,
+    "source": "browser WebGL realtime — not Unreal Engine",
+    "renderFrames": 2618,
+    "p50_ms": 0.3000001907348633,
+    "p95_ms": 0.5,
+    "p99_ms": 0.5999999046325684,
+    "max_ms": 2.6999998092651367,
+    "samples": 2497,
+    "triangles": 29100,
+    "textureErrors": [],
+    "materialBindings": [
+      "concrete",
+      "plaster",
+      "roof",
+      "wood",
+      "bark"
+    ],
+    "loadedHDR": true,
+    "weapon": {
+      "loaded": true,
+      "asset": "Rotuma MP5 / gloved first-person arms",
+      "license": "CC-BY-4.0",
+      "meshes": 4,
+      "triangles": 29100,
+      "skinnedMeshes": 0,
+      "sleeve": {
+        "bakedHeldPose": true,
+        "retainedSourceFabric": true,
+        "proceduralExtension": false,
+        "rearSleeveVerticesAdjusted": 310,
+        "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+      },
+      "textureMaps": 12,
+      "uniformDisplayScale": 1.7,
+      "sourceMuzzle": [
+        0,
+        0.0987987294793129,
+        -0.6800000667572021
+      ],
+      "fittedMuzzle": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ],
+      "aim": 0,
+      "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+    },
+    "actors": {
+      "loaded": true,
+      "count": 6,
+      "license": "CC-BY-4.0",
+      "author": "DanlyVostok",
+      "trianglesEach": 25887,
+      "uniformFit": 0.9774769696424419,
+      "height": 1.8,
+      "animation": "authored bent-arm grip pose; visual leg swing follows original pivots, no imported animation clips",
+      "combat": "original six anchors and invisible hit proxies unchanged"
+    },
+    "storm": {
+      "engine": "Three.js r160 / WebGL2 rasterization",
+      "lumen": false,
+      "rayTracing": false,
+      "nanite": false,
+      "ground": "Poly Haven asphalt_02, 2K albedo / OpenGL normal / roughness",
+      "sky": "Poly Haven approaching_storm, HDR photograph + moving procedural density",
+      "interiors": "four legacy parallax facades; MERCADO12 is a genuine enterable timber room",
+      "lightning": "bounded slow single events; reduced-flash switch disables bolt and light pulse",
+      "weaponAudio": "preserved CC0 recorded AR-15/M4 clips; not an SMG field recording",
+      "environmentAudio": "independently synthesized rain/wind/thunder, not field recordings",
+      "elapsed": 43.51666666666548,
+      "flashes": 1,
+      "flash": 2.818461875471159e-14,
+      "reducedFlash": false,
+      "post": true,
+      "interiorLights": 8,
+      "practicalLights": 4,
+      "grassTufts": 1600,
+      "fernClusters": 8,
+      "ambientAudio": {
+        "method": "synthesized noise, not a field recording",
+        "context": "locked",
+        "failed": false,
+        "active": false,
+        "focused": true,
+        "effectiveGain": 0,
+        "pending": 0,
+        "thunderCount": 0
+      }
+    },
+    "house": {
+      "target": "former MERCADO12",
+      "reference": "user supplied timber cabin; structure only, no photo/watermark copied",
+      "footprint": [
+        8,
+        8
+      ],
+      "root": [
+        12,
+        0,
+        -18
+      ],
+      "floor": 0.66,
+      "logs": 195,
+      "lapEnds": 88,
+      "windows": 8,
+      "realInterior": true,
+      "interiorLights": 2,
+      "exteriorLights": 2,
+      "remainingOriginalMovementProxies": 17,
+      "raycastUsesVisibleAssembly": true,
+      "door": {
+        "angle": 0,
+        "target": 0,
+        "moving": false,
+        "open": false,
+        "message": "",
+        "toggles": 0
+      },
+      "near": false,
+      "visible": false
+    },
+    "elapsed": 5070.89999961853,
+    "features": [
+      "2K scanned PBR asphalt",
+      "storm HDR image based lighting",
+      "realtime shadow maps",
+      "SSAO",
+      "masked planar water reflection and rain rings",
+      "photographic storm sky and moving cloud layer",
+      "reference-led enterable timber house and hinged door",
+      "warm real and parallax interiors",
+      "lightning with reduced-flash control",
+      "wind vegetation",
+      "optional bloom and film grade"
+    ]
+  },
+  "viewport": [
+    1920,
+    1080
+  ],
+  "canvas": [
+    1920,
+    1080
+  ],
+  "buildHashes": {
+    "index.html": "81c92bfa30b75a0fbc39cdacb1361d14644dbe8d70e2f5763dfbf0d327357329",
+    "world.js": "febc7804fbc642a9586365b58462ac872d41b453afffbd0bdf97f8b7d326d15e",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "b3f8b24c013cde14dcfeeab823aedc490257f1d9da0a27ea65773e1d772e3ab2",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "7cb3fca2aadea51182ec65aa9aaad9ea4e065b34f9139888d8e7286d5064e38f",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "05451343b8743315d5f6554691915f3f3c8b4ba1d69b9f35076ab5cfb98e4a88",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "e20904133ca27589a0e9326c2f464e622c105a581f7c11c334c6d66500180101",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "31d230d0c904239ed42d5da97ec901e378f12bdaa28ab00b0cb2488f3a4c7886",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "c5d184810155dae108f8f45caa38becc27b9f406489a3e7b9389a3e30285ee99"
+  }
+}

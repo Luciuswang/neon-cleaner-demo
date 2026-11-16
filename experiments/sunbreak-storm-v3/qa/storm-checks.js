@@ -32,7 +32,7 @@
  let peak=0,events=visual.info().storm.flashes;
  for(let i=0;i<2100;i++){visual.update(1/60,{S,pres:false,cam,gun,live:false});peak=Math.max(peak,visual.info().storm.flash)}
  check('lightning event occurs and is bounded',visual.info().storm.flashes>events&&peak>0&&peak<=1,{peak,events:visual.info().storm.flashes-events});
- check('ten warm window lights and four practicals',visual.info().storm.interiorLights===10&&visual.info().storm.practicalLights===4);
+ check('eight legacy facade lights, two real room lamps and four practicals',visual.info().storm.interiorLights===8&&visual.info().house.interiorLights===2&&visual.info().storm.practicalLights===4);
  check('peripheral vegetation installed',visual.info().storm.grassTufts===1600&&visual.info().storm.fernClusters===8);
  dispatchEvent(new Event('blur'));
  visual.update(1/60,{S,pres:false,cam,gun,live:true});

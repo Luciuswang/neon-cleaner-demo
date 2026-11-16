@@ -1,0 +1,120 @@
+{
+  "date": "2026-11-16T12:32:26.335Z",
+  "method": "isolated deterministic architecture logic; not browser playthrough/performance",
+  "sourceSha256": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+  "pass": true,
+  "checks": [
+    {
+      "name": "actual room floor .66m",
+      "pass": true
+    },
+    {
+      "name": "veranda uses same floor",
+      "pass": true
+    },
+    {
+      "name": "original spawn9,-13 stays at ground",
+      "pass": true
+    },
+    {
+      "name": "original player spawn stays at ground",
+      "pass": true
+    },
+    {
+      "name": "stair tread 1",
+      "pass": true
+    },
+    {
+      "name": "stair tread 2",
+      "pass": true
+    },
+    {
+      "name": "stair tread 3",
+      "pass": true
+    },
+    {
+      "name": "stair tread 4",
+      "pass": true
+    },
+    {
+      "name": "all outdoor floor samples unchanged",
+      "pass": true
+    },
+    {
+      "name": "roof shelters room",
+      "pass": true
+    },
+    {
+      "name": "roof shelters veranda",
+      "pass": true
+    },
+    {
+      "name": "outdoor and above roof keep rain",
+      "pass": true
+    },
+    {
+      "name": "door rejects distant",
+      "pass": true
+    },
+    {
+      "name": "door rejects wall",
+      "pass": true
+    },
+    {
+      "name": "door rejects paused",
+      "pass": true
+    },
+    {
+      "name": "door rejects repeat",
+      "pass": true
+    },
+    {
+      "name": "door rejects focusedUI",
+      "pass": true
+    },
+    {
+      "name": "door rejects sweep",
+      "pass": true
+    },
+    {
+      "name": "door debounce while moving",
+      "pass": true
+    },
+    {
+      "name": "pause freezes swing",
+      "pass": true
+    },
+    {
+      "name": "open reaches bounded angle",
+      "pass": true
+    },
+    {
+      "name": "closed leaf blocks central player",
+      "pass": true
+    },
+    {
+      "name": "open leaf clears original doorway centre",
+      "pass": true
+    },
+    {
+      "name": "sweep occupancy protects inside player",
+      "pass": true
+    },
+    {
+      "name": "safe outside stance permits use",
+      "pass": true
+    },
+    {
+      "name": "animation cannot close through player",
+      "pass": true
+    },
+    {
+      "name": "upper lintel does not block crouchless doorway",
+      "pass": true
+    },
+    {
+      "name": "door resets completely",
+      "pass": true
+    }
+  ]
+}

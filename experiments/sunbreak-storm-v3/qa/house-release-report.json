@@ -1,0 +1,698 @@
+{
+  "schema": "sunbreak-timber-slice-v1",
+  "date": "2026-11-16T12:44:10.471Z",
+  "verifierSha256": "5b45d9e082995151dd19823cbb4230e95f5210f7759f88a882f7faeebefb11e1",
+  "buildToolSha256": "fcc443fcc78cd7dcaa6bcdcda3ed28fcbd1959d1c6c2891bf52bc77dbe669d67",
+  "sourceFingerprint": "bf747ef862561bb058d20fb06811be5d2f540e3e8caf06c7d09c693627b9e914",
+  "sourceHashes": {
+    "index.html": "81c92bfa30b75a0fbc39cdacb1361d14644dbe8d70e2f5763dfbf0d327357329",
+    "world.js": "febc7804fbc642a9586365b58462ac872d41b453afffbd0bdf97f8b7d326d15e",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "b3f8b24c013cde14dcfeeab823aedc490257f1d9da0a27ea65773e1d772e3ab2",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "7cb3fca2aadea51182ec65aa9aaad9ea4e065b34f9139888d8e7286d5064e38f",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "05451343b8743315d5f6554691915f3f3c8b4ba1d69b9f35076ab5cfb98e4a88",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "e20904133ca27589a0e9326c2f464e622c105a581f7c11c334c6d66500180101",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "31d230d0c904239ed42d5da97ec901e378f12bdaa28ab00b0cb2488f3a4c7886",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "c5d184810155dae108f8f45caa38becc27b9f406489a3e7b9389a3e30285ee99"
+  },
+  "functional": "PASS",
+  "art": "CONDITIONAL PASS",
+  "overall": "CONDITIONAL PASS",
+  "performance": {
+    "verdict": "PASS",
+    "thresholds": {
+      "p95MaxMs": 33.3,
+      "p99MaxMs": 33.3,
+      "maxFrameMs": 50,
+      "maxHitchesOver50": 0
+    },
+    "currentSource": true,
+    "durationMs": 30014.000000000004,
+    "samples": 1706,
+    "viewport": [
+      1920,
+      1080
+    ],
+    "canvas": [
+      1920,
+      1080
+    ],
+    "p95Ms": 18.19999999999709,
+    "p99Ms": 18.30000000000291,
+    "maxMs": 18.799999999999272,
+    "hitchesOver50": 0,
+    "audio": {
+      "context": "running",
+      "playerShots": 221,
+      "enemyShots": 73,
+      "errors": 0,
+      "thunder": 1
+    },
+    "reason": "Current1080p30-second scripted combat with running recorded-gun/weather audio passed unchanged thresholds; not a full playthrough or all hardware claim."
+  },
+  "checks": [
+    {
+      "name": "syntax world.js",
+      "pass": true
+    },
+    {
+      "name": "syntax weapon.js",
+      "pass": true
+    },
+    {
+      "name": "syntax actors.js",
+      "pass": true
+    },
+    {
+      "name": "syntax audio.js",
+      "pass": true
+    },
+    {
+      "name": "syntax storm.js",
+      "pass": true
+    },
+    {
+      "name": "syntax storm-audio.js",
+      "pass": true
+    },
+    {
+      "name": "syntax timber-house.js",
+      "pass": true
+    },
+    {
+      "name": "syntax house-logic.js",
+      "pass": true
+    },
+    {
+      "name": "syntax boot-ui.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa-hooks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/runtime-checks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/storm-checks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/house-checks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/check-house-logic.mjs",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/compare-gameplay.mjs",
+      "pass": true
+    },
+    {
+      "name": "syntax serve.mjs",
+      "pass": true
+    },
+    {
+      "name": "inline syntax",
+      "pass": true
+    },
+    {
+      "name": "exact source with enumerated target-local hooks and mutation self-tests",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-fable52/index.html",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/index.html",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/world.js",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/weapon.js",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/audio.js",
+      "pass": true
+    },
+    {
+      "name": "v2 sound module unchanged",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/approaching_storm/approaching_storm_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/approaching_storm/approaching_storm_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/mp5/mp5a5.glb",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/mp5/arms_basecolor.webp",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/mp5/arms_normal.webp",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/soldier/soldier_tac.glb",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/audio/player.wav",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/audio/enemy.wav",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/audio/magout.wav",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/audio/magin.wav",
+      "pass": true
+    },
+    {
+      "name": "licensed asset assets/audio/confirm.wav",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/LICENSE",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/build/three.module.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/loaders/RGBELoader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/math/SimplexNoise.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/objects/Reflector.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/EffectComposer.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/MaskPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/OutputPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/Pass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/RenderPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/SMAAPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/SSAOPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/ShaderPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/shaders/CopyShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/shaders/OutputShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/shaders/SMAAShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/shaders/SSAOShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/three/examples/jsm/utils/SkeletonUtils.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/meshoptimizer-LICENSE.md",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/build/three.module.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/loaders/RGBELoader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/objects/Reflector.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/EffectComposer.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/shaders/CopyShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/ShaderPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/Pass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/MaskPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/RenderPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/SSAOPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/math/SimplexNoise.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/shaders/SSAOShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/OutputPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/shaders/OutputShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/SMAAPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/shaders/SMAAShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/loaders/GLTFLoader.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/examples/jsm/utils/SkeletonUtils.js",
+      "pass": true
+    },
+    {
+      "name": "licensed asset vendor/presentation/LICENSE",
+      "pass": true
+    },
+    {
+      "name": "visual vendor isolates global random",
+      "pass": true
+    },
+    {
+      "name": "house-current loaded current source",
+      "pass": true
+    },
+    {
+      "name": "storm-current loaded current source",
+      "pass": true
+    },
+    {
+      "name": "startup-test loaded current source",
+      "pass": true
+    },
+    {
+      "name": "startup-baseline loaded current source",
+      "pass": true
+    },
+    {
+      "name": "housefront loaded current source",
+      "pass": true
+    },
+    {
+      "name": "houseangle loaded current source",
+      "pass": true
+    },
+    {
+      "name": "houseinside loaded current source",
+      "pass": true
+    },
+    {
+      "name": "houseout loaded current source",
+      "pass": true
+    },
+    {
+      "name": "housedoor loaded current source",
+      "pass": true
+    },
+    {
+      "name": "browser architecture/routing/actual vertical-solver fixtures",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "browser weather fixtures",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "no added global random at init/first frame",
+      "pass": true,
+      "detail": {
+        "init": 0,
+        "firstFrame": 8,
+        "baseline": 8
+      }
+    },
+    {
+      "name": "deterministic house unit fixtures current",
+      "pass": true
+    },
+    {
+      "name": "weather audio unit fixtures current",
+      "pass": true
+    },
+    {
+      "name": "housefront actual nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "housefront current assets and real room loaded",
+      "pass": true
+    },
+    {
+      "name": "houseangle actual nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "houseangle current assets and real room loaded",
+      "pass": true
+    },
+    {
+      "name": "houseinside actual nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "houseinside current assets and real room loaded",
+      "pass": true
+    },
+    {
+      "name": "houseout actual nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "houseout current assets and real room loaded",
+      "pass": true
+    },
+    {
+      "name": "housedoor actual nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "housedoor current assets and real room loaded",
+      "pass": true
+    },
+    {
+      "name": "static build exact runtime and v1/v2 comparison pages",
+      "pass": true,
+      "detail": "PASS: exact-byte static runtime and separate v1/v2 comparisons in dist/"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa/house-evidence/house-current.json",
+      "sha256": "8040eedfbddef7512729da7c94a5d1434b5efb76b6b29f465dad4ad7aed308d2",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/storm-current.json",
+      "sha256": "114d5264ceeaa170565bfb77da26d4d62889baf5e64b95820372e99ac3bc609e",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/startup-test.json",
+      "sha256": "7de575f4fc8066431996c0704f8f7f203d7598f506579345de89bd6b1787793f",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/startup-baseline.json",
+      "sha256": "72e8bc8d617af0bcd559f50077218f956e1fb3b40757bfd1c0f8d72d4fd0be2d",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/housefront.json",
+      "sha256": "d6e96939c997adc5bfc601549001c88c0159a7a36da0d0bf31ab3627c2e2535b",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/houseangle.json",
+      "sha256": "42d42264a74dcd5851cdcd5af36cb4b2731fcddb202c078af0101cc8a0461dee",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/houseinside.json",
+      "sha256": "b8b6a512876eb34043363cfd7e305115dbc476a107d65da158906db4337b9de1",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/houseout.json",
+      "sha256": "6e49e66688e248a6e5b19edb380b769e21f56d9cb0a5f4e09561541bfc4ac981",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/housedoor.json",
+      "sha256": "1d40244d6c90b8ff07ef8c4e191f02e24f4d7a4f24261000cc86a3fadd3c963a",
+      "currentSource": true
+    },
+    {
+      "path": "qa/house-evidence/housefront.png",
+      "sha256": "232d372d64f1c90d8ef05b6fa64d9716caa55b823068d50dfe30c94b5ea6f4fd"
+    },
+    {
+      "path": "qa/house-evidence/houseangle.png",
+      "sha256": "db471c82d26050d4451b4e90a41db41d0283f806203c467b84ff826391187400"
+    },
+    {
+      "path": "qa/house-evidence/houseinside.png",
+      "sha256": "270e820b92e963a1f7b1948e62f49d0dc7a78c70daadd03359cee98fa8d4007f"
+    },
+    {
+      "path": "qa/house-evidence/houseout.png",
+      "sha256": "d29aa419eb725123d3ec572f05b3fd3b973f44fa93728e4d51baf4450a415cc9"
+    },
+    {
+      "path": "qa/house-evidence/housedoor.png",
+      "sha256": "80ce25d63b695a3373124d754017ab027a53d1d03ab91e9221f6974008043985"
+    },
+    {
+      "path": "qa/house-evidence/performance-current.json",
+      "sha256": "4bb323db6b6520fa577a4e6ac4cf0089a7dd57de085eadc61a8af330ed1acb54",
+      "currentSource": true
+    }
+  ],
+  "contract": {
+    "unchanged": "six spawn anchors, original weapon/AI constants after exact local hooks, other17 movement bounds; v1/v2 preserved",
+    "changed": "only former MERCADO12 traversal/cover/LOS, door/stairs/player floor/headroom",
+    "original18ProxySuite": "Not claimed for changed house; pre-house reports remain historical."
+  },
+  "limitations": [
+    "Representative actual canvas frames and synthetic integration, not a complete human playthrough or full continuous review.",
+    "WebGL/Three.js, not Unreal Engine/Lumen/Nanite/hardware ray tracing or AAA parity.",
+    "Only the cabin has an enterable room. Other houses use decorative parallax. Unseen cabin parts are authored interpretation, not an exact photo reconstruction.",
+    "Enemies remain original ground-height agents; they cannot enter via the raised stair.",
+    "Recorded weapon audio is AR15/M4, not MP5. Weather ambience is synthetic.",
+    "No hosted deployment: prior Sites provider backfill invariant prevented site creation. GitHub save is distinct from hosting.",
+    "Public browser files only. Existing modified private vault was preserved; no new private/UE snapshot or portability claim."
+  ]
+}

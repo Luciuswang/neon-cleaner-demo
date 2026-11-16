@@ -1,0 +1,39 @@
+{
+  "schema": "sunbreak-representative-house-art-v1",
+  "date": "2026-11-16",
+  "verdict": "CONDITIONAL PASS",
+  "confidence": "medium",
+  "sourceFingerprint": "bf747ef862561bb058d20fb06811be5d2f540e3e8caf06c7d09c693627b9e914",
+  "reviewer": "Planck / read-only independent reviewer",
+  "reviewerId": "01a1e38c-7010-78b1-a6ca-6fedbc1a7f43",
+  "binding": "Integrator binds these five actual canvas images to the current22-source fingerprint. Reviewer independently compared image metadata against the seven allowed house/source files, not all22 files.",
+  "method": "Representative actual browser-WebGL canvas frames, source inspection and isolated vertical-solver probes. No continuous video or full human playthrough.",
+  "frames": [
+    {"path":"qa/house-evidence/housefront.png","sha256":"232d372d64f1c90d8ef05b6fa64d9716caa55b823068d50dfe30c94b5ea6f4fd"},
+    {"path":"qa/house-evidence/houseangle.png","sha256":"db471c82d26050d4451b4e90a41db41d0283f806203c467b84ff826391187400"},
+    {"path":"qa/house-evidence/houseinside.png","sha256":"270e820b92e963a1f7b1948e62f49d0dc7a78c70daadd03359cee98fa8d4007f"},
+    {"path":"qa/house-evidence/houseout.png","sha256":"d29aa419eb725123d3ec572f05b3fd3b973f44fa93728e4d51baf4450a415cc9"},
+    {"path":"qa/house-evidence/housedoor.png","sha256":"80ce25d63b695a3373124d754017ab027a53d1d03ab91e9221f6974008043985"}
+  ],
+  "reference": "User-supplied wooden cabin structure only. Reference photograph/watermark not copied or redistributed.",
+  "confirmed": [
+    "Horizontal squared timber courses and interlocked corners",
+    "Sheet-metal pitched gable roof, cream window frames",
+    "Wooden veranda, rails and stairs; pale raised foundation partly occluded",
+    "Actual room depth, ceiling beams, warm lamps and open hinged door",
+    "No obvious cartoon drift in this bounded architectural comparison"
+  ],
+  "minorFollowups": [
+    "Wood grain reads too vertical/repetitive on some horizontal courses",
+    "Window/glass/lamp highlights too pale; improve tonal separation",
+    "Furniture remains boxy with limited material differentiation"
+  ],
+  "engineeringReview": {
+    "verdict": "CONDITIONAL PASS",
+    "noNewP0P1": true,
+    "closedFindings": ["jump-through-lintel", "stale paused/presentation use authorization", "missing stair-side body blockers", "grounded state after leaving raised support"],
+    "independentProbes": "Off-stair same-frame jump falls at dt1/60 and .05;120-frame outdoor jump trajectories exactly baseline at both steps.",
+    "limits": "Reviewer did not independently rerun the latest47 browser checks or examine the later current1080p performance result. Those are integrator-verified evidence, not reviewer claims."
+  },
+  "acceptanceScope": "Limited timber-house checkpoint only. Not full continuous dynamics, whole-project source correctness, full-reference reconstruction, UE5/AAA quality or final cinematic acceptance."
+}

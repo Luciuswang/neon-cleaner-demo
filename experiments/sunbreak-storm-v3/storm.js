@@ -16,7 +16,7 @@ export async function installStorm(c){
  const info={engine:'Three.js r160 / WebGL2 rasterization',lumen:false,rayTracing:false,nanite:false,
   ground:'Poly Haven asphalt_02, 2K albedo / OpenGL normal / roughness',
   sky:'Poly Haven approaching_storm, HDR photograph + moving procedural density',
-  interiors:'parallax room shading behind glazing, decorative non-enterable buildings',
+  interiors:'four legacy parallax facades; MERCADO12 is a genuine enterable timber room',
   lightning:'bounded slow single events; reduced-flash switch disables bolt and light pulse',
   weaponAudio:'preserved CC0 recorded AR-15/M4 clips; not an SMG field recording',
   environmentAudio:'independently synthesized rain/wind/thunder, not field recordings'};
@@ -129,7 +129,7 @@ export async function installStorm(c){
  // Warm lamps are physically attenuated lights; their pools hit masonry,
  // window reveals, ground and reflected geometry, not screen-space painted glows.
  const roomLights=[];
- for(const [x,z,w,d,h,ry]of [[-13,-16,9,7,4.2,0],[12,-18,8,8,5.2,0],[-21,4,7,11,4.6,Math.PI/2],[20,6,8,10,4,0],[-4,-27,11,6,3.6,0]]){
+ for(const [x,z,w,d,h,ry]of [[-13,-16,9,7,4.2,0],[-21,4,7,11,4.6,Math.PI/2],[20,6,8,10,4,0],[-4,-27,11,6,3.6,0]]){
   const house=new T.Group();house.position.set(x,0,z);house.rotation.y=ry;group.add(house);
   for(const side of [-1,1]){
    const light=new T.PointLight(side<0?0xffbc74:0xffce8d,20,9,2);light.position.set(side*w*.29,h*.6-.30,d/2+.65);house.add(light);roomLights.push(light);

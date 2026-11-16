@@ -112,7 +112,7 @@ html,body{background:#172229;color:#d5dedc}
   <div id="kills">击倒 <span id="kl">0</span>/6</div>
   <div id="cross"><div style="left:12px;top:0;width:2px;height:8px"></div><div style="left:12px;top:18px;width:2px;height:8px"></div><div style="left:0;top:12px;width:8px;height:2px"></div><div style="left:18px;top:12px;width:8px;height:2px"></div></div>
   <div id="flash"></div>
-  <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>左键 / F</span> 射击　 <span>R</span> 换弹　 <span>Shift</span> 冲刺</div>
+  <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>左键 / F</span> 射击　 <span>R</span> 换弹　 <span>Shift</span> 冲刺　 <span>E</span> 木屋开关门</div>
 </div>
 <div class="panel" id="menu"><div class="eyebrow">SUNBREAK / VISUAL STUDY 03</div><h1>BLACK<br>SQUALL</h1><h2>暴 雨 行 动</h2><p>海岸旧城 · 强降雨 · 六个敌对目标<br>穿过雨幕。保持警觉。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换时段</button><br><a class="compare" href="/original/" target="_blank" rel="noopener">01 最早原版 ↗</a><a class="compare" href="/v2/" target="_blank" rel="noopener">02 雨后写实版 ↗</a><small>包含闪电效果，可在左上角关闭。建议以适中音量体验。<br>独立网页实时渲染 · UE5 视觉方向探索，非 Unreal 引擎。<br><a href="./credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
@@ -422,6 +422,7 @@ document.getElementById('bPause').onclick=()=>{if(S.state==='menu'){S.state='pau
 document.getElementById('bPres').onclick=()=>setPres(true);
 document.getElementById('bPresOff').onclick=()=>setPres(false);
 function resetGame(){
+ visual?.resetHouse();
  S.hp=100;S.mag=30;S.res=90;S.kills=0;S.yaw=-.12;S.pitch=-.06;S.aim=0;S.aimHold=false;S.next=0;S.reload=0;
  pos.copy(SPAWNPOS);vel.set(0,0,0);vy=0;onGround=true;bob=0;recoil=0;clearKeys();
  enemies.forEach((e,i)=>{e.alive=true;e.hp=100;e.g.rotation.set(0,0,0);e.wg2.rotation.set(0,0,0);e.g.position.set(SPAWN[i][0],0,SPAWN[i][1]);e.cd=1+Math.random()*2;e.ph=Math.random()*6;e.warn=0});
@@ -430,7 +431,16 @@ document.getElementById('bAgain').onclick=()=>{initAudio();resetGame();over.clas
 updHUD();
 
 // movement + loop
-function collide(p){
+function stepVertical(dt,jump){
+ const supportY=1.7+(visual?.floorHeight(pos.x,pos.z)||0),previousY=pos.y;
+ if(onGround&&pos.y>supportY+.001)onGround=false;
+ if(jump&&onGround){vy=5.1;onGround=false}
+ vy-=15*dt;pos.y+=vy*dt;
+ if(vy>0){const cap=visual?.ceilingY(pos,previousY)??Infinity;if(pos.y>cap){pos.y=cap;vy=0}}
+ if(pos.y<=supportY){pos.y=supportY;vy=0;onGround=true}
+}
+function collide(p,actor='player'){
+ if(visual?.blocksMovement(p,actor))return true;
  for(const b of colliders){
   if(p.x>b.min.x-.4&&p.x<b.max.x+.4&&p.z>b.min.z-.4&&p.z<b.max.z+.4&&p.y-1.5<b.max.y)return true}
  return false;}
@@ -452,8 +462,7 @@ function tick(){
   const nx=pos.clone();nx.x+=vel.x*dt;if(!collide(nx))pos.x=nx.x;
   const nz=pos.clone();nz.z+=vel.z*dt;if(!collide(nz))pos.z=nz.z;
   pos.x=Math.max(-32,Math.min(32,pos.x));pos.z=Math.max(-34,Math.min(26,pos.z));
-  if(keys.Space&&onGround){vy=5.1;onGround=false}
-  vy-=15*dt;pos.y+=vy*dt;if(pos.y<=1.7){pos.y=1.7;vy=0;onGround=true}
+  stepVertical(dt,keys.Space);
   bob+=dt*(Math.hypot(vel.x,vel.z)>.4?(keys.ShiftLeft?13:9):0);
   S.aim+=((S.aimHold?1:0)-S.aim)*Math.min(1,dt*12);
   if(S.reload>0){S.reload-=dt;if(S.reload<=0)finishReload();else updHUD()}
@@ -465,7 +474,7 @@ function tick(){
    e.g.rotation.y=Math.atan2(dx,dz);e.wg2.rotation.x=-Math.atan2(pos.y-1.45,Math.max(.6,Math.hypot(dx,dz)));
    let moving=0;
    if(d>7){const s=2.4*dt/d;const np=e.g.position.clone();np.x+=dx*s;np.z+=dz*s;np.y=1.6;
-    if(!collide(np)){e.g.position.x=np.x;e.g.position.z=np.z}moving=1}
+    if(!collide(np,'enemy')){e.g.position.x=np.x;e.g.position.z=np.z}moving=1}
    e.ph+=dt*(moving?8:2.2);
    const a=Math.sin(e.ph)*(moving?.6:.08);
    e.ll.rotation.x=a;e.rl.rotation.x=-a;e.la.rotation.x=-a*.5;e.ra.rotation.x=a*.3;
@@ -499,14 +508,14 @@ function tick(){
  gun.position.set(.27-S.aim*.27,-.24+Math.sin(bob)*.012+S.aim*.09-rdip*.24,-.83+recoil*.1);
  gun.rotation.set(recoil*.16+Math.sin(bob*.5)*.01+rdip*.6,.1-S.aim*.1,Math.cos(bob)*.014-S.aim*.014+rdip*.32);
  gun.scale.setScalar(.78);
- if(visual)visual.update(dt,{S,pres,cam,gun,live});
+ if(visual)visual.update(dt,{S,pres,cam,gun,live,player:pos});
  rnd.autoClear=true;
  if(visual)visual.render();else rnd.render(scene,cam);
  rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);
  rnd.autoClear=true;
 }
 const {buildWorld}=await import('./world.js');
-visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies});
+visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:S.state==='play'&&!pres,player:pos})});
 visual.setStyle(si);
 document.getElementById('bWeather').onclick=()=>visual.cycleWeather();
 addEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});

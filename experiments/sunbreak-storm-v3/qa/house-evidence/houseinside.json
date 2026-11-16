@@ -1,0 +1,513 @@
+{
+  "date": "2026-11-16T12:36:55.778Z",
+  "capture_method": "browser-webgl-canvas",
+  "name": "houseinside",
+  "qa": {
+    "state": "menu",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 100,
+    "ammo": {
+      "mag": 30,
+      "reserve": 90
+    },
+    "kills": 0,
+    "camera": {
+      "x": 10.92,
+      "y": 2.36,
+      "z": -16.6,
+      "yaw": 0,
+      "pitch": -0.03
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -8,
+        "z": -10
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 9,
+        "z": -9
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -13,
+        "z": 3
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 14,
+        "z": 3
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -3,
+        "z": -20
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 9,
+        "z": -13
+      }
+    ]
+  },
+  "render": {
+    "version": "storm-v3-timber",
+    "weather": "降雨 · 湿表面",
+    "weatherIndex": 2,
+    "style": 0,
+    "source": "browser WebGL realtime — not Unreal Engine",
+    "renderFrames": 146,
+    "p50_ms": 17.59999990463257,
+    "p95_ms": 18.199999809265137,
+    "p99_ms": 18.40000009536743,
+    "max_ms": 18.40000009536743,
+    "samples": 25,
+    "triangles": 29100,
+    "textureErrors": [],
+    "materialBindings": [
+      "concrete",
+      "plaster",
+      "roof",
+      "wood",
+      "bark"
+    ],
+    "loadedHDR": true,
+    "weapon": {
+      "loaded": true,
+      "asset": "Rotuma MP5 / gloved first-person arms",
+      "license": "CC-BY-4.0",
+      "meshes": 4,
+      "triangles": 29100,
+      "skinnedMeshes": 0,
+      "sleeve": {
+        "bakedHeldPose": true,
+        "retainedSourceFabric": true,
+        "proceduralExtension": false,
+        "rearSleeveVerticesAdjusted": 310,
+        "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+      },
+      "textureMaps": 12,
+      "uniformDisplayScale": 1.7,
+      "sourceMuzzle": [
+        0,
+        0.0987987294793129,
+        -0.6800000667572021
+      ],
+      "fittedMuzzle": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ],
+      "aim": 0,
+      "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+    },
+    "actors": {
+      "loaded": true,
+      "count": 6,
+      "license": "CC-BY-4.0",
+      "author": "DanlyVostok",
+      "trianglesEach": 25887,
+      "uniformFit": 0.9774769696424419,
+      "height": 1.8,
+      "animation": "authored bent-arm grip pose; visual leg swing follows original pivots, no imported animation clips",
+      "combat": "original six anchors and invisible hit proxies unchanged"
+    },
+    "storm": {
+      "engine": "Three.js r160 / WebGL2 rasterization",
+      "lumen": false,
+      "rayTracing": false,
+      "nanite": false,
+      "ground": "Poly Haven asphalt_02, 2K albedo / OpenGL normal / roughness",
+      "sky": "Poly Haven approaching_storm, HDR photograph + moving procedural density",
+      "interiors": "four legacy parallax facades; MERCADO12 is a genuine enterable timber room",
+      "lightning": "bounded slow single events; reduced-flash switch disables bolt and light pulse",
+      "weaponAudio": "preserved CC0 recorded AR-15/M4 clips; not an SMG field recording",
+      "environmentAudio": "independently synthesized rain/wind/thunder, not field recordings",
+      "elapsed": 0,
+      "flashes": 0,
+      "flash": 7.735805379496399e-157,
+      "reducedFlash": false,
+      "post": true,
+      "interiorLights": 8,
+      "practicalLights": 4,
+      "grassTufts": 1600,
+      "fernClusters": 8,
+      "ambientAudio": {
+        "method": "synthesized noise, not a field recording",
+        "context": "locked",
+        "failed": false,
+        "active": false,
+        "focused": true,
+        "effectiveGain": 0,
+        "pending": 0,
+        "thunderCount": 0
+      }
+    },
+    "house": {
+      "target": "former MERCADO12",
+      "reference": "user supplied timber cabin; structure only, no photo/watermark copied",
+      "footprint": [
+        8,
+        8
+      ],
+      "root": [
+        12,
+        0,
+        -18
+      ],
+      "floor": 0.66,
+      "logs": 195,
+      "lapEnds": 88,
+      "windows": 8,
+      "realInterior": true,
+      "interiorLights": 2,
+      "exteriorLights": 2,
+      "remainingOriginalMovementProxies": 17,
+      "raycastUsesVisibleAssembly": true,
+      "door": {
+        "angle": 1.48,
+        "target": 1.48,
+        "moving": false,
+        "open": true,
+        "message": "",
+        "toggles": 1
+      },
+      "near": true,
+      "visible": false
+    },
+    "elapsed": 6609.199999809265,
+    "features": [
+      "2K scanned PBR asphalt",
+      "storm HDR image based lighting",
+      "realtime shadow maps",
+      "SSAO",
+      "masked planar water reflection and rain rings",
+      "photographic storm sky and moving cloud layer",
+      "reference-led enterable timber house and hinged door",
+      "warm real and parallax interiors",
+      "lightning with reduced-flash control",
+      "wind vegetation",
+      "optional bloom and film grade"
+    ]
+  },
+  "viewport": [
+    1920,
+    1080
+  ],
+  "canvas": [
+    1920,
+    1080
+  ],
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "pixel_check": {
+    "samples": 5814,
+    "minLuma": 0,
+    "maxLuma": 253.99599999999998,
+    "meanLuma": 54.70029779841771,
+    "nonBlackRatio": 0.9387684898520812,
+    "colorBins": 178,
+    "nonblank": true
+  },
+  "ui_bounds": [
+    {
+      "id": "bStyle",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bWeather",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bPause",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bPresOff",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "ammo",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "kills",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "soundControls",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  ],
+  "colliders": [
+    {
+      "min": [
+        -17.5,
+        9.536743172944284e-8,
+        -19.5
+      ],
+      "max": [
+        -8.5,
+        4.199999904632568,
+        -12.5
+      ]
+    },
+    {
+      "min": [
+        -26.5,
+        4.7683715642676816e-8,
+        0.49999999999999867
+      ],
+      "max": [
+        -15.5,
+        4.599999952316284,
+        7.500000000000002
+      ]
+    },
+    {
+      "min": [
+        16,
+        0,
+        1
+      ],
+      "max": [
+        24,
+        4,
+        11
+      ]
+    },
+    {
+      "min": [
+        -9.5,
+        4.768371586472142e-8,
+        -30
+      ],
+      "max": [
+        1.5,
+        3.599999952316284,
+        -24
+      ]
+    },
+    {
+      "min": [
+        -23,
+        0,
+        16.499999952316283
+      ],
+      "max": [
+        23,
+        0.5,
+        19.900000047683715
+      ]
+    },
+    {
+      "min": [
+        -6.884051931477227,
+        2.384185793236071e-8,
+        1.1159480685227727
+      ],
+      "max": [
+        -5.115948068522773,
+        1.299999976158142,
+        2.8840519314772273
+      ]
+    },
+    {
+      "min": [
+        4.061857478159791,
+        2.384185793236071e-8,
+        -4.938142521840209
+      ],
+      "max": [
+        5.938142521840209,
+        1.299999976158142,
+        -3.0618574781597907
+      ]
+    },
+    {
+      "min": [
+        6.982243924629068,
+        2.384185793236071e-8,
+        6.982243924629068
+      ],
+      "max": [
+        9.017756075370931,
+        1.299999976158142,
+        9.017756075370931
+      ]
+    },
+    {
+      "min": [
+        -15.060547100185016,
+        2.384185793236071e-8,
+        8.939452899814984
+      ],
+      "max": [
+        -12.939452899814984,
+        1.299999976158142,
+        11.060547100185016
+      ]
+    },
+    {
+      "min": [
+        -0.75,
+        2.384185793236071e-8,
+        -12.75
+      ],
+      "max": [
+        0.75,
+        1.299999976158142,
+        -11.25
+      ]
+    },
+    {
+      "min": [
+        13.017140497766349,
+        2.384185793236071e-8,
+        -6.9828595022336515
+      ],
+      "max": [
+        14.982859502233651,
+        1.299999976158142,
+        -5.0171404977663485
+      ]
+    },
+    {
+      "min": [
+        -9.349966424703599,
+        -0.056520383525639775,
+        8.587582749128341
+      ],
+      "max": [
+        -8.020736050605773,
+        5.34506254196167,
+        9.335301357507706
+      ]
+    },
+    {
+      "min": [
+        9.65002520084381,
+        -0.055651378072798255,
+        11.587262970209121
+      ],
+      "max": [
+        10.980539906024934,
+        6.133495140075683,
+        12.335305231809617
+      ]
+    },
+    {
+      "min": [
+        -18.34997104406357,
+        -0.0560548665933311,
+        -6.412592548131943
+      ],
+      "max": [
+        -17.02003492116928,
+        5.738923835754394,
+        -5.664696496725083
+      ]
+    },
+    {
+      "min": [
+        17.65003628730774,
+        -0.05678104953840375,
+        -3.4123153567314146
+      ],
+      "max": [
+        18.97885434627533,
+        5.148439693450928,
+        -2.664699923992157
+      ]
+    },
+    {
+      "min": [
+        1.6500269889831543,
+        -0.05584616977721453,
+        13.587331813573837
+      ],
+      "max": [
+        2.980266261100769,
+        5.936127948760986,
+        14.33530439734459
+      ]
+    },
+    {
+      "min": [
+        -24.349976378679276,
+        -0.05546914571896196,
+        13.587200087308883
+      ],
+      "max": [
+        -23.019210946559905,
+        6.3310120582580565,
+        14.335305976867676
+      ]
+    }
+  ],
+  "buildHashes": {
+    "index.html": "81c92bfa30b75a0fbc39cdacb1361d14644dbe8d70e2f5763dfbf0d327357329",
+    "world.js": "febc7804fbc642a9586365b58462ac872d41b453afffbd0bdf97f8b7d326d15e",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "b3f8b24c013cde14dcfeeab823aedc490257f1d9da0a27ea65773e1d772e3ab2",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "7cb3fca2aadea51182ec65aa9aaad9ea4e065b34f9139888d8e7286d5064e38f",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "05451343b8743315d5f6554691915f3f3c8b4ba1d69b9f35076ab5cfb98e4a88",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "e20904133ca27589a0e9326c2f464e622c105a581f7c11c334c6d66500180101",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "31d230d0c904239ed42d5da97ec901e378f12bdaa28ab00b0cb2488f3a4c7886",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "c5d184810155dae108f8f45caa38becc27b9f406489a3e7b9389a3e30285ee99"
+  }
+}

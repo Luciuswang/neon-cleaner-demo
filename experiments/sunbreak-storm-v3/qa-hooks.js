@@ -13,9 +13,12 @@ async function captureCanvas(name){
 }
 if(captureName){
  setPres(true);
- const views={hero:[0,1.7,12,-.12,-.06],courtyard:[-1,1.7,3,-.45,-.03],wall:[-7,1.7,-10,.56,.06],interior:[-8.7,2.25,-9.5,.46,.03],ground:[0,1.7,10,0,-.65],weapon:[0,1.7,12,-.12,-.19],wide:[1,3.8,15,0,-.12],sky:[0,1.7,12,0,.36]};
+ const views={hero:[0,1.7,12,-.12,-.06],courtyard:[-1,1.7,3,-.45,-.03],wall:[-7,1.7,-10,.56,.06],interior:[-8.7,2.25,-9.5,.46,.03],ground:[0,1.7,10,0,-.65],weapon:[0,1.7,12,-.12,-.19],wide:[1,3.8,15,0,-.12],sky:[0,1.7,12,0,.36],housefront:[11,2.15,-6.8,-.08,.10],houseangle:[21.5,3.1,-9.0,.83,.10],houseinside:[10.92,2.36,-16.6,0,-.03],houseout:[10.92,2.36,-19.0,Math.PI,-.035],housedoor:[10.92,2.36,-12.9,0,.035]};
  const v=views[qaParams.get('view')||'hero'];if(v){pos.set(v[0],v[1],v[2]);S.yaw=v[3];S.pitch=v[4]}
  visual.setWeather(Number(qaParams.get('weather')??2));
+ if(qaParams.get('door')==='open'){
+  const h=visual.houseQA;h.door.toggle({near:true,visible:true,active:true});h.door.step(2,null);h.pivot.rotation.y=h.door.angle;h.refresh();
+ }
  if(qaParams.get('clean')==='1')document.getElementById('hud').style.display='none';
  if(qaParams.get('motion')==='1'){setPres(false);hideMenu();document.getElementById('hud').style.display='none'}
  const captureDelay=Math.min(15000,Math.max(2500,Number(qaParams.get('delay')||2500)));

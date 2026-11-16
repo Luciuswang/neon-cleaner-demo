@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261116T124433Z-b51c1696d8",
+  "task_id": "sunbreak-timber-house-2026-11-16",
+  "timestamp_utc": "2026-11-16T12:44:33.368322+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK timber house slice CONDITIONAL PASS: reference-led enterable MERCADO12 with live E door, real interior and local floor/headroom. House28+browser47+storm38+audio12 pass; exact local-hook source audit and v1/v2 pins pass. Current1080p30s combat/audio frame pacing passes (P95 18.2ms, max18.8ms, zero over50ms); independent limited art review conditional, not UE5/AAA. Public browser assets only; dirty private vault preserved, no UE portability claim. Next: collect all-origin daily evidence, upload report and confirm one email delivery.",
+  "commit_shas": [
+    "02f7476f61c369a2d31f2eaa5e818a3f1783ffd0"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

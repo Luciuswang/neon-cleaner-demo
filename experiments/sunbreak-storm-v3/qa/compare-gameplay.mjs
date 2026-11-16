@@ -19,7 +19,7 @@ const moduleOf = html => {
 };
 // Each exception is a complete exact string, required exactly once. No broad
 // regex deletion, whitespace/comment stripping, or gameplay region exemptions.
-const bootstrap = "const {buildWorld}=await import('./world.js');\nvisual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies});\nvisual.setStyle(si);\ndocument.getElementById('bWeather').onclick=()=>visual.cycleWeather();\naddEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});\n";
+const bootstrap = "const {buildWorld}=await import('./world.js');\nvisual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:S.state==='play'&&!pres,player:pos})});\nvisual.setStyle(si);\ndocument.getElementById('bWeather').onclick=()=>visual.cycleWeather();\naddEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});\n";
 const audioAdapter = String.raw`// audio
 let createGameAudio;
 try{({createGameAudio}=await Promise.race([import('./audio.js'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
@@ -51,7 +51,12 @@ const exceptions = [
   ['visual handle', 'let THREE;\nlet visual=null;', 'let THREE;'],
   ['capture buffer option', "powerPreference:'high-performance',preserveDrawingBuffer:true", "powerPreference:'high-performance'"],
   ['style notification', ' if(visual)visual.setStyle(si);\n', ''],
-  ['render/update hook', ' if(visual)visual.update(dt,{S,pres,cam,gun,live});\n rnd.autoClear=true;\n if(visual)visual.render();else rnd.render(scene,cam);', ' rnd.autoClear=true;rnd.render(scene,cam);'],
+  ['render/update hook incl player location for house interaction', ' if(visual)visual.update(dt,{S,pres,cam,gun,live,player:pos});\n rnd.autoClear=true;\n if(visual)visual.render();else rnd.render(scene,cam);', ' rnd.autoClear=true;rnd.render(scene,cam);'],
+  ['authorized target-only house movement hook', "function collide(p,actor='player'){\n if(visual?.blocksMovement(p,actor))return true;", 'function collide(p){'],
+  ['authorized local floor and overhead solver, original jump constants', "function stepVertical(dt,jump){\n const supportY=1.7+(visual?.floorHeight(pos.x,pos.z)||0),previousY=pos.y;\n if(onGround&&pos.y>supportY+.001)onGround=false;\n if(jump&&onGround){vy=5.1;onGround=false}\n vy-=15*dt;pos.y+=vy*dt;\n if(vy>0){const cap=visual?.ceilingY(pos,previousY)??Infinity;if(pos.y>cap){pos.y=cap;vy=0}}\n if(pos.y<=supportY){pos.y=supportY;vy=0;onGround=true}\n}\n", ''],
+  ['target-local vertical support hook only', '  stepVertical(dt,keys.Space);', '  if(keys.Space&&onGround){vy=5.1;onGround=false}\n  vy-=15*dt;pos.y+=vy*dt;if(pos.y<=1.7){pos.y=1.7;vy=0;onGround=true}'],
+  ['enemy cannot climb new player-supported stairs', "if(!collide(np,'enemy'))", 'if(!collide(np))'],
+  ['reset added door state only', 'function resetGame(){\n visual?.resetHouse();', 'function resetGame(){'],
   ['world initialization/weather input', bootstrap, ''],
   ['sample audio adapter',audioAdapter,originalAudio],
   ['enemy sound event only',"scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);","scene.add(el);tracers.push({l:el,t:.1});snd('shot');"],
@@ -170,6 +175,19 @@ for(const file of ['storm.js','storm-audio.js','weapon.js','actors.js']){
  const checks=scanVisual(lf(readFileSync(new URL('../'+file,import.meta.url),'utf8')));
  visualChecks.push(...checks.map(c=>({...c,name:file+': '+c.name})));
 }
+// The new architecture intentionally owns one proxy replacement, not combat.
+// Count/remove only exact approved operations for this conservative tripwire.
+let timber=lf(readFileSync(new URL('../timber-house.js',import.meta.url),'utf8'));
+for(const expected of [
+ 'const originalBody=solids[1],originalBounds=colliders[1];',
+ 'solids[1]=root;colliders.splice(1,1);',
+ 'raycastUsesVisibleAssembly:solids[1]===root'
+]){
+ assert.equal(timber.split(expected).length-1,1,'exact target-only house proxy operation');
+ timber=timber.replace(expected,'');
+}
+visualChecks.push(...scanVisual(timber).map(c=>({...c,name:'timber-house.js authorized proxy exceptions: '+c.name})));
+visualChecks.push(...scanVisual(lf(readFileSync(new URL('../house-logic.js',import.meta.url),'utf8'))).map(c=>({...c,name:'house-logic.js: '+c.name})));
 const audioChecks=scanVisual(lf(readFileSync(new URL('../audio.js',import.meta.url),'utf8')));
 const colliderChecks = colliderContract(base);
 const proxyContractPass = colliderContractPass(colliderChecks);

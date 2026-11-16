@@ -9,12 +9,13 @@ import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
 import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
 import {installStorm} from './storm.js';
+import {buildTimberHouse} from './timber-house.js';
 import * as PresentationThree from 'three';
 
-// All new geometry is render-only. Original hidden proxies retain movement and
-// raycast behavior, including their original matrices and world-space bounds.
+// Other17 original proxies are unchanged. The user-approved MERCADO12 timber
+// replacement alone changes local traversal/cover; see house-logic.js.
 export async function buildWorld(ctx){
- const {scene,cam,rnd,gun,gscene,sun,amb,sky,ground,sea,solids,enemies}=ctx;
+ const {scene,cam,rnd,gun,gscene,sun,amb,sky,ground,sea,solids,colliders,enemies}=ctx;
  const T=PresentationThree;
  const started=performance.now();let seed=57291;
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
@@ -228,7 +229,7 @@ export async function buildWorld(ctx){
   for(let q=0;q<8;q++){const px=(random()-.5)*(w-.5),py=.3+random()*.45;for(let k=0;k<3;k++)box(.22+random()*.18,.08,.014,materials.brick,px+(k%2)*.1,py+k*.09,d/2+.047,0,local)}
   return local;
  }
- building(-13,-16,9,7,4.2,0,0);building(12,-18,8,8,5.2,0,1);building(-21,4,7,11,4.6,Math.PI/2,2);building(20,6,8,10,4,0,3);building(-4,-27,11,6,3.6,0,4);
+ building(-13,-16,9,7,4.2,0,0);building(-21,4,7,11,4.6,Math.PI/2,2);building(20,6,8,10,4,0,3);building(-4,-27,11,6,3.6,0,4);
  // Rich distant silhouettes do not add obstacles inside the playable footprint.
  const distantSites=[[-29,-48,9,8,2,0],[-18,-52,10,9,3,0],[-5,-49,10,8,2,0],[8,-51,9,10,2,0],[21,-48,10,8,3,0],[33,-48,9,10,2,-.12],[-43,-28,8,10,2,Math.PI/2],[-44,-12,9,10,2,Math.PI/2],[43,-27,9,10,3,-Math.PI/2],[44,-11,9,9,2,-Math.PI/2]];
  distantSites.forEach(([x,z,w,d,floors,rotation],id)=>{
@@ -421,17 +422,19 @@ export async function buildWorld(ctx){
  const smaa=new SMAAPass(innerWidth*rnd.getPixelRatio(),innerHeight*rnd.getPixelRatio());composer.addPass(smaa);
  addEventListener('resize',()=>{composer.setSize(innerWidth,innerHeight);ao.setSize(innerWidth,innerHeight)});
  storm=await installStorm({T,scene,cam,rnd,gscene,world,materials,groundMat,floor,wetMap,wetCanvas,wetStrength,reflection,skyMaterial,atmosphere,hdrSky,sun,amb,weaponKeys,weaponHemi,practicals,lampGlass,facadeMaterials,windTrees,rain,rainMaterial,composer,grade,ao,textureErrors});
+ const house=buildTimberHouse({T,world,materials,solids,colliders,cam,getInteractionState:ctx.getInteractionState});
  applyWeather();
- function update(dt,{S,pres,live}){
+ function update(dt,{S,pres,live,player}){
   const now=performance.now();if(frame++>120){samples.push(now-last);if(samples.length>3600)samples.shift()}last=now;
   if(!pres){time+=dt;for(const t of windTrees){t.crown.rotation.z=Math.sin(time*.8+t.phase)*(weather===2?.035:.012);t.crown.rotation.x=Math.cos(time*.6+t.phase)*.009}skyMaterial.uniforms.uTime.value=time;reflection.material.uniforms.rainTime.value=weather===2?time:0;}
-  if(weather===2){for(let i=0;i<count;i++){const s=rainSeed[i],x=s[0]+cam.position.x+Math.sin(time*.2)*.2,z=s[2]+cam.position.z,y=(s[1]-time*(10+s[3]*5))%22;const yy=(y+22)%22;rainData.set([x,yy,z,x+.09,yy+.5+s[3]*.3,z+.035],i*6)}rainGeo.attributes.position.needsUpdate=true}
+  if(weather===2){for(let i=0;i<count;i++){const s=rainSeed[i],x=s[0]+cam.position.x+Math.sin(time*.2)*.2,z=s[2]+cam.position.z,y=(s[1]-time*(10+s[3]*5))%22;const yy=(y+22)%22,ry=house.underRoof(x,yy+.85,z)?-15:yy;rainData.set([x,ry,z,x+.09,ry+.5+s[3]*.3,z+.035],i*6)}rainGeo.attributes.position.needsUpdate=true}
   for(const e of enemies){if(e.la.userData.renderArm)e.la.userData.renderArm.rotation.x=e.la.rotation.x*.45;if(e.ra.userData.renderArm)e.ra.userData.renderArm.rotation.x=e.ra.rotation.x*.45}
   if(weapon?.update)weapon.update(dt,{...S,presentation:pres,live});
   actors?.update();
   const worldSun=cam.quaternion.clone().invert();weaponKeys[0]?.position.copy(sun.position).sub(target.position).applyQuaternion(worldSun);
   storm.update(dt,{live,pres,weather,style});
+  house.update(dt,{S,pres,live,player});
  }
- function info(){const a=samples.slice().sort((a,b)=>a-b),pct=p=>a[Math.min(a.length-1,Math.floor(a.length*p))]||0;return{version:'storm-v3',weather:weatherNames[weather],weatherIndex:weather,style,source:'browser WebGL realtime — not Unreal Engine',renderFrames:frame,p50_ms:pct(.5),p95_ms:pct(.95),p99_ms:pct(.99),max_ms:a.at(-1)||0,samples:a.length,triangles:rnd.info.render.triangles,textureErrors,materialBindings:Object.keys(pbr),loadedHDR,weapon:weapon?.info?.()||{loaded:false},actors:actors?.info?.()||{loaded:false},storm:storm.info(),elapsed:performance.now()-started,features:['2K scanned PBR asphalt','storm HDR image based lighting','realtime shadow maps','SSAO','masked planar water reflection and rain rings','photographic storm sky and moving cloud layer','warm parallax interiors and practical lights','lightning with reduced-flash control','wind vegetation','optional bloom and film grade']}}
- return {update,render(){composer.render()},unlockAudio(){storm.unlockAudio()},setStyle(i){style=i;applyWeather()},setWeather(i){weather=((i%3)+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},info};
+ function info(){const a=samples.slice().sort((a,b)=>a-b),pct=p=>a[Math.min(a.length-1,Math.floor(a.length*p))]||0;return{version:'storm-v3-timber',weather:weatherNames[weather],weatherIndex:weather,style,source:'browser WebGL realtime — not Unreal Engine',renderFrames:frame,p50_ms:pct(.5),p95_ms:pct(.95),p99_ms:pct(.99),max_ms:a.at(-1)||0,samples:a.length,triangles:rnd.info.render.triangles,textureErrors,materialBindings:Object.keys(pbr),loadedHDR,weapon:weapon?.info?.()||{loaded:false},actors:actors?.info?.()||{loaded:false},storm:storm.info(),house:house.info(),elapsed:performance.now()-started,features:['2K scanned PBR asphalt','storm HDR image based lighting','realtime shadow maps','SSAO','masked planar water reflection and rain rings','photographic storm sky and moving cloud layer','reference-led enterable timber house and hinged door','warm real and parallax interiors','lightning with reduced-flash control','wind vegetation','optional bloom and film grade']}}
+ return {update,render(){composer.render()},floorHeight:house.floorHeight,ceilingY:house.ceilingY,blocksMovement:house.blocksMovement,resetHouse:house.reset,houseQA:house.qa,unlockAudio(){storm.unlockAudio()},setStyle(i){style=i;applyWeather()},setWeather(i){weather=((i%3)+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},info};
 }

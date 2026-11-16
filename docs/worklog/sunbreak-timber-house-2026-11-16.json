@@ -1,0 +1,37 @@
+{
+  "schema": "project-worklog-event-v1",
+  "task_id": "sunbreak-timber-house-2026-11-16",
+  "date": "2026-11-16",
+  "kind": "reference-led-enterable-browser-building",
+  "branch": "codex/character-continuity-pipeline",
+  "baseline_commit": "02f7476f61c369a2d31f2eaa5e818a3f1783ffd0",
+  "workstation": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "status": "CONDITIONAL PASS",
+  "summary": "Only v3 MERCADO12 replaced by reference-led timber cabin, genuine warm-lit room, working hinged door, stairs and local movement/bullet/headroom bounds. V1/v2 untouched.",
+  "qa": {
+    "house_units": "28/28 PASS",
+    "house_browser_synthetic": "47/47 PASS",
+    "storm_browser_synthetic": "38/38 PASS",
+    "weather_audio_units": "12/12 PASS",
+    "exact_gameplay_after_enumerated_local_hooks": "PASS including mutation self-tests",
+    "other_original_movement_bounds": 17,
+    "global_init_rng_added": 0,
+    "first_frame_rng": "8 = baseline8",
+    "performance": "Current1920x1080 30.014s1706-frame scripted combat/audio: P95=18.2ms P99=18.3ms max18.8ms zero>50ms; unchanged thresholds PASS for this sample only.",
+    "independent_review": "Planck CONDITIONAL PASS for limited architectural slice; no newP0/P1",
+    "evidence": "experiments/sunbreak-storm-v3/qa/house-release-report.json",
+    "art": "experiments/sunbreak-storm-v3/qa/house-art-review.json"
+  },
+  "changed_contract": "Former target's traversal/cover/LOS intentionally changes. Other17 bounds and six spawns remain. Original full18-proxy runtime acceptance is not claimed.",
+  "limits": [
+    "Three/WebGL, not actual Unreal/Lumen/Nanite, AAA parity or final cinematic acceptance.",
+    "Synthetic fixtures, five representative actual frames and one bounded performance sample, not a full human/continuous playthrough.",
+    "Minor wood-grain/highlight/furniture polish remains.",
+    "Only the cabin is enterable; ground-height enemies cannot climb its stairs.",
+    "AR15/M4 recorded gun audio, not MP5; synthetic weather audio.",
+    "Existing ignored private vault preserved; this public browser-only checkpoint has no new private/UE snapshot claim.",
+    "Prior Sites provider invariant prevented hosted deployment; GitHub checkpoint only."
+  ],
+  "delivery_at_event_creation": "Production/QA prepared; Git checkpoint acknowledgement, published daily evidence collection and email delivery are subsequent actions, not preclaimed.",
+  "next": "Verify public Git/LFS upload containing all three demos, collect today's all-origin evidence, upload factual daily report and email it once to connected self."
+}
