@@ -629,3 +629,7 @@ claiming a working animation workflow. See `docs/tasks/ue59-ai-evaluation-2026-1
 Private restore preflight preserved one locally changed jacket source material;
 its earlier snapshot must also be retained. A pre-existing editor configuration
 change remains local. Cinematic QA remains REWORK and AI video BLOCKED.
+
+## Sync note - 2026-11-16T12:41:30.7792501+08:00
+
+Preserved the current SUNBREAK browser FPS under experiments/sunbreak-fable52 with exact original game SHA256, run instructions, briefs and prior QA record. Snapshot identity and syntax PASS; art remains REVISE. Raw model streams/account diagnostics excluded. Isolated code-only checkpoint: no UE/private asset changes or portability claim; UE restoration remains unverified. See docs/tasks/sunbreak-fable52-snapshot-2026-11-16.md. Next: retain baseline, then agree a visual reference before any requested art revision.

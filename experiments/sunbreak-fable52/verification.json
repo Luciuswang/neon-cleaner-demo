@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-16",
+  "artifact": "index.html",
+  "sha256": "4b0de43249fd1c787554ea1735c84669b1df687fc9e03aba263571c48a101a85",
+  "scope": "isolated browser FPS style-control prototype, not Neon Cleaner cinematic QA",
+  "producer_model_recorded_by_cli": "claude-fable-5-2",
+  "integration_and_review": "Codex",
+  "style_control": "PASS",
+  "art_fidelity": "REVISE: visibly low-detail, not production Free Fire quality",
+  "synthetic_integration_checks_passed": 19,
+  "synthetic_checks": [
+    "style changes", "style preserves camera", "style preserves combat",
+    "style round trip", "presentation freezes camera", "forward movement loop",
+    "keyboard look loop", "fire consumes round", "reload timed, not instant",
+    "cannot fire while reloading", "reload completes", "building collision",
+    "spawn clear", "all enemy spawns clear", "wall blocks player shot",
+    "hit and victory", "wall blocks enemy attack", "enemy damage and defeat", "reset state"
+  ],
+  "actual_ui_observations": ["start enters play", "tap F reduces magazine 30 to 29", "idle combat reaches defeat", "presentation and style buttons work"],
+  "render_review": {
+    "capture": "browser page rendering; no desktop screenshots",
+    "viewport": [1280,720],
+    "renderer": "ANGLE NVIDIA GeForce RTX 5070 Direct3D11",
+    "styles": ["热带竞技", "冷调工业"],
+    "camera": {"x":0,"y":1.7,"z":12,"yaw":-0.12,"pitch":-0.06},
+    "frozen_toggle_preserves_camera_health_ammo_enemies": true,
+    "visual_evidence_location": "current task browser screenshot tool results",
+    "saved_image_files": false,
+    "review_axes": {
+      "sameness": "same geometry intentionally retained for A/B; limited asset variety",
+      "proportion": "blocky humanoids and weapon require revision",
+      "stylization": "tropical color direction achieved; low-poly simplification exceeds intended semi-realism",
+      "visual_impact": "clear warm/cool contrast and weapon accent change; sparse composition",
+      "detail_priority": "prioritize weapon/humanoid silhouette before more surface noise"
+    }
+  },
+  "limitations": ["not a complete manual playthrough", "no performance benchmark", "no mobile test", "audio not auditioned or waveform-tested", "does not establish independent-run model consistency", "simple enemy pursuit can stick on cover"],
+  "cli_reported_cost_usd_including_failed_attempt": 5.12869675,
+  "billing_verified": false,
+  "local_url": "http://127.0.0.1:5186/"
+}

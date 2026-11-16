@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261116T044131Z-71ce82b4fb",
+  "task_id": "sunbreak-fable52-snapshot-2026-11-16",
+  "timestamp_utc": "2026-11-16T04:41:31.301731+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Preserved the current SUNBREAK browser FPS under experiments/sunbreak-fable52 with exact original game SHA256, run instructions, briefs and prior QA record. Snapshot identity and syntax PASS; art remains REVISE. Raw model streams/account diagnostics excluded. Isolated code-only checkpoint: no UE/private asset changes or portability claim; UE restoration remains unverified. See docs/tasks/sunbreak-fable52-snapshot-2026-11-16.md. Next: retain baseline, then agree a visual reference before any requested art revision.",
+  "commit_shas": [
+    "c12f0d11c30cce4c0747fcfa35d23df28574cdb7"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
