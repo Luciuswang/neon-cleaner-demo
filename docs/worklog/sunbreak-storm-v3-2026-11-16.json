@@ -1,0 +1,26 @@
+{
+  "schema": "project-worklog-event-v1",
+  "task_id": "sunbreak-storm-v3-2026-11-16",
+  "date": "2026-11-16",
+  "kind": "playable-browser-rendering-checkpoint",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "REWORK",
+  "summary": "Separate BLACK SQUALL v3 with storm HDR, scanned wet asphalt, local PBR MP5/arms, tactical display skins, warm parallax rooms, peripheral plants, lightning, rain/thunder and optional post. V1/v2 preserved.",
+  "acceptance": {
+    "engine": "WebGL/Three.js, not Unreal Engine",
+    "gameplay_source": "exact baseline after enumerated presentation hooks",
+    "storm_synthetic_checks": 38,
+    "weather_audio_unit_checks": 12,
+    "global_visual_startup_random_draws": 0,
+    "first_frame_random_draws": 8,
+    "baseline_first_frame_random_draws": 8,
+    "final_quality": "not accepted as UE5/AAA photorealism",
+    "foreground_acceptance": "required; later background browser throttling invalidated wall-time regression/performance conditions"
+  },
+  "evidence": "experiments/sunbreak-storm-v3/qa/release-report.json",
+  "review": "experiments/sunbreak-storm-v3/qa/review.md",
+  "publication": "Sites create failed with provider backfill invariant; localhost playable; no hosted deployment claimed",
+  "private_assets": "excluded; pre-existing modified private vault preserved",
+  "checkpoint_upload": "normal Git/LFS upload required by sync_project_finish; no full UE/private snapshot claim",
+  "next": "Open normal v3 preview foreground, rerun original19+217, storm38 and30s1080p actual-combat audio benchmark, then address remaining art findings."
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "sunbreak-bounded-independent-art-review-v1",
+  "date": "2026-11-16",
+  "reviewer": "Planck",
+  "reviewer_id": "01a1e38c-7010-78b1-a6ca-6fedbc1a7f43",
+  "verdict": "CONDITIONAL PASS",
+  "scope": "Exact representative hero WIP frame only; not final product acceptance",
+  "sourceFingerprint": "573b935abf3fcc266654e1b7ba92fe16f1c6fb246f16ed467c36af6379e911e0",
+  "binding_note": "Integrator associates the exported frame metadata with this build. Reviewer verified the image hash, not source correctness or the source fingerprint.",
+  "evidence": {
+    "path": "qa/evidence/final-hero.png",
+    "sha256": "5bf37f4ece42f137718bf431daed791ec0cd74313180eda7f34c77a971af0459",
+    "method": "Actual browser WebGL canvas export, not generated cover art or desktop screenshot"
+  },
+  "resolved": [
+    "Exposed green sleeve join and flared cutoff are gone in the reviewed frame; source fabric now continues coherently offscreen"
+  ],
+  "remaining": [
+    "Rear sleeve texture stretching",
+    "Stormy twilight rather than unequivocal night",
+    "Repeated facades and uneven foreground/environment detail"
+  ],
+  "not_validated": [
+    "Code or source correctness",
+    "Other views or arm poses",
+    "Continuous or normal-speed motion",
+    "Gameplay and performance",
+    "Unreal Engine identity or UE5/AAA photorealistic parity"
+  ],
+  "overall_checkpoint": "REWORK; current foreground runtime/performance acceptance remains required"
+}

@@ -1,0 +1,746 @@
+{
+  "schema_version": 1,
+  "project": "SUNBREAK STORM / v3",
+  "downloaded_utc": "2026-11-16T04:56:49.5223250Z",
+  "path_base": "experiments/sunbreak-storm-v3/",
+  "selection_note": "Five surface sets cover all five requested semantic roles, plus one daylight HDR environment. All download URLs are exact official files API values.",
+  "provider": "Poly Haven",
+  "discovery_api_urls": [
+    "https://api.polyhaven.com/assets?t=textures",
+    "https://api.polyhaven.com/assets?t=hdris"
+  ],
+  "license": {
+    "id": "CC0-1.0",
+    "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "provider_license_url": "https://polyhaven.com/license",
+    "attribution_required": false
+  },
+  "license_evidence_statement": "Poly Haven states: Our assets are all licensed as CC0. Its license page permits commercial use and redistribution and says attribution is not required. Local HTML copies are evidence only; CC0 applies to the assets, not to the website HTML or API metadata.",
+  "budget": {
+    "limit_bytes": 40000000,
+    "texture_and_hdr_bytes": 31113477,
+    "evidence_bytes": 267749,
+    "downloaded_total_bytes": 31381226,
+    "unit": "decimal bytes",
+    "includes": "16 media files and 14 downloaded source/license evidence files; excludes this authored manifest."
+  },
+  "verification": {
+    "status": "PASS",
+    "scope": "Acquisition and file integrity only; no scene/render acceptance claimed.",
+    "media_file_count": 16,
+    "evidence_file_count": 14,
+    "official_api_size_and_md5_match": true,
+    "sha256_computed_from_local_bytes": true,
+    "textures_decoded_and_dimensions_checked": true,
+    "hdr_radiance_header_checked": true,
+    "all_surface_textures_px": [
+      1024,
+      1024
+    ],
+    "hdr_dimensions_px": [
+      1024,
+      512
+    ],
+    "base_color_images_visually_inspected": true,
+    "renderer_integration_tested": false
+  },
+  "material_defaults": {
+    "workflow": "metallic-roughness",
+    "metalness": 0,
+    "base_color_factor": [
+      1,
+      1,
+      1
+    ],
+    "roughness_factor": 1,
+    "normal_scale": [
+      1,
+      1
+    ],
+    "normal_convention": "OpenGL tangent-space +Y",
+    "base_color_color_space": "sRGB",
+    "normal_color_space": "linear / non-color",
+    "roughness_color_space": "linear / non-color",
+    "roughness_channel": "R (grayscale; for Three.js roughnessMap the G channel contains the same value)",
+    "wrap_s": "Repeat",
+    "wrap_t": "Repeat",
+    "generate_mipmaps": true,
+    "min_filter": "LinearMipmapLinear",
+    "mag_filter": "Linear",
+    "anisotropy": "min(8, renderer maximum)",
+    "opacity": 1,
+    "transparent": false,
+    "displacement_scale": 0,
+    "normal_note": "Decode normals as data, normalize after sampling. Do not invert green for OpenGL/Three.js; invert green only if a downstream renderer explicitly expects DirectX normals.",
+    "format_note": "Color and roughness use original official 1K JPEG files; normals use original lossless PNG files. No resampling, transcoding or channel packing was performed."
+  },
+  "assets": [
+    {
+      "id": "concrete_floor_worn_001",
+      "name": "Concrete Floor Worn 001",
+      "type": "pbr_surface",
+      "semantic_role": "ground_worn_concrete",
+      "source_url": "https://polyhaven.com/a/concrete_floor_worn_001",
+      "files_api_url": "https://api.polyhaven.com/files/concrete_floor_worn_001",
+      "info_api_url": "https://api.polyhaven.com/info/concrete_floor_worn_001",
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "provider_license_url": "https://polyhaven.com/license",
+        "attribution_required": false
+      },
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "attribution": "Concrete Floor Worn 001 by Dimitrios Savva and Rico Cilliers via Poly Haven (CC0 1.0).",
+      "source_api_evidence": "assets/evidence/concrete_floor_worn_001-files.json",
+      "source_info_evidence": "assets/evidence/concrete_floor_worn_001-info.json",
+      "material_settings": {
+        "inherit": "material_defaults",
+        "suggested_tile_size_m": [
+          3,
+          3
+        ],
+        "uv_repeat_rule": "For a planar surface, repeat = surface width/height in meters divided by suggested tile size. Keep all three maps on identical UVs.",
+        "note": "Neutral gray scratched concrete; use for paths, courtyard paving and ground slabs."
+      },
+      "files": [
+        {
+          "role": "base_color",
+          "api_key": "Diffuse",
+          "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+          "bytes": 118806,
+          "sha256": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+          "api_md5": "e35597cca586150b1ab2aa9a331a39c5",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "sRGB",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "normal_opengl",
+          "api_key": "nor_gl",
+          "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+          "bytes": 5535944,
+          "sha256": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe",
+          "api_md5": "f51224b2c70a60429eeb2b536fed0151",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "roughness",
+          "api_key": "Rough",
+          "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+          "bytes": 181942,
+          "sha256": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488",
+          "api_md5": "b158eae73029ac6a849481274a0e1b35",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        }
+      ]
+    },
+    {
+      "id": "worn_plaster_wall",
+      "name": "Worn Plaster Wall",
+      "type": "pbr_surface",
+      "semantic_role": "wall_worn_plaster",
+      "source_url": "https://polyhaven.com/a/worn_plaster_wall",
+      "files_api_url": "https://api.polyhaven.com/files/worn_plaster_wall",
+      "info_api_url": "https://api.polyhaven.com/info/worn_plaster_wall",
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "provider_license_url": "https://polyhaven.com/license",
+        "attribution_required": false
+      },
+      "authors": {
+        "Dimitrios Savva": "All"
+      },
+      "attribution": "Worn Plaster Wall by Dimitrios Savva via Poly Haven (CC0 1.0).",
+      "source_api_evidence": "assets/evidence/worn_plaster_wall-files.json",
+      "source_info_evidence": "assets/evidence/worn_plaster_wall-info.json",
+      "material_settings": {
+        "inherit": "material_defaults",
+        "suggested_tile_size_m": [
+          1.8,
+          1.8
+        ],
+        "uv_repeat_rule": "For a planar surface, repeat = surface width/height in meters divided by suggested tile size. Keep all three maps on identical UVs.",
+        "note": "Warm gray/beige chipped exterior plaster; avoid strong tinting that obscures the weathering."
+      },
+      "files": [
+        {
+          "role": "base_color",
+          "api_key": "Diffuse",
+          "path": "assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+          "bytes": 750361,
+          "sha256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+          "api_md5": "31aab3a5bf3859361cd423e15b9735bc",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "sRGB",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "normal_opengl",
+          "api_key": "nor_gl",
+          "path": "assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+          "bytes": 5335659,
+          "sha256": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76",
+          "api_md5": "574c99e30c639fa0eef1c544ef085d6a",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "roughness",
+          "api_key": "Rough",
+          "path": "assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+          "bytes": 242497,
+          "sha256": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6",
+          "api_md5": "7584ca081047d7e025fd80adbdcec4df",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        }
+      ]
+    },
+    {
+      "id": "roof_tiles",
+      "name": "Roof Tiles",
+      "type": "pbr_surface",
+      "semantic_role": "roof_terracotta",
+      "source_url": "https://polyhaven.com/a/roof_tiles",
+      "files_api_url": "https://api.polyhaven.com/files/roof_tiles",
+      "info_api_url": "https://api.polyhaven.com/info/roof_tiles",
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "provider_license_url": "https://polyhaven.com/license",
+        "attribution_required": false
+      },
+      "authors": {
+        "Stephan Seeliger": "All"
+      },
+      "attribution": "Roof Tiles by Stephan Seeliger via Poly Haven (CC0 1.0).",
+      "source_api_evidence": "assets/evidence/roof_tiles-files.json",
+      "source_info_evidence": "assets/evidence/roof_tiles-info.json",
+      "material_settings": {
+        "inherit": "material_defaults",
+        "suggested_tile_size_m": [
+          2,
+          2
+        ],
+        "uv_repeat_rule": "For a planar surface, repeat = surface width/height in meters divided by suggested tile size. Keep all three maps on identical UVs.",
+        "note": "Orange terracotta with weathering; align tile drainage with roof slope. Normal maps do not create tile silhouette geometry."
+      },
+      "files": [
+        {
+          "role": "base_color",
+          "api_key": "Diffuse",
+          "path": "assets/roof_tiles/roof_tiles_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_tiles/roof_tiles_diff_1k.jpg",
+          "bytes": 1105673,
+          "sha256": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66",
+          "api_md5": "525e8cac13027e36f47844f3240fdde8",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "sRGB",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "normal_opengl",
+          "api_key": "nor_gl",
+          "path": "assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/roof_tiles/roof_tiles_nor_gl_1k.png",
+          "bytes": 5477255,
+          "sha256": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c",
+          "api_md5": "8d0bf4bda3c914375a4cc54d6022f12d",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "roughness",
+          "api_key": "Rough",
+          "path": "assets/roof_tiles/roof_tiles_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/roof_tiles/roof_tiles_rough_1k.jpg",
+          "bytes": 919232,
+          "sha256": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c",
+          "api_md5": "e51bb9f619ec07ea6a38b2daab56cbb8",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        }
+      ]
+    },
+    {
+      "id": "weathered_brown_planks",
+      "name": "Weathered Brown Planks",
+      "type": "pbr_surface",
+      "semantic_role": "wood_weathered",
+      "source_url": "https://polyhaven.com/a/weathered_brown_planks",
+      "files_api_url": "https://api.polyhaven.com/files/weathered_brown_planks",
+      "info_api_url": "https://api.polyhaven.com/info/weathered_brown_planks",
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "provider_license_url": "https://polyhaven.com/license",
+        "attribution_required": false
+      },
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "attribution": "Weathered Brown Planks by Dimitrios Savva and Rico Cilliers via Poly Haven (CC0 1.0).",
+      "source_api_evidence": "assets/evidence/weathered_brown_planks-files.json",
+      "source_info_evidence": "assets/evidence/weathered_brown_planks-info.json",
+      "material_settings": {
+        "inherit": "material_defaults",
+        "suggested_tile_size_m": [
+          1.8,
+          1.8
+        ],
+        "uv_repeat_rule": "For a planar surface, repeat = surface width/height in meters divided by suggested tile size. Keep all three maps on identical UVs.",
+        "note": "Weathered brown planks for doors, shutters and fences; rotate UVs to match grain/board direction."
+      },
+      "files": [
+        {
+          "role": "base_color",
+          "api_key": "Diffuse",
+          "path": "assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+          "bytes": 226049,
+          "sha256": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29",
+          "api_md5": "e2fbdf7ed402e272e33e3f7ba707cf69",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "sRGB",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "normal_opengl",
+          "api_key": "nor_gl",
+          "path": "assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+          "bytes": 6305092,
+          "sha256": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2",
+          "api_md5": "1224e8e9f59141c9d59cea836e52e7a2",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "roughness",
+          "api_key": "Rough",
+          "path": "assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+          "bytes": 234672,
+          "sha256": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9",
+          "api_md5": "4893f3ee360a4e1e30b96a157e65e50a",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        }
+      ]
+    },
+    {
+      "id": "bark_brown_01",
+      "name": "Bark Brown 01",
+      "type": "pbr_surface",
+      "semantic_role": "tree_bark",
+      "source_url": "https://polyhaven.com/a/bark_brown_01",
+      "files_api_url": "https://api.polyhaven.com/files/bark_brown_01",
+      "info_api_url": "https://api.polyhaven.com/info/bark_brown_01",
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "provider_license_url": "https://polyhaven.com/license",
+        "attribution_required": false
+      },
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "attribution": "Bark Brown 01 by Rob Tuytel via Poly Haven (CC0 1.0).",
+      "source_api_evidence": "assets/evidence/bark_brown_01-files.json",
+      "source_info_evidence": "assets/evidence/bark_brown_01-info.json",
+      "material_settings": {
+        "inherit": "material_defaults",
+        "suggested_tile_size_m": [
+          1,
+          1
+        ],
+        "uv_repeat_rule": "For a planar surface, repeat = surface width/height in meters divided by suggested tile size. Keep all three maps on identical UVs.",
+        "note": "Brown furrowed bark; map vertical texture grain along trunk height."
+      },
+      "files": [
+        {
+          "role": "base_color",
+          "api_key": "Diffuse",
+          "path": "assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_01/bark_brown_01_diff_1k.jpg",
+          "bytes": 729893,
+          "sha256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+          "api_md5": "b6d5dcde10b7cd1b36d70cd33a34724a",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "sRGB",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "normal_opengl",
+          "api_key": "nor_gl",
+          "path": "assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+          "bytes": 2313976,
+          "sha256": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983",
+          "api_md5": "531b131bcb9f178357fa948bc06fae71",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        },
+        {
+          "role": "roughness",
+          "api_key": "Rough",
+          "path": "assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_01/bark_brown_01_rough_1k.jpg",
+          "bytes": 201307,
+          "sha256": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+          "api_md5": "b7a1aa42ecf0b30aba7f587769d13910",
+          "dimensions_px": [
+            1024,
+            1024
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        }
+      ]
+    },
+    {
+      "id": "kloofendal_48d_partly_cloudy_puresky",
+      "name": "Kloofendal 48d Partly Cloudy (Pure Sky)",
+      "type": "hdri",
+      "semantic_role": "environment_daylight",
+      "source_url": "https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky",
+      "files_api_url": "https://api.polyhaven.com/files/kloofendal_48d_partly_cloudy_puresky",
+      "info_api_url": "https://api.polyhaven.com/info/kloofendal_48d_partly_cloudy_puresky",
+      "license": {
+        "id": "CC0-1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "provider_license_url": "https://polyhaven.com/license",
+        "attribution_required": false
+      },
+      "authors": {
+        "Greg Zaal": "Original",
+        "Jarod Guest": "Sky edits"
+      },
+      "attribution": "Kloofendal 48d Partly Cloudy (Pure Sky) by Greg Zaal and Jarod Guest via Poly Haven (CC0 1.0).",
+      "source_api_evidence": "assets/evidence/kloofendal_48d_partly_cloudy_puresky-files.json",
+      "source_info_evidence": "assets/evidence/kloofendal_48d_partly_cloudy_puresky-info.json",
+      "material_settings": {
+        "projection": "equirectangular",
+        "color_space": "linear HDR RGBE",
+        "suggested_environment_intensity": 1,
+        "rotation_radians": 0,
+        "prefilter_for_pbr": true,
+        "usage": "Daylight environment lighting and reflections; optional visible sky background.",
+        "note": "Official 1k environment is 1024x512. Bright sun / partly cloudy sky. Align any added directional sun to the HDR sun and tune exposure in the integrated scene."
+      },
+      "files": [
+        {
+          "role": "environment",
+          "api_key": "hdri",
+          "path": "assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+          "bytes": 1435119,
+          "sha256": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798",
+          "api_md5": "c69498687e876bf68d2a8b8a62234eb9",
+          "dimensions_px": [
+            1024,
+            512
+          ],
+          "color_space": "linear",
+          "api_size_and_md5_verified": true
+        }
+      ]
+    },
+    {
+      "id": "asphalt_02",
+      "type": "texture",
+      "semantic_role": "ground_worn_concrete",
+      "source": "https://polyhaven.com/a/asphalt_02",
+      "files_api": "https://api.polyhaven.com/files/asphalt_02",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "role": "base_color",
+          "path": "assets/asphalt_02/asphalt_02_diff_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_diff_2k.jpg",
+          "bytes": 3075676,
+          "sha256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+          "md5": "336af399fd98a39ab986d8b3bf73b4ff"
+        },
+        {
+          "role": "normal_opengl",
+          "path": "assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/asphalt_02/asphalt_02_nor_gl_2k.png",
+          "bytes": 9122344,
+          "sha256": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+          "md5": "5e1dc171185794b1ffcf8f48864467dd"
+        },
+        {
+          "role": "roughness",
+          "path": "assets/asphalt_02/asphalt_02_rough_2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_rough_2k.jpg",
+          "bytes": 2230457,
+          "sha256": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+          "md5": "6fe669ab38640ef2009d6a28d1ad5ee9"
+        }
+      ]
+    },
+    {
+      "id": "kloofendal_overcast_puresky",
+      "type": "hdri",
+      "semantic_role": "storm_environment",
+      "source": "https://polyhaven.com/a/kloofendal_overcast_puresky",
+      "files_api": "https://api.polyhaven.com/files/kloofendal_overcast_puresky",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "role": "environment",
+          "path": "assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloofendal_overcast_puresky_2k.hdr",
+          "bytes": 4335717,
+          "sha256": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+          "md5": "26462123fc5ce757a331553d05e4db37"
+        }
+      ]
+    },
+    {
+      "id": "approaching_storm",
+      "type": "hdri",
+      "semantic_role": "storm_environment",
+      "source": "https://polyhaven.com/a/approaching_storm",
+      "files_api": "https://api.polyhaven.com/files/approaching_storm",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "role": "environment",
+          "path": "assets/approaching_storm/approaching_storm_2k.hdr",
+          "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/approaching_storm_2k.hdr",
+          "bytes": 6388690,
+          "sha256": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+          "md5": "ba38ced7364a37bdf46235b2d76011b0"
+        }
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "path": "assets/evidence/bark_brown_01-files.json",
+      "bytes": 30318,
+      "sha256": "1c10acbee7bf1fbb871de46c71aa323152558c19f1e573a5f4474498b156a15a",
+      "source_url": "https://api.polyhaven.com/files/bark_brown_01"
+    },
+    {
+      "path": "assets/evidence/bark_brown_01-info.json",
+      "bytes": 902,
+      "sha256": "0a37ba9eb386d436ab40cefd9a41a2483889ee08738a4ed9a38166301f3097e7",
+      "source_url": "https://api.polyhaven.com/info/bark_brown_01"
+    },
+    {
+      "path": "assets/evidence/cc0-1.0.html",
+      "bytes": 30248,
+      "sha256": "abb4d48fc8b85de52b377dd105532c6c549f515d492a8e1712bc99e7316a1f12",
+      "source_url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    },
+    {
+      "path": "assets/evidence/concrete_floor_worn_001-files.json",
+      "bytes": 37057,
+      "sha256": "08980460d563b8af368138d670472bff5baa627a3524023123585a6ef70f832a",
+      "source_url": "https://api.polyhaven.com/files/concrete_floor_worn_001"
+    },
+    {
+      "path": "assets/evidence/concrete_floor_worn_001-info.json",
+      "bytes": 979,
+      "sha256": "5b1e35cda20b6c6951b2b5f220b6a45f54bcef39398b13dcfe2a286a477402b6",
+      "source_url": "https://api.polyhaven.com/info/concrete_floor_worn_001"
+    },
+    {
+      "path": "assets/evidence/kloofendal_48d_partly_cloudy_puresky-files.json",
+      "bytes": 1947,
+      "sha256": "a7cbb453c0269ac0996e43edaa7995d52b72f89830f4c7d7f813569f6647832c",
+      "source_url": "https://api.polyhaven.com/files/kloofendal_48d_partly_cloudy_puresky"
+    },
+    {
+      "path": "assets/evidence/kloofendal_48d_partly_cloudy_puresky-info.json",
+      "bytes": 1229,
+      "sha256": "69af888f362308fc0f22f603020b6f57d4f061f39c79082dea55059b71b7a8dd",
+      "source_url": "https://api.polyhaven.com/info/kloofendal_48d_partly_cloudy_puresky"
+    },
+    {
+      "path": "assets/evidence/polyhaven-license.html",
+      "bytes": 63560,
+      "sha256": "19ac9db5d7c49287026209d3f17f277a6d5c2246b17a9d0eb6def413f6d70989",
+      "source_url": "https://polyhaven.com/license"
+    },
+    {
+      "path": "assets/evidence/roof_tiles-files.json",
+      "bytes": 34122,
+      "sha256": "1fefabdc0bfe19c7e04fb4e09d084a2a51fc6ed55ef81d8ab904aeb0481e450b",
+      "source_url": "https://api.polyhaven.com/files/roof_tiles"
+    },
+    {
+      "path": "assets/evidence/roof_tiles-info.json",
+      "bytes": 1069,
+      "sha256": "0c2b02282fea8483dca8e6a05e10cb0a7819657eb5f9de02f86253e1f5a115e2",
+      "source_url": "https://api.polyhaven.com/info/roof_tiles"
+    },
+    {
+      "path": "assets/evidence/weathered_brown_planks-files.json",
+      "bytes": 36643,
+      "sha256": "ad8ca447377a8d659ce15dc45043b0f4852c309ba00dfc09ccca3aa852cf1317",
+      "source_url": "https://api.polyhaven.com/files/weathered_brown_planks"
+    },
+    {
+      "path": "assets/evidence/weathered_brown_planks-info.json",
+      "bytes": 1090,
+      "sha256": "3b7315a8307efc1d6cfa36d97702840bab29a5a230709727ab3166194a46f8c8",
+      "source_url": "https://api.polyhaven.com/info/weathered_brown_planks"
+    },
+    {
+      "path": "assets/evidence/worn_plaster_wall-files.json",
+      "bytes": 27546,
+      "sha256": "8fbca2271298c33eb3bce8fc19d80b60d62be0fd033329fda801456647ffbc71",
+      "source_url": "https://api.polyhaven.com/files/worn_plaster_wall"
+    },
+    {
+      "path": "assets/evidence/worn_plaster_wall-info.json",
+      "bytes": 1039,
+      "sha256": "8daca3e771462303bf1f2e602fc44133ff2a6a950ebf889be4b6c6506cbe0864",
+      "source_url": "https://api.polyhaven.com/info/worn_plaster_wall"
+    }
+  ],
+  "v3_acquisition": {
+    "date": "2026-11-16T10:10:53.992Z",
+    "license": "https://polyhaven.com/license",
+    "assets": [
+      {
+        "id": "asphalt_02",
+        "type": "texture",
+        "semantic_role": "ground_worn_concrete",
+        "source": "https://polyhaven.com/a/asphalt_02",
+        "files_api": "https://api.polyhaven.com/files/asphalt_02",
+        "license": "CC0-1.0",
+        "files": [
+          {
+            "role": "base_color",
+            "path": "assets/asphalt_02/asphalt_02_diff_2k.jpg",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_diff_2k.jpg",
+            "bytes": 3075676,
+            "sha256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+            "md5": "336af399fd98a39ab986d8b3bf73b4ff"
+          },
+          {
+            "role": "normal_opengl",
+            "path": "assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/png/2k/asphalt_02/asphalt_02_nor_gl_2k.png",
+            "bytes": 9122344,
+            "sha256": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+            "md5": "5e1dc171185794b1ffcf8f48864467dd"
+          },
+          {
+            "role": "roughness",
+            "path": "assets/asphalt_02/asphalt_02_rough_2k.jpg",
+            "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/asphalt_02/asphalt_02_rough_2k.jpg",
+            "bytes": 2230457,
+            "sha256": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+            "md5": "6fe669ab38640ef2009d6a28d1ad5ee9"
+          }
+        ]
+      },
+      {
+        "id": "kloofendal_overcast_puresky",
+        "type": "hdri",
+        "semantic_role": "storm_environment",
+        "source": "https://polyhaven.com/a/kloofendal_overcast_puresky",
+        "files_api": "https://api.polyhaven.com/files/kloofendal_overcast_puresky",
+        "license": "CC0-1.0",
+        "files": [
+          {
+            "role": "environment",
+            "path": "assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+            "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/kloofendal_overcast_puresky_2k.hdr",
+            "bytes": 4335717,
+            "sha256": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+            "md5": "26462123fc5ce757a331553d05e4db37"
+          }
+        ]
+      },
+      {
+        "id": "approaching_storm",
+        "type": "hdri",
+        "semantic_role": "storm_environment",
+        "source": "https://polyhaven.com/a/approaching_storm",
+        "files_api": "https://api.polyhaven.com/files/approaching_storm",
+        "license": "CC0-1.0",
+        "files": [
+          {
+            "role": "environment",
+            "path": "assets/approaching_storm/approaching_storm_2k.hdr",
+            "url": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/approaching_storm_2k.hdr",
+            "bytes": 6388690,
+            "sha256": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+            "md5": "ba38ced7364a37bdf46235b2d76011b0"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,756 @@
+{
+  "schema": "sunbreak-current-build-qa-v3",
+  "date": "2026-11-16T11:51:59.252Z",
+  "engineering": "REWORK",
+  "art": "CONDITIONAL PASS",
+  "sourceFingerprint": "573b935abf3fcc266654e1b7ba92fe16f1c6fb246f16ed467c36af6379e911e0",
+  "sourceHashes": {
+    "index.html": "10144aa012a28edeb1054ff10ace927ef89ed9f5a2133c124cd2f93dd48d2404",
+    "world.js": "7c2171874164e9211c8c5f879ca91f46f595eb7a0830ca6c14a5292b5eab3673",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "b3f8b24c013cde14dcfeeab823aedc490257f1d9da0a27ea65773e1d772e3ab2",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "7534f47d942989f5e53db16b158423ba1020aaead62b5f0d0fb6ab0d31773966",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "e20904133ca27589a0e9326c2f464e622c105a581f7c11c334c6d66500180101",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "cb3ef4df0a23e93a75b309fd31cb67a6ca2e329338ef8441c19e50ced30e0179",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f90f043e85a6eb05f119cd883ce0ace1dc3d0343467ebbc174cf7722abc39e13",
+    "serve.mjs": "4b2d69a672fa2a6488253ed7af96e3183a1e7ab7a52afd6abb2d6f7912235753"
+  },
+  "checks": [
+    {
+      "name": "syntax world.js",
+      "pass": true
+    },
+    {
+      "name": "syntax weapon.js",
+      "pass": true
+    },
+    {
+      "name": "syntax actors.js",
+      "pass": true
+    },
+    {
+      "name": "syntax audio.js",
+      "pass": true
+    },
+    {
+      "name": "syntax storm.js",
+      "pass": true
+    },
+    {
+      "name": "syntax storm-audio.js",
+      "pass": true
+    },
+    {
+      "name": "syntax boot-ui.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa-hooks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/runtime-checks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax qa/storm-checks.js",
+      "pass": true
+    },
+    {
+      "name": "syntax serve.mjs",
+      "pass": true
+    },
+    {
+      "name": "inline module syntax",
+      "pass": true
+    },
+    {
+      "name": "exact gameplay and mutation audit",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-fable52/index.html",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/index.html",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/world.js",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/weapon.js",
+      "pass": true
+    },
+    {
+      "name": "preserved ../sunbreak-realistic-v2/audio.js",
+      "pass": true
+    },
+    {
+      "name": "v2 recorded sound module unchanged",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/approaching_storm/approaching_storm_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/approaching_storm/approaching_storm_2k.hdr",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/mp5/mp5a5.glb",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/mp5/arms_basecolor.webp",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/mp5/arms_normal.webp",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/soldier/soldier_tac.glb",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/audio/player.wav",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/audio/enemy.wav",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/audio/magout.wav",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/audio/magin.wav",
+      "pass": true
+    },
+    {
+      "name": "integrity assets/audio/confirm.wav",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/LICENSE",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/build/three.module.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/loaders/RGBELoader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/math/SimplexNoise.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/objects/Reflector.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/EffectComposer.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/MaskPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/OutputPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/Pass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/RenderPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/SMAAPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/SSAOPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/ShaderPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/shaders/CopyShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/shaders/OutputShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/shaders/SMAAShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/shaders/SSAOShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/three/examples/jsm/utils/SkeletonUtils.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/meshoptimizer-LICENSE.md",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/build/three.module.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/loaders/RGBELoader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/objects/Reflector.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/EffectComposer.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/shaders/CopyShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/ShaderPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/Pass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/MaskPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/RenderPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/SSAOPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/math/SimplexNoise.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/shaders/SSAOShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/OutputPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/shaders/OutputShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/SMAAPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/shaders/SMAAShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/loaders/GLTFLoader.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/examples/jsm/utils/SkeletonUtils.js",
+      "pass": true
+    },
+    {
+      "name": "integrity vendor/presentation/LICENSE",
+      "pass": true
+    },
+    {
+      "name": "presentation variant keeps global RNG isolated",
+      "pass": true
+    },
+    {
+      "name": "startup-baseline current loaded source",
+      "pass": true
+    },
+    {
+      "name": "startup-test current loaded source",
+      "pass": true
+    },
+    {
+      "name": "runtime-current current loaded source",
+      "pass": true
+    },
+    {
+      "name": "storm-current current loaded source",
+      "pass": true
+    },
+    {
+      "name": "performance-current current loaded source",
+      "pass": true
+    },
+    {
+      "name": "final-hero current loaded source",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard current loaded source",
+      "pass": true
+    },
+    {
+      "name": "final-interior current loaded source",
+      "pass": true
+    },
+    {
+      "name": "final-ground current loaded source",
+      "pass": true
+    },
+    {
+      "name": "final-weapon current loaded source",
+      "pass": true
+    },
+    {
+      "name": "motion-before current loaded source",
+      "pass": false
+    },
+    {
+      "name": "motion-flash current loaded source",
+      "pass": false
+    },
+    {
+      "name": "motion-after current loaded source",
+      "pass": false
+    },
+    {
+      "name": "final-hero genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "final-hero loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "final-interior genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "final-interior loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "final-ground genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "final-ground loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "final-weapon genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "final-weapon loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "motion-before genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "motion-before loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "motion-flash genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "motion-flash loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "motion-after genuine 1080p nonblank canvas",
+      "pass": true
+    },
+    {
+      "name": "motion-after loaded current licensed assets",
+      "pass": true
+    },
+    {
+      "name": "no added initialization/first-frame global RNG draws",
+      "pass": true,
+      "detail": {
+        "addedVisualInitRngCalls": 0,
+        "firstFrameRngCalls": 8,
+        "baselineFirstFrame": 8
+      }
+    },
+    {
+      "name": "original19 smoke",
+      "pass": false,
+      "detail": [
+        {
+          "name": "forward movement loop",
+          "pass": false,
+          "detail": ""
+        },
+        {
+          "name": "keyboard look loop",
+          "pass": false,
+          "detail": ""
+        },
+        {
+          "name": "reload completes",
+          "pass": false,
+          "detail": "{\"mag\":29,\"res\":90,\"reload\":1.15}"
+        },
+        {
+          "name": "hit and victory",
+          "pass": false,
+          "detail": ""
+        },
+        {
+          "name": "enemy damage and defeat",
+          "pass": false,
+          "detail": ""
+        }
+      ]
+    },
+    {
+      "name": "original proxy/runtime217",
+      "pass": false,
+      "detail": {
+        "verdict": "BLOCKED",
+        "reason": "Run after all 19 original smoke fixtures pass; no state changed."
+      }
+    },
+    {
+      "name": "weather input rendering fixtures",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "weather audio unit lifecycle",
+      "pass": true
+    },
+    {
+      "name": "1080p real combat >=30 seconds",
+      "pass": true
+    },
+    {
+      "name": "all raw frame samples included",
+      "pass": true
+    },
+    {
+      "name": "strict frame pacing (threshold unchanged)",
+      "pass": false,
+      "detail": {
+        "p50": 1003.8999999999942,
+        "p95": 1016.3999999999942,
+        "p99": 1016.7000000000116,
+        "max": 1016.7000000000116,
+        "hitchesOver50": 30
+      }
+    },
+    {
+      "name": "recorded shots and weather audio exercised",
+      "pass": true,
+      "detail": {
+        "method": "synthesized noise, not a field recording",
+        "context": "running",
+        "failed": false,
+        "active": true,
+        "focused": true,
+        "effectiveGain": 0.325,
+        "pending": 0,
+        "thunderCount": 1
+      }
+    },
+    {
+      "name": "time-separated actual weather/flash frames",
+      "pass": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa/evidence/startup-baseline.json",
+      "sha256": "98228b090bdce239a660f8dc8a7b92093c16d4793f3a070ff42b070a108aebc3"
+    },
+    {
+      "path": "qa/evidence/startup-test.json",
+      "sha256": "61767dd555668b86a2cab3fa1f0234727f012254394416dde6fc542354a64e12"
+    },
+    {
+      "path": "qa/evidence/runtime-current.json",
+      "sha256": "732e9035262da22c81ec4a022520717f409cc3f1760ea599b0af16410ed3a102"
+    },
+    {
+      "path": "qa/evidence/storm-current.json",
+      "sha256": "c95aa0b00c81beff5c17ec3ad4dbd22f127e18168a8d170f03fd098acb9a6b0e"
+    },
+    {
+      "path": "qa/evidence/performance-current.json",
+      "sha256": "c3065cd66723e2cf8a93bdff13ec6727eb59fb44be91c74da6a8d79bf69812d6"
+    },
+    {
+      "path": "qa/evidence/final-hero.json",
+      "sha256": "c40854b2293dda1beeaffb950edbfae4d7c12c6989c4e6dfccf7bd921a79a232"
+    },
+    {
+      "path": "qa/evidence/final-courtyard.json",
+      "sha256": "1910e421a559403063772db5db962720e11320d88ddc386c97522ebbebd2be5a"
+    },
+    {
+      "path": "qa/evidence/final-interior.json",
+      "sha256": "543e3dd1e8ea5b7dee4142339abb9f7c6d3881f1d607cdf881610bfe7a5b265b"
+    },
+    {
+      "path": "qa/evidence/final-ground.json",
+      "sha256": "9691337dd0d2b06e6cd841a838d38a8a33e98f3e8ed0cca1eefc2fb5deaba5a0"
+    },
+    {
+      "path": "qa/evidence/final-weapon.json",
+      "sha256": "57927ef612211cf6c097b5fdc1f61dfea1d11960dff36f58383cf527c3d99994"
+    },
+    {
+      "path": "qa/evidence/motion-before.json",
+      "sha256": "db423c8ca6022ecaf7813e3f46b709f40bd8b45ef8a5f1cd29c464e93ce95a0e"
+    },
+    {
+      "path": "qa/evidence/motion-flash.json",
+      "sha256": "d914910474e1ddc916b6914ce07603d75029a307f8f62032dd6592d9f5f35781"
+    },
+    {
+      "path": "qa/evidence/motion-after.json",
+      "sha256": "97192fc6588415fca76631b54b66166b19c057c3e2b2402e76ea91af21e50aee"
+    },
+    {
+      "path": "qa/evidence/final-hero.png",
+      "sha256": "5bf37f4ece42f137718bf431daed791ec0cd74313180eda7f34c77a971af0459"
+    },
+    {
+      "path": "qa/evidence/final-courtyard.png",
+      "sha256": "5849d1091297f7f91723392a78f4e77b1fe93b8f8c9d66ae59b8e7294ab9f257"
+    },
+    {
+      "path": "qa/evidence/final-interior.png",
+      "sha256": "0a391355ed46e4b44213ff91d8b8707a04a7d1e02ae2bffe3dc2fc496eeadc36"
+    },
+    {
+      "path": "qa/evidence/final-ground.png",
+      "sha256": "bdc0e12143c76c821037b8a750e902ca9c826c03c115b6781e1734308d6c76ce"
+    },
+    {
+      "path": "qa/evidence/final-weapon.png",
+      "sha256": "4ca27f026299bb2ee1eed1f0995d56bed5c972a7a8d8991fba1c5dfbd70c57df"
+    },
+    {
+      "path": "qa/evidence/motion-before.png",
+      "sha256": "4dfb3e1ce3c73dd8a01e4a27d01a99a49da7472ed3ed860b5c3caa4486ae255f"
+    },
+    {
+      "path": "qa/evidence/motion-flash.png",
+      "sha256": "8896f79cee912280b9f3e6868d99530db10b8e0585db2fcbb37def6a7e40def5"
+    },
+    {
+      "path": "qa/evidence/motion-after.png",
+      "sha256": "d9342069e17608e773b7e1a5a6d13c734eb0f858a200a7523d027c275e2192ea"
+    }
+  ],
+  "publication": {
+    "status": "UNAVAILABLE",
+    "reason": "Sites create_site returned project_invariant_error: Sites backfill is in progress in this destination. No site created; no deployment claimed."
+  },
+  "limits": [
+    "WebGL/Three.js, not Unreal Engine/Lumen/Nanite/ray tracing.",
+    "Actual sampled frames and scripted combat are not a full continuous subjective review or human playthrough.",
+    "Background browser throttling was observed at approximately1fps: wall-time smoke checks can fail before simulation timers advance. This is not a PASS and must be rerun in a foreground session.",
+    "Motion images are actual time-separated combat frames, sometimes background-throttled; they are not normal-speed continuous video.",
+    "Engineering results never establish AAA/photorealistic parity.",
+    "Decorative parallax rooms; simple enemy pose/leg animation; no full reload choreography.",
+    "Weapon audio remains CC0 AR15/M4 recording, not MP5. Weather audio is synthetic.",
+    "Original upper stacked crates remain visual-only by baseline design.",
+    "Only v3 runtime is fully local; preserved v1/v2 comparisons retain their original CDN dependency.",
+    "Pre-existing dirty private vault was preserved; checkpoint contains only browser code/public assets, not UE/private assets."
+  ]
+}

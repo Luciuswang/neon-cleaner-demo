@@ -1,0 +1,10 @@
+*.js text eol=lf
+*.mjs text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.py text eol=lf
+assets/audio/provenance/*.txt binary
+assets/audio/*.wav binary
+# Preserve pinned upstream/transformed vendor bytes, including upstream whitespace.
+vendor/** -text -whitespace

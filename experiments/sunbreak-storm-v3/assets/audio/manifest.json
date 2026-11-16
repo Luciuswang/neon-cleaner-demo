@@ -1,0 +1,154 @@
+{
+  "schema": "sunbreak-recorded-audio-v1",
+  "prepared": "2026-11-16",
+  "firearmCreators": [
+    "Ben Jaszczak",
+    "Brian Nelson",
+    "Kevin Heras",
+    "Matthew Nanney"
+  ],
+  "firearmArchiveSubmitter": "bart",
+  "mechanicalCreator": "BMacZero / Brian MacIntosh",
+  "archive": {
+    "url": "https://opengameart.org/sites/default/files/Prepared%20SFX%20Library.7z",
+    "bytes": 193954738,
+    "sha256": "cc1ab5a99a0a365105c7c5dd783f4b0b1fe90938114d3ceec53856bfe005f7d6"
+  },
+  "masterSheet": {
+    "member": "Prepared SFX Library/Prepared Master Sheet.csv",
+    "sha256": "98e3ce7ff594722b364d238c6c65f9c69638a0a0d9dd92d0ef55c8b137c0e9aa"
+  },
+  "limitations": [
+    "Redistribution licensed CC0 on preserved OpenGameArt distribution; original team websites no longer available.",
+    "Gain reduction does not restore any saturation in the prepared source masters.",
+    "Two recorded single-shot perspectives, not multiple recorded takes per event.",
+    "Mechanical source does not specify recording method; confirm is a UI cue, not a flesh impact."
+  ],
+  "files": [
+    {
+      "id": "player",
+      "path": "assets/audio/player.wav",
+      "bytes": 158804,
+      "sha256": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7",
+      "sourcePage": "https://opengameart.org/content/the-free-firearm-sound-library",
+      "license": "CC0-1.0",
+      "sourceMember": "Prepared SFX Library/AR-15/D_32P.wav",
+      "sourceSha256": "acee9d2106b68fe5956225a19d7aedf943d97793817f9bda9d486a2b74b0a812",
+      "description": "Recorded AR-15/M4 near single shot, front, stereo source downmixed to mono.",
+      "sourceRate": 96000,
+      "sourceChannels": 2,
+      "sourceDuration": 10.217510416666666,
+      "sourceSaturatedSamples": 389,
+      "cropSeconds": [
+        0.69571875,
+        2.49571875
+      ],
+      "processing": "mono mean; crop at threshold onset minus 8ms; DC removal; 1ms/80ms tapers; scipy resample_poly to 44100; peak gain; PCM16",
+      "duration": 1.8,
+      "rate": 44100,
+      "channels": 1,
+      "peak": 0.8399658203125,
+      "rms": 0.023411637253238957
+    },
+    {
+      "id": "enemy",
+      "path": "assets/audio/enemy.wav",
+      "bytes": 149984,
+      "sha256": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e",
+      "sourcePage": "https://opengameart.org/content/the-free-firearm-sound-library",
+      "license": "CC0-1.0",
+      "sourceMember": "Prepared SFX Library/AR-15/D_24P.wav",
+      "sourceSha256": "4c6a54ca0583150bbb32b7f658bc64da9ad9ba42fd3aca769c6120b44af8d3f0",
+      "description": "Recorded AR-15/M4 mid-distance single shot, front, stereo source downmixed to mono.",
+      "sourceRate": 96000,
+      "sourceChannels": 2,
+      "sourceDuration": 6.485333333333333,
+      "sourceSaturatedSamples": 361,
+      "cropSeconds": [
+        0.5408125,
+        2.2408125
+      ],
+      "processing": "mono mean; crop at threshold onset minus 8ms; DC removal; 1ms/80ms tapers; scipy resample_poly to 44100; peak gain; PCM16",
+      "duration": 1.7,
+      "rate": 44100,
+      "channels": 1,
+      "peak": 0.739990234375,
+      "rms": 0.028978089166466256
+    },
+    {
+      "id": "magout",
+      "path": "assets/audio/magout.wav",
+      "bytes": 20650,
+      "sha256": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7",
+      "sourcePage": "https://opengameart.org/content/gun-reload-sound-effects",
+      "license": "CC0-1.0",
+      "sourceMember": "clipload1.wav",
+      "sourceSha256": "1cdc10c50a26834ce7562a5f2925b9aa1118e3bb58a86fea80f34558bf2c5101",
+      "description": "CC0 mechanical reload effect; recording method unspecified.",
+      "sourceRate": 44100,
+      "sourceChannels": 1,
+      "sourceDuration": 0.25541950113378686,
+      "sourceSaturatedSamples": 1,
+      "cropSeconds": [
+        0.02179138321995465,
+        0.25541950113378686
+      ],
+      "processing": "mono mean; crop at threshold onset minus 8ms; DC removal; 1ms/80ms tapers; scipy resample_poly to 44100; peak gain; PCM16",
+      "duration": 0.2336281179138322,
+      "rate": 44100,
+      "channels": 1,
+      "peak": 0.5999755859375,
+      "rms": 0.10272423228168445
+    },
+    {
+      "id": "magin",
+      "path": "assets/audio/magin.wav",
+      "bytes": 14418,
+      "sha256": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c",
+      "sourcePage": "https://opengameart.org/content/gun-reload-sound-effects",
+      "license": "CC0-1.0",
+      "sourceMember": "clipload2.wav",
+      "sourceSha256": "a5441641e7e9ede24f3ac311642e06265c6f480e3b1ba4b92c19c81c3a5e4d86",
+      "description": "CC0 mechanical reload effect; recording method unspecified.",
+      "sourceRate": 44100,
+      "sourceChannels": 1,
+      "sourceDuration": 0.2089795918367347,
+      "sourceSaturatedSamples": 0,
+      "cropSeconds": [
+        0.04600907029478458,
+        0.2089795918367347
+      ],
+      "processing": "mono mean; crop at threshold onset minus 8ms; DC removal; 1ms/80ms tapers; scipy resample_poly to 44100; peak gain; PCM16",
+      "duration": 0.1629705215419501,
+      "rate": 44100,
+      "channels": 1,
+      "peak": 0.649993896484375,
+      "rms": 0.04734786041635162
+    },
+    {
+      "id": "confirm",
+      "path": "assets/audio/confirm.wav",
+      "bytes": 17516,
+      "sha256": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba",
+      "sourcePage": "https://opengameart.org/content/gun-reload-sound-effects",
+      "license": "CC0-1.0",
+      "sourceMember": "singlebullet1.wav",
+      "sourceSha256": "422bb2b92072cf8ecb77fda83e70d27bdcb7fa8cee33415ef66985a8cc14dde2",
+      "description": "CC0 mechanical effect used as restrained UI hit confirmation, not a bullet impact recording.",
+      "sourceRate": 44100,
+      "sourceChannels": 1,
+      "sourceDuration": 0.301859410430839,
+      "sourceSaturatedSamples": 0,
+      "cropSeconds": [
+        0.10376417233560091,
+        0.301859410430839
+      ],
+      "processing": "mono mean; crop at threshold onset minus 8ms; DC removal; 1ms/80ms tapers; scipy resample_poly to 44100; peak gain; PCM16",
+      "duration": 0.1980952380952381,
+      "rate": 44100,
+      "channels": 1,
+      "peak": 0.47998046875,
+      "rms": 0.02560886923442136
+    }
+  ]
+}

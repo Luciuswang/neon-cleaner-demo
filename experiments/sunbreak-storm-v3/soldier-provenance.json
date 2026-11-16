@@ -1,0 +1,19 @@
+{
+  "schema": "sunbreak-licensed-character-v1",
+  "source": "https://raw.githubusercontent.com/cktang88/3d-fps/130ac2a5c856401ec36e7d35afcfefe40c5801f4/public/assets/models/characters/soldier_tac.glb",
+  "authorAPI": "https://api.sketchfab.com/v3/models/ef698ce36b1545a78ce592dd3db4c7ed",
+  "author": "DanlyVostok",
+  "original": "https://sketchfab.com/3d-models/military-tactical-suit-lowpolygameready-ef698ce36b1545a78ce592dd3db4c7ed",
+  "license": "CC-BY-4.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by/4.0/",
+  "files": [
+    {
+      "path": "assets/soldier/soldier_tac.glb",
+      "bytes": 4532132,
+      "sha256": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e"
+    }
+  ],
+  "changes": "Remove detached headset; uniform fit and grounding; original render-only leg motion. No upstream gameplay/animation code or clips.",
+  "animationClips": 0,
+  "scope": "Display layer only; original six enemy anchors and hit proxies remain authoritative."
+}

@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "selection": "Rotuma MP5 with credited adapted gloved arm rig",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "upstream_commit": "130ac2a5c856401ec36e7d35afcfefe40c5801f4",
+  "credits": [
+    {
+      "title": "MP5 Submachine Gun",
+      "author": "Rotuma",
+      "source": "https://sketchfab.com/3d-models/a73b61932a0e4eecb5db5c63c158aa24"
+    },
+    {
+      "title": "Fps arms",
+      "author": "bumstrum / DJMaesen",
+      "source": "https://sketchfab.com/3d-models/9452ce4cddde4110a4fd73e555a8e412"
+    },
+    {
+      "title": "FPS AK-74m animations / rig contribution",
+      "author": "ccransh",
+      "source": "https://sketchfab.com/3d-models/94be8385c402474cacd39bc096c6ca14"
+    }
+  ],
+  "adaptation_credit": "cktang88/3d-fps contributors: first-person rig assembly, posing, AO baking, optimization and texture encoding",
+  "files": [
+    {
+      "path": "assets/mp5/mp5a5.glb",
+      "url": "https://raw.githubusercontent.com/cktang88/3d-fps/130ac2a5c856401ec36e7d35afcfefe40c5801f4/public/assets/models/fp/mp5a5.glb",
+      "bytes": 1913500,
+      "sha256": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da"
+    },
+    {
+      "path": "assets/mp5/arms_basecolor.webp",
+      "url": "https://raw.githubusercontent.com/cktang88/3d-fps/130ac2a5c856401ec36e7d35afcfefe40c5801f4/public/assets/models/fp/arms_basecolor.webp",
+      "bytes": 136406,
+      "sha256": "4657bc61099b7cf92084c5481c0c6d19a1d8219c8ee8c08e546f9f823fec6946"
+    },
+    {
+      "path": "assets/mp5/arms_normal.webp",
+      "url": "https://raw.githubusercontent.com/cktang88/3d-fps/130ac2a5c856401ec36e7d35afcfefe40c5801f4/public/assets/models/fp/arms_normal.webp",
+      "bytes": 278326,
+      "sha256": "0500bdd5e6045621d980105cc281312dd6d7fc66a6649ddbe632fea802dba881"
+    }
+  ],
+  "extensions": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_mesh_quantization"
+  ],
+  "original_units": "K=2 real metres, -Z forward / +Y up; source MuzzleSocket retained within imported model",
+  "changes": "SUNBREAK: uniform display fit 1.70 to original tracer socket, storm lighting, unused zero-weight morph removed, source held arm pose baked and rear upper sleeve smoothly fitted toward the offscreen torso. Original continuous fabric/material and UV0/UV1 retained; no joined procedural cloth. Float32 normals recomputed after the fit; wrists/grip unchanged. Original parent, firing, damage, reload timing and gameplay anchors unchanged. No source animation or recoil code copied.",
+  "limits": "A detailed real-world-type game asset, not a photogrammetric firearm, not a claim of exact manufacturer dimensions; inherited recorded gun audio is AR-15/M4, not MP5."
+}

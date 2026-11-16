@@ -1,0 +1,346 @@
+{
+  "date": "2026-11-16T11:47:17.870Z",
+  "method": "actual browser, synthetic rendering/lifecycle fixtures; time stepping is not real-time footage",
+  "checks": [
+    {
+      "name": "default storm weather",
+      "pass": true
+    },
+    {
+      "name": "honest engine identity",
+      "pass": true
+    },
+    {
+      "name": "licensed MP5 loaded",
+      "pass": true,
+      "detail": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      }
+    },
+    {
+      "name": "actual transformed muzzle matches original tracer origin",
+      "pass": true,
+      "detail": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ]
+    },
+    {
+      "name": "six licensed tactical display skins loaded",
+      "pass": true,
+      "detail": {
+        "loaded": true,
+        "count": 6,
+        "license": "CC-BY-4.0",
+        "author": "DanlyVostok",
+        "trianglesEach": 25887,
+        "uniformFit": 0.9774769696424419,
+        "height": 1.8,
+        "animation": "authored bent-arm grip pose; visual leg swing follows original pivots, no imported animation clips",
+        "combat": "original six anchors and invisible hit proxies unchanged"
+      }
+    },
+    {
+      "name": "no missing render assets",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "storm HDR loaded",
+      "pass": true
+    },
+    {
+      "name": "weather 0 style 0 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 1 style 0 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 2 style 0 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 0 style 1 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 1 style 1 draws",
+      "pass": true
+    },
+    {
+      "name": "weather 2 style 1 draws",
+      "pass": true
+    },
+    {
+      "name": "weather and style preserve all combat/layout state",
+      "pass": true
+    },
+    {
+      "name": "post-processing can disable",
+      "pass": true
+    },
+    {
+      "name": "post-processing restores",
+      "pass": true
+    },
+    {
+      "name": "flash-reduction control works",
+      "pass": true
+    },
+    {
+      "name": "reduced-flash steps remain dark",
+      "pass": true
+    },
+    {
+      "name": "storm updates preserve game/layout state",
+      "pass": true
+    },
+    {
+      "name": "storm updates do not consume combat RNG",
+      "pass": true,
+      "detail": {
+        "rngCalls": 0
+      }
+    },
+    {
+      "name": "lightning can re-enable",
+      "pass": true
+    },
+    {
+      "name": "lightning event occurs and is bounded",
+      "pass": true,
+      "detail": {
+        "peak": 0.8869204367171575,
+        "events": 1
+      }
+    },
+    {
+      "name": "ten warm window lights and four practicals",
+      "pass": true
+    },
+    {
+      "name": "peripheral vegetation installed",
+      "pass": true
+    },
+    {
+      "name": "weather audio remains inactive after blurred update",
+      "pass": true
+    },
+    {
+      "name": "stormControls does not break held KeyW",
+      "pass": true
+    },
+    {
+      "name": "stormControls allows held KeyW release",
+      "pass": true
+    },
+    {
+      "name": "stormControls isolates fresh KeyW",
+      "pass": true
+    },
+    {
+      "name": "stormControls does not break held KeyF",
+      "pass": true
+    },
+    {
+      "name": "stormControls allows held KeyF release",
+      "pass": true
+    },
+    {
+      "name": "stormControls isolates fresh KeyF",
+      "pass": true
+    },
+    {
+      "name": "soundControls does not break held KeyW",
+      "pass": true
+    },
+    {
+      "name": "soundControls allows held KeyW release",
+      "pass": true
+    },
+    {
+      "name": "soundControls isolates fresh KeyW",
+      "pass": true
+    },
+    {
+      "name": "soundControls does not break held KeyF",
+      "pass": true
+    },
+    {
+      "name": "soundControls allows held KeyF release",
+      "pass": true
+    },
+    {
+      "name": "soundControls isolates fresh KeyF",
+      "pass": true
+    },
+    {
+      "name": "diagnostic state still preserved",
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "settings": {
+    "version": "storm-v3",
+    "weather": "降雨 · 湿表面",
+    "weatherIndex": 2,
+    "style": 0,
+    "source": "browser WebGL realtime — not Unreal Engine",
+    "renderFrames": 2618,
+    "p50_ms": 0.20000028610229492,
+    "p95_ms": 0.40000009536743164,
+    "p99_ms": 0.5,
+    "max_ms": 2.1999998092651367,
+    "samples": 2497,
+    "triangles": 29100,
+    "textureErrors": [],
+    "materialBindings": [
+      "concrete",
+      "plaster",
+      "roof",
+      "wood",
+      "bark"
+    ],
+    "loadedHDR": true,
+    "weapon": {
+      "loaded": true,
+      "asset": "Rotuma MP5 / gloved first-person arms",
+      "license": "CC-BY-4.0",
+      "meshes": 4,
+      "triangles": 29100,
+      "skinnedMeshes": 0,
+      "sleeve": {
+        "bakedHeldPose": true,
+        "retainedSourceFabric": true,
+        "proceduralExtension": false,
+        "rearSleeveVerticesAdjusted": 310,
+        "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+      },
+      "textureMaps": 12,
+      "uniformDisplayScale": 1.7,
+      "sourceMuzzle": [
+        0,
+        0.0987987294793129,
+        -0.6800000667572021
+      ],
+      "fittedMuzzle": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ],
+      "aim": 0,
+      "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+    },
+    "actors": {
+      "loaded": true,
+      "count": 6,
+      "license": "CC-BY-4.0",
+      "author": "DanlyVostok",
+      "trianglesEach": 25887,
+      "uniformFit": 0.9774769696424419,
+      "height": 1.8,
+      "animation": "authored bent-arm grip pose; visual leg swing follows original pivots, no imported animation clips",
+      "combat": "original six anchors and invisible hit proxies unchanged"
+    },
+    "storm": {
+      "engine": "Three.js r160 / WebGL2 rasterization",
+      "lumen": false,
+      "rayTracing": false,
+      "nanite": false,
+      "ground": "Poly Haven asphalt_02, 2K albedo / OpenGL normal / roughness",
+      "sky": "Poly Haven approaching_storm, HDR photograph + moving procedural density",
+      "interiors": "parallax room shading behind glazing, decorative non-enterable buildings",
+      "lightning": "bounded slow single events; reduced-flash switch disables bolt and light pulse",
+      "weaponAudio": "preserved CC0 recorded AR-15/M4 clips; not an SMG field recording",
+      "environmentAudio": "independently synthesized rain/wind/thunder, not field recordings",
+      "elapsed": 43.51666666666548,
+      "flashes": 1,
+      "flash": 2.818461875471159e-14,
+      "reducedFlash": false,
+      "post": true,
+      "interiorLights": 10,
+      "practicalLights": 4,
+      "grassTufts": 1600,
+      "fernClusters": 8,
+      "ambientAudio": {
+        "method": "synthesized noise, not a field recording",
+        "context": "locked",
+        "failed": false,
+        "active": false,
+        "focused": true,
+        "effectiveGain": 0,
+        "pending": 0,
+        "thunderCount": 0
+      }
+    },
+    "elapsed": 8640.900000095367,
+    "features": [
+      "2K scanned PBR asphalt",
+      "storm HDR image based lighting",
+      "realtime shadow maps",
+      "SSAO",
+      "masked planar water reflection and rain rings",
+      "photographic storm sky and moving cloud layer",
+      "warm parallax interiors and practical lights",
+      "lightning with reduced-flash control",
+      "wind vegetation",
+      "optional bloom and film grade"
+    ]
+  },
+  "viewport": [
+    1920,
+    1080
+  ],
+  "canvas": [
+    1920,
+    1080
+  ],
+  "buildHashes": {
+    "index.html": "10144aa012a28edeb1054ff10ace927ef89ed9f5a2133c124cd2f93dd48d2404",
+    "world.js": "7c2171874164e9211c8c5f879ca91f46f595eb7a0830ca6c14a5292b5eab3673",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "b3f8b24c013cde14dcfeeab823aedc490257f1d9da0a27ea65773e1d772e3ab2",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "7534f47d942989f5e53db16b158423ba1020aaead62b5f0d0fb6ab0d31773966",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "e20904133ca27589a0e9326c2f464e622c105a581f7c11c334c6d66500180101",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "cb3ef4df0a23e93a75b309fd31cb67a6ca2e329338ef8441c19e50ced30e0179",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f90f043e85a6eb05f119cd883ce0ace1dc3d0343467ebbc174cf7722abc39e13",
+    "serve.mjs": "4b2d69a672fa2a6488253ed7af96e3183a1e7ab7a52afd6abb2d6f7912235753"
+  }
+}

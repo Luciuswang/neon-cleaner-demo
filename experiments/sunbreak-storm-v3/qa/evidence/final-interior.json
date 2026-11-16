@@ -1,0 +1,487 @@
+{
+  "date": "2026-11-16T11:46:37.017Z",
+  "capture_method": "browser-webgl-canvas",
+  "name": "final-interior",
+  "qa": {
+    "state": "menu",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 100,
+    "ammo": {
+      "mag": 30,
+      "reserve": 90
+    },
+    "kills": 0,
+    "camera": {
+      "x": -8.7,
+      "y": 2.25,
+      "z": -9.5,
+      "yaw": 0.46,
+      "pitch": 0.03
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -8,
+        "z": -10
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 9,
+        "z": -9
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -13,
+        "z": 3
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 14,
+        "z": 3
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -3,
+        "z": -20
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 9,
+        "z": -13
+      }
+    ]
+  },
+  "render": {
+    "version": "storm-v3",
+    "weather": "降雨 · 湿表面",
+    "weatherIndex": 2,
+    "style": 0,
+    "source": "browser WebGL realtime — not Unreal Engine",
+    "renderFrames": 5,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "p99_ms": 0,
+    "max_ms": 0,
+    "samples": 0,
+    "triangles": 29100,
+    "textureErrors": [],
+    "materialBindings": [
+      "concrete",
+      "plaster",
+      "roof",
+      "wood",
+      "bark"
+    ],
+    "loadedHDR": true,
+    "weapon": {
+      "loaded": true,
+      "asset": "Rotuma MP5 / gloved first-person arms",
+      "license": "CC-BY-4.0",
+      "meshes": 4,
+      "triangles": 29100,
+      "skinnedMeshes": 0,
+      "sleeve": {
+        "bakedHeldPose": true,
+        "retainedSourceFabric": true,
+        "proceduralExtension": false,
+        "rearSleeveVerticesAdjusted": 310,
+        "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+      },
+      "textureMaps": 12,
+      "uniformDisplayScale": 1.7,
+      "sourceMuzzle": [
+        0,
+        0.0987987294793129,
+        -0.6800000667572021
+      ],
+      "fittedMuzzle": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ],
+      "aim": 0,
+      "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+    },
+    "actors": {
+      "loaded": true,
+      "count": 6,
+      "license": "CC-BY-4.0",
+      "author": "DanlyVostok",
+      "trianglesEach": 25887,
+      "uniformFit": 0.9774769696424419,
+      "height": 1.8,
+      "animation": "authored bent-arm grip pose; visual leg swing follows original pivots, no imported animation clips",
+      "combat": "original six anchors and invisible hit proxies unchanged"
+    },
+    "storm": {
+      "engine": "Three.js r160 / WebGL2 rasterization",
+      "lumen": false,
+      "rayTracing": false,
+      "nanite": false,
+      "ground": "Poly Haven asphalt_02, 2K albedo / OpenGL normal / roughness",
+      "sky": "Poly Haven approaching_storm, HDR photograph + moving procedural density",
+      "interiors": "parallax room shading behind glazing, decorative non-enterable buildings",
+      "lightning": "bounded slow single events; reduced-flash switch disables bolt and light pulse",
+      "weaponAudio": "preserved CC0 recorded AR-15/M4 clips; not an SMG field recording",
+      "environmentAudio": "independently synthesized rain/wind/thunder, not field recordings",
+      "elapsed": 0,
+      "flashes": 0,
+      "flash": 7.735805379496399e-157,
+      "reducedFlash": false,
+      "post": true,
+      "interiorLights": 10,
+      "practicalLights": 4,
+      "grassTufts": 1600,
+      "fernClusters": 8,
+      "ambientAudio": {
+        "method": "synthesized noise, not a field recording",
+        "context": "locked",
+        "failed": false,
+        "active": false,
+        "focused": true,
+        "effectiveGain": 0,
+        "pending": 0,
+        "thunderCount": 0
+      }
+    },
+    "elapsed": 6219.800000190735,
+    "features": [
+      "2K scanned PBR asphalt",
+      "storm HDR image based lighting",
+      "realtime shadow maps",
+      "SSAO",
+      "masked planar water reflection and rain rings",
+      "photographic storm sky and moving cloud layer",
+      "warm parallax interiors and practical lights",
+      "lightning with reduced-flash control",
+      "wind vegetation",
+      "optional bloom and film grade"
+    ]
+  },
+  "viewport": [
+    1920,
+    1080
+  ],
+  "canvas": [
+    1920,
+    1080
+  ],
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "pixel_check": {
+    "samples": 5814,
+    "minLuma": 0,
+    "maxLuma": 250.345,
+    "meanLuma": 77.9656486068112,
+    "nonBlackRatio": 0.9525283797729618,
+    "colorBins": 178,
+    "nonblank": true
+  },
+  "ui_bounds": [
+    {
+      "id": "bStyle",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bWeather",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bPause",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bPresOff",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "ammo",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "kills",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "soundControls",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  ],
+  "colliders": [
+    {
+      "min": [
+        -17.5,
+        9.536743172944284e-8,
+        -19.5
+      ],
+      "max": [
+        -8.5,
+        4.199999904632568,
+        -12.5
+      ]
+    },
+    {
+      "min": [
+        8,
+        9.536743172944284e-8,
+        -22
+      ],
+      "max": [
+        16,
+        5.199999904632568,
+        -14
+      ]
+    },
+    {
+      "min": [
+        -26.5,
+        4.7683715642676816e-8,
+        0.49999999999999867
+      ],
+      "max": [
+        -15.5,
+        4.599999952316284,
+        7.500000000000002
+      ]
+    },
+    {
+      "min": [
+        16,
+        0,
+        1
+      ],
+      "max": [
+        24,
+        4,
+        11
+      ]
+    },
+    {
+      "min": [
+        -9.5,
+        4.768371586472142e-8,
+        -30
+      ],
+      "max": [
+        1.5,
+        3.599999952316284,
+        -24
+      ]
+    },
+    {
+      "min": [
+        -23,
+        0,
+        16.499999952316283
+      ],
+      "max": [
+        23,
+        0.5,
+        19.900000047683715
+      ]
+    },
+    {
+      "min": [
+        -6.884051931477227,
+        2.384185793236071e-8,
+        1.1159480685227727
+      ],
+      "max": [
+        -5.115948068522773,
+        1.299999976158142,
+        2.8840519314772273
+      ]
+    },
+    {
+      "min": [
+        4.061857478159791,
+        2.384185793236071e-8,
+        -4.938142521840209
+      ],
+      "max": [
+        5.938142521840209,
+        1.299999976158142,
+        -3.0618574781597907
+      ]
+    },
+    {
+      "min": [
+        6.982243924629068,
+        2.384185793236071e-8,
+        6.982243924629068
+      ],
+      "max": [
+        9.017756075370931,
+        1.299999976158142,
+        9.017756075370931
+      ]
+    },
+    {
+      "min": [
+        -15.060547100185016,
+        2.384185793236071e-8,
+        8.939452899814984
+      ],
+      "max": [
+        -12.939452899814984,
+        1.299999976158142,
+        11.060547100185016
+      ]
+    },
+    {
+      "min": [
+        -0.75,
+        2.384185793236071e-8,
+        -12.75
+      ],
+      "max": [
+        0.75,
+        1.299999976158142,
+        -11.25
+      ]
+    },
+    {
+      "min": [
+        13.017140497766349,
+        2.384185793236071e-8,
+        -6.9828595022336515
+      ],
+      "max": [
+        14.982859502233651,
+        1.299999976158142,
+        -5.0171404977663485
+      ]
+    },
+    {
+      "min": [
+        -9.349966424703599,
+        -0.056520383525639775,
+        8.587582749128341
+      ],
+      "max": [
+        -8.020736050605773,
+        5.34506254196167,
+        9.335301357507706
+      ]
+    },
+    {
+      "min": [
+        9.65002520084381,
+        -0.055651378072798255,
+        11.587262970209121
+      ],
+      "max": [
+        10.980539906024934,
+        6.133495140075683,
+        12.335305231809617
+      ]
+    },
+    {
+      "min": [
+        -18.34997104406357,
+        -0.0560548665933311,
+        -6.412592548131943
+      ],
+      "max": [
+        -17.02003492116928,
+        5.738923835754394,
+        -5.664696496725083
+      ]
+    },
+    {
+      "min": [
+        17.65003628730774,
+        -0.05678104953840375,
+        -3.4123153567314146
+      ],
+      "max": [
+        18.97885434627533,
+        5.148439693450928,
+        -2.664699923992157
+      ]
+    },
+    {
+      "min": [
+        1.6500269889831543,
+        -0.05584616977721453,
+        13.587331813573837
+      ],
+      "max": [
+        2.980266261100769,
+        5.936127948760986,
+        14.33530439734459
+      ]
+    },
+    {
+      "min": [
+        -24.349976378679276,
+        -0.05546914571896196,
+        13.587200087308883
+      ],
+      "max": [
+        -23.019210946559905,
+        6.3310120582580565,
+        14.335305976867676
+      ]
+    }
+  ],
+  "buildHashes": {
+    "index.html": "10144aa012a28edeb1054ff10ace927ef89ed9f5a2133c124cd2f93dd48d2404",
+    "world.js": "7c2171874164e9211c8c5f879ca91f46f595eb7a0830ca6c14a5292b5eab3673",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "b3f8b24c013cde14dcfeeab823aedc490257f1d9da0a27ea65773e1d772e3ab2",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "7534f47d942989f5e53db16b158423ba1020aaead62b5f0d0fb6ab0d31773966",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "e20904133ca27589a0e9326c2f464e622c105a581f7c11c334c6d66500180101",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "cb3ef4df0a23e93a75b309fd31cb67a6ca2e329338ef8441c19e50ced30e0179",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f90f043e85a6eb05f119cd883ce0ace1dc3d0343467ebbc174cf7722abc39e13",
+    "serve.mjs": "4b2d69a672fa2a6488253ed7af96e3183a1e7ab7a52afd6abb2d6f7912235753"
+  }
+}
