@@ -1,7 +1,7 @@
 # Task Packet: SUNBREAK enterable timber house
 
 - Task ID: sunbreak-timber-house-2026-11-16
-- State: READY_FOR_CHECKPOINT; report/email delivery pending
+- State: REPORT_PREPARED; production upload verified, email delivery pending
 - Owner: main integrator, sole implementation/release writer
 - Created: 2026-11-16
 - Branch: codex/character-continuity-pipeline
@@ -53,7 +53,7 @@ Prior Sites creation terminal backfill error remains; no speculative duplicate.
 - [x] Current-source static/unit and explicit browser integration checks,
   actual canvas evidence plus independent bounded art/functional review.
 - [x] Static build includes all runtime modules and preserved comparison pages.
-- [ ] Git/Git LFS push acknowledgement for all three demo directories.
+- [x] Git/Git LFS push acknowledgement for all three demo directories.
 - [ ] Daily report sourced from all-origin current-day dossier and actual QA;
   email sent once to self after successful upload; no localhost-as-online claim.
 
@@ -77,6 +77,11 @@ Prior Sites creation terminal backfill error remains; no speculative duplicate.
   experiments/sunbreak-storm-v3/qa/house-release-report.json.
 - Actual verification is synthetic integration plus representative frames and
   one bounded combat sample, not a full human playthrough/continuous review.
-- Pending:verified public Git/LFS checkpoint of all three demo paths; all-origin
-  daily evidence collection; report upload and one confirmed email to self.
+- Production upload:verified cb7181359e24e47da2486cfb36c7c0464debf939 on
+  origin/codex/character-continuity-pipeline, with normal LFS pre-push included.
+  All three experiment directories present; no v1/v2 changes from02f7476.
+- Daily evidence:all12 origin branches fetched at2026-11-16T12:46:10Z;
+  16 unique today commits =5 production+11 coordination. Report prepared at
+  docs/reports/sunbreak-daily-2026-11-16.md. Auxiliary undated worklogs disclosed.
+- Pending:report checkpoint acknowledgement and one confirmed email to self.
 - Rollback: earlier storm version remains at02f7476; v1/v2 untouched.
