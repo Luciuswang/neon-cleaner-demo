@@ -633,3 +633,7 @@ change remains local. Cinematic QA remains REWORK and AI video BLOCKED.
 ## Sync note - 2026-11-16T12:41:30.7792501+08:00
 
 Preserved the current SUNBREAK browser FPS under experiments/sunbreak-fable52 with exact original game SHA256, run instructions, briefs and prior QA record. Snapshot identity and syntax PASS; art remains REVISE. Raw model streams/account diagnostics excluded. Isolated code-only checkpoint: no UE/private asset changes or portability claim; UE restoration remains unverified. See docs/tasks/sunbreak-fable52-snapshot-2026-11-16.md. Next: retain baseline, then agree a visual reference before any requested art revision.
+
+## Sync note - 2026-11-16T14:43:17.3256442+08:00
+
+SUNBREAK realistic v2 saved separately under experiments/sunbreak-realistic-v2; original preserved. Frozen-build engineering PASS (65 release checks, 19 original smoke, 217 runtime invariants). 1080p rain automated combat P95/P99 about 16.8 ms, max 17.2 ms on RTX 5070. Independent playable-PBR art CONDITIONAL PASS; reference realism remains REWORK, primarily weapon/hands and enemy assets. Next: licensed production-quality viewmodel and character render assets, preserving gameplay contracts, then repeat current-build engineering/art QA. See docs/tasks/sunbreak-realistic-v2-2026-11-16.md. Isolated browser/public-CC0 checkpoint only: pre-existing private-vault changes preserved; no UE/private portability or cinematic/AI-video acceptance claim.

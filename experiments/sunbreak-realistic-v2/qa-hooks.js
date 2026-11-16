@@ -1,0 +1,56 @@
+// Local diagnostic route: does not change normal-play combat rules.
+const qaParams=new URLSearchParams(location.search);
+const captureName=qaParams.get('capture');
+if(captureName){
+ setPres(true);
+ const views={hero:[0,1.7,12,-.12,-.06],courtyard:[-1,1.7,3,-.45,-.03],wall:[-7,1.7,-10,.56,.06],ground:[0,1.7,10,0,-.65],weapon:[0,1.7,12,-.12,-.19],wide:[1,3.8,15,0,-.12]};
+ const v=views[qaParams.get('view')||'hero'];if(v){pos.set(v[0],v[1],v[2]);S.yaw=v[3];S.pitch=v[4]}
+ visual.setWeather(Number(qaParams.get('weather')||0));
+ if(qaParams.get('clean')==='1')document.getElementById('hud').style.display='none';
+ setTimeout(async()=>{
+  const pixels=new Uint8Array(cv.width*cv.height*4);gl.readPixels(0,0,cv.width,cv.height,gl.RGBA,gl.UNSIGNED_BYTE,pixels);
+  let minLuma=255,maxLuma=0,sum=0,nonBlack=0,samples=0;const colorBins=new Set();
+  for(let y=0;y<cv.height;y+=19)for(let x=0;x<cv.width;x+=19){const i=(y*cv.width+x)*4,r=pixels[i],g=pixels[i+1],b=pixels[i+2],l=r*.2126+g*.7152+b*.0722;minLuma=Math.min(minLuma,l);maxLuma=Math.max(maxLuma,l);sum+=l;nonBlack+=l>8?1:0;samples++;colorBins.add((r>>4)*256+(g>>4)*16+(b>>4))}
+  const rect=id=>{const e=document.getElementById(id),r=e.getBoundingClientRect();return{id,visible:getComputedStyle(e).display!=='none',x:r.x,y:r.y,width:r.width,height:r.height}};
+  const metadata={date:new Date().toISOString(),capture_method:'browser-webgl-canvas',name:captureName,qa:window.demoQA.snapshot(),render:visual.info(),viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,pixel_check:{samples,minLuma,maxLuma,meanLuma:sum/samples,nonBlackRatio:nonBlack/samples,colorBins:colorBins.size,nonblank:colorBins.size>24&&maxLuma-minLuma>45},ui_bounds:['bStyle','bWeather','bPause','bPresOff','ammo','kills'].map(rect),colliders:colliders.map(b=>({min:b.min.toArray(),max:b.max.toArray()}))};
+  const r=await fetch('/qa/capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:captureName,png:cv.toDataURL('image/png'),metadata})});
+  document.body.dataset.capture=r.ok?'saved':'failed';
+ },2500);
+}
+document.body.dataset.version='realistic-v2';
+setInterval(()=>{document.body.dataset.render=JSON.stringify(visual.info())},500);
+if(location.pathname==='/test'){
+ const saveResults=()=>{
+  if(!window.sunbreakRuntimeQA?.result||!document.getElementById('smoke-result'))return;
+  observer.disconnect();
+  const report={date:new Date().toISOString(),method:'actual-browser-synthetic-integration',smoke:JSON.parse(document.getElementById('smoke-result').textContent),runtime:window.sunbreakRuntimeQA.result};
+  fetch('/qa/report',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:'runtime-current',report})}).then(r=>{document.body.dataset.report=r.ok?'saved':'failed'});
+ };
+ const observer=new MutationObserver(saveResults);observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+if(qaParams.get('bench')==='1'){
+ const combat=qaParams.get('combat')==='1';let restarts=0;
+ if(combat){setPres(false);resetGame();S.state='play';hideMenu()}
+ visual.setWeather(Number(qaParams.get('weather')||0));
+ const raw=[];let previous=0,origin=0,count=0;
+ const sample=now=>{
+  if(!previous){previous=now;requestAnimationFrame(sample);return}
+  const dt=now-previous;previous=now;
+  if(count++<180){requestAnimationFrame(sample);return}
+  if(!origin)origin=now-dt;
+  if(combat){
+   const phase=Math.floor((now-origin)/2200)%4;
+   keys.KeyW=phase===0;keys.KeyA=phase===1;keys.KeyS=phase===2;keys.KeyD=phase===3;keys.KeyF=true;
+   keys.ArrowLeft=phase===1;keys.ArrowRight=phase===3;
+   if(S.mag===0&&S.reload===0)reload();
+   if(S.state==='dead'||S.state==='win'){restarts++;resetGame();S.state='play';over.classList.add('hide');hideMenu()}
+  }
+  raw.push({elapsed_ms:now-origin,frame_ms:dt,weather:visual.info().weatherIndex,state:S.state,health:S.hp,mag:S.mag,kills:S.kills});
+  if(now-origin<30000){requestAnimationFrame(sample);return}
+  const sorted=raw.map(s=>s.frame_ms).sort((a,b)=>a-b),pct=p=>sorted[Math.min(sorted.length-1,Math.floor(sorted.length*p))];
+  if(combat){clearKeys();S.state='pause';showMenu('继续作战')}
+  const report={date:new Date().toISOString(),method:'browser-requestAnimationFrame-realtime',warmup_frames:180,duration_ms:raw.at(-1).elapsed_ms,viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,settings:visual.info(),p50_ms:pct(.5),p95_ms:pct(.95),p99_ms:pct(.99),max_ms:sorted.at(-1),hitches_over_50ms:raw.filter(s=>s.frame_ms>50).length,mode:combat?'scripted real combat via original movement/fire/reload/AI, auto-restart after outcomes':'normal animated menu; no combat simulation',restarts,raw};
+  fetch('/qa/report',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:'performance-current',report})}).then(r=>{document.body.dataset.benchmark=r.ok?'saved':'failed'});
+ };
+ requestAnimationFrame(sample);
+}

@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "artifact": "weapon.js",
+  "source_sha256": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
+  "latest_revision": {
+    "date": "2026-11-16",
+    "producer": "Codex weapon producer on Gateway",
+    "input_evidence_reviewed": [
+      "experiments/sunbreak-realistic-v2/qa/captures/rev6-courtyard.png"
+    ],
+    "scope": "Second bounded weapon-only art/proportion revision; no baseline, gameplay, world lighting, tests, docs, git or sync changes.",
+    "allowed_write_set": [
+      "experiments/sunbreak-realistic-v2/weapon.js",
+      "experiments/sunbreak-realistic-v2/weapon-provenance.json"
+    ],
+    "validation": {
+      "syntax": "PASS: Get-Content -Raw -LiteralPath experiments/sunbreak-realistic-v2/weapon.js | node --input-type=module --check",
+      "visual": "NOT CLAIMED: rev6-courtyard.png was reviewed as input only; independent current-build art QA follows.",
+      "muzzle_coordinate": "Preserved by retaining root z scale 1.0, no root x offset/rotation, and y compensation root.position.y = 0.005 * (1 - root.scale.y)."
+    }
+  },
+  "producer": {
+    "tool": "Claude CLI",
+    "requested_model": "claude-fable-5-2",
+    "reported_models": ["claude-fable-5-2", "claude-haiku-4-5"],
+    "effort": "low",
+    "tools": [],
+    "session_persistence": false,
+    "output_token_cap_environment": 14000,
+    "budget_usd_per_call": 4,
+    "attempts": [
+      {"reported_cost_usd": 0.57687075, "outcome": "Incomplete trailing source fragment; rejected without application"},
+      {"reported_cost_usd": 0.25044925, "outcome": "Complete source used as production candidate"}
+    ],
+    "reported_total_cost_usd": 0.82732,
+    "cost_note": "CLI-reported cost, not independently verified billing. Haiku also appeared in CLI model usage; Fable was the requested producer.",
+    "raw_output": "Kept only in operating-system temporary storage; no reasoning, streams, account configuration or session identifiers copied into this repository"
+  },
+  "integration_corrections_by": "Codex",
+  "corrections": [
+    "Preserve nonvisual gun children and original shared resources",
+    "Replace stacked receiver blocks with bevelled receiver side profiles; shorten and shape stock",
+    "Build actual open handguard vents and hollow ring-and-strut muzzle device",
+    "Open sight frame and add restrained transparent lens and separate red dot",
+    "Correct roughness map multiplication, texture filtering and material names",
+    "Replace finger/forearm orientation approximations with endpoint-aligned tapered geometry",
+    "After integrated rev2-hero.png review: remove low-frequency marbling, use subtle fine machining and subdued fabric weave, set receiver roughness to approximately 0.55-0.57, narrow visual root while preserving bore coordinates",
+    "After actual rev3-hero.png and rev4-hero.png review: reduce foreground dominance by changing visual root scale to 0.62 x 0.78 x 1.0 with bore-y compensation while keeping muzzle endpoint z unchanged",
+    "Shorten and slim the near-camera stock/buttpad/buffer tube; reduce pistol grip, magazine and visible hands/forearms so the carbine sits lower-right instead of filling the foreground",
+    "Rework receiver and handguard into slimmer AR-carbine proportions with bevelled profiles, smaller rail teeth, darker vent recesses and reduced barrel/muzzle diameters",
+    "Retune material albedo/roughness/metalness so steel, receiver metal, matte polymer and glove materials separate under parent world lighting",
+    "After actual rev6-courtyard.png review: remove the visible square stock/buttpad entirely from the first-person frame and leave only a short receiver extension/buffer detail",
+    "Extend the left support sleeve downward and toward the near-camera side so its capped end should exit the bottom of the frame instead of floating inside the image",
+    "Increase both hands modestly after rev6 showed them undersized relative to the weapon",
+    "Reduce blue-tinted slab read by shifting receiver/barrel/polymer colors toward neutral worn gunmetal and adding explicit local bevel strips, pins, ports and edge highlights instead of relying on broad random texture variation"
+  ],
+  "assets": {
+    "geometry": "Original procedural game viewmodel; no external model or branded design imported",
+    "textures": "Seeded local procedural DataTextures; sRGB color maps, linear roughness and normal maps",
+    "external_downloads": "Three.js 0.160.0 was loaded transiently in memory for validation; not added to the repository"
+  },
+  "interface": {
+    "factory": "buildWeapon({THREE,gun,gscene})",
+    "synchronous": true,
+    "returns": ["update(dt,state)", "dispose()"],
+    "update_state": "Accepts {...S,presentation,live}; baseline owns animation and update is intentionally a no-op",
+    "init_point": "After old weapon visual creation and after baseline muzzle pointlight is attached to gun",
+    "parent_transform": "Unchanged; baseline owns position, rotation and 0.78 scale",
+    "muzzle_gun_local": [0, 0.005, -1.85],
+    "lighting": "Uses parent scene lights/HDR environment; no lighting or environment changes"
+  },
+  "validation": {
+    "syntax": "PASS: Get-Content -Raw -LiteralPath experiments/sunbreak-realistic-v2/weapon.js | node --input-type=module --check",
+    "runtime": "NOT RERUN by this weapon-only revision; prior validation used real Three.js r160 without DOM",
+    "synchronous_factory": "PRESERVED: buildWeapon({THREE,gun,gscene}) still returns update(dt,state) and dispose() synchronously",
+    "parent_transform_and_pointlights": "PRESERVED BY SCOPE: revision edits only child visual geometry/materials and does not write parent transform or lights",
+    "muzzle_coordinate": "PRESERVED BY CONSTRUCTION: root z scale remains 1, root x offset/rotation remain 0, and root y offset compensates y scale for endpoint (0,0.005,-1.85)",
+    "finite_attributes": "NOT RERUN by this weapon-only revision",
+    "map_color_spaces_and_determinism": "PRESERVED BY SCOPE: seeded procedural DataTextures and color-space assignment unchanged",
+    "idempotent_disposal_and_shared_resource_preservation": "PRESERVED BY SCOPE: disposal/resource ownership structure unchanged",
+    "mesh_count": "NOT RERUN",
+    "geometry_vertices": "NOT RERUN",
+    "triangles": "NOT RERUN",
+    "texture_count": 31,
+    "receiver_roughness_map_range": [0.5450980392156862, 0.5725490196078431],
+    "rendered_review": "Reviewed integrated qa/captures/rev6-courtyard.png as input. Corrected observed blue slab-like receiver, square foreground stock, small hands and floating capped left sleeve. Revised build awaits parent rendered QA; no final visual PASS claimed.",
+    "performance": "Mesh count is structural evidence only; actual renderer draw calls and frame times require parent runtime measurement"
+  },
+  "ownership": "Only weapon.js and weapon-provenance.json written. No git, shared files, scene lighting, combat or camera changes. Parent owns lease and final integration. Worker edits complete; ownership released to parent."
+}

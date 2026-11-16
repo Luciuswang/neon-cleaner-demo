@@ -1,0 +1,433 @@
+{
+  "schema": "sunbreak-current-build-qa-v1",
+  "date": "2026-11-16T06:37:44.869Z",
+  "engineering": "PASS",
+  "visual": "INDEPENDENT_REVIEW_REQUIRED",
+  "sourceHashes": {
+    "index.html": "52fef5c3484e3f37bdb064d8ce26b90bd333b7e6a051421f0bed4b9ced0ac206",
+    "world.js": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621",
+    "weapon.js": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
+    "qa-hooks.js": "2cbae8e12969e9dc16cd28523ffd5af2bcd7a32a9eff0941c2036a4a77703573",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0"
+  },
+  "checks": [
+    {
+      "name": "baseline preserved",
+      "pass": true
+    },
+    {
+      "name": "static audit and mutation self-tests",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "pass": true
+    },
+    {
+      "name": "asset integrity assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "pass": true
+    },
+    {
+      "name": "final-hero same source build",
+      "pass": true
+    },
+    {
+      "name": "final-hero valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-hero actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 0.0722,
+        "maxLuma": 218.50140000000002,
+        "meanLuma": 90.15957344341209,
+        "nonBlackRatio": 0.9857241142070864,
+        "colorBins": 170,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-hero assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-hero HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard same source build",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 0.0722,
+        "maxLuma": 232.1404,
+        "meanLuma": 99.37873388372856,
+        "nonBlackRatio": 0.9920880632954936,
+        "colorBins": 172,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-courtyard assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-courtyard HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-wall same source build",
+      "pass": true
+    },
+    {
+      "name": "final-wall valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-wall actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 0.0722,
+        "maxLuma": 218.50140000000002,
+        "meanLuma": 86.15708503611951,
+        "nonBlackRatio": 0.9712762297901617,
+        "colorBins": 153,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-wall assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-wall HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-ground same source build",
+      "pass": true
+    },
+    {
+      "name": "final-ground valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-ground actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 2.6470000000000002,
+        "maxLuma": 201.8068,
+        "meanLuma": 50.42765507395898,
+        "nonBlackRatio": 0.998624011007912,
+        "colorBins": 75,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-ground assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-ground HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-weapon same source build",
+      "pass": true
+    },
+    {
+      "name": "final-weapon valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-weapon actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 0,
+        "maxLuma": 216.706,
+        "meanLuma": 82.28004877880983,
+        "nonBlackRatio": 0.9900240798073615,
+        "colorBins": 164,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-weapon assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-weapon HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-rain same source build",
+      "pass": true
+    },
+    {
+      "name": "final-rain valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-rain actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 0.0722,
+        "maxLuma": 223.0624,
+        "meanLuma": 95.23119360165087,
+        "nonBlackRatio": 0.9858961128310973,
+        "colorBins": 105,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-rain assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-rain HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-overcast same source build",
+      "pass": true
+    },
+    {
+      "name": "final-overcast valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-overcast actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 5814,
+        "minLuma": 0.0722,
+        "maxLuma": 222.9902,
+        "meanLuma": 94.18466990024045,
+        "nonBlackRatio": 0.9865841073271414,
+        "colorBins": 109,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-overcast assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-overcast HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "final-mobile same source build",
+      "pass": true
+    },
+    {
+      "name": "final-mobile valid PNG header",
+      "pass": true
+    },
+    {
+      "name": "final-mobile actual nonblank canvas",
+      "pass": true,
+      "detail": {
+        "samples": 945,
+        "minLuma": 0,
+        "maxLuma": 219.4292,
+        "meanLuma": 96.04579809523801,
+        "nonBlackRatio": 0.9957671957671957,
+        "colorBins": 92,
+        "nonblank": true
+      }
+    },
+    {
+      "name": "final-mobile assets loaded",
+      "pass": true
+    },
+    {
+      "name": "final-mobile HUD stays in viewport",
+      "pass": true
+    },
+    {
+      "name": "runtime-current same source build",
+      "pass": true
+    },
+    {
+      "name": "original smoke 19/19",
+      "pass": true
+    },
+    {
+      "name": "runtime invariants",
+      "pass": true,
+      "detail": {
+        "checks": 217,
+        "failed": []
+      }
+    },
+    {
+      "name": "performance-current same source build",
+      "pass": true
+    },
+    {
+      "name": "1080p real combat >=30 seconds",
+      "pass": true
+    },
+    {
+      "name": "performance values derived from all samples",
+      "pass": true
+    },
+    {
+      "name": "combat frame pacing",
+      "pass": true
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "qa/evidence/final-hero.json",
+      "sha256": "1e603ad778f5a4be7e3fc0f3455e81009d9545468e5f671f42f1f0291aa2706a"
+    },
+    {
+      "path": "qa/evidence/final-hero.png",
+      "sha256": "f3f1b9cf450c686634d5195df32ec8a74f475ca1387c556a3e465d06563b569f"
+    },
+    {
+      "path": "qa/evidence/final-courtyard.json",
+      "sha256": "3606fbf7e15fac4ac145e809983d552c71bc44e6b8f437ab753513aef7545c7c"
+    },
+    {
+      "path": "qa/evidence/final-courtyard.png",
+      "sha256": "d178460a657cf13c69cab645457f7f920031901904c917ea1f57b09fbd2c4c61"
+    },
+    {
+      "path": "qa/evidence/final-wall.json",
+      "sha256": "f85dba3a58218709558a032d061cbb1e367f6470ddab94f41b01d0c877505149"
+    },
+    {
+      "path": "qa/evidence/final-wall.png",
+      "sha256": "e67db227195556fd1fca3e61ba33c8fc56c837f3efac5a5ccbe4f95caf10b51f"
+    },
+    {
+      "path": "qa/evidence/final-ground.json",
+      "sha256": "79f72d62e303d653db5cd83d1806cbcc736b16bc3893d029749bdca2d72e634c"
+    },
+    {
+      "path": "qa/evidence/final-ground.png",
+      "sha256": "561a54c4e49fb371e09f6ebcbafa13aa4e78b1b912ca774bd2d81adf07d7d98b"
+    },
+    {
+      "path": "qa/evidence/final-weapon.json",
+      "sha256": "8e908b6dca61f5659b052198d2cf496b1abaa73be601749ced84c72bfae79187"
+    },
+    {
+      "path": "qa/evidence/final-weapon.png",
+      "sha256": "31658866786510caeca19cebccaac2484f76c250c2467c8780986a1571cd912f"
+    },
+    {
+      "path": "qa/evidence/final-rain.json",
+      "sha256": "b013bb971741bc3a45ecbbad639c867e48c27d8a8e13dd720aa1ec6515cc8076"
+    },
+    {
+      "path": "qa/evidence/final-rain.png",
+      "sha256": "60e858fcd250578ae9c04be307dcc5fccc87fe22ad1c6c323ccfcf985461e517"
+    },
+    {
+      "path": "qa/evidence/final-overcast.json",
+      "sha256": "abd29663885d3156b2d04eba1910ec0a1aed697914cac0796529dd0bc6f6ef7f"
+    },
+    {
+      "path": "qa/evidence/final-overcast.png",
+      "sha256": "6a829476811d788d801d60d4f6d19c50475ad0204465761276c947c2b723a8ab"
+    },
+    {
+      "path": "qa/evidence/final-mobile.json",
+      "sha256": "5f50520caffbca581bdfeee7979f3fb4aa48ca3221c046ec41e4533e9dae31d9"
+    },
+    {
+      "path": "qa/evidence/final-mobile.png",
+      "sha256": "9e94fd4cb7858da19e75ec3bc62b764acb01d5eac697a948f9591c7054f4c8e4"
+    },
+    {
+      "path": "qa/evidence/runtime-current.json",
+      "sha256": "26bd58a83aa91ca784b0cc908782d094f9a01c2bd77eff3c41d3e1c1cc1d6699"
+    },
+    {
+      "path": "qa/evidence/performance-current.json",
+      "sha256": "4837a843c82512583bb61deabd41017da781f39fa2b8d9162dd34c3783085126"
+    }
+  ],
+  "limitations": [
+    "Synthetic fixtures and scripted combat are not a manual full-playthrough.",
+    "Static/current PNG evidence does not prove full continuous subjective motion quality.",
+    "Engineering PASS cannot establish reference visual parity.",
+    "Original upper crates are visual-only above their bottom collision box.",
+    "Browser demo uses external pinned Three.js CDN; first load requires network.",
+    "UE/private vault restoration is outside this browser-only checkpoint."
+  ]
+}

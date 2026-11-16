@@ -1,0 +1,7 @@
+node_modules/
+*.log
+*-stream.jsonl
+run-result.json
+.env*
+qa/captures/
+assets/evidence/

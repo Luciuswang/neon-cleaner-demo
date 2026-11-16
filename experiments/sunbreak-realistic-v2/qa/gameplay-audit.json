@@ -1,0 +1,460 @@
+{
+  "schema": "sunbreak-static-gameplay-audit-v2",
+  "command": "node experiments/sunbreak-realistic-v2/qa/compare-gameplay.mjs --self-test",
+  "scope": "Static local source comparison only; no runtime, network, git or file writes",
+  "files": {
+    "baseline": {
+      "path": "experiments/sunbreak-fable52/index.html",
+      "sha256": "4b0de43249fd1c787554ea1735c84669b1df687fc9e03aba263571c48a101a85",
+      "pinnedMatch": true
+    },
+    "candidate": {
+      "path": "experiments/sunbreak-realistic-v2/index.html",
+      "sha256": "52fef5c3484e3f37bdb064d8ce26b90bd333b7e6a051421f0bed4b9ced0ac206"
+    },
+    "world": {
+      "path": "experiments/sunbreak-realistic-v2/world.js",
+      "sha256": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621"
+    },
+    "weapon": {
+      "present": true,
+      "sha256": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd",
+      "reviewed": false
+    }
+  },
+  "verdicts": {
+    "baselineSourcePreservation": "PASS",
+    "proxyContract": "PASS",
+    "directVisualTripwires": "CLEAR_WITH_LIMITATIONS",
+    "gameplayRuntime": "NOT_RUN",
+    "visualQuality": "NOT_REVIEWED"
+  },
+  "wholeModuleEqualAfterExactRenderExceptions": true,
+  "unexpectedDifference": null,
+  "acceptedRenderHooks": [
+    {
+      "name": "visual handle",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": "let THREE;\nlet visual=null;",
+      "baseline": "let THREE;"
+    },
+    {
+      "name": "capture buffer option",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": "powerPreference:'high-performance',preserveDrawingBuffer:true",
+      "baseline": "powerPreference:'high-performance'"
+    },
+    {
+      "name": "style notification",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": " if(visual)visual.setStyle(si);\n",
+      "baseline": ""
+    },
+    {
+      "name": "render/update hook",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": " if(visual)visual.update(dt,{S,pres,cam,gun,live});\n rnd.autoClear=true;\n if(visual)visual.render();else rnd.render(scene,cam);",
+      "baseline": " rnd.autoClear=true;rnd.render(scene,cam);"
+    },
+    {
+      "name": "world initialization/weather input",
+      "occurrences": 1,
+      "pass": true,
+      "candidate": "const {buildWorld}=await import('./world.js');\nvisual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies});\nvisual.setStyle(si);\ndocument.getElementById('bWeather').onclick=()=>visual.cycleWeather();\naddEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});\n",
+      "baseline": ""
+    }
+  ],
+  "functionChecks": [
+    {
+      "name": "tex",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "0d94119372e9d899f89239b760d71d0aab560904a58edd1cf9205edde0df280a",
+      "candidateSha256": "0d94119372e9d899f89239b760d71d0aab560904a58edd1cf9205edde0df280a",
+      "difference": null
+    },
+    {
+      "name": "noise",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "83a95fd2920964b4b2ba229b1226ffd8fd47d015b99685fb4bf171cff8f182f1",
+      "candidateSha256": "83a95fd2920964b4b2ba229b1226ffd8fd47d015b99685fb4bf171cff8f182f1",
+      "difference": null
+    },
+    {
+      "name": "solid",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "25dc6e4fa19c0a95e0c07cd501d85d3816fa7c1f7a9f161e57ae8d3d68d8f977",
+      "candidateSha256": "25dc6e4fa19c0a95e0c07cd501d85d3816fa7c1f7a9f161e57ae8d3d68d8f977",
+      "difference": null
+    },
+    {
+      "name": "house",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "3803f553302e7bcad1fe7aa556c8875d0e2bf0ca45df20c3f5dcf19dc5fd3049",
+      "candidateSha256": "3803f553302e7bcad1fe7aa556c8875d0e2bf0ca45df20c3f5dcf19dc5fd3049",
+      "difference": null
+    },
+    {
+      "name": "crate",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "02a494ede90de9c31e7553867f990b8501a1bc47ed98576ef6aa9a030a6af802",
+      "candidateSha256": "02a494ede90de9c31e7553867f990b8501a1bc47ed98576ef6aa9a030a6af802",
+      "difference": null
+    },
+    {
+      "name": "palm",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "7864aa5350469cf10359f88ff74c6737d4a767c92258458874941c53bdb66775",
+      "candidateSha256": "7864aa5350469cf10359f88ff74c6737d4a767c92258458874941c53bdb66775",
+      "difference": null
+    },
+    {
+      "name": "enemy",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "aa2b24ffc7434137d804a1ff37c606d3e5eecb5b5a042df758df02fb510f11e7",
+      "candidateSha256": "aa2b24ffc7434137d804a1ff37c606d3e5eecb5b5a042df758df02fb510f11e7",
+      "difference": null
+    },
+    {
+      "name": "applyStyle",
+      "rawEqual": false,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "5a18b2af473a9a27a4763d36ad5ad59d04a6d86e7edb0cc57555e7abf4ebd287",
+      "candidateSha256": "04a902deff972f642edbc9fa5656d5f9a9ab57d20d0cb03ab8151f05f33e4340",
+      "difference": {
+        "line": 16,
+        "baseline": ");mat.post.color.set(si?0xaeb6b8:0xd9cdb4);\n document.getElementById('styleName').textContent=P.n;\n document.querySelectorAll('.fill').forEach(f=>f.style.background=`linear-gradient(90deg,${P.ui},#ffffff)`);\n document.getElementById('cross').querySelectorAll('div').forEach(d=>d.style.background=P.ui",
+        "candidate": ");mat.post.color.set(si?0xaeb6b8:0xd9cdb4);\n document.getElementById('styleName').textContent=P.n;\n if(visual)visual.setStyle(si);\n document.querySelectorAll('.fill').forEach(f=>f.style.background=`linear-gradient(90deg,${P.ui},#ffffff)`);\n document.getElementById('cross').querySelectorAll('div').fo"
+      }
+    },
+    {
+      "name": "clearKeys",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "a7f18207e871ce6bcffb210b546d55df6cff537f2bd0d9d8a27d75ff71d2790c",
+      "candidateSha256": "a7f18207e871ce6bcffb210b546d55df6cff537f2bd0d9d8a27d75ff71d2790c",
+      "difference": null
+    },
+    {
+      "name": "lockReq",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "440295ae8683af722340fb825cc98f0da056a18e1c8a175a0b089be0e65e2522",
+      "candidateSha256": "440295ae8683af722340fb825cc98f0da056a18e1c8a175a0b089be0e65e2522",
+      "difference": null
+    },
+    {
+      "name": "look",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "f7debe6d65178c35760285d05c1b4cd6584a15dfd7a60bd74d9a8fbd09ddd95a",
+      "candidateSha256": "f7debe6d65178c35760285d05c1b4cd6584a15dfd7a60bd74d9a8fbd09ddd95a",
+      "difference": null
+    },
+    {
+      "name": "snd",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "67a6564889b1edcb3271b059a95c6331bc74538b62bca56fb1f820499d31ee85",
+      "candidateSha256": "67a6564889b1edcb3271b059a95c6331bc74538b62bca56fb1f820499d31ee85",
+      "difference": null
+    },
+    {
+      "name": "initAudio",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "cdedf8ac79dae10db3729a1789a653187031de8cd7a6d5c2a5e077c3ff293c59",
+      "candidateSha256": "cdedf8ac79dae10db3729a1789a653187031de8cd7a6d5c2a5e077c3ff293c59",
+      "difference": null
+    },
+    {
+      "name": "fire",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "e27bec3ec43b28d236be509d0694c3b371f44e5624b9fbbaaa84f8caf6cce056",
+      "candidateSha256": "e27bec3ec43b28d236be509d0694c3b371f44e5624b9fbbaaa84f8caf6cce056",
+      "difference": null
+    },
+    {
+      "name": "tracer",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "e5cd23e4a6d92fe21cc218ff5587add39776ff27ca97e5df089f573280809ac4",
+      "candidateSha256": "e5cd23e4a6d92fe21cc218ff5587add39776ff27ca97e5df089f573280809ac4",
+      "difference": null
+    },
+    {
+      "name": "reload",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "59a1b381b0f9e991708eb4fec15e11918a9ab5b7924b46489034a9788c5eef70",
+      "candidateSha256": "59a1b381b0f9e991708eb4fec15e11918a9ab5b7924b46489034a9788c5eef70",
+      "difference": null
+    },
+    {
+      "name": "finishReload",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "85f17c6de0cd6eacd3f99e8fc8d6e34d402228a27fb0f7a9124e49f9d901ab5e",
+      "candidateSha256": "85f17c6de0cd6eacd3f99e8fc8d6e34d402228a27fb0f7a9124e49f9d901ab5e",
+      "difference": null
+    },
+    {
+      "name": "updHUD",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "75561c900354472798d77d95a0901c3ed83f91f3d2be1d921625387a2781acd1",
+      "candidateSha256": "75561c900354472798d77d95a0901c3ed83f91f3d2be1d921625387a2781acd1",
+      "difference": null
+    },
+    {
+      "name": "showMenu",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "fc072130ec8194a1d7012c83606ca0d78efcfa7358c8b14aa3558c508bc2c418",
+      "candidateSha256": "fc072130ec8194a1d7012c83606ca0d78efcfa7358c8b14aa3558c508bc2c418",
+      "difference": null
+    },
+    {
+      "name": "hideMenu",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "056b79e506294e36c8ca53f29ea3e77eb5166ee48a76dd3ff184b36df491973f",
+      "candidateSha256": "056b79e506294e36c8ca53f29ea3e77eb5166ee48a76dd3ff184b36df491973f",
+      "difference": null
+    },
+    {
+      "name": "showOver",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "af2b224489750286484bfb466968e409eb95d6897365096e933e538d7905a5b2",
+      "candidateSha256": "af2b224489750286484bfb466968e409eb95d6897365096e933e538d7905a5b2",
+      "difference": null
+    },
+    {
+      "name": "toggleStyle",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "6a85a373f972b42cb7012fec1c52802493ca00c4efacad4da21b8930bc738ddb",
+      "candidateSha256": "6a85a373f972b42cb7012fec1c52802493ca00c4efacad4da21b8930bc738ddb",
+      "difference": null
+    },
+    {
+      "name": "togglePause",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "1abfe1e61c0b7da459269ca5375c67fd78a29c5a618be09cf25fd7d1efea695c",
+      "candidateSha256": "1abfe1e61c0b7da459269ca5375c67fd78a29c5a618be09cf25fd7d1efea695c",
+      "difference": null
+    },
+    {
+      "name": "setPres",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "641a97e9c1e48582f23fc02b70602c88959bcf4be5baa375a9891dd8a65ef418",
+      "candidateSha256": "641a97e9c1e48582f23fc02b70602c88959bcf4be5baa375a9891dd8a65ef418",
+      "difference": null
+    },
+    {
+      "name": "resetGame",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "95fcc0a3ec6c9466411a2b20064ab9c882c00b47634320d78069397496a1947c",
+      "candidateSha256": "95fcc0a3ec6c9466411a2b20064ab9c882c00b47634320d78069397496a1947c",
+      "difference": null
+    },
+    {
+      "name": "collide",
+      "rawEqual": true,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "6ad066ea78690e6ca68bccd13a9b98f18f18530377b2d80b90054e2b7d7f7142",
+      "candidateSha256": "6ad066ea78690e6ca68bccd13a9b98f18f18530377b2d80b90054e2b7d7f7142",
+      "difference": null
+    },
+    {
+      "name": "tick",
+      "rawEqual": false,
+      "equalAfterExactRenderExceptions": true,
+      "baselineSha256": "5852969bd95a6941225b735961e96f848411a120bddf4a40307e180b2c3b2a8d",
+      "candidateSha256": "aaddd34ddc15905c42651aa78a4a63ac1ec2427e58b46f1a209bb57996b5456f",
+      "difference": {
+        "line": 64,
+        "baseline": "ob*.5)*.01+rdip*.6,.1-S.aim*.1,Math.cos(bob)*.014-S.aim*.014+rdip*.32);\n gun.scale.setScalar(.78);\n rnd.autoClear=true;rnd.render(scene,cam);\n rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);\n rnd.autoClear=true;\n}",
+        "candidate": "ob*.5)*.01+rdip*.6,.1-S.aim*.1,Math.cos(bob)*.014-S.aim*.014+rdip*.32);\n gun.scale.setScalar(.78);\n if(visual)visual.update(dt,{S,pres,cam,gun,live});\n rnd.autoClear=true;\n if(visual)visual.render();else rnd.render(scene,cam);\n rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);\n rnd.autoC"
+      }
+    }
+  ],
+  "regionChecks": [
+    {
+      "name": "proxies and all environment construction calls",
+      "pass": true,
+      "baselineSha256": "44e8809e7977561a29d1721c4ce916e9774d675d558ea1e5049d620bf46c8a42",
+      "candidateRestoredSha256": "44e8809e7977561a29d1721c4ce916e9774d675d558ea1e5049d620bf46c8a42",
+      "difference": null
+    },
+    {
+      "name": "original weapon root and muzzle setup",
+      "pass": true,
+      "baselineSha256": "3b1f682f9fa1206ce71008d9155de117c24157ab6e9a7720810abd47a7bc2eeb",
+      "candidateRestoredSha256": "3b1f682f9fa1206ce71008d9155de117c24157ab6e9a7720810abd47a7bc2eeb",
+      "difference": null
+    },
+    {
+      "name": "enemy factory and spawn data",
+      "pass": true,
+      "baselineSha256": "446310d0b9a73b143701c95b288ad3572455b947a83028f0e949adfe6fbf3a54",
+      "candidateRestoredSha256": "446310d0b9a73b143701c95b288ad3572455b947a83028f0e949adfe6fbf3a54",
+      "difference": null
+    },
+    {
+      "name": "player defaults and all original input listeners",
+      "pass": true,
+      "baselineSha256": "2e1a85a40716ccd09433c8f955cd8f3a5eb7b96fabbb526942c3b5c0dfdb1ae6",
+      "candidateRestoredSha256": "2e1a85a40716ccd09433c8f955cd8f3a5eb7b96fabbb526942c3b5c0dfdb1ae6",
+      "difference": null
+    },
+    {
+      "name": "combat",
+      "pass": true,
+      "baselineSha256": "17e711ac5e2282e912ede63437433276d2027eb24864ffb5befe6d83935844a9",
+      "candidateRestoredSha256": "17e711ac5e2282e912ede63437433276d2027eb24864ffb5befe6d83935844a9",
+      "difference": null
+    },
+    {
+      "name": "UI lifecycle and reset",
+      "pass": true,
+      "baselineSha256": "be3aed655aac283ed244ebd7e39693cf031a87a5b639fb7ca49960d593ff96e7",
+      "candidateRestoredSha256": "be3aed655aac283ed244ebd7e39693cf031a87a5b639fb7ca49960d593ff96e7",
+      "difference": null
+    },
+    {
+      "name": "movement, AI, camera, gun animation",
+      "pass": true,
+      "baselineSha256": "7f51534ecd889d16a8f9039695441be7e724e8d33e636ca25c6802a4c43306ae",
+      "candidateRestoredSha256": "7f51534ecd889d16a8f9039695441be7e724e8d33e636ca25c6802a4c43306ae",
+      "difference": null
+    }
+  ],
+  "visualChecks": [
+    {
+      "name": "direct global RNG references",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "direct game state writes",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "proxy container operations",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "enemy combat field writes",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "gameplay invocation",
+      "pass": true,
+      "hits": []
+    },
+    {
+      "name": "original enemy anchor transform writes",
+      "pass": true,
+      "hits": []
+    }
+  ],
+  "colliderChecks": {
+    "solidCallSites": 4,
+    "houseCalls": 5,
+    "originalPalmCalls": 6,
+    "staticCrates": [
+      {
+        "line": 95,
+        "x": -6,
+        "z": 2,
+        "count": 2,
+        "call": "crate(-6,2,2"
+      },
+      {
+        "line": 95,
+        "x": 5,
+        "z": -4,
+        "count": 1,
+        "call": "crate(5,-4,1"
+      },
+      {
+        "line": 95,
+        "x": 8,
+        "z": 8,
+        "count": 2,
+        "call": "crate(8,8,2"
+      },
+      {
+        "line": 95,
+        "x": -14,
+        "z": 10,
+        "count": 1,
+        "call": "crate(-14,10,1"
+      },
+      {
+        "line": 95,
+        "x": 0,
+        "z": -12,
+        "count": 2,
+        "call": "crate(0,-12,2"
+      },
+      {
+        "line": 95,
+        "x": 14,
+        "z": -6,
+        "count": 1,
+        "call": "crate(14,-6,1"
+      }
+    ],
+    "registrationsAfterCrateDefinition": 1,
+    "colliderExtentWrites": {
+      "pass": true,
+      "hits": []
+    },
+    "nonProxyPadding": {
+      "pass": true,
+      "hits": []
+    }
+  },
+  "visibleStackLayout": {
+    "sites": 6,
+    "visibleCrates": 9,
+    "originalSolids": 18,
+    "stackedSites": 3,
+    "upperCratesWithoutOriginalProxy": 3
+  },
+  "selfTest": "PASS: four gameplay mutations, appended state write, altered hook, six visual tripwires and four proxy-contract mutations rejected",
+  "recordedAudit": {
+    "path": "experiments/sunbreak-realistic-v2/qa/gameplay-audit.json",
+    "staleForCurrentHashes": false,
+    "staleFiles": []
+  },
+  "limits": [
+    "Exact inline-module comparison covers original functions, data, constants, callbacks and order; HTML/CSS appearance is outside preservation verdict.",
+    "Allowlisted render hooks are not certified safe by source equality; they pass mutable game and scene references into imported code.",
+    "Visual scans are textual tripwires, not alias analysis; imported Three.js/addon RNG and scene mutation require runtime verification.",
+    "Weapon presence/hash is recorded but weapon behavior is not reviewed by this audit.",
+    "Hidden-proxy world matrices, bounds, raycasts and visible-cover alignment require dynamic checks.",
+    "The original crate() registers only bottom crates. Upper crates in two-crate stacks are visible but never collision or shot blockers; preserving baseline requires keeping that inherited mismatch.",
+    "No new smoke results, full playthrough, performance results, reference comparison or visual PASS is implied."
+  ]
+}

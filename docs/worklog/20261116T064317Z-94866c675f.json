@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261116T064317Z-94866c675f",
+  "task_id": "sunbreak-realistic-v2-2026-11-16",
+  "timestamp_utc": "2026-11-16T06:43:17.871159+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK realistic v2 saved separately under experiments/sunbreak-realistic-v2; original preserved. Frozen-build engineering PASS (65 release checks, 19 original smoke, 217 runtime invariants). 1080p rain automated combat P95/P99 about 16.8 ms, max 17.2 ms on RTX 5070. Independent playable-PBR art CONDITIONAL PASS; reference realism remains REWORK, primarily weapon/hands and enemy assets. Next: licensed production-quality viewmodel and character render assets, preserving gameplay contracts, then repeat current-build engineering/art QA. See docs/tasks/sunbreak-realistic-v2-2026-11-16.md. Isolated browser/public-CC0 checkpoint only: pre-existing private-vault changes preserved; no UE/private portability or cinematic/AI-video acceptance claim.",
+  "commit_shas": [
+    "35a42e9a5bc617a27f87933c0bfd7b1114653365"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
