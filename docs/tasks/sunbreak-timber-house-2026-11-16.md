@@ -1,7 +1,7 @@
 # Task Packet: SUNBREAK enterable timber house
 
 - Task ID: sunbreak-timber-house-2026-11-16
-- State: REPORT_PREPARED; production upload verified, email delivery pending
+- State: DONE for requested browser-building/save/report slice; minor art polish remains
 - Owner: main integrator, sole implementation/release writer
 - Created: 2026-11-16
 - Branch: codex/character-continuity-pipeline
@@ -54,7 +54,7 @@ Prior Sites creation terminal backfill error remains; no speculative duplicate.
   actual canvas evidence plus independent bounded art/functional review.
 - [x] Static build includes all runtime modules and preserved comparison pages.
 - [x] Git/Git LFS push acknowledgement for all three demo directories.
-- [ ] Daily report sourced from all-origin current-day dossier and actual QA;
+- [x] Daily report sourced from all-origin current-day dossier and actual QA;
   email sent once to self after successful upload; no localhost-as-online claim.
 
 ## Review / result
@@ -83,5 +83,15 @@ Prior Sites creation terminal backfill error remains; no speculative duplicate.
 - Daily evidence:all12 origin branches fetched at2026-11-16T12:46:10Z;
   16 unique today commits =5 production+11 coordination. Report prepared at
   docs/reports/sunbreak-daily-2026-11-16.md. Auxiliary undated worklogs disclosed.
-- Pending:report checkpoint acknowledgement and one confirmed email to self.
+- Report upload:verified c6d36bfee4aa659ceda34e1423e555e013482d67 on origin.
+- Email:sent once to the connected account's self address on2026-11-16.
+  Mail service returned message/thread identifiers and SENT+INBOX labels.
+  Full HTML daily report includes all three GitHub paths, current evidence,
+  reference implementation, historical failures and scope limitations.
+  This confirms service send/self-inbox acknowledgement, not that the user read it.
+  Account address and mail identifiers are intentionally not published here.
+- Browser:temporary viewport reset, diagnostic tab closed, normal5188 page marked
+  as deliverable; normal startup has no logged errors.
+- Next:user audition/walkthrough and three-version comparison; optional minor
+  grain/highlight/furniture polish. No unresolved upload/email dependency.
 - Rollback: earlier storm version remains at02f7476; v1/v2 untouched.

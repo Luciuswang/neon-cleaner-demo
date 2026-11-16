@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261116T125216Z-68f8e98492",
+  "task_id": "sunbreak-timber-house-2026-11-16",
+  "timestamp_utc": "2026-11-16T12:52:16.587038+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Requested browser slice delivered: production cb718135 and daily report c6d36bfe remote-verified. Daily HTML report sent exactly once to connected self; mail service acknowledged SENT and INBOX, not user read. No account address/mail IDs published. Normal5188 game restored, viewport reset, test tab closed and no startup errors. Limited house art remains CONDITIONAL PASS; current1080p combat/audio PASS is one bounded sample, not Unreal/AAA/full human acceptance. Next: user three-version comparison and optional minor wood grain/highlight/furniture polish. Public browser-only checkpoint; existing private vault unchanged.",
+  "commit_shas": [
+    "c6d36bfee4aa659ceda34e1423e555e013482d67"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

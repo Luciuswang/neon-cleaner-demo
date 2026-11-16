@@ -653,3 +653,7 @@ SUNBREAK timber house slice CONDITIONAL PASS: reference-led enterable MERCADO12 
 ## Sync note - 2026-11-16T20:49:56.0131979+08:00
 
 Daily SUNBREAK report prepared from frozen all-origin evidence at2026-11-16T12:46:10Z:12 branches,16 deduplicated commits (5 production,11 coordination). Production cb718135 is already remote-verified; all22 evidence-bound source files match committed bytes; v1/v2 preserved. Report distinguishes old failed QA from current bounded1080p pass and limited art conditional result. Next: after this report upload acknowledgement, send one requested self-email and record confirmed send outcome.
+
+## Sync note - 2026-11-16T20:52:16.1591921+08:00
+
+Requested browser slice delivered: production cb718135 and daily report c6d36bfe remote-verified. Daily HTML report sent exactly once to connected self; mail service acknowledged SENT and INBOX, not user read. No account address/mail IDs published. Normal5188 game restored, viewport reset, test tab closed and no startup errors. Limited house art remains CONDITIONAL PASS; current1080p combat/audio PASS is one bounded sample, not Unreal/AAA/full human acceptance. Next: user three-version comparison and optional minor wood grain/highlight/furniture polish. Public browser-only checkpoint; existing private vault unchanged.
