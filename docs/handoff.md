@@ -693,3 +693,7 @@ SUNBREAK user house import local QA accepted: exact saved user Blender project p
 ## Sync note - 2026-11-17T17:44:16.5077015+08:00
 
 DONE: manual house-edit control verified and live at https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ . Exact saved user Blender project/packed Hello-red paint and geometry/material edits preserved, source28a7cb9; normal PR8 merge49d79ba. Anonymous146/146 SHA checks and public actual start/fire/reload PASS. Independent bounded engineering/art PASS; v1/v2 and original art kit untouched. Prior568.5ms hitch and first70s public cold-start timeout retained; final two strict1080p30s samples and public repeat PASS, not universal performance/startup guarantees. User original F files unchanged. Private vault conflict preserved, isolated public-only checkpoint; no UE portability claim. Next: user reviews actual result; no production/email pending.
+
+## Sync note - 2026-11-17T18:51:19.3006590+08:00
+
+SUNBREAK v4 local single-player auto-fire/reload checkpoint:32 browser groups and8 unit groups PASS; independent engineering and bounded sampled-art PASS. Final sustained1080p pair PASS; prior1333.2ms and52.6ms hitches retained. Continuous-motion recording density FAIL/UNVERIFIED, no4v4 claim. Previous3demos/shared assets unchanged. Publication pending normal protected-main PR and anonymous public verification. Existing private-vault dirty state untouched; this public-web slice has no new private asset dependencies.

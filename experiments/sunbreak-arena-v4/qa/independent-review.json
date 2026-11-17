@@ -1,0 +1,45 @@
+{
+  "schema": "sunbreak-auto-independent-review-v1",
+  "date": "2026-11-17",
+  "scope": "Single-player automatic-fire and authored reload prototype. Not multiplayer, continuous-motion, subjective-audio, cinematic or AAA acceptance.",
+  "sources": {
+    "index.html": "a82e7db9e8e95804f1daf0cd9b157df270fb906e0d65321145aa0b5237d008bd",
+    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "boot-ui.js": "8d16291f057612e87a1414c4e7c215446b3416ceb494bd483df24931e3aab2ec"
+  },
+  "engineering": {
+    "reviewer": "Planck",
+    "verdict": "PASS",
+    "scope": "Bounded single-player automatic-fire/reload engineering only; publication remains separately gated.",
+    "evidence": "qa/evidence/checks-2026-11-17T10-35-26-049Z/checks-1.json",
+    "findings": [
+      "32 browser assertion groups and 21 current source/harness bindings checked.",
+      "Repeated-F rearming and focused-control held-fire defects were REWORK, corrected and regressed.",
+      "Independent CPU geometry check found 5867 right-only vertices unchanged and exact held-pose restoration.",
+      "103 pinned shared dependencies verified. Earlier ordinary-reserve benchmarks were correctly classified as mixed combat/rendering, not sustained stress."
+    ]
+  },
+  "art": {
+    "reviewer": "Zeno",
+    "verdict": "PASS",
+    "scope": "Bounded sampled-art gate only: all nine final actual 1920x1080 game-canvas PNGs, not continuous animation acceptance.",
+    "evidence": "qa/evidence/inspect-2026-11-17T10-36-04-248Z/",
+    "findings": [
+      "Release/grasp, withdrawal, insertion/seating and forward return remain readable.",
+      "No visible Blocker/Major contact error, renewed arm stretch or cuff hole in reviewed poses.",
+      "All nine capture JSONs match current index, weapon, reload-pose and combat-controls hashes."
+    ],
+    "limitations": [
+      "Reload48/60 partly crop the exchange below frame.",
+      "Dark surfaces obscure fine contact and finger detail.",
+      "Earlier sampled review was CONDITIONAL PASS; this final sampled PASS does not promote continuous motion, cinematic or AAA quality."
+    ]
+  },
+  "continuousMotion": {
+    "verdict": "UNVERIFIED",
+    "reason": "Both retained live canvas recordings failed decoded-frame density. Requested/container FPS is not delivered FPS; no continuous-motion PASS."
+  }
+}

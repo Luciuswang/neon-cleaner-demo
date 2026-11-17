@@ -1,0 +1,597 @@
+{
+  "schema": "sunbreak-auto-browser-v1",
+  "date": "2026-11-17T10:36:03.767Z",
+  "phase": "checks",
+  "method": "native-headless actual WebGL canvas; no desktop/window interaction",
+  "pass": true,
+  "results": [
+    {
+      "name": "licensed weapon and all textures loaded",
+      "pass": true,
+      "details": {
+        "state": "menu",
+        "version": "arena-v4",
+        "style": "热带竞技",
+        "styleIndex": 0,
+        "health": 100,
+        "ammo": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "kills": 0,
+        "firing": {
+          "mouse": false,
+          "keyboard": false,
+          "held": false
+        },
+        "reloadSeconds": 2.25,
+        "reloadProgress": 0,
+        "shots": 0,
+        "camera": {
+          "x": 0,
+          "y": 1.7,
+          "z": 12,
+          "yaw": -0.12,
+          "pitch": -0.06
+        },
+        "enemies": [
+          {
+            "i": 0,
+            "alive": true,
+            "hp": 100,
+            "x": -6.1,
+            "y": 0,
+            "z": 0.55,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 1,
+            "alive": true,
+            "hp": 100,
+            "x": 5,
+            "y": 0,
+            "z": -5.55,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 2,
+            "alive": true,
+            "hp": 100,
+            "x": -15.6,
+            "y": 0,
+            "z": 10.1,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 3,
+            "alive": true,
+            "hp": 100,
+            "x": 15.6,
+            "y": 0,
+            "z": -6.15,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 4,
+            "alive": true,
+            "hp": 100,
+            "x": -12,
+            "y": 0,
+            "z": -20.45,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 5,
+            "alive": true,
+            "hp": 100,
+            "x": 12.25,
+            "y": 0.66,
+            "z": -17.5,
+            "mode": "guard",
+            "stance": 1
+          }
+        ],
+        "tactical": {
+          "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+          "elapsed": 0,
+          "totalShots": 0,
+          "totalMovementMeters": 0,
+          "decisions": 0,
+          "navigation": {
+            "width": 83,
+            "height": 78,
+            "blocked": 1214,
+            "cells": 6474
+          },
+          "coverPairs": 136,
+          "actors": [
+            {
+              "id": 0,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 1,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 2,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 3,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 4,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 5,
+              "role": "cabin defender",
+              "mode": "guard",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            }
+          ]
+        },
+        "remaining": 0,
+        "presentation": false,
+        "audio": {
+          "unlocked": false,
+          "failed": false,
+          "loaded": 0,
+          "ready": false,
+          "muted": false,
+          "volume": 0.65,
+          "droppedBeforeReady": 0
+        },
+        "weapon": {
+          "loaded": true,
+          "asset": "Rotuma MP5 / gloved first-person arms",
+          "license": "CC-BY-4.0",
+          "meshes": 4,
+          "triangles": 29172,
+          "skinnedMeshes": 0,
+          "sleeve": {
+            "repair": "rigid-joint-repose-and-shoulder-closure",
+            "bakedHeldPose": true,
+            "retainedSourceFabric": true,
+            "proceduralExtension": true,
+            "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+            "rearSleeveVerticesAdjusted": 0,
+            "nonrigidRearTranslation": false,
+            "wristDegrees": 25,
+            "upperArmDegrees": 15,
+            "wristAxis": [
+              0.9365777985940499,
+              0,
+              0.3504597368895943
+            ],
+            "upperArmAxis": [
+              0.7644669403551073,
+              0,
+              0.6446629329379042
+            ],
+            "sourceVertices": 13137,
+            "articulatedVertices": 2135,
+            "lockedGripVertices": 9136,
+            "maxGripVertexDelta": 2.990487657476475e-8,
+            "sourceJointLengths": [
+              0.4156460972458126,
+              0.2801601167903537
+            ],
+            "posedJointLengths": [
+              0.41564608592879365,
+              0.2801600948286502
+            ],
+            "maxJointLengthError": 2.196170351131954e-8,
+            "addedGarmentVertices": 25,
+            "addedGarmentTriangles": 72,
+            "garmentClosureLength": 0.14593525919265735,
+            "garmentEnd": "measured source shoulder joint",
+            "garmentEndRadiusScale": 0.86,
+            "sourceBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4305158590129535,
+                "y": -0.36869354874812804,
+                "z": -0.6590875972733896
+              },
+              "max": {
+                "x": 0.5098885395759611,
+                "y": 0.13424714291235695,
+                "z": 0.5919467888514625
+              }
+            },
+            "posedBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4682203531265259,
+                "y": -0.39581435918807983,
+                "z": -0.659087598323822
+              },
+              "max": {
+                "x": 0.5098885297775269,
+                "y": 0.13424713909626007,
+                "z": 0.5919467806816101
+              }
+            },
+            "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+          },
+          "textureMaps": 12,
+          "uniformDisplayScale": 1.7,
+          "sourceMuzzle": [
+            0,
+            0.0987987294793129,
+            -0.6800000667572021
+          ],
+          "fittedMuzzle": [
+            0,
+            0.005000000000000061,
+            -1.85
+          ],
+          "muzzleFitError": 6.071532165918825e-17,
+          "aim": 0,
+          "reload": {
+            "stage": "held",
+            "phase": 0,
+            "upperLengthError": 0,
+            "foreLengthError": 0,
+            "reachError": 0,
+            "wrist": [
+              -0.12115013359914868,
+              0.026542065710778506,
+              -0.33372352039334946
+            ],
+            "maximumLengthError": 0,
+            "lastPhase": 0,
+            "method": "authored magazine/hand tracks, fixed-length two-bone IK, original arm skin weights on repaired visible mesh",
+            "anchors": {
+              "shoulder": [
+                -0.4093765851995752,
+                -0.3106284942569422,
+                0.18299935890445104
+              ],
+              "elbow": [
+                -0.23882406332865824,
+                -0.21844781573060773,
+                -0.019248604062529706
+              ],
+              "wrist": [
+                -0.12115013359914868,
+                0.026542065710778506,
+                -0.33372352039334946
+              ],
+              "palm": [
+                -0.01583920192372215,
+                0.03789707585799797,
+                -0.5490143114712154
+              ],
+              "magGrip": [
+                -0.035626061260700226,
+                -0.045367330312728896,
+                -0.2198716253042221
+              ]
+            },
+            "sourceRightHandUnchanged": true,
+            "sourceAssetsUnchanged": true
+          },
+          "animation": "authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap"
+        },
+        "errors": [],
+        "times": [],
+        "buildHashes": {
+          "index.html": "a82e7db9e8e95804f1daf0cd9b157df270fb906e0d65321145aa0b5237d008bd",
+          "world.js": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+          "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+          "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+          "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+          "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+          "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+          "timber-house.js": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+          "house-asset.js": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2",
+          "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+          "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+          "boot-ui.js": "8d16291f057612e87a1414c4e7c215446b3416ceb494bd483df24931e3aab2ec",
+          "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+          "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+          "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+          "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+          "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+          "serve.mjs": "b4704223c920e9b0a9837b31f115b641379ed4895106a9ee743c9286f3526b9a",
+          "qa/hooks.js": "2b7ae52708d39e959ec7d00f0a88ef84ad6bcba1811ebefac94a3421d1b0e70c",
+          "qa/browser.mjs": "f17969ada39aba1f5f644f3789a18146dcba14e5a3f4429e70e90b9a134dc52e",
+          "qa/unit.mjs": "72f4e3c68e3d5da538fe595a7f5982f3cb753ec38dab4966c4f286febe8e56f9"
+        },
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "held actual left mouse fires repeatedly",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 24,
+          "reserve": 90
+        }
+      }
+    },
+    {
+      "name": "released mouse stops immediately",
+      "pass": true
+    },
+    {
+      "name": "right mouse aims but never fires",
+      "pass": true
+    },
+    {
+      "name": "middle mouse never fires",
+      "pass": true
+    },
+    {
+      "name": "reload starts and defers replenishment",
+      "pass": true
+    },
+    {
+      "name": "reload blocks fire",
+      "pass": true
+    },
+    {
+      "name": "reload completes once and conserves total ammunition",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 24,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 30,
+          "reserve": 84
+        }
+      }
+    },
+    {
+      "name": "no shot interval below 105 ms",
+      "pass": true,
+      "details": [
+        12929.39999961853,
+        13035.699999809265,
+        13152.39999961853,
+        13268.89999961853,
+        13385.599999904633,
+        13502.299999713898
+      ]
+    },
+    {
+      "name": "F remains held after mouse release",
+      "pass": true
+    },
+    {
+      "name": "F release stops firing",
+      "pass": true
+    },
+    {
+      "name": "blur clears and pauses trigger",
+      "pass": true
+    },
+    {
+      "name": "resume does not inherit held input",
+      "pass": true
+    },
+    {
+      "name": "OS F repeat cannot rearm trigger after clear/resume",
+      "pass": true
+    },
+    {
+      "name": "UI focus clears an already held trigger",
+      "pass": true
+    },
+    {
+      "name": "pointer cancellation clears held fire",
+      "pass": true
+    },
+    {
+      "name": "hidden-document lifecycle clears and pauses fire",
+      "pass": true
+    },
+    {
+      "name": "pointer lock loss clears held input",
+      "pass": true
+    },
+    {
+      "name": "presentation clears held input",
+      "pass": true
+    },
+    {
+      "name": "partial reserve reload conserved",
+      "pass": true,
+      "details": {
+        "mag": 29,
+        "reserve": 0
+      }
+    },
+    {
+      "name": "zero reserve rejects reload",
+      "pass": true
+    },
+    {
+      "name": "full magazine rejects reload",
+      "pass": true
+    },
+    {
+      "name": "empty magazine never negative",
+      "pass": true
+    },
+    {
+      "name": "pause freezes reload",
+      "pass": true
+    },
+    {
+      "name": "resumed reload completes",
+      "pass": true
+    },
+    {
+      "name": "cancelled reload cannot add ammunition later",
+      "pass": true
+    },
+    {
+      "name": "death cancels reload without later ammunition transfer",
+      "pass": true
+    },
+    {
+      "name": "restart cancels prior reload with no late transfer",
+      "pass": true
+    },
+    {
+      "name": "repeated R never restarts or duplicates mechanical cues",
+      "pass": true,
+      "details": {
+        "unlocked": true,
+        "failed": false,
+        "loaded": 5,
+        "ready": true,
+        "muted": false,
+        "volume": 0.65,
+        "droppedBeforeReady": 0,
+        "events": 62,
+        "started": 62,
+        "ended": 53,
+        "dropped": 0,
+        "cancelled": 36,
+        "stolen": 0,
+        "peakVoices": 11,
+        "byType": {
+          "player": 16,
+          "magout": 4,
+          "enemy": 38,
+          "magin": 4
+        },
+        "errors": 0,
+        "active": true,
+        "voices": 9,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "name": "focused UI cannot start firing",
+      "pass": true
+    },
+    {
+      "name": "visible arm IK retains bone lengths",
+      "pass": true,
+      "details": {
+        "stage": "remove-magazine",
+        "phase": 0.4,
+        "wrist": [
+          -0.18529699293612673,
+          -0.4742981213905949,
+          -0.18486663545144158
+        ],
+        "requestedWrist": [
+          -0.18529699293612675,
+          -0.4742981213905949,
+          -0.18486663545144152
+        ],
+        "upperLengthError": 0,
+        "foreLengthError": 1.1102230246251565e-16,
+        "reachError": 6.206335383118183e-17,
+        "magazineOffset": [
+          -0.018,
+          -0.18,
+          0
+        ],
+        "replacementVisible": false,
+        "maximumLengthError": 6.106226635438361e-16,
+        "lastPhase": 0.4,
+        "method": "authored magazine/hand tracks, fixed-length two-bone IK, original arm skin weights on repaired visible mesh",
+        "anchors": {
+          "shoulder": [
+            -0.4093765851995752,
+            -0.3106284942569422,
+            0.18299935890445104
+          ],
+          "elbow": [
+            -0.23882406332865824,
+            -0.21844781573060773,
+            -0.019248604062529706
+          ],
+          "wrist": [
+            -0.12115013359914868,
+            0.026542065710778506,
+            -0.33372352039334946
+          ],
+          "palm": [
+            -0.01583920192372215,
+            0.03789707585799797,
+            -0.5490143114712154
+          ],
+          "magGrip": [
+            -0.035626061260700226,
+            -0.045367330312728896,
+            -0.2198716253042221
+          ]
+        },
+        "sourceRightHandUnchanged": true,
+        "sourceAssetsUnchanged": true
+      }
+    },
+    {
+      "name": "reload restores held pose",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

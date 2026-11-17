@@ -1,0 +1,39 @@
+{
+  "schema": "sunbreak-auto-canvas-decode-v1",
+  "method": "Decode every frame of actual WebGL canvas captureStream recording; save every sixth decoded frame as sparse evidence, not continuous independent review",
+  "pass": false,
+  "source": "reload-live.webm",
+  "source_sha256": "0f6bdb55e6267506743f287d11152d0712f86318fee880288175515f7fe05b92",
+  "frames": 19,
+  "container_fps": 30.0,
+  "size": [
+    1920,
+    1080
+  ],
+  "samples": [
+    {
+      "frame": 0,
+      "timestamp_ms": 0.0,
+      "path": "frame-000.png",
+      "sha256": "0d4656625e2ff154ba0ed738d457daddbaed79bcf6bd0a1c44b0d988b223d4de"
+    },
+    {
+      "frame": 6,
+      "timestamp_ms": 196.0,
+      "path": "frame-006.png",
+      "sha256": "ef7df8f43f16b396d3569986df11ecc08408c3826958142284313a7ca1d6b837"
+    },
+    {
+      "frame": 12,
+      "timestamp_ms": 2664.0,
+      "path": "frame-012.png",
+      "sha256": "323084a9e9f3c76154f6eebbb6d9c73ac8b9b96519ae5de920cd21081be7423b"
+    },
+    {
+      "frame": 18,
+      "timestamp_ms": 2862.0,
+      "path": "frame-018.png",
+      "sha256": "35a5fafe75070c947aeff82f25c3ef8fc5c7fe1572894d54b705e49bb573205a"
+    }
+  ]
+}

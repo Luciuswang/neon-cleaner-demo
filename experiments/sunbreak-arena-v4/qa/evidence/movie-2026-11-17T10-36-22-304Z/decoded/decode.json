@@ -1,0 +1,51 @@
+{
+  "schema": "sunbreak-auto-canvas-decode-v1",
+  "method": "Decode every frame of actual WebGL canvas captureStream recording; save every sixth decoded frame as sparse evidence, not continuous independent review",
+  "pass": false,
+  "source": "reload-live.webm",
+  "source_sha256": "43cba61cbab4be6b4d6d44938bb9c03af43cd132b00f81dc3674e69d3a9b290f",
+  "frames": 31,
+  "container_fps": 60.0,
+  "size": [
+    1920,
+    1080
+  ],
+  "samples": [
+    {
+      "frame": 0,
+      "timestamp_ms": 0.0,
+      "path": "frame-000.png",
+      "sha256": "4f647094019dc2b6e56531ba0955df0ec8494935128f29d019da509fd004f963"
+    },
+    {
+      "frame": 6,
+      "timestamp_ms": 205.00000000000003,
+      "path": "frame-006.png",
+      "sha256": "3d360ff58a2bf7cf624f6386301dce636c1425a5559eeb2c8226a0cda853814d"
+    },
+    {
+      "frame": 12,
+      "timestamp_ms": 2375.0,
+      "path": "frame-012.png",
+      "sha256": "e9e30318dff70595ce254ea469fdeffc591b050fd8e7fe8aa56de2e460d3af0f"
+    },
+    {
+      "frame": 18,
+      "timestamp_ms": 2572.0,
+      "path": "frame-018.png",
+      "sha256": "ddd23a1b85ca854277a5874b7666a06c48de7517b2cd38eaa669f8455426d06f"
+    },
+    {
+      "frame": 24,
+      "timestamp_ms": 2772.0000000000005,
+      "path": "frame-024.png",
+      "sha256": "0105d1f7a2c0c76c22a70e86a589dee513fdc04842b495e354dd0522dae9923a"
+    },
+    {
+      "frame": 30,
+      "timestamp_ms": 2973.0,
+      "path": "frame-030.png",
+      "sha256": "274b07acace9bcf619d8b350fd4dcb9e70ec55d426f82f9774f9f5280ab925f4"
+    }
+  ]
+}

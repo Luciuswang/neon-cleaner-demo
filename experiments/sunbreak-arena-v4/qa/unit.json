@@ -1,0 +1,47 @@
+{
+  "schema": "sunbreak-auto-unit-v1",
+  "date": "2026-11-17T10:50:41.626Z",
+  "pass": true,
+  "results": [
+    {
+      "name": "separate mouse and keyboard trigger sources",
+      "pass": true
+    },
+    {
+      "name": "all UI and editable elements excluded from initiating controls",
+      "pass": true
+    },
+    {
+      "name": "one reload clock and mechanical cue order",
+      "pass": true
+    },
+    {
+      "name": "smooth tracks hit all control points without range overshoot",
+      "pass": true
+    },
+    {
+      "name": "two bone IK preserves both limb lengths over complete workspace",
+      "pass": true
+    },
+    {
+      "name": "all three prior experiments unchanged from uploaded baseline",
+      "pass": true
+    },
+    {
+      "name": "all untouched world, cover, character and house modules retain exact bytes",
+      "pass": true
+    },
+    {
+      "name": "public entry uses shared parent assets and explicit v4 game modules",
+      "pass": true
+    }
+  ],
+  "sources": {
+    "index.html": "a82e7db9e8e95804f1daf0cd9b157df270fb906e0d65321145aa0b5237d008bd",
+    "world.js": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d"
+  }
+}
