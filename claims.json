@@ -14,19 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "sunbreak-house-roundtrip-arms-2026-11-17": {
-      "base_commit": "8046a45d1267feaf800100f99b44e8a63909dd9c",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-17T14:42:08.959314+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-storm-v3",
-        "docs/tasks/sunbreak-house-roundtrip-arms-2026-11-17.md",
-        "docs/worklog/sunbreak-house-roundtrip-arms-2026-11-17.json"
-      ],
-      "task_id": "sunbreak-house-roundtrip-arms-2026-11-17",
-      "updated_at": "2026-11-17T06:42:08.959314+00:00"
     }
   },
   "schema": 1
