@@ -1,0 +1,8 @@
+{
+  "method": "built-in imagegen, one new image request",
+  "mode": "generate",
+  "path": "assets/social-cover.png",
+  "usage": "Advertising/social cover only. Not gameplay, not screenshot evidence.",
+  "prompt_summary": "16:9 photoreal cinematic advertising cover. Rainy Mediterranean coastal old town, wet asphalt, warm tungsten windows, dark storm clouds, one subtle lightning bolt, palms and grass. Left aligned warm ivory SUNBREAK above BLACK SQUALL. No people, weapon, HUD or extra text.",
+  "date": "2026-11-16"
+}

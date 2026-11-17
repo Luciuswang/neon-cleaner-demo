@@ -1,0 +1,16 @@
+{
+  "verified": "2026-11-16T10:14:17.330Z",
+  "title": "MP5 Submachine Gun",
+  "author": "Rotuma",
+  "license": {
+    "uri": "https://api.sketchfab.com/v3/licenses/322a749bcfa841b29dff1e8a1bb74b0b",
+    "label": "CC Attribution",
+    "fullName": "Creative Commons Attribution",
+    "requirements": "Author must be credited. Commercial use is allowed.",
+    "url": "http://creativecommons.org/licenses/by/4.0/",
+    "slug": "by"
+  },
+  "source": "https://sketchfab.com/3d-models/mp5-submachine-gun-a73b61932a0e4eecb5db5c63c158aa24",
+  "api": "https://api.sketchfab.com/v3/models/a73b61932a0e4eecb5db5c63c158aa24",
+  "description": "14K Tris\n2 Materials for Mag and Gun\n2K Textures\nI mainly made this for a game project, but wouldn't mind seeing other people use it if they want. Enjoy and credit would be appreciated."
+}
