@@ -14,6 +14,20 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "sunbreak-timber-uv-2026-11-17": {
+      "base_commit": "6f6aa7c38dbce2370910b441759207dab2d0a836",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-17T12:33:58.476112+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/sunbreak-storm-v3",
+        "docs/tasks/sunbreak-timber-uv-2026-11-17.md",
+        "docs/worklog",
+        "docs/handoff.md"
+      ],
+      "task_id": "sunbreak-timber-uv-2026-11-17",
+      "updated_at": "2026-11-17T04:33:58.476112+00:00"
     }
   },
   "schema": 1
