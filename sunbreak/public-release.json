@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-public-static-v1",
-  "created": "2026-11-17T07:21:44.482Z",
-  "sourceCommit": "e9dfc9244a23206960931b9aba7b0d457e4142d5",
+  "created": "2026-11-17T09:36:52.488Z",
+  "sourceCommit": "28a7cb9c5a69d94d187ec81d1734a5d0ccb0bda6",
   "publicPath": "sunbreak/",
   "scope": "Public browser assets and v1/v2 comparisons only; no private/UE sources or server diagnostics.",
   "navigationAdaptation": "v2 comparison href only is ../original/ for nested hosting; original v2 source/game module preserved.",
@@ -108,8 +108,8 @@
     },
     {
       "path": "assets/house/house-contract.json",
-      "bytes": 3997690,
-      "sha256": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde"
+      "bytes": 4000820,
+      "sha256": "dae7312e1bb3b8c86c0aac3ac6aa3410c87f6b9e23d5fe7af2fc182f1f8a3453"
     },
     {
       "path": "assets/house/timber-house-art-kit.zip",
@@ -118,8 +118,8 @@
     },
     {
       "path": "assets/house/timber-house-edited.glb",
-      "bytes": 17969964,
-      "sha256": "0654a24a53d29399de64234545ee6fea0c0f7d6b274faaa1cab74b162253b5e9"
+      "bytes": 17521164,
+      "sha256": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43"
     },
     {
       "path": "assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
@@ -263,8 +263,8 @@
     },
     {
       "path": "house-logic.js",
-      "bytes": 2711,
-      "sha256": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73"
+      "bytes": 3106,
+      "sha256": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496"
     },
     {
       "path": "index.html",

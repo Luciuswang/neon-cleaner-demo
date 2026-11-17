@@ -5,11 +5,17 @@ export const HOUSE=Object.freeze({
  openAngle:1.48,stairLeft:-1.85,stairRight:-.31,stairStart:4,stairEnd:5.6
 });
 export const localPoint=p=>({x:p.x-HOUSE.x,y:p.y,z:p.z-HOUSE.z});
+// Exact walk support for the user's added bottom-step block, audited from the
+// saved Blender mesh. Existing stairs/room/door and all other floor remain fixed.
+export const ARTIST_STEP=Object.freeze({
+ minX:-1.90152734,maxX:-.84757660,minZ:5.60000038,maxZ:6.03162861,top:.07477977
+});
 const inside=(x,z,a,b,c,d)=>x>a&&x<b&&z>c&&z<d;
 export function floorHeight(x,z){
  x-=HOUSE.x;z-=HOUSE.z;
  if(inside(x,z,-4,4,-4,2.42)||inside(x,z,-3.85,1.78,2.4,4.02))return HOUSE.floor;
  if(inside(x,z,HOUSE.stairLeft,HOUSE.stairRight,4,5.6))return Math.min(4,Math.ceil((5.6-z)/.4))*.165;
+ if(inside(x,z,ARTIST_STEP.minX,ARTIST_STEP.maxX,ARTIST_STEP.minZ,ARTIST_STEP.maxZ))return ARTIST_STEP.top;
  return 0;
 }
 export function underRoof(x,y,z){
