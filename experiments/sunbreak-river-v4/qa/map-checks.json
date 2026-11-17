@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-17T13:28:45.112Z",
+  "pass": true,
+  "checks": [
+    {
+      "name": "all large collision walls have exact mirrored counterparts",
+      "pass": true
+    },
+    {
+      "name": "spawns clear, grounded and equal two-bank entry positions",
+      "pass": true
+    },
+    {
+      "name": "riverbed symmetrical, dry crossings and slope bounded",
+      "pass": true
+    },
+    {
+      "name": "continuous wall-free wade and crossing corridors both ways",
+      "pass": true
+    },
+    {
+      "name": "doors windows and roof clearance match architecture contract",
+      "pass": true
+    },
+    {
+      "name": "start connector retained before smoothing on both banks",
+      "pass": true
+    },
+    {
+      "name": "house doorway graph edges retain valid route",
+      "pass": true
+    },
+    {
+      "name": "swept clearance rejects short corner clipping",
+      "pass": true
+    },
+    {
+      "name": "all thin river cover walls offer AI cover pairs",
+      "pass": true
+    },
+    {
+      "name": "mirrored walkable spawn-to-crossing routes",
+      "pass": true
+    },
+    {
+      "name": "AI routes connect both banks and all spawn exits",
+      "pass": true
+    },
+    {
+      "name": "unchanged reused code weapon.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged reused code reload-pose.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged reused code actors.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged reused code audio.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged reused code combat-controls.js",
+      "pass": true
+    },
+    {
+      "name": "unchanged reused code storm-audio.js",
+      "pass": true
+    },
+    {
+      "name": "all four previous demos have no worktree changes",
+      "pass": true
+    }
+  ],
+  "lengths": [
+    {
+      "crossing": -23,
+      "distances": [
+        51.475639315325694,
+        51.475639315325694
+      ]
+    },
+    {
+      "crossing": -4,
+      "distances": [
+        34.23562687215586,
+        34.23562687215586
+      ]
+    },
+    {
+      "crossing": 15,
+      "distances": [
+        24.252840835665797,
+        24.252840835665797
+      ]
+    }
+  ],
+  "reused": {
+    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
+  },
+  "sources": {
+    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
+    "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
+    "qa/map-checks.mjs": "ca4703a753dab60e672f443a24403ff5bac97b80df0c663deb74edb50b4645a8"
+  },
+  "limits": "Geometric fairness only; not multiplayer balance or actual-browser traversal proof."
+}

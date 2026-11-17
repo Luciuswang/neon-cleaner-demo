@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T133957Z-4e4f9935ad",
+  "task_id": "sunbreak-river-map-2026-11-17",
+  "timestamp_utc": "2026-11-17T13:39:57.160291+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall local source-bound CONDITIONAL PASS. Fable5.2 village contribution; independent river map, paired houses/ruins, wet terrain and scanned forest. Earlier four demos and v4 guns/NPC animation unchanged. CPU18/AI62/terrain175/architecture76, controls32/traversal40 and8views pass. Final1080p30s pair max18.7/18.8ms zeroover50; Planck runtime PASS, Zeno sampled art CONDITIONAL PASS. Prior176-318ms stalls retained, cause unknown; no AAA/4v4/continuous-motion acceptance. New sunbreak/river Pages publication pending. Dirty private vault untouched; isolated public browser checkpoint skips private assets.",
+  "commit_shas": [
+    "bb30122fefdb748a048e2e2c7dccd5dc5e9f43c9"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

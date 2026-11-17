@@ -1,0 +1,570 @@
+{
+  "date": "2026-11-17T13:36:46.863Z",
+  "pass": true,
+  "method": "Actual AI update-loop movement along navigation-generated routes; decisions held, not shot approval or human playtesting",
+  "sources": {
+    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
+    "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
+    "qa/ai-movement.mjs": "c2173390b5a7c95fa7ad5939f7c49e05855c7b2572212522095197f0740b10c3"
+  },
+  "traversals": [
+    {
+      "name": "cross--23--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--23-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--4--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--4-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-15--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-15-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-0--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-0-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000009983,
+      "steps": 532,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn--25--25",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09653274889110305,
+      "steps": 1377,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn-25--25",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09653274889110305,
+      "steps": 1377,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn--9--10",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.11250000000008065,
+      "steps": 478,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn-9--10",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.11250000000008065,
+      "steps": 478,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn--25-6",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08749999999953673,
+      "steps": 1332,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn-25-6",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08749999999953673,
+      "steps": 1332,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry--1--23",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09180394894594633,
+      "steps": 1374,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry--1--4",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.1081306431011643,
+      "steps": 912,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry--1-15",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.11900120005500167,
+      "steps": 645,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry-1--23",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09180394894594633,
+      "steps": 1374,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry-1--4",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.1081306431011643,
+      "steps": 912,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry-1-15",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.11900120005500167,
+      "steps": 645,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "connector--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09446183035814595,
+      "steps": 1091,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "connector-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09446183035814595,
+      "steps": 1091,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "second-repro",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.09914141106159348,
+      "steps": 481,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge--2--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000003055,
+      "steps": 212,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge--2-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000003097,
+      "steps": 212,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-0--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000003055,
+      "steps": 212,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-0-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000003097,
+      "steps": 212,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-2--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000003055,
+      "steps": 212,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-2-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.08750000000003097,
+      "steps": 212,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "doorway--1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.11328786724667488,
+      "steps": 580,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "doorway-1",
+      "dt": 0.016666666666666666,
+      "pass": true,
+      "error": 0.11328786724667488,
+      "steps": 580,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--23--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--23-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--4--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross--4-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-15--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-15-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-0--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "cross-0-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.08749999999999325,
+      "steps": 178,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn--25--25",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.11690985327733665,
+      "steps": 461,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn-25--25",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.11690985327733665,
+      "steps": 461,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn--9--10",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.11250000000000604,
+      "steps": 160,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn-9--10",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.11250000000000604,
+      "steps": 160,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn--25-6",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.04999999999980531,
+      "steps": 445,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "spawn-25-6",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.04999999999980531,
+      "steps": 445,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry--1--23",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.061983660226060805,
+      "steps": 461,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry--1--4",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.03313064310119802,
+      "steps": 306,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry--1-15",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.051339679293358635,
+      "steps": 217,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry-1--23",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.061983660226060805,
+      "steps": 461,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry-1--4",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.03313064310119802,
+      "steps": 306,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "entry-1-15",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.051339679293358635,
+      "steps": 217,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "connector--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.10501181715976352,
+      "steps": 366,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "connector-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.10501181715976352,
+      "steps": 366,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "second-repro",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.033112569206999065,
+      "steps": 164,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge--2--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.01250000000000906,
+      "steps": 72,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge--2-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.012500000000008879,
+      "steps": 72,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-0--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.01250000000000906,
+      "steps": 72,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-0-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.012500000000008879,
+      "steps": 72,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-2--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.01250000000000906,
+      "steps": 72,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "bridge-edge-2-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.012500000000008879,
+      "steps": 72,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "doorway--1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.03828786724654869,
+      "steps": 196,
+      "penetration": false,
+      "maxFloorError": 0
+    },
+    {
+      "name": "doorway-1",
+      "dt": 0.05,
+      "pass": true,
+      "error": 0.03828786724654869,
+      "steps": 196,
+      "penetration": false,
+      "maxFloorError": 0
+    }
+  ]
+}

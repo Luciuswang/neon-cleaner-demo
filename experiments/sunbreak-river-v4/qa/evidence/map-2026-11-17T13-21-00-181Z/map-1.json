@@ -1,0 +1,563 @@
+{
+  "schema": "sunbreak-auto-browser-v1",
+  "date": "2026-11-17T13:21:14.105Z",
+  "phase": "map",
+  "method": "native-headless actual WebGL canvas; no desktop/window interaction",
+  "pass": true,
+  "results": [
+    {
+      "name": "licensed weapon and all textures loaded",
+      "pass": true,
+      "details": {
+        "state": "menu",
+        "version": "river-v4",
+        "style": "热带竞技",
+        "styleIndex": 0,
+        "health": 100,
+        "ammo": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "kills": 0,
+        "firing": {
+          "mouse": false,
+          "keyboard": false,
+          "held": false
+        },
+        "reloadSeconds": 2.25,
+        "reloadProgress": 0,
+        "shots": 0,
+        "camera": {
+          "x": -26,
+          "y": 1.7,
+          "z": 22,
+          "yaw": -1.35,
+          "pitch": -0.06
+        },
+        "enemies": [
+          {
+            "i": 0,
+            "alive": true,
+            "hp": 100,
+            "x": -25,
+            "y": 0,
+            "z": -25,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 1,
+            "alive": true,
+            "hp": 100,
+            "x": 25,
+            "y": 0,
+            "z": -25,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 2,
+            "alive": true,
+            "hp": 100,
+            "x": -9,
+            "y": 0,
+            "z": -10,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 3,
+            "alive": true,
+            "hp": 100,
+            "x": 9,
+            "y": 0,
+            "z": -10,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 4,
+            "alive": true,
+            "hp": 100,
+            "x": -25,
+            "y": 0,
+            "z": 6,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 5,
+            "alive": true,
+            "hp": 100,
+            "x": 25,
+            "y": 0,
+            "z": 6,
+            "mode": "hide",
+            "stance": 1
+          }
+        ],
+        "tactical": {
+          "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+          "elapsed": 0,
+          "totalShots": 0,
+          "totalMovementMeters": 0,
+          "decisions": 0,
+          "navigation": {
+            "width": 83,
+            "height": 78,
+            "blocked": 394,
+            "cells": 6474
+          },
+          "coverPairs": 352,
+          "actors": [
+            {
+              "id": 0,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 1,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 2,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 3,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 4,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 5,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            }
+          ]
+        },
+        "remaining": 0,
+        "presentation": false,
+        "audio": {
+          "unlocked": false,
+          "failed": false,
+          "loaded": 0,
+          "ready": false,
+          "muted": false,
+          "volume": 0.65,
+          "droppedBeforeReady": 0
+        },
+        "weapon": {
+          "loaded": true,
+          "asset": "Rotuma MP5 / gloved first-person arms",
+          "license": "CC-BY-4.0",
+          "meshes": 4,
+          "triangles": 29172,
+          "skinnedMeshes": 0,
+          "sleeve": {
+            "repair": "rigid-joint-repose-and-shoulder-closure",
+            "bakedHeldPose": true,
+            "retainedSourceFabric": true,
+            "proceduralExtension": true,
+            "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+            "rearSleeveVerticesAdjusted": 0,
+            "nonrigidRearTranslation": false,
+            "wristDegrees": 25,
+            "upperArmDegrees": 15,
+            "wristAxis": [
+              0.9365777985940499,
+              0,
+              0.3504597368895943
+            ],
+            "upperArmAxis": [
+              0.7644669403551073,
+              0,
+              0.6446629329379042
+            ],
+            "sourceVertices": 13137,
+            "articulatedVertices": 2135,
+            "lockedGripVertices": 9136,
+            "maxGripVertexDelta": 2.990487657476475e-8,
+            "sourceJointLengths": [
+              0.4156460972458126,
+              0.2801601167903537
+            ],
+            "posedJointLengths": [
+              0.41564608592879365,
+              0.2801600948286502
+            ],
+            "maxJointLengthError": 2.196170351131954e-8,
+            "addedGarmentVertices": 25,
+            "addedGarmentTriangles": 72,
+            "garmentClosureLength": 0.14593525919265735,
+            "garmentEnd": "measured source shoulder joint",
+            "garmentEndRadiusScale": 0.86,
+            "sourceBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4305158590129535,
+                "y": -0.36869354874812804,
+                "z": -0.6590875972733896
+              },
+              "max": {
+                "x": 0.5098885395759611,
+                "y": 0.13424714291235695,
+                "z": 0.5919467888514625
+              }
+            },
+            "posedBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4682203531265259,
+                "y": -0.39581435918807983,
+                "z": -0.659087598323822
+              },
+              "max": {
+                "x": 0.5098885297775269,
+                "y": 0.13424713909626007,
+                "z": 0.5919467806816101
+              }
+            },
+            "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+          },
+          "textureMaps": 12,
+          "uniformDisplayScale": 1.7,
+          "sourceMuzzle": [
+            0,
+            0.0987987294793129,
+            -0.6800000667572021
+          ],
+          "fittedMuzzle": [
+            0,
+            0.005000000000000061,
+            -1.85
+          ],
+          "muzzleFitError": 6.071532165918825e-17,
+          "aim": 0,
+          "reload": {
+            "stage": "held",
+            "phase": 0,
+            "upperLengthError": 0,
+            "foreLengthError": 0,
+            "reachError": 0,
+            "wrist": [
+              -0.12115013359914868,
+              0.026542065710778506,
+              -0.33372352039334946
+            ],
+            "maximumLengthError": 0,
+            "lastPhase": 0,
+            "method": "authored magazine/hand tracks, fixed-length two-bone IK, original arm skin weights on repaired visible mesh",
+            "anchors": {
+              "shoulder": [
+                -0.4093765851995752,
+                -0.3106284942569422,
+                0.18299935890445104
+              ],
+              "elbow": [
+                -0.23882406332865824,
+                -0.21844781573060773,
+                -0.019248604062529706
+              ],
+              "wrist": [
+                -0.12115013359914868,
+                0.026542065710778506,
+                -0.33372352039334946
+              ],
+              "palm": [
+                -0.01583920192372215,
+                0.03789707585799797,
+                -0.5490143114712154
+              ],
+              "magGrip": [
+                -0.035626061260700226,
+                -0.045367330312728896,
+                -0.2198716253042221
+              ]
+            },
+            "sourceRightHandUnchanged": true,
+            "sourceAssetsUnchanged": true
+          },
+          "animation": "authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap"
+        },
+        "errors": [],
+        "times": [],
+        "buildHashes": {
+          "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+          "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+          "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+          "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+          "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+          "credits.html": "d0fa93a1e859cb4093f36f50b6e3d0322813c0a6cc59157ab9ef25af80ba1913",
+          "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
+          "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+          "index.html": "22c8f95f30bcda5d7062148da975d9a88a960961bbd88acd7cbab01d390271d7",
+          "map-layout.js": "2881de22b6666e5640a8d76ddb8479068b6f87b8ab828a01d66410547782e3d0",
+          "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+          "serve.mjs": "aa3a24f183495af15d9f07c310ee5c688c7324c8fb8c6d8a88ea732cf74d8bb9",
+          "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+          "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+          "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
+          "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+          "vegetation.js": "c10196e24e55e02533eee1d4c15ccf917e629ce80d57710960f8b0da15a0812d",
+          "village.js": "6ded36f88c1acd84706df58f4a89f1469aecd33871aa6aef5897cb63ec412812",
+          "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+          "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+          "world.js": "b5b5902ea3ab2a92fe3339b76a58069d6ba3cc288e95a3e3283780e5a4a39be7"
+        },
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "map rendered multi-view evidence",
+      "pass": true,
+      "info": {
+        "version": "river-v4",
+        "textureErrors": [],
+        "weapon": {
+          "loaded": true,
+          "asset": "Rotuma MP5 / gloved first-person arms",
+          "license": "CC-BY-4.0",
+          "meshes": 4,
+          "triangles": 29172,
+          "skinnedMeshes": 0,
+          "sleeve": {
+            "repair": "rigid-joint-repose-and-shoulder-closure",
+            "bakedHeldPose": true,
+            "retainedSourceFabric": true,
+            "proceduralExtension": true,
+            "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+            "rearSleeveVerticesAdjusted": 0,
+            "nonrigidRearTranslation": false,
+            "wristDegrees": 25,
+            "upperArmDegrees": 15,
+            "wristAxis": [
+              0.9365777985940499,
+              0,
+              0.3504597368895943
+            ],
+            "upperArmAxis": [
+              0.7644669403551073,
+              0,
+              0.6446629329379042
+            ],
+            "sourceVertices": 13137,
+            "articulatedVertices": 2135,
+            "lockedGripVertices": 9136,
+            "maxGripVertexDelta": 2.990487657476475e-8,
+            "sourceJointLengths": [
+              0.4156460972458126,
+              0.2801601167903537
+            ],
+            "posedJointLengths": [
+              0.41564608592879365,
+              0.2801600948286502
+            ],
+            "maxJointLengthError": 2.196170351131954e-8,
+            "addedGarmentVertices": 25,
+            "addedGarmentTriangles": 72,
+            "garmentClosureLength": 0.14593525919265735,
+            "garmentEnd": "measured source shoulder joint",
+            "garmentEndRadiusScale": 0.86,
+            "sourceBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4305158590129535,
+                "y": -0.36869354874812804,
+                "z": -0.6590875972733896
+              },
+              "max": {
+                "x": 0.5098885395759611,
+                "y": 0.13424714291235695,
+                "z": 0.5919467888514625
+              }
+            },
+            "posedBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4682203531265259,
+                "y": -0.39581435918807983,
+                "z": -0.659087598323822
+              },
+              "max": {
+                "x": 0.5098885297775269,
+                "y": 0.13424713909626007,
+                "z": 0.5919467806816101
+              }
+            },
+            "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+          },
+          "textureMaps": 12,
+          "uniformDisplayScale": 1.7,
+          "sourceMuzzle": [
+            0,
+            0.0987987294793129,
+            -0.6800000667572021
+          ],
+          "fittedMuzzle": [
+            0,
+            0.005000000000000061,
+            -1.85
+          ],
+          "muzzleFitError": 6.071532165918825e-17,
+          "aim": 0,
+          "reload": {
+            "stage": "held",
+            "phase": 0,
+            "upperLengthError": 0,
+            "foreLengthError": 0,
+            "reachError": 0,
+            "wrist": [
+              -0.12115013359914868,
+              0.026542065710778506,
+              -0.33372352039334946
+            ],
+            "maximumLengthError": 0,
+            "lastPhase": 0,
+            "method": "authored magazine/hand tracks, fixed-length two-bone IK, original arm skin weights on repaired visible mesh",
+            "anchors": {
+              "shoulder": [
+                -0.4093765851995752,
+                -0.3106284942569422,
+                0.18299935890445104
+              ],
+              "elbow": [
+                -0.23882406332865824,
+                -0.21844781573060773,
+                -0.019248604062529706
+              ],
+              "wrist": [
+                -0.12115013359914868,
+                0.026542065710778506,
+                -0.33372352039334946
+              ],
+              "palm": [
+                -0.01583920192372215,
+                0.03789707585799797,
+                -0.5490143114712154
+              ],
+              "magGrip": [
+                -0.035626061260700226,
+                -0.045367330312728896,
+                -0.2198716253042221
+              ]
+            },
+            "sourceRightHandUnchanged": true,
+            "sourceAssetsUnchanged": true
+          },
+          "animation": "authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap"
+        },
+        "actors": {
+          "loaded": true,
+          "count": 6,
+          "license": "CC-BY-4.0",
+          "author": "DanlyVostok",
+          "trianglesEach": 25887,
+          "uniformFit": 0.9774769696424419,
+          "height": 1.8,
+          "animation": "blended procedural skeleton; world-planted two-bone leg IK, weapon-relative arm IK, pelvis/spine weight, aim, crouch, lean, breathing and actual-shot recoil; not motion capture",
+          "importedAnimationClips": 0,
+          "rigBonesEach": 88,
+          "drivenBonesEach": 20,
+          "combat": "original anchors, life, hit proxies, wg2 and gunTip transforms are never written",
+          "input": "update(dt,{live,pres}); enemy.tactical visual state; phase uses measured anchor displacement",
+          "stance": "consume caller-smoothed stance directly; full crouch lowers the skin by 0.57m to approximately 1.23m",
+          "muzzle": "flash is a child of the unchanged gunTip; triggered only by a rising tactical.recoil",
+          "integration": "caller owns weapon height/pitch/recoil and hit posture; pose before sampling the combat muzzle"
+        },
+        "village": {
+          "houses": 6,
+          "walls": 76,
+          "boxes": 856,
+          "solids": 247,
+          "tiles": 2496,
+          "drawCalls": 13,
+          "triangles": 50304,
+          "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+        },
+        "foliage": {
+          "counts": {
+            "trees-near": 48,
+            "trees-far": 100,
+            "fern": 317,
+            "grass": 14969
+          },
+          "drawCalls": 13,
+          "source": "CC0 Poly Haven scanned foliage, explicit near/far geometry"
+        },
+        "map": {
+          "houses": 6,
+          "walls": 76,
+          "crossings": [
+            -23,
+            -4,
+            15
+          ],
+          "water": "freely wadeable; three raised crossings"
+        },
+        "weather": 2,
+        "time": 0.2534000000953674,
+        "triangles": 29172,
+        "drawCalls": 4,
+        "source": "browser WebGL",
+        "audio": {
+          "method": "synthesized noise, not a field recording",
+          "context": "locked",
+          "failed": false,
+          "active": false,
+          "focused": true,
+          "effectiveGain": 0,
+          "pending": 0,
+          "thunderCount": 0
+        }
+      }
+    }
+  ],
+  "errors": []
+}

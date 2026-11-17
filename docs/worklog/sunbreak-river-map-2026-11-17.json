@@ -1,0 +1,15 @@
+{
+  "schema": "neon-task-event-v1",
+  "task_id": "sunbreak-river-map-2026-11-17",
+  "timestamp_utc": "2026-11-17T13:37:00Z",
+  "event": "local-source-bound-QA-checkpoint",
+  "baseline": "bb30122fefdb748a048e2e2c7dccd5dc5e9f43c9",
+  "status": "CONDITIONAL PASS; public deployment pending",
+  "outputs": ["experiments/sunbreak-river-v4", "docs/tasks/sunbreak-river-map-2026-11-17.md"],
+  "qa": "experiments/sunbreak-river-v4/qa/release.json",
+  "review": "Planck bounded runtime PASS; Zeno representative-still art CONDITIONAL PASS",
+  "preserved": "Earlier four demos and all private/user source assets unchanged",
+  "limitations": ["No real4v4", "No AAA certification", "No continuous-motion acceptance", "Earlier intermittent timing failures retained and unexplained"],
+  "sync": "Public browser source/assets only; pre-existing dirty private vault preserved and skipped",
+  "next": "Normal protected-main PR restricted to sunbreak/river, anonymous bytes and public actual-input verification"
+}

@@ -1,0 +1,23 @@
+{
+  "method": "Original Poly Haven CC0 leaves retained as whole components with silhouette enlargement; trunk/branches glTF-Transform simplification",
+  "receipts": [
+    {
+      "name": "tree-lod.glb",
+      "leafTriangles": 92472,
+      "wholeComponents": 29781,
+      "keep": 0.13,
+      "scale": 2.2,
+      "bytes": 14612568,
+      "sha256": "f560fdcb7f75b2b392082e8f2600664248de9d5c0e775f802430562d68db1bfe"
+    },
+    {
+      "name": "tree-far.glb",
+      "leafTriangles": 32400,
+      "wholeComponents": 29781,
+      "keep": 0.045,
+      "scale": 3.2,
+      "bytes": 8716404,
+      "sha256": "0676ac6236bcae6f8816e1153762cf6524082de255777ac9a033ef969afd0f3f"
+    }
+  ]
+}

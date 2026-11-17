@@ -701,3 +701,7 @@ SUNBREAK v4 local single-player auto-fire/reload checkpoint:32 browser groups an
 ## Sync note - 2026-11-17T18:59:30.0577235+08:00
 
 SUNBREAK v4 DONE bounded single-player CONDITIONAL PASS: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/ . Public runtime source f5fc3012a775995052dac5fc7fb623d12fea7f85; normal PR9 publication e2c0faf2c51b79c44e3589e08987b6feb225294a; Pages action44068884546SUCCESS. Anonymous126file hashes and7actual-public input checks PASS; Planck publication review PASS. Earlier3demos unchanged. Prior hitches, failed capture density and stale-HUD first public test retained. Continuous motion UNVERIFIED;4v4 NOT IMPLEMENTED, next choose authorized real-time host/budget. Existing private-vault state untouched; no full UE/private portability claim. No SeaTalk/email sent.
+
+## Sync note - 2026-11-17T21:39:56.4922022+08:00
+
+Riverfall local source-bound CONDITIONAL PASS. Fable5.2 village contribution; independent river map, paired houses/ruins, wet terrain and scanned forest. Earlier four demos and v4 guns/NPC animation unchanged. CPU18/AI62/terrain175/architecture76, controls32/traversal40 and8views pass. Final1080p30s pair max18.7/18.8ms zeroover50; Planck runtime PASS, Zeno sampled art CONDITIONAL PASS. Prior176-318ms stalls retained, cause unknown; no AAA/4v4/continuous-motion acceptance. New sunbreak/river Pages publication pending. Dirty private vault untouched; isolated public browser checkpoint skips private assets.

@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-17",
+  "sources": {
+    "index.html": "22c8f95f30bcda5d7062148da975d9a88a960961bbd88acd7cbab01d390271d7",
+    "world.js": "63451e1548bca820b87d2aba95d3b08adc82eeb684e7e246aee3deb7c8fd517f",
+    "village.js": "6ded36f88c1acd84706df58f4a89f1469aecd33871aa6aef5897cb63ec412812",
+    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
+    "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
+    "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+    "vegetation.js": "c10196e24e55e02533eee1d4c15ccf917e629ce80d57710960f8b0da15a0812d",
+    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c"
+  },
+  "engineering": {
+    "reviewer": "Planck",
+    "verdict": "PASS",
+    "scope": "Bounded current geometry/input code; separate final runtime gates below are checked by integrator",
+    "notes": [
+      "Swept neighbor edges, start connector, thin cover and terrain Float32/material-side regressions resolved.",
+      "Mirrored river width/ford offset and12m bridge support/shot proxy agree.",
+      "Post-review allocation-only changes remove identical temporary-array expressions; no gameplay/visual value change."
+    ]
+  },
+  "art": {
+    "reviewer": "Zeno",
+    "verdict": "CONDITIONAL PASS",
+    "evidence": "qa/evidence/map-2026-11-17T13-21-00-181Z",
+    "scope": "Eight representative actual WebGL canvas stills, not continuous motion or AAA acceptance",
+    "confirmed": [
+      "Varied shore/curved fords and quieter reflection reduce canal appearance.",
+      "Reduced surface contrast resolves overwhelming material noise.",
+      "Water tank landmark and broken masonry/fallen beams improve identity and ruin read."
+    ],
+    "limits": [
+      "Overall river is still straight and shallow edges are angular.",
+      "Walls now somewhat flat/clean.",
+      "Mirrored houses and repeated tree forms remain apparent."
+    ],
+    "subsequentChange": "Only mathematically identical allocation removal in rain/splash and groundHeight. Fresh final images must remain source-bound; no new art feature added."
+  },
+  "runtime": {
+    "reviewer": "integrator",
+    "verdict": "PASS",
+    "independentRuntimeReview": "Planck independently recalculated final13:28/13:29 raw frames, confirmed source-bound32controls/40traversals/eight1080p file metadata. Bounded runtime PASS; no art/publication/AAA acceptance.",
+    "strictPerformanceThreshold": {
+      "p95ms": 33.3,
+      "p99ms": 33.3,
+      "maxms": 50,
+      "over50": 0
+    },
+    "historicalStalls": "Retain all failures. CPU stage timing did not establish a cause for intermittent176–318ms stalls; no universal hitch-free claim."
+  },
+  "continuousMotion": {
+    "verdict": "UNVERIFIED",
+    "reason": "Representative stills plus functional checks; no full continuous motion acceptance"
+  },
+  "competitiveBalance": {
+    "verdict": "UNVERIFIED",
+    "reason": "Mirrored geometry/path lengths only; no human multiplayer playtest"
+  },
+  "multiplayer": "NOT IMPLEMENTED",
+  "AAA": "NOT ACCEPTED"
+}
