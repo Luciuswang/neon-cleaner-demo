@@ -705,3 +705,7 @@ SUNBREAK v4 DONE bounded single-player CONDITIONAL PASS: https://luciuswang.gith
 ## Sync note - 2026-11-17T21:39:56.4922022+08:00
 
 Riverfall local source-bound CONDITIONAL PASS. Fable5.2 village contribution; independent river map, paired houses/ruins, wet terrain and scanned forest. Earlier four demos and v4 guns/NPC animation unchanged. CPU18/AI62/terrain175/architecture76, controls32/traversal40 and8views pass. Final1080p30s pair max18.7/18.8ms zeroover50; Planck runtime PASS, Zeno sampled art CONDITIONAL PASS. Prior176-318ms stalls retained, cause unknown; no AAA/4v4/continuous-motion acceptance. New sunbreak/river Pages publication pending. Dirty private vault untouched; isolated public browser checkpoint skips private assets.
+
+## Sync note - 2026-11-17T21:45:18.7684283+08:00
+
+River map publication preflight: exact prepared PR and full manifest now pinned with 12 contract checks. Runtime unchanged and local gates retained. Public deployment pending; dirty pre-existing private vault remains untouched.

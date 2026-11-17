@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {validatePreparedPR,validateManifest,sha256} from '../tools/publication-contract.mjs';
+const manifest={schema:'sunbreak-river-overlay-v1',publicPath:'sunbreak/river/',sourceCommit:'source',files:[{path:'index.html'}],sharedFiles:[{path:'vendor/three.js'}]};
+const bytes=Buffer.from(JSON.stringify(manifest));
+const prepared={number:123,head:'head',sourceCommit:'source',manifestSha256:sha256(bytes)};
+const pr={number:123,head:{sha:'head',repo:{full_name:'Luciuswang/neon-cleaner-demo'}},base:{ref:'main',repo:{full_name:'Luciuswang/neon-cleaner-demo'}}};
+validatePreparedPR(pr,prepared);validateManifest(bytes,prepared);
+const mutate=f=>{const altered=structuredClone(pr);f(altered);assert.throws(()=>validatePreparedPR(altered,prepared));};
+mutate(p=>p.number++);mutate(p=>p.head.sha='changed');mutate(p=>p.head.repo.full_name='other/repo');mutate(p=>p.base.ref='other');mutate(p=>p.base.repo.full_name='other/repo');
+for(const patch of [{files:[]},{sharedFiles:[]},{sourceCommit:'other'},{files:[{path:'wrong.js'}]}])assert.throws(()=>validateManifest(Buffer.from(JSON.stringify({...manifest,...patch})),prepared));
+assert.throws(()=>validateManifest(bytes,{...prepared,sourceCommit:'other'}));
+console.log('PASS: 2 valid contracts and 10 fail-closed publication regressions');

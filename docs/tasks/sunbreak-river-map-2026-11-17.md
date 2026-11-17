@@ -129,10 +129,18 @@ bounded runtime PASS. Zeno art CONDITIONAL PASS. Earlier176–318ms failures rem
 unexplained; the allocation optimization is not proven to have cured them.
 No continuous-motion, human balance, real4v4, AAA or UE acceptance.
 
+## Publication preflight
+
+Source/runtime checkpoint76116eae is uploaded with2LFS objects. Independent
+publication review required pinning the exact prepared PR head/base and the entire
+manifest, not trusting a live manifest to provide its own expected file list.
+Both checks added with2positive/10negative regression cases. No runtime or asset
+bytes changed; final local QA source bindings remain valid. Publication pending.
+
 ## Next action
 
-Finish source-bound runtime/performance gates; save checkpoint; publish only the
-new /sunbreak/river/ subtree through a normal protected-main PR; verify anonymous
+Publish only the new /sunbreak/river/ subtree through a normal protected-main PR;
+verify anonymous
 bytes and actual public input. Private vault remains untouched and blocked by its
 pre-existing dirty state; this public-only slice uses -SkipPrivateAssets and makes
 no full UE/private-asset portability claim.

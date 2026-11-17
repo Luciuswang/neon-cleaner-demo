@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T134519Z-4e14e3cd2d",
+  "task_id": "sunbreak-river-map-2026-11-17",
+  "timestamp_utc": "2026-11-17T13:45:19.177225+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "River map publication preflight: exact prepared PR and full manifest now pinned with 12 contract checks. Runtime unchanged and local gates retained. Public deployment pending; dirty pre-existing private vault remains untouched.",
+  "commit_shas": [
+    "76116eaeadee320e74b7d1c9313746abfabb4cda"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

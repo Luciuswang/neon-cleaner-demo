@@ -5,6 +5,7 @@ import {resolve,dirname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
+import {validatePreparedPR,validateManifest} from './publication-contract.mjs';
 const repo=fileURLToPath(new URL('../../../',import.meta.url)),game=fileURLToPath(new URL('../',import.meta.url));
 const endpoint='https://api.github.com/repos/Luciuswang/neon-cleaner-demo',subtree='sunbreak/river/';
 const env={...process.env,GIT_TERMINAL_PROMPT:'0',GCM_INTERACTIVE:'never'};
@@ -46,6 +47,8 @@ if(process.argv.includes('--prepare')){
  for(const f of release.files){
   const bytes=execFileSync('git',['show',':'+subtree+f.path],{cwd:checkout,maxBuffer:64e6});assert.equal(hash(bytes),f.sha256,'Staged file changed '+f.path);
  }
+ const manifestSha256=hash(readFileSync(resolve(out,'public-release.json')));
+ assert.equal(hash(execFileSync('git',['show',':'+subtree+'public-release.json'],{cwd:checkout,maxBuffer:8e6})),manifestSha256,'Staged manifest changed');
  git(['diff','--cached','--check'],checkout);
  git(['commit','-m','publish: SUNBREAK Riverfall village map'],checkout);
  const head=git(['rev-parse','HEAD'],checkout),branch='codex/sunbreak-river-'+sourceCommit.slice(0,12);
@@ -54,7 +57,7 @@ if(process.argv.includes('--prepare')){
  const pr=existing[0]||await api('/pulls','POST',{title:'Publish separate SUNBREAK Riverfall village map',head:branch,base:'main',
   body:'Only sunbreak/river/ from source '+sourceCommit+'. Earlier four demos and shared assets are unchanged. New mirrored river village with scanned mud/foliage, flowing water, ruins and retained v4 weapons/NPCs. Single-player map experiment; multiplayer, competitive balance and AAA parity are not claimed. Normal protected-main workflow, no bypass.'});
  number=pr.number;
- writeFileSync(resolve(repo,'.local/sunbreak-river-prepared.json'),JSON.stringify({number,url:pr.html_url,sourceCommit,head,beforeMain,checkout},null,2)+'\n');
+ writeFileSync(resolve(repo,'.local/sunbreak-river-prepared.json'),JSON.stringify({number,url:pr.html_url,sourceCommit,head,beforeMain,checkout,manifestSha256},null,2)+'\n');
  console.log(JSON.stringify({pr:number,url:pr.html_url,sourceCommit,head}));
 }
 if(number){
@@ -64,6 +67,9 @@ if(number){
  const required=rules.find(r=>r.type==='pull_request')?.parameters?.required_approving_review_count??0;
  console.log(JSON.stringify({pr:number,merged:pr.merged,state:pr.state,mergeable:pr.mergeable,mergeableState:pr.mergeable_state,requiredApprovals:required,checks:checks.check_runs.map(c=>({name:c.name,status:c.status,conclusion:c.conclusion})),statuses:status.statuses.length}));
  if(process.argv.includes('--merge')){
+  const prepared=JSON.parse(readFileSync(resolve(repo,'.local/sunbreak-river-prepared.json')));
+  validatePreparedPR(pr,prepared);
+  const pinnedRelease=validateManifest(execFileSync('git',['show',prepared.head+':'+subtree+'public-release.json'],{cwd:repo,maxBuffer:8e6}),prepared);
   const files=await api('/pulls/'+number+'/files?per_page=100');
   assert.ok(files.length>0&&files.length<100&&files.every(f=>f.filename.startsWith(subtree)));
   assert.equal(pr.head.repo.full_name,'Luciuswang/neon-cleaner-demo');
@@ -74,6 +80,8 @@ if(number){
   const merged=await api('/pulls/'+number+'/merge','PUT',{sha:pr.head.sha,merge_method:'merge'});assert.ok(merged.merged);
   git(['fetch','origin','+refs/heads/main:refs/remotes/origin/main']);git(['merge-base','--is-ancestor',merged.sha,'origin/main']);
   const release=JSON.parse(git(['show',merged.sha+':'+subtree+'public-release.json']));
+  validateManifest(execFileSync('git',['show',merged.sha+':'+subtree+'public-release.json'],{cwd:repo,maxBuffer:8e6}),prepared);
+  assert.equal(release.sourceCommit,pinnedRelease.sourceCommit);
   const receipt={pr:number,publicCommit:merged.sha,sourceCommit:release.sourceCommit,url:'https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/',uploaded:true,liveVerified:false};
   writeFileSync(resolve(repo,'.local/sunbreak-river-publication.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));
  }
