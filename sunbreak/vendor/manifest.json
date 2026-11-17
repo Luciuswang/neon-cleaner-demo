@@ -1,0 +1,331 @@
+{
+  "package": "three",
+  "version": "0.160.0",
+  "license": "MIT",
+  "files": {
+    "LICENSE": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/LICENSE",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    "build/three.module.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "bytes": 1272972,
+      "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    "examples/jsm/geometries/RoundedBoxGeometry.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "sha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb"
+    },
+    "examples/jsm/libs/meshopt_decoder.module.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/meshopt_decoder.module.js",
+      "bytes": 24850,
+      "sha256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468"
+    },
+    "examples/jsm/loaders/GLTFLoader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js",
+      "bytes": 108522,
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3"
+    },
+    "examples/jsm/loaders/RGBELoader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/RGBELoader.js",
+      "bytes": 11377,
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+    },
+    "examples/jsm/math/SimplexNoise.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7"
+    },
+    "examples/jsm/objects/Reflector.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/objects/Reflector.js",
+      "bytes": 7043,
+      "sha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b"
+    },
+    "examples/jsm/postprocessing/EffectComposer.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669"
+    },
+    "examples/jsm/postprocessing/MaskPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f"
+    },
+    "examples/jsm/postprocessing/OutputPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2398,
+      "sha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd"
+    },
+    "examples/jsm/postprocessing/Pass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92"
+    },
+    "examples/jsm/postprocessing/RenderPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/RenderPass.js",
+      "bytes": 1915,
+      "sha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2"
+    },
+    "examples/jsm/postprocessing/SMAAPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/SMAAPass.js",
+      "bytes": 49467,
+      "sha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a"
+    },
+    "examples/jsm/postprocessing/SSAOPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/SSAOPass.js",
+      "bytes": 11421,
+      "sha256": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d"
+    },
+    "examples/jsm/postprocessing/ShaderPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781"
+    },
+    "examples/jsm/postprocessing/UnrealBloomPass.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12406,
+      "sha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba"
+    },
+    "examples/jsm/shaders/CopyShader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d"
+    },
+    "examples/jsm/shaders/LuminosityHighPassShader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1192,
+      "sha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900"
+    },
+    "examples/jsm/shaders/OutputShader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1393,
+      "sha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a"
+    },
+    "examples/jsm/shaders/SMAAShader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/SMAAShader.js",
+      "bytes": 14628,
+      "sha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369"
+    },
+    "examples/jsm/shaders/SSAOShader.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/shaders/SSAOShader.js",
+      "bytes": 6478,
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06"
+    },
+    "examples/jsm/utils/BufferGeometryUtils.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/utils/BufferGeometryUtils.js",
+      "bytes": 31906,
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb"
+    },
+    "examples/jsm/utils/SkeletonUtils.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/utils/SkeletonUtils.js",
+      "bytes": 8007,
+      "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
+    }
+  },
+  "thirdParty": [
+    {
+      "path": "vendor/meshoptimizer-LICENSE.md",
+      "url": "https://raw.githubusercontent.com/zeux/meshoptimizer/v0.18/LICENSE.md",
+      "license": "MIT",
+      "bytes": 1079,
+      "sha256": "063805e3b8e24ceab4c5dea358b03245ee41c31be87cf65c61d836636cb494bb"
+    }
+  ],
+  "variants": [
+    {
+      "path": "vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js",
+      "upstreamPath": "vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "upstreamSha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+      "bytes": 31906,
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/build/three.module.js",
+      "upstreamPath": "vendor/three/build/three.module.js",
+      "upstreamSha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495",
+      "bytes": 1273409,
+      "sha256": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+      "randomCallsIsolated": 21
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/loaders/RGBELoader.js",
+      "upstreamPath": "vendor/three/examples/jsm/loaders/RGBELoader.js",
+      "upstreamSha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+      "bytes": 11377,
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/objects/Reflector.js",
+      "upstreamPath": "vendor/three/examples/jsm/objects/Reflector.js",
+      "upstreamSha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+      "bytes": 7043,
+      "sha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/EffectComposer.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/EffectComposer.js",
+      "upstreamSha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+      "bytes": 4651,
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/CopyShader.js",
+      "upstreamPath": "vendor/three/examples/jsm/shaders/CopyShader.js",
+      "upstreamSha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+      "bytes": 571,
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/ShaderPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/ShaderPass.js",
+      "upstreamSha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+      "bytes": 1576,
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/Pass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/Pass.js",
+      "upstreamSha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+      "bytes": 1706,
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/MaskPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/MaskPass.js",
+      "upstreamSha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+      "bytes": 2231,
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/RenderPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/RenderPass.js",
+      "upstreamSha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+      "bytes": 1915,
+      "sha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/SSAOPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/SSAOPass.js",
+      "upstreamSha256": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d",
+      "bytes": 11734,
+      "sha256": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea",
+      "randomCallsIsolated": 5
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/math/SimplexNoise.js",
+      "upstreamPath": "vendor/three/examples/jsm/math/SimplexNoise.js",
+      "upstreamSha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+      "bytes": 14351,
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/SSAOShader.js",
+      "upstreamPath": "vendor/three/examples/jsm/shaders/SSAOShader.js",
+      "upstreamSha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+      "bytes": 6478,
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/OutputPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/OutputPass.js",
+      "upstreamSha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+      "bytes": 2398,
+      "sha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/OutputShader.js",
+      "upstreamPath": "vendor/three/examples/jsm/shaders/OutputShader.js",
+      "upstreamSha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+      "bytes": 1393,
+      "sha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/SMAAPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/SMAAPass.js",
+      "upstreamSha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+      "bytes": 49467,
+      "sha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/SMAAShader.js",
+      "upstreamPath": "vendor/three/examples/jsm/shaders/SMAAShader.js",
+      "upstreamSha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+      "bytes": 14628,
+      "sha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "upstreamPath": "vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "upstreamSha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+      "bytes": 4625,
+      "sha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "upstreamPath": "vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "upstreamSha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+      "bytes": 12406,
+      "sha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "upstreamPath": "vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "upstreamSha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+      "bytes": 1192,
+      "sha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/loaders/GLTFLoader.js",
+      "upstreamPath": "vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "upstreamSha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+      "bytes": 108522,
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "upstreamPath": "vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
+      "upstreamSha256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+      "bytes": 24850,
+      "sha256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/utils/SkeletonUtils.js",
+      "upstreamPath": "vendor/three/examples/jsm/utils/SkeletonUtils.js",
+      "upstreamSha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+      "bytes": 8007,
+      "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/LICENSE",
+      "upstreamPath": "vendor/three/LICENSE",
+      "upstreamSha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+      "randomCallsIsolated": 0
+    }
+  ],
+  "variantNote": "Baseline imports exact upstream core. Presentation graph has module-local PRNG replacing Math.random() and separate devtools instance marker; no global RNG swap."
+}
