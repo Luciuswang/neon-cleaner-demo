@@ -51,6 +51,26 @@
     },
     "historicalStalls": "Retain all failures. CPU stage timing did not establish a cause for intermittent176–318ms stalls; no universal hitch-free claim."
   },
+  "publicationPreflight": {
+    "reviewer": "Planck",
+    "verdict": "PASS",
+    "scope": "Publisher/anonymous verifier only; deployment and live checks separately gated",
+    "notes": [
+      "Prepared PR number/head/repositories/main base and exact manifest pinned before merge.",
+      "Anonymous live manifest pinned to prepared/merged commits; fixed file set and completion count.",
+      "Independent 2positive/10negative publication-contract regression run PASS."
+    ]
+  },
+  "publicationEvidence": {
+    "reviewer": "Planck",
+    "verdict": "PASS",
+    "scope": "Read-only evidence sanity-check; no broader art/multiplayer acceptance",
+    "notes": [
+      "Full source/prepared-head/public-merge identities and exact manifest hashes agree.",
+      "154 unique byte/preservation checks and7public input checks PASS; zero recorded errors/retries.",
+      "Public smoke does not independently embed a commit digest; release identity is established by separate pinned-hash verification."
+    ]
+  },
   "continuousMotion": {
     "verdict": "UNVERIFIED",
     "reason": "Representative stills plus functional checks; no full continuous motion acceptance"

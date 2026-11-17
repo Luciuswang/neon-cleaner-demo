@@ -709,3 +709,7 @@ Riverfall local source-bound CONDITIONAL PASS. Fable5.2 village contribution; in
 ## Sync note - 2026-11-17T21:45:18.7684283+08:00
 
 River map publication preflight: exact prepared PR and full manifest now pinned with 12 contract checks. Runtime unchanged and local gates retained. Public deployment pending; dirty pre-existing private vault remains untouched.
+
+## Sync note - 2026-11-17T21:52:38.5619759+08:00
+
+DELIVERED Riverfall map: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/ . Source98e650e, PR10 merged91924b3, Pages44096139814 SUCCESS. Pinned anonymous154checks and actual public7input checks PASS; independent publication PASS. Overall bounded single-player prototype CONDITIONAL PASS; no real4v4/AAA/continuous-motion acceptance. Earlier four demos preserved. Current task packet records next optional playtest; pre-existing dirty private vault untouched, no full private portability claim.

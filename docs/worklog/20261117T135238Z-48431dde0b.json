@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T135238Z-48431dde0b",
+  "task_id": "sunbreak-river-map-2026-11-17",
+  "timestamp_utc": "2026-11-17T13:52:38.957248+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "DELIVERED Riverfall map: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/ . Source98e650e, PR10 merged91924b3, Pages44096139814 SUCCESS. Pinned anonymous154checks and actual public7input checks PASS; independent publication PASS. Overall bounded single-player prototype CONDITIONAL PASS; no real4v4/AAA/continuous-motion acceptance. Earlier four demos preserved. Current task packet records next optional playtest; pre-existing dirty private vault untouched, no full private portability claim.",
+  "commit_shas": [
+    "98e650e7aa2e96e60f9df7a51176d66d72f29cfc"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

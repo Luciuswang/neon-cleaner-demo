@@ -1,7 +1,7 @@
 # Task Packet: SUNBREAK river village map
 
 - Task: sunbreak-river-map-2026-11-17
-- State: LOCAL QA CONDITIONAL PASS; PUBLICATION PENDING
+- State: DELIVERED; PUBLIC LIVE VERIFIED; BOUNDED PROTOTYPE CONDITIONAL PASS
 - Owner: Codex integrator, single runtime writer; Fable 5.2 requested producer
 - Baseline: bb30122fefdb748a048e2e2c7dccd5dc5e9f43c9
 - Branch: codex/character-continuity-pipeline
@@ -46,8 +46,8 @@ Private restore stopped on pre-existing unfinished vault changes. Preserve them;
 this public browser slice needs no private UE assets and must not claim full UE
 portability. No missing local private resource is being recreated.
 Initial installed CLI 2.1.252 probe failed with explicit version-too-old error
-(requires >=2.1.290), not exhausted credits. Isolated npm CLI 2.1.326 is available;
-exact-model authenticated verification pending. No global auth settings changed.
+(requires >=2.1.290), not exhausted credits. Isolated npm CLI2.1.326 completed
+exact-model authenticated production. No global auth settings changed.
 
 ## Write set
 
@@ -66,7 +66,7 @@ exact-model authenticated verification pending. No global auth settings changed.
       routes on both banks; riverbed floor and bullet cover match visible meshes.
 - [x] Existing NPC/weapon assets and full-auto/reload behavior retained.
 - [x] Actual rendered multiview and runtime tests with explicit independent verdict.
-- [ ] Scoped publication, earlier versions preserved, anonymous live verification.
+- [x] Scoped publication, earlier versions preserved, anonymous live verification.
 
 ## Review decision
 
@@ -77,8 +77,8 @@ remain p95/p99<=33.3ms,max<=50ms,zero>50ms; retain failures.
 The entire shallow river is wadeable, with three raised easy crossings. No swimming.
 Exact model probe succeeded using isolated CLI2.1.326: returned READY, modelUsage
 contains only claude-fable-5-2, CLI-reported cost0.068676USD (not independent billing).
-Tool-free Fable architecture generation is running with a6USD cap; no global
-account/auth settings were changed. Main integrates shared data/terrain/vegetation.
+Tool-free Fable architecture generation used a6USD per-call cap; no global
+account/auth settings were changed. Main integrated shared data/terrain/vegetation.
 
 ## Production evidence and corrections
 
@@ -115,8 +115,8 @@ Performance remains separately gated. Early terrain triangle scans caused long
 frames; exact grid DDA replaced them without removing ground shot occlusion.
 Later samples have normal18ms frame pacing but isolated176–318ms stalls. Causes
 are not established; storms are not proven responsible. Failures remain archived.
-Per-frame rain/splash temporary arrays removed; profiler and final strict pair
-pending. No threshold has been lowered or failed sample omitted.
+Per-frame rain/splash temporary arrays removed; final strict pair results are
+below. No threshold has been lowered or failed sample omitted.
 
 ## Final local gate
 
@@ -134,13 +134,33 @@ No continuous-motion, human balance, real4v4, AAA or UE acceptance.
 Source/runtime checkpoint76116eae is uploaded with2LFS objects. Independent
 publication review required pinning the exact prepared PR head/base and the entire
 manifest, not trusting a live manifest to provide its own expected file list.
-Both checks added with2positive/10negative regression cases. No runtime or asset
-bytes changed; final local QA source bindings remain valid. Publication pending.
+Both checks added with2positive/10negative regression cases. Planck independently
+reran the fixture and returned PASS for publication preflight. No runtime or
+asset bytes changed; final local QA source bindings remain valid.
+Source98e650e7aa2e96e60f9df7a51176d66d72f29cfc uploaded, PR10 merged normally to
+91924b389a170a15ffc7665446b56c363f7fcca3, only45new sunbreak/river/ files.
+Pages deployment44096139814 completed SUCCESS on the exact merged commit.
+
+## Delivered public evidence
+
+- Play: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/
+- Preserved v4: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/
+- Anonymous pinned-byte verification PASS154:44overlay files, exact manifest,
+  103shared dependencies,6preserved earlier entry pages. No errors/retries.
+- Actual public browser PASS7: held/released fire, right/middle-button behavior,
+  delayed reload replenishment, fire lock during reload, ammo conservation.
+- Source-bound release collector --published: CONDITIONAL PASS, no waived gates.
+- Planck final independent publication evidence sanity-check PASS: identities,
+  manifest and154unique checks agree; public7checks agree. No broader acceptance.
+- Evidence: qa/public-live.json, qa/publication.json,
+  qa/evidence/public-2026-11-17T13-49-06-186Z/public-1.json.
+- Current work is a single-player six-bot map prototype. No real4v4, human
+  competitive-balance test, full continuous-motion review or AAA parity claim.
 
 ## Next action
 
-Publish only the new /sunbreak/river/ subtree through a normal protected-main PR;
-verify anonymous
-bytes and actual public input. Private vault remains untouched and blocked by its
+User can compare the public river map with preserved v4; next optional production
+is human route/balance playtesting and art iteration. No required map-publication
+work remains. Private vault remains untouched and blocked by its
 pre-existing dirty state; this public-only slice uses -SkipPrivateAssets and makes
 no full UE/private-asset portability claim.

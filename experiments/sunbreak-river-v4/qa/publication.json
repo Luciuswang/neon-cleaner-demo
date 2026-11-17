@@ -1,0 +1,32 @@
+{
+  "schema": "sunbreak-river-publication-receipt-v1",
+  "task": "sunbreak-river-map-2026-11-17",
+  "sourceCommit": "98e650e7aa2e96e60f9df7a51176d66d72f29cfc",
+  "pr": 10,
+  "preparedHead": "a245257a3e7106a282e0afc2c87becade3491de0",
+  "beforeMain": "e2c0faf2c51b79c44e3589e08987b6feb225294a",
+  "publicCommit": "91924b389a170a15ffc7665446b56c363f7fcca3",
+  "manifestSha256": "f26d3b51a4914948e77c89b1d9bc7930b6a809d12b2148e1a2b520187f4adfda",
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "pages": {
+    "run": 44096139814,
+    "status": "completed",
+    "conclusion": "success",
+    "updatedAt": "2026-11-17T13:48:46Z",
+    "url": "https://github.com/Luciuswang/neon-cleaner-demo/actions/runs/44096139814"
+  },
+  "anonymousVerification": {
+    "pass": true,
+    "checks": 154,
+    "errors": 0,
+    "evidence": "qa/public-live.json"
+  },
+  "publicInput": {
+    "pass": true,
+    "checks": 7,
+    "errors": 0,
+    "evidence": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-1.json"
+  },
+  "scope": "45 new sunbreak/river/ files only; previous demos unchanged. Bounded single-player map, not multiplayer or AAA acceptance.",
+  "privateAssetContinuity": "Unrelated pre-existing dirty private vault preserved; skipped explicitly. No full UE/private portability claim."
+}

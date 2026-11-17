@@ -1,0 +1,58 @@
+{
+  "schema": "sunbreak-auto-browser-v1",
+  "date": "2026-11-17T13:50:20.537Z",
+  "phase": "public",
+  "method": "native-headless actual WebGL canvas; no desktop/window interaction",
+  "pass": true,
+  "results": [
+    {
+      "name": "held actual left mouse fires repeatedly",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 23,
+          "reserve": 90
+        }
+      }
+    },
+    {
+      "name": "released mouse stops immediately",
+      "pass": true
+    },
+    {
+      "name": "right mouse aims but never fires",
+      "pass": true
+    },
+    {
+      "name": "middle mouse never fires",
+      "pass": true
+    },
+    {
+      "name": "reload starts and defers replenishment",
+      "pass": true
+    },
+    {
+      "name": "reload blocks fire",
+      "pass": true
+    },
+    {
+      "name": "reload completes once and conserves total ammunition",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 23,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 30,
+          "reserve": 83
+        }
+      }
+    }
+  ],
+  "errors": []
+}

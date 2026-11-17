@@ -1,6 +1,6 @@
 {
   "schema": "sunbreak-river-release-v1",
-  "date": "2026-11-17T13:36:47.323Z",
+  "date": "2026-11-17T13:52:26.007Z",
   "verdict": "CONDITIONAL PASS",
   "scope": "Independent single-player river-map experiment; not AAA parity, real4v4, continuous-motion approval or competitive-balance certification",
   "currentSourceBinding": true,
@@ -117,6 +117,26 @@
         "over50": 0
       },
       "historicalStalls": "Retain all failures. CPU stage timing did not establish a cause for intermittent176–318ms stalls; no universal hitch-free claim."
+    },
+    "publicationPreflight": {
+      "reviewer": "Planck",
+      "verdict": "PASS",
+      "scope": "Publisher/anonymous verifier only; deployment and live checks separately gated",
+      "notes": [
+        "Prepared PR number/head/repositories/main base and exact manifest pinned before merge.",
+        "Anonymous live manifest pinned to prepared/merged commits; fixed file set and completion count.",
+        "Independent 2positive/10negative publication-contract regression run PASS."
+      ]
+    },
+    "publicationEvidence": {
+      "reviewer": "Planck",
+      "verdict": "PASS",
+      "scope": "Read-only evidence sanity-check; no broader art/multiplayer acceptance",
+      "notes": [
+        "Full source/prepared-head/public-merge identities and exact manifest hashes agree.",
+        "154 unique byte/preservation checks and7public input checks PASS; zero recorded errors/retries.",
+        "Public smoke does not independently embed a commit digest; release identity is established by separate pinned-hash verification."
+      ]
     },
     "continuousMotion": {
       "verdict": "UNVERIFIED",
@@ -701,6 +721,21 @@
       "bytes": 344530
     },
     {
+      "path": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-1.json",
+      "sha256": "8ec9c007f30a6b7738586b7194272b3cc5662db0bad2a1fdbd8192109dfc915d",
+      "bytes": 1176
+    },
+    {
+      "path": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-after-reload.json",
+      "sha256": "652f0eda8db7e3b08d9fe7b35da61c3dfca2b31e3f3b53c3cdeda29afda85478",
+      "bytes": 3466
+    },
+    {
+      "path": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-after-reload.png",
+      "sha256": "8c099a828e592ac2c449d461fa4ac27c6b76554fb53632376d55b50f1701bf91",
+      "bytes": 1898588
+    },
+    {
       "path": "qa/evidence/quick-2026-11-17T12-42-26-472Z/quick-failure-1.json",
       "sha256": "739085f403e1e9c7e2a127653738346f5b499378c76c199cfed80a28e1ba85bf",
       "bytes": 11461
@@ -811,5 +846,11 @@
     "Input test initially outran asynchronous pointer-lock exit; harness now awaits lifecycle settlement before resuming.",
     "Art first review REVISE: straight canal, noisy material, cloned silhouettes; source-bound rework reviewed separately."
   ],
-  "publication": "PENDING normal protected-main publication and live verification"
+  "publication": {
+    "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+    "sourceCommit": "98e650e7aa2e96e60f9df7a51176d66d72f29cfc",
+    "publicCommit": "91924b389a170a15ffc7665446b56c363f7fcca3",
+    "hashes": 154,
+    "inputChecks": 7
+  }
 }

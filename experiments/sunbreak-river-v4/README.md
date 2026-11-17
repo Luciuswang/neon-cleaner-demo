@@ -1,7 +1,8 @@
 # RIVERFALL — independent v4 river map
 
 Local preview: run `node experiments/sunbreak-river-v4/serve.mjs`, then open
-http://127.0.0.1:5190/river/ . Public target is a separate `/sunbreak/river/` page.
+http://127.0.0.1:5190/river/ . Public playable page:
+https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/
 All four earlier demo source directories and public pages remain unchanged.
 
 Rainy Vietnamese-inspired village, six paired buildings (intact, partly ruined,
