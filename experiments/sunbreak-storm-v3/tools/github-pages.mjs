@@ -83,7 +83,7 @@ if(!process.argv.includes('--publish')){
  }
  const publishedPaths=git(['ls-files','--','sunbreak'],checkout).trim().split('\n');
  assert.deepEqual(publishedPaths.sort(),[...files.map(f=>'sunbreak/'+f.path),'sunbreak/public-release.json'].sort(),'Unexpected stale/public paths');
- // Preserved upstream HTML license/source snapshots intentionally retain
+ // Preserved upstream license snapshots and pinned vendor libraries retain
  // whitespace. Their exact staged hashes were checked above; do not rewrite
  // provenance bytes merely to make the authored-code formatting check pass.
  const preservedArchives=[
@@ -100,12 +100,10 @@ if(!process.argv.includes('--publish')){
  git(['diff','--cached','--check','--','sunbreak',...preservedArchives.map(p=>':(exclude)'+p)],checkout);
  git(['commit','-m',`publish: SUNBREAK tactical demo from ${sourceCommit.slice(0,12)}`],checkout);
  const publicCommit=git(['rev-parse','HEAD'],checkout).trim();
- // Ordinary fast-forward only. Preserve this isolated commit if another
- // workstation publishes first; never force-push or silently overwrite it.
- git(['push','origin','HEAD:refs/heads/main'],checkout);
- git(['fetch','origin','+refs/heads/main:refs/remotes/origin/main']);
- git(['merge-base','--is-ancestor',publicCommit,'origin/main']);
- const receipt={sourceCommit,publicCommit,url:pages.html_url.replace(/\/$/,'')+'/sunbreak/',files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0),checkout,uploaded:true,liveVerified:false};
- writeFileSync(resolve(localRoot,'sunbreak-publication.json'),JSON.stringify(receipt,null,2)+'\n');
- console.log(JSON.stringify(receipt,null,2));
+ const prepared={sourceCommit,preparedCommit:publicCommit,checkout,files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0),liveVerified:false};
+ writeFileSync(resolve(localRoot,'sunbreak-prepared.json'),JSON.stringify(prepared,null,2)+'\n');
+ // main requires a PR. Follow that protection; never change rules or bypass it.
+ const prTool=fileURLToPath(new URL('./pages-pr.mjs',import.meta.url));
+ console.log(execFileSync(process.execPath,[prTool,'--submit','--checkout='+checkout],{cwd:repo,encoding:'utf8',maxBuffer:8e6}));
+ console.log('Prepared PR only. Review normal mergeability/checks via pages-pr.mjs --pr=N; merge separately, then verify Pages live.');
 }

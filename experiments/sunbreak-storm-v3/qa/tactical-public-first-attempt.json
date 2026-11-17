@@ -1,0 +1,704 @@
+{
+  "schema": "sunbreak-public-live-v1",
+  "date": "2026-11-17T05:48:01.446Z",
+  "pass": false,
+  "method": "anonymous HTTPS fetch of all release files, byte hashes and pinned original root/web entry; interactive browser smoke recorded separately",
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/",
+  "sourceCommit": "97a20ca402c6c2478a85a0e3be1d4b75b094c9f3",
+  "publicCommit": "ba995a1d6a753aff0a9d547afc8801e6eee8dd06",
+  "checkedFiles": 137,
+  "bytes": 101440924,
+  "errors": [
+    {
+      "path": "vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "error": "Error: HTTP 503"
+    }
+  ],
+  "files": [
+    {
+      "path": "actors.js",
+      "bytes": 14612,
+      "sha256": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c"
+    },
+    {
+      "path": "assets-manifest.json",
+      "bytes": 31018,
+      "sha256": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7"
+    },
+    {
+      "path": "assets/approaching_storm/approaching_storm_2k.hdr",
+      "bytes": 6388690,
+      "sha256": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370"
+    },
+    {
+      "path": "assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "bytes": 3075676,
+      "sha256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c"
+    },
+    {
+      "path": "assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "bytes": 9122344,
+      "sha256": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e"
+    },
+    {
+      "path": "assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "bytes": 2230457,
+      "sha256": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c"
+    },
+    {
+      "path": "assets/audio/confirm.wav",
+      "bytes": 17516,
+      "sha256": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba"
+    },
+    {
+      "path": "assets/audio/enemy.wav",
+      "bytes": 149984,
+      "sha256": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e"
+    },
+    {
+      "path": "assets/audio/magin.wav",
+      "bytes": 14418,
+      "sha256": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c"
+    },
+    {
+      "path": "assets/audio/magout.wav",
+      "bytes": 20650,
+      "sha256": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7"
+    },
+    {
+      "path": "assets/audio/manifest.json",
+      "bytes": 6219,
+      "sha256": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c"
+    },
+    {
+      "path": "assets/audio/NOTICE.md",
+      "bytes": 1501,
+      "sha256": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1"
+    },
+    {
+      "path": "assets/audio/player.wav",
+      "bytes": 158804,
+      "sha256": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7"
+    },
+    {
+      "path": "assets/audio/provenance/firearm-source.html.txt",
+      "bytes": 45130,
+      "sha256": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868"
+    },
+    {
+      "path": "assets/audio/provenance/reload-source.html.txt",
+      "bytes": 22908,
+      "sha256": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1"
+    },
+    {
+      "path": "assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "bytes": 729893,
+      "sha256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066"
+    },
+    {
+      "path": "assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "bytes": 2313976,
+      "sha256": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983"
+    },
+    {
+      "path": "assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "bytes": 201307,
+      "sha256": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c"
+    },
+    {
+      "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "bytes": 118806,
+      "sha256": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c"
+    },
+    {
+      "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "bytes": 5535944,
+      "sha256": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe"
+    },
+    {
+      "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "bytes": 181942,
+      "sha256": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488"
+    },
+    {
+      "path": "assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "bytes": 1435119,
+      "sha256": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798"
+    },
+    {
+      "path": "assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "bytes": 4335717,
+      "sha256": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd"
+    },
+    {
+      "path": "assets/mp5/9452ce4cddde4110a4fd73e555a8e412-license.json",
+      "bytes": 726,
+      "sha256": "e2d1d84ca8727fe5b236c03afba067e58631f8c3a01d2a8ddb65f6b42ea51d7c"
+    },
+    {
+      "path": "assets/mp5/94be8385c402474cacd39bc096c6ca14-license.json",
+      "bytes": 750,
+      "sha256": "bb8204a3b47df38c78b007b1f851727c6ca38da8dd9dbf7cecc656a7efc6190e"
+    },
+    {
+      "path": "assets/mp5/a73b61932a0e4eecb5db5c63c158aa24-license.json",
+      "bytes": 823,
+      "sha256": "d39fcf1c2a8168db7a33281fc83303d8551292d4ab666b7f7d5da6e0fad81eac"
+    },
+    {
+      "path": "assets/mp5/arms_basecolor.webp",
+      "bytes": 136406,
+      "sha256": "4657bc61099b7cf92084c5481c0c6d19a1d8219c8ee8c08e546f9f823fec6946"
+    },
+    {
+      "path": "assets/mp5/arms_normal.webp",
+      "bytes": 278326,
+      "sha256": "0500bdd5e6045621d980105cc281312dd6d7fc66a6649ddbe632fea802dba881"
+    },
+    {
+      "path": "assets/mp5/mp5a5.glb",
+      "bytes": 1913500,
+      "sha256": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da"
+    },
+    {
+      "path": "assets/mp5/NOTICE.md",
+      "bytes": 1566,
+      "sha256": "85b1bf00deab4d9e6e56ab3bcefc0402697e8ac8f20d869d24cef70300e43c90"
+    },
+    {
+      "path": "assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "bytes": 1105673,
+      "sha256": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66"
+    },
+    {
+      "path": "assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "bytes": 5477255,
+      "sha256": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c"
+    },
+    {
+      "path": "assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "bytes": 919232,
+      "sha256": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c"
+    },
+    {
+      "path": "assets/social-cover-provenance.json",
+      "bytes": 521,
+      "sha256": "ab34397cc72189c8c1aa92e3eb8669d51351f1cda675865d07a95600678fd5b0"
+    },
+    {
+      "path": "assets/social-cover.png",
+      "bytes": 2740539,
+      "sha256": "091b0dcb75e0571fd6e3ec9d1392fbcab5588fcd31ea6584071c98c64f129664"
+    },
+    {
+      "path": "assets/soldier/author-metadata.json",
+      "bytes": 10142,
+      "sha256": "191b82f819a1cc2a5a44a6429a028616ce7aa3e52ac66d2ae615725df0a8a0c8"
+    },
+    {
+      "path": "assets/soldier/NOTICE.md",
+      "bytes": 762,
+      "sha256": "ce156d840933bdbf74bcd3f7e46861d492e8d8537e0d319c08d4962d276a43d1"
+    },
+    {
+      "path": "assets/soldier/soldier_tac.glb",
+      "bytes": 4532132,
+      "sha256": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e"
+    },
+    {
+      "path": "assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "bytes": 226049,
+      "sha256": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29"
+    },
+    {
+      "path": "assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "bytes": 6305092,
+      "sha256": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2"
+    },
+    {
+      "path": "assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "bytes": 234672,
+      "sha256": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9"
+    },
+    {
+      "path": "assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "bytes": 750361,
+      "sha256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe"
+    },
+    {
+      "path": "assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "bytes": 5335659,
+      "sha256": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76"
+    },
+    {
+      "path": "assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "bytes": 242497,
+      "sha256": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6"
+    },
+    {
+      "path": "audio.js",
+      "bytes": 7054,
+      "sha256": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff"
+    },
+    {
+      "path": "boot-ui.js",
+      "bytes": 796,
+      "sha256": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868"
+    },
+    {
+      "path": "credits.html",
+      "bytes": 4187,
+      "sha256": "3f906a4c247f7cd5acbb3bd5895d292aaf74e81fd5f664944bc1c1adc96f0557"
+    },
+    {
+      "path": "house-logic.js",
+      "bytes": 2711,
+      "sha256": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73"
+    },
+    {
+      "path": "index.html",
+      "bytes": 39676,
+      "sha256": "eb6c29fe40ab9f22fb014748361db88224b12228352215f6550242cef53bb8d9"
+    },
+    {
+      "path": "original/index.html",
+      "bytes": 29904,
+      "sha256": "4b0de43249fd1c787554ea1735c84669b1df687fc9e03aba263571c48a101a85"
+    },
+    {
+      "path": "soldier-provenance.json",
+      "bytes": 1201,
+      "sha256": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19"
+    },
+    {
+      "path": "storm-audio.js",
+      "bytes": 2974,
+      "sha256": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
+    },
+    {
+      "path": "storm.js",
+      "bytes": 32553,
+      "sha256": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289"
+    },
+    {
+      "path": "tactical-ai.js",
+      "bytes": 12907,
+      "sha256": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2"
+    },
+    {
+      "path": "timber-house.js",
+      "bytes": 21951,
+      "sha256": "25d606d8133bd51dc7e05095c81df5242b0ef0567b76b014557c301fd38eda03"
+    },
+    {
+      "path": "v2/assets-manifest.json",
+      "bytes": 24938,
+      "sha256": "b4fdc28a21ecb57e918179e93fee4c7f6afab14c86a6ea1b4b9e71a74be4997e"
+    },
+    {
+      "path": "v2/assets/audio/confirm.wav",
+      "bytes": 17516,
+      "sha256": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba"
+    },
+    {
+      "path": "v2/assets/audio/enemy.wav",
+      "bytes": 149984,
+      "sha256": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e"
+    },
+    {
+      "path": "v2/assets/audio/magin.wav",
+      "bytes": 14418,
+      "sha256": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c"
+    },
+    {
+      "path": "v2/assets/audio/magout.wav",
+      "bytes": 20650,
+      "sha256": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7"
+    },
+    {
+      "path": "v2/assets/audio/manifest.json",
+      "bytes": 6219,
+      "sha256": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c"
+    },
+    {
+      "path": "v2/assets/audio/NOTICE.md",
+      "bytes": 1501,
+      "sha256": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1"
+    },
+    {
+      "path": "v2/assets/audio/player.wav",
+      "bytes": 158804,
+      "sha256": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7"
+    },
+    {
+      "path": "v2/assets/audio/provenance/firearm-source.html.txt",
+      "bytes": 45130,
+      "sha256": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868"
+    },
+    {
+      "path": "v2/assets/audio/provenance/reload-source.html.txt",
+      "bytes": 22908,
+      "sha256": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1"
+    },
+    {
+      "path": "v2/assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "bytes": 729893,
+      "sha256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066"
+    },
+    {
+      "path": "v2/assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "bytes": 2313976,
+      "sha256": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983"
+    },
+    {
+      "path": "v2/assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "bytes": 201307,
+      "sha256": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c"
+    },
+    {
+      "path": "v2/assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "bytes": 118806,
+      "sha256": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c"
+    },
+    {
+      "path": "v2/assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "bytes": 5535944,
+      "sha256": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe"
+    },
+    {
+      "path": "v2/assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "bytes": 181942,
+      "sha256": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488"
+    },
+    {
+      "path": "v2/assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "bytes": 1435119,
+      "sha256": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798"
+    },
+    {
+      "path": "v2/assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "bytes": 1105673,
+      "sha256": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66"
+    },
+    {
+      "path": "v2/assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "bytes": 5477255,
+      "sha256": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c"
+    },
+    {
+      "path": "v2/assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "bytes": 919232,
+      "sha256": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c"
+    },
+    {
+      "path": "v2/assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "bytes": 226049,
+      "sha256": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29"
+    },
+    {
+      "path": "v2/assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "bytes": 6305092,
+      "sha256": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2"
+    },
+    {
+      "path": "v2/assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "bytes": 234672,
+      "sha256": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9"
+    },
+    {
+      "path": "v2/assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "bytes": 750361,
+      "sha256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe"
+    },
+    {
+      "path": "v2/assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "bytes": 5335659,
+      "sha256": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76"
+    },
+    {
+      "path": "v2/assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "bytes": 242497,
+      "sha256": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6"
+    },
+    {
+      "path": "v2/audio.js",
+      "bytes": 7054,
+      "sha256": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff"
+    },
+    {
+      "path": "v2/index.html",
+      "bytes": 34100,
+      "sha256": "5309e44e55ca33187d55879d81b3b00c9287703a3f0a2ebd71011bb15aa077ff"
+    },
+    {
+      "path": "v2/weapon.js",
+      "bytes": 19328,
+      "sha256": "afe1d7bb36b1cac1bc6a4772c34b36a8f98dc504350ef3df5cefbc6300f5b5bd"
+    },
+    {
+      "path": "v2/world.js",
+      "bytes": 43085,
+      "sha256": "7f073620646f939a3552203bcea8b4129451bac18e0fe547be687d2363747621"
+    },
+    {
+      "path": "vendor/manifest.json",
+      "bytes": 16099,
+      "sha256": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278"
+    },
+    {
+      "path": "vendor/meshoptimizer-LICENSE.md",
+      "bytes": 1079,
+      "sha256": "063805e3b8e24ceab4c5dea358b03245ee41c31be87cf65c61d836636cb494bb"
+    },
+    {
+      "path": "vendor/presentation/build/three.module.js",
+      "bytes": 1273409,
+      "sha256": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "sha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/loaders/GLTFLoader.js",
+      "bytes": 108522,
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/loaders/RGBELoader.js",
+      "bytes": 11377,
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/objects/Reflector.js",
+      "bytes": 7043,
+      "sha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2398,
+      "sha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/RenderPass.js",
+      "bytes": 1915,
+      "sha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/SMAAPass.js",
+      "bytes": 49467,
+      "sha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/SSAOPass.js",
+      "bytes": 11734,
+      "sha256": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12406,
+      "sha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1192,
+      "sha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1393,
+      "sha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/SMAAShader.js",
+      "bytes": 14628,
+      "sha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/shaders/SSAOShader.js",
+      "bytes": 6478,
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js",
+      "bytes": 31906,
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/utils/SkeletonUtils.js",
+      "bytes": 8007,
+      "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
+    },
+    {
+      "path": "vendor/presentation/LICENSE",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "vendor/three/build/three.module.js",
+      "bytes": 1272972,
+      "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    {
+      "path": "vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "bytes": 4625,
+      "sha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb"
+    },
+    {
+      "path": "vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
+      "bytes": 24850,
+      "sha256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468"
+    },
+    {
+      "path": "vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "bytes": 108522,
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3"
+    },
+    {
+      "path": "vendor/three/examples/jsm/loaders/RGBELoader.js",
+      "bytes": 11377,
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+    },
+    {
+      "path": "vendor/three/examples/jsm/math/SimplexNoise.js",
+      "bytes": 14351,
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7"
+    },
+    {
+      "path": "vendor/three/examples/jsm/objects/Reflector.js",
+      "bytes": 7043,
+      "sha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/EffectComposer.js",
+      "bytes": 4651,
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/MaskPass.js",
+      "bytes": 2231,
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/OutputPass.js",
+      "bytes": 2398,
+      "sha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/Pass.js",
+      "bytes": 1706,
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/RenderPass.js",
+      "bytes": 1915,
+      "sha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/ShaderPass.js",
+      "bytes": 1576,
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/SMAAPass.js",
+      "bytes": 49467,
+      "sha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/SSAOPass.js",
+      "bytes": 11421,
+      "sha256": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d"
+    },
+    {
+      "path": "vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "bytes": 12406,
+      "sha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba"
+    },
+    {
+      "path": "vendor/three/examples/jsm/shaders/CopyShader.js",
+      "bytes": 571,
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d"
+    },
+    {
+      "path": "vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "bytes": 1192,
+      "sha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900"
+    },
+    {
+      "path": "vendor/three/examples/jsm/shaders/OutputShader.js",
+      "bytes": 1393,
+      "sha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a"
+    },
+    {
+      "path": "vendor/three/examples/jsm/shaders/SMAAShader.js",
+      "bytes": 14628,
+      "sha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369"
+    },
+    {
+      "path": "vendor/three/examples/jsm/shaders/SSAOShader.js",
+      "bytes": 6478,
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06"
+    },
+    {
+      "path": "vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "bytes": 31906,
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb"
+    },
+    {
+      "path": "vendor/three/examples/jsm/utils/SkeletonUtils.js",
+      "bytes": 8007,
+      "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
+    },
+    {
+      "path": "vendor/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "weapon-provenance.json",
+      "bytes": 2737,
+      "sha256": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727"
+    },
+    {
+      "path": "weapon.js",
+      "bytes": 6401,
+      "sha256": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93"
+    },
+    {
+      "path": "world.js",
+      "bytes": 44834,
+      "sha256": "4b995b202811e373885743588d0f3352bc54751261b77588546e1c407c5802fc"
+    }
+  ]
+}

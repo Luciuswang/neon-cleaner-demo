@@ -669,3 +669,7 @@ SUNBREAK v3 tactical/public slice: cover navigation, aligned production fire, sk
 ## Sync note - 2026-11-17T13:36:33.0888301+08:00
 
 Pages preparation stopped before publishing on original whitespace in ten pinned third-party license/vendor snapshots. Preserve their byte hashes; limit formatting-lint exceptions to those exact files. Authored code, asset/staged blob hashes and full publication whitelist remain enforced. Browser runtime and validated evidence unchanged; retry sanitized main:/sunbreak release next.
+
+## Sync note - 2026-11-17T13:54:48.8359051+08:00
+
+SUNBREAK public release COMPLETE. Normal protected-main PR6 merged without bypass as ba995a1d6a753aff0a9d547afc8801e6eee8dd06, deployed source97a20ca402c6c2478a85a0e3be1d4b75b094c9f3. Public https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ plus original/ and v2/ all started/fired in browser; v3 reload30/89, NPC combat, audio and restart verified. All138 static files101465774 bytes match anonymous HTTPS hashes and root/web entries unchanged. One initial transient CDN503 passed retry; first report retained. Runtime remains exact validated release; this checkpoint adds PR-safe publishing tools and live evidence only. Overall demo delivered, engineering remains bounded CONDITIONAL due earlier isolated hitch; no UE/AAA/continuous-motion acceptance. Private vault unchanged/skipped.

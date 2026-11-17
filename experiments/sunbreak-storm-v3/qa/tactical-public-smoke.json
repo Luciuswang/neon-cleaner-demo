@@ -1,0 +1,41 @@
+{
+  "schema": "sunbreak-public-interactive-v1",
+  "date": "2026-11-17",
+  "pass": true,
+  "method": "Actual in-app browser over anonymous public HTTPS. Semantic start/restart, keyboard F/R/P, fresh accessibility state, visible ammo and deployed body data-qa. No injected QA route or desktop screenshot.",
+  "publicCommit": "ba995a1d6a753aff0a9d547afc8801e6eee8dd06",
+  "checks": [
+    {"name": "v3 initializes licensed scene and enables Start over public HTTPS", "pass": true},
+    {"name": "v3 actual state becomes play and six tactical NPCs navigate", "pass": true},
+    {"name": "v3 F fires and magazine changes 30 to 29", "pass": true},
+    {"name": "v3 R shows reload state then magazine30 reserve89", "pass": true},
+    {"name": "v3 recorded-audio ready label appears after gesture", "pass": true},
+    {"name": "v3 NPC attacks progress and death/restart functions operate", "pass": true},
+    {"name": "v3 browser error/warning log empty during sample", "pass": true},
+    {"name": "v1 public page starts, F changes magazine30 to29, P pauses", "pass": true},
+    {"name": "v2 public page starts, F changes magazine30 to29, P pauses", "pass": true},
+    {"name": "v1/v2 public browser error logs empty during samples", "pass": true}
+  ],
+  "v3Observed": {
+    "state": "play",
+    "elapsed": 17.866000000000064,
+    "health": 4,
+    "magazine": 30,
+    "reserve": 89,
+    "npcShots": 41,
+    "npcMovementMeters": 58.926678998656136,
+    "observedModes": ["burst", "advance", "peek", "hide", "guard"],
+    "errorWarnings": []
+  },
+  "urls": {
+    "v3": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/",
+    "v2": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v2/",
+    "original": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/original/"
+  },
+  "limitations": [
+    "Bounded interactive smoke, not a full public playthrough, continuous motion review or all-hardware performance test.",
+    "An idle exposed player was killed; use cover during demonstration.",
+    "No multiplayer or mobile touch controls.",
+    "First full anonymous resource verification saw one transient CDN503; exact file passed retry and initial failure is retained separately."
+  ]
+}

@@ -89,10 +89,18 @@ do not certify full continuous motion or AAA/UE5 photorealistic parity.
 
 ## Public GitHub Pages release
 
+Live v3: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/
+Comparisons: `original/` and `v2/` below that address. All three were started
+and fired in an actual public browser on 2026-11-17; anonymous byte hashes of all
+138 deployed files and the unchanged original root/web entry were verified.
+
 `node tools/github-pages.mjs` reads the existing Pages status without mutation.
 After committing and building validated source, `--publish` installs only the
-sanitized static `dist/` under `sunbreak/` on `main`, preserving the existing
+sanitized static `dist/` under `sunbreak/` through a normal protected-main PR,
+preserving the existing
 root/web Neon Cleaner site. No private/UE content, QA hooks or server is shipped.
 The source push and Pages live verification are separate checkpoints.
+`node tools/pages-pr.mjs --pr=N` inspects review/check state; `--merge` uses a
+normal merge only when clean and requirements pass. No rule changes or bypass.
 v1 remains byte-identical; the packaged v2 comparison hyperlink alone is adapted
 to `../original/` for nested hosting, without changing its game module.

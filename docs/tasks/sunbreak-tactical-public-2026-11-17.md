@@ -1,6 +1,6 @@
 # Task Packet: sunbreak-tactical-public-2026-11-17
 
-- State: VALIDATED_FOR_DEMO / PUBLISHING
+- State: DONE — published bounded demo; limitations retained
 - Owner/integrator: main Producer
 - Branch: codex/character-continuity-pipeline
 - Created: 2026-11-17
@@ -99,12 +99,13 @@ or change speculative slugs. No .openai/hosting.json exists for this game.
 - Publishing: existing legacy GitHub Pages serves main:/. Sanitized static build
   will be added only under `sunbreak/`, preserving pinned root/web entries.
   Each staged Git blob and complete subtree whitelist are verified before push;
-  anonymous live asset hashes and browser gameplay remain separate acceptance.
+  anonymous live asset hashes and browser gameplay are separately verified below.
 - Private snapshot continuity: pre-existing dirty private vault preserved;
   this browser-only checkpoint skips private transfer and makes no full UE
   cross-PC asset-portability claim.
-- Next: upload validated source checkpoint, publish static subtree, verify
-  anonymous playable URL/all assets and retain public receipt.
+- Next optional work: profile the earlier isolated hitch; higher-quality imported
+  motion/fingers/NPC weapon detail and small-screen ripple visibility. These are
+  not claimed completed by this bounded demo release.
 
 ## Publication preparation recovery
 
@@ -115,3 +116,37 @@ and full subtree whitelist had passed. Keep those bytes unchanged; exclude ONLY
 those ten explicit third-party files from whitespace lint, retaining byte-hash
 validation and all authored-code checks.
 No live site content was changed by this failed preparation.
+
+The first direct main push was rejected by GH013 (PR required). The prepared
+static commit `cbe52d8` remains safe in the isolated worktree; main was unchanged.
+Read effective rules: required PR with zero approving reviews; no settings were
+changed. Recover through an ordinary publication branch/PR and only normal clean
+merge after review/check state permits it. Publisher now uses that PR workflow,
+never an admin bypass or relaxed repository protection.
+
+PR #6 was normally mergeable (zero required approvals, no required commit checks)
+and merged without bypass. Publication head `cbe52d82ad60` is contained in main
+merge `ba995a1d6a753aff0a9d547afc8801e6eee8dd06`; source release binds
+`97a20ca402c6c2478a85a0e3be1d4b75b094c9f3`. GitHub Pages is building that exact
+main commit. 138 static files /101,465,774 bytes; root `.nojekyll` already existed
+and root/web were not changed. Anonymous live verification still pending.
+
+## Live acceptance — 2026-11-17
+
+- Pages built exact merge `ba995a1d6a753aff0a9d547afc8801e6eee8dd06`.
+- Anonymous HTTPS: all138 release files /101,465,774 bytes match manifest hashes;
+  pinned original root and web/index entry hashes unchanged. First sweep saw one
+  transient503 on Meshopt; same-release retry passed. Both attempt reports kept.
+- Actual public browser: all three versions start and F consumes a round.
+  v3 reload restored30/89, NPC movement58.93m and41 approved shots observed over
+  17.87s, recorded audio ready, no warning/error logs; death/restart functional.
+  Exposed idle player can be killed; demo using cover. Original/v2 pause works.
+- Reports: `qa/tactical-public-live.json`, `qa/tactical-public-first-attempt.json`
+  and `qa/tactical-public-smoke.json`. This is bounded smoke, not complete public
+  playthrough or full continuous/hardware certification.
+- Public v3: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/
+- v2: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v2/
+- v1: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/original/
+- Final status: functional/public release PASS; bounded engineering CONDITIONAL
+  PASS (earlier hitch cause unresolved), roof/rain art PASS medium confidence.
+  Existing UE/cinematic gates are unaffected and not certified by this task.

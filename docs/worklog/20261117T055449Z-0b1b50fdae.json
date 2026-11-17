@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T055449Z-0b1b50fdae",
+  "task_id": "sunbreak-tactical-public-2026-11-17",
+  "timestamp_utc": "2026-11-17T05:54:49.300419+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK public release COMPLETE. Normal protected-main PR6 merged without bypass as ba995a1d6a753aff0a9d547afc8801e6eee8dd06, deployed source97a20ca402c6c2478a85a0e3be1d4b75b094c9f3. Public https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ plus original/ and v2/ all started/fired in browser; v3 reload30/89, NPC combat, audio and restart verified. All138 static files101465774 bytes match anonymous HTTPS hashes and root/web entries unchanged. One initial transient CDN503 passed retry; first report retained. Runtime remains exact validated release; this checkpoint adds PR-safe publishing tools and live evidence only. Overall demo delivered, engineering remains bounded CONDITIONAL due earlier isolated hitch; no UE/AAA/continuous-motion acceptance. Private vault unchanged/skipped.",
+  "commit_shas": [
+    "97a20ca402c6c2478a85a0e3be1d4b75b094c9f3"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
