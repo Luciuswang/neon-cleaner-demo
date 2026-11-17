@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-public-static-v1",
-  "created": "2026-11-17T05:37:53.477Z",
-  "sourceCommit": "97a20ca402c6c2478a85a0e3be1d4b75b094c9f3",
+  "created": "2026-11-17T07:21:44.482Z",
+  "sourceCommit": "e9dfc9244a23206960931b9aba7b0d457e4142d5",
   "publicPath": "sunbreak/",
   "scope": "Public browser assets and v1/v2 comparisons only; no private/UE sources or server diagnostics.",
   "navigationAdaptation": "v2 comparison href only is ../original/ for nested hosting; original v2 source/game module preserved.",
@@ -105,6 +105,21 @@
       "path": "assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
       "bytes": 181942,
       "sha256": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488"
+    },
+    {
+      "path": "assets/house/house-contract.json",
+      "bytes": 3997690,
+      "sha256": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde"
+    },
+    {
+      "path": "assets/house/timber-house-art-kit.zip",
+      "bytes": 54851845,
+      "sha256": "d50789e1e389e0b34d122bda60096e0f19c63dfe86fb81d5207b3a649340256d"
+    },
+    {
+      "path": "assets/house/timber-house-edited.glb",
+      "bytes": 17969964,
+      "sha256": "0654a24a53d29399de64234545ee6fea0c0f7d6b274faaa1cab74b162253b5e9"
     },
     {
       "path": "assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
@@ -242,14 +257,19 @@
       "sha256": "3f906a4c247f7cd5acbb3bd5895d292aaf74e81fd5f664944bc1c1adc96f0557"
     },
     {
+      "path": "house-asset.js",
+      "bytes": 11124,
+      "sha256": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2"
+    },
+    {
       "path": "house-logic.js",
       "bytes": 2711,
       "sha256": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73"
     },
     {
       "path": "index.html",
-      "bytes": 39676,
-      "sha256": "eb6c29fe40ab9f22fb014748361db88224b12228352215f6550242cef53bb8d9"
+      "bytes": 39897,
+      "sha256": "c7efebdeedb6b5e8be6ff6649332747f81afd50d2359d320bcb818de6fe8db01"
     },
     {
       "path": "original/index.html",
@@ -278,8 +298,8 @@
     },
     {
       "path": "timber-house.js",
-      "bytes": 21951,
-      "sha256": "25d606d8133bd51dc7e05095c81df5242b0ef0567b76b014557c301fd38eda03"
+      "bytes": 23126,
+      "sha256": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6"
     },
     {
       "path": "v2/assets/audio/confirm.wav",
@@ -433,8 +453,8 @@
     },
     {
       "path": "vendor/manifest.json",
-      "bytes": 16099,
-      "sha256": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278"
+      "bytes": 17387,
+      "sha256": "3f2490c003a184ed166a8c4b2f951b2f947157fdb98f8eee004a2c2b1e788230"
     },
     {
       "path": "vendor/meshoptimizer-LICENSE.md",
@@ -445,6 +465,11 @@
       "path": "vendor/presentation/build/three.module.js",
       "bytes": 1273409,
       "sha256": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/exporters/GLTFExporter.js",
+      "bytes": 77714,
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d"
     },
     {
       "path": "vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
@@ -557,6 +582,11 @@
       "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
     },
     {
+      "path": "vendor/presentation/examples/jsm/utils/TextureUtils.js",
+      "bytes": 2367,
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa"
+    },
+    {
       "path": "vendor/presentation/LICENSE",
       "bytes": 1081,
       "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
@@ -565,6 +595,11 @@
       "path": "vendor/three/build/three.module.js",
       "bytes": 1272972,
       "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    {
+      "path": "vendor/three/examples/jsm/exporters/GLTFExporter.js",
+      "bytes": 77714,
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d"
     },
     {
       "path": "vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
@@ -677,24 +712,29 @@
       "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
     },
     {
+      "path": "vendor/three/examples/jsm/utils/TextureUtils.js",
+      "bytes": 2367,
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa"
+    },
+    {
       "path": "vendor/three/LICENSE",
       "bytes": 1081,
       "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
     },
     {
       "path": "weapon-provenance.json",
-      "bytes": 2737,
-      "sha256": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727"
+      "bytes": 4574,
+      "sha256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c"
     },
     {
       "path": "weapon.js",
-      "bytes": 6401,
-      "sha256": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93"
+      "bytes": 12658,
+      "sha256": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe"
     },
     {
       "path": "world.js",
-      "bytes": 44834,
-      "sha256": "4b995b202811e373885743588d0f3352bc54751261b77588546e1c407c5802fc"
+      "bytes": 44923,
+      "sha256": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998"
     }
   ]
 }
