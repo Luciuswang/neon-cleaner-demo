@@ -14,6 +14,21 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "sunbreak-tactical-public-2026-11-17": {
+      "base_commit": "2f116226e4bd6cb3414f683c5c77fa663306eaac",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-17T12:49:07.249452+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/sunbreak-storm-v3",
+        ".github/workflows/sunbreak-pages.yml",
+        "docs/tasks/sunbreak-tactical-public-2026-11-17.md",
+        "docs/worklog",
+        "docs/handoff.md"
+      ],
+      "task_id": "sunbreak-tactical-public-2026-11-17",
+      "updated_at": "2026-11-17T04:49:07.249452+00:00"
     }
   },
   "schema": 1
