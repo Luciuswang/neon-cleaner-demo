@@ -21,13 +21,18 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  const lampMat=new T.MeshStandardMaterial({color:0xffe1ac,emissive:0xffbd71,emissiveIntensity:2,roughness:.38,side:T.DoubleSide});
  const movement=[],windows=[];let logs=0,lapEnds=0;
  const V=(x,y,z)=>new T.Vector3(x,y,z);
- function box(w,h,d,m,x,y,z,parent=staticRoot,rx=0,ry=0,rz=0,bevel=false){
+ function box(w,h,d,m,x,y,z,parent=staticRoot,rx=0,ry=0,rz=0,bevel=false,grainAxis=null){
   const g=bevel?new RoundedBoxGeometry(w,h,d,1,Math.min(.016,h*.1,d*.1)):new T.BoxGeometry(w,h,d);
   const p=g.attributes.position,n=g.attributes.normal,u=g.attributes.uv;
   for(let i=0;i<u.count;i++){
-   const ax=Math.abs(n.getX(i)),ay=Math.abs(n.getY(i));
-   // Weathered plank scan grain runs along V: align it to the log length.
-   if(ay>.7)u.setXY(i,(p.getX(i)+x)/1.9,(p.getZ(i)+z)/1.9);
+   const ax=Math.abs(n.getX(i)),ay=Math.abs(n.getY(i)),az=Math.abs(n.getZ(i));
+   const px=p.getX(i)+x,py=p.getY(i)+y,pz=p.getZ(i)+z;
+   // Scan grain runs along U. Opt in per horizontal timber, not per material:
+   // the moving door and existing vertical fittings keep their original UVs.
+   // End caps use both cross-section axes rather than collapsing their UVs.
+   if(grainAxis==='x')u.setXY(i,(ax>.7?pz:px)/1.9,(ax>.7?py:ay>.7?pz:py)/1.9);
+   else if(grainAxis==='z')u.setXY(i,(az>.7?px:pz)/1.9,(az>.7?py:ay>.7?px:py)/1.9);
+   else if(ay>.7)u.setXY(i,(p.getX(i)+x)/1.9,(p.getZ(i)+z)/1.9);
    else u.setXY(i,(p.getY(i)+y)/1.9,(ax>.7?p.getZ(i)+z:p.getX(i)+x)/1.9);
   }
   const o=new T.Mesh(g,m);o.position.set(x,y,z);o.rotation.set(rx,ry,rz);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
@@ -87,15 +92,15 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
     const next=[];for(const [a,b]of spans){const l=h.x-h.w/2,r=h.x+h.w/2;if(r<=a||l>=b)next.push([a,b]);else{if(l>a)next.push([a,l]);if(r<b)next.push([r,b])}}spans=next;
    }
    for(const [a,b]of spans)if(b-a>.005){const m=row%7===0?woodLight:row%5===0?woodDark:wood;
-    if(side)box(.22,hi-lo-.009,b-a,m,plane,y,(a+b)/2,staticRoot,0,0,0,true);
-    else box(b-a,hi-lo-.009,.22,m,(a+b)/2,y,plane,staticRoot,0,0,0,true);
+    if(side)box(.22,hi-lo-.009,b-a,m,plane,y,(a+b)/2,staticRoot,0,0,0,true,'z');
+    else box(b-a,hi-lo-.009,.22,m,(a+b)/2,y,plane,staticRoot,0,0,0,true,'x');
     logs++;
    }
    // Alternating exposed half-lap ends make the assembly legible at corners.
    if(!side&&!holes.some(h=>y>h.y-h.h/2&&y<h.y+h.h/2&&Math.abs(h.x)>width/2-.3)){
     for(const s of [-1,1]){
-     if(side)box(.24,.14,.24,woodLight,plane,y,s*width/2+(plane>0?.02:-.02));
-     else box(.24,.14,.24,woodLight,s*width/2,y,plane);
+     if(side)box(.24,.14,.24,woodLight,plane,y,s*width/2+(plane>0?.02:-.02),staticRoot,0,0,0,false,'z');
+     else box(.24,.14,.24,woodLight,s*width/2,y,plane,staticRoot,0,0,0,false,'x');
      lapEnds++;
     }
    }
@@ -108,10 +113,10 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
   courses(6.4,side*4,true,holes,-4,2.4);
   for(let y=top+.095;y<HOUSE.ridge-.05;y+=.19){
    const half=(HOUSE.ridge-y)/(HOUSE.ridge-top)*3.2;
-   box(.22,.18,half*2,wood,side*4,y,-.8,staticRoot,0,0,0,true);logs++;
+   box(.22,.18,half*2,wood,side*4,y,-.8,staticRoot,0,0,0,true,'z');logs++;
   }
   // Structural corner laps are at actual front/back, not at a symmetric origin.
-  for(let y=fy+.095;y<top;y+=.38)for(const z of [-4,2.4])box(.28,.16,.34,woodDark,side*4,y,z);
+  for(let y=fy+.095;y<top;y+=.38)for(const z of [-4,2.4])box(.28,.16,.34,woodDark,side*4,y,z,staticRoot,0,0,0,false,'z');
  }
  // Continuous wall movement bounds include closed glazing. Door is separate.
  blocker(8,top-fy,.22,0,(top+fy)/2,-4);

@@ -1,0 +1,133 @@
+{
+  "date": "2026-11-17T04:40:31.070Z",
+  "method": "actual vendored rounded/box geometry numerical UV checks; not visual QA",
+  "baseline": "6f6aa7c38dbce2370910b441759207dab2d0a836",
+  "sourceSha256": "f18cae56d912f2af23889dfd694db038da586eab58335177e047635ced0b2d15",
+  "pass": true,
+  "checks": [
+    {
+      "name": "front: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "front: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "front: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "front: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "rear: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "rear: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "rear: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "rear: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "side-left: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "side-left: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "side-left: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "side-left: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "side-right: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "side-right: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "side-right: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "side-right: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "gable: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "gable: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "gable: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "gable: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "front-lap: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "front-lap: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "front-lap: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "front-lap: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "side-lap: grain U follows timber length on broad/top faces",
+      "pass": true
+    },
+    {
+      "name": "side-lap: both end caps have nonzero UV area",
+      "pass": true
+    },
+    {
+      "name": "side-lap: bevel and face UV values are finite",
+      "pass": true
+    },
+    {
+      "name": "side-lap: position/normal/index unchanged",
+      "pass": true
+    },
+    {
+      "name": "door and unrelated default projections are byte-identical",
+      "pass": true
+    },
+    {
+      "name": "only approved helper and wall-call opt-ins changed in runtime",
+      "pass": true
+    },
+    {
+      "name": "all scanned PBR maps retain same default UV channel/transform",
+      "pass": true
+    }
+  ]
+}

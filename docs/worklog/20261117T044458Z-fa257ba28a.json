@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T044458Z-fa257ba28a",
+  "task_id": "sunbreak-timber-uv-2026-11-17",
+  "timestamp_utc": "2026-11-17T04:44:58.750430+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Completed scoped third-demo cabin wood-grain correction: horizontal front/back/side/gable timbers and corner laps follow beam length; moving door/default fitting UVs and all geometry, collision and combat remain unchanged. UV31/31, house logic28/28, browser house47/47, exact combat+mutation tests and exact-byte build passed. Planck independently reviewed four current1920x1080 WebGL canvas frames against before; PASS for this correction only. Evidence: experiments/sunbreak-storm-v3/qa/timber-uv-report.json. v1/v2 and historical QA untouched; normal5188 game restored. No new performance/full-playthrough/UE cinematic claim. Preserved pre-existing dirty private vault; private transfer skipped because this isolated public web fix needs no private dependencies. Next: refresh third demo and inspect cabin.",
+  "commit_shas": [
+    "6f6aa7c38dbce2370910b441759207dab2d0a836"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

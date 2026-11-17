@@ -1,0 +1,49 @@
+{
+  "schema": "sunbreak-scoped-timber-uv-art-v1",
+  "date": "2026-11-17",
+  "verdict": "PASS",
+  "scope": "Correction of horizontal cabin wall timber UV direction only",
+  "confidence": "high",
+  "runtimeSourceSha256": "f18cae56d912f2af23889dfd694db038da586eab58335177e047635ced0b2d15",
+  "reviewer": "Planck / bounded read-only independent reviewer",
+  "reviewerId": "01a1e38c-7010-78b1-a6ca-6fedbc1a7f43",
+  "recordedBy": "Producer, from reviewer's returned verdict; no reviewer file writes",
+  "method": "Before/current representative actual WebGL canvas comparison at 1920x1080, source inspection and source-bound unit report review. Reviewer did not independently rerun tests.",
+  "frames": [
+    {
+      "path": "qa/timber-uv-evidence/timber-uv-out.png",
+      "sha256": "f088cf5c9925d73011529487ef286f5682cfc582e7a1371f43a508c5d4ecbb14"
+    },
+    {
+      "path": "qa/timber-uv-evidence/timber-uv-inside.png",
+      "sha256": "5dd04487498b8d3ea2c8d65cc457d1bd63f2c6091979aeac211ef9379024eee4"
+    },
+    {
+      "path": "qa/timber-uv-evidence/timber-uv-angle.png",
+      "sha256": "3d97915cad9cfe83873b91362eab941cc7262911330350b9cf2eb4d188590c96"
+    },
+    {
+      "path": "qa/timber-uv-evidence/timber-uv-front.png",
+      "sha256": "24197ea554a558748bd50884ac657d6a21d4e562a67cce6edc32fa2f0de0661c"
+    }
+  ],
+  "confirmed": [
+    "Horizontal wall courses and gable grain follow timber length in current views.",
+    "Open moving door retains vertical board grain.",
+    "Optional X/Z projections preserve default mapping; end caps remain two-dimensional.",
+    "No geometry or interaction code changes observed.",
+    "No new Major or Blocker identified within this scoped correction."
+  ],
+  "artPrecheckAxes": {
+    "sameness": "Minor existing texture repetition remains; outside this correction.",
+    "proportionAndStructure": "No new issue introduced.",
+    "stylizationBoundary": "No new cartoon drift observed within cabin correction.",
+    "visualImpact": "Material direction now supports horizontal construction; no new focus issue.",
+    "detailPriority": "User-reported material-direction defect resolved; unrelated polish deferred."
+  },
+  "limits": [
+    "Not whole-scene artistic acceptance, full gameplay, performance or continuous motion review.",
+    "Prior whole-house CONDITIONAL PASS remains historical and is not promoted.",
+    "Not Unreal Engine, Lumen, Nanite or cinematic/AI-video acceptance."
+  ]
+}
