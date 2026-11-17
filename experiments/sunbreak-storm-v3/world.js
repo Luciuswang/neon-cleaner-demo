@@ -341,7 +341,7 @@ export async function buildWorld(ctx){
  for(const mesh of staticMeshes){const geo=mesh.geometry.clone().applyMatrix4(mesh.matrixWorld);if(!batch.has(mesh.material))batch.set(mesh.material,[]);batch.get(mesh.material).push(geo);mesh.removeFromParent()}
  flush();
 
- // Smooth tactical figures retain all original hit boxes, animation pivots,
+ // Licensed tactical figures retain original animation pivots;
  // muzzle anchors and AI state; only old visible blocks are replaced.
  const cloth=standard(0x697269,.94),vest=standard(0x353d37,.88),pants=standard(0x3b4240,.95),boots=standard(0x202521,.87),skin=standard(0x9e8069,.82),helmet=standard(0x343e36,.67);
  function capsule(rx,ry,rz,m,x,y,z,parent){const mesh=new T.Mesh(new T.SphereGeometry(1,18,14),m);mesh.scale.set(rx,ry,rz);mesh.position.set(x,y,z);mesh.castShadow=mesh.receiveShadow=true;parent.add(mesh);return mesh}
@@ -426,15 +426,15 @@ export async function buildWorld(ctx){
  applyWeather();
  function update(dt,{S,pres,live,player}){
   const now=performance.now();if(frame++>120){samples.push(now-last);if(samples.length>3600)samples.shift()}last=now;
-  if(!pres){time+=dt;for(const t of windTrees){t.crown.rotation.z=Math.sin(time*.8+t.phase)*(weather===2?.035:.012);t.crown.rotation.x=Math.cos(time*.6+t.phase)*.009}skyMaterial.uniforms.uTime.value=time;reflection.material.uniforms.rainTime.value=weather===2?time:0;}
+  if(!pres&&!['pause','dead','win'].includes(S.state)){time+=dt;for(const t of windTrees){t.crown.rotation.z=Math.sin(time*.8+t.phase)*(weather===2?.035:.012);t.crown.rotation.x=Math.cos(time*.6+t.phase)*.009}skyMaterial.uniforms.uTime.value=time;reflection.material.uniforms.rainTime.value=weather===2?time:0;}
   if(weather===2){for(let i=0;i<count;i++){const s=rainSeed[i],x=s[0]+cam.position.x+Math.sin(time*.2)*.2,z=s[2]+cam.position.z,y=(s[1]-time*(10+s[3]*5))%22;const yy=(y+22)%22,ry=house.underRoof(x,yy+.85,z)?-15:yy;rainData.set([x,ry,z,x+.09,ry+.5+s[3]*.3,z+.035],i*6)}rainGeo.attributes.position.needsUpdate=true}
   for(const e of enemies){if(e.la.userData.renderArm)e.la.userData.renderArm.rotation.x=e.la.rotation.x*.45;if(e.ra.userData.renderArm)e.ra.userData.renderArm.rotation.x=e.ra.rotation.x*.45}
   if(weapon?.update)weapon.update(dt,{...S,presentation:pres,live});
-  actors?.update();
+  actors?.update(dt,{live,pres});
   const worldSun=cam.quaternion.clone().invert();weaponKeys[0]?.position.copy(sun.position).sub(target.position).applyQuaternion(worldSun);
-  storm.update(dt,{live,pres,weather,style});
+  storm.update(dt,{live,pres,paused:S.state==='pause'||S.state==='dead'||S.state==='win',weather,style});
   house.update(dt,{S,pres,live,player});
  }
  function info(){const a=samples.slice().sort((a,b)=>a-b),pct=p=>a[Math.min(a.length-1,Math.floor(a.length*p))]||0;return{version:'storm-v3-timber',weather:weatherNames[weather],weatherIndex:weather,style,source:'browser WebGL realtime — not Unreal Engine',renderFrames:frame,p50_ms:pct(.5),p95_ms:pct(.95),p99_ms:pct(.99),max_ms:a.at(-1)||0,samples:a.length,triangles:rnd.info.render.triangles,textureErrors,materialBindings:Object.keys(pbr),loadedHDR,weapon:weapon?.info?.()||{loaded:false},actors:actors?.info?.()||{loaded:false},storm:storm.info(),house:house.info(),elapsed:performance.now()-started,features:['2K scanned PBR asphalt','storm HDR image based lighting','realtime shadow maps','SSAO','masked planar water reflection and rain rings','photographic storm sky and moving cloud layer','reference-led enterable timber house and hinged door','warm real and parallax interiors','lightning with reduced-flash control','wind vegetation','optional bloom and film grade']}}
- return {update,render(){composer.render()},floorHeight:house.floorHeight,ceilingY:house.ceilingY,blocksMovement:house.blocksMovement,resetHouse:house.reset,houseQA:house.qa,unlockAudio(){storm.unlockAudio()},setStyle(i){style=i;applyWeather()},setWeather(i){weather=((i%3)+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},info};
+ return {update,render(){composer.render()},floorHeight:house.floorHeight,ceilingY:house.ceilingY,blocksMovement:house.blocksMovement,resetHouse:house.reset,houseQA:house.qa,actorQA:()=>actors?.poseStats?.(),stormQA:storm.qa,unlockAudio(){storm.unlockAudio()},setStyle(i){style=i;applyWeather()},setWeather(i){weather=((i%3)+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},info};
 }

@@ -2,6 +2,78 @@ import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
 import {HOUSE,floorHeight,underRoof,doorBounds,bodyOverlaps,swingOccupied,createDoorState,localPoint} from './house-logic.js';
 
+// Cosmetic only: three instanced/batched draws, independent of timber UVs and
+// movement bounds. Mineral pitting and wet roughness are authored locally.
+export function buildBlackTileRoof(T,parent){
+ const group=new T.Group();group.name='cabin-black-slate-tile-roof';parent.add(group);
+ let seed=0x246ca81;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
+ const size=64,rough=new Uint8Array(size*size*4),normal=new Uint8Array(size*size*4),heights=new Float32Array(size*size);
+ for(let i=0;i<heights.length;i++)heights[i]=random();
+ for(let y=0;y<size;y++)for(let x=0;x<size;x++){
+  const i=y*size+x,k=i*4,h=heights[i],r=Math.round(164+h*65+Math.sin(x*.65+y*.13)*9);
+  rough.set([r,r,r,255],k);
+  const dx=heights[y*size+(x+1)%size]-heights[y*size+(x+size-1)%size];
+  const dy=heights[((y+1)%size)*size+x]-heights[((y+size-1)%size)*size+x];
+  const length=Math.hypot(dx*.32,dy*.32,1);
+  normal.set([Math.round(127.5-dx*.32/length*127.5),Math.round(127.5-dy*.32/length*127.5),Math.round(127.5+127.5/length),255],k);
+ }
+ const texture=data=>{const t=new T.DataTexture(data,size,size);t.wrapS=t.wrapT=T.RepeatWrapping;t.magFilter=t.minFilter=T.LinearFilter;t.needsUpdate=true;return t};
+ const tileMat=new T.MeshStandardMaterial({color:0x343c42,metalness:.035,roughness:.62,roughnessMap:texture(rough),normalMap:texture(normal),normalScale:new T.Vector2(.3,.3),envMapIntensity:.42});
+ const edgeMat=new T.MeshStandardMaterial({color:0x293238,metalness:.06,roughness:.52,envMapIntensity:.36});
+ const rise=HOUSE.ridge-HOUSE.eave,slope=Math.atan2(rise,3.2),tiles=[],caps=[],edgeGeos=[],dummy=new T.Object3D();
+ function edge(w,h,d,x,y,z,rx=0){
+  const g=new T.BoxGeometry(w,h,d);g.rotateX(rx);g.translate(x,y,z);edgeGeos.push(g);
+ }
+ // Tile courses run across, not uninterrupted down the slope like metal ribs.
+ function panel(width,length,cx,cy,cz,angle){
+  const cols=Math.ceil(width/.32),rows=Math.ceil(length/.39),pitch=width/cols,step=length/rows;
+  edge(width,.065,length,cx,cy-.018,cz,angle);
+  for(let row=0;row<rows;row++){
+   const shift=row%2?pitch*.5:0;
+   for(let col=-1;col<cols;col++){
+    const left=Math.max(-width/2,-width/2+col*pitch+shift),right=Math.min(width/2,-width/2+(col+1)*pitch+shift);
+    if(right-left<.01)continue;
+    const z=-length/2+(row+.5)*step,layer=.052+(angle>0?rows-row:row+1)*.002;
+    tiles.push({x:cx+(left+right)/2,y:cy-z*Math.sin(angle)+layer*Math.cos(angle),z:cz+z*Math.cos(angle)+layer*Math.sin(angle),angle,w:(right-left-.009)/.32,l:(step+.065)/.46});
+   }
+  }
+  const ez=Math.sign(angle)*length/2,ey=.01;
+  edge(width+.025,.09,.065,cx,cy-ez*Math.sin(angle)+ey,cz+ez*Math.cos(angle),angle);
+  for(const side of [-1,1])edge(.075,.11,length+.04,cx+side*(width/2-.02),cy-.015,cz,angle);
+ }
+ const run=3.55,length=run/Math.cos(slope);
+ for(const side of [-1,1]){
+  // Reverse the rear panel's local downhill direction, keeping its old pitch.
+  const a=side*slope,cz=-.8+side*run/2,cy=HOUSE.ridge-rise/3.2*run/2;
+  panel(8.65,length,0,cy,cz,a);
+ }
+ panel(5.98,1.95,-1.05,3.94,3.30,.22);
+ // Short overlapping saddle caps, with real joints along the ridge.
+ const capCount=27;
+ for(let i=0;i<capCount;i++)caps.push({x:-4.35+(i+.5)*8.7/capCount,y:HOUSE.ridge+.09,z:-.8});
+ edge(5.98,.06,.12,-1.05,4.17,2.35,.22);
+ const tileGeo=new T.BoxGeometry(.32,.038,.46,4,1,1),p=tileGeo.attributes.position;
+ for(let i=0;i<p.count;i++){
+  const x=p.getX(i)/.16,z=(p.getZ(i)+.23)/.46;
+  p.setY(i,p.getY(i)+.025*(1-x*x)+.009*z*z);
+ }
+ tileGeo.computeVertexNormals();
+ const tileMesh=new T.InstancedMesh(tileGeo,tileMat,tiles.length);tileMesh.name='staggered-black-tile-courses';
+ const tint=new T.Color();
+ for(let i=0;i<tiles.length;i++){
+  const t=tiles[i];dummy.position.set(t.x,t.y,t.z);dummy.rotation.set(t.angle,t.angle<0?Math.PI:0,0);dummy.scale.set(t.w,1,t.l);dummy.updateMatrix();tileMesh.setMatrixAt(i,dummy.matrix);
+  tint.setRGB(1,1,1).multiplyScalar(.82+random()*.23);tileMesh.setColorAt(i,tint);
+ }
+ tileMesh.castShadow=tileMesh.receiveShadow=true;group.add(tileMesh);
+ const capGeo=new T.CylinderGeometry(.125,.125,.37,8,1,true,0,Math.PI);capGeo.rotateZ(Math.PI/2);
+ const capMesh=new T.InstancedMesh(capGeo,tileMat,caps.length);capMesh.name='jointed-black-ridge-caps';
+ dummy.rotation.set(0,0,0);dummy.scale.set(1,1,1);
+ for(let i=0;i<caps.length;i++){const t=caps[i];dummy.position.set(t.x,t.y,t.z);dummy.updateMatrix();capMesh.setMatrixAt(i,dummy.matrix)}
+ capMesh.castShadow=capMesh.receiveShadow=true;group.add(capMesh);
+ const edges=new T.Mesh(mergeGeometries(edgeGeos,false),edgeMat);edges.name='black-roof-backing-and-verges';edges.castShadow=edges.receiveShadow=true;group.add(edges);edgeGeos.forEach(g=>g.dispose());
+ return Object.freeze({style:'black/dark-slate overlapping tiles',tiles:tiles.length,ridgeCaps:caps.length,panels:3,drawCalls:3,drawCallScope:'per color pass; shadows/reflections additional',triangles:tiles.length*tileGeo.index.count/3+caps.length*capGeo.index.count/3+edges.geometry.index.count/3,metalness:tileMat.metalness,roughnessRange:[.62*155/255,.62*238/255],authoredNormal:true,collisionChanged:false});
+}
+
 // User-reference-led authored architecture; existing CC0 scanned wood/plaster.
 // Only former MERCADO12 changes traversal/cover. Other17 proxies are untouched.
 export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInteractionState}){
@@ -14,8 +86,6 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  const woodDark=wood.clone();woodDark.color.set(0x896b4e);
  const cream=materials.plaster.clone();cream.onBeforeCompile=()=>{};cream.color.set(0xd6d4c1);cream.roughness=.86;cream.side=T.DoubleSide;
  const trim=new T.MeshStandardMaterial({color:0xd6d5c1,roughness:.76,side:T.DoubleSide});
- const roof=new T.MeshStandardMaterial({color:0x849190,metalness:.72,roughness:.46,side:T.DoubleSide});
- const seam=roof.clone();seam.color.set(0x667a80);
  const iron=new T.MeshStandardMaterial({color:0x28302d,metalness:.8,roughness:.43,side:T.DoubleSide});
  const glass=new T.MeshPhysicalMaterial({color:0x9eafac,roughness:.19,metalness:0,transparent:true,opacity:.20,depthWrite:false,side:T.DoubleSide,envMapIntensity:.3});
  const lampMat=new T.MeshStandardMaterial({color:0xffe1ac,emissive:0xffbd71,emissiveIntensity:2,roughness:.38,side:T.DoubleSide});
@@ -148,22 +218,8 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
   beam(V(side*4.16,4.72,-4.08),V(side*4.16,6.92,-.8),.055,woodLight);
   beam(V(side*4.16,6.92,-.8),V(side*4.16,4.72,2.48),.055,woodLight);
  }
- // Steep galvanized corrugated metal roof; ribs/seams are actual geometry.
- const rise=HOUSE.ridge-HOUSE.eave,run=3.2,slope=Math.atan2(rise,run);
- for(const side of [-1,1]){
-  const length=3.65/Math.cos(slope),centerZ=-.8+side*1.6;
-  box(8.65,.075,length,roof,0,(HOUSE.eave+HOUSE.ridge)/2,centerZ,staticRoot,side*slope);
-  for(let x=-4.27;x<=4.3;x+=.16){
-   beam(V(x,HOUSE.ridge+.05,-.8),V(x,HOUSE.eave-.21,-.8+side*3.55),.014,roof);
-  }
-  for(let x=-4.25;x<=4.3;x+=.8)beam(V(x,HOUSE.ridge+.07,-.8),V(x,HOUSE.eave-.19,-.8+side*3.55),.019,seam);
-  beam(V(-4.32,HOUSE.eave-.20,-.8+side*3.56),V(4.32,HOUSE.eave-.20,-.8+side*3.56),.052,seam);
-  for(const x of [-4.29,4.29])beam(V(x,HOUSE.ridge+.07,-.8),V(x,HOUSE.eave-.20,-.8+side*3.56),.045,seam);
- }
- beam(V(-4.4,HOUSE.ridge+.08,-.8),V(4.4,HOUSE.ridge+.08,-.8),.09,seam);
- // Porch lean-to and exposed rafters; keep entry/stairs clear of spawn(9,-13).
- box(5.98,.075,1.95,roof,-1.05,3.94,3.30,staticRoot,.22);
- for(let x=-3.99;x<1.94;x+=.16)beam(V(x,4.16,2.33),V(x,3.73,4.24),.012,seam);
+ const roofDetail=buildBlackTileRoof(T,root);
+ // Retain the original porch rafters and every movement/door bound.
  for(const x of [-3.8,-1.1,1.72])beam(V(x,3.98,2.35),V(x,3.61,4.12),.055,woodDark);
  // Wooden hinged leaf, lockset, panel framing and three metal strap hinges.
  const pivot=new T.Group();pivot.position.set(HOUSE.hingeX,fy,HOUSE.front);root.add(pivot);
@@ -265,7 +321,7 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
    button.textContent=door.message|| (door.info().moving?'门扇转动中…':door.angle>.7?'E · 关门':'E · 开门');
   },
   reset(){door.reset();pivot.rotation.y=0;root.updateWorldMatrix(true,true);prompt.hidden=true},
-  info(){return{target:'former MERCADO12',reference:'user supplied timber cabin; structure only, no photo/watermark copied',footprint:[8,8],root:[12,0,-18],floor:fy,logs,lapEnds,windows:windows.length,realInterior:true,interiorLights:2,exteriorLights:2,remainingOriginalMovementProxies:colliders.length,raycastUsesVisibleAssembly:solids[1]===root,door:door.info(),near:last.near,visible:last.visible}},
+  info(){return{target:'former MERCADO12',reference:'user supplied timber cabin; structure only, no photo/watermark copied',footprint:[8,8],root:[12,0,-18],floor:fy,logs,lapEnds,windows:windows.length,realInterior:true,interiorLights:2,exteriorLights:2,remainingOriginalMovementProxies:colliders.length,raycastUsesVisibleAssembly:solids[1]===root,roof:{...roofDetail,roughnessRange:[...roofDetail.roughnessRange]},door:door.info(),near:last.near,visible:last.visible}},
   qa:{root,pivot,movement,originalBody,originalBounds,door,request,refresh(){root.updateWorldMatrix(true,true)},last}
  };
 }

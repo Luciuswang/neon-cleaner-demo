@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>SUNBREAK · BLACK SQUALL / 暴雨行动 · 第三版</title>
-<meta name="description" content="SUNBREAK 第三版：独立保存的暴雨海岸旧城第一人称射击演示，原有战斗布局，湿地反射、室内暖光与风暴天气。"/>
+<meta name="description" content="SUNBREAK 暴雨行动：可直接游玩的单人战术射击演示，掩体交战、黑瓦木屋、雨滴水花和风暴天气。"/>
 <meta property="og:title" content="SUNBREAK · BLACK SQUALL"/>
 <meta property="og:description" content="暴雨行动 · 同一战场，第三种视觉表达。"/>
 <meta property="og:image" content="./assets/social-cover.png"/>
@@ -114,13 +114,14 @@ html,body{background:#172229;color:#d5dedc}
   <div id="flash"></div>
   <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>左键 / F</span> 射击　 <span>R</span> 换弹　 <span>Shift</span> 冲刺　 <span>E</span> 木屋开关门</div>
 </div>
-<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / VISUAL STUDY 03</div><h1>BLACK<br>SQUALL</h1><h2>暴 雨 行 动</h2><p>海岸旧城 · 强降雨 · 六个敌对目标<br>穿过雨幕。保持警觉。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换时段</button><br><a class="compare" href="/original/" target="_blank" rel="noopener">01 最早原版 ↗</a><a class="compare" href="/v2/" target="_blank" rel="noopener">02 雨后写实版 ↗</a><small>包含闪电效果，可在左上角关闭。建议以适中音量体验。<br>独立网页实时渲染 · UE5 视觉方向探索，非 Unreal 引擎。<br><a href="./credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
+<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / TACTICAL STUDY 03</div><h1>BLACK<br>SQUALL</h1><h2>暴 雨 行 动</h2><p>海岸旧城 · 掩体交战 · 六个敌对目标<br>留意探身射击。木屋内也有守卫。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换时段</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 最早原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 雨后写实版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo，非多人联机。<br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
 <div id="bootStatus">正在装载暴雨场景与材质…</div>
 <script type="module" src="./boot-ui.js"></script>
 <script type="importmap">{"imports":{"three":"./vendor/presentation/build/three.module.js","three/addons/":"./vendor/presentation/examples/jsm/"}}</script>
 <script type="module">
+import {TACTICAL_SPAWNS,createTacticalAI,enemyHitBounds} from './tactical-ai.js';
 const E=document.getElementById('err');
 window.onerror=e=>{E.style.display='block';E.textContent='初始化失败 / Error: '+e};
 let THREE;
@@ -285,7 +286,7 @@ function enemy(x,z){
  const gunTip=new THREE.Object3D();gunTip.position.set(0,.02,.92);wg2.add(gunTip);
  const e={g,ll,rl,la,ra,wg2,gunTip,hp:100,alive:true,ph:Math.random()*6,cd:1+Math.random()*2,warn:0};
  enemies.push(e);return e;}
-const SPAWN=[[-8,-10],[9,-9],[-13,3],[14,3],[-3,-20],[9,-13]];
+const SPAWN=TACTICAL_SPAWNS.map(p=>[p[0],p[2]]);
 SPAWN.forEach(p=>enemy(p[0],p[1]));
 
 // ===== style switching =====
@@ -372,9 +373,11 @@ document.addEventListener('keydown',()=>{if(sound.snapshot().unlocked)initAudio(
 // combat
 const ray=new THREE.Raycaster();const tmp=new THREE.Vector3();
 const tracers=[];
+let tactical=null;
 function fire(){
  if(S.state!=='play'||pres||S.mag<=0||S.reload>0||performance.now()<(S.next||0))return;
  S.next=performance.now()+105;S.mag--;recoil=1;muz.intensity=5;snd('shot');updHUD();
+ tactical?.playerShot(pos);
  cam.getWorldDirection(tmp);
  const dir=tmp.clone().add(new THREE.Vector3((Math.random()-.5)*.016*(1-S.aim*.7),(Math.random()-.5)*.016,0)).normalize();
  ray.set(cam.position,dir);ray.far=140;
@@ -382,14 +385,40 @@ function fire(){
  const wd=wall?wall.distance:999;
  let best=null,bd=wd;
  for(const e of enemies){if(!e.alive)continue;
-  const b=new THREE.Box3().setFromCenterAndSize(e.g.position.clone().setY(1.0),new THREE.Vector3(.75,2.0,.75));
+  const bounds=enemyHitBounds(e),b=new THREE.Box3(new THREE.Vector3(bounds.min.x,bounds.min.y,bounds.min.z),new THREE.Vector3(bounds.max.x,bounds.max.y,bounds.max.z));
   const p=ray.ray.intersectBox(b,new THREE.Vector3());
   if(p){const d=p.distanceTo(cam.position);if(d<bd){bd=d;best=e}}}
  const end=cam.position.clone().add(dir.multiplyScalar(Math.min(bd,140)));
  tracer(end);
- if(best){best.hp-=Math.random()<.22?60:28;snd('hit');
+ if(best){best.hp-=Math.random()<.22?60:28;snd('hit');tactical?.hit(best);
   if(best.hp<=0){best.alive=false;best.g.rotation.x=-1.4;best.g.position.y=.35;S.kills++;updHUD();
    if(S.kills>=6){S.state='win';showOver('任务完成','全部 6 名敌对单元已清除。')}}}
+}
+// Approval uses both shoulder-to-muzzle and muzzle-to-player geometry rays:
+// a weapon protruding through a wall cannot fire from a hidden body.
+const sightRay=new THREE.Raycaster(),sightFrom=new THREE.Vector3(),sightTo=new THREE.Vector3();
+function clearSight(a,b){
+ sightFrom.set(a.x,a.y,a.z);sightTo.set(b.x,b.y,b.z).sub(sightFrom);
+ const length=sightTo.length();if(length<.01)return true;
+ sightRay.set(sightFrom,sightTo.multiplyScalar(1/length));sightRay.far=Math.max(.001,length-.06);
+ return sightRay.intersectObjects(solids,true).length===0;
+}
+function enemyShoot(e,target){
+ if(!e.alive||S.state!=='play'||pres)return false;
+ const t=e.tactical||{},shoulder={x:e.g.position.x,y:e.g.position.y+1.43-.52*(t.stance||0),z:e.g.position.z};
+ const o=e.gunTip.getWorldPosition(new THREE.Vector3());
+ const barrel=new THREE.Vector3(0,0,1).applyQuaternion(e.wg2.getWorldQuaternion(new THREE.Quaternion()));
+ const toward=new THREE.Vector3(target.x,target.y,target.z).sub(o).normalize();
+ if(barrel.dot(toward)<Math.cos(.12))return false;
+ if(!clearSight(shoulder,o)||!clearSight(o,target))return false;
+ const d=o.distanceTo(pos);
+ const hitp=pos.clone().add(new THREE.Vector3((Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7));
+ const eg=new THREE.BufferGeometry().setFromPoints([o,hitp]);
+ const el=new THREE.Line(eg,new THREE.LineBasicMaterial({color:0xffc070,transparent:true,opacity:.95}));
+ scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);
+ if(Math.random()<.55-Math.min(.3,d*.012)){S.hp-=5+Math.random()*7;fl.style.opacity=.9;updHUD();
+  if(S.hp<=0){S.hp=0;S.state='dead';updHUD();showOver('作战失败','你已倒下。击倒数 '+S.kills+'/6')}}
+ return true;
 }
 function tracer(end){
  gun.updateMatrixWorld();const mz=gun.localToWorld(new THREE.Vector3(0,.005,-1.85)).applyMatrix4(cam.matrixWorld);
@@ -426,6 +455,7 @@ function resetGame(){
  S.hp=100;S.mag=30;S.res=90;S.kills=0;S.yaw=-.12;S.pitch=-.06;S.aim=0;S.aimHold=false;S.next=0;S.reload=0;
  pos.copy(SPAWNPOS);vel.set(0,0,0);vy=0;onGround=true;bob=0;recoil=0;clearKeys();
  enemies.forEach((e,i)=>{e.alive=true;e.hp=100;e.g.rotation.set(0,0,0);e.wg2.rotation.set(0,0,0);e.g.position.set(SPAWN[i][0],0,SPAWN[i][1]);e.cd=1+Math.random()*2;e.ph=Math.random()*6;e.warn=0});
+ tactical?.reset();
  fl.style.opacity=0;updHUD();}
 document.getElementById('bAgain').onclick=()=>{initAudio();resetGame();over.classList.add('hide');S.state='play';lockReq()};
 updHUD();
@@ -466,33 +496,8 @@ function tick(){
   bob+=dt*(Math.hypot(vel.x,vel.z)>.4?(keys.ShiftLeft?13:9):0);
   S.aim+=((S.aimHold?1:0)-S.aim)*Math.min(1,dt*12);
   if(S.reload>0){S.reload-=dt;if(S.reload<=0)finishReload();else updHUD()}
-  // enemies
-  for(const e of enemies){
-   if(!e.alive)continue;
-   const d=e.g.position.distanceTo(pos);
-   const dx=pos.x-e.g.position.x,dz=pos.z-e.g.position.z;
-   e.g.rotation.y=Math.atan2(dx,dz);e.wg2.rotation.x=-Math.atan2(pos.y-1.45,Math.max(.6,Math.hypot(dx,dz)));
-   let moving=0;
-   if(d>7){const s=2.4*dt/d;const np=e.g.position.clone();np.x+=dx*s;np.z+=dz*s;np.y=1.6;
-    if(!collide(np,'enemy')){e.g.position.x=np.x;e.g.position.z=np.z}moving=1}
-   e.ph+=dt*(moving?8:2.2);
-   const a=Math.sin(e.ph)*(moving?.6:.08);
-   e.ll.rotation.x=a;e.rl.rotation.x=-a;e.la.rotation.x=-a*.5;e.ra.rotation.x=a*.3;
-   e.cd-=dt;
-   if(d<24){
-    if(e.cd<.5&&e.cd>0){e.warn=1;mat.acc.emissiveIntensity=1}
-    if(e.cd<=0){e.cd=1.6+Math.random()*1.6;
-     const o=e.gunTip.getWorldPosition(new THREE.Vector3()),dv=pos.clone().sub(o),dl=dv.length();dv.normalize();
-     ray.set(o,dv);ray.far=Math.max(.1,dl-.35);
-     if(ray.intersectObjects(solids,true).length===0){
-      const hitp=pos.clone().add(new THREE.Vector3((Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7));
-      const eg=new THREE.BufferGeometry().setFromPoints([o,hitp]);
-      const el=new THREE.Line(eg,new THREE.LineBasicMaterial({color:0xffc070,transparent:true,opacity:.95}));
-      scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);
-      if(Math.random()<.55-Math.min(.3,d*.012)){S.hp-=5+Math.random()*7;fl.style.opacity=.9;updHUD();
-       if(S.hp<=0){S.hp=0;S.state='dead';updHUD();showOver('作战失败','你已倒下。击倒数 '+S.kills+'/6')}}}}
-   }
-  }
+  // v3-authorized NPC behavior: cover selection, peeking/bursts and navigation.
+  tactical?.update(dt,{live:S.state==='play'&&!pres,player:pos});
   // sea shimmer
   sea.position.x=pos.x;sea.position.z=pos.z;
  }
@@ -516,6 +521,8 @@ function tick(){
 }
 const {buildWorld}=await import('./world.js');
 visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:S.state==='play'&&!pres,player:pos})});
+tactical=createTacticalAI({enemies,bounds:[...colliders,{min:{x:8,y:0,z:-22},max:{x:16,y:4.74,z:-15.6}}],
+ isBlocked:p=>collide(new THREE.Vector3(p.x,p.y,p.z),'enemy'),canSee:clearSight,onShoot:enemyShoot});
 visual.setStyle(si);
 document.getElementById('bWeather').onclick=()=>visual.cycleWeather();
 addEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});
@@ -524,7 +531,7 @@ tick();
 window.demoQA={snapshot(){return{
  state:S.state,style:P.n,styleIndex:si,health:Math.round(S.hp),ammo:{mag:S.mag,reserve:S.res},kills:S.kills,
  camera:{x:+cam.position.x.toFixed(2),y:+cam.position.y.toFixed(2),z:+cam.position.z.toFixed(2),yaw:+S.yaw.toFixed(3),pitch:+S.pitch.toFixed(3)},
- enemies:enemies.map((e,i)=>({i,alive:e.alive,hp:Math.max(0,Math.round(e.hp)),x:+e.g.position.x.toFixed(2),z:+e.g.position.z.toFixed(2)}))};},
+ enemies:enemies.map((e,i)=>({i,alive:e.alive,hp:Math.max(0,Math.round(e.hp)),x:+e.g.position.x.toFixed(2),y:+e.g.position.y.toFixed(2),z:+e.g.position.z.toFixed(2),mode:e.tactical?.mode,stance:e.tactical?.stance})),tactical:tactical?.info()};},
  setStyle(i){si=i%2;applyStyle()},pause(){togglePause()}};
 const gl=rnd.getContext(),debugRenderer=gl.getExtension('WEBGL_debug_renderer_info');
 const rendererName=debugRenderer?gl.getParameter(debugRenderer.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);

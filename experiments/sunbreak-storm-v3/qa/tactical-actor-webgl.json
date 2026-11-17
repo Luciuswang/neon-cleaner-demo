@@ -1,0 +1,886 @@
+{
+  "schema": "sunbreak-tactical-actor-webgl-samples-v1",
+  "task": "sunbreak-tactical-public-2026-11-17",
+  "captureMethod": "headless native Three WebGL renderer canvas.toDataURL; no desktop/window screenshots",
+  "rendering": "ANGLE SwiftShader software renderer, fixed 1/60 steps; not a hardware benchmark",
+  "visualVerdict": "UNVERIFIED: representative samples do not establish full continuous review",
+  "samples": [
+    {
+      "name": "standing-front",
+      "path": "qa/tactical-actor-standing-front.png",
+      "sha256": "2ea27e17c8f8c4e3addb3e983fd213c7e1fe9e83e19b25c412f895fa5bb29c73",
+      "options": {},
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 1.9999999999999978,
+        "phase": 0,
+        "distance": 0,
+        "actualSpeed": 0,
+        "speed": 0,
+        "stance": 0,
+        "lean": 0,
+        "aimPitch": 0,
+        "alert": 0.9999999999622486,
+        "recoil": 0,
+        "hurt": 0,
+        "flash": false,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 6.972716979363826e-8,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.13462183759503205,
+              0.12283618039106481,
+              -0.024220658968157102
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 2.4985820805041053e-7,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250309,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.18575347633443937,
+              0.12206947957586545,
+              -0.10470981907479582
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 6.622407053979783e-9,
+            "target": [
+              0.352,
+              1.3399999999999999,
+              0.245
+            ],
+            "actual": [
+              0.3520000021302316,
+              1.3400000060280934,
+              0.2449999982735944
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 5.3039077291489335e-9,
+            "target": [
+              0.22199999999999998,
+              1.3399999999999999,
+              0.16
+            ],
+            "actual": [
+              0.2219999966499441,
+              1.3399999961264897,
+              0.15999999861997038
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.35344171179195727,
+          -7.844063728635123e-8,
+          -0.23013791752250695
+        ],
+        "max": [
+          0.38666616839173107,
+          1.798456433906336,
+          0.27562333689976815
+        ],
+        "height": 1.798456433906336
+      },
+      "variedPixels": 465531,
+      "triangles": 25925,
+      "drawCalls": 19
+    },
+    {
+      "name": "standing-grip",
+      "path": "qa/tactical-actor-standing-grip.png",
+      "sha256": "732239a31bff33e3df5f36703eb9b13082a89498277d9ad251b628f4b2785d00",
+      "options": {
+        "view": "grip"
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 3.9999999999999907,
+        "phase": 0,
+        "distance": 0,
+        "actualSpeed": 0,
+        "speed": 0,
+        "stance": 0,
+        "lean": 0,
+        "aimPitch": 0,
+        "alert": 0.9999999999999998,
+        "recoil": 0,
+        "hurt": 0,
+        "flash": false,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 7.049533287501441e-8,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.13462183783136672,
+              0.12283617920017292,
+              -0.024220657090636047
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 2.5298317335091193e-7,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250309,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.185753475677903,
+              0.12206948469388229,
+              -0.10470982490306154
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 6.621396340595779e-9,
+            "target": [
+              0.352,
+              1.3399999999999999,
+              0.245
+            ],
+            "actual": [
+              0.35200000211221144,
+              1.3400000060223407,
+              0.24499999823566926
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 5.149206328596408e-9,
+            "target": [
+              0.22199999999999998,
+              1.3399999999999999,
+              0.16
+            ],
+            "actual": [
+              0.22199999670407838,
+              1.3399999962792104,
+              0.15999999865577066
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.3534417111393334,
+          -7.963021237322385e-8,
+          -0.22953417974302542
+        ],
+        "max": [
+          0.38678100217968525,
+          1.8017590812357966,
+          0.2756233368595038
+        ],
+        "height": 1.8017590812357966
+      },
+      "variedPixels": 442266,
+      "triangles": 25925,
+      "drawCalls": 19
+    },
+    {
+      "name": "crouch-side",
+      "path": "qa/tactical-actor-crouch-side.png",
+      "sha256": "2f559c93c631cdd35bf0caabdf6ed15485deb0daa72de8d1c1fb7033687dbd9f",
+      "options": {
+        "stance": 1,
+        "view": "side"
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 5.999999999999984,
+        "phase": 0,
+        "distance": 0,
+        "actualSpeed": 0,
+        "speed": 0,
+        "stance": 0.9999991684712809,
+        "lean": 0,
+        "aimPitch": 0,
+        "alert": 0.9999999999999998,
+        "recoil": 0,
+        "hurt": 0,
+        "flash": false,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.6092311504144123e-9,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.13462183216068074,
+              0.12283624790011913,
+              -0.02422064144243319
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.9616248642918453e-8,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250309,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.18575349769402497,
+              0.12206924121742677,
+              -0.10470991806459112
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 3.947767302838145e-9,
+            "target": [
+              0.352,
+              0.8200004323949339,
+              0.245
+            ],
+            "actual": [
+              0.3520000015232654,
+              0.8200004321016451,
+              0.24500000363022187
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 5.956983080861642e-9,
+            "target": [
+              0.22199999999999998,
+              0.8200004323949339,
+              0.16
+            ],
+            "actual": [
+              0.2219999971933033,
+              0.8200004278977779,
+              0.15999999728270553
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.35344173177856325,
+          -1.1862238185212509e-8,
+          -0.3329977593287095
+        ],
+        "max": [
+          0.3863730566710384,
+          1.2240356936180241,
+          0.43909668778008865
+        ],
+        "height": 1.2240356936180241
+      },
+      "variedPixels": 529883,
+      "triangles": 25925,
+      "drawCalls": 19
+    },
+    {
+      "name": "crouch-front",
+      "path": "qa/tactical-actor-crouch-front.png",
+      "sha256": "793598863a18413453d72cb5554d3f4cb5b5f9cbba9095e4da9ff5f75f36af1b",
+      "options": {
+        "stance": 1
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 7.999999999999977,
+        "phase": 0,
+        "distance": 0,
+        "actualSpeed": 0,
+        "speed": 0,
+        "stance": 0.9999999999993087,
+        "lean": 0,
+        "aimPitch": 0,
+        "alert": 0.9999999999999998,
+        "recoil": 0,
+        "hurt": 0,
+        "flash": false,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.6496198880502235e-9,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.1346218321772547,
+              0.12283624791871776,
+              -0.024220641404337162
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.9746969566192875e-8,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250309,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.18575349771297547,
+              0.1220692412354959,
+              -0.10470991819695674
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 3.982042253979607e-9,
+            "target": [
+              0.352,
+              0.8200000000003594,
+              0.245
+            ],
+            "actual": [
+              0.35200000154802047,
+              0.8199999997365963,
+              0.24500000365933355
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 5.982053933079287e-9,
+            "target": [
+              0.22199999999999998,
+              0.8200000000003594,
+              0.16
+            ],
+            "actual": [
+              0.22199999718345628,
+              0.8199999954819346,
+              0.1599999972731176
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.35344173179328053,
+          -1.1849304691960438e-8,
+          -0.33299785711398244
+        ],
+        "max": [
+          0.38627885881801693,
+          1.2234370965831598,
+          0.43914967354706574
+        ],
+        "height": 1.2234370965831598
+      },
+      "variedPixels": 457206,
+      "triangles": 25925,
+      "drawCalls": 19
+    },
+    {
+      "name": "walking-front",
+      "path": "qa/tactical-actor-walking-front.png",
+      "sha256": "76a660ab497ddb78dfe02d4df6a3f352cb48a7b577a6843935be422f78d7607f",
+      "options": {
+        "speed": 2.4,
+        "stance": 0.18,
+        "frames": 137
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 10.283333333333424,
+        "phase": 0.21645605664264475,
+        "distance": 5.480000000000004,
+        "actualSpeed": 2.400000000000002,
+        "speed": 2.3999999999969783,
+        "stance": 0.18000009382971197,
+        "lean": 0,
+        "aimPitch": 0,
+        "alert": 0.9999999999999998,
+        "recoil": 0,
+        "hurt": 0,
+        "flash": false,
+        "mode": "reposition",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 3.0526177494163923e-8,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              0.05344737964337298
+            ],
+            "actual": [
+              0.13462183104464878,
+              0.12283622547848572,
+              0.05344735891460495
+            ]
+          },
+          {
+            "side": "right",
+            "swing": true,
+            "lift": 0.07582516124009787,
+            "ikError": 1.1547264616856839e-7,
+            "target": [
+              -0.18575349455999648,
+              0.19789440473260095,
+              -0.3641543396772269
+            ],
+            "actual": [
+              -0.18575349122410548,
+              0.19789442461556495,
+              -0.36415422597818736
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 4.1910943023711525e-9,
+            "target": [
+              0.352,
+              1.2463999512085497,
+              0.2450000000000001
+            ],
+            "actual": [
+              0.3520000002308253,
+              1.246399947031338,
+              0.24500000025078617
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 1.017575201384661e-8,
+            "target": [
+              0.22199999999999998,
+              1.2463999512085497,
+              0.16000000000000014
+            ],
+            "actual": [
+              0.22199999726738795,
+              1.2463999414068265,
+              0.15999999992941216
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.3534417249921765,
+          -3.3373965524323423e-8,
+          5.041112701338812
+        ],
+        "max": [
+          0.41419106841952336,
+          1.5699082858413136,
+          5.916284551395084
+        ],
+        "height": 1.5699082858413136
+      },
+      "variedPixels": 477340,
+      "triangles": 25925,
+      "drawCalls": 19
+    },
+    {
+      "name": "lean-aim-grip",
+      "path": "qa/tactical-actor-lean-aim-grip.png",
+      "sha256": "7208a59d8c4721e53c0e6e1e7cd96cd989ae93e8f45161ada7aba3dab162deba",
+      "options": {
+        "stance": 0.65,
+        "lean": -0.8,
+        "aimPitch": -0.25,
+        "view": "grip"
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 12.283333333333523,
+        "phase": 0,
+        "distance": 5.480000000000004,
+        "actualSpeed": 0,
+        "speed": 9.060322906258377e-11,
+        "stance": 0.6499996091815801,
+        "lean": -0.799999999969799,
+        "aimPitch": -0.24999999999056216,
+        "alert": 0.9999999999999998,
+        "recoil": 0,
+        "hurt": 0,
+        "flash": false,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.5048770982707694e-8,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.13462183238263248,
+              0.12283623952725059,
+              -0.024220655151985737
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 3.2826994613979467e-8,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250309,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.1857534948429611,
+              0.12206925544168454,
+              -0.10470986826077172
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 9.67771706088251e-9,
+            "target": [
+              0.352,
+              1.0654120552889783,
+              0.259649899652015
+            ],
+            "actual": [
+              0.3520000069052226,
+              1.0654120561697416,
+              0.25964990637513663
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 4.2000832870054695e-9,
+            "target": [
+              0.22199999999999998,
+              1.0443827187523438,
+              0.17729234380661024
+            ],
+            "actual": [
+              0.22199999955215938,
+              1.0443827154284213,
+              0.17729234127843346
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.35344172993830314,
+          -1.9723925644230672e-8,
+          -0.3005724210302958
+        ],
+        "max": [
+          0.38093401822142725,
+          1.4299882534190749,
+          0.4196615420666069
+        ],
+        "height": 1.4299882534190749
+      },
+      "variedPixels": 387212,
+      "triangles": 25925,
+      "drawCalls": 19
+    },
+    {
+      "name": "shot",
+      "path": "qa/tactical-actor-shot.png",
+      "sha256": "fb06d59f5e0520c60bfecb04cc8bd745db176bd46991df83b09caace1f277eff",
+      "options": {
+        "stance": 0.45,
+        "recoil": 1
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 14.283333333333623,
+        "phase": 0,
+        "distance": 5.480000000000004,
+        "actualSpeed": 0,
+        "speed": 3.420393798573896e-21,
+        "stance": 0.45000016630541884,
+        "lean": -3.020107635309249e-11,
+        "aimPitch": -9.437836360341399e-12,
+        "alert": 0.9999999999999998,
+        "recoil": 0.6001503456551527,
+        "hurt": 0,
+        "flash": true,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 2.6690660842067456e-8,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726394,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.13462183158269717,
+              0.12283623066316554,
+              -0.02422066308404286
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 8.322080619742494e-8,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250309,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.1857534907384229,
+              0.12206928811793899,
+              -0.1047098286940803
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 6.6747327358831514e-9,
+            "target": [
+              0.352,
+              1.105999913521182,
+              0.245
+            ],
+            "actual": [
+              0.3520000021648845,
+              1.1059999197803516,
+              0.2450000008295347
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 5.77993813406606e-9,
+            "target": [
+              0.22199999999999998,
+              1.105999913521182,
+              0.16
+            ],
+            "actual": [
+              0.2219999967044982,
+              1.1059999093664634,
+              0.15999999770094228
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.35344172579473776,
+          -2.825798093566631e-8,
+          -0.2848229966376424
+        ],
+        "max": [
+          0.3857267503655587,
+          1.541371077943168,
+          0.3907946615465798
+        ],
+        "height": 1.541371077943168
+      },
+      "variedPixels": 465517,
+      "triangles": 25949,
+      "drawCalls": 21
+    },
+    {
+      "name": "raised-guard",
+      "path": "qa/tactical-actor-raised-guard.png",
+      "sha256": "9dd18211a74561cd1962e61a8cbc3125b6c4c6689bd65fc13c2d8951c94cf8de",
+      "options": {
+        "rootY": 0.66,
+        "stance": 1,
+        "view": "side"
+      },
+      "stats": {
+        "index": 0,
+        "bones": 88,
+        "time": 16.28333333333369,
+        "phase": 0,
+        "distance": 5.480000000000004,
+        "actualSpeed": 0,
+        "speed": 1.2912446784034235e-31,
+        "stance": 0.9999995426593429,
+        "lean": -1.1401312661496942e-21,
+        "aimPitch": -3.5629102067177917e-22,
+        "alert": 0.9999999999999998,
+        "recoil": 2.549651274778794e-18,
+        "hurt": 0,
+        "flash": false,
+        "mode": "aim",
+        "feet": [
+          {
+            "side": "left",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.4838035673062284e-9,
+            "target": [
+              0.13462183115576468,
+              0.12283624788726388,
+              -0.024220642699255904
+            ],
+            "actual": [
+              0.13462183210923612,
+              0.12283624784100322,
+              -0.02422064156328707
+            ]
+          },
+          {
+            "side": "right",
+            "swing": false,
+            "lift": 0,
+            "ikError": 1.9199261911851144e-8,
+            "target": [
+              -0.18575349455999648,
+              0.12206924349250314,
+              -0.10470989883442981
+            ],
+            "actual": [
+              -0.18575349763384802,
+              0.12206924116397022,
+              -0.1047099176424342
+            ]
+          }
+        ],
+        "hands": [
+          {
+            "side": "left",
+            "ikError": 3.842726246397927e-9,
+            "target": [
+              0.352,
+              0.8200002378171417,
+              0.245
+            ],
+            "actual": [
+              0.35200000144610777,
+              0.8200002374303782,
+              0.24500000353917098
+            ]
+          },
+          {
+            "side": "right",
+            "ikError": 5.876607469035436e-9,
+            "target": [
+              0.22199999999999998,
+              0.8200002378171417,
+              0.16
+            ],
+            "actual": [
+              0.22199999722535363,
+              0.8200002333881099,
+              0.15999999731308165
+            ]
+          }
+        ]
+      },
+      "bounds": {
+        "min": [
+          -0.35344173173171034,
+          0.6599999979311232,
+          -0.332997803332135
+        ],
+        "max": [
+          0.3866641482071075,
+          1.8859115438234797,
+          0.4389239687538757
+        ],
+        "height": 1.2259115438234796
+      },
+      "variedPixels": 469182,
+      "triangles": 25925,
+      "drawCalls": 19
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "invariantFailures": [],
+  "info": {
+    "loaded": true,
+    "count": 1,
+    "license": "CC-BY-4.0",
+    "author": "DanlyVostok",
+    "trianglesEach": 25887,
+    "uniformFit": 0.9774769696424419,
+    "height": 1.8,
+    "animation": "blended procedural skeleton; world-planted two-bone leg IK, weapon-relative arm IK, pelvis/spine weight, aim, crouch, lean, breathing and actual-shot recoil; not motion capture",
+    "importedAnimationClips": 0,
+    "rigBonesEach": 88,
+    "drivenBonesEach": 20,
+    "combat": "original anchors, life, hit proxies, wg2 and gunTip transforms are never written",
+    "input": "update(dt,{live,pres}); enemy.tactical visual state; phase uses measured anchor displacement",
+    "stance": "consume caller-smoothed stance directly; full crouch lowers the skin by 0.57m to approximately 1.23m",
+    "muzzle": "flash is a child of the unchanged gunTip; triggered only by a rising tactical.recoil",
+    "integration": "caller owns weapon height/pitch/recoil and hit posture; pose before sampling the combat muzzle"
+  },
+  "temporal": {
+    "frames": 600,
+    "seconds": 10,
+    "maxFootError": 0.002384012941023322,
+    "maxHandError": 9.589099687741454e-9,
+    "fullContinuousVisualReview": false
+  },
+  "sourceSHA256": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+  "engineeringVerdict": "PASS"
+}

@@ -13,7 +13,7 @@
       "sha256": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e"
     }
   ],
-  "changes": "Remove detached headset; uniform fit and grounding; original render-only leg motion. No upstream gameplay/animation code or clips.",
+  "changes": "Remove detached headset; uniform fit and grounding; authored procedural two-bone planted-foot and weapon-grip IK, pelvis/spine/crouch/aim/lean/actual-shot recoil. No imported animation clips or mocap.",
   "animationClips": 0,
-  "scope": "Display layer only; original six enemy anchors and hit proxies remain authoritative."
+  "scope": "Licensed asset is display-only. The separately authored tactical-ai.js owns user-authorized v3 spawn/navigation/cover decisions and stance-grounded NPC hit proxies. Earlier demo sources and player weapon/input rules remain unchanged."
 }

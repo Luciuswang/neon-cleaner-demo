@@ -1,0 +1,1146 @@
+{
+  "date": "2026-11-17T05:26:56.426Z",
+  "capture_method": "browser-webgl-canvas",
+  "name": "tactical-npc-1",
+  "qa": {
+    "state": "play",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 69,
+    "ammo": {
+      "mag": 30,
+      "reserve": 90
+    },
+    "kills": 0,
+    "camera": {
+      "x": -1,
+      "y": 1.7,
+      "z": 6,
+      "yaw": 0.65,
+      "pitch": -0.02
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -6.56,
+        "y": 0,
+        "z": 0.47,
+        "mode": "hide",
+        "stance": 0.9999998554012689
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 5.61,
+        "y": 0,
+        "z": -5.58,
+        "mode": "hide",
+        "stance": 0.9994863674114347
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -15.71,
+        "y": 0,
+        "z": 9.27,
+        "mode": "hide",
+        "stance": 0.9999989487184824
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 15.63,
+        "y": 0,
+        "z": -6.65,
+        "mode": "hide",
+        "stance": 0.9999957338596007
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -7.71,
+        "y": 0,
+        "z": -20.2,
+        "mode": "burst",
+        "stance": 0.0000013272517233606798
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 12.25,
+        "y": 0.66,
+        "z": -17.5,
+        "mode": "guard",
+        "stance": 1
+      }
+    ],
+    "tactical": {
+      "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+      "elapsed": 5.9924000000953415,
+      "totalShots": 12,
+      "totalMovementMeters": 15.806239999294274,
+      "decisions": 6,
+      "navigation": {
+        "width": 83,
+        "height": 78,
+        "blocked": 1214,
+        "cells": 6474
+      },
+      "coverPairs": 136,
+      "actors": [
+        {
+          "id": 0,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": "5:0:-1:-1",
+          "shots": 2,
+          "bursts": 1,
+          "moves": 2.7400680007791607,
+          "stance": 0.9999998554012689,
+          "pathPoints": 0
+        },
+        {
+          "id": 1,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": "6:0:-1:1",
+          "shots": 2,
+          "bursts": 1,
+          "moves": 2.879147000141129,
+          "stance": 0.9994863674114347,
+          "pathPoints": 0
+        },
+        {
+          "id": 2,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": "8:-1:0:1",
+          "shots": 3,
+          "bursts": 1,
+          "moves": 3.1088829991531464,
+          "stance": 0.9999989487184824,
+          "pathPoints": 0
+        },
+        {
+          "id": 3,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": "10:1:0:-1",
+          "shots": 2,
+          "bursts": 1,
+          "moves": 2.7710100002145786,
+          "stance": 0.9999957338596007,
+          "pathPoints": 0
+        },
+        {
+          "id": 4,
+          "role": "cover rifleman",
+          "mode": "burst",
+          "cover": "0:0:-1:1",
+          "shots": 3,
+          "bursts": 1,
+          "moves": 4.307131999006249,
+          "stance": 0.0000013272517233606798,
+          "pathPoints": 0
+        },
+        {
+          "id": 5,
+          "role": "cabin defender",
+          "mode": "guard",
+          "cover": "cabin-door",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        }
+      ]
+    }
+  },
+  "actorPoses": [
+    {
+      "index": 0,
+      "bones": 88,
+      "time": 5.9924000000953415,
+      "phase": 0.8797259770971246,
+      "distance": 2.7400680007791602,
+      "actualSpeed": 0,
+      "speed": 3.369020169819956e-8,
+      "stance": 0.9999998554012689,
+      "lean": 0,
+      "aimPitch": -0.10045006087346452,
+      "alert": 0,
+      "recoil": 9.573745259029797e-20,
+      "hurt": 0,
+      "flash": false,
+      "mode": "hide",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.3219910241511963e-9,
+          "target": [
+            0.1341639120914131,
+            0.12283624788726394,
+            -0.02664060151017278
+          ],
+          "actual": [
+            0.13416391288058183,
+            0.12283624776087781,
+            -0.026640600457129793
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.4930701620847725e-8,
+          "target": [
+            -0.22708924936729513,
+            0.12206924349250309,
+            -0.1279076238141812
+          ],
+          "actual": [
+            -0.22708925248856993,
+            0.12206924288643392,
+            -0.1279076384024016
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 6.074758588910918e-9,
+          "target": [
+            0.3519999999999994,
+            0.8450226548814366,
+            0.25279029817196363
+          ],
+          "actual": [
+            0.352000002106144,
+            0.8450226601157309,
+            0.2527903004234098
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 6.315535281635821e-9,
+          "target": [
+            0.22199999999999953,
+            0.8364987502493371,
+            0.16821877193633883
+          ],
+          "actual": [
+            0.22199999586492147,
+            0.8364987461547193,
+            0.16821876948252124
+          ]
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "bones": 88,
+      "time": 5.9924000000953415,
+      "phase": 0.8785949487760547,
+      "distance": 2.879147000141128,
+      "actualSpeed": 0,
+      "speed": 0.04043501514430164,
+      "stance": 0.9994863674114347,
+      "lean": 1.2760627265132537e-7,
+      "aimPitch": -0.05913110491275656,
+      "alert": 0,
+      "recoil": 1.7380451640845962e-10,
+      "hurt": 0,
+      "flash": false,
+      "mode": "hide",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.7660269417619116e-9,
+          "target": [
+            0.13486893736101546,
+            0.12283624788726394,
+            -0.02280453226020107
+          ],
+          "actual": [
+            0.1348689384877999,
+            0.12283624797169015,
+            -0.022804530902968523
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 2.1462962566761854e-8,
+          "target": [
+            -0.14031458149372122,
+            0.12206924349250309,
+            -0.13892202812753318
+          ],
+          "actual": [
+            -0.14031458017647003,
+            0.12206924403519129,
+            -0.13892204954316068
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 5.855106803593202e-9,
+          "target": [
+            0.35200000000000076,
+            0.8349115310733951,
+            0.24989305692175723
+          ],
+          "actual": [
+            0.35200000346051263,
+            0.8349115304255273,
+            0.24989306160015445
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 5.3872733803279005e-9,
+          "target": [
+            0.22200000000000042,
+            0.8298854409045391,
+            0.1650417845823604
+          ],
+          "actual": [
+            0.2219999996087867,
+            0.8298854364485084,
+            0.1650417815801184
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "bones": 88,
+      "time": 5.9924000000953415,
+      "phase": 0.8795037629239884,
+      "distance": 3.108882999153146,
+      "actualSpeed": 0,
+      "speed": 0.0000010090927282991812,
+      "stance": 0.9999989487184824,
+      "lean": -5.669028840687436e-12,
+      "aimPitch": -0.05240643828400784,
+      "alert": 0,
+      "recoil": 3.059357042876247e-18,
+      "hurt": 0,
+      "flash": false,
+      "mode": "hide",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 2.1557797343446644e-9,
+          "target": [
+            0.13494415416515348,
+            0.12283624788726394,
+            -0.022355138405920627
+          ],
+          "actual": [
+            0.13494415535854198,
+            0.1228362481501169,
+            -0.022355136629936823
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 2.0109582464703727e-8,
+          "target": [
+            -0.1318035320957458,
+            0.12206924349250309,
+            -0.10529866780353458
+          ],
+          "actual": [
+            -0.131803530901621,
+            0.1220692408927242,
+            -0.1052986877085722
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 5.878377095335722e-9,
+          "target": [
+            0.3520000000000003,
+            0.8329578203825895,
+            0.24937806304236432
+          ],
+          "actual": [
+            0.3520000043769258,
+            0.8329578228833425,
+            0.24937806606628143
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 6.599653779284201e-9,
+          "target": [
+            0.2220000000000013,
+            0.8285053079801832,
+            0.16449476001222152
+          ],
+          "actual": [
+            0.22199999445035967,
+            0.8285053045652833,
+            0.16449475896562404
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "bones": 88,
+      "time": 5.9924000000953415,
+      "phase": 0.8792401329218575,
+      "distance": 2.771010000214579,
+      "actualSpeed": 0,
+      "speed": 0.000011110065712513625,
+      "stance": 0.9999957338596007,
+      "lean": 7.852555485103854e-11,
+      "aimPitch": -0.03779738493894922,
+      "alert": 0,
+      "recoil": 4.701283454429792e-16,
+      "hurt": 0,
+      "flash": false,
+      "mode": "hide",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.951408527164648e-9,
+          "target": [
+            0.13443197982483124,
+            0.12283624788726394,
+            -0.0252531138054799
+          ],
+          "actual": [
+            0.1344319808573724,
+            0.12283624804006121,
+            -0.02525311215669035
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.8754701134844167e-8,
+          "target": [
+            -0.22692411970678705,
+            0.12206924349250309,
+            -0.13038674733936162
+          ],
+          "actual": [
+            -0.22692412303490705,
+            0.12206924260934929,
+            -0.1303867657752633
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 5.757148516140603e-9,
+          "target": [
+            0.3519999999999994,
+            0.8293246877923264,
+            0.24822597780283928
+          ],
+          "actual": [
+            0.35200000325232583,
+            0.829324688504359,
+            0.24822598249966177
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 8.541301766500003e-9,
+          "target": [
+            0.22199999999999864,
+            0.8261126634923991,
+            0.16328668830794868
+          ],
+          "actual": [
+            0.22199999577364693,
+            0.8261126574604009,
+            0.16328668398281465
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "bones": 88,
+      "time": 5.9924000000953415,
+      "phase": 0.8247512056207853,
+      "distance": 4.307131999006249,
+      "actualSpeed": 0,
+      "speed": 0.000006105119893300858,
+      "stance": 0.0000013272517233606798,
+      "lean": -0.12752118385816352,
+      "aimPitch": -0.009985116333795526,
+      "alert": 0,
+      "recoil": 0.6073918324187986,
+      "hurt": 0,
+      "flash": true,
+      "mode": "burst",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 7.044792096014209e-8,
+          "target": [
+            0.13443374950990528,
+            0.12283624788726394,
+            -0.025243691275342428
+          ],
+          "actual": [
+            0.13443375665430413,
+            0.12283617926680185,
+            -0.02524370552663413
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 2.526277317749951e-7,
+          "target": [
+            -0.21268716548903477,
+            0.12206924349250309,
+            -0.10350501724294148
+          ],
+          "actual": [
+            -0.21268713964427466,
+            0.12206948427139125,
+            -0.10350494528221432
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 6.299374197750471e-9,
+          "target": [
+            0.3520000000000012,
+            1.3424501013167462,
+            0.24588642924907234
+          ],
+          "actual": [
+            0.35200000165141354,
+            1.342450106210457,
+            0.2458864256426132
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 5.198532829392426e-9,
+          "target": [
+            0.22199999999999953,
+            1.3416013832765912,
+            0.16089066654475914
+          ],
+          "actual": [
+            0.22199999643377133,
+            1.3416013797665927,
+            0.16089066513526618
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "bones": 88,
+      "time": 5.9924000000953415,
+      "phase": 0,
+      "distance": 0,
+      "actualSpeed": 0,
+      "speed": 0,
+      "stance": 1,
+      "lean": 0,
+      "aimPitch": -0.00481900180579692,
+      "alert": 0,
+      "recoil": 0,
+      "hurt": 0,
+      "flash": false,
+      "mode": "guard",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.5915190841617933e-9,
+          "target": [
+            0.1306921903098459,
+            0.12283624788726388,
+            -0.04036370087729324
+          ],
+          "actual": [
+            0.13069219027834045,
+            0.12283624767701407,
+            -0.04036369930003758
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.93396973352379e-8,
+          "target": [
+            -0.19707837121941196,
+            0.12206924349250314,
+            -0.08141645566266931
+          ],
+          "actual": [
+            -0.19707837722087085,
+            0.12206923965725469,
+            -0.08141647364313798
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 5.58003657513543e-9,
+          "target": [
+            0.35199999999999676,
+            0.821181695895748,
+            0.24543086369901346
+          ],
+          "actual": [
+            0.35200000314453206,
+            0.821181694575477,
+            0.24543086811552683
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 5.139018912234761e-9,
+          "target": [
+            0.22199999999999953,
+            0.8207720823276538,
+            0.16043185066518362
+          ],
+          "actual": [
+            0.22199999945840965,
+            0.8207720780964193,
+            0.16043184779937647
+          ]
+        }
+      ]
+    }
+  ],
+  "render": {
+    "version": "storm-v3-timber",
+    "weather": "降雨 · 湿表面",
+    "weatherIndex": 2,
+    "style": 0,
+    "source": "browser WebGL realtime — not Unreal Engine",
+    "renderFrames": 358,
+    "p50_ms": 16.699999809265137,
+    "p95_ms": 17.09999990463257,
+    "p99_ms": 18.800000190734863,
+    "max_ms": 97.09999990463257,
+    "samples": 237,
+    "triangles": 29100,
+    "textureErrors": [],
+    "materialBindings": [
+      "concrete",
+      "plaster",
+      "roof",
+      "wood",
+      "bark"
+    ],
+    "loadedHDR": true,
+    "weapon": {
+      "loaded": true,
+      "asset": "Rotuma MP5 / gloved first-person arms",
+      "license": "CC-BY-4.0",
+      "meshes": 4,
+      "triangles": 29100,
+      "skinnedMeshes": 0,
+      "sleeve": {
+        "bakedHeldPose": true,
+        "retainedSourceFabric": true,
+        "proceduralExtension": false,
+        "rearSleeveVerticesAdjusted": 310,
+        "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+      },
+      "textureMaps": 12,
+      "uniformDisplayScale": 1.7,
+      "sourceMuzzle": [
+        0,
+        0.0987987294793129,
+        -0.6800000667572021
+      ],
+      "fittedMuzzle": [
+        0,
+        0.005000000000000061,
+        -1.85
+      ],
+      "aim": 0,
+      "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+    },
+    "actors": {
+      "loaded": true,
+      "count": 6,
+      "license": "CC-BY-4.0",
+      "author": "DanlyVostok",
+      "trianglesEach": 25887,
+      "uniformFit": 0.9774769696424419,
+      "height": 1.8,
+      "animation": "blended procedural skeleton; world-planted two-bone leg IK, weapon-relative arm IK, pelvis/spine weight, aim, crouch, lean, breathing and actual-shot recoil; not motion capture",
+      "importedAnimationClips": 0,
+      "rigBonesEach": 88,
+      "drivenBonesEach": 20,
+      "combat": "original anchors, life, hit proxies, wg2 and gunTip transforms are never written",
+      "input": "update(dt,{live,pres}); enemy.tactical visual state; phase uses measured anchor displacement",
+      "stance": "consume caller-smoothed stance directly; full crouch lowers the skin by 0.57m to approximately 1.23m",
+      "muzzle": "flash is a child of the unchanged gunTip; triggered only by a rising tactical.recoil",
+      "integration": "caller owns weapon height/pitch/recoil and hit posture; pose before sampling the combat muzzle"
+    },
+    "storm": {
+      "engine": "Three.js r160 / WebGL2 rasterization",
+      "lumen": false,
+      "rayTracing": false,
+      "nanite": false,
+      "ground": "Poly Haven asphalt_02, 2K albedo / OpenGL normal / roughness",
+      "sky": "Poly Haven approaching_storm, HDR photograph + moving procedural density",
+      "interiors": "four legacy parallax facades; MERCADO12 is a genuine enterable timber room",
+      "lightning": "bounded slow single events; reduced-flash switch disables bolt and light pulse",
+      "weaponAudio": "preserved CC0 recorded AR-15/M4 clips; not an SMG field recording",
+      "environmentAudio": "independently synthesized rain/wind/thunder, not field recordings",
+      "elapsed": 5.9924000000953415,
+      "flashes": 0,
+      "flash": 3.3084686428464226e-166,
+      "reducedFlash": false,
+      "post": true,
+      "interiorLights": 8,
+      "practicalLights": 4,
+      "grassTufts": 1600,
+      "fernClusters": 8,
+      "impacts": {
+        "method": "shared-wet-pixels / instanced rings, crowns and ballistic droplets",
+        "locations": 360,
+        "requested": 360,
+        "placementAttempts": 8457,
+        "threshold": 0.58,
+        "flipY": true,
+        "rainEnabled": true,
+        "elapsed": 5.9924000000953415,
+        "frozen": false,
+        "activeRipples": 120,
+        "activeCrowns": 22,
+        "airborneDroplets": 450,
+        "emitted": 855,
+        "drawCalls": 3,
+        "drawCallScope": "per color pass; reflections additional",
+        "triangles": 18720,
+        "localSeed": true,
+        "combatRngWrites": 0
+      },
+      "ambientAudio": {
+        "method": "synthesized noise, not a field recording",
+        "context": "locked",
+        "failed": false,
+        "active": true,
+        "focused": true,
+        "effectiveGain": 0.325,
+        "pending": 0,
+        "thunderCount": 0
+      }
+    },
+    "house": {
+      "target": "former MERCADO12",
+      "reference": "user supplied timber cabin; structure only, no photo/watermark copied",
+      "footprint": [
+        8,
+        8
+      ],
+      "root": [
+        12,
+        0,
+        -18
+      ],
+      "floor": 0.66,
+      "logs": 195,
+      "lapEnds": 88,
+      "windows": 8,
+      "realInterior": true,
+      "interiorLights": 2,
+      "exteriorLights": 2,
+      "remainingOriginalMovementProxies": 17,
+      "raycastUsesVisibleAssembly": true,
+      "roof": {
+        "style": "black/dark-slate overlapping tiles",
+        "tiles": 723,
+        "ridgeCaps": 27,
+        "panels": 3,
+        "drawCalls": 3,
+        "drawCallScope": "per color pass; shadows/reflections additional",
+        "triangles": 26616,
+        "metalness": 0.035,
+        "roughnessRange": [
+          0.3768627450980392,
+          0.5786666666666667
+        ],
+        "authoredNormal": true,
+        "collisionChanged": false
+      },
+      "door": {
+        "angle": 0,
+        "target": 0,
+        "moving": false,
+        "open": false,
+        "message": "",
+        "toggles": 0
+      },
+      "near": false,
+      "visible": false
+    },
+    "elapsed": 10108.400000095367,
+    "features": [
+      "2K scanned PBR asphalt",
+      "storm HDR image based lighting",
+      "realtime shadow maps",
+      "SSAO",
+      "masked planar water reflection and rain rings",
+      "photographic storm sky and moving cloud layer",
+      "reference-led enterable timber house and hinged door",
+      "warm real and parallax interiors",
+      "lightning with reduced-flash control",
+      "wind vegetation",
+      "optional bloom and film grade"
+    ]
+  },
+  "viewport": [
+    1920,
+    1080
+  ],
+  "canvas": [
+    1920,
+    1080
+  ],
+  "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "pixel_check": {
+    "samples": 5814,
+    "minLuma": 0,
+    "maxLuma": 248.2688,
+    "meanLuma": 52.46697313381514,
+    "nonBlackRatio": 0.9518403852769178,
+    "colorBins": 165,
+    "nonblank": true
+  },
+  "ui_bounds": [
+    {
+      "id": "bStyle",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bWeather",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bPause",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "bPresOff",
+      "visible": false,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "ammo",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "kills",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    },
+    {
+      "id": "soundControls",
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  ],
+  "colliders": [
+    {
+      "min": [
+        -17.5,
+        9.536743172944284e-8,
+        -19.5
+      ],
+      "max": [
+        -8.5,
+        4.199999904632568,
+        -12.5
+      ]
+    },
+    {
+      "min": [
+        -26.5,
+        4.7683715642676816e-8,
+        0.49999999999999867
+      ],
+      "max": [
+        -15.5,
+        4.599999952316284,
+        7.500000000000002
+      ]
+    },
+    {
+      "min": [
+        16,
+        0,
+        1
+      ],
+      "max": [
+        24,
+        4,
+        11
+      ]
+    },
+    {
+      "min": [
+        -9.5,
+        4.768371586472142e-8,
+        -30
+      ],
+      "max": [
+        1.5,
+        3.599999952316284,
+        -24
+      ]
+    },
+    {
+      "min": [
+        -23,
+        0,
+        16.499999952316283
+      ],
+      "max": [
+        23,
+        0.5,
+        19.900000047683715
+      ]
+    },
+    {
+      "min": [
+        -6.884051931477227,
+        2.384185793236071e-8,
+        1.1159480685227727
+      ],
+      "max": [
+        -5.115948068522773,
+        1.299999976158142,
+        2.8840519314772273
+      ]
+    },
+    {
+      "min": [
+        4.061857478159791,
+        2.384185793236071e-8,
+        -4.938142521840209
+      ],
+      "max": [
+        5.938142521840209,
+        1.299999976158142,
+        -3.0618574781597907
+      ]
+    },
+    {
+      "min": [
+        6.982243924629068,
+        2.384185793236071e-8,
+        6.982243924629068
+      ],
+      "max": [
+        9.017756075370931,
+        1.299999976158142,
+        9.017756075370931
+      ]
+    },
+    {
+      "min": [
+        -15.060547100185016,
+        2.384185793236071e-8,
+        8.939452899814984
+      ],
+      "max": [
+        -12.939452899814984,
+        1.299999976158142,
+        11.060547100185016
+      ]
+    },
+    {
+      "min": [
+        -0.75,
+        2.384185793236071e-8,
+        -12.75
+      ],
+      "max": [
+        0.75,
+        1.299999976158142,
+        -11.25
+      ]
+    },
+    {
+      "min": [
+        13.017140497766349,
+        2.384185793236071e-8,
+        -6.9828595022336515
+      ],
+      "max": [
+        14.982859502233651,
+        1.299999976158142,
+        -5.0171404977663485
+      ]
+    },
+    {
+      "min": [
+        -9.349966424703599,
+        -0.056520383525639775,
+        8.587582749128341
+      ],
+      "max": [
+        -8.020736050605773,
+        5.34506254196167,
+        9.335301357507706
+      ]
+    },
+    {
+      "min": [
+        9.65002520084381,
+        -0.055651378072798255,
+        11.587262970209121
+      ],
+      "max": [
+        10.980539906024934,
+        6.133495140075683,
+        12.335305231809617
+      ]
+    },
+    {
+      "min": [
+        -18.34997104406357,
+        -0.0560548665933311,
+        -6.412592548131943
+      ],
+      "max": [
+        -17.02003492116928,
+        5.738923835754394,
+        -5.664696496725083
+      ]
+    },
+    {
+      "min": [
+        17.65003628730774,
+        -0.05678104953840375,
+        -3.4123153567314146
+      ],
+      "max": [
+        18.97885434627533,
+        5.148439693450928,
+        -2.664699923992157
+      ]
+    },
+    {
+      "min": [
+        1.6500269889831543,
+        -0.05584616977721453,
+        13.587331813573837
+      ],
+      "max": [
+        2.980266261100769,
+        5.936127948760986,
+        14.33530439734459
+      ]
+    },
+    {
+      "min": [
+        -24.349976378679276,
+        -0.05546914571896196,
+        13.587200087308883
+      ],
+      "max": [
+        -23.019210946559905,
+        6.3310120582580565,
+        14.335305976867676
+      ]
+    }
+  ],
+  "buildHashes": {
+    "index.html": "eb6c29fe40ab9f22fb014748361db88224b12228352215f6550242cef53bb8d9",
+    "world.js": "4b995b202811e373885743588d0f3352bc54751261b77588546e1c407c5802fc",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "25d606d8133bd51dc7e05095c81df5242b0ef0567b76b014557c301fd38eda03",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "9ef74802fa058e639a2eab8666317eee1e32e1df5d7be34570c50ecfc93b724c",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/tactical-checks.js": "8009d75d8cdfcd3306503624e839548cd22331ea3e53b9c44d5559d25359418f",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "16dcf9d8aa2e1590d00a54f2f16185b158614a73b02ef20dad1c780fe295c126"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schema": "sunbreak-tactical-environment-numerical-v1",
+  "date": "2026-11-17T05:20:01.824Z",
+  "method": "actual production modules and vendored Three geometry; isolated DOM/compositor; no WebGL/art/performance claim",
+  "verdict": "NUMERICAL PASS / BROWSER QA PENDING",
+  "pass": true,
+  "sourceSha256": {
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "timber-house.js": "25d606d8133bd51dc7e05095c81df5242b0ef0567b76b014557c301fd38eda03",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73"
+  },
+  "checks": [
+    {
+      "name": "protected timber projection and moving-door/interior/movement blocks unchanged",
+      "pass": true
+    },
+    {
+      "name": "CPU sampler matches texel centres, flipY, bilinear interpolation and edges",
+      "pass": true
+    },
+    {
+      "name": "fixed cover excludes cabin/porch, all four houses, six crate stacks and promenade",
+      "pass": true
+    },
+    {
+      "name": "all six original curved palm collider projections are excluded, not just trunk centres",
+      "pass": true
+    },
+    {
+      "name": "black tile roof uses three bounded draws, real courses/caps, not metallic sheets",
+      "pass": true
+    },
+    {
+      "name": "roof geometry/material data are finite and seeded repeatable",
+      "pass": true
+    },
+    {
+      "name": "actual generated wet pixels produce all requested impacts and matching GPU filters",
+      "pass": true
+    },
+    {
+      "name": "all impact footprints remain wet/exposed, including dense circumference/drop-range probes",
+      "pass": true
+    },
+    {
+      "name": "radii, ages, lives, cadence and spatial distribution are independently varied",
+      "pass": true
+    },
+    {
+      "name": "read-only QA returns copies, no renderer/state mutation capability",
+      "pass": true
+    },
+    {
+      "name": "deterministic rejection sampling honours optional exposure veto and never spawns on dry pixels",
+      "pass": true
+    },
+    {
+      "name": "rings expand/fade and airborne motion rises then returns ballistically",
+      "pass": true
+    },
+    {
+      "name": "actual storm pause/presentation freezes all effect clocks and buffers without consuming combat RNG",
+      "pass": true
+    },
+    {
+      "name": "rain off stops emission/opacity and clocks; re-enable resumes without hidden births",
+      "pass": true
+    },
+    {
+      "name": "impact frames only update uniforms, with a bounded three shared mesh batches",
+      "pass": true
+    },
+    {
+      "name": "existing house geometry batching retains all tile instances, bounds and real hinged leaf",
+      "pass": true
+    }
+  ],
+  "metrics": {
+    "roof": {
+      "style": "black/dark-slate overlapping tiles",
+      "tiles": 723,
+      "ridgeCaps": 27,
+      "panels": 3,
+      "drawCalls": 3,
+      "drawCallScope": "per color pass; shadows/reflections additional",
+      "triangles": 26616,
+      "metalness": 0.035,
+      "roughnessRange": [
+        0.3768627450980392,
+        0.5786666666666667
+      ],
+      "authoredNormal": true,
+      "collisionChanged": false,
+      "courseRows": 27,
+      "centerBounds": [
+        [
+          -4.247767925262451,
+          3.822479248046875,
+          -4.218655109405518
+        ],
+        [
+          4.247767925262451,
+          6.8336005210876465,
+          4.072984218597412
+        ]
+      ]
+    },
+    "impacts": {
+      "method": "shared-wet-pixels / instanced rings, crowns and ballistic droplets",
+      "locations": 360,
+      "requested": 360,
+      "placementAttempts": 8457,
+      "threshold": 0.58,
+      "flipY": true,
+      "rainEnabled": true,
+      "elapsed": 0,
+      "frozen": false,
+      "activeRipples": 143,
+      "activeCrowns": 27,
+      "airborneDroplets": 495,
+      "emitted": 0,
+      "drawCalls": 3,
+      "drawCallScope": "per color pass; reflections additional",
+      "triangles": 18720,
+      "localSeed": true,
+      "combatRngWrites": 0
+    },
+    "minimumDenseFootprintWetness": 0.5806744870458822,
+    "distribution": {
+      "radiusSpan": 0.2396370843052864,
+      "lifeSpan": 0.7976143956184387,
+      "periodSpan": 2.7843918800354004,
+      "ageSpan": 4.117607765016146,
+      "fourMeterCells": 32
+    }
+  },
+  "integration": {
+    "required": "Forward paused flag to storm.update(dt,{live,pres,paused}).",
+    "qa": "Optionally expose storm.qa as visual.stormQA. All hooks are read-only copies.",
+    "optional": "isSurfaceExposed(x,z) in installStorm context adds a veto to fixed original cover checks. Current fixed layout needs no hook."
+  }
+}

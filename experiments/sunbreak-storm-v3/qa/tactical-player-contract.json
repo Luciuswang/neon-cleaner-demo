@@ -1,0 +1,58 @@
+{
+  "base": "2f116226e4bd6cb3414f683c5c77fa663306eaac",
+  "date": "2026-11-17T05:30:15.169Z",
+  "method": "exact normalized inline module restoration with 11 bounded hooks; negative mutations; preserved version diff; not runtime or art acceptance",
+  "pass": true,
+  "checks": [
+    {
+      "name": "whole combat/player/input module exact after enumerated NPC hooks",
+      "pass": true
+    },
+    {
+      "name": "negative mutation rejected: cadence",
+      "pass": true
+    },
+    {
+      "name": "negative mutation rejected: ammo",
+      "pass": true
+    },
+    {
+      "name": "negative mutation rejected: reload",
+      "pass": true
+    },
+    {
+      "name": "negative mutation rejected: walk speed",
+      "pass": true
+    },
+    {
+      "name": "all preserved v1/v2 tracked bytes untouched",
+      "pass": true
+    },
+    {
+      "name": "weapon.js source unchanged",
+      "pass": true
+    },
+    {
+      "name": "audio.js source unchanged",
+      "pass": true
+    },
+    {
+      "name": "house-logic.js source unchanged",
+      "pass": true
+    }
+  ],
+  "hooks": [
+    "explicit NPC module import",
+    "authorized spawn map",
+    "AI handle",
+    "noise notification",
+    "stance-relative NPC hitbox",
+    "hurt notification",
+    "new actual-geometry NPC shot helpers",
+    "NPC reset",
+    "NPC update loop only",
+    "NPC initialization",
+    "read-only telemetry"
+  ],
+  "candidateSHA256": "eb6c29fe40ab9f22fb014748361db88224b12228352215f6550242cef53bb8d9"
+}

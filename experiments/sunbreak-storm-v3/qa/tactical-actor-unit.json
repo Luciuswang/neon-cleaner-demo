@@ -1,0 +1,601 @@
+{
+  "schema": "sunbreak-tactical-actor-numerical-v1",
+  "task": "sunbreak-tactical-public-2026-11-17",
+  "method": "Node; actual vendored Three and native local GLB geometry/skeleton; no texture decode, renderer or visual acceptance",
+  "assetSHA256": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e",
+  "sourceSHA256": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "actual local GLB has 0 imported clips and 88 native joints",
+      "pass": true
+    },
+    {
+      "name": "idle initializes without altering actor/weapon/combat transforms",
+      "pass": true
+    },
+    {
+      "name": "body, legs, ankles and arms use normalized finite quaternions",
+      "pass": true
+    },
+    {
+      "name": "standing weapon grip IK residuals stay below 5mm",
+      "pass": true
+    },
+    {
+      "name": "full caller-blended crouch/lean/aim keeps planted feet, no segment rescaling",
+      "pass": true
+    },
+    {
+      "name": "crouched weapon height/pitch contract reaches both wrists",
+      "pass": true
+    },
+    {
+      "name": "walking is driven by measured displacement, with ankle/knee articulation",
+      "pass": true
+    },
+    {
+      "name": "blocked actor does not advance gait even when a stale speed requests movement",
+      "pass": true
+    },
+    {
+      "name": "pause and presentation freeze skeletal pose and all animation clocks",
+      "pass": true
+    },
+    {
+      "name": "flash follows a rising actual-shot recoil, never aim/alert/mode/shot-age",
+      "pass": true
+    },
+    {
+      "name": "death does not advance animation or change authoritative life/combat state",
+      "pass": true
+    },
+    {
+      "name": "teleport is not interpreted as a stride or a very large gait step",
+      "pass": true
+    },
+    {
+      "name": "lateral/backward/diagonal movement stays finite without bone length drift",
+      "pass": true
+    },
+    {
+      "name": "smooth caller stance matches standing/crouched skin heights and the elevated guard floor",
+      "pass": true
+    },
+    {
+      "name": "vertical-only floor relocation replants feet without inventing travel",
+      "pass": true
+    },
+    {
+      "name": "actual hurt drives only a bounded skeletal response, never a flash or combat write",
+      "pass": true
+    },
+    {
+      "name": "finite pose and segment lengths survive facing turns while planted",
+      "pass": true
+    },
+    {
+      "name": "pose stats are detached read-only diagnostics, not mutable rig references",
+      "pass": true
+    },
+    {
+      "name": "independent clones do not share animation quaternions",
+      "pass": true
+    }
+  ],
+  "metrics": {
+    "standing": {
+      "index": 0,
+      "bones": 88,
+      "time": 0.49999999999999994,
+      "phase": 0,
+      "distance": 0,
+      "actualSpeed": 0,
+      "speed": 0,
+      "stance": 0,
+      "lean": 0,
+      "aimPitch": 0,
+      "alert": 0.9975212478233336,
+      "recoil": 0,
+      "hurt": 0,
+      "flash": false,
+      "mode": "cover",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 7.045729856397663e-8,
+          "target": [
+            0.13462183115576468,
+            0.12283624788726394,
+            -0.024220642699255904
+          ],
+          "actual": [
+            0.13462183781901388,
+            0.12283617925950285,
+            -0.024220657192786856
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 2.52827510355962e-7,
+          "target": [
+            -0.18575349455999648,
+            0.12206924349250309,
+            -0.10470989883442981
+          ],
+          "actual": [
+            -0.18575347571223372,
+            0.12206948443611931,
+            -0.10470982458696769
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 6.621392657570754e-9,
+          "target": [
+            0.352,
+            1.3399999999999999,
+            0.245
+          ],
+          "actual": [
+            0.35200000211308147,
+            1.3400000060225412,
+            0.24499999823741014
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 5.156815189437612e-9,
+          "target": [
+            0.22199999999999998,
+            1.3399999999999999,
+            0.16
+          ],
+          "actual": [
+            0.2219999967013616,
+            1.3399999962717237,
+            0.15999999865401154
+          ]
+        }
+      ]
+    },
+    "crouched": {
+      "index": 0,
+      "bones": 88,
+      "time": 2.499999999999996,
+      "phase": 0,
+      "distance": 0,
+      "actualSpeed": 0,
+      "speed": 0,
+      "stance": 1,
+      "lean": 0.9999999999622486,
+      "aimPitch": 0.2999999999886746,
+      "alert": 0.9999999999999064,
+      "recoil": 0,
+      "hurt": 0,
+      "flash": false,
+      "mode": "cover",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 2.7807036362399494e-9,
+          "target": [
+            0.13462183115576468,
+            0.12283624788726394,
+            -0.024220642699255904
+          ],
+          "actual": [
+            0.13462182928440186,
+            0.12283624815174057,
+            -0.024220640659558368
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.6384359764300458e-8,
+          "target": [
+            -0.18575349455999648,
+            0.12206924349250309,
+            -0.10470989883442981
+          ],
+          "actual": [
+            -0.18575349972429017,
+            0.12206924167244099,
+            -0.10470991427673176
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 2.6390882996078747e-9,
+          "target": [
+            0.352,
+            0.7516172653466672,
+            0.2074606212362529
+          ],
+          "actual": [
+            0.3520000020896571,
+            0.7516172657790653,
+            0.2074606196834644
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 5.92518284195119e-9,
+          "target": [
+            0.22199999999999998,
+            0.7767364829128811,
+            0.1262570196605764
+          ],
+          "actual": [
+            0.22199999599476594,
+            0.7767364787389794,
+            0.1262570183782204
+          ]
+        }
+      ]
+    },
+    "crouchedGrip": {
+      "index": 0,
+      "bones": 88,
+      "time": 3.4999999999999925,
+      "phase": 0,
+      "distance": 0,
+      "actualSpeed": 0,
+      "speed": 0,
+      "stance": 1,
+      "lean": 0.7000018432637057,
+      "aimPitch": 0.2999999999999999,
+      "alert": 0.9999999999999998,
+      "recoil": 0,
+      "hurt": 0,
+      "flash": false,
+      "mode": "cover",
+      "feet": [
+        {
+          "side": "left",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.92215768482257e-9,
+          "target": [
+            0.13462183115576468,
+            0.12283624788726394,
+            -0.024220642699255904
+          ],
+          "actual": [
+            0.1346218301970452,
+            0.12283624800701703,
+            -0.024220641037568102
+          ]
+        },
+        {
+          "side": "right",
+          "swing": false,
+          "lift": 0,
+          "ikError": 1.6971789580312182e-8,
+          "target": [
+            -0.18575349455999648,
+            0.12206924349250309,
+            -0.10470989883442981
+          ],
+          "actual": [
+            -0.18575349917257017,
+            0.12206924148084405,
+            -0.10470991504303967
+          ]
+        }
+      ],
+      "hands": [
+        {
+          "side": "left",
+          "ikError": 2.7572528447247146e-9,
+          "target": [
+            0.352,
+            0.7516172653466672,
+            0.2074606212362529
+          ],
+          "actual": [
+            0.35200000234162976,
+            0.7516172656780891,
+            0.20746061981872943
+          ]
+        },
+        {
+          "side": "right",
+          "ikError": 5.252659841271965e-9,
+          "target": [
+            0.22199999999999998,
+            0.7767364829128811,
+            0.1262570196605764
+          ],
+          "actual": [
+            0.22199999665172215,
+            0.7767364791007646,
+            0.12625701830144478
+          ]
+        }
+      ]
+    },
+    "walk": {
+      "lifts": 167,
+      "maxError": 0.0001573404675937358,
+      "plantedFrames": 267,
+      "maxSlip": 2.160085947958124e-8,
+      "distance": 9.599999999999971,
+      "worst": {
+        "i": 8,
+        "pose": {
+          "index": 0,
+          "bones": 88,
+          "time": 5.149999999999987,
+          "phase": 0.6219008264462808,
+          "distance": 0.36,
+          "actualSpeed": 2.399999999999999,
+          "speed": 2.003282668268192,
+          "stance": 0,
+          "lean": 1.7622537440208055e-9,
+          "aimPitch": 7.552496158314801e-10,
+          "alert": 0.9999999999999998,
+          "recoil": 0,
+          "hurt": 0,
+          "flash": false,
+          "mode": "reposition",
+          "feet": [
+            {
+              "side": "left",
+              "swing": true,
+              "lift": 0,
+              "ikError": 0.0001573404675937358,
+              "target": [
+                0.13462183115576468,
+                0.12283624788726394,
+                -0.3842206426992559
+              ],
+              "actual": [
+                0.13460353968788025,
+                0.12297190523475487,
+                -0.38414306352023875
+              ]
+            },
+            {
+              "side": "right",
+              "swing": false,
+              "lift": 0,
+              "ikError": 1.7429498489824647e-7,
+              "target": [
+                -0.18575349455999648,
+                0.12206924349250309,
+                0.06769010116557012
+              ],
+              "actual": [
+                -0.1857534862158473,
+                0.12206939805736133,
+                0.06769018128311832
+              ]
+            }
+          ],
+          "hands": [
+            {
+              "side": "left",
+              "ikError": 6.03637369715378e-9,
+              "target": [
+                0.352,
+                1.3399999999999999,
+                0.245
+              ],
+              "actual": [
+                0.35200000237125195,
+                1.340000003036781,
+                0.2449999953531804
+              ]
+            },
+            {
+              "side": "right",
+              "ikError": 7.588103233089487e-9,
+              "target": [
+                0.22199999999999998,
+                1.3399999999999999,
+                0.16000000000000003
+              ],
+              "actual": [
+                0.22199999785492527,
+                1.3399999927544708,
+                0.15999999930698217
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "directional": {
+      "maxFootError": 1.1720776170148143e-7,
+      "maxHandError": 9.051141618371718e-9,
+      "worst": {
+        "angle": 0.75,
+        "i": 119,
+        "pose": {
+          "index": 0,
+          "bones": 88,
+          "time": 20.45000000000012,
+          "phase": 0.10164973334079905,
+          "distance": 21.200000000000024,
+          "actualSpeed": 1.3999999999999146,
+          "speed": 1.399999999999915,
+          "stance": 0.3722294489865844,
+          "lean": -0.7013024751943211,
+          "aimPitch": 0.19999999999999996,
+          "alert": 0.9999999999999998,
+          "recoil": 3.2571482414570004e-70,
+          "hurt": 0,
+          "flash": false,
+          "mode": "reposition",
+          "feet": [
+            {
+              "side": "left",
+              "swing": false,
+              "lift": 0,
+              "ikError": 3.121417002328185e-8,
+              "target": [
+                0.226692302402963,
+                0.12283624788726394,
+                0.07461020864672996
+              ],
+              "actual": [
+                0.2266923133241363,
+                0.12283622556775392,
+                0.07461018975514833
+              ]
+            },
+            {
+              "side": "right",
+              "swing": true,
+              "lift": 0,
+              "ikError": 1.1720776170148143e-7,
+              "target": [
+                -0.35554107043495264,
+                0.12206924349250309,
+                -0.28696432247746273
+              ],
+              "actual": [
+                -0.3555410468317035,
+                0.12206927925803916,
+                -0.2869642133840511
+              ]
+            }
+          ],
+          "hands": [
+            {
+              "side": "left",
+              "ikError": 6.175057921405673e-9,
+              "target": [
+                0.3520000000000003,
+                1.0995607084764745,
+                0.22223607179954818
+              ],
+              "actual": [
+                0.35200000301934153,
+                1.0995607129271356,
+                0.2222360687653211
+              ]
+            },
+            {
+              "side": "right",
+              "ikError": 5.561479497089872e-9,
+              "target": [
+                0.2220000000000013,
+                1.1164476015940545,
+                0.1389304126830435
+              ],
+              "actual": [
+                0.22199999856639607,
+                1.1164475962947427,
+                0.13893041179303012
+              ]
+            }
+          ]
+        }
+      },
+      "worstHand": {
+        "angle": 1.5707963267948966,
+        "i": 58,
+        "pose": {
+          "index": 0,
+          "bones": 88,
+          "time": 13.43333333333358,
+          "phase": 0.23764655257961503,
+          "distance": 11.376666666666653,
+          "actualSpeed": 1.4000000000000057,
+          "speed": 1.3999905286640304,
+          "stance": 0.9981372269658193,
+          "lean": 0.7207935530046126,
+          "aimPitch": 0.19999663142267404,
+          "alert": 0.9999999999999998,
+          "recoil": 2.87627110689652e-9,
+          "hurt": 0,
+          "flash": false,
+          "mode": "reposition",
+          "feet": [
+            {
+              "side": "left",
+              "swing": false,
+              "lift": 0,
+              "ikError": 6.110598417551994e-9,
+              "target": [
+                0.180358308425987,
+                0.12283624788726394,
+                -0.02422064269925528
+              ],
+              "actual": [
+                0.18035831188222673,
+                0.1228362494473805,
+                -0.024220637907610865
+              ]
+            },
+            {
+              "side": "right",
+              "swing": true,
+              "lift": 0.06139136776511152,
+              "ikError": 1.1086859551435724e-8,
+              "target": [
+                -0.3342262749246423,
+                0.1834606112576146,
+                -0.1047098988344306
+              ],
+              "actual": [
+                -0.3342262812157095,
+                0.18346060878950401,
+                -0.104709907623592
+              ]
+            }
+          ],
+          "hands": [
+            {
+              "side": "left",
+              "ikError": 3.0852941133002477e-9,
+              "target": [
+                0.3520000000000003,
+                0.774088663927272,
+                0.22223607179954818
+              ],
+              "actual": [
+                0.35199999862018316,
+                0.774088661167963,
+                0.22223607183640226
+              ]
+            },
+            {
+              "side": "right",
+              "ikError": 9.051141618371718e-9,
+              "target": [
+                0.2220000000000013,
+                0.7909755570448522,
+                0.1389304126830435
+              ],
+              "actual": [
+                0.2219999959741088,
+                0.7909755489722963,
+                0.13893041194196698
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "heights": {
+      "standing": 1.7982637414706266,
+      "crouched": 1.2247839341709055,
+      "feetWorldMin": 0.6599999979561737
+    }
+  }
+}

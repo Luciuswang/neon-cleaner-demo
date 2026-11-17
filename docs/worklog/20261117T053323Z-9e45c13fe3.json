@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T053323Z-9e45c13fe3",
+  "task_id": "sunbreak-tactical-public-2026-11-17",
+  "timestamp_utc": "2026-11-17T05:33:23.659584+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK v3 tactical/public slice: cover navigation, aligned production fire, skeletal IK, black tile roof and wet-field rain impacts implemented. Exact player contract9, AI10, actor19, environment16, browser24 and house47 checks PASS; source-bound canvas sequences archived. Final1080p30s combat/audio run p95/p9916.8ms max50ms zero>50; earlier160.6ms hitch retained, bounded engineering CONDITIONAL PASS. Source checkpoint precedes separate sanitized GitHub Pages sunbreak/ publication and anonymous live verification. Earlier v1/v2 source unchanged. Unrelated dirty private vault preserved; private transfer skipped, no full UE portability claim.",
+  "commit_shas": [
+    "2f116226e4bd6cb3414f683c5c77fa663306eaac"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

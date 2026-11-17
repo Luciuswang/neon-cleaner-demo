@@ -1,0 +1,242 @@
+{
+  "schema": "sunbreak-tactical-release-v1",
+  "date": "2026-11-17T05:32:18.368Z",
+  "engineeringPass": true,
+  "strictPerformancePass": false,
+  "method": "source-bound unit/integration checks, sparse real WebGL samples, untrimmed realtime combat benchmarks; not full continuous visual review",
+  "checks": [
+    {
+      "name": "tactical-browser current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-browser regression passes",
+      "pass": true
+    },
+    {
+      "name": "house-current current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "house-current regression passes",
+      "pass": true
+    },
+    {
+      "name": "tactical-roof current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-roof nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "tactical-npc-0 current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-npc-0 nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "tactical-npc-1 current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-npc-1 nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "tactical-npc-2 current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-npc-2 nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "tactical-rain-0 current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-rain-0 nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "tactical-rain-1 current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-rain-1 nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "tactical-rain-2 current loaded source hashes",
+      "pass": true
+    },
+    {
+      "name": "tactical-rain-2 nonblank1080p canvas",
+      "pass": true
+    },
+    {
+      "name": "recorded complete real-time combat performance",
+      "pass": true
+    },
+    {
+      "name": "same real-time NPC sequence advances decisions and skeleton time",
+      "pass": true
+    },
+    {
+      "name": "same real-time rain sequence advances and emits",
+      "pass": true
+    },
+    {
+      "name": "tactical-unit",
+      "pass": true
+    },
+    {
+      "name": "tactical-player-contract",
+      "pass": true
+    },
+    {
+      "name": "tactical-environment-unit",
+      "pass": true
+    },
+    {
+      "name": "tactical-actor-unit",
+      "pass": true
+    }
+  ],
+  "performance": [
+    {
+      "run": 1,
+      "date": "2026-11-17T05:13:31.660Z",
+      "duration_ms": 30008.1,
+      "frames": 1698,
+      "p50_ms": 17.69999999999709,
+      "p95_ms": 18.19999999999709,
+      "p99_ms": 18.5,
+      "max_ms": 160.60000000000582,
+      "hitches_over_50ms": 1,
+      "sameSource": false,
+      "strictPass": false,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "audio": {
+        "unlocked": true,
+        "failed": false,
+        "loaded": 5,
+        "ready": true,
+        "muted": false,
+        "volume": 0.65,
+        "droppedBeforeReady": 0,
+        "events": 238,
+        "started": 243,
+        "ended": 231,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 7,
+        "peakVoices": 24,
+        "byType": {
+          "player": 180,
+          "enemy": 53,
+          "magout": 5,
+          "magin": 5
+        },
+        "errors": 0,
+        "active": true,
+        "voices": 12,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    },
+    {
+      "run": 2,
+      "date": "2026-11-17T05:31:25.270Z",
+      "duration_ms": 30016.4,
+      "frames": 1797,
+      "p50_ms": 16.69999999999709,
+      "p95_ms": 16.799999999999272,
+      "p99_ms": 16.80000000000291,
+      "max_ms": 50,
+      "hitches_over_50ms": 0,
+      "sameSource": true,
+      "strictPass": true,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "audio": {
+        "unlocked": true,
+        "failed": false,
+        "loaded": 5,
+        "ready": true,
+        "muted": false,
+        "volume": 0.65,
+        "droppedBeforeReady": 0,
+        "events": 258,
+        "started": 264,
+        "ended": 252,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 3,
+        "peakVoices": 24,
+        "byType": {
+          "player": 200,
+          "enemy": 50,
+          "magout": 6,
+          "magin": 6,
+          "confirm": 2
+        },
+        "errors": 0,
+        "active": true,
+        "voices": 12,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    }
+  ],
+  "buildHashes": {
+    "index.html": "eb6c29fe40ab9f22fb014748361db88224b12228352215f6550242cef53bb8d9",
+    "world.js": "4b995b202811e373885743588d0f3352bc54751261b77588546e1c407c5802fc",
+    "weapon.js": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "25d606d8133bd51dc7e05095c81df5242b0ef0567b76b014557c301fd38eda03",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "77ef688d9d3350afbe75e409ed6cccb0a6821ad2e748c9d5ae8843575732e727",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "vendor/manifest.json": "d25d5b96a14a7ed94cfef40380eaa82491e1cf9f6b3347e27673585b32e91278",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "qa-hooks.js": "9ef74802fa058e639a2eab8666317eee1e32e1df5d7be34570c50ecfc93b724c",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/tactical-checks.js": "8009d75d8cdfcd3306503624e839548cd22331ea3e53b9c44d5559d25359418f",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "16dcf9d8aa2e1590d00a54f2f16185b158614a73b02ef20dad1c780fe295c126"
+  },
+  "independentReviews": [
+    {
+      "reviewer": "Planck",
+      "verdict": "CONDITIONAL PASS",
+      "scope": "read-only engineering source/report review; muzzle direction, actual production callback coverage and publication staged-tree checks closed",
+      "limits": "Reviewer did not run browser; actual public verification separate, strict hitch gate not closed."
+    },
+    {
+      "reviewer": "Zeno",
+      "verdict": "PASS",
+      "confidence": "medium",
+      "scope": "bounded roof/rain art; three actual canvas images and advancing rain state sidecars",
+      "limits": "Not full continuous motion, all-scale ring visibility, NPC art or sustained performance acceptance."
+    }
+  ],
+  "limitations": [
+    "Procedural animation, not mocap/human simulation.",
+    "Original NPC weapon mesh/fingers retained.",
+    "Desktop keyboard and mouse single-player.",
+    "Not UE5, ray tracing, AAA photoreal parity or final cinematic acceptance.",
+    "Public live verification recorded separately after Pages builds."
+  ]
+}
