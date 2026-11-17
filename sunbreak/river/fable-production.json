@@ -1,0 +1,44 @@
+{
+  "requested": "claude-fable-5-2",
+  "reportedModels": [
+    "claude-fable-5-2"
+  ],
+  "cli": "2.1.326",
+  "costUSD": 0.4723296,
+  "billingIndependentlyVerified": false,
+  "tools": [],
+  "sourceBytes": 7227,
+  "types": {
+    "system": 64,
+    "stream_event": 637,
+    "assistant": 4,
+    "user": 1,
+    "result": 1
+  },
+  "visibleBlocks": 2,
+  "textDeltas": 559,
+  "resultTextLength": 3038,
+  "contribution": "Village architecture source saved at source/fable-village.js; Codex integration corrected roof datum, ruin support/mirroring, grounded rubble, instanced2496tiles and bridge shot proxy. Terrain/water/foliage/game integration/QA by Codex; not wholly Fable-authored.",
+  "previousAttempts": [
+    {
+      "kind": "high effort",
+      "result": "22000 output-token cap exceeded",
+      "costUSD": null
+    },
+    {
+      "kind": "low effort",
+      "result": "18000 output-token cap exceeded",
+      "costUSD": 3.0831416
+    },
+    {
+      "kind": "compact JSON",
+      "result": "tail fragment only; rejected",
+      "costUSD": 0.4408296
+    },
+    {
+      "kind": "compact stream",
+      "result": "text extraction empty; rejected",
+      "costUSD": 0.5027398
+    }
+  ]
+}
