@@ -14,6 +14,18 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "sunbreak-auto-arena-2026-11-17": {
+      "base_commit": "9008376cafd48e16160bc70ce374629f612e491f",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-17T18:08:37.662407+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/sunbreak-arena-v4",
+        "docs/tasks/sunbreak-auto-arena-2026-11-17.md"
+      ],
+      "task_id": "sunbreak-auto-arena-2026-11-17",
+      "updated_at": "2026-11-17T10:08:37.662407+00:00"
     }
   },
   "schema": 1
