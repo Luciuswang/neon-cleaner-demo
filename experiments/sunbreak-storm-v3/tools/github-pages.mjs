@@ -93,6 +93,7 @@ if(!process.argv.includes('--publish')){
   'sunbreak/v2/assets/audio/provenance/reload-source.html.txt',
   ...['presentation','three'].flatMap(tree=>[
    'sunbreak/vendor/'+tree+'/build/three.module.js',
+   'sunbreak/vendor/'+tree+'/examples/jsm/utils/TextureUtils.js',
    'sunbreak/vendor/'+tree+'/examples/jsm/shaders/OutputShader.js',
    'sunbreak/vendor/'+tree+'/examples/jsm/shaders/SSAOShader.js'
   ])

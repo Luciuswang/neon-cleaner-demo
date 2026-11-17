@@ -677,3 +677,7 @@ SUNBREAK public release COMPLETE. Normal protected-main PR6 merged without bypas
 ## Sync note - 2026-11-17T15:18:10.1610122+08:00
 
 SUNBREAK v3 editable cabin export/real Blender edit/reimport and left-arm repair accepted at bounded browser-demo scope. Source-bound collector41 PASS, independent engineering/art PASS, two final1080p30s combat/audio strict pacing passes. Earlier428ms hitch retained with unknown cause. v1/v2 and whole player module preserved. Public Pages publication and live hashes/smoke pending. Pre-existing dirty private vault preserved; this public-only slice skips private transfer, no full UE portability claim.
+
+## Sync note - 2026-11-17T15:20:56.8338210+08:00
+
+Pages preflight retained exact pinned upstream TextureUtils bytes using the existing archive-only whitespace exclusion family, after actual staged SHA checks. No runtime or QA-bound source changed. Source a32056a is uploaded; retrying normal Pages publication with this publishing-tool correction.

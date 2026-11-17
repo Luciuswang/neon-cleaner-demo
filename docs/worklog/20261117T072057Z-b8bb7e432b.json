@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T072057Z-b8bb7e432b",
+  "task_id": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "timestamp_utc": "2026-11-17T07:20:57.242225+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Pages preflight retained exact pinned upstream TextureUtils bytes using the existing archive-only whitespace exclusion family, after actual staged SHA checks. No runtime or QA-bound source changed. Source a32056a is uploaded; retrying normal Pages publication with this publishing-tool correction.",
+  "commit_shas": [
+    "a32056a66d3b0a09f7719855a1bea83305af40c7"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
