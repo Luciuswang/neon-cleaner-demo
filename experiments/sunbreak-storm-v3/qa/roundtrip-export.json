@@ -1,0 +1,14 @@
+{
+  "schema": "sunbreak-roundtrip-browser-run-v1",
+  "phase": "export",
+  "date": "2026-11-17T07:06:58.058Z",
+  "captureMethod": "Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels",
+  "pass": true,
+  "results": [
+    {
+      "pass": true,
+      "status": "木屋已导出"
+    }
+  ],
+  "errors": []
+}

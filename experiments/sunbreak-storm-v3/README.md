@@ -104,3 +104,49 @@ The source push and Pages live verification are separate checkpoints.
 normal merge only when clean and requirements pass. No rule changes or bypass.
 v1 remains byte-identical; the packaged v2 comparison hyperlink alone is adapted
 to `../original/` for nested hosting, without changing its game module.
+
+## Editable cabin and left-arm repair — 2026-11-17
+
+The actual downloadable art handoff is
+`assets/house/timber-house-art-kit.zip` (about55MB). Its unpacked source lives in
+`authoring/timber-house/`: original GLB, real editable Blender project, edited GLB,
+11 extracted texture images, material mapping, license and file-hash manifests,
+and the Chinese `README-美术交接.md`. It contains no player weapon/private assets.
+The real Blender trial bevels both door-hardware parts and assigns aged brass;
+it does not claim a human artist has manually finished the entire cabin.
+
+The game now loads the validated Blender derivative through `house-asset.js`.
+Keep names, identity root and independent DoorPivot. Structural geometry must
+match within20micrometres; only named cosmetic hardware has a small editable
+envelope. Any building-layout edit requires reviewed collision updates, not a
+silent GLB swap. Existing four game-owned lights are retained exactly once;
+imported static surfaces are batched only AFTER validation.
+
+Reproduce locally: open `/tools/house-authoring.html` with `node serve.mjs`
+running, then run Blender5.3 background with `tools/house-roundtrip.py`,
+`tools/verify-house-blend.py`, and `node tools/package-house.mjs`.
+Do not overwrite the retained original GLB with an artist's edited derivative.
+The `.blend` reopens in a fresh process and decodes all11 packed images.
+
+The old `fitSleeveEnd` nonrigid rear displacement is replaced by an articulated
+held-arm fit with locked hand contact, unchanged joint lengths and a shoulder
+garment closure. Original licensed source GLB/textures and baseline weapon
+gameplay remain unchanged. This is not a full hand-driven reload animation.
+
+New task QA: `node qa/roundtrip-contract.mjs`,
+`node --experimental-vm-modules qa/roundtrip-run-units.mjs`,
+and `node qa/roundtrip-browser.mjs --phase=checks|captures|benchmark`.
+These write new reports without replacing historical QA. The earlier tactical
+player contract intentionally asserted weapon.js unchanged and is historical
+for that weapon clause; the new exact whole inline game-module check supersedes
+only that authorized rendering change. Preserve all other old regression rules.
+Use `tools/verify-public.mjs --report=roundtrip-public-live` for this publication.
+
+Final local evidence: `qa/roundtrip-release.json` binds current source hashes to
+all11 actual-game canvas views, roundtrip28/house47/tactical24 browser assertions,
+arm55 and final1080p combat/audio pacing. Independent engineering and bounded
+art findings: `qa/roundtrip-independent-review.json`. Two final30s pacing runs
+passed; one earlier428ms hitch is preserved with unknown cause, not discarded.
+No full continuous visual review, globally watertight arm, hand-driven reload,
+or UE cinematic/AAA parity is claimed. The unchanged original right shoulder
+opening and minor cloth/lighting polish notes remain documented.

@@ -1,0 +1,3432 @@
+{
+  "schema": "sunbreak-arm-native-canvas-v1",
+  "task": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "variant": "before",
+  "captureMethod": "headless native Three WebGL renderer canvas.toDataURL; no desktop/window screenshots",
+  "rendering": "ANGLE SwiftShader software renderer; representative samples, not a hardware benchmark or continuous visual review",
+  "weaponSHA256": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+  "servedSHA256": "aecd0d2574a15725c026d17720d1ff68896aab1cdab91d92b3ff77ae8e358b93",
+  "samples": [
+    {
+      "name": "idle",
+      "path": "arm-before-idle.png",
+      "sha256": "d6a43dfb2a912bc7784ec444b10032e9e43657bb58fdc3d2cb70307e996b06ee",
+      "options": {},
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.6780140837850881,
+            -2.0329474133072556,
+            0.9628860601837463
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.655005078015862,
+            -2.1313293163872022,
+            0.962044757524965
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.6944256352159237,
+            -1.9469280812420708,
+            0.9641343881120114
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.5898212616879799,
+            -2.6230942326445676,
+            0.9601347788673625
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.6401244072320327,
+            -2.9092061281665567,
+            0.9584901606347008
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.6895324141596385,
+            -3.0822815194067164,
+            0.9581176354433141
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -0.758259786715646,
+            -3.1990617312616987,
+            0.9581561260032645
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -0.7974685147501753,
+            -3.2178117301809777,
+            0.9584708829374546
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -0.8214066596294798,
+            -3.180640383082623,
+            0.9592377702262576
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.7052605982788328,
+            -1.9374911324874053,
+            0.9652869710824734
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -0.8505398984708424,
+            -3.1160045997557164,
+            0.9600389970260402
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -0.7703005287635927,
+            -2.934202285588915,
+            0.9621782730383824
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.6545386475957534,
+            -2.7530150581048036,
+            0.964489814621593
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.37889404530201404,
+            -2.115485816781141,
+            0.9715598467262707
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.17383826216117182,
+            -1.3439787104668928,
+            0.9793540108161743
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.17288902970274836,
+            -1.3127586306436492,
+            0.9794929642889018
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.2256719422605234,
+            -1.550918381890666,
+            0.9773223706327095
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.21488912415689085,
+            -1.4238157160831424,
+            0.9780336690635899
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.5769533144123409,
+            -2.145696485906076,
+            0.9679596695386979
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.43688624284767363,
+            -1.9406920022494765,
+            0.9703086996510879
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.658190555986189,
+            -1.9912832370715434,
+            0.966514366904703
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.621797527534813,
+            -2.301203393801004,
+            0.9611113052681468
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.5909711097765861,
+            -2.433073039882929,
+            0.96080596165635
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.3447722873207826,
+            -1.7944262286392016,
+            0.9735389454854905
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 214577,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    },
+    {
+      "name": "ads",
+      "path": "arm-before-ads.png",
+      "sha256": "e0df21b45384a873eca4ba2132b14847566202878ed03ff89c4e40f50eb48944",
+      "options": {
+        "aim": 1
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.0050000000000000044,
+          -1.8500000000000003
+        ],
+        "aim": 1,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 2.7755575615628914e-17,
+      "visibleBoundary": 4,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -1.2202099419149066,
+            -1.4703648141319592,
+            0.9669035362429914
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -1.2162504857700622,
+            -1.5527622945972694,
+            0.9661265982542345
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -1.2123543930602676,
+            -1.404362813654947,
+            0.9680078316481336
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -1.1987701277372604,
+            -1.9837957965421187,
+            0.9643212228559409
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -1.2676411032068167,
+            -2.2120113727555393,
+            0.9630830721516834
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -1.313803883230746,
+            -2.3522537460242967,
+            0.9629196085011711
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -1.3676572647746346,
+            -2.4422529959886106,
+            0.9631576277253602
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -1.3931696169786192,
+            -2.4543956024678066,
+            0.9635354810046622
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -1.3992772578711754,
+            -2.425726352223066,
+            0.9642425342240453
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -1.2021352475548701,
+            -1.406783737018732,
+            0.9690172703166221
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -1.4086445985434717,
+            -2.3722240252207336,
+            0.9649917281727202
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -1.3110096006798893,
+            -2.2523847353441107,
+            0.9665574861736477
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -1.180272932981124,
+            -2.1396050866093606,
+            0.9682053941920497
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.8268916543677459,
+            -1.6862719342895514,
+            0.9736862251519158
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.499978214665758,
+            -1.0737269301506402,
+            0.9803341849862828
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.49631500895352265,
+            -1.0454735356666083,
+            0.9804609825835972
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.5855726393520514,
+            -1.2424872356680856,
+            0.9785618732688889
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.5619728647815714,
+            -1.1307885419567467,
+            0.9791932890511011
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -1.0552371037875163,
+            -1.642523969426063,
+            0.970993335999899
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.8968072429313826,
+            -1.50133282194338,
+            0.9727121889157292
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -1.1444800639426596,
+            -1.474794675218712,
+            0.9699477132073876
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -1.2061379770514336,
+            -1.7000352331820208,
+            0.9652414895430556
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -1.1873468043276538,
+            -1.8201824289757338,
+            0.9648937924118312
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.7603097069583558,
+            -1.4142744142056618,
+            0.9753777969326073
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 242710,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    },
+    {
+      "name": "fire",
+      "path": "arm-before-fire.png",
+      "sha256": "e5503a817f95996785b8eb4b6a52b7ec77f559ce7ca39d2226a265b65ec90144",
+      "options": {
+        "recoil": 1
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          5.551115123125783e-17,
+          0.0050000000000000044,
+          -1.8500000000000005
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 6.206335383118183e-17,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.7568656726968928,
+            -2.4807891335363927,
+            0.9583369597477606
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.7293236126122314,
+            -2.5956135547166825,
+            0.9575111073965755
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.7740845919320948,
+            -2.3633212468140394,
+            0.9597905182102769
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.6382414569879017,
+            -3.076464032616735,
+            0.9566977730275881
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.6839796982690466,
+            -3.364006797310824,
+            0.9555091393751449
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.7281567945346616,
+            -3.510554608730997,
+            0.9556594385091708
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -0.7929300857122131,
+            -3.5963434045733567,
+            0.9561513386503349
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -0.8309219545584832,
+            -3.598107034685983,
+            0.9566447723832714
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -0.8540837558246073,
+            -3.5414160924567146,
+            0.9575365289481834
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.7804080006945177,
+            -2.318041044384942,
+            0.9613748863723002
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -0.88429724987791,
+            -3.4632153263958263,
+            0.9583735138339915
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -0.8012799588849085,
+            -3.247440915272456,
+            0.9605766690117319
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.6803968544869441,
+            -3.025985723755804,
+            0.9630078579704668
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.3956992078850995,
+            -2.2804840808919256,
+            0.9702096397881267
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.18351473344513658,
+            -1.3871221085178553,
+            0.9780933410785423
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.18280987415559388,
+            -1.3547551498686052,
+            0.9782013342628738
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.23744964768517907,
+            -1.627136162996063,
+            0.9760343530557568
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.2273820719869435,
+            -1.4931299158176277,
+            0.9766402289155707
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.6157942179925764,
+            -2.415713093990928,
+            0.9656679157350122
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.4667729492886038,
+            -2.1671683718100834,
+            0.9681406102708148
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.7187742048313642,
+            -2.327071908620494,
+            0.9632478806211691
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.6868047815092854,
+            -2.774354975471311,
+            0.9568362932424324
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.6468254650792182,
+            -2.8962711645477075,
+            0.9569124070705811
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.3647611572345308,
+            -1.945885319231037,
+            0.9718887422789696
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 235674,
+      "glError": 0,
+      "triangles": 29114,
+      "drawCalls": 5
+    },
+    {
+      "name": "ads-fire",
+      "path": "arm-before-ads-fire.png",
+      "sha256": "521cf0060dcfabc9ffc34e17d939c389587d3120a0869ba6d76a820dbdde2e99",
+      "options": {
+        "aim": 1,
+        "recoil": 1
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000059,
+          -1.8499999999999994
+        ],
+        "aim": 1,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 2.7755575615628914e-17,
+      "visibleBoundary": 2,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -1.3515032224913814,
+            -1.7800659936461478,
+            0.9631269789847626
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -1.3441314944043834,
+            -1.877814368202457,
+            0.9623545275581862
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -1.3411376696277104,
+            -1.6889954470426345,
+            0.9643967747926279
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -1.2915886311525826,
+            -2.315921066712268,
+            0.9614036714030512
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -1.3501879417284557,
+            -2.5475517118052684,
+            0.9605487313121019
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -1.3846492868470714,
+            -2.6690602885361017,
+            0.9608121341838858
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -1.428846951908515,
+            -2.735211952903564,
+            0.961419710507269
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -1.4508294294786144,
+            -2.7335111104525374,
+            0.9619434477294577
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -1.4545033935533875,
+            -2.688954170673257,
+            0.9627522580982357
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -1.3212088091364622,
+            -1.6654267584712519,
+            0.9657500759742382
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -1.4641150017687423,
+            -2.6231266773697306,
+            0.9635343166901428
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -1.3632746210150661,
+            -2.478963302103801,
+            0.965144446681352
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -1.2266088083276403,
+            -2.33827572877716,
+            0.9668785863301922
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.8631300260264475,
+            -1.8027938341331657,
+            0.9724452915424421
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.5273812730280687,
+            -1.087558848381799,
+            0.9791466043340685
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.5243346530549856,
+            -1.0579492588669486,
+            0.9792448765082257
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.6156644329005582,
+            -1.2847996619954911,
+            0.9773573164518768
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.5940410871150663,
+            -1.1660001675909304,
+            0.9778917406599086
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -1.1233380473725831,
+            -1.8319723418623295,
+            0.9689921559745968
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.9559496396204509,
+            -1.6606493934356714,
+            0.9707805924013716
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -1.2434248810674384,
+            -1.705395748936091,
+            0.9671764934694728
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -1.323543457145879,
+            -2.037442944584729,
+            0.961663220973558
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -1.2924727839189374,
+            -2.155415418153742,
+            0.9616082848669194
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.8033257528186389,
+            -1.5165477935732072,
+            0.973871479157394
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 283474,
+      "glError": 0,
+      "triangles": 29114,
+      "drawCalls": 5
+    },
+    {
+      "name": "reload-early",
+      "path": "arm-before-reload-early.png",
+      "sha256": "9e5b84756bcfd29959cb5dbda38b5bb7c1347373426b30141c8157c50bbd1538",
+      "options": {
+        "reload": 0.95
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          1.1102230246251568e-16,
+          0.004999999999999894,
+          -1.85
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.40745465718024343,
+            -2.5893298364844037,
+            0.972294044863608
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.3790902085034702,
+            -2.6541792792382495,
+            0.972017308282182
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.4291335520826935,
+            -2.5091631732061446,
+            0.9729350673724911
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.27701082119774983,
+            -2.871600808659942,
+            0.9724377941728543
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.28192197604004965,
+            -3.0149232061842435,
+            0.9724005761017087
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.29588988043510717,
+            -3.0753507366673514,
+            0.9728214076498861
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -0.32678478367916985,
+            -3.1070683280256075,
+            0.9733276583095417
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -0.3488009419916502,
+            -3.103281560738063,
+            0.9736430377744113
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -0.36675343537265775,
+            -3.0689894686681134,
+            0.9740537749982694
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.43623781521222293,
+            -2.458418219765248,
+            0.9738083348046331
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -0.3912433584183515,
+            -3.0271060015117843,
+            0.9744063725044876
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -0.35783087554156306,
+            -2.895318733829039,
+            0.9751664793765509
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.29873531747816773,
+            -2.7467640198073893,
+            0.9760484660486748
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.16266750900441995,
+            -2.2174406152801165,
+            0.9788874460796998
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.0674126399892775,
+            -1.4815393417842202,
+            0.9826318571848289
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.0695714010274416,
+            -1.4575661824156685,
+            0.9826579155573708
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.09257843308435902,
+            -1.6933520409147873,
+            0.981583593742386
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.09571089516196299,
+            -1.593652470049895,
+            0.9817841534775106
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.31022714289510706,
+            -2.4047675089829337,
+            0.9764635421822987
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.22732735274254753,
+            -2.2097742008818995,
+            0.9774068281499305
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.3919387261656275,
+            -2.4199276714111444,
+            0.974903287791176
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.33535551912165623,
+            -2.742220299528595,
+            0.9719503005117278
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.29838246952899267,
+            -2.7908002167250414,
+            0.9722007351426649
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.1677308152873575,
+            -1.9955598030098716,
+            0.979377970018457
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 188975,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    },
+    {
+      "name": "reload-mid",
+      "path": "arm-before-reload-mid.png",
+      "sha256": "fa35df251f048ea0c4c8280d25d4cd8506f6d581eab12e210a4616fb010ec70e",
+      "options": {
+        "reload": 0.6
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          -5.2041704279304225e-17,
+          0.004999999999999894,
+          -1.850000000000001
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 4.47545209131181e-16,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.2606913676803233,
+            -2.5258481480114074,
+            0.9777860690622346
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.2343218532880961,
+            -2.569530793066905,
+            0.9776639704839677
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.28162878738278385,
+            -2.4610328960436956,
+            0.9781811321906039
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.13675905456032056,
+            -2.6687986801412085,
+            0.9783931606004548
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.13150805727834758,
+            -2.743518189389707,
+            0.9786806574159652
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.1368382350290861,
+            -2.7603825444173413,
+            0.9791730397376864
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -0.15655917970979208,
+            -2.7601564635116436,
+            0.979688043019579
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -0.17241263684949815,
+            -2.7483361826925328,
+            0.979961792596225
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -0.18683066475780263,
+            -2.7181803619200493,
+            0.9802479965051857
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.28768295034899044,
+            -2.403871296658642,
+            0.9788311312118086
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -0.20704417582114817,
+            -2.686048195221681,
+            0.98047923206212
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -0.1875118248903262,
+            -2.5933999108407537,
+            0.980812221808594
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.1479314140207087,
+            -2.484847990419267,
+            0.9811968590359522
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.06017766799113613,
+            -2.08329671203674,
+            0.9824744233105012
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.007102916069524348,
+            -1.462280887524133,
+            0.9843978607036104
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.010392187197769088,
+            -1.4442542644249832,
+            0.9843795926983887
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.02108113541125611,
+            -1.6492885429840367,
+            0.9838401197723262
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.029122012459733258,
+            -1.5735622777247726,
+            0.983840256610129
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.17901360235630434,
+            -2.2810416652183756,
+            0.9808785197596757
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.12054373994433541,
+            -2.1313571985845687,
+            0.9812161014685582
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.25048739297135536,
+            -2.3443617574585742,
+            0.9796455442059457
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.19349375030029706,
+            -2.6179317008762184,
+            0.9777569625975641
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.1598922603271641,
+            -2.6346884582781422,
+            0.9780367828170515
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.0763859568936365,
+            -1.9290330418578296,
+            0.9824836803350906
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 202694,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    },
+    {
+      "name": "reload-late",
+      "path": "arm-before-reload-late.png",
+      "sha256": "d4c3db515c9342ba9fb13401b51810c01b489234736d7dbb7315f86a6aebeb6f",
+      "options": {
+        "reload": 0.25
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          2.7755575615628907e-17,
+          0.005000000000000226,
+          -1.8500000000000005
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 0,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.4074546571802434,
+            -2.5893298364844033,
+            0.972294044863608
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.37909020850346997,
+            -2.6541792792382495,
+            0.972017308282182
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.4291335520826934,
+            -2.5091631732061446,
+            0.9729350673724911
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.2770108211977498,
+            -2.871600808659943,
+            0.9724377941728543
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.28192197604004954,
+            -3.014923206184243,
+            0.9724005761017087
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.29588988043510694,
+            -3.0753507366673514,
+            0.9728214076498861
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -0.32678478367916985,
+            -3.107068328025608,
+            0.9733276583095417
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -0.3488009419916501,
+            -3.1032815607380626,
+            0.9736430377744113
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -0.36675343537265775,
+            -3.0689894686681134,
+            0.9740537749982694
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.43623781521222277,
+            -2.4584182197652478,
+            0.9738083348046331
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -0.39124335841835134,
+            -3.027106001511784,
+            0.9744063725044876
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -0.357830875541563,
+            -2.8953187338290403,
+            0.9751664793765509
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.2987353174781677,
+            -2.7467640198073893,
+            0.9760484660486748
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.16266750900441984,
+            -2.2174406152801165,
+            0.9788874460796999
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.06741263998927746,
+            -1.4815393417842202,
+            0.9826318571848289
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.0695714010274415,
+            -1.4575661824156685,
+            0.9826579155573708
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.09257843308435892,
+            -1.6933520409147873,
+            0.981583593742386
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.09571089516196293,
+            -1.5936524700498944,
+            0.9817841534775105
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.31022714289510706,
+            -2.4047675089829337,
+            0.9764635421822987
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.2273273527425475,
+            -2.2097742008818995,
+            0.9774068281499305
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.3919387261656275,
+            -2.4199276714111444,
+            0.974903287791176
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.3353555191216562,
+            -2.742220299528595,
+            0.9719503005117278
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.2983824695289926,
+            -2.790800216725042,
+            0.9722007351426649
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.16773081528735748,
+            -1.9955598030098716,
+            0.979377970018457
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 188910,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    },
+    {
+      "name": "wide-idle",
+      "path": "arm-before-wide-idle.png",
+      "sha256": "cb6782e9503a324424ce7bd8ffd83af095e93a794b05108868afa729d4537b6a",
+      "options": {
+        "width": 1760,
+        "height": 775
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.5307686009428721,
+            -2.0329474133072556,
+            0.9628860601837463
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.5127565004669628,
+            -2.1313293163872022,
+            0.962044757524965
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.5436160275680212,
+            -1.9469280812420708,
+            0.9641343881120114
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.4617287654628126,
+            -2.6230942326445676,
+            0.9601347788673625
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.5011074905099246,
+            -2.9092061281665567,
+            0.9584901606347008
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.5397854757310302,
+            -3.0822815194067164,
+            0.9581176354433141
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -0.5935872067723492,
+            -3.1990617312616987,
+            0.9581561260032645
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -0.624280908011501,
+            -3.2178117301809777,
+            0.9584708829374546
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -0.6430203648614615,
+            -3.180640383082623,
+            0.9592377702262576
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.5520979430970662,
+            -1.9374911324874053,
+            0.9652869710824734
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -0.6658266881968717,
+            -3.1160045997557164,
+            0.9600389970260402
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -0.6030130401937217,
+            -2.934202285588915,
+            0.9621782730383824
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.5123913655421303,
+            -2.7530150581048036,
+            0.964489814621593
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.2966089748576373,
+            -2.115485816781141,
+            0.9715598467262707
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.136085508257483,
+            -1.3439787104668928,
+            0.9793540108161743
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.1353424222420505,
+            -1.3127586306436492,
+            0.9794929642889018
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.17666237904232895,
+            -1.550918381890666,
+            0.9773223706327095
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.16822128406221257,
+            -1.4238157160831424,
+            0.9780336690635899
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.4516553723934993,
+            -2.145696485906076,
+            0.9679596695386979
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.34200690727974453,
+            -1.9406920022494765,
+            0.9703086996510879
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.5152501827164612,
+            -1.9912832370715434,
+            0.966514366904703
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.48676069074694966,
+            -2.301203393801004,
+            0.9611113052681468
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.4626288990675295,
+            -2.433073039882929,
+            0.96080596165635
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.2698974976501076,
+            -1.7944262286392016,
+            0.9735389454854905
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1760,
+      "height": 775,
+      "variedPixels": 159231,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    },
+    {
+      "name": "narrow-idle",
+      "path": "arm-before-narrow-idle.png",
+      "sha256": "b2748d9f7dd0292471474f5da2e2fffc0709b8b4c8783bc1f0f09de0756da9bb",
+      "options": {
+        "width": 1200,
+        "height": 900
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29100,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": false,
+          "rearSleeveVerticesAdjusted": 310,
+          "note": "Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged"
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "visibleBoundary": 0,
+      "leftVisibleBoundary": 0,
+      "boundaryProjection": [
+        {
+          "vertex": 4156,
+          "ndc": [
+            -0.9040187783801177,
+            -2.0329474133072556,
+            0.9628860601837463
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4155,
+          "ndc": [
+            -0.8733401040211496,
+            -2.1313293163872022,
+            0.962044757524965
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4159,
+          "ndc": [
+            -0.9259008469545651,
+            -1.9469280812420708,
+            0.9641343881120114
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4247,
+          "ndc": [
+            -0.7864283489173066,
+            -2.6230942326445676,
+            0.9601347788673625
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4246,
+          "ndc": [
+            -0.8534992096427102,
+            -2.9092061281665567,
+            0.9584901606347008
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4248,
+          "ndc": [
+            -0.9193765522128515,
+            -3.0822815194067164,
+            0.9581176354433141
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4250,
+          "ndc": [
+            -1.0110130489541949,
+            -3.1990617312616987,
+            0.9581561260032645
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4253,
+          "ndc": [
+            -1.063291353000234,
+            -3.2178117301809777,
+            0.9584708829374546
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4255,
+          "ndc": [
+            -1.0952088795059731,
+            -3.180640383082623,
+            0.9592377702262576
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 5383,
+          "ndc": [
+            -0.9403474643717772,
+            -1.9374911324874053,
+            0.9652869710824734
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 4265,
+          "ndc": [
+            -1.1340531979611235,
+            -3.1160045997557164,
+            0.9600389970260402
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7068,
+          "ndc": [
+            -1.0270673716847905,
+            -2.934202285588915,
+            0.9621782730383824
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7071,
+          "ndc": [
+            -0.872718196794338,
+            -2.7530150581048036,
+            0.964489814621593
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 7073,
+          "ndc": [
+            -0.5051920604026855,
+            -2.115485816781141,
+            0.9715598467262707
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9345,
+          "ndc": [
+            -0.2317843495482291,
+            -1.3439787104668928,
+            0.9793540108161743
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9348,
+          "ndc": [
+            -0.23051870627033122,
+            -1.3127586306436492,
+            0.9794929642889018
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 9350,
+          "ndc": [
+            -0.30089592301403123,
+            -1.550918381890666,
+            0.9773223706327095
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11179,
+          "ndc": [
+            -0.2865188322091879,
+            -1.4238157160831424,
+            0.9780336690635899
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11188,
+          "ndc": [
+            -0.7692710858831214,
+            -2.145696485906076,
+            0.9679596695386979
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11185,
+          "ndc": [
+            -0.5825149904635649,
+            -1.9406920022494765,
+            0.9703086996510879
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11192,
+          "ndc": [
+            -0.8775874079815855,
+            -1.9912832370715434,
+            0.966514366904703
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11195,
+          "ndc": [
+            -0.8290633700464175,
+            -2.301203393801004,
+            0.9611113052681468
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11200,
+          "ndc": [
+            -0.7879614797021148,
+            -2.433073039882929,
+            0.96080596165635
+          ],
+          "visible": false
+        },
+        {
+          "vertex": 11798,
+          "ndc": [
+            -0.4596963830943768,
+            -1.7944262286392016,
+            0.9735389454854905
+          ],
+          "visible": false
+        }
+      ],
+      "width": 1200,
+      "height": 900,
+      "variedPixels": 207122,
+      "glError": 0,
+      "triangles": 29100,
+      "drawCalls": 4
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "geometry": {
+    "vertices": 13137,
+    "sourceBounds": {
+      "min": [
+        -0.4305158590129535,
+        -0.36869354874812804,
+        -0.6590875972733896
+      ],
+      "max": [
+        0.5098885395759611,
+        0.13424714291235695,
+        0.5919467888514625
+      ]
+    },
+    "displayBounds": {
+      "min": [
+        -0.5396965146064758,
+        -0.3686935603618622,
+        -0.659087598323822
+      ],
+      "max": [
+        0.5098885297775269,
+        0.13424713909626007,
+        0.6478644609451294
+      ]
+    },
+    "maxVertexDelta": 0.42296574871448245,
+    "changedVertices": 310,
+    "handVertices": 1079,
+    "handMaxVertexDelta": 2.9356516600560644e-8,
+    "uv": {
+      "uv": {
+        "present": true,
+        "count": 13137,
+        "maxDelta": 0
+      },
+      "uv1": {
+        "present": true,
+        "count": 13137,
+        "maxDelta": 0
+      }
+    },
+    "edgeCount": 44556,
+    "edgeMinRatio": 0.8089666306275121,
+    "edgeMaxRatio": 5.775151627900888,
+    "edgeMaxRelativeChange": 4.775151627900888,
+    "flippedFaces": 0,
+    "maxFaceNormalAngle": 1.5219376450888333,
+    "boundaryEdges": 48,
+    "boundaryVertices": [
+      {
+        "id": 269,
+        "vertex": 282,
+        "point": [
+          0.23335295304962522,
+          -0.34402945746918123,
+          0.4741242035295632
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 268,
+        "vertex": 281,
+        "point": [
+          0.21548484665366957,
+          -0.32471052462362165,
+          0.4645792734475418
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 271,
+        "vertex": 284,
+        "point": [
+          0.2509919813233643,
+          -0.3594540597753187,
+          0.48939609011390806
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 275,
+        "vertex": 288,
+        "point": [
+          0.27076907336153977,
+          -0.36869354874812804,
+          0.5087150261249314
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 297,
+        "vertex": 310,
+        "point": [
+          0.09573416138068616,
+          -0.043459684619573564,
+          0.46977168310176554
+        ],
+        "influences": {
+          "UpArm_R": 0.6470588235294118,
+          "Arm_R": 0.35294117647058826
+        }
+      },
+      {
+        "id": 296,
+        "vertex": 309,
+        "point": [
+          0.11680936518553084,
+          -0.06285497640867305,
+          0.48840338491462043
+        ],
+        "influences": {
+          "UpArm_R": 0.6745098039215687,
+          "Arm_R": 0.3254901960784314
+        }
+      },
+      {
+        "id": 298,
+        "vertex": 311,
+        "point": [
+          0.14781129566140666,
+          -0.09683491758944546,
+          0.5136783585662499
+        ],
+        "influences": {
+          "UpArm_R": 0.7254901960784313,
+          "Arm_R": 0.27450980392156865
+        }
+      },
+      {
+        "id": 299,
+        "vertex": 312,
+        "point": [
+          0.1966240638031463,
+          -0.1528063720827374,
+          0.551705359480348
+        ],
+        "influences": {
+          "UpArm_R": 0.8117647058823529,
+          "Arm_R": 0.18823529411764706
+        }
+      },
+      {
+        "id": 301,
+        "vertex": 314,
+        "point": [
+          0.23136760575134366,
+          -0.19747663307685942,
+          0.5742313957187798
+        ],
+        "influences": {
+          "UpArm_R": 0.8705882352941177,
+          "Arm_R": 0.12941176470588237
+        }
+      },
+      {
+        "id": 303,
+        "vertex": 316,
+        "point": [
+          0.2664929442144295,
+          -0.2442849581988943,
+          0.5919467888514625
+        ],
+        "influences": {
+          "UpArm_R": 0.9294117647058824,
+          "Arm_R": 0.07058823529411765
+        }
+      },
+      {
+        "id": 305,
+        "vertex": 318,
+        "point": [
+          0.28733906838067247,
+          -0.2795821006089651,
+          0.5890451349699564
+        ],
+        "influences": {
+          "UpArm_R": 0.9529411764705882,
+          "Arm_R": 0.047058823529411764
+        }
+      },
+      {
+        "id": 476,
+        "vertex": 503,
+        "point": [
+          0.2016637901692138,
+          -0.30607882633779776,
+          0.46320480192810326
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 478,
+        "vertex": 505,
+        "point": [
+          0.1852274231526834,
+          -0.2783603569342798,
+          0.4641974719799828
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1177,
+        "vertex": 1283,
+        "point": [
+          0.28917169539384036,
+          -0.3683881100046781,
+          0.5292557125056341
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1178,
+        "vertex": 1285,
+        "point": [
+          0.30528353440958345,
+          -0.36075216684383915,
+          0.5501781955729014
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1180,
+        "vertex": 1287,
+        "point": [
+          0.316890167124556,
+          -0.34517484400783166,
+          0.5714824750741829
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1182,
+        "vertex": 1289,
+        "point": [
+          0.308261551865141,
+          -0.3188308433470463,
+          0.5840054178607265
+        ],
+        "influences": {
+          "UpArm_R": 0.984313725490196,
+          "Arm_R": 0.01568627450980392
+        }
+      },
+      {
+        "id": 1623,
+        "vertex": 1798,
+        "point": [
+          0.17514797788839592,
+          -0.2425286983927806,
+          0.47007714507104875
+        ],
+        "influences": {
+          "UpArm_R": 0.9882352941176471,
+          "Arm_R": 0.011764705882352941
+        }
+      },
+      {
+        "id": 3287,
+        "vertex": 4156,
+        "point": [
+          -0.32512077509608234,
+          0.08049069506416594,
+          0.2440150849073879
+        ],
+        "influences": {
+          "UpArm_L": 0.9803921568627451,
+          "Arm_L": 0.0196078431372549
+        }
+      },
+      {
+        "id": 3286,
+        "vertex": 4155,
+        "point": [
+          -0.31381957916441083,
+          0.07025853233676707,
+          0.25333093267690365
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3290,
+        "vertex": 4159,
+        "point": [
+          -0.3368801268576159,
+          0.08476682295943339,
+          0.2300413122389332
+        ],
+        "influences": {
+          "UpArm_L": 0.9411764705882353,
+          "Arm_L": 0.058823529411764705
+        }
+      },
+      {
+        "id": 3367,
+        "vertex": 4247,
+        "point": [
+          -0.2900717874389594,
+          -0.00367648154750895,
+          0.28343562630263947
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3366,
+        "vertex": 4246,
+        "point": [
+          -0.29679141225427785,
+          -0.030096843993940775,
+          0.28732995485860724
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3368,
+        "vertex": 4248,
+        "point": [
+          -0.31007794761785695,
+          -0.0542264241332604,
+          0.2878644695038252
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3370,
+        "vertex": 4250,
+        "point": [
+          -0.33092406621627635,
+          -0.07400351758952695,
+          0.2854973269133421
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3373,
+        "vertex": 4253,
+        "point": [
+          -0.34413424498239753,
+          -0.08087586662848104,
+          0.28167935607601924
+        ],
+        "influences": {
+          "UpArm_L": 0.984313725490196,
+          "Arm_L": 0.01568627450980392
+        }
+      },
+      {
+        "id": 3375,
+        "vertex": 4255,
+        "point": [
+          -0.3551300014209072,
+          -0.08408296237351919,
+          0.27432976246795276
+        ],
+        "influences": {
+          "UpArm_L": 0.9568627450980393,
+          "Arm_L": 0.043137254901960784
+        }
+      },
+      {
+        "id": 4388,
+        "vertex": 5383,
+        "point": [
+          -0.3471122882744894,
+          0.0749164572265937,
+          0.2164493356703087
+        ],
+        "influences": {
+          "UpArm_L": 0.9019607843137255,
+          "Arm_L": 0.09803921568627451
+        }
+      },
+      {
+        "id": 3385,
+        "vertex": 4265,
+        "point": [
+          -0.368263822106744,
+          -0.08301393055568906,
+          0.2662356649614237
+        ],
+        "influences": {
+          "UpArm_L": 0.9333333333333333,
+          "Arm_L": 0.06666666666666667
+        }
+      },
+      {
+        "id": 5539,
+        "vertex": 7068,
+        "point": [
+          -0.354213691509764,
+          -0.07896687695766583,
+          0.248214842576361
+        ],
+        "influences": {
+          "UpArm_L": 0.8823529411764706,
+          "Arm_L": 0.11764705882352941
+        }
+      },
+      {
+        "id": 5540,
+        "vertex": 7071,
+        "point": [
+          -0.3271824604408326,
+          -0.07721060438105873,
+          0.2274450803938927
+        ],
+        "influences": {
+          "UpArm_L": 0.8156862745098039,
+          "Arm_L": 0.1843137254901961
+        }
+      },
+      {
+        "id": 5541,
+        "vertex": 7073,
+        "point": [
+          -0.27403631047134347,
+          -0.07965409665357041,
+          0.20117743841457236
+        ],
+        "influences": {
+          "UpArm_L": 0.7137254901960784,
+          "Arm_L": 0.28627450980392155
+        }
+      },
+      {
+        "id": 6815,
+        "vertex": 9345,
+        "point": [
+          -0.24561152181750667,
+          -0.07774510554459704,
+          0.18101855088988192
+        ],
+        "influences": {
+          "UpArm_L": 0.6392156862745098,
+          "Arm_L": 0.3607843137254902
+        }
+      },
+      {
+        "id": 6816,
+        "vertex": 9348,
+        "point": [
+          -0.2454588044487989,
+          -0.07064367857135936,
+          0.17773509627976827
+        ],
+        "influences": {
+          "UpArm_L": 0.6196078431372549,
+          "Arm_L": 0.3803921568627451
+        }
+      },
+      {
+        "id": 6817,
+        "vertex": 9350,
+        "point": [
+          -0.2540874153289126,
+          -0.08034132773476459,
+          0.18804361760440721
+        ],
+        "influences": {
+          "UpArm_L": 0.6666666666666666,
+          "Arm_L": 0.3333333333333333
+        }
+      },
+      {
+        "id": 7268,
+        "vertex": 10808,
+        "point": [
+          0.07901144604614595,
+          -0.037656370298835624,
+          0.4461766206898232
+        ],
+        "influences": {
+          "UpArm_R": 0.6509803921568628,
+          "Arm_R": 0.34901960784313724
+        }
+      },
+      {
+        "id": 7267,
+        "vertex": 10807,
+        "point": [
+          0.08107315034534289,
+          -0.033762039288881884,
+          0.45381256248516455
+        ],
+        "influences": {
+          "UpArm_R": 0.6392156862745098,
+          "Arm_R": 0.3607843137254902
+        }
+      },
+      {
+        "id": 7334,
+        "vertex": 11179,
+        "point": [
+          -0.25256023100709696,
+          -0.05918976588869564,
+          0.17842233207877878
+        ],
+        "influences": {
+          "UpArm_L": 0.6235294117647059,
+          "Arm_L": 0.3764705882352941
+        }
+      },
+      {
+        "id": 7336,
+        "vertex": 11188,
+        "point": [
+          -0.3154994828272413,
+          -0.0010802531052257988,
+          0.1872800315790305
+        ],
+        "influences": {
+          "UpArm_L": 0.7333333333333333,
+          "Arm_L": 0.26666666666666666
+        }
+      },
+      {
+        "id": 7335,
+        "vertex": 11185,
+        "point": [
+          -0.28197769949366924,
+          -0.0039055478107010593,
+          0.1895708119255271
+        ],
+        "influences": {
+          "UpArm_L": 0.6823529411764706,
+          "Arm_L": 0.3176470588235294
+        }
+      },
+      {
+        "id": 7337,
+        "vertex": 11192,
+        "point": [
+          -0.33741463989239706,
+          0.050176006064134276,
+          0.20316279484519167
+        ],
+        "influences": {
+          "UpArm_L": 0.8313725490196079,
+          "Arm_L": 0.16862745098039217
+        }
+      },
+      {
+        "id": 7338,
+        "vertex": 11195,
+        "point": [
+          -0.2995403641222756,
+          0.048419737288106834,
+          0.26348673294460545
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 7339,
+        "vertex": 11200,
+        "point": [
+          -0.2915226209488982,
+          0.024118350018889095,
+          0.2746352056548045
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 7397,
+        "vertex": 11798,
+        "point": [
+          -0.2707337729926872,
+          -0.03941267761908303,
+          0.18155307037459362
+        ],
+        "influences": {
+          "UpArm_L": 0.6470588235294118,
+          "Arm_L": 0.35294117647058826
+        }
+      },
+      {
+        "id": 2835,
+        "vertex": 3541,
+        "point": [
+          0.1527746624019787,
+          -0.15937328767371312,
+          0.4757277351865206
+        ],
+        "influences": {
+          "UpArm_R": 0.9137254901960784,
+          "Arm_R": 0.08627450980392157
+        }
+      },
+      {
+        "id": 7440,
+        "vertex": 12101,
+        "point": [
+          0.136051945186691,
+          -0.1157720575635031,
+          0.47168068058907886
+        ],
+        "influences": {
+          "UpArm_R": 0.8431372549019608,
+          "Arm_R": 0.1568627450980392
+        }
+      },
+      {
+        "id": 7451,
+        "vertex": 12636,
+        "point": [
+          0.09206891004789929,
+          -0.05804433570827863,
+          0.44816196878695413
+        ],
+        "influences": {
+          "UpArm_R": 0.7019607843137254,
+          "Arm_R": 0.2980392156862745
+        }
+      },
+      {
+        "id": 2836,
+        "vertex": 3544,
+        "point": [
+          0.16270138960785618,
+          -0.19862203076136914,
+          0.4717570486794603
+        ],
+        "influences": {
+          "UpArm_R": 0.9529411764705882,
+          "Arm_R": 0.047058823529411764
+        }
+      }
+    ],
+    "joints": [
+      {
+        "name": "Arm_L",
+        "localPosition": [
+          -4.588569968433376e-9,
+          -4.470348358154297e-8,
+          0.3028842806816101
+        ],
+        "localQuaternion": [
+          -0.45645055174827576,
+          0.20518219470977783,
+          -0.7703874111175537,
+          0.395039826631546
+        ],
+        "worldPosition": [
+          -1.1295253007626937e-16,
+          -4.470348055489988e-8,
+          0.3028842599470364
+        ],
+        "localAxesWorld": [
+          [
+            -0.27119297835477857,
+            -0.7959783987701428,
+            0.541177195733878
+          ],
+          [
+            0.4213563348487075,
+            -0.6036876665486625,
+            -0.6767717786225242
+          ],
+          [
+            0.8653977883527837,
+            0.04449273030188509,
+            0.4991062661041176
+          ]
+        ]
+      },
+      {
+        "name": "UpArm_L",
+        "localPosition": [
+          0.057614825665950775,
+          -0.17046158015727997,
+          -0.4057798385620117
+        ],
+        "localQuaternion": [
+          -0.024357100948691368,
+          0.6160842180252075,
+          0.16878965497016907,
+          0.7689973711967468
+        ],
+        "worldPosition": [
+          -0.43861078744496296,
+          0.0389911032348117,
+          0.24690041970732685
+        ],
+        "localAxesWorld": [
+          [
+            -0.7802450231867984,
+            -0.3275031006717448,
+            -0.5328784315794975
+          ],
+          [
+            0.6229519655097457,
+            -0.3304635535337896,
+            -0.7090308092412944
+          ],
+          [
+            0.056112849139599526,
+            -0.8851754787971293,
+            0.46186114785475196
+          ]
+        ]
+      },
+      {
+        "name": "Forearm_L",
+        "localPosition": [
+          8.195638656616211e-8,
+          0.2801600992679596,
+          -6.612390279769897e-8
+        ],
+        "localQuaternion": [
+          -0.3134568929672241,
+          -0.1743728518486023,
+          -0.02622958831489086,
+          0.9330867528915405
+        ],
+        "worldPosition": [
+          -0.2640845596894378,
+          -0.05359157282788303,
+          0.048258191169482184
+        ],
+        "localAxesWorld": [
+          [
+            -0.6749346956898092,
+            -0.6296862488033128,
+            -0.3846535904188558
+          ],
+          [
+            0.3438814801195272,
+            0.19279768108442497,
+            -0.9190073894149446
+          ],
+          [
+            0.6528466817011752,
+            -0.7525451968428049,
+            0.08641143963959971
+          ]
+        ]
+      },
+      {
+        "name": "Arm_R",
+        "localPosition": [
+          -4.588569968433376e-9,
+          -4.470348358154297e-8,
+          0.3028842806816101
+        ],
+        "localQuaternion": [
+          -0.15570317208766937,
+          0.08324697613716125,
+          0.2704280614852905,
+          0.9464117288589478
+        ],
+        "worldPosition": [
+          -1.1295253007626937e-16,
+          -4.470348055489988e-8,
+          0.3028842599470364
+        ],
+        "localAxesWorld": [
+          [
+            0.8398772177814443,
+            0.4859489158063169,
+            -0.2417848429458827
+          ],
+          [
+            -0.5377962413181923,
+            0.8052503502830018,
+            -0.24969396507149966
+          ],
+          [
+            0.07335883427233066,
+            0.33974325249019643,
+            0.937652922899293
+          ]
+        ]
+      },
+      {
+        "name": "UpArm_R",
+        "localPosition": [
+          0.004075445234775543,
+          -0.35778212547302246,
+          0.16932184994220734
+        ],
+        "localQuaternion": [
+          0.1684252768754959,
+          0.42785564064979553,
+          -0.789303719997406,
+          0.40690550208091736
+        ],
+        "worldPosition": [
+          0.20825800045771142,
+          -0.22859780405792057,
+          0.5500000298911434
+        ],
+        "localAxesWorld": [
+          [
+            -0.29121338070816755,
+            -0.9072787291619587,
+            -0.30338107143785487
+          ],
+          [
+            0.7838531035891086,
+            -0.044495033851173975,
+            -0.6193500657595064
+          ],
+          [
+            0.5484242197733734,
+            -0.4181691902960721,
+            0.7241307916758506
+          ]
+        ]
+      },
+      {
+        "name": "Forearm_R",
+        "localPosition": [
+          -1.1734664440155029e-7,
+          0.28016000986099243,
+          5.960464477539063e-8
+        ],
+        "localQuaternion": [
+          -0.8693053126335144,
+          0.08980851620435715,
+          0.07274214923381805,
+          0.4805738627910614
+        ],
+        "worldPosition": [
+          0.4278623473447864,
+          -0.24106345088954464,
+          0.3764829985570357
+        ],
+        "localAxesWorld": [
+          [
+            -0.4677214319552299,
+            -0.7902230343559582,
+            -0.39595986925825144
+          ],
+          [
+            -0.7943736235276793,
+            0.5722521103631973,
+            -0.20371074696336422
+          ],
+          [
+            0.3875658062155668,
+            0.2192602038701874,
+            -0.895386904556506
+          ]
+        ]
+      },
+      {
+        "name": "IK_Hand_Cntrl_L",
+        "localPosition": [
+          -0.12115012854337692,
+          0.026542067527770996,
+          -0.3337235450744629
+        ],
+        "localQuaternion": [
+          0.6655154228210449,
+          -0.25205370783805847,
+          0.04874547943472862,
+          0.7008438110351562
+        ],
+        "worldPosition": [
+          -0.12115013359914868,
+          0.026542065710778506,
+          -0.33372352039334946
+        ],
+        "localAxesWorld": [
+          [
+            0.8681856320100041,
+            -0.267165310284983,
+            0.41818226331555297
+          ],
+          [
+            -0.40381719763327845,
+            0.1094261973826468,
+            0.9082717535088162
+          ],
+          [
+            -0.28841883844208593,
+            -0.9574176643685958,
+            -0.012883694606015387
+          ]
+        ]
+      },
+      {
+        "name": "Hand_L",
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localQuaternion": [
+          -0.6471428275108337,
+          -0.034418072551488876,
+          -0.7612676620483398,
+          0.022205661982297897
+        ],
+        "worldPosition": [
+          -0.12115013359914868,
+          0.026542065710778506,
+          -0.33372352039334946
+        ],
+        "localAxesWorld": [
+          [
+            -0.42910330846231826,
+            -0.9005025339369327,
+            -0.07046656682325209
+          ],
+          [
+            0.4636649058045001,
+            -0.15264762894184802,
+            -0.8727620274185489
+          ],
+          [
+            0.7751678872256536,
+            -0.40717793665446694,
+            0.48303299526629384
+          ]
+        ]
+      },
+      {
+        "name": "IK_Hand_Cntrl_R",
+        "localPosition": [
+          0.09769170731306076,
+          -0.0032146573066711426,
+          0.29181328415870667
+        ],
+        "localQuaternion": [
+          0.43235424160957336,
+          0.606963038444519,
+          0.4866354763507843,
+          0.4559074938297272
+        ],
+        "worldPosition": [
+          0.09769171173390964,
+          -0.0032146570866050687,
+          0.2918132627020326
+        ],
+        "localAxesWorld": [
+          [
+            -0.2104364367908419,
+            0.9685675475939158,
+            -0.13264015914752855
+          ],
+          [
+            0.08112458447786938,
+            0.15251143930050218,
+            0.9849665287083527
+          ],
+          [
+            0.9742357676051868,
+            0.1965123935117202,
+            -0.11066864196793531
+          ]
+        ]
+      },
+      {
+        "name": "Hand_R",
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localQuaternion": [
+          -0.6471441984176636,
+          0.03441840782761574,
+          0.7612664699554443,
+          0.02220650389790535
+        ],
+        "worldPosition": [
+          0.09769171173390964,
+          -0.0032146570866050687,
+          0.2918132627020326
+        ],
+        "localAxesWorld": [
+          [
+            -0.9283040202244677,
+            -0.3519098970520751,
+            0.12004611777099918
+          ],
+          [
+            -0.04131118187895928,
+            -0.2232444123353038,
+            -0.9738867072780224
+          ],
+          [
+            0.36952005841536534,
+            -0.9090221605513015,
+            0.19270090309946408
+          ]
+        ]
+      }
+    ],
+    "clips": [
+      {
+        "name": "grip_vgrip",
+        "duration": 0,
+        "tracks": 66
+      }
+    ]
+  },
+  "sweep": {
+    "frames": 1815,
+    "maxMuzzleError": 8.886119947416683e-16,
+    "maxLeftVisibleBoundary": 0,
+    "failures": [],
+    "fullContinuousVisualReview": false
+  },
+  "assetHashes": {
+    "assets/mp5/mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+    "assets/mp5/arms_basecolor.webp": "4657bc61099b7cf92084c5481c0c6d19a1d8219c8ee8c08e546f9f823fec6946",
+    "assets/mp5/arms_normal.webp": "0500bdd5e6045621d980105cc281312dd6d7fc66a6649ddbe632fea802dba881"
+  },
+  "engineeringVerdict": "DIAGNOSTIC"
+}

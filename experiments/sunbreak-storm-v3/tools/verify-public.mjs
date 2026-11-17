@@ -9,12 +9,14 @@ const releaseResponse=await fetch(base+'public-release.json',{cache:'no-store'})
 if(!releaseResponse.ok)throw Error('Pages release is not live: '+releaseResponse.status);
 const release=await releaseResponse.json();
 if(release.sourceCommit!==receipt.sourceCommit)throw Error('Pages serves a different source release');
-const priorPath=new URL('qa/tactical-public-live.json',game);
+const reportArg=process.argv.find(a=>a.startsWith('--report=')),reportName=reportArg?reportArg.slice('--report='.length):'tactical-public-live';
+if(!/^[a-z0-9-]+$/.test(reportName))throw Error('Invalid report basename');
+const priorPath=new URL('qa/'+reportName+'.json',game);
 const prior=process.argv.includes('--retry-failed')&&existsSync(priorPath)?JSON.parse(readFileSync(priorPath)):null;
 if(prior&&(prior.sourceCommit!==receipt.sourceCommit||prior.publicCommit!==receipt.publicCommit))throw Error('Prior verification belongs to a different release');
 const checked=prior?prior.files.filter(p=>release.files.some(f=>f.path===p.path&&f.sha256===p.sha256&&f.bytes===p.bytes)):[];
 const queue=release.files.filter(f=>!checked.some(p=>p.path===f.path)),errors=[],retries=[];
-if(prior&&!prior.pass&&!existsSync(new URL('qa/tactical-public-first-attempt.json',game)))copyFileSync(priorPath,new URL('qa/tactical-public-first-attempt.json',game));
+if(prior&&!prior.pass&&!existsSync(new URL('qa/'+reportName+'-first-attempt.json',game)))copyFileSync(priorPath,new URL('qa/'+reportName+'-first-attempt.json',game));
 await Promise.all(Array.from({length:6},async()=>{
  while(queue.length){
   const file=queue.shift();
@@ -44,7 +46,7 @@ const report={schema:'sunbreak-public-live-v1',date:new Date().toISOString(),pas
  url:base,sourceCommit:release.sourceCommit,publicCommit:receipt.publicCommit,checkedFiles:checked.length,carriedVerifiedFiles:prior?.files.length||0,
  priorAttempt:prior?{date:prior.date,pass:prior.pass,errors:prior.errors}:null,retries,
  bytes:checked.reduce((n,f)=>n+f.bytes,0),errors,files:checked.sort((a,b)=>a.path.localeCompare(b.path))};
-writeFileSync(new URL('qa/tactical-public-live.json',game),JSON.stringify(report,null,2)+'\n');
+writeFileSync(priorPath,JSON.stringify(report,null,2)+'\n');
 if(report.pass)writeFileSync(new URL('.local/sunbreak-publication.json',repo),JSON.stringify({...receipt,liveVerified:true,verifiedAt:report.date,checkedFiles:report.checkedFiles},null,2)+'\n');
 console.log(JSON.stringify({...report,files:undefined},null,2));
 if(!report.pass)process.exitCode=1;

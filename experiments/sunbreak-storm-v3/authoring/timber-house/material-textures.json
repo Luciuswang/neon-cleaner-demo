@@ -1,0 +1,374 @@
+{
+  "images": [
+    {
+      "index": 0,
+      "name": null,
+      "path": "textures/image_000.png",
+      "mimeType": "image/png",
+      "sha256": "b02fa2f0fce1283ab1a093ba5a1995be3f502a11c1129b6ea5a178629f6ae4bd"
+    },
+    {
+      "index": 1,
+      "name": null,
+      "path": "textures/image_001.png",
+      "mimeType": "image/png",
+      "sha256": "dd7ff6eda86f6ba33c6abb54383dfb5f497aac76acda7920ddcc1d6c7757dbf1"
+    },
+    {
+      "index": 2,
+      "name": null,
+      "path": "textures/image_002.png",
+      "mimeType": "image/png",
+      "sha256": "38b6af20e7c38a4f06610cedaeca076aa1ff0863262351393beb591da2b142b7"
+    },
+    {
+      "index": 3,
+      "name": null,
+      "path": "textures/image_003.png",
+      "mimeType": "image/png",
+      "sha256": "d27a8eb0a594f48702839aa726a46d01b4151359f11489188288aba60c1516b2"
+    },
+    {
+      "index": 4,
+      "name": null,
+      "path": "textures/image_004.png",
+      "mimeType": "image/png",
+      "sha256": "87c32f168055c1748904fdfabdb926f8a4577ab0b756f6f4a6d743ca0a8b81e2"
+    },
+    {
+      "index": 5,
+      "name": null,
+      "path": "textures/image_005.png",
+      "mimeType": "image/png",
+      "sha256": "0dbcda70ba470bf0466418b1f942dda5aad389281c073d3f36743490625e61a2"
+    },
+    {
+      "index": 6,
+      "name": null,
+      "path": "textures/image_006.png",
+      "mimeType": "image/png",
+      "sha256": "d27a8eb0a594f48702839aa726a46d01b4151359f11489188288aba60c1516b2"
+    },
+    {
+      "index": 7,
+      "name": null,
+      "path": "textures/image_007.png",
+      "mimeType": "image/png",
+      "sha256": "d27a8eb0a594f48702839aa726a46d01b4151359f11489188288aba60c1516b2"
+    },
+    {
+      "index": 8,
+      "name": null,
+      "path": "textures/image_008.png",
+      "mimeType": "image/png",
+      "sha256": "01e83c53e4d39255d4c1013dcab5523a896dc73678a2a28f4579f5373a13c258"
+    },
+    {
+      "index": 9,
+      "name": null,
+      "path": "textures/image_009.png",
+      "mimeType": "image/png",
+      "sha256": "51036272366859512b4c0aaea31b711d998a88d4644a51fd48cb627d2686e1ea"
+    },
+    {
+      "index": 10,
+      "name": null,
+      "path": "textures/image_010.png",
+      "mimeType": "image/png",
+      "sha256": "01e83c53e4d39255d4c1013dcab5523a896dc73678a2a28f4579f5373a13c258"
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 1,
+      "source": 1
+    },
+    {
+      "sampler": 2,
+      "source": 2
+    },
+    {
+      "sampler": 3,
+      "source": 3
+    },
+    {
+      "sampler": 4,
+      "source": 4
+    },
+    {
+      "sampler": 5,
+      "source": 5
+    },
+    {
+      "sampler": 6,
+      "source": 6
+    },
+    {
+      "sampler": 7,
+      "source": 7
+    },
+    {
+      "sampler": 8,
+      "source": 8
+    },
+    {
+      "sampler": 9,
+      "source": 9
+    },
+    {
+      "sampler": 10,
+      "source": 10
+    }
+  ],
+  "materials": [
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6724431569510133,
+          0.6583748172725346,
+          0.5332764040016892,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.86,
+        "metallicRoughnessTexture": {
+          "index": 0,
+          "channel": 0
+        },
+        "baseColorTexture": {
+          "index": 1,
+          "texCoord": 0
+        }
+      },
+      "normalTexture": {
+        "index": 2,
+        "texCoord": 0,
+        "scale": 0.55
+      },
+      "doubleSided": true,
+      "name": "FoundationPlaster"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6724431569510133,
+          0.6653872982754769,
+          0.5332764040016892,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.76
+      },
+      "doubleSided": true,
+      "name": "WindowTrim"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.2501582847191642,
+          0.14702726648767014,
+          0.07618538147321911,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.78,
+        "metallicRoughnessTexture": {
+          "index": 3,
+          "channel": 0
+        },
+        "baseColorTexture": {
+          "index": 4,
+          "texCoord": 0
+        }
+      },
+      "normalTexture": {
+        "index": 5,
+        "texCoord": 0,
+        "scale": 0.5
+      },
+      "doubleSided": true,
+      "name": "TimberDark"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.48514994004665124,
+          0.3277780980458375,
+          0.1912016827303171,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.78,
+        "metallicRoughnessTexture": {
+          "index": 6,
+          "channel": 0
+        },
+        "baseColorTexture": {
+          "index": 4,
+          "texCoord": 0
+        }
+      },
+      "normalTexture": {
+        "index": 5,
+        "texCoord": 0,
+        "scale": 0.5
+      },
+      "doubleSided": true,
+      "name": "Timber"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.6307571363387763,
+          0.4452011945063733,
+          0.2917706498067337,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.78,
+        "metallicRoughnessTexture": {
+          "index": 7,
+          "channel": 0
+        },
+        "baseColorTexture": {
+          "index": 4,
+          "texCoord": 0
+        }
+      },
+      "normalTexture": {
+        "index": 5,
+        "texCoord": 0,
+        "scale": 0.5
+      },
+      "doubleSided": true,
+      "name": "TimberLight"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.34191442489801843,
+          0.4286904966038916,
+          0.41254261347374327,
+          0.2
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.19
+      },
+      "alphaMode": "BLEND",
+      "doubleSided": true,
+      "name": "WindowGlass"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.02121901037134225,
+          0.02955683443236377,
+          0.026241221889696346,
+          1
+        ],
+        "metallicFactor": 0.8,
+        "roughnessFactor": 0.43
+      },
+      "doubleSided": true,
+      "name": "IronHardware"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.7529422167708612,
+          0.41254261347374327,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.38
+      },
+      "emissiveFactor": [
+        1,
+        0.508881320845802,
+        0.16513219449147767
+      ],
+      "doubleSided": true,
+      "name": "WarmLamp",
+      "extensions": {
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 2
+        }
+      }
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.174647403645279,
+          0.158960835050774,
+          0.10946171076915331,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "doubleSided": true,
+      "name": "MattressFabric"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.02217388478862708,
+          0.031896033067374104,
+          0.03954623527052923,
+          1
+        ],
+        "metallicFactor": 0.06,
+        "roughnessFactor": 0.52
+      }
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0343398068028541,
+          0.04518620437910499,
+          0.054480276435339814,
+          1
+        ],
+        "metallicFactor": 0.035,
+        "roughnessFactor": 0.62,
+        "metallicRoughnessTexture": {
+          "index": 8,
+          "channel": 0
+        }
+      },
+      "normalTexture": {
+        "index": 9,
+        "texCoord": 0,
+        "scale": 0.3
+      },
+      "name": "RoofSlate"
+    },
+    {
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.0343398068028541,
+          0.04518620437910499,
+          0.054480276435339814,
+          1
+        ],
+        "metallicFactor": 0.035,
+        "roughnessFactor": 0.62,
+        "metallicRoughnessTexture": {
+          "index": 10,
+          "channel": 0
+        }
+      },
+      "normalTexture": {
+        "index": 9,
+        "texCoord": 0,
+        "scale": 0.3
+      },
+      "name": "RoofRidgeSlate"
+    }
+  ]
+}

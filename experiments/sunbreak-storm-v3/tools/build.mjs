@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('../',import.meta.url)),out=resolve(root,'dist');
 await mkdir(out,{recursive:true});
-const runtime=['index.html','world.js','weapon.js','actors.js','storm.js','audio.js','storm-audio.js','timber-house.js','house-logic.js','tactical-ai.js','boot-ui.js','credits.html','assets-manifest.json','weapon-provenance.json','soldier-provenance.json'];
+const runtime=['index.html','world.js','weapon.js','actors.js','storm.js','audio.js','storm-audio.js','timber-house.js','house-asset.js','house-logic.js','tactical-ai.js','boot-ui.js','credits.html','assets-manifest.json','weapon-provenance.json','soldier-provenance.json'];
 for(const path of [...runtime,'assets','vendor']){
  await cp(resolve(root,path),resolve(out,path),{recursive:true,filter:src=>!src.includes('assets\\evidence')&&!src.includes('assets/evidence')});
 }

@@ -13,6 +13,11 @@
       "bytes": 1272972,
       "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
     },
+    "examples/jsm/exporters/GLTFExporter.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/exporters/GLTFExporter.js",
+      "bytes": 77714,
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d"
+    },
     "examples/jsm/geometries/RoundedBoxGeometry.js": {
       "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/geometries/RoundedBoxGeometry.js",
       "bytes": 4625,
@@ -122,6 +127,11 @@
       "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/utils/SkeletonUtils.js",
       "bytes": 8007,
       "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
+    },
+    "examples/jsm/utils/TextureUtils.js": {
+      "url": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/utils/TextureUtils.js",
+      "bytes": 2367,
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa"
     }
   },
   "thirdParty": [
@@ -316,6 +326,22 @@
       "upstreamSha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
       "bytes": 8007,
       "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/exporters/GLTFExporter.js",
+      "upstreamPath": "vendor/three/examples/jsm/exporters/GLTFExporter.js",
+      "upstreamSha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+      "bytes": 77714,
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+      "randomCallsIsolated": 0
+    },
+    {
+      "path": "vendor/presentation/examples/jsm/utils/TextureUtils.js",
+      "upstreamPath": "vendor/three/examples/jsm/utils/TextureUtils.js",
+      "upstreamSha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+      "bytes": 2367,
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
       "randomCallsIsolated": 0
     },
     {

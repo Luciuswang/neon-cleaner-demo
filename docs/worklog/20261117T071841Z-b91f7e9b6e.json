@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T071841Z-b91f7e9b6e",
+  "task_id": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "timestamp_utc": "2026-11-17T07:18:41.742353+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "feat(sunbreak): editable cabin roundtrip and left-arm mesh repair",
+  "commit_shas": [
+    "8046a45d1267feaf800100f99b44e8a63909dd9c"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

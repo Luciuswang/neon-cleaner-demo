@@ -76,9 +76,9 @@ export function buildBlackTileRoof(T,parent){
 
 // User-reference-led authored architecture; existing CC0 scanned wood/plaster.
 // Only former MERCADO12 changes traversal/cover. Other17 proxies are untouched.
-export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInteractionState}){
+export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInteractionState,authoring=false}){
  const root=new T.Group();root.name='MERCADO12-reference-timber-cabin';root.position.set(HOUSE.x,0,HOUSE.z);world.add(root);
- const staticRoot=new T.Group();root.add(staticRoot);
+ const staticRoot=new T.Group();staticRoot.name='StaticParts';root.add(staticRoot);
  const originalBody=solids[1],originalBounds=colliders[1];
  if(Math.abs(originalBounds.min.x-8)>1e-5||Math.abs(originalBounds.max.z+14)>1e-5)throw Error('Timber target baseline identity mismatch');
  const wood=materials.wood.clone();wood.color.set(0xb99b79);wood.roughness=.78;wood.normalScale.set(.5,.5);wood.side=T.DoubleSide;
@@ -89,6 +89,10 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  const iron=new T.MeshStandardMaterial({color:0x28302d,metalness:.8,roughness:.43,side:T.DoubleSide});
  const glass=new T.MeshPhysicalMaterial({color:0x9eafac,roughness:.19,metalness:0,transparent:true,opacity:.20,depthWrite:false,side:T.DoubleSide,envMapIntensity:.3});
  const lampMat=new T.MeshStandardMaterial({color:0xffe1ac,emissive:0xffbd71,emissiveIntensity:2,roughness:.38,side:T.DoubleSide});
+ for(const [name,m]of Object.entries({Timber:wood,TimberLight:woodLight,TimberDark:woodDark,FoundationPlaster:cream,WindowTrim:trim,IronHardware:iron,WindowGlass:glass,WarmLamp:lampMat}))m.name=name;
+ let section='Foundation',partIndex=0;
+ const assetState={mode:'procedural',validated:false};
+ function label(o){o.name=section+'_part_'+String(++partIndex).padStart(4,'0');o.userData.houseSection=section;return o}
  const movement=[],windows=[];let logs=0,lapEnds=0;
  const V=(x,y,z)=>new T.Vector3(x,y,z);
  function box(w,h,d,m,x,y,z,parent=staticRoot,rx=0,ry=0,rz=0,bevel=false,grainAxis=null){
@@ -105,12 +109,12 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
    else if(ay>.7)u.setXY(i,(p.getX(i)+x)/1.9,(p.getZ(i)+z)/1.9);
    else u.setXY(i,(p.getY(i)+y)/1.9,(ax>.7?p.getZ(i)+z:p.getX(i)+x)/1.9);
   }
-  const o=new T.Mesh(g,m);o.position.set(x,y,z);o.rotation.set(rx,ry,rz);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
+  const o=label(new T.Mesh(g,m));o.position.set(x,y,z);o.rotation.set(rx,ry,rz);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
  }
  function beam(a,b,r,m,parent=staticRoot){
   const delta=b.clone().sub(a),g=new T.CylinderGeometry(r,r,delta.length(),8);
   g.applyQuaternion(new T.Quaternion().setFromUnitVectors(V(0,1,0),delta.clone().normalize()));
-  const o=new T.Mesh(g,m);o.position.copy(a).add(b).multiplyScalar(.5);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
+  const o=label(new T.Mesh(g,m));o.position.copy(a).add(b).multiplyScalar(.5);o.castShadow=o.receiveShadow=true;parent.add(o);return o;
  }
  function blocker(w,h,d,x,y,z){
   movement.push({min:{x:HOUSE.x+x-w/2,y:y-h/2,z:HOUSE.z+z-d/2},max:{x:HOUSE.x+x+w/2,y:y+h/2,z:HOUSE.z+z+d/2}});
@@ -148,6 +152,7 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
   box(.13,3.17,.13,woodDark,x,fy+1.55,3.96);
   beam(V(x,3.0,3.96),V(x,3.7,3.23),.055,wood);
  }
+ section='Walls';
  // Actual holes in individual square-hewn courses, not texture rectangles.
  const frontHoles=[
   {x:-2.94,w:1.12,y:2.85,h:1.64},{x:.64,w:1.16,y:2.85,h:1.64},{x:2.55,w:1.16,y:2.85,h:1.64},
@@ -195,9 +200,10 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  blocker(left+4,top-fy,.22,(-4+left)/2,(top+fy)/2,2.4);
  blocker(4-right,top-fy,.22,(4+right)/2,(top+fy)/2,2.4);
  blocker(HOUSE.doorWidth,top-fy-HOUSE.doorHeight,.22,HOUSE.doorX,(top+fy+HOUSE.doorHeight)/2,2.4);
+ section='Windows';
  // Windows: separate transparent panes, real interior visible from outdoors.
  function windowUnit(x,z,width,rot=0,y=2.85,height=1.64){
-  const g=new T.Group();g.position.set(x,y,z);g.rotation.y=rot;staticRoot.add(g);windows.push(g);
+  const g=label(new T.Group());g.position.set(x,y,z);g.rotation.y=rot;staticRoot.add(g);windows.push(g);
   box(width-.07,height-.07,.025,glass,0,0,0,g);
   for(const s of [-1,1]){
    box(.085,height+.16,.18,trim,s*(width/2+.025),0,.01,g);
@@ -211,6 +217,7 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  for(const h of frontHoles.filter(h=>h.h<2))windowUnit(h.x,2.425,h.w);
  windowUnit(0,-4.025,1.35,Math.PI);
  for(const side of [-1,1])for(const z of [-2.5,.75])windowUnit(side*4.025,z,1.28,side*Math.PI/2);
+ section='GableDetails';
  // Tall gable vent and diagonal timber rafters follow the reference end wall.
  for(const side of [-1,1]){
   box(.035,.86,.38,iron,side*4.13,5.27,-.8);
@@ -221,8 +228,9 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  const roofDetail=buildBlackTileRoof(T,root);
  // Retain the original porch rafters and every movement/door bound.
  for(const x of [-3.8,-1.1,1.72])beam(V(x,3.98,2.35),V(x,3.61,4.12),.055,woodDark);
+ section='Door';
  // Wooden hinged leaf, lockset, panel framing and three metal strap hinges.
- const pivot=new T.Group();pivot.position.set(HOUSE.hingeX,fy,HOUSE.front);root.add(pivot);
+ const pivot=new T.Group();pivot.name='DoorPivot';pivot.position.set(HOUSE.hingeX,fy,HOUSE.front);root.add(pivot);
  box(HOUSE.leafWidth,HOUSE.doorHeight,.13,woodLight,HOUSE.leafWidth/2,HOUSE.doorHeight/2,0,pivot,0,0,0,true);
  for(let i=1;i<8;i++)box(.009,HOUSE.doorHeight-.12,.006,woodDark,i*HOUSE.leafWidth/8,HOUSE.doorHeight/2,.071,pivot);
  for(const y of [.16,1.12,2.20])box(HOUSE.leafWidth-.11,.085,.025,woodDark,HOUSE.leafWidth/2,y,.086,pivot);
@@ -230,21 +238,23 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
   box(.34,.055,.035,iron,.16,y,.095,pivot);
   box(.048,.12,.06,iron,.015,y,0,pivot);
  }
- box(.035,.18,.035,iron,HOUSE.leafWidth-.15,1.13,.11,pivot);
- box(.17,.035,.04,iron,HOUSE.leafWidth-.21,1.16,.14,pivot);
+ const handlePlate=box(.035,.18,.035,iron,HOUSE.leafWidth-.15,1.13,.11,pivot);handlePlate.name='DoorHandlePlate';handlePlate.userData.cosmeticEditable=true;
+ const handleGrip=box(.17,.035,.04,iron,HOUSE.leafWidth-.21,1.16,.14,pivot);handleGrip.name='DoorHandleGrip';handleGrip.userData.cosmeticEditable=true;
  for(const s of [-1,1])box(.095,HOUSE.doorHeight+.12,.27,trim,HOUSE.doorX+s*(HOUSE.doorWidth/2+.035),fy+HOUSE.doorHeight/2,2.4);
  box(HOUSE.doorWidth+.25,.11,.28,trim,HOUSE.doorX,fy+HOUSE.doorHeight+.09,2.4);
  box(HOUSE.doorWidth+.12,.055,.31,woodDark,HOUSE.doorX,fy+.015,2.4);
+ section='Ceiling';
  // Real ceiling and warm practicals; interior is an authored unseen extension.
  box(7.8,.14,6.18,woodDark,0,4.57,-.8);
  blocker(7.8,.14,6.18,0,4.57,-.8);
  // Conservative underside of the porch roof/rafters, clear above normal head.
  blocker(5.98,.10,1.89,-1.05,3.63,3.30);
  for(const x of [-3.2,-1.6,0,1.6,3.2])box(.14,.23,6.1,wood,x,4.42,-.8);
+ section='LightFixtures';
  for(const z of [-2.75,.5]){
   beam(V(0,4.50,z),V(0,3.82,z),.012,iron);
-  const shade=new T.Mesh(new T.ConeGeometry(.25,.18,20,1,true),iron);shade.position.set(0,3.77,z);root.add(shade);
-  const bulb=new T.Mesh(new T.SphereGeometry(.075,14,10),lampMat);bulb.position.set(0,3.69,z);root.add(bulb);
+  const shade=label(new T.Mesh(new T.ConeGeometry(.25,.18,20,1,true),iron));shade.position.set(0,3.77,z);root.add(shade);
+  const bulb=label(new T.Mesh(new T.SphereGeometry(.075,14,10),lampMat));bulb.position.set(0,3.69,z);root.add(bulb);
   const light=new T.PointLight(0xffce91,27,9,2);light.position.set(0,3.54,z);root.add(light);
  }
  for(const x of [-3.72,1.60]){
@@ -252,19 +262,23 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
   box(.11,.18,.09,lampMat,x,2.97,2.74);
   const light=new T.PointLight(0xffc183,10,5,2);light.position.set(x,2.85,2.9);root.add(light);
  }
+ section='Furniture';
  // Modest working cabin: desk, shelves, bed, stools; no new weapon pickups.
  box(2.15,.11,.74,woodLight,2.4,1.40,-2.9);blocker(2.15,.85,.74,2.4,1.05,-2.9);
  for(const x of [1.45,3.35])for(const z of [-3.14,-2.66])box(.08,.69,.08,woodDark,x,1.00,z);
  for(let k=0;k<4;k++)box(1.40,.09,.36,wood,-2.9,1.1+k*.6,-3.62);
  for(const x of [-3.55,-2.25])box(.08,2.05,.38,woodDark,x,1.78,-3.62);
  blocker(1.45,2.1,.42,-2.9,1.72,-3.62);
- const mattress=new T.MeshStandardMaterial({color:0x746f5d,roughness:1,side:T.DoubleSide});
+ const mattress=new T.MeshStandardMaterial({color:0x746f5d,roughness:1,side:T.DoubleSide});mattress.name='MattressFabric';
  box(1.15,.14,2.05,woodDark,2.95,.98,-.30);box(1.10,.16,2,mattress,2.95,1.12,-.30);
  box(1.05,.12,.39,trim,2.95,1.25,-1.02);blocker(1.15,.65,2.05,2.95,1.0,-.30);
  for(const [x,z]of [[.8,-2.1],[-2.9,.3]]){
   box(.48,.08,.48,woodLight,x,1.12,z);for(const s of [-1,1])for(const t of [-1,1])box(.055,.44,.055,woodDark,x+s*.17,.87,z+t*.17);
   blocker(.48,.53,.48,x,.92,z);
  }
+ // Authoring returns the semantic assembly BEFORE the runtime material batches.
+ // It never creates UI/listeners or mutates the world's collision list.
+ if(authoring)return{root,pivot,movement,dimensions:HOUSE,logs,lapEnds,windows:windows.length};
  // Batch static opaque surfaces; never flatten the moving door or real lights.
  root.updateWorldMatrix(true,true);const batches=new Map(),remove=[];
  staticRoot.traverse(o=>{if(!o.isMesh||o.material.transparent)return;const g=o.geometry.clone().applyMatrix4(o.matrixWorld).translate(-HOUSE.x,0,-HOUSE.z);if(!batches.has(o.material))batches.set(o.material,[]);batches.get(o.material).push(g);remove.push(o)});
@@ -321,7 +335,7 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
    button.textContent=door.message|| (door.info().moving?'门扇转动中…':door.angle>.7?'E · 关门':'E · 开门');
   },
   reset(){door.reset();pivot.rotation.y=0;root.updateWorldMatrix(true,true);prompt.hidden=true},
-  info(){return{target:'former MERCADO12',reference:'user supplied timber cabin; structure only, no photo/watermark copied',footprint:[8,8],root:[12,0,-18],floor:fy,logs,lapEnds,windows:windows.length,realInterior:true,interiorLights:2,exteriorLights:2,remainingOriginalMovementProxies:colliders.length,raycastUsesVisibleAssembly:solids[1]===root,roof:{...roofDetail,roughnessRange:[...roofDetail.roughnessRange]},door:door.info(),near:last.near,visible:last.visible}},
-  qa:{root,pivot,movement,originalBody,originalBounds,door,request,refresh(){root.updateWorldMatrix(true,true)},last}
+  info(){return{target:'former MERCADO12',reference:'user supplied timber cabin; structure only, no photo/watermark copied',footprint:[8,8],root:[12,0,-18],floor:fy,logs,lapEnds,windows:windows.length,realInterior:true,interiorLights:2,exteriorLights:2,remainingOriginalMovementProxies:colliders.length,raycastUsesVisibleAssembly:solids[1]===root,roof:{...roofDetail,roughnessRange:[...roofDetail.roughnessRange]},door:door.info(),near:last.near,visible:last.visible,asset:{...assetState}}},
+  qa:{root,pivot,movement,originalBody,originalBounds,door,request,refresh(){root.updateWorldMatrix(true,true)},last,asset:assetState}
  };
 }

@@ -1,0 +1,22 @@
+{
+  "schema": "sunbreak-blender-house-roundtrip-v1",
+  "blender": "5.3.0",
+  "input": "timber-house-source.glb",
+  "output": "timber-house-edited.glb",
+  "editableProject": "timber-house-editable.blend",
+  "edits": [
+    {
+      "name": "DoorHandleGrip",
+      "verticesBefore": 24,
+      "verticesAfter": 96,
+      "edit": "4mm three-segment bevel and aged brass PBR"
+    },
+    {
+      "name": "DoorHandlePlate",
+      "verticesBefore": 24,
+      "verticesAfter": 96,
+      "edit": "4mm three-segment bevel and aged brass PBR"
+    }
+  ],
+  "method": "Actual background Blender import, mesh modifier, material edit, save and GLB export. No human manual art edit is claimed."
+}

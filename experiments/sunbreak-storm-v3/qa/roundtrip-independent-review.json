@@ -1,0 +1,33 @@
+{
+  "schema": "sunbreak-roundtrip-independent-review-v1",
+  "date": "2026-11-17",
+  "recordedBy": "Main producer, preserving independent reviewer findings",
+  "engineering": {
+    "reviewer": "Planck",
+    "agentId": "01a1e38c-7010-78b1-a6ca-6fedbc1a7f43",
+    "verdict": "PASS",
+    "scope": "Read-only review of oriented surface validation, transactional asset swap, exact ZIP whitelist and checksums. Reviewed roundtrip28, house47, tactical24 reports; did not independently execute browser tests.",
+    "closedBlockers": [
+      "Deleted, collapsed and reversed triangles now rejected while legal indexing/seam reorder is accepted.",
+      "Detached candidate batching completes before live mutations; injected failure retains original root, door, lights and metadata.",
+      "Actual archive verified against exact manifest allowlist, no duplicates, all decompressed content SHA256 checked."
+    ],
+    "notCertified": "Arm art, continuous motion, hardware performance, public deployment or UE cinematic acceptance."
+  },
+  "art": {
+    "reviewer": "Zeno",
+    "agentId": "01a1e3d2-2497-7321-b591-8f5cae0b3167",
+    "verdict": "PASS",
+    "confidence": "medium-high",
+    "blockerCount": 0,
+    "majorCount": 0,
+    "scope": "Native isolated arm samples and actual-game 1080p house/arm canvas exports; idle, ADS, fire, ADS-fire, reload early/mid/late. No desktop screenshots.",
+    "findings": [
+      "Shorter bent left-arm silhouette holds across inspected poses; no obvious grip separation or sleeve tear.",
+      "Minor angular rear-sleeve contour in ADS-fire; smooth during later polish rather than further shorten.",
+      "Timber and warm/cold house lighting remain coherent; bright windows/practicals flatten nearby detail.",
+      "Additional roundtrip-hardware-close.png inspected: muted brass, material separation and narrow bevel highlights visible. Initial hardware caveat closed; aging restrained but sufficient for demo scope."
+    ],
+    "notCertified": "Full continuous motion, hand-driven reload, gameplay, performance, topology or AAA quality."
+  }
+}

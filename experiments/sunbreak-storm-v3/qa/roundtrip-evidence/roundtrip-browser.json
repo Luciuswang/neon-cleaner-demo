@@ -1,0 +1,236 @@
+{
+  "schema": "sunbreak-house-roundtrip-browser-v1",
+  "date": "2026-11-17T07:09:51.891Z",
+  "method": "actual Three GLTFLoader source and Blender derivative, running world integration and negative contract probes; not human manual editing or continuous playthrough",
+  "pass": true,
+  "checks": [
+    {
+      "name": "actual source GLB loads and passes fixed-layout validator",
+      "pass": true,
+      "detail": {
+        "validated": true,
+        "meshes": 1372,
+        "triangles": 53960,
+        "lightsInAsset": 0,
+        "doorPivot": [
+          -1.84,
+          0.66,
+          2.4
+        ],
+        "contract": "sunbreak-house-fixed-layout-v1"
+      }
+    },
+    {
+      "name": "actual Blender-edited GLB loads and passes same validator",
+      "pass": true,
+      "detail": {
+        "validated": true,
+        "meshes": 1372,
+        "triangles": 54312,
+        "lightsInAsset": 0,
+        "doorPivot": [
+          -1.840000033378601,
+          0.6600000262260437,
+          2.4000000953674316
+        ],
+        "contract": "sunbreak-house-fixed-layout-v1"
+      }
+    },
+    {
+      "name": "real mesh edit changed handle vertex count",
+      "pass": true,
+      "detail": {
+        "source": 24,
+        "edited": 384
+      }
+    },
+    {
+      "name": "real edit changed hardware PBR material",
+      "pass": true,
+      "detail": {
+        "name": "AgedBrass_DoorHandleGrip",
+        "metalness": 0.7799999713897705,
+        "roughness": 0.3799999952316284
+      }
+    },
+    {
+      "name": "source retains semantic Foundation",
+      "pass": true
+    },
+    {
+      "name": "source retains semantic Walls",
+      "pass": true
+    },
+    {
+      "name": "source retains semantic Windows",
+      "pass": true
+    },
+    {
+      "name": "source retains semantic Furniture",
+      "pass": true
+    },
+    {
+      "name": "source retains semantic Ceiling",
+      "pass": true
+    },
+    {
+      "name": "all roof tiles are normal editable source meshes",
+      "pass": true
+    },
+    {
+      "name": "running world uses imported GLB, not just a file on disk",
+      "pass": true,
+      "detail": {
+        "mode": "imported-glb",
+        "validated": true,
+        "meshes": 1372,
+        "triangles": 54312,
+        "lightsInAsset": 0,
+        "doorPivot": [
+          -1.840000033378601,
+          0.6600000262260437,
+          2.4000000953674316
+        ],
+        "contract": "sunbreak-house-fixed-layout-v1",
+        "url": "./assets/house/timber-house-edited.glb",
+        "staticBatches": 11,
+        "roundtrip": "Blender edited derivative; source authoring GLB retained"
+      }
+    },
+    {
+      "name": "original static assembly removed instead of doubled",
+      "pass": true
+    },
+    {
+      "name": "runtime batches imported static parts within budget",
+      "pass": true,
+      "detail": 11
+    },
+    {
+      "name": "running door uses actually edited bevel mesh",
+      "pass": true
+    },
+    {
+      "name": "four actual practical lights retained exactly once",
+      "pass": true,
+      "detail": 4
+    },
+    {
+      "name": "unchanged movement logic remains installed",
+      "pass": true
+    },
+    {
+      "name": "reject wall movement without collision update",
+      "pass": true,
+      "detail": "Structural geometry changed: Walls_part_0133; review collision before importing"
+    },
+    {
+      "name": "reject global scale change",
+      "pass": true,
+      "detail": "CabinAsset must retain its identity transform"
+    },
+    {
+      "name": "reject door hinge relocation",
+      "pass": true,
+      "detail": "Door pivot transform changed"
+    },
+    {
+      "name": "reject wrong door hierarchy",
+      "pass": true,
+      "detail": "DoorPivot must remain a direct child of CabinAsset"
+    },
+    {
+      "name": "reject duplicate imported lights",
+      "pass": true,
+      "detail": "Unexpected house mesh/light count or triangle budget"
+    },
+    {
+      "name": "reject missing UVs",
+      "pass": true,
+      "detail": "Missing UV/normal: Walls_part_0133"
+    },
+    {
+      "name": "reject cosmetic geometry moved beyond allowed bounds",
+      "pass": true,
+      "detail": "Cosmetic edit escaped bounds: DoorHandleGrip"
+    },
+    {
+      "name": "reject all triangle indices collapsed with unchanged vertex cloud",
+      "pass": true,
+      "detail": "Structural triangle surface changed: Walls_part_0133; missing, degenerate or reversed faces are not cosmetic"
+    },
+    {
+      "name": "reject deleted wall triangle with unchanged vertex cloud",
+      "pass": true,
+      "detail": "Structural triangle surface changed: Walls_part_0133; missing, degenerate or reversed faces are not cosmetic"
+    },
+    {
+      "name": "reject reversed wall face winding",
+      "pass": true,
+      "detail": "Structural triangle surface changed: Walls_part_0133; missing, degenerate or reversed faces are not cosmetic"
+    },
+    {
+      "name": "injected batching failure is exercised",
+      "pass": true,
+      "detail": "injected batching failure"
+    },
+    {
+      "name": "failed replacement retains original live root/door children and lights",
+      "pass": true
+    }
+  ],
+  "sourceProof": {
+    "validated": true,
+    "meshes": 1372,
+    "triangles": 53960,
+    "lightsInAsset": 0,
+    "doorPivot": [
+      -1.84,
+      0.66,
+      2.4
+    ],
+    "contract": "sunbreak-house-fixed-layout-v1"
+  },
+  "editedProof": {
+    "validated": true,
+    "meshes": 1372,
+    "triangles": 54312,
+    "lightsInAsset": 0,
+    "doorPivot": [
+      -1.840000033378601,
+      0.6600000262260437,
+      2.4000000953674316
+    ],
+    "contract": "sunbreak-house-fixed-layout-v1"
+  },
+  "buildHashes": {
+    "index.html": "c7efebdeedb6b5e8be6ff6649332747f81afd50d2359d320bcb818de6fe8db01",
+    "world.js": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+    "weapon.js": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+    "house-asset.js": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "vendor/manifest.json": "3f2490c003a184ed166a8c4b2f951b2f947157fdb98f8eee004a2c2b1e788230",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "assets/house/house-contract.json": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde",
+    "assets/house/timber-house-edited.glb": "0654a24a53d29399de64234545ee6fea0c0f7d6b274faaa1cab74b162253b5e9",
+    "qa-hooks.js": "021bd61fa9267b18f71d51c79580f572488b651a85592fa9ee8c53825e1df983",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/house-roundtrip-checks.js": "8968069eb4f865a1b3dfac327dbf589f3043379ae72069601b37b2536a5ee9d2",
+    "qa/tactical-checks.js": "8009d75d8cdfcd3306503624e839548cd22331ea3e53b9c44d5559d25359418f",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "65910242e163ed3fcfb0ed47c17edd724bbb19cbffeead72476ecf55919b9617"
+  }
+}

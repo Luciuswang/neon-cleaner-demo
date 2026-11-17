@@ -1,0 +1,4503 @@
+{
+  "schema": "sunbreak-arm-native-canvas-v2",
+  "task": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "variant": "after",
+  "engineeringScope": "LEFT ARM repair only; original right shoulder opening retained and reported separately. Engineering PASS is not global watertightness or independent art acceptance.",
+  "fieldMigration": "v1 sweep.maxLeftVisibleBoundary and its eight capped failures were original source-ring frustum diagnostics, not actual exposed-boundary failures. v2 retains these observations in sweep.sourceRingDiagnostic, and gates actual surface topology separately; sweep.failures now contains real defects only.",
+  "captureMethod": "headless native Three WebGL renderer canvas.toDataURL; no desktop/window screenshots",
+  "rendering": "ANGLE SwiftShader software renderer; representative samples, not a hardware benchmark or continuous visual review",
+  "weaponSHA256": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+  "servedSHA256": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+  "samples": [
+    {
+      "name": "idle",
+      "path": "arm-after-idle.png",
+      "sha256": "73055b4e1cbd34291e5e8adfb7e7ab43148e518856a6c0438c1996eac681df73",
+      "options": {},
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "muzzleFitError": 6.071532165918825e-17,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 0,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.1803687497123919,
+              -1.3603373429725905,
+              0.9828818863131655
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.1585817185924912,
+              -1.387147640747853,
+              0.9828519166430784
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.2001325124099723,
+              -1.326921200481911,
+              0.9830856577019429
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              -0.08820083656935386,
+              -1.520518291876291,
+              0.9833248242087844
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              -0.0856905337084147,
+              -1.55900337763148,
+              0.9836064995046959
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              -0.09344975493585568,
+              -1.5901577638888031,
+              0.9839064653720923
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              -0.11300118371416024,
+              -1.614804609085869,
+              0.9841888043746777
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              -0.12778442684262664,
+              -1.6193258508989723,
+              0.984332580771123
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.14154527948031165,
+              -1.6093873937349448,
+              0.9844886334776793
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.21027297676844084,
+              -1.3080028933179493,
+              0.9834708530918066
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.15969665405495675,
+              -1.5961078839999923,
+              0.9846025037161983
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.14601796755374605,
+              -1.5326935041862697,
+              0.984847391289179
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              -0.11629909507026079,
+              -1.455941746769429,
+              0.985157478343422
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              -0.05596855855606521,
+              -1.3528083483312294,
+              0.985589761659659
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              -0.027353778290770004,
+              -1.2827228003855988,
+              0.9858642211746328
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              -0.030170449303490304,
+              -1.2687619866128803,
+              0.9858373379055958
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              -0.03490736760837023,
+              -1.3075108826790867,
+              0.9857900181078731
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              -0.04210010169975439,
+              -1.2653166365662774,
+              0.9857070483169759
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.1382013425703702,
+              -1.280382684379359,
+              0.9849194090192983
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              -0.09514911585375774,
+              -1.2632166204125173,
+              0.9849282252789903
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.1866518888458517,
+              -1.289111712849727,
+              0.9840339753699902
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.12718861446637214,
+              -1.424728356897104,
+              0.9829729560046716
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              -0.10354708295919829,
+              -1.4721864696223816,
+              0.983105268773321
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              -0.06987330513645905,
+              -1.2681755678470237,
+              0.98544667393673
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 196161,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    },
+    {
+      "name": "ads",
+      "path": "arm-after-ads.png",
+      "sha256": "7a74fb1358471038fb87b0c7ffde78b8ecddfb892cf5cf54e909699241697de9",
+      "options": {
+        "aim": 1
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.0050000000000000044,
+          -1.8500000000000003
+        ],
+        "muzzleFitError": 2.2208695253419636e-16,
+        "aim": 1,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 2.7755575615628914e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 4,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.4407034419359015,
+              -1.127325214670084,
+              0.9836229494170702
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.4213932396566246,
+              -1.1553753387654042,
+              0.9835615365023244
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.4548138682257863,
+              -1.0951727833419838,
+              0.9838431598046571
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              -0.3481332558785627,
+              -1.2984313424074745,
+              0.9838979017843708
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              -0.3407470120226383,
+              -1.3392958825693082,
+              0.984159608075739
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              -0.3425695458652678,
+              -1.3718781651234178,
+              0.9844540551235093
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              -0.35569777060273705,
+              -1.3962705517916905,
+              0.984748828033819
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              -0.3668098523321322,
+              -1.4002154447339719,
+              0.9849055759965198
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.37660718420979106,
+              -1.3904615193158008,
+              0.9850721096019673
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.4568177364931931,
+              -1.0800767925737882,
+              0.9842176997998752
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.3912285456795749,
+              -1.3764057208416773,
+              0.9852048269406084
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.3734315691794887,
+              -1.3198105674347107,
+              0.9854161866991035
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              -0.33924955576301835,
+              -1.252936165814772,
+              0.9856677567156837
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              -0.2734133032069618,
+              -1.1651187144140334,
+              0.9859954602605706
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              -0.2404225357097041,
+              -1.1031886741898655,
+              0.986218442490716
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              -0.2435150939153742,
+              -1.0889077300235188,
+              0.9861965640218454
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              -0.2492315384038531,
+              -1.1256951941609916,
+              0.9861577871264616
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              -0.25733770158716573,
+              -1.0827048003158342,
+              0.9860883876728367
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.36287188773747103,
+              -1.0775748983972142,
+              0.985473215463576
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              -0.3222921262172714,
+              -1.0659392848797695,
+              0.9854217388173175
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.4244728632220447,
+              -1.07076252432843,
+              0.9847096758834629
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.39035715078825417,
+              -1.1967897498234084,
+              0.9836266788990049
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              -0.3662391520822716,
+              -1.2471321840458787,
+              0.9837146771265035
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              -0.28865241658635304,
+              -1.0793929118906216,
+              0.9858783325327716
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 4,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 195476,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    },
+    {
+      "name": "fire",
+      "path": "arm-after-fire.png",
+      "sha256": "95eb99c2e2abba7addadaecc0387944839925a8d5e1c5fb5a06ef994fc1d0b53",
+      "options": {
+        "recoil": 1
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          5.551115123125783e-17,
+          0.0050000000000000044,
+          -1.8500000000000005
+        ],
+        "muzzleFitError": 4.475662209392993e-16,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 6.206335383118183e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 0,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.1857491463967226,
+              -1.3194667792245343,
+              0.9823115335928618
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.16299458703223518,
+              -1.3445317923409117,
+              0.9823190254116748
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.2063782195217677,
+              -1.2843016723422453,
+              0.9824953191072723
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              -0.08942553967197588,
+              -1.453145842866208,
+              0.9830654842922795
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              -0.08646081066229502,
+              -1.4805251612745431,
+              0.9834411413138258
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              -0.09387932206100962,
+              -1.5008024978947163,
+              0.9838232843337518
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              -0.11309851027846443,
+              -1.515659354184094,
+              0.9841734620811959
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              -0.12773238836039105,
+              -1.5162086226765066,
+              0.9843397764043119
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.14145615766711847,
+              -1.503904979136096,
+              0.9844996605014257
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.2166149604196418,
+              -1.2582591571313837,
+              0.9829119403621132
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.1596449105755715,
+              -1.4896819317650074,
+              0.9846081413457792
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.14646354326222694,
+              -1.4285129620985635,
+              0.9847950437736633
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              -0.11712238119170076,
+              -1.3536139140663503,
+              0.9850382352612467
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              -0.05666481403734328,
+              -1.2516726212635214,
+              0.9853855914506485
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              -0.027798087850261808,
+              -1.18219517355249,
+              0.9856020939388862
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              -0.03069970200382053,
+              -1.1700610816318173,
+              0.9855537759328556
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              -0.0354220636367735,
+              -1.2063276636816145,
+              0.9855509784926131
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              -0.0428865567939367,
+              -1.1697444276746396,
+              0.9854026488305698
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.1413374541425435,
+              -1.2007237112262983,
+              0.9845317650460966
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              -0.09743558791587109,
+              -1.1848155712678643,
+              0.9845179354605128
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.1918619976240884,
+              -1.2283232502689003,
+              0.9835324247354806
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.13023371888995483,
+              -1.3757207532758389,
+              0.9825173693754271
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              -0.105536507675286,
+              -1.4152507340173819,
+              0.9827422104711063
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              -0.07128298776637033,
+              -1.1780202473023613,
+              0.9851126728706504
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 215953,
+      "glError": 0,
+      "triangles": 29186,
+      "drawCalls": 5
+    },
+    {
+      "name": "ads-fire",
+      "path": "arm-after-ads-fire.png",
+      "sha256": "2c79cb4b71ec3c6e89ee7e5d8b4a282f6f577e9166a38f16eba5dcce762aaada",
+      "options": {
+        "aim": 1,
+        "recoil": 1
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000059,
+          -1.8499999999999994
+        ],
+        "muzzleFitError": 6.687398374172639e-16,
+        "aim": 1,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 2.7755575615628914e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 9,
+        "originalLeftRingVerticesInFrustum": 7,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.45395163867455973,
+              -1.0700063137752074,
+              0.9830704479356981
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.4332433454560251,
+              -1.097328883931041,
+              0.9830429675111858
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.46909129448277004,
+              -1.0355296680599002,
+              0.9832731210514499
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              -0.35319539853481124,
+              -1.2214282547492628,
+              0.9836346533402274
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              -0.34407629830177616,
+              -1.252791357743823,
+              0.9839852780443968
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              -0.34445644195066766,
+              -1.27577872500174,
+              0.984357399852568
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              -0.35637999834238293,
+              -1.2912931446084432,
+              0.9847157364744931
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              -0.3670744135710556,
+              -1.2914930029511058,
+              0.984893245216372
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.37680923517068177,
+              -1.2793308930478493,
+              0.9850630266604552
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.4706985416118626,
+              -1.0138616490073975,
+              0.9836773082753817
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.3915720910647961,
+              -1.2640542862641782,
+              0.985190077014917
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.37496101263199333,
+              -1.2091010400737243,
+              0.9853482570736699
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              -0.3419343285568085,
+              -1.1436725171429192,
+              0.985538489818773
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              -0.2769642684069694,
+              -1.0570471533950212,
+              0.9857875747186837
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              -0.24442409696393158,
+              -0.9955914365238773,
+              0.9859557429895742
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              -0.2478789775106649,
+              -0.9827962943995958,
+              0.9859133245297509
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              -0.2530181529602062,
+              -1.0175733804370688,
+              0.9859170634401019
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              -0.26224137380415274,
+              -0.9791662725297827,
+              0.9857851474248027
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.37125446109352006,
+              -0.9865186846591011,
+              0.985091389892825
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              -0.3301410672525469,
+              -0.9766844452059161,
+              0.9850179513912537
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.4364442641473291,
+              -0.9953094125057544,
+              0.9842219807047314
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.399859956029487,
+              -1.13426122207959,
+              0.9831793523511503
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              -0.3734678064372595,
+              -1.178608116190075,
+              0.9833537305978467
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              -0.29458691801256476,
+              -0.9802197412077203,
+              0.9855468406277584
+            ],
+            "inFrustum": true
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 2,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 235645,
+      "glError": 0,
+      "triangles": 29186,
+      "drawCalls": 5
+    },
+    {
+      "name": "reload-early",
+      "path": "arm-after-reload-early.png",
+      "sha256": "86ba60a04ee44a7099c9df8e1908a811dcb87f83a9ccae62900a8a8a9931fc96",
+      "options": {
+        "reload": 0.95
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          1.1102230246251568e-16,
+          0.004999999999999894,
+          -1.85
+        ],
+        "muzzleFitError": 1.5337349416169416e-16,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 0,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.06422442087878477,
+              -1.3274617304918013,
+              0.9857171507820149
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.04347134094114049,
+              -1.3397333508971,
+              0.9857397216864622
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.08376558607126738,
+              -1.3027864618338225,
+              0.9858258493341795
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              0.027893282214445047,
+              -1.3787287472559846,
+              0.9864045143614948
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              0.03377493683751721,
+              -1.3866056262560613,
+              0.986727583814192
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              0.03066581198630034,
+              -1.3915568454653002,
+              0.9870536729626119
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              0.017472317642790367,
+              -1.3959873386508364,
+              0.9873564620666452
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              0.006208905981065461,
+              -1.3948123577072467,
+              0.9874958982511108
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.005472398721977575,
+              -1.3850650748706361,
+              0.9876136646102127
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.09348458212391755,
+              -1.2758864814113495,
+              0.9861197820956114
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.02109543530419089,
+              -1.3762260723079225,
+              0.9876927987321329
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.015401052786303625,
+              -1.3275692577440663,
+              0.987752080705431
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              0.002536391446213002,
+              -1.2640517955093304,
+              0.987827437203187
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              0.044608236823154825,
+              -1.1710060006270762,
+              0.9879302563610656
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              0.06348391790292973,
+              -1.1093542166485517,
+              0.987994721909018
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              0.05984077218235367,
+              -1.1026211031261481,
+              0.9879427284678651
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              0.05898430654362934,
+              -1.1297014782301675,
+              0.9879897231484372
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              0.04907369087170796,
+              -1.1092733666314287,
+              0.9878300691456973
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.032849711182402916,
+              -1.1764036123828956,
+              0.98725078881685
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              0.0020522427927070247,
+              -1.15637207837929,
+              0.9871852816090397
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.07456553179316289,
+              -1.2334888662102013,
+              0.9865415390025865
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.013563096384388226,
+              -1.3491107579373809,
+              0.9859092880343734
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              0.010595582800941397,
+              -1.3649522997236487,
+              0.9861171123934939
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              0.025078174575053094,
+              -1.1294056621374844,
+              0.9876298537824238
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 179974,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    },
+    {
+      "name": "reload-mid",
+      "path": "arm-after-reload-mid.png",
+      "sha256": "303b52c6276c497537da37ac67fe1d938d5f1c652ab8acd3d807906fae17e579",
+      "options": {
+        "reload": 0.6
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          -5.2041704279304225e-17,
+          0.004999999999999894,
+          -1.850000000000001
+        ],
+        "muzzleFitError": 8.95972500288148e-16,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 4.47545209131181e-16,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 4,
+        "originalLeftRingVerticesInFrustum": 4,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.0006271769837719903,
+              -1.241441578409951,
+              0.9870524825464297
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              0.019104208686169508,
+              -1.2478649936415362,
+              0.9870762097246929
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.019480515111283417,
+              -1.2210037887497494,
+              0.9871326168887289
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              0.0890726685597309,
+              -1.2471666481172916,
+              0.9877095168171329
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              0.09612414547083234,
+              -1.2413119191654187,
+              0.9880225407214085
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              0.09482251987938052,
+              -1.234046550276016,
+              0.9883402598436004
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              0.08422582429996453,
+              -1.2281921009857943,
+              0.9886419524795901
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              0.07447982101419827,
+              -1.2236034523757697,
+              0.9887797961410667
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              0.06383105886011382,
+              -1.213396106568512,
+              0.9888853598001214
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.028782053130744098,
+              -1.1914200109282067,
+              0.9873777146761644
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              0.049495586392667205,
+              -1.2055817327654177,
+              0.9889587901866109
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              0.0522719637070119,
+              -1.1663098710875364,
+              0.9889423576259173
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              0.06559279738149429,
+              -1.1133709569615282,
+              0.9889109121477725
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              0.10018397173021629,
+              -1.032846579010275,
+              0.9888447514833103
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              0.11508560181318675,
+              -0.9795410258392959,
+              0.9888033178813262
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              0.11111327242029066,
+              -0.9763930928891479,
+              0.9887457163868562
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              0.11183220230418779,
+              -0.9964598758151277,
+              0.9888315227107443
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              0.10085467929039355,
+              -0.9868903622906617,
+              0.9886542880956184
+            ],
+            "inFrustum": true
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              0.025667223703585953,
+              -1.0692275351166507,
+              0.9882580737542501
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              0.05668018095266756,
+              -1.0520241319780894,
+              0.988136996960082
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.012340806374460653,
+              -1.1425044267198432,
+              0.9876983509169178
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              0.04762836964466129,
+              -1.2461320701459424,
+              0.9872272949294183
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              0.07140036640656153,
+              -1.248473910753525,
+              0.9874296928270004
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              0.07856294376146028,
+              -1.0126328929422068,
+              0.9885084566894223
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 195584,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    },
+    {
+      "name": "reload-late",
+      "path": "arm-after-reload-late.png",
+      "sha256": "a9dd86f20a64cbc510c652d9a20f267978c0b2b7648c83417474495b71c70447",
+      "options": {
+        "reload": 0.25
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          2.7755575615628907e-17,
+          0.005000000000000226,
+          -1.8500000000000005
+        ],
+        "muzzleFitError": 4.988408422302481e-16,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 0,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 0,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.06422442087878469,
+              -1.3274617304918013,
+              0.9857171507820149
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.043471340941140406,
+              -1.3397333508971,
+              0.9857397216864622
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.08376558607126737,
+              -1.3027864618338225,
+              0.9858258493341795
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              0.027893282214445123,
+              -1.3787287472559844,
+              0.9864045143614948
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              0.03377493683751728,
+              -1.386605626256061,
+              0.986727583814192
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              0.030665811986300414,
+              -1.3915568454653,
+              0.9870536729626119
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              0.017472317642790412,
+              -1.3959873386508364,
+              0.9873564620666452
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              0.006208905981065531,
+              -1.3948123577072464,
+              0.9874958982511108
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.0054723987219775045,
+              -1.3850650748706357,
+              0.9876136646102127
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.09348458212391753,
+              -1.2758864814113493,
+              0.9861197820956114
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.021095435304190818,
+              -1.376226072307922,
+              0.9876927987321329
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.015401052786303602,
+              -1.327569257744066,
+              0.987752080705431
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              0.0025363914462130694,
+              -1.2640517955093302,
+              0.987827437203187
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              0.044608236823154894,
+              -1.1710060006270762,
+              0.9879302563610656
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              0.06348391790292979,
+              -1.1093542166485517,
+              0.987994721909018
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              0.059840772182353695,
+              -1.1026211031261481,
+              0.9879427284678651
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              0.05898430654362938,
+              -1.1297014782301675,
+              0.9879897231484372
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              0.04907369087170803,
+              -1.1092733666314285,
+              0.9878300691456973
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.032849711182402846,
+              -1.1764036123828956,
+              0.98725078881685
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              0.002052242792707096,
+              -1.15637207837929,
+              0.9871852816090397
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.0745655317931628,
+              -1.2334888662102013,
+              0.9865415390025865
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.013563096384388202,
+              -1.3491107579373809,
+              0.9859092880343734
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              0.010595582800941472,
+              -1.3649522997236487,
+              0.9861171123934939
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              0.02507817457505316,
+              -1.1294056621374844,
+              0.9876298537824238
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1600,
+      "height": 900,
+      "variedPixels": 179909,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    },
+    {
+      "name": "wide-idle",
+      "path": "arm-after-wide-idle.png",
+      "sha256": "931a97cddd1eeb16df005869d1ea4578c31aae6eedacf55cc85bc86fdd7b30bc",
+      "options": {
+        "width": 1760,
+        "height": 775
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "muzzleFitError": 6.071532165918825e-17,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 0,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.14119775861323608,
+              -1.3603373429725905,
+              0.9828818863131655
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.12414225445371788,
+              -1.387147640747853,
+              0.9828519166430784
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.15666939102800864,
+              -1.326921200481911,
+              0.9830856577019429
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              -0.06904610943560531,
+              -1.520518291876291,
+              0.9833248242087844
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              -0.06708097335759737,
+              -1.55900337763148,
+              0.9836064995046959
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              -0.07315511118715975,
+              -1.5901577638888031,
+              0.9839064653720923
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              -0.08846052260451939,
+              -1.614804609085869,
+              0.9841888043746777
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              -0.10003326343740977,
+              -1.6193258508989723,
+              0.984332580771123
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.11080564807802179,
+              -1.6093873937349448,
+              0.9844886334776793
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.16460763332882997,
+              -1.3080028933179493,
+              0.9834708530918066
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.12501505746726416,
+              -1.5961078839999923,
+              0.9846025037161983
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.11430699480217495,
+              -1.5326935041862697,
+              0.984847391289179
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              -0.09104222088833548,
+              -1.455941746769429,
+              0.985157478343422
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              -0.04381377058681873,
+              -1.3528083483312294,
+              0.985589761659659
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              -0.021413311288229046,
+              -1.2827228003855988,
+              0.9858642211746328
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              -0.023618281020409082,
+              -1.2687619866128803,
+              0.9858373379055958
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              -0.027326474642916092,
+              -1.3075108826790867,
+              0.9857900181078731
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              -0.03295715032051481,
+              -1.2653166365662774,
+              0.9857070483169759
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.10818791968892617,
+              -1.280382684379359,
+              0.9849194090192983
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              -0.07448541897642652,
+              -1.2632166204125173,
+              0.9849282252789903
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.14611637763185362,
+              -1.289111712849727,
+              0.9840339753699902
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.09956684465801863,
+              -1.424728356897104,
+              0.9829729560046716
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              -0.08105958514482696,
+              -1.4721864696223816,
+              0.983105268773321
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              -0.05469879947551088,
+              -1.2681755678470237,
+              0.98544667393673
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1760,
+      "height": 775,
+      "variedPixels": 145554,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    },
+    {
+      "name": "narrow-idle",
+      "path": "arm-after-narrow-idle.png",
+      "sha256": "f80fbeb547625616e738b5221dd94f9d40227a648d8a24717a2025789c5f4e9c",
+      "options": {
+        "width": 1200,
+        "height": 900
+      },
+      "info": {
+        "loaded": true,
+        "asset": "Rotuma MP5 / gloved first-person arms",
+        "license": "CC-BY-4.0",
+        "meshes": 4,
+        "triangles": 29172,
+        "skinnedMeshes": 0,
+        "sleeve": {
+          "repair": "rigid-joint-repose-and-shoulder-closure",
+          "bakedHeldPose": true,
+          "retainedSourceFabric": true,
+          "proceduralExtension": true,
+          "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+          "rearSleeveVerticesAdjusted": 0,
+          "nonrigidRearTranslation": false,
+          "wristDegrees": 25,
+          "upperArmDegrees": 15,
+          "wristAxis": [
+            0.9365777985940499,
+            0,
+            0.3504597368895943
+          ],
+          "upperArmAxis": [
+            0.7644669403551073,
+            0,
+            0.6446629329379042
+          ],
+          "sourceVertices": 13137,
+          "articulatedVertices": 2135,
+          "lockedGripVertices": 9136,
+          "maxGripVertexDelta": 2.990487657476475e-8,
+          "sourceJointLengths": [
+            0.4156460972458126,
+            0.2801601167903537
+          ],
+          "posedJointLengths": [
+            0.41564608592879365,
+            0.2801600948286502
+          ],
+          "maxJointLengthError": 2.196170351131954e-8,
+          "addedGarmentVertices": 25,
+          "addedGarmentTriangles": 72,
+          "garmentClosureLength": 0.14593525919265735,
+          "garmentEnd": "measured source shoulder joint",
+          "garmentEndRadiusScale": 0.86,
+          "sourceBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4305158590129535,
+              "y": -0.36869354874812804,
+              "z": -0.6590875972733896
+            },
+            "max": {
+              "x": 0.5098885395759611,
+              "y": 0.13424714291235695,
+              "z": 0.5919467888514625
+            }
+          },
+          "posedBounds": {
+            "isBox3": true,
+            "min": {
+              "x": -0.4682203531265259,
+              "y": -0.39581435918807983,
+              "z": -0.659087598323822
+            },
+            "max": {
+              "x": 0.5098885297775269,
+              "y": 0.13424713909626007,
+              "z": 0.5919467806816101
+            }
+          },
+          "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+        },
+        "textureMaps": 12,
+        "uniformDisplayScale": 1.7,
+        "sourceMuzzle": [
+          0,
+          0.0987987294793129,
+          -0.6800000667572021
+        ],
+        "fittedMuzzle": [
+          0,
+          0.005000000000000061,
+          -1.85
+        ],
+        "muzzleFitError": 6.071532165918825e-17,
+        "aim": 0,
+        "animation": "baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture"
+      },
+      "muzzleWorldError": 5.551115123125783e-17,
+      "sourceRingDiagnostic": {
+        "originalRingVerticesInFrustum": 0,
+        "originalLeftRingVerticesInFrustum": 0,
+        "originalLeftRingProjection": [
+          {
+            "vertex": 4156,
+            "ndc": [
+              -0.24049166628318924,
+              -1.3603373429725905,
+              0.9828818863131655
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4155,
+            "ndc": [
+              -0.21144229145665497,
+              -1.387147640747853,
+              0.9828519166430784
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4159,
+            "ndc": [
+              -0.2668433498799631,
+              -1.326921200481911,
+              0.9830856577019429
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4247,
+            "ndc": [
+              -0.11760111542580516,
+              -1.520518291876291,
+              0.9833248242087844
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4246,
+            "ndc": [
+              -0.11425404494455295,
+              -1.55900337763148,
+              0.9836064995046959
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4248,
+            "ndc": [
+              -0.12459967324780757,
+              -1.5901577638888031,
+              0.9839064653720923
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4250,
+            "ndc": [
+              -0.15066824495221368,
+              -1.614804609085869,
+              0.9841888043746777
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4253,
+            "ndc": [
+              -0.1703792357901689,
+              -1.6193258508989723,
+              0.984332580771123
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4255,
+            "ndc": [
+              -0.18872703930708226,
+              -1.6093873937349448,
+              0.9844886334776793
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 5383,
+            "ndc": [
+              -0.2803639690245878,
+              -1.3080028933179493,
+              0.9834708530918066
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 4265,
+            "ndc": [
+              -0.2129288720732757,
+              -1.5961078839999923,
+              0.9846025037161983
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7068,
+            "ndc": [
+              -0.19469062340499477,
+              -1.5326935041862697,
+              0.984847391289179
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7071,
+            "ndc": [
+              -0.15506546009368108,
+              -1.455941746769429,
+              0.985157478343422
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 7073,
+            "ndc": [
+              -0.07462474474142029,
+              -1.3528083483312294,
+              0.985589761659659
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9345,
+            "ndc": [
+              -0.03647170438769334,
+              -1.2827228003855988,
+              0.9858642211746328
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9348,
+            "ndc": [
+              -0.04022726573798708,
+              -1.2687619866128803,
+              0.9858373379055958
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 9350,
+            "ndc": [
+              -0.046543156811160315,
+              -1.3075108826790867,
+              0.9857900181078731
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11179,
+            "ndc": [
+              -0.056133468933005866,
+              -1.2653166365662774,
+              0.9857070483169759
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11188,
+            "ndc": [
+              -0.18426845676049364,
+              -1.280382684379359,
+              0.9849194090192983
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11185,
+            "ndc": [
+              -0.12686548780501034,
+              -1.2632166204125173,
+              0.9849282252789903
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11192,
+            "ndc": [
+              -0.24886918512780232,
+              -1.289111712849727,
+              0.9840339753699902
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11195,
+            "ndc": [
+              -0.16958481928849625,
+              -1.424728356897104,
+              0.9829729560046716
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11200,
+            "ndc": [
+              -0.1380627772789311,
+              -1.4721864696223816,
+              0.983105268773321
+            ],
+            "inFrustum": false
+          },
+          {
+            "vertex": 11798,
+            "ndc": [
+              -0.09316440684861206,
+              -1.2681755678470237,
+              0.98544667393673
+            ],
+            "inFrustum": false
+          }
+        ]
+      },
+      "actualLeftBoundaryVerticesInFrustum": 0,
+      "unchangedRightBoundaryVerticesInFrustum": 0,
+      "parentUnchanged": true,
+      "stateUnchanged": true,
+      "width": 1200,
+      "height": 900,
+      "variedPixels": 188706,
+      "glError": 0,
+      "triangles": 29172,
+      "drawCalls": 4
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "geometry": {
+    "vertices": 13137,
+    "sourceBounds": {
+      "min": [
+        -0.4305158590129535,
+        -0.36869354874812804,
+        -0.6590875972733896
+      ],
+      "max": [
+        0.5098885395759611,
+        0.13424714291235695,
+        0.5919467888514625
+      ]
+    },
+    "displayBounds": {
+      "min": [
+        -0.400198757648468,
+        -0.39581435918807983,
+        -0.659087598323822
+      ],
+      "max": [
+        0.5098885297775269,
+        0.13424713909626007,
+        0.5919467806816101
+      ]
+    },
+    "maxVertexDelta": 0.3452331671387007,
+    "changedVertices": 2135,
+    "handVertices": 11133,
+    "handMaxVertexDelta": 0.050709031245702266,
+    "contactVertices": 9130,
+    "contactMaxVertexDelta": 2.990487657476475e-8,
+    "fingerTipMaxVertexDelta": 2.990487657476475e-8,
+    "uv": {
+      "uv": {
+        "present": true,
+        "count": 13137,
+        "maxDelta": 2.9799139156239107e-8
+      },
+      "uv1": {
+        "present": true,
+        "count": 13137,
+        "maxDelta": 2.9800958145642653e-8
+      }
+    },
+    "edgeCount": 44556,
+    "edgeMinRatio": 0.5366433510101624,
+    "edgeMaxRatio": 1.4176096333002353,
+    "edgeMaxRelativeChange": 0.46335664898983764,
+    "rigidEdges": 39066,
+    "rigidEdgeMaxRelativeChange": 0.00003308724942263641,
+    "opposedSourceFaceNormals": 0,
+    "maxFaceNormalAngle": 0.7636492671473705,
+    "boundaryEdges": 48,
+    "boundaryVertices": [
+      {
+        "id": 269,
+        "vertex": 282,
+        "point": [
+          0.23335295304962522,
+          -0.34402945746918123,
+          0.4741242035295632
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 268,
+        "vertex": 281,
+        "point": [
+          0.21548484665366957,
+          -0.32471052462362165,
+          0.4645792734475418
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 271,
+        "vertex": 284,
+        "point": [
+          0.2509919813233643,
+          -0.3594540597753187,
+          0.48939609011390806
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 275,
+        "vertex": 288,
+        "point": [
+          0.27076907336153977,
+          -0.36869354874812804,
+          0.5087150261249314
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 297,
+        "vertex": 310,
+        "point": [
+          0.09573416138068616,
+          -0.043459684619573564,
+          0.46977168310176554
+        ],
+        "influences": {
+          "UpArm_R": 0.6470588235294118,
+          "Arm_R": 0.35294117647058826
+        }
+      },
+      {
+        "id": 296,
+        "vertex": 309,
+        "point": [
+          0.11680936518553084,
+          -0.06285497640867305,
+          0.48840338491462043
+        ],
+        "influences": {
+          "UpArm_R": 0.6745098039215687,
+          "Arm_R": 0.3254901960784314
+        }
+      },
+      {
+        "id": 298,
+        "vertex": 311,
+        "point": [
+          0.14781129566140666,
+          -0.09683491758944546,
+          0.5136783585662499
+        ],
+        "influences": {
+          "UpArm_R": 0.7254901960784313,
+          "Arm_R": 0.27450980392156865
+        }
+      },
+      {
+        "id": 299,
+        "vertex": 312,
+        "point": [
+          0.1966240638031463,
+          -0.1528063720827374,
+          0.551705359480348
+        ],
+        "influences": {
+          "UpArm_R": 0.8117647058823529,
+          "Arm_R": 0.18823529411764706
+        }
+      },
+      {
+        "id": 301,
+        "vertex": 314,
+        "point": [
+          0.23136760575134366,
+          -0.19747663307685942,
+          0.5742313957187798
+        ],
+        "influences": {
+          "UpArm_R": 0.8705882352941177,
+          "Arm_R": 0.12941176470588237
+        }
+      },
+      {
+        "id": 303,
+        "vertex": 316,
+        "point": [
+          0.2664929442144295,
+          -0.2442849581988943,
+          0.5919467888514625
+        ],
+        "influences": {
+          "UpArm_R": 0.9294117647058824,
+          "Arm_R": 0.07058823529411765
+        }
+      },
+      {
+        "id": 305,
+        "vertex": 318,
+        "point": [
+          0.28733906838067247,
+          -0.2795821006089651,
+          0.5890451349699564
+        ],
+        "influences": {
+          "UpArm_R": 0.9529411764705882,
+          "Arm_R": 0.047058823529411764
+        }
+      },
+      {
+        "id": 476,
+        "vertex": 503,
+        "point": [
+          0.2016637901692138,
+          -0.30607882633779776,
+          0.46320480192810326
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 478,
+        "vertex": 505,
+        "point": [
+          0.1852274231526834,
+          -0.2783603569342798,
+          0.4641974719799828
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1177,
+        "vertex": 1283,
+        "point": [
+          0.28917169539384036,
+          -0.3683881100046781,
+          0.5292557125056341
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1178,
+        "vertex": 1285,
+        "point": [
+          0.30528353440958345,
+          -0.36075216684383915,
+          0.5501781955729014
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1180,
+        "vertex": 1287,
+        "point": [
+          0.316890167124556,
+          -0.34517484400783166,
+          0.5714824750741829
+        ],
+        "influences": {
+          "UpArm_R": 1
+        }
+      },
+      {
+        "id": 1182,
+        "vertex": 1289,
+        "point": [
+          0.308261551865141,
+          -0.3188308433470463,
+          0.5840054178607265
+        ],
+        "influences": {
+          "UpArm_R": 0.984313725490196,
+          "Arm_R": 0.01568627450980392
+        }
+      },
+      {
+        "id": 1623,
+        "vertex": 1798,
+        "point": [
+          0.17514797788839592,
+          -0.2425286983927806,
+          0.47007714507104875
+        ],
+        "influences": {
+          "UpArm_R": 0.9882352941176471,
+          "Arm_R": 0.011764705882352941
+        }
+      },
+      {
+        "id": 3287,
+        "vertex": 4156,
+        "point": [
+          -0.32512077509608234,
+          0.08049069506416594,
+          0.2440150849073879
+        ],
+        "influences": {
+          "UpArm_L": 0.9803921568627451,
+          "Arm_L": 0.0196078431372549
+        }
+      },
+      {
+        "id": 3286,
+        "vertex": 4155,
+        "point": [
+          -0.31381957916441083,
+          0.07025853233676707,
+          0.25333093267690365
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3290,
+        "vertex": 4159,
+        "point": [
+          -0.3368801268576159,
+          0.08476682295943339,
+          0.2300413122389332
+        ],
+        "influences": {
+          "UpArm_L": 0.9411764705882353,
+          "Arm_L": 0.058823529411764705
+        }
+      },
+      {
+        "id": 3367,
+        "vertex": 4247,
+        "point": [
+          -0.2900717874389594,
+          -0.00367648154750895,
+          0.28343562630263947
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3366,
+        "vertex": 4246,
+        "point": [
+          -0.29679141225427785,
+          -0.030096843993940775,
+          0.28732995485860724
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3368,
+        "vertex": 4248,
+        "point": [
+          -0.31007794761785695,
+          -0.0542264241332604,
+          0.2878644695038252
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3370,
+        "vertex": 4250,
+        "point": [
+          -0.33092406621627635,
+          -0.07400351758952695,
+          0.2854973269133421
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 3373,
+        "vertex": 4253,
+        "point": [
+          -0.34413424498239753,
+          -0.08087586662848104,
+          0.28167935607601924
+        ],
+        "influences": {
+          "UpArm_L": 0.984313725490196,
+          "Arm_L": 0.01568627450980392
+        }
+      },
+      {
+        "id": 3375,
+        "vertex": 4255,
+        "point": [
+          -0.3551300014209072,
+          -0.08408296237351919,
+          0.27432976246795276
+        ],
+        "influences": {
+          "UpArm_L": 0.9568627450980393,
+          "Arm_L": 0.043137254901960784
+        }
+      },
+      {
+        "id": 4388,
+        "vertex": 5383,
+        "point": [
+          -0.3471122882744894,
+          0.0749164572265937,
+          0.2164493356703087
+        ],
+        "influences": {
+          "UpArm_L": 0.9019607843137255,
+          "Arm_L": 0.09803921568627451
+        }
+      },
+      {
+        "id": 3385,
+        "vertex": 4265,
+        "point": [
+          -0.368263822106744,
+          -0.08301393055568906,
+          0.2662356649614237
+        ],
+        "influences": {
+          "UpArm_L": 0.9333333333333333,
+          "Arm_L": 0.06666666666666667
+        }
+      },
+      {
+        "id": 5539,
+        "vertex": 7068,
+        "point": [
+          -0.354213691509764,
+          -0.07896687695766583,
+          0.248214842576361
+        ],
+        "influences": {
+          "UpArm_L": 0.8823529411764706,
+          "Arm_L": 0.11764705882352941
+        }
+      },
+      {
+        "id": 5540,
+        "vertex": 7071,
+        "point": [
+          -0.3271824604408326,
+          -0.07721060438105873,
+          0.2274450803938927
+        ],
+        "influences": {
+          "UpArm_L": 0.8156862745098039,
+          "Arm_L": 0.1843137254901961
+        }
+      },
+      {
+        "id": 5541,
+        "vertex": 7073,
+        "point": [
+          -0.27403631047134347,
+          -0.07965409665357041,
+          0.20117743841457236
+        ],
+        "influences": {
+          "UpArm_L": 0.7137254901960784,
+          "Arm_L": 0.28627450980392155
+        }
+      },
+      {
+        "id": 6815,
+        "vertex": 9345,
+        "point": [
+          -0.24561152181750667,
+          -0.07774510554459704,
+          0.18101855088988192
+        ],
+        "influences": {
+          "UpArm_L": 0.6392156862745098,
+          "Arm_L": 0.3607843137254902
+        }
+      },
+      {
+        "id": 6816,
+        "vertex": 9348,
+        "point": [
+          -0.2454588044487989,
+          -0.07064367857135936,
+          0.17773509627976827
+        ],
+        "influences": {
+          "UpArm_L": 0.6196078431372549,
+          "Arm_L": 0.3803921568627451
+        }
+      },
+      {
+        "id": 6817,
+        "vertex": 9350,
+        "point": [
+          -0.2540874153289126,
+          -0.08034132773476459,
+          0.18804361760440721
+        ],
+        "influences": {
+          "UpArm_L": 0.6666666666666666,
+          "Arm_L": 0.3333333333333333
+        }
+      },
+      {
+        "id": 7268,
+        "vertex": 10808,
+        "point": [
+          0.07901144604614595,
+          -0.037656370298835624,
+          0.4461766206898232
+        ],
+        "influences": {
+          "UpArm_R": 0.6509803921568628,
+          "Arm_R": 0.34901960784313724
+        }
+      },
+      {
+        "id": 7267,
+        "vertex": 10807,
+        "point": [
+          0.08107315034534289,
+          -0.033762039288881884,
+          0.45381256248516455
+        ],
+        "influences": {
+          "UpArm_R": 0.6392156862745098,
+          "Arm_R": 0.3607843137254902
+        }
+      },
+      {
+        "id": 7334,
+        "vertex": 11179,
+        "point": [
+          -0.25256023100709696,
+          -0.05918976588869564,
+          0.17842233207877878
+        ],
+        "influences": {
+          "UpArm_L": 0.6235294117647059,
+          "Arm_L": 0.3764705882352941
+        }
+      },
+      {
+        "id": 7336,
+        "vertex": 11188,
+        "point": [
+          -0.3154994828272413,
+          -0.0010802531052257988,
+          0.1872800315790305
+        ],
+        "influences": {
+          "UpArm_L": 0.7333333333333333,
+          "Arm_L": 0.26666666666666666
+        }
+      },
+      {
+        "id": 7335,
+        "vertex": 11185,
+        "point": [
+          -0.28197769949366924,
+          -0.0039055478107010593,
+          0.1895708119255271
+        ],
+        "influences": {
+          "UpArm_L": 0.6823529411764706,
+          "Arm_L": 0.3176470588235294
+        }
+      },
+      {
+        "id": 7337,
+        "vertex": 11192,
+        "point": [
+          -0.33741463989239706,
+          0.050176006064134276,
+          0.20316279484519167
+        ],
+        "influences": {
+          "UpArm_L": 0.8313725490196079,
+          "Arm_L": 0.16862745098039217
+        }
+      },
+      {
+        "id": 7338,
+        "vertex": 11195,
+        "point": [
+          -0.2995403641222756,
+          0.048419737288106834,
+          0.26348673294460545
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 7339,
+        "vertex": 11200,
+        "point": [
+          -0.2915226209488982,
+          0.024118350018889095,
+          0.2746352056548045
+        ],
+        "influences": {
+          "UpArm_L": 1
+        }
+      },
+      {
+        "id": 7397,
+        "vertex": 11798,
+        "point": [
+          -0.2707337729926872,
+          -0.03941267761908303,
+          0.18155307037459362
+        ],
+        "influences": {
+          "UpArm_L": 0.6470588235294118,
+          "Arm_L": 0.35294117647058826
+        }
+      },
+      {
+        "id": 2835,
+        "vertex": 3541,
+        "point": [
+          0.1527746624019787,
+          -0.15937328767371312,
+          0.4757277351865206
+        ],
+        "influences": {
+          "UpArm_R": 0.9137254901960784,
+          "Arm_R": 0.08627450980392157
+        }
+      },
+      {
+        "id": 7440,
+        "vertex": 12101,
+        "point": [
+          0.136051945186691,
+          -0.1157720575635031,
+          0.47168068058907886
+        ],
+        "influences": {
+          "UpArm_R": 0.8431372549019608,
+          "Arm_R": 0.1568627450980392
+        }
+      },
+      {
+        "id": 7451,
+        "vertex": 12636,
+        "point": [
+          0.09206891004789929,
+          -0.05804433570827863,
+          0.44816196878695413
+        ],
+        "influences": {
+          "UpArm_R": 0.7019607843137254,
+          "Arm_R": 0.2980392156862745
+        }
+      },
+      {
+        "id": 2836,
+        "vertex": 3544,
+        "point": [
+          0.16270138960785618,
+          -0.19862203076136914,
+          0.4717570486794603
+        ],
+        "influences": {
+          "UpArm_R": 0.9529411764705882,
+          "Arm_R": 0.047058823529411764
+        }
+      }
+    ],
+    "components": [
+      {
+        "vertices": 6288,
+        "bounds": {
+          "min": [
+            -0.07088180515039338,
+            -0.36869354874812804,
+            -0.062052514946863244
+          ],
+          "max": [
+            0.5098885395759611,
+            0.058422997244165026,
+            0.5919467888514625
+          ]
+        },
+        "influences": {
+          "Bone_R009": 238.66274509803992,
+          "Bone_R005": 282.8196078431374,
+          "Bone_R010": 242.12549019607857,
+          "Bone_R008": 53.96862745098069,
+          "Bone_R006": 156.0862745098043,
+          "Bone_R004": 270.97254901960764,
+          "Bone_R013": 204.1647058823538,
+          "Hand_R": 95.70588235294167,
+          "Bone_R012": 72.66274509803954,
+          "Bone_R011": 277.70196078431366,
+          "Bone_R014": 295.5411764705887,
+          "Bone_R007": 306.31764705882347,
+          "Bone_R016": 390.1450980392145,
+          "Bone_R020": 214.40392156862805,
+          "Bone_R021": 309.2235294117653,
+          "Bone_R017": 230.81176470588278,
+          "Bone_R015": 281.5882352941174,
+          "Bone_R018": 281.3607843137255,
+          "Bone_R022": 332.62352941176454,
+          "Bone_R019": 261.25098039215646,
+          "BoneTwist_01R": 693.6666666666644,
+          "BoneTwist_02R": 303.9333333333337,
+          "BoneTwist_03R": 205.13333333333333,
+          "UpArm_R": 280.282352941176,
+          "Arm_R": 6.8470588235294105
+        }
+      },
+      {
+        "vertices": 6849,
+        "bounds": {
+          "min": [
+            -0.4305158590129535,
+            -0.13532016897272822,
+            -0.6590875972733896
+          ],
+          "max": [
+            0.09260355651741276,
+            0.13424714291235695,
+            0.2878644695038252
+          ]
+        },
+        "influences": {
+          "Bone_L009": 251.49019607843118,
+          "Bone_L005": 269.8627450980389,
+          "Bone_L010": 276,
+          "Bone_L008": 66.06666666666689,
+          "Bone_L006": 147.0039215686277,
+          "Bone_L004": 342.6784313725488,
+          "Bone_L013": 208.60000000000088,
+          "Hand_L": 113.43921568627499,
+          "Bone_L012": 66.6588235294121,
+          "Bone_L007": 297.0588235294117,
+          "Bone_L014": 386.6352941176475,
+          "Bone_L011": 278.70196078431366,
+          "Bone_L016": 425.5647058823523,
+          "Bone_L021": 322.9960784313727,
+          "Bone_L020": 168.70588235294184,
+          "Bone_L017": 215.95686274509816,
+          "Bone_L022": 327.5254901960783,
+          "Bone_L018": 277.63921568627467,
+          "Bone_L015": 410.40784313725464,
+          "BoneTwist_01L": 810.6235294117621,
+          "Bone_L019": 273.0705882352939,
+          "BoneTwist_02L": 371.31764705882443,
+          "BoneTwist_03L": 229.772549019608,
+          "UpArm_L": 301.43921568627434,
+          "Arm_L": 9.784313725490193
+        }
+      }
+    ],
+    "joints": [
+      {
+        "name": "Arm_L",
+        "localPosition": [
+          -4.588569968433376e-9,
+          -4.470348358154297e-8,
+          0.3028842806816101
+        ],
+        "localQuaternion": [
+          -0.45645055174827576,
+          0.20518219470977783,
+          -0.7703874111175537,
+          0.395039826631546
+        ],
+        "worldPosition": [
+          -1.1295253007626937e-16,
+          -4.470348055489988e-8,
+          0.3028842599470364
+        ],
+        "localAxesWorld": [
+          [
+            -0.27119297835477857,
+            -0.7959783987701428,
+            0.541177195733878
+          ],
+          [
+            0.4213563348487075,
+            -0.6036876665486625,
+            -0.6767717786225242
+          ],
+          [
+            0.8653977883527837,
+            0.04449273030188509,
+            0.4991062661041176
+          ]
+        ]
+      },
+      {
+        "name": "UpArm_L",
+        "localPosition": [
+          0.057614825665950775,
+          -0.17046158015727997,
+          -0.4057798385620117
+        ],
+        "localQuaternion": [
+          -0.024357100948691368,
+          0.6160842180252075,
+          0.16878965497016907,
+          0.7689973711967468
+        ],
+        "worldPosition": [
+          -0.43861078744496296,
+          0.0389911032348117,
+          0.24690041970732685
+        ],
+        "localAxesWorld": [
+          [
+            -0.7802450231867984,
+            -0.3275031006717448,
+            -0.5328784315794975
+          ],
+          [
+            0.6229519655097457,
+            -0.3304635535337896,
+            -0.7090308092412944
+          ],
+          [
+            0.056112849139599526,
+            -0.8851754787971293,
+            0.46186114785475196
+          ]
+        ]
+      },
+      {
+        "name": "Forearm_L",
+        "localPosition": [
+          8.195638656616211e-8,
+          0.2801600992679596,
+          -6.612390279769897e-8
+        ],
+        "localQuaternion": [
+          -0.3134568929672241,
+          -0.1743728518486023,
+          -0.02622958831489086,
+          0.9330867528915405
+        ],
+        "worldPosition": [
+          -0.2640845596894378,
+          -0.05359157282788303,
+          0.048258191169482184
+        ],
+        "localAxesWorld": [
+          [
+            -0.6749346956898092,
+            -0.6296862488033128,
+            -0.3846535904188558
+          ],
+          [
+            0.3438814801195272,
+            0.19279768108442497,
+            -0.9190073894149446
+          ],
+          [
+            0.6528466817011752,
+            -0.7525451968428049,
+            0.08641143963959971
+          ]
+        ]
+      },
+      {
+        "name": "Arm_R",
+        "localPosition": [
+          -4.588569968433376e-9,
+          -4.470348358154297e-8,
+          0.3028842806816101
+        ],
+        "localQuaternion": [
+          -0.15570317208766937,
+          0.08324697613716125,
+          0.2704280614852905,
+          0.9464117288589478
+        ],
+        "worldPosition": [
+          -1.1295253007626937e-16,
+          -4.470348055489988e-8,
+          0.3028842599470364
+        ],
+        "localAxesWorld": [
+          [
+            0.8398772177814443,
+            0.4859489158063169,
+            -0.2417848429458827
+          ],
+          [
+            -0.5377962413181923,
+            0.8052503502830018,
+            -0.24969396507149966
+          ],
+          [
+            0.07335883427233066,
+            0.33974325249019643,
+            0.937652922899293
+          ]
+        ]
+      },
+      {
+        "name": "UpArm_R",
+        "localPosition": [
+          0.004075445234775543,
+          -0.35778212547302246,
+          0.16932184994220734
+        ],
+        "localQuaternion": [
+          0.1684252768754959,
+          0.42785564064979553,
+          -0.789303719997406,
+          0.40690550208091736
+        ],
+        "worldPosition": [
+          0.20825800045771142,
+          -0.22859780405792057,
+          0.5500000298911434
+        ],
+        "localAxesWorld": [
+          [
+            -0.29121338070816755,
+            -0.9072787291619587,
+            -0.30338107143785487
+          ],
+          [
+            0.7838531035891086,
+            -0.044495033851173975,
+            -0.6193500657595064
+          ],
+          [
+            0.5484242197733734,
+            -0.4181691902960721,
+            0.7241307916758506
+          ]
+        ]
+      },
+      {
+        "name": "Forearm_R",
+        "localPosition": [
+          -1.1734664440155029e-7,
+          0.28016000986099243,
+          5.960464477539063e-8
+        ],
+        "localQuaternion": [
+          -0.8693053126335144,
+          0.08980851620435715,
+          0.07274214923381805,
+          0.4805738627910614
+        ],
+        "worldPosition": [
+          0.4278623473447864,
+          -0.24106345088954464,
+          0.3764829985570357
+        ],
+        "localAxesWorld": [
+          [
+            -0.4677214319552299,
+            -0.7902230343559582,
+            -0.39595986925825144
+          ],
+          [
+            -0.7943736235276793,
+            0.5722521103631973,
+            -0.20371074696336422
+          ],
+          [
+            0.3875658062155668,
+            0.2192602038701874,
+            -0.895386904556506
+          ]
+        ]
+      },
+      {
+        "name": "IK_Hand_Cntrl_L",
+        "localPosition": [
+          -0.12115012854337692,
+          0.026542067527770996,
+          -0.3337235450744629
+        ],
+        "localQuaternion": [
+          0.6655154228210449,
+          -0.25205370783805847,
+          0.04874547943472862,
+          0.7008438110351562
+        ],
+        "worldPosition": [
+          -0.12115013359914868,
+          0.026542065710778506,
+          -0.33372352039334946
+        ],
+        "localAxesWorld": [
+          [
+            0.8681856320100041,
+            -0.267165310284983,
+            0.41818226331555297
+          ],
+          [
+            -0.40381719763327845,
+            0.1094261973826468,
+            0.9082717535088162
+          ],
+          [
+            -0.28841883844208593,
+            -0.9574176643685958,
+            -0.012883694606015387
+          ]
+        ]
+      },
+      {
+        "name": "Hand_L",
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localQuaternion": [
+          -0.6471428275108337,
+          -0.034418072551488876,
+          -0.7612676620483398,
+          0.022205661982297897
+        ],
+        "worldPosition": [
+          -0.12115013359914868,
+          0.026542065710778506,
+          -0.33372352039334946
+        ],
+        "localAxesWorld": [
+          [
+            -0.42910330846231826,
+            -0.9005025339369327,
+            -0.07046656682325209
+          ],
+          [
+            0.4636649058045001,
+            -0.15264762894184802,
+            -0.8727620274185489
+          ],
+          [
+            0.7751678872256536,
+            -0.40717793665446694,
+            0.48303299526629384
+          ]
+        ]
+      },
+      {
+        "name": "IK_Hand_Cntrl_R",
+        "localPosition": [
+          0.09769170731306076,
+          -0.0032146573066711426,
+          0.29181328415870667
+        ],
+        "localQuaternion": [
+          0.43235424160957336,
+          0.606963038444519,
+          0.4866354763507843,
+          0.4559074938297272
+        ],
+        "worldPosition": [
+          0.09769171173390964,
+          -0.0032146570866050687,
+          0.2918132627020326
+        ],
+        "localAxesWorld": [
+          [
+            -0.2104364367908419,
+            0.9685675475939158,
+            -0.13264015914752855
+          ],
+          [
+            0.08112458447786938,
+            0.15251143930050218,
+            0.9849665287083527
+          ],
+          [
+            0.9742357676051868,
+            0.1965123935117202,
+            -0.11066864196793531
+          ]
+        ]
+      },
+      {
+        "name": "Hand_R",
+        "localPosition": [
+          0,
+          0,
+          0
+        ],
+        "localQuaternion": [
+          -0.6471441984176636,
+          0.03441840782761574,
+          0.7612664699554443,
+          0.02220650389790535
+        ],
+        "worldPosition": [
+          0.09769171173390964,
+          -0.0032146570866050687,
+          0.2918132627020326
+        ],
+        "localAxesWorld": [
+          [
+            -0.9283040202244677,
+            -0.3519098970520751,
+            0.12004611777099918
+          ],
+          [
+            -0.04131118187895928,
+            -0.2232444123353038,
+            -0.9738867072780224
+          ],
+          [
+            0.36952005841536534,
+            -0.9090221605513015,
+            0.19270090309946408
+          ]
+        ]
+      }
+    ],
+    "clips": [
+      {
+        "name": "grip_vgrip",
+        "duration": 0,
+        "tracks": 66
+      }
+    ],
+    "openLeftShoulderEdges": 0,
+    "nonManifoldEdges": 0,
+    "topology": {
+      "method": "Displayed positions welded at 1e-5 source units; side labels from source skin influences, never an x-coordinate cutoff. Edge incidence, directed winding, vertex links and connected components tested.",
+      "maxWeldSpread": 0,
+      "degenerateWeldedFaces": 0,
+      "duplicateFaces": 0,
+      "nonManifoldVertices": [],
+      "inconsistentWindingEdges": 0,
+      "originalLeftRingEdges": 24,
+      "originalLeftRingNowSewn": true,
+      "originalLeftRingAdjacency": [
+        {
+          "sourceVertices": [
+            4156,
+            4155
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4159,
+            4156
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4247,
+            4246
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4246,
+            4248
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4248,
+            4250
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4250,
+            4253
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4253,
+            4255
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            5383,
+            4159
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4265,
+            7068
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            7068,
+            7071
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            7071,
+            7073
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            9345,
+            9348
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            9350,
+            9345
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            9348,
+            11179
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11188,
+            11185
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11192,
+            5383
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11185,
+            11192
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4155,
+            11195
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11195,
+            11200
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11200,
+            4247
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11798,
+            11188
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            7073,
+            9350
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            4255,
+            4265
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        },
+        {
+          "sourceVertices": [
+            11179,
+            11798
+          ],
+          "incidence": 2,
+          "sourceFaces": 1,
+          "closureFaces": 1,
+          "directionBalance": 0
+        }
+      ],
+      "invalidSeamEdges": 0,
+      "closureEdges": 120,
+      "invalidClosureEdges": 0,
+      "actualBoundaryEdges": 24,
+      "actualLeftBoundaryEdges": 0,
+      "remainingOriginalRightShoulderEdges": 24,
+      "originalRightShoulderEdges": 24,
+      "originalRightBoundaryUnchanged": true,
+      "unexpectedBoundaryEdges": 0,
+      "components": [
+        {
+          "sides": [
+            "right"
+          ],
+          "weldedVertices": 3726,
+          "edges": 11151,
+          "faces": 7426,
+          "eulerCharacteristic": 1,
+          "boundaryEdges": 24
+        },
+        {
+          "sides": [
+            "left"
+          ],
+          "weldedVertices": 3751,
+          "edges": 11247,
+          "faces": 7498,
+          "eulerCharacteristic": 2,
+          "boundaryEdges": 0
+        }
+      ],
+      "negativeControls": {
+        "method": "Virtual incidence changes to one added face; not modified/rendered production geometry.",
+        "removedClosureFace": {
+          "applicable": true,
+          "openLeftEdges": 3,
+          "inconsistentWindingEdges": 0,
+          "rejectedByZeroDefectCriteria": true
+        },
+        "reversedClosureFace": {
+          "applicable": true,
+          "openLeftEdges": 0,
+          "inconsistentWindingEdges": 3,
+          "rejectedByZeroDefectCriteria": true
+        }
+      }
+    },
+    "addedVertices": 25,
+    "addedTriangles": 72,
+    "newUVMinArea": 0.00004424392511193087,
+    "newFaceMinArea": 0.0002727042751543869,
+    "invalidNormals": 0
+  },
+  "sweep": {
+    "frames": 1815,
+    "maxMuzzleError": 8.886119947416683e-16,
+    "sourceRingDiagnostic": {
+      "meaning": "Original GLB opening-ring vertices projected into the frustum, not occlusion-tested visibility or remaining holes. After repair this left ring is an internal sewn seam; see geometry.topology for actual adjacency.",
+      "maxOriginalLeftRingVerticesInFrustum": 7,
+      "examplesInFrustum": [
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.7400003833333333,
+          "originalLeftRingVerticesInFrustum": 1
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.7300003916666666,
+          "originalLeftRingVerticesInFrustum": 2
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.7200004,
+          "originalLeftRingVerticesInFrustum": 2
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.7100004083333333,
+          "originalLeftRingVerticesInFrustum": 3
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.7000004166666666,
+          "originalLeftRingVerticesInFrustum": 3
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.6900004249999999,
+          "originalLeftRingVerticesInFrustum": 3
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.6800004333333333,
+          "originalLeftRingVerticesInFrustum": 3
+        },
+        {
+          "width": 1600,
+          "height": 900,
+          "reload": 0.6700004416666666,
+          "originalLeftRingVerticesInFrustum": 3
+        }
+      ]
+    },
+    "actualSurface": {
+      "openLeftBoundaryEdges": 0,
+      "maxActualLeftBoundaryVerticesInFrustum": 0
+    },
+    "unchangedRightOpening": {
+      "boundaryEdges": 24,
+      "maxBoundaryVerticesInFrustum": 4,
+      "note": "Original right shoulder opening retained, outside this LEFT ARM repair. Frustum inclusion is not occlusion-tested exposure. No globally watertight mesh or whole-asset hole-free art verdict is claimed."
+    },
+    "failures": [],
+    "fullContinuousVisualReview": false
+  },
+  "assetHashes": {
+    "assets/mp5/mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+    "assets/mp5/arms_basecolor.webp": "4657bc61099b7cf92084c5481c0c6d19a1d8219c8ee8c08e546f9f823fec6946",
+    "assets/mp5/arms_normal.webp": "0500bdd5e6045621d980105cc281312dd6d7fc66a6649ddbe632fea802dba881"
+  },
+  "engineeringChecks": {
+    "sourceUVs": true,
+    "heldContact": true,
+    "sourceSurfaceStrain": true,
+    "noOpenLeftSleeve": true,
+    "sewnClosureTopology": true,
+    "manifoldSurface": true,
+    "onlyOriginalRightOpening": true,
+    "closedLeftComponent": true,
+    "actualSurfaceSweep": true,
+    "topologyNegativeControls": true,
+    "validSurface": true,
+    "unchangedBoneLengths": true,
+    "muzzleCoincidence": true,
+    "baselineParentAndState": true,
+    "cleanConsole": true
+  },
+  "engineeringVerdict": "PASS"
+}

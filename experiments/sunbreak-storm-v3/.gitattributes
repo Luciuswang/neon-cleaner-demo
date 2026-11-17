@@ -8,3 +8,8 @@ assets/audio/provenance/*.txt binary
 assets/audio/*.wav binary
 # Preserve pinned upstream/transformed vendor bytes, including upstream whitespace.
 vendor/** -text -whitespace
+/assets/house/timber-house-art-kit.zip filter=lfs diff=lfs merge=lfs -text
+/authoring/timber-house/*.blend filter=lfs diff=lfs merge=lfs -text
+# Preserve the exact checksummed bytes emitted by background Blender.
+/authoring/timber-house/blender-roundtrip.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/qa/roundtrip-blend.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

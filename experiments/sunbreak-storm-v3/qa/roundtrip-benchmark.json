@@ -1,0 +1,49 @@
+{
+  "schema": "sunbreak-roundtrip-browser-run-v1",
+  "phase": "benchmark",
+  "date": "2026-11-17T07:15:05.154Z",
+  "captureMethod": "Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels",
+  "pass": true,
+  "results": [
+    {
+      "run": 4,
+      "pass": true,
+      "hardware": true,
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "duration_ms": 30015.1,
+      "p95_ms": 18.19999999999709,
+      "p99_ms": 18.400000000001455,
+      "max_ms": 18.80000000000291,
+      "hitches": 0,
+      "audio": {
+        "unlocked": true,
+        "failed": false,
+        "loaded": 5,
+        "ready": true,
+        "muted": false,
+        "volume": 0.65,
+        "droppedBeforeReady": 0,
+        "events": 281,
+        "started": 287,
+        "ended": 272,
+        "dropped": 0,
+        "cancelled": 0,
+        "stolen": 17,
+        "peakVoices": 24,
+        "byType": {
+          "player": 210,
+          "enemy": 63,
+          "magout": 6,
+          "magin": 6,
+          "confirm": 2
+        },
+        "errors": 0,
+        "active": true,
+        "voices": 15,
+        "maxVoices": 24,
+        "context": "running"
+      }
+    }
+  ],
+  "errors": []
+}

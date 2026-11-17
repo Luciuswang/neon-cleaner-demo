@@ -1,0 +1,235 @@
+{
+  "schema": "sunbreak-arm-verification-v2",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "report binds current production weapon",
+      "pass": true
+    },
+    {
+      "name": "frozen production weapon unchanged",
+      "pass": true
+    },
+    {
+      "name": "frozen provenance unchanged",
+      "pass": true
+    },
+    {
+      "name": "before fixture is the exact captured original weapon",
+      "pass": true
+    },
+    {
+      "name": "isolated engineering verdict",
+      "pass": true
+    },
+    {
+      "name": "immutable source assets/mp5/mp5a5.glb",
+      "pass": true
+    },
+    {
+      "name": "immutable source assets/mp5/arms_basecolor.webp",
+      "pass": true
+    },
+    {
+      "name": "immutable source assets/mp5/arms_normal.webp",
+      "pass": true
+    },
+    {
+      "name": "baseline weapon update code unchanged",
+      "pass": true
+    },
+    {
+      "name": "no production dependency on QA",
+      "pass": true
+    },
+    {
+      "name": "rearOffset removed from production",
+      "pass": true
+    },
+    {
+      "name": "all four weapon states sampled",
+      "pass": true
+    },
+    {
+      "name": "canvas hash idle",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit idle",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle idle",
+      "pass": true
+    },
+    {
+      "name": "canvas hash ads",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit ads",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle ads",
+      "pass": true
+    },
+    {
+      "name": "canvas hash fire",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit fire",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle fire",
+      "pass": true
+    },
+    {
+      "name": "canvas hash ads-fire",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit ads-fire",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle ads-fire",
+      "pass": true
+    },
+    {
+      "name": "canvas hash reload-early",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit reload-early",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle reload-early",
+      "pass": true
+    },
+    {
+      "name": "canvas hash reload-mid",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit reload-mid",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle reload-mid",
+      "pass": true
+    },
+    {
+      "name": "canvas hash reload-late",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit reload-late",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle reload-late",
+      "pass": true
+    },
+    {
+      "name": "canvas hash wide-idle",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit wide-idle",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle wide-idle",
+      "pass": true
+    },
+    {
+      "name": "canvas hash narrow-idle",
+      "pass": true
+    },
+    {
+      "name": "draw cost and uniform fit narrow-idle",
+      "pass": true
+    },
+    {
+      "name": "parent/state/muzzle narrow-idle",
+      "pass": true
+    },
+    {
+      "name": "all original UV values within Float32 precision",
+      "pass": true
+    },
+    {
+      "name": "pure grip and finger tips unchanged",
+      "pass": true
+    },
+    {
+      "name": "rigid cloth edges do not stretch",
+      "pass": true
+    },
+    {
+      "name": "no open/nonmanifold left sleeve",
+      "pass": true
+    },
+    {
+      "name": "v2 separates source-ring frustum diagnostics from actual defects",
+      "pass": true
+    },
+    {
+      "name": "all 24 original left ring edges sewn with opposite source/closure winding",
+      "pass": true
+    },
+    {
+      "name": "all 120 closure edges have valid adjacency",
+      "pass": true
+    },
+    {
+      "name": "displayed vertex links, faces and winding are manifold",
+      "pass": true
+    },
+    {
+      "name": "one closed orientable left component with Euler characteristic 2",
+      "pass": true
+    },
+    {
+      "name": "remaining 24 right source opening edges are disclosed, unchanged, no unexpected openings",
+      "pass": true
+    },
+    {
+      "name": "actual-surface sweep has no defects or left boundary vertices in frustum",
+      "pass": true
+    },
+    {
+      "name": "deleted closure face negative control fails unchanged zero-opening criterion",
+      "pass": true
+    },
+    {
+      "name": "reversed closure face negative control fails unchanged zero-winding-defect criterion",
+      "pass": true
+    },
+    {
+      "name": "measured source joint lengths preserved",
+      "pass": true
+    },
+    {
+      "name": "only bounded shoulder completion added",
+      "pass": true
+    },
+    {
+      "name": "1815 bounded numerical states; no continuous review claim",
+      "pass": true
+    }
+  ],
+  "weaponSHA256": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+  "provenanceSHA256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+  "renderReport": "qa/arm-after-report.json",
+  "limitations": [
+    "Writer LEFT ARM engineering check only; main reports integrated checks23/house47/tactical24 pass; those checks were not rerun by this specialist. Independent Zeno art review remains external.",
+    "Original right shoulder has 24 unchanged open edges; some enter the frustum. Their occlusion/exposure is not tested here; no global watertightness or hole-free art claim.",
+    "Still samples are not full continuous visual review or a hardware performance benchmark.",
+    "Authored mixed wrist/cuff skin blends deform; rigid cloth, source joint lengths and grip contacts are checked separately."
+  ]
+}

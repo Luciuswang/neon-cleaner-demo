@@ -14,7 +14,7 @@ async function obtain(path){
  const imports=[...text.matchAll(/(?:from\s*|import\s*)['"]([^'"]+)['"]/g)].map(m=>m[1]);
  for(const i of imports){if(i.startsWith('.'))await obtain(posix.normalize(posix.join(posix.dirname(path),i)));else if(i==='three')await obtain('build/three.module.js')}
 }
-for(const name of ['world.js','storm.js','weapon.js','actors.js']){
+for(const name of ['world.js','storm.js','weapon.js','actors.js','tools/house-authoring.js']){
  const text=await readFile(resolve(root,name),'utf8');
  for(const m of text.matchAll(/['"]three\/addons\/([^'"]+)['"]/g))await obtain('examples/jsm/'+m[1]);
 }

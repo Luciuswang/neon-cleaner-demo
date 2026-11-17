@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-17T07:08:10.116Z",
+  "method": "isolated fake WebAudio unit fixtures, not browser playback/listening",
+  "sourceSha256": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+  "pass": true,
+  "checks": [
+    {
+      "name": "locked until gesture",
+      "pass": true
+    },
+    {
+      "name": "unlock creates context",
+      "pass": true
+    },
+    {
+      "name": "active weather gain follows shared volume",
+      "pass": true
+    },
+    {
+      "name": "mute is zero gain",
+      "pass": true
+    },
+    {
+      "name": "quarter volume target",
+      "pass": true
+    },
+    {
+      "name": "at most two scheduled thunder voices",
+      "pass": true
+    },
+    {
+      "name": "pause silences and cancels queued thunder",
+      "pass": true
+    },
+    {
+      "name": "resume restores weather target",
+      "pass": true
+    },
+    {
+      "name": "blur stays silent across update",
+      "pass": true
+    },
+    {
+      "name": "focus restores eligible weather",
+      "pass": true
+    },
+    {
+      "name": "hidden tab stays silent",
+      "pass": true
+    },
+    {
+      "name": "visible eligible tab resumes",
+      "pass": true
+    }
+  ]
+}

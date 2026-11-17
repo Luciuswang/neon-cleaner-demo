@@ -1,0 +1,18 @@
+{
+  "longTasks": [
+    {
+      "startTime": 11330.900000095367,
+      "duration": 159,
+      "name": "self",
+      "attribution": [
+        {
+          "name": "unknown",
+          "containerType": "window",
+          "containerName": ""
+        }
+      ]
+    }
+  ],
+  "timeOrigin": 1794899660179.9,
+  "visibility": "visible"
+}

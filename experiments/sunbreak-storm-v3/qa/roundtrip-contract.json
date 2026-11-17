@@ -1,0 +1,149 @@
+{
+  "schema": "sunbreak-roundtrip-preservation-v1",
+  "date": "2026-11-17T07:15:34.098Z",
+  "base": "8046a45d1267feaf800100f99b44e8a63909dd9c",
+  "pass": true,
+  "checks": [
+    {
+      "name": "entire player/combat/NPC/input inline module byte-exact to last public source",
+      "pass": true
+    },
+    {
+      "name": "house-logic.js byte-exact",
+      "pass": true
+    },
+    {
+      "name": "audio.js byte-exact",
+      "pass": true
+    },
+    {
+      "name": "storm.js byte-exact",
+      "pass": true
+    },
+    {
+      "name": "storm-audio.js byte-exact",
+      "pass": true
+    },
+    {
+      "name": "actors.js byte-exact",
+      "pass": true
+    },
+    {
+      "name": "tactical-ai.js byte-exact",
+      "pass": true
+    },
+    {
+      "name": "all v1/v2 tracked files preserved",
+      "pass": true
+    },
+    {
+      "name": "wood grain UV logic unchanged",
+      "pass": true
+    },
+    {
+      "name": "actual movement bound function unchanged",
+      "pass": true
+    },
+    {
+      "name": "all 723 editable tiles and 27 ridge caps exist in contract",
+      "pass": true
+    },
+    {
+      "name": "assets/mp5/mp5a5.glb original licensed source preserved",
+      "pass": true
+    },
+    {
+      "name": "assets/mp5/arms_basecolor.webp original licensed source preserved",
+      "pass": true
+    },
+    {
+      "name": "assets/mp5/arms_normal.webp original licensed source preserved",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum timber-house-source.glb",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum timber-house-edited.glb",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum timber-house-editable.blend",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum house-contract.json",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum blender-roundtrip.json",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum material-textures.json",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum LICENSES.json",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum README-美术交接.md",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_000.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_001.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_002.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_003.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_004.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_005.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_006.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_007.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_008.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_009.png",
+      "pass": true
+    },
+    {
+      "name": "handoff checksum textures/image_010.png",
+      "pass": true
+    },
+    {
+      "name": "ZIP exact allowlist and decompressed content checksums",
+      "pass": true
+    },
+    {
+      "name": "actual Blender mesh edit, not material-only/no-op",
+      "pass": true
+    }
+  ],
+  "method": "Exact source/data hashes and real generated asset checks; not runtime/art acceptance"
+}

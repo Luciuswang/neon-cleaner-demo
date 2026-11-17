@@ -673,3 +673,7 @@ Pages preparation stopped before publishing on original whitespace in ten pinned
 ## Sync note - 2026-11-17T13:54:48.8359051+08:00
 
 SUNBREAK public release COMPLETE. Normal protected-main PR6 merged without bypass as ba995a1d6a753aff0a9d547afc8801e6eee8dd06, deployed source97a20ca402c6c2478a85a0e3be1d4b75b094c9f3. Public https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ plus original/ and v2/ all started/fired in browser; v3 reload30/89, NPC combat, audio and restart verified. All138 static files101465774 bytes match anonymous HTTPS hashes and root/web entries unchanged. One initial transient CDN503 passed retry; first report retained. Runtime remains exact validated release; this checkpoint adds PR-safe publishing tools and live evidence only. Overall demo delivered, engineering remains bounded CONDITIONAL due earlier isolated hitch; no UE/AAA/continuous-motion acceptance. Private vault unchanged/skipped.
+
+## Sync note - 2026-11-17T15:18:10.1610122+08:00
+
+SUNBREAK v3 editable cabin export/real Blender edit/reimport and left-arm repair accepted at bounded browser-demo scope. Source-bound collector41 PASS, independent engineering/art PASS, two final1080p30s combat/audio strict pacing passes. Earlier428ms hitch retained with unknown cause. v1/v2 and whole player module preserved. Public Pages publication and live hashes/smoke pending. Pre-existing dirty private vault preserved; this public-only slice skips private transfer, no full UE portability claim.

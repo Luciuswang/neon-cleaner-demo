@@ -1,0 +1,120 @@
+{
+  "schema": "sunbreak-house-blend-fresh-open-v1",
+  "pass": true,
+  "blender": "5.3.0",
+  "method": "Separate fresh background Blender process reopens delivered .blend and decodes every embedded texture. No desktop screenshots or resave.",
+  "images": [
+    {
+      "name": "Image_0",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.0
+    },
+    {
+      "name": "Image_1",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.4274510145187378
+    },
+    {
+      "name": "Image_10",
+      "size": [
+        64,
+        64
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.0
+    },
+    {
+      "name": "Image_2",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.529411792755127
+    },
+    {
+      "name": "Image_3",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.0
+    },
+    {
+      "name": "Image_4",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.40000003576278687
+    },
+    {
+      "name": "Image_5",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.6235294342041016
+    },
+    {
+      "name": "Image_6",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.0
+    },
+    {
+      "name": "Image_7",
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.0
+    },
+    {
+      "name": "Image_8",
+      "size": [
+        64,
+        64
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.0
+    },
+    {
+      "name": "Image_9",
+      "size": [
+        64,
+        64
+      ],
+      "packed": true,
+      "decoded": true,
+      "firstPixel": 0.43529415130615234
+    }
+  ],
+  "objects": 1398,
+  "handleVertices": 96
+}

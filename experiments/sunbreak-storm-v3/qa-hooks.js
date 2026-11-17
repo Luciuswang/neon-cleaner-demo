@@ -6,7 +6,7 @@ async function captureCanvas(name){
  let minLuma=255,maxLuma=0,sum=0,nonBlack=0,samples=0;const colorBins=new Set();
  for(let y=0;y<cv.height;y+=19)for(let x=0;x<cv.width;x+=19){const i=(y*cv.width+x)*4,r=pixels[i],g=pixels[i+1],b=pixels[i+2],l=r*.2126+g*.7152+b*.0722;minLuma=Math.min(minLuma,l);maxLuma=Math.max(maxLuma,l);sum+=l;nonBlack+=l>8?1:0;samples++;colorBins.add((r>>4)*256+(g>>4)*16+(b>>4))}
  const rect=id=>{const e=document.getElementById(id),r=e.getBoundingClientRect();return{id,visible:getComputedStyle(e).display!=='none',x:r.x,y:r.y,width:r.width,height:r.height}};
- const metadata={date:new Date().toISOString(),capture_method:'browser-webgl-canvas',name,qa:window.demoQA.snapshot(),actorPoses:visual.actorQA?.(),render:visual.info(),viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,pixel_check:{samples,minLuma,maxLuma,meanLuma:sum/samples,nonBlackRatio:nonBlack/samples,colorBins:colorBins.size,nonblank:colorBins.size>24&&maxLuma-minLuma>45},ui_bounds:['bStyle','bWeather','bPause','bPresOff','ammo','kills','soundControls'].map(rect),colliders:colliders.map(b=>({min:b.min.toArray(),max:b.max.toArray()}))};
+ const metadata={date:new Date().toISOString(),capture_method:'browser-webgl-canvas',name,weaponPose:qaParams.get('weaponPose')||'normal',poseMethod:qaParams.has('weaponPose')?'paused diagnostic state using unchanged production pose/update; not an input/continuous-motion test':'normal production state',qa:window.demoQA.snapshot(),actorPoses:visual.actorQA?.(),render:visual.info(),viewport:[innerWidth,innerHeight],canvas:[cv.width,cv.height],renderer:rendererName,pixel_check:{samples,minLuma,maxLuma,meanLuma:sum/samples,nonBlackRatio:nonBlack/samples,colorBins:colorBins.size,nonblank:colorBins.size>24&&maxLuma-minLuma>45},ui_bounds:['bStyle','bWeather','bPause','bPresOff','ammo','kills','soundControls'].map(rect),colliders:colliders.map(b=>({min:b.min.toArray(),max:b.max.toArray()}))};
  const r=await fetch('/qa/capture',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,png:cv.toDataURL('image/png'),metadata,loadedBuildHashes:qaBuildHashes})});
  if(!r.ok)throw Error('Capture rejected for '+name);
  document.body.dataset.capture='saved';return name;
@@ -15,8 +15,13 @@ if(captureName){
  setPres(true);
  const views={hero:[0,1.7,12,-.12,-.06],courtyard:[-1,1.7,3,-.45,-.03],wall:[-7,1.7,-10,.56,.06],interior:[-8.7,2.25,-9.5,.46,.03],ground:[0,1.7,10,0,-.65],npccover:[-1,1.7,6,.65,-.02],weapon:[0,1.7,12,-.12,-.19],wide:[1,3.8,15,0,-.12],sky:[0,1.7,12,0,.36],housefront:[11,2.15,-6.8,-.08,.10],houseangle:[21.5,3.1,-9.0,.83,.10],houseinside:[10.92,2.36,-16.6,0,-.03],houseout:[10.92,2.36,-19.0,Math.PI,-.035],housedoor:[10.92,2.36,-12.9,0,.035]};
  views.puddle=[-5.1,1.1,8.3,.2,-.55];
+ views.househardware=[11.85,1.90,-14.75,.58,-.11];
  const v=views[qaParams.get('view')||'hero'];if(v){pos.set(v[0],v[1],v[2]);S.yaw=v[3];S.pitch=v[4]}
  visual.setWeather(Number(qaParams.get('weather')??2));
+ const weaponPose=qaParams.get('weaponPose');
+ if(weaponPose?.startsWith('ads'))S.aim=1;
+ if(weaponPose?.includes('fire')){recoil=.12;muz.intensity=12}
+ if(weaponPose?.startsWith('reload'))S.reload=weaponPose==='reload-early'?.95:weaponPose==='reload-late'?.15:.60;
  if(qaParams.get('door')==='open'){
   const h=visual.houseQA;h.door.toggle({near:true,visible:true,active:true});h.door.step(2,null);h.pivot.rotation.y=h.door.angle;h.refresh();
  }

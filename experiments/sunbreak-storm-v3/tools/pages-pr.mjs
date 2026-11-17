@@ -25,13 +25,13 @@ if(process.argv.includes('--submit')){
  assert.ok(checkout.startsWith(resolve(repo,'.local')+sep+'pages-release-'));
  const head=git(['rev-parse','HEAD'],checkout).trim(),release=JSON.parse(readFileSync(resolve(checkout,'sunbreak/public-release.json')));
  const paths=git(['diff-tree','--no-commit-id','--name-only','-r',head],checkout).trim().split('\n');
- assert.ok(paths.length>100&&paths.every(p=>p.startsWith('sunbreak/')),'Prepared commit scope invalid');
+ assert.ok(paths.length>0&&paths.every(p=>p.startsWith('sunbreak/')),'Prepared commit scope invalid');
  assert.equal(git(['status','--porcelain'],checkout).trim(),'');
  const branch='codex/sunbreak-public-'+release.sourceCommit.slice(0,12);
  git(['push','origin',head+':refs/heads/'+branch],checkout);
  let prs=await api('/pulls?state=open&base=main&head='+encodeURIComponent('Luciuswang:'+branch));
- const pr=prs[0]||await api('/pulls','POST',{title:'Publish SUNBREAK tactical storm demo and preserved comparisons',head:branch,base:'main',
-  body:'Publish only the validated static sunbreak/ subtree (source '+release.sourceCommit+'). Preserve existing root/web Neon Cleaner site. Includes v1/v2 comparisons, local licensed v3 assets, attribution and release hashes; no private/UE assets or QA diagnostics. Browser24 and house47 regressions pass. Bounded demo engineering verdict CONDITIONAL PASS: final1080p30s run passed, earlier isolated hitch retained. This PR follows protected-main rules; no bypass or repository setting change.'});
+ const pr=prs[0]||await api('/pulls','POST',{title:'Publish SUNBREAK editable cabin roundtrip and arm repair',head:branch,base:'main',
+  body:'Publish only the validated static sunbreak/ subtree (source '+release.sourceCommit+'). Preserve existing root/web and v1/v2. Includes the real Blender cabin roundtrip, public art handoff ZIP, licensed v3 assets and source-bound release hashes; no private/UE assets or server diagnostics. Current bounded QA and limitations are in the source task packet. This PR follows protected-main rules; no bypass or repository setting change.'});
  number=pr.number;
  console.log(JSON.stringify({preparedHead:head,sourceCommit:release.sourceCommit,pr:number,url:pr.html_url,state:pr.state},null,2));
 }

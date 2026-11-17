@@ -1,0 +1,487 @@
+{
+  "schema": "offscreen-cinematic-v1",
+  "slice": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "date": "2026-11-17T07:17:36.958Z",
+  "scope": "Browser demo editable-house and left-arm slice only; NOT UE cinematic acceptance",
+  "pass": true,
+  "engineering": "PASS",
+  "art": "PASS",
+  "checks": [
+    {
+      "name": "roundtrip-browser all assertions",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-browser.json",
+      "pass": true
+    },
+    {
+      "name": "house-current all assertions",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/house-current.json",
+      "pass": true
+    },
+    {
+      "name": "tactical-browser all assertions",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/tactical-browser.json",
+      "pass": true
+    },
+    {
+      "name": "contract report PASS",
+      "pass": true
+    },
+    {
+      "name": "house-unit report PASS",
+      "pass": true
+    },
+    {
+      "name": "ai-unit report PASS",
+      "pass": true
+    },
+    {
+      "name": "weather-audio-unit report PASS",
+      "pass": true
+    },
+    {
+      "name": "blend report PASS",
+      "pass": true
+    },
+    {
+      "name": "left-arm fifteen engineering checks",
+      "pass": true
+    },
+    {
+      "name": "left-arm fifty-five verification assertions",
+      "pass": true
+    },
+    {
+      "name": "current actual-game capture run",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-house-inside.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-house-inside native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-house-outside.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-house-outside native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-hardware-close.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-hardware-close native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-door-hardware.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-door-hardware native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-idle.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-idle native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-ads.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-ads native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-fire.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-fire native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-ads-fire.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-ads-fire native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-reload-early.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-reload-early native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-reload-mid.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-reload-mid native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/roundtrip-arm-reload-late.json",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-arm-reload-late native 1080p nonblank",
+      "pass": true
+    },
+    {
+      "name": "current loaded source qa/roundtrip-evidence/performance-4.json",
+      "pass": true
+    },
+    {
+      "name": "two consecutive current-build strict pacing passes; all attempts retained",
+      "pass": true
+    },
+    {
+      "name": "hardware 1080p real combat with audio >=30s and unchanged strict pacing limits",
+      "pass": true
+    },
+    {
+      "name": "independent bounded engineering and art clearance",
+      "pass": true
+    },
+    {
+      "name": "staged Git/LFS bytes preserve every source/evidence hash across PCs",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "index.html": "c7efebdeedb6b5e8be6ff6649332747f81afd50d2359d320bcb818de6fe8db01",
+    "world.js": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+    "weapon.js": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+    "house-asset.js": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2",
+    "house-logic.js": "aa01539a1a0691b855645d10102354cbd824a5e808ec107a74d98403f6315b73",
+    "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "vendor/manifest.json": "3f2490c003a184ed166a8c4b2f951b2f947157fdb98f8eee004a2c2b1e788230",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "assets/house/house-contract.json": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde",
+    "assets/house/timber-house-edited.glb": "0654a24a53d29399de64234545ee6fea0c0f7d6b274faaa1cab74b162253b5e9",
+    "qa-hooks.js": "021bd61fa9267b18f71d51c79580f572488b651a85592fa9ee8c53825e1df983",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "a425db78b43447010ef3121b4a596dc4e44666d6dac9db128e30f1eb2743b507",
+    "qa/house-roundtrip-checks.js": "8968069eb4f865a1b3dfac327dbf589f3043379ae72069601b37b2536a5ee9d2",
+    "qa/tactical-checks.js": "8009d75d8cdfcd3306503624e839548cd22331ea3e53b9c44d5559d25359418f",
+    "qa/check-house-logic.mjs": "1ba2e0a4fb73442290f782839257c4f4f1aa91d56bbaca9dbcf71cb66986fe34",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "65910242e163ed3fcfb0ed47c17edd724bbb19cbffeead72476ecf55919b9617"
+  },
+  "evidence": [
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-browser.json",
+      "bytes": 8265,
+      "sha256": "49917aae24987b6e096823e00e18ede0bf665db8f10f68adfc42d20394f32b72"
+    },
+    {
+      "path": "qa/roundtrip-evidence/house-current.json",
+      "bytes": 12671,
+      "sha256": "a36a049872c154113f0fe7b3da8cf43aaa50d5d13975a50c067df637b295c32c"
+    },
+    {
+      "path": "qa/roundtrip-evidence/tactical-browser.json",
+      "bytes": 332797,
+      "sha256": "29d9f1b23c9266e40ee4da4c8d09f32898f5071c835abd66daa5ebb200092530"
+    },
+    {
+      "path": "qa/roundtrip-contract.json",
+      "bytes": 3420,
+      "sha256": "255dd35c22b42552f1d1854c3f9e1c7383b2030c5a2a3301157044f48fb0821b"
+    },
+    {
+      "path": "qa/roundtrip-house-unit.json",
+      "bytes": 2363,
+      "sha256": "1f7f7a2f71b802f68622d9be8743437dfbcb150b1e4dfd4bd5ab1f4e5cf5a5a6"
+    },
+    {
+      "path": "qa/roundtrip-ai-unit.json",
+      "bytes": 19813,
+      "sha256": "abea02da9f05730a1b26e60245679f8fe420a1dec9b2c5c9897a447127fc6b68"
+    },
+    {
+      "path": "qa/roundtrip-weather-audio-unit.json",
+      "bytes": 1186,
+      "sha256": "74c0a817609eae981a37be19f1d4d6c0f588979158213de90fbc9db7487a25d6"
+    },
+    {
+      "path": "qa/roundtrip-blend.json",
+      "bytes": 2238,
+      "sha256": "79768c0bdfe8b2b15d3d9e613e983859b8548fc4a58a6811c79314c7a28e37c1"
+    },
+    {
+      "path": "qa/arm-after-report.json",
+      "bytes": 121585,
+      "sha256": "6b92b599a88e798b573ef8407e6a6b17d8033d01e09dd24d2bf2a0e4af5ffdec"
+    },
+    {
+      "path": "qa/arm-verification.json",
+      "bytes": 5755,
+      "sha256": "73496eb104f0cdba338780fcb3ded1edf71ebd3b6c702d4595ecb2282658c390"
+    },
+    {
+      "path": "qa/arm-handoff.md",
+      "bytes": 9261,
+      "sha256": "e97e9f4f72bc0fc85d9ebbb784b303c5ec27aea4e1e9f5e1a6f910637a4dfdd1"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-house-inside.json",
+      "bytes": 30644,
+      "sha256": "f8efe5d1e6ab8d2ab02b054d519c9ecf73ae4df4278c008d6182a580b7d154d2"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-house-inside.png",
+      "bytes": 3902845,
+      "sha256": "ae44284058ba5f423b5fc5bd866ad4ef260acc43a747231eed99bb75eb6d6816"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-house-outside.json",
+      "bytes": 30619,
+      "sha256": "1cc98cd76c2a0bb7c93937e45a3eb78f6e8c7d5028344f419dafa5e933bee579"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-house-outside.png",
+      "bytes": 2809198,
+      "sha256": "627199ecb3affd41e9012471c07c5296c4da384f879aab5a29de155c7db0eff1"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-hardware-close.json",
+      "bytes": 30659,
+      "sha256": "8e51046dc24da47af1c89c44ddbb62a285d53651d28bb6f4f761a3c9b4f604e1"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-hardware-close.png",
+      "bytes": 3278357,
+      "sha256": "fc84eaf3b4c87fc701044041dbec03efa4535f9ac056efa1a1eb9feffee46afd"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-door-hardware.json",
+      "bytes": 30647,
+      "sha256": "156c73ff5420f6280d99a166be5b588f80c2cc4403c1932aaacb61b57b367111"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-door-hardware.png",
+      "bytes": 3145983,
+      "sha256": "74011c24d5c471be6028c2fcb3481d5761f83ca5d71338d80c8577eb150f9fd7"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-idle.json",
+      "bytes": 30725,
+      "sha256": "d49cbaa1b9134f4d860f2174326ebed1b2f68897774313622f7f5abac0b75690"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-idle.png",
+      "bytes": 3902845,
+      "sha256": "ae44284058ba5f423b5fc5bd866ad4ef260acc43a747231eed99bb75eb6d6816"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-ads.json",
+      "bytes": 30745,
+      "sha256": "b24d20fb6499de056dec22f738a1c8b742210fa78b18574b48a20e7deb424a1f"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-ads.png",
+      "bytes": 3805434,
+      "sha256": "9d7bb347df6ddb47bd5a775582ed0bdf9444039e8e968edc71a24ae49c3047de"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-fire.json",
+      "bytes": 30749,
+      "sha256": "52a789c30a8ceb0864f6e65c78f2f75889286ff71130a6f1f8c849d25fa85c52"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-fire.png",
+      "bytes": 3939825,
+      "sha256": "88bff2d0d79d061b58a0a49d24e8884d91a3161307c4d0ab68bfa09b87d8c765"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-ads-fire.json",
+      "bytes": 30756,
+      "sha256": "f0f2528a6e7d95c03e2807be628cce5092823e8d0770b7ec50b6b779a89a5e3a"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-ads-fire.png",
+      "bytes": 3824958,
+      "sha256": "1a0d770ff3c2f8f7caeb499b6f6c3be7e30595596d39b3c75ffa04f83319816f"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-reload-early.json",
+      "bytes": 30751,
+      "sha256": "b3fc00182da3917c26e933e9b67ba4f80b809e2d40aae4808486fc5fad069c3d"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-reload-early.png",
+      "bytes": 3974422,
+      "sha256": "1f623e04d4a556ac4bc891fddb538f2b861d9198e8e18521075f76945d031be0"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-reload-mid.json",
+      "bytes": 30759,
+      "sha256": "5aaed846a514311c5f221053ea5b66cabbe603d80a378a622170a037a70f1289"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-reload-mid.png",
+      "bytes": 3985995,
+      "sha256": "18bf4f8557df678743a30c58b7042b5d235354d2e94d2b4a09f5921b65a65bdc"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-reload-late.json",
+      "bytes": 30772,
+      "sha256": "add97efd466ee687c705f88ab2efb741b350bf9249d5f47ea8b9def02167362f"
+    },
+    {
+      "path": "qa/roundtrip-evidence/roundtrip-arm-reload-late.png",
+      "bytes": 3959892,
+      "sha256": "1237fd9b2885cc7dd299e4ee7923f9b595451dffe562ce60d85905684cf60319"
+    },
+    {
+      "path": "qa/roundtrip-evidence/performance-1.json",
+      "bytes": 343743,
+      "sha256": "44b73f9b691f4ed54cec10a66f1cd10397bb8d8d5752e790071de68a3e69900a"
+    },
+    {
+      "path": "qa/roundtrip-evidence/performance-2.json",
+      "bytes": 338547,
+      "sha256": "d02b1fa88fe7228913ffe3fb715b1ea331cad9a69a6333b7bcbbf84edc737d1e"
+    },
+    {
+      "path": "qa/roundtrip-evidence/performance-3.json",
+      "bytes": 343057,
+      "sha256": "cdd20044fe5e0cdfaac07d3a82cfbdafc1f783f052a716e0a5201bf28d913ca0"
+    },
+    {
+      "path": "qa/roundtrip-evidence/performance-4.json",
+      "bytes": 343831,
+      "sha256": "67a221c55d170c975bf20c70bb0c6f3af95d18651495016d6ea544df594de115"
+    },
+    {
+      "path": "qa/roundtrip-evidence/performance-4.json",
+      "bytes": 343831,
+      "sha256": "67a221c55d170c975bf20c70bb0c6f3af95d18651495016d6ea544df594de115"
+    },
+    {
+      "path": "assets/house/house-contract.json",
+      "bytes": 3997690,
+      "sha256": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde"
+    },
+    {
+      "path": "assets/house/timber-house-edited.glb",
+      "bytes": 17969964,
+      "sha256": "0654a24a53d29399de64234545ee6fea0c0f7d6b274faaa1cab74b162253b5e9"
+    },
+    {
+      "path": "assets/house/timber-house-art-kit.zip",
+      "bytes": 54851845,
+      "sha256": "d50789e1e389e0b34d122bda60096e0f19c63dfe86fb81d5207b3a649340256d"
+    },
+    {
+      "path": "authoring/timber-house/timber-house-source.glb",
+      "bytes": 19404448,
+      "sha256": "c2cc5bd89d90d6c5667253d59943be8e46b3507b4e88467a7f7f854b015eabe7"
+    },
+    {
+      "path": "authoring/timber-house/timber-house-editable.blend",
+      "bytes": 14431068,
+      "sha256": "81240717a0c67872e024fec637827ee5c8a96abb5441023b96c6771c52d8c34f"
+    },
+    {
+      "path": "authoring/timber-house/package-manifest.json",
+      "bytes": 3122,
+      "sha256": "6a9164f538f7b51b0480fa9ebca885c36a521a129c5f8442bd6485c5327aabfe"
+    },
+    {
+      "path": "qa/roundtrip-independent-review.json",
+      "bytes": 2074,
+      "sha256": "79e961b0255de1bd9c031968d52406c5fd2890d2f0da3ba409ca268018ed9f60"
+    }
+  ],
+  "performance": {
+    "path": "qa/roundtrip-evidence/performance-4.json",
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "duration_ms": 30015.1,
+    "p95_ms": 18.19999999999709,
+    "p99_ms": 18.400000000001455,
+    "max_ms": 18.80000000000291,
+    "hitches": 0,
+    "attempts": [
+      {
+        "path": "qa/roundtrip-evidence/performance-1.json",
+        "currentBuild": false,
+        "pass": true,
+        "p95_ms": 18.19999999999709,
+        "p99_ms": 18.400000000001455,
+        "max_ms": 18.900000000001455,
+        "hitches": 0
+      },
+      {
+        "path": "qa/roundtrip-evidence/performance-2.json",
+        "currentBuild": true,
+        "pass": false,
+        "p95_ms": 18.19999999999709,
+        "p99_ms": 18.400000000001455,
+        "max_ms": 428.2000000000007,
+        "hitches": 1
+      },
+      {
+        "path": "qa/roundtrip-evidence/performance-3.json",
+        "currentBuild": true,
+        "pass": true,
+        "p95_ms": 18.100000000000364,
+        "p99_ms": 18.400000000001455,
+        "max_ms": 18.80000000000291,
+        "hitches": 0
+      },
+      {
+        "path": "qa/roundtrip-evidence/performance-4.json",
+        "currentBuild": true,
+        "pass": true,
+        "p95_ms": 18.19999999999709,
+        "p99_ms": 18.400000000001455,
+        "max_ms": 18.80000000000291,
+        "hitches": 0
+      }
+    ],
+    "caveat": "One retained current-build attempt had a 428.2ms hitch. Cause not established. Subsequent consecutive clean runs are bounded evidence, not a guarantee of hitch-free play on every machine."
+  },
+  "limitations": [
+    "Representative canvas and numerical pose review, not full continuous visual review.",
+    "Original right shoulder opening and baseline root-level reload cosmetics remain; no full hand-driven reload.",
+    "House architecture and collision layout fixed; arbitrary structural edits require a separate collision review.",
+    "Private asset vault pre-existing dirty state preserved; no full UE portability/AAA claim."
+  ],
+  "publication": "Source checkpoint/public Pages/live smoke are separate; consult roundtrip-public-live.json and roundtrip-public-smoke.json after publishing."
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T071810Z-24f5ab2c72",
+  "task_id": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "timestamp_utc": "2026-11-17T07:18:10.636947+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK v3 editable cabin export/real Blender edit/reimport and left-arm repair accepted at bounded browser-demo scope. Source-bound collector41 PASS, independent engineering/art PASS, two final1080p30s combat/audio strict pacing passes. Earlier428ms hitch retained with unknown cause. v1/v2 and whole player module preserved. Public Pages publication and live hashes/smoke pending. Pre-existing dirty private vault preserved; this public-only slice skips private transfer, no full UE portability claim.",
+  "commit_shas": [
+    "8046a45d1267feaf800100f99b44e8a63909dd9c"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

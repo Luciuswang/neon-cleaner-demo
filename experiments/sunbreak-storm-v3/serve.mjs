@@ -4,12 +4,22 @@ import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('.',import.meta.url)),port=5188;
-const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.jpg':'image/jpeg','.png':'image/png','.hdr':'application/octet-stream','.webp':'image/webp','.wav':'audio/wav','.gltf':'model/gltf+json','.glb':'model/gltf-binary','.bin':'application/octet-stream','.md':'text/plain'};
-export const sourceNames=['index.html','world.js','weapon.js','actors.js','audio.js','storm.js','storm-audio.js','timber-house.js','house-logic.js','tactical-ai.js','boot-ui.js','assets-manifest.json','weapon-provenance.json','soldier-provenance.json','vendor/manifest.json','assets/audio/manifest.json','qa-hooks.js','qa/runtime-checks.js','qa/storm-checks.js','qa/house-checks.js','qa/tactical-checks.js','qa/check-house-logic.mjs','qa/compare-gameplay.mjs','serve.mjs'];
+const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.mjs':'text/javascript; charset=utf-8','.json':'application/json','.jpg':'image/jpeg','.png':'image/png','.hdr':'application/octet-stream','.webp':'image/webp','.wav':'audio/wav','.gltf':'model/gltf+json','.glb':'model/gltf-binary','.bin':'application/octet-stream','.md':'text/plain','.zip':'application/zip'};
+export const sourceNames=['index.html','world.js','weapon.js','actors.js','audio.js','storm.js','storm-audio.js','timber-house.js','house-asset.js','house-logic.js','tactical-ai.js','boot-ui.js','assets-manifest.json','weapon-provenance.json','soldier-provenance.json','vendor/manifest.json','assets/audio/manifest.json','assets/house/house-contract.json','assets/house/timber-house-edited.glb','qa-hooks.js','qa/runtime-checks.js','qa/storm-checks.js','qa/house-checks.js','qa/house-roundtrip-checks.js','qa/tactical-checks.js','qa/check-house-logic.mjs','qa/compare-gameplay.mjs','serve.mjs'];
 async function hashes(){const result={};for(const name of sourceNames)result[name]=createHash('sha256').update(await readFile(resolve(root,name))).digest('hex');return result}
 const server=http.createServer(async(req,res)=>{
  try{
   const u=new URL(req.url,'http://127.0.0.1:'+port);
+  if(req.method==='POST'&&u.pathname==='/house-export'){
+   if(req.headers.origin!=='http://127.0.0.1:'+port){res.writeHead(403);res.end();return}
+   const chunks=[];let size=0;for await(const chunk of req){size+=chunk.length;if(size>64e6)throw Error('Export too large');chunks.push(chunk)}
+   const body=JSON.parse(Buffer.concat(chunks).toString()),glb=Buffer.from(body.glb,'base64');
+   if(glb.readUInt32LE(0)!==0x46546c67||body.contract?.schema!=='sunbreak-house-fixed-layout-v1')throw Error('Invalid house export');
+   const destination=resolve(root,'authoring/timber-house');await mkdir(destination,{recursive:true});
+   await writeFile(resolve(destination,'timber-house-source.glb'),glb);
+   await writeFile(resolve(destination,'house-contract.json'),JSON.stringify(body.contract,null,2)+'\n');
+   res.writeHead(200);res.end('saved');return;
+  }
   if(req.method==='POST'&&['/qa/capture','/qa/report'].includes(u.pathname)){
    if(req.headers.origin!=='http://127.0.0.1:'+port){res.writeHead(403);res.end();return}
    const chunks=[];let size=0;for await(const chunk of req){size+=chunk.length;if(size>24e6)throw Error('Capture too large');chunks.push(chunk)}
@@ -30,7 +40,7 @@ const server=http.createServer(async(req,res)=>{
   const v2=path==='/v2'||path.startsWith('/v2/');
   const selectedRoot=v2?fileURLToPath(new URL('../sunbreak-realistic-v2/',import.meta.url)):root;
   const route=v2?path.replace(/^\/v2\/?/,'/'):path;
-  const file=resolve(selectedRoot,'.'+(['/', '/test','/storm-test','/house-test','/tactical-test','/tactical-house-test','/startup-test','/startup-baseline'].includes(route)?'/index.html':route));
+  const file=resolve(selectedRoot,'.'+(['/', '/test','/storm-test','/house-test','/roundtrip-test','/tactical-test','/tactical-house-test','/startup-test','/startup-baseline'].includes(route)?'/index.html':route));
   if(!file.startsWith(selectedRoot.endsWith(sep)?selectedRoot:selectedRoot+sep)){res.writeHead(403);res.end();return}
   let data=await readFile(file);
   if(path==='/startup-baseline')data=Buffer.from((await readFile(new URL('../sunbreak-fable52/index.html',import.meta.url),'utf8')).replace('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js','./vendor/three/build/three.module.js'));
@@ -40,6 +50,7 @@ const server=http.createServer(async(req,res)=>{
    if(path==='/test')hooks+='\n'+await readFile(new URL('./qa/runtime-checks.js',import.meta.url),'utf8')+'\n'+await readFile(new URL('../sunbreak-fable52/smoke-inject.js',import.meta.url),'utf8');
    if(path==='/storm-test')hooks+='\n'+await readFile(new URL('./qa/storm-checks.js',import.meta.url),'utf8');
    if(path==='/house-test')hooks+='\n'+await readFile(new URL('./qa/house-checks.js',import.meta.url),'utf8');
+   if(path==='/roundtrip-test')hooks+='\n'+await readFile(new URL('./qa/house-roundtrip-checks.js',import.meta.url),'utf8');
    if(path==='/tactical-house-test')hooks+='\n'+(await readFile(new URL('./qa/house-checks.js',import.meta.url),'utf8')).replace("'six spawn anchors unchanged'","'authorized six tactical spawn anchors'").replace('JSON.stringify([[-8,-10],[9,-9],[-13,3],[14,3],[-3,-20],[9,-13]])','JSON.stringify(TACTICAL_SPAWNS.map(p=>[p[0],p[2]]))');
    if(path==='/tactical-test')hooks+='\n'+await readFile(new URL('./qa/tactical-checks.js',import.meta.url),'utf8');
    let text=data.toString();

@@ -26,7 +26,7 @@ if(!process.argv.includes('--publish')){
  assert.equal(pages.build_type,'legacy');assert.equal(pages.source.branch,'main');assert.equal(pages.source.path,'/');
  assert.equal(git(['status','--porcelain']).trim(),'','Commit the validated source before public publishing.');
  const sourceCommit=git(['rev-parse','HEAD']).trim(),out=resolve(game,'dist');
- const required=['index.html','world.js','actors.js','weapon.js','storm.js','storm-audio.js','audio.js','timber-house.js','house-logic.js','tactical-ai.js','boot-ui.js','credits.html','assets-manifest.json','weapon-provenance.json','soldier-provenance.json'];
+ const required=['index.html','world.js','actors.js','weapon.js','storm.js','storm-audio.js','audio.js','timber-house.js','house-asset.js','house-logic.js','tactical-ai.js','boot-ui.js','credits.html','assets-manifest.json','weapon-provenance.json','soldier-provenance.json'];
  const allowedRoot=new Set([...required,'assets','vendor','original','v2']);
  const digest=b=>createHash('sha256').update(b).digest('hex');
  const files=[];
@@ -38,7 +38,7 @@ if(!process.argv.includes('--publish')){
    assert.ok(allowedRoot.has(rel.split('/')[0]),'Unapproved root '+rel);
    if(s.isDirectory())walk(absolute);
    else{
-    assert.ok(['.html','.js','.json','.png','.jpg','.webp','.hdr','.wav','.glb','.gltf','.bin','.txt','.md'].includes(extname(name))||name==='LICENSE','Unapproved output type '+rel);
+    assert.ok(['.html','.js','.json','.png','.jpg','.webp','.hdr','.wav','.glb','.gltf','.bin','.txt','.md'].includes(extname(name))||rel==='assets/house/timber-house-art-kit.zip'||name==='LICENSE','Unapproved output type '+rel);
     const bytes=readFileSync(absolute);
     assert.ok(!bytes.subarray(0,80).toString().startsWith('version https://git-lfs.github.com/spec'),'Unresolved LFS pointer '+rel);
     if(['.js','.html','.json','.txt','.md'].includes(extname(name))){
@@ -78,7 +78,7 @@ if(!process.argv.includes('--publish')){
  // Validate actual staged Git objects, not just worktree bytes: inherited
  // attribute filters must never replace playable binaries with LFS pointers.
  for(const f of files){
-  const blob=execFileSync('git',['show',':sunbreak/'+f.path],{cwd:checkout,maxBuffer:32e6});
+  const blob=execFileSync('git',['show',':sunbreak/'+f.path],{cwd:checkout,maxBuffer:128e6});
   assert.equal(digest(blob),f.sha256,'Staged publication bytes differ: '+f.path);
  }
  const publishedPaths=git(['ls-files','--','sunbreak'],checkout).trim().split('\n');
