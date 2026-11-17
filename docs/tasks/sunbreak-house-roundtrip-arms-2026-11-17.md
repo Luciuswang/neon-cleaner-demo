@@ -1,6 +1,6 @@
 # Task: sunbreak-house-roundtrip-arms-2026-11-17
 
-- State: QA_ACCEPTED / PUBLICATION_PENDING
+- State: DONE — bounded browser-demo scope, live verified
 - Date: 2026-11-17
 - Branch: codex/character-continuity-pipeline
 - Owner: main Producer; single writer for house/runtime/release
@@ -104,7 +104,31 @@ cosmetics remain; no full hand-driven reload is claimed. General structural
 house edits still require collision review. This browser slice does not satisfy
 unrelated UE/AAA/AI-video cinematic gates.
 
-Next: verified normal source checkpoint with LFS (`-SkipPrivateAssets`, because
-the pre-existing dirty vault is unrelated and preserved), existing protected-main
-Pages PR, anonymous all-file hashes, actual public start/fire/reload smoke, and
-final durable receipt/worklog. Do not claim live until those complete.
+## Publication receipt — complete
+
+- Core source `a32056a66d3b0a09f7719855a1bea83305af40c7` uploaded and verified,
+  including4 unique LFS objects/107MB (GLBs, real Blender file and ZIP).
+- Publishing-tool correction/source release:
+  `e9dfc9244a23206960931b9aba7b0d457e4142d5`. This preserves exact pinned
+  TextureUtils bytes; no runtime or source-bound QA change.
+- Ordinary protected-main PR7:
+  `https://github.com/Luciuswang/neon-cleaner-demo/pull/7`.
+  Merge `b208c68dc84db962078bce088d4c52bbeda8e698`.
+  No rules changed, force push, bypass, or self-review approval.
+- Anonymous live verification at2026-11-17T07:25:22Z:146/146 release files,
+  178,467,426 bytes, all SHA256 correct; pinned original root/web entries
+  preserved. Report: v3 `qa/roundtrip-public-live.json`.
+- Actual public hardware-headless browser start/fire/reload smoke PASS,
+  zero console/runtime errors. Magazine30→28→30, reserve90→88; real handoff
+  download link present. Report: v3 `qa/roundtrip-public-smoke.json`.
+- Play: `https://luciuswang.github.io/neon-cleaner-demo/sunbreak/`.
+  ZIP: `https://luciuswang.github.io/neon-cleaner-demo/sunbreak/assets/house/timber-house-art-kit.zip`.
+  Separate comparisons remain at `/sunbreak/original/` and `/sunbreak/v2/`.
+- Private transfer was explicitly skipped for this self-contained public slice;
+  pre-existing dirty vault preserved. No full UE asset-portability claim.
+
+Next concrete action, only on user request: human artist edits the delivered
+`.blend`/GLB; validate the edited derivative against the documented fixed-layout
+contract and repeat import/door/collision/lighting/runtime QA before publishing.
+Structural redesign needs an explicitly reviewed collision update. No further
+production or email is pending for this request.

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T072728Z-178a2237b0",
+  "task_id": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "timestamp_utc": "2026-11-17T07:27:28.124530+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "DONE: SUNBREAK v3 editable cabin and left-arm slice. Live https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ ; art ZIP at assets/house/timber-house-art-kit.zip . Normal PR7 merged as b208c68 from source e9dfc92. Anonymous146/146 SHA verification and public start/fire/reload/download smoke PASS; v1/v2 and root/web preserved. Bounded art/engineering PASS and final two strict1080p30s pacing passes; earlier428ms hitch/remaining original right shoulder/full reload limitations retained. Public self-contained assets/LFS verified; pre-existing private vault unchanged, no full UE portability claim. Task packet and durable live QA reports complete.",
+  "commit_shas": [
+    "e9dfc9244a23206960931b9aba7b0d457e4142d5"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

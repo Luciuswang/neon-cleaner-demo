@@ -1,0 +1,521 @@
+{
+  "schema": "sunbreak-roundtrip-browser-run-v1",
+  "phase": "public-smoke",
+  "date": "2026-11-17T07:26:08.901Z",
+  "captureMethod": "Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels",
+  "pass": true,
+  "results": [
+    {
+      "pass": true,
+      "before": {
+        "state": "menu",
+        "style": "热带竞技",
+        "styleIndex": 0,
+        "health": 100,
+        "ammo": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "kills": 0,
+        "camera": {
+          "x": 0,
+          "y": 1.7,
+          "z": 12,
+          "yaw": -0.12,
+          "pitch": -0.06
+        },
+        "enemies": [
+          {
+            "i": 0,
+            "alive": true,
+            "hp": 100,
+            "x": -6.1,
+            "y": 0,
+            "z": 0.55,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 1,
+            "alive": true,
+            "hp": 100,
+            "x": 5,
+            "y": 0,
+            "z": -5.55,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 2,
+            "alive": true,
+            "hp": 100,
+            "x": -15.6,
+            "y": 0,
+            "z": 10.1,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 3,
+            "alive": true,
+            "hp": 100,
+            "x": 15.6,
+            "y": 0,
+            "z": -6.15,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 4,
+            "alive": true,
+            "hp": 100,
+            "x": -12,
+            "y": 0,
+            "z": -20.45,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 5,
+            "alive": true,
+            "hp": 100,
+            "x": 12.25,
+            "y": 0.66,
+            "z": -17.5,
+            "mode": "guard",
+            "stance": 1
+          }
+        ],
+        "tactical": {
+          "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+          "elapsed": 0,
+          "totalShots": 0,
+          "totalMovementMeters": 0,
+          "decisions": 0,
+          "navigation": {
+            "width": 83,
+            "height": 78,
+            "blocked": 1214,
+            "cells": 6474
+          },
+          "coverPairs": 136,
+          "actors": [
+            {
+              "id": 0,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 1,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 2,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 3,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 4,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 5,
+              "role": "cabin defender",
+              "mode": "guard",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            }
+          ]
+        },
+        "presentation": false,
+        "reloading": 0,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ]
+      },
+      "fired": {
+        "state": "play",
+        "style": "热带竞技",
+        "styleIndex": 0,
+        "health": 100,
+        "ammo": {
+          "mag": 28,
+          "reserve": 90
+        },
+        "kills": 0,
+        "camera": {
+          "x": 0,
+          "y": 1.7,
+          "z": 12,
+          "yaw": -0.12,
+          "pitch": -0.06
+        },
+        "enemies": [
+          {
+            "i": 0,
+            "alive": true,
+            "hp": 100,
+            "x": -6.34,
+            "y": 0,
+            "z": 0.5,
+            "mode": "hide",
+            "stance": 0.9644181870129584
+          },
+          {
+            "i": 1,
+            "alive": true,
+            "hp": 100,
+            "x": 5.41,
+            "y": 0,
+            "z": -5.57,
+            "mode": "hide",
+            "stance": 0.8082443388845783
+          },
+          {
+            "i": 2,
+            "alive": true,
+            "hp": 100,
+            "x": -15.68,
+            "y": 0,
+            "z": 10.53,
+            "mode": "advance",
+            "stance": 0.47914227748068194
+          },
+          {
+            "i": 3,
+            "alive": true,
+            "hp": 100,
+            "x": 15.61,
+            "y": 0,
+            "z": -6.31,
+            "mode": "advance",
+            "stance": 0.7285383943229368
+          },
+          {
+            "i": 4,
+            "alive": true,
+            "hp": 100,
+            "x": -12,
+            "y": 0,
+            "z": -20.45,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 5,
+            "alive": true,
+            "hp": 100,
+            "x": 12.25,
+            "y": 0.66,
+            "z": -17.5,
+            "mode": "guard",
+            "stance": 1
+          }
+        ],
+        "tactical": {
+          "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+          "elapsed": 0.44509999990463256,
+          "totalShots": 0,
+          "totalMovementMeters": 1.2478499987125404,
+          "decisions": 4,
+          "navigation": {
+            "width": 83,
+            "height": 78,
+            "blocked": 1214,
+            "cells": 6474
+          },
+          "coverPairs": 136,
+          "actors": [
+            {
+              "id": 0,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": "5:0:-1:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.24547499978542284,
+              "stance": 0.9644181870129584,
+              "pathPoints": 0
+            },
+            {
+              "id": 1,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": "6:0:-1:1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.40657499957084553,
+              "stance": 0.8082443388845783,
+              "pathPoints": 0
+            },
+            {
+              "id": 2,
+              "role": "cover rifleman",
+              "mode": "advance",
+              "cover": "8:-1:0:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.4380749995708477,
+              "stance": 0.47914227748068194,
+              "pathPoints": 1
+            },
+            {
+              "id": 3,
+              "role": "corner rifleman",
+              "mode": "advance",
+              "cover": "10:1:0:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.15772499978542404,
+              "stance": 0.7285383943229368,
+              "pathPoints": 1
+            },
+            {
+              "id": 4,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 5,
+              "role": "cabin defender",
+              "mode": "guard",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            }
+          ]
+        },
+        "presentation": false,
+        "reloading": 0,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ]
+      },
+      "reloaded": {
+        "state": "play",
+        "style": "热带竞技",
+        "styleIndex": 0,
+        "health": 100,
+        "ammo": {
+          "mag": 30,
+          "reserve": 88
+        },
+        "kills": 0,
+        "camera": {
+          "x": 0,
+          "y": 1.7,
+          "z": 12,
+          "yaw": -0.12,
+          "pitch": -0.06
+        },
+        "enemies": [
+          {
+            "i": 0,
+            "alive": true,
+            "hp": 100,
+            "x": -6.34,
+            "y": 0,
+            "z": 0.5,
+            "mode": "hide",
+            "stance": 0.9999979336372948
+          },
+          {
+            "i": 1,
+            "alive": true,
+            "hp": 100,
+            "x": 5.41,
+            "y": 0,
+            "z": -5.57,
+            "mode": "hide",
+            "stance": 0.9999888640652795
+          },
+          {
+            "i": 2,
+            "alive": true,
+            "hp": 100,
+            "x": -15.68,
+            "y": 0,
+            "z": 10.53,
+            "mode": "hide",
+            "stance": 0.9999697519355473
+          },
+          {
+            "i": 3,
+            "alive": true,
+            "hp": 100,
+            "x": 15.62,
+            "y": 0,
+            "z": -6.47,
+            "mode": "hide",
+            "stance": 0.999958158020682
+          },
+          {
+            "i": 4,
+            "alive": true,
+            "hp": 100,
+            "x": -9.03,
+            "y": 0,
+            "z": -20.33,
+            "mode": "advance",
+            "stance": 0.30006672873132645
+          },
+          {
+            "i": 5,
+            "alive": true,
+            "hp": 100,
+            "x": 12.25,
+            "y": 0.66,
+            "z": -17.5,
+            "mode": "guard",
+            "stance": 1
+          }
+        ],
+        "tactical": {
+          "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+          "elapsed": 1.8384999999999994,
+          "totalShots": 0,
+          "totalMovementMeters": 4.382999998927129,
+          "decisions": 6,
+          "navigation": {
+            "width": 83,
+            "height": 78,
+            "blocked": 1214,
+            "cells": 6474
+          },
+          "coverPairs": 136,
+          "actors": [
+            {
+              "id": 0,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": "5:0:-1:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.24547499978542284,
+              "stance": 0.9999979336372948,
+              "pathPoints": 0
+            },
+            {
+              "id": 1,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": "6:0:-1:1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.40657499957084553,
+              "stance": 0.9999888640652795,
+              "pathPoints": 0
+            },
+            {
+              "id": 2,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": "8:-1:0:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.4380749995708477,
+              "stance": 0.9999697519355473,
+              "pathPoints": 0
+            },
+            {
+              "id": 3,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": "10:1:0:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0.317025000214578,
+              "stance": 0.999958158020682,
+              "pathPoints": 0
+            },
+            {
+              "id": 4,
+              "role": "cover rifleman",
+              "mode": "advance",
+              "cover": "9:0:-1:-1",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 2.9758499997854346,
+              "stance": 0.30006672873132645,
+              "pathPoints": 2
+            },
+            {
+              "id": 5,
+              "role": "cabin defender",
+              "mode": "guard",
+              "cover": "cabin-door",
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            }
+          ]
+        },
+        "presentation": false,
+        "reloading": 0,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ]
+      },
+      "downloadLink": "./assets/house/timber-house-art-kit.zip"
+    }
+  ],
+  "errors": []
+}

@@ -681,3 +681,7 @@ SUNBREAK v3 editable cabin export/real Blender edit/reimport and left-arm repair
 ## Sync note - 2026-11-17T15:20:56.8338210+08:00
 
 Pages preflight retained exact pinned upstream TextureUtils bytes using the existing archive-only whitespace exclusion family, after actual staged SHA checks. No runtime or QA-bound source changed. Source a32056a is uploaded; retrying normal Pages publication with this publishing-tool correction.
+
+## Sync note - 2026-11-17T15:27:27.6771396+08:00
+
+DONE: SUNBREAK v3 editable cabin and left-arm slice. Live https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ ; art ZIP at assets/house/timber-house-art-kit.zip . Normal PR7 merged as b208c68 from source e9dfc92. Anonymous146/146 SHA verification and public start/fire/reload/download smoke PASS; v1/v2 and root/web preserved. Bounded art/engineering PASS and final two strict1080p30s pacing passes; earlier428ms hitch/remaining original right shoulder/full reload limitations retained. Public self-contained assets/LFS verified; pre-existing private vault unchanged, no full UE portability claim. Task packet and durable live QA reports complete.

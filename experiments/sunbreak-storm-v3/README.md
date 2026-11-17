@@ -91,8 +91,8 @@ do not certify full continuous motion or AAA/UE5 photorealistic parity.
 
 Live v3: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/
 Comparisons: `original/` and `v2/` below that address. All three were started
-and fired in an actual public browser on 2026-11-17; anonymous byte hashes of all
-138 deployed files and the unchanged original root/web entry were verified.
+and fired in an actual public browser on 2026-11-17 for the earlier tactical
+release; its138 deployed file hashes and original root/web entry were verified.
 
 `node tools/github-pages.mjs` reads the existing Pages status without mutation.
 After committing and building validated source, `--publish` installs only the
@@ -150,3 +150,11 @@ passed; one earlier428ms hitch is preserved with unknown cause, not discarded.
 No full continuous visual review, globally watertight arm, hand-driven reload,
 or UE cinematic/AAA parity is claimed. The unchanged original right shoulder
 opening and minor cloth/lighting polish notes remain documented.
+
+Current editable-cabin release is live through normal protected-main PR7,
+public commit `b208c68dc84db962078bce088d4c52bbeda8e698` from source
+`e9dfc9244a23206960931b9aba7b0d457e4142d5`. Anonymous checks passed146/146
+files, including the real ZIP and imported GLB, with original root/web preserved.
+`qa/roundtrip-public-live.json` and `qa/roundtrip-public-smoke.json` record the
+actual public start/fire/reload test and working download link. Play remains at
+the v3 address above; download `assets/house/timber-house-art-kit.zip` there.

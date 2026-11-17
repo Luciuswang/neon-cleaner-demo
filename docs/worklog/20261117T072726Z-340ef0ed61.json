@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "event_id": "20261117T072726Z-340ef0ed61",
+  "task_id": "sunbreak-house-roundtrip-arms-2026-11-17",
+  "timestamp_utc": "2026-11-17T07:27:26.258264+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "done",
+  "summary": "Completed and live: real editable cabin Blender roundtrip, preserved v1/v2, repaired left-arm mesh, bounded independent engineering/art PASS, final strict pacing repeats passed. Public146/146 SHA checks and actual start/fire/reload/download smoke PASS. Retained earlier unknown428ms hitch and unchanged right shoulder/full reload limitations.",
+  "commit_shas": [
+    "e9dfc9244a23206960931b9aba7b0d457e4142d5",
+    "b208c68dc84db962078bce088d4c52bbeda8e698"
+  ],
+  "evidence": [
+    "experiments/sunbreak-storm-v3/qa/roundtrip-release.json",
+    "experiments/sunbreak-storm-v3/qa/roundtrip-public-live.json",
+    "experiments/sunbreak-storm-v3/qa/roundtrip-public-smoke.json"
+  ],
+  "blockers": [],
+  "next_action": "Artist may edit delivered blend/GLB on user request; structural changes require collision review. No further work pending for this slice.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
