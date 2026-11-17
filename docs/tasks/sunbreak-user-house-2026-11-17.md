@@ -1,6 +1,6 @@
 # Task: sunbreak-user-house-2026-11-17
 
-- State: QA
+- State: DONE — manual-control proof and public release verified
 - Owner: main Producer, single writer
 - Created: 2026-11-17
 - Branch: codex/character-continuity-pipeline
@@ -83,7 +83,7 @@ Original authoring kit and historical QA remain byte-exact.
 - [x] Current representative canvas views show the actual edits; this is not a
       full continuous visual/animation review.
 - [x] v1/v2, combat/player module and weapon remain exact.
-- [ ] Current30s1080p real-time sample, independent scoped QA and actual live
+- [x] Current30s1080p real-time sample, independent scoped QA and actual live
       release verification are recorded without recycling old PASS evidence.
 
 ## Review / results
@@ -134,5 +134,35 @@ is the intentional control proof, not an art-direction failure.
   Hello/red paint, new step and plate visible; no confirmed unexpected import/UV/
   texture/shader loss. Minor plinth-corner dark facet remains an authored-versus-
   export ambiguity, not a confirmed import failure. No continuous visual claim.
-- Current local source/art checkpoint accepted; actual public release verification
-  remains pending.
+- Current local source/art checkpoint accepted; source-bound collector29 including
+  actual staged Git/LFS bytes PASS.
+
+## Publication receipt — complete
+
+- Source:28a7cb9c5a69d94d187ec81d1734a5d0ccb0bda6, normal branch push acknowledged;
+  two unique new LFS objects31MB uploaded (user source `.blend`, derived GLB).
+- Normal protected-main PR8 merged without bypass:
+ 49d79ba1d23be88eec79dd3d951d802da321d959.
+- Live: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/
+- Anonymous2026-11-17T09:40:25Z verification:146/146 files,178022151 bytes,
+  allSHA256 correct, original root/web unchanged, no retries/errors.
+  Evidence:qa/user-house-public-live.json.
+- Actual public native-headless browser start/fire/reload PASS at09:42:48Z,
+  magazine30->28->30, reserve90->88, zero captured runtime/console errors.
+  Evidence:qa/user-house-public-smoke.json.
+- First public cold-start attempt timed out at70s during concurrent full-file
+  verification. Cause unknown, not inferred as a network failure. Earlier harness
+  closed before retaining DOM/resource diagnostics; its failed command outcome
+  is explicitly preserved in qa/user-house-public-startup-first-attempt.json.
+  Harness now retains such failure diagnostics and permits120s for public cold
+  loading. Repeat ran without concurrent bulk verification and passed; no
+  frame-pacing thresholds or runtime files changed.
+- v1/v2, original art kit and prior QA remain intact. The old downloadable kit
+  is still the comparison baseline; latest exact user source is preserved in
+  authoring/user-house-2026-11-17/, not falsely presented as the old ZIP.
+- Existing private-vault changes remain untouched. This checkpoint restores
+  the self-contained public browser slice, not the unrelated UE private assets.
+
+Next: user inspects the live result. Future supplied `.blend` projects can carry
+packed painted textures; future structural changes still require a fresh
+specific collision review. No further production or email is pending.

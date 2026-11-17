@@ -1,0 +1,10 @@
+{
+  "schema": "sunbreak-public-startup-command-failure-v1",
+  "date": "2026-11-17",
+  "pass": false,
+  "command": "node qa/roundtrip-browser.mjs --phase=public-smoke --report-prefix=user-house",
+  "observed": "Timed out waiting70s for the public start button and data-qa readiness. Browser had already closed in finally; no boot/network diagnostic snapshot was retained by the earlier harness.",
+  "context": "Anonymous146-file verification ran concurrently and passed all178022151 bytes. That does not prove browser startup.",
+  "cause": "Unknown; do not infer a network or asset-import cause from timing alone.",
+  "next": "Harness now retains failed startup DOM/resource/error diagnostics and allows120s public cold-start loading. Repeat without the concurrent full-file download."
+}

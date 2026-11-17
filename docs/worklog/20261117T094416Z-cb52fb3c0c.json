@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T094416Z-cb52fb3c0c",
+  "task_id": "sunbreak-user-house-2026-11-17",
+  "timestamp_utc": "2026-11-17T09:44:16.954355+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "DONE: manual house-edit control verified and live at https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ . Exact saved user Blender project/packed Hello-red paint and geometry/material edits preserved, source28a7cb9; normal PR8 merge49d79ba. Anonymous146/146 SHA checks and public actual start/fire/reload PASS. Independent bounded engineering/art PASS; v1/v2 and original art kit untouched. Prior568.5ms hitch and first70s public cold-start timeout retained; final two strict1080p30s samples and public repeat PASS, not universal performance/startup guarantees. User original F files unchanged. Private vault conflict preserved, isolated public-only checkpoint; no UE portability claim. Next: user reviews actual result; no production/email pending.",
+  "commit_shas": [
+    "28a7cb9c5a69d94d187ec81d1734a5d0ccb0bda6"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

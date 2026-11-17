@@ -127,7 +127,8 @@ try{
   console.log(JSON.stringify(results.at(-1),null,2));
  }else{
   await send('Page.navigate',{url:'https://luciuswang.github.io/neon-cleaner-demo/sunbreak/'});
-  await wait("!!document.getElementById('bStart')&&!document.getElementById('bStart').disabled&&!!document.body.dataset.qa");
+  await wait("(!!document.getElementById('bStart')&&!document.getElementById('bStart').disabled&&!!document.body.dataset.qa)||document.getElementById('bootStatus')?.textContent?.includes('未能装载')",120000);
+  assert.ok(await evaluate("!!document.body.dataset.qa"),'Public startup reported an error; retain diagnostics');
   const before=await evaluate("JSON.parse(document.body.dataset.qa)");
   await evaluate("document.getElementById('bStart').click()",true);
   await wait("JSON.parse(document.body.dataset.qa).state==='play'");
@@ -146,6 +147,21 @@ try{
  const report={schema:'sunbreak-roundtrip-browser-run-v1',phase,date:new Date().toISOString(),captureMethod:'Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels',pass:errors.length===0&&results.every(r=>r.pass),results,errors};
  await writeFile(resolve(game,'qa/'+prefix+'-'+phase+'.json'),JSON.stringify(report,null,2)+'\n');
  if(!report.pass)process.exitCode=1;
+}catch(error){
+ let diagnostics;
+ try{diagnostics=await evaluate(`({
+  url:location.href,readyState:document.readyState,
+  boot:document.getElementById('bootStatus')?.textContent,
+  error:document.getElementById('err')?.textContent,
+  startDisabled:document.getElementById('bStart')?.disabled,
+  qa:document.body?.dataset.qa,
+  resources:performance.getEntriesByType('resource').map(r=>({name:r.name,duration:r.duration,responseStatus:r.responseStatus,transferSize:r.transferSize,decodedBodySize:r.decodedBodySize}))
+ })`)}catch(e){diagnostics={unavailable:e.message}}
+ let n=1;while(existsSync(resolve(game,'qa/'+prefix+'-'+phase+'-failure-'+n+'.json')))n++;
+ await writeFile(resolve(game,'qa/'+prefix+'-'+phase+'-failure-'+n+'.json'),JSON.stringify({
+  date:new Date().toISOString(),pass:false,phase,error:error.stack||String(error),errors,diagnostics
+ },null,2)+'\n');
+ throw error;
 }finally{
  if(socket?.readyState===WebSocket.OPEN){try{await send('Browser.close',{},null)}catch{}socket.close()}
  if(browser&&browser.exitCode===null)await new Promise(r=>{const t=setTimeout(()=>{browser.kill();r()},5000);browser.once('exit',()=>{clearTimeout(t);r()})});
