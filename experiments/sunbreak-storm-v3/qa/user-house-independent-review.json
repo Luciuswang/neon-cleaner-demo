@@ -1,0 +1,56 @@
+{
+  "schema": "sunbreak-user-house-independent-review-v1",
+  "date": "2026-11-17",
+  "scope": "Visible manual house-edit propagation and engineering import only; not global demo or UE/AAA acceptance.",
+  "engineering": {
+    "reviewer": "Planck",
+    "readOnly": true,
+    "verdict": "PASS",
+    "basis": [
+      "Exact saved source, packed painted texture provenance and actual loaded candidate reviewed.",
+      "Three explicit structural pins and narrow low-step floor support; original strict generic importer, combat, arms, v1/v2 and original kit preserved.",
+      "Source-bound roundtrip36, house47 and tactical24; preservation19 and floor33 assertions pass.",
+      "Final two current30s1080p native-hardware combat/audio samples strictly pass. First568.5ms unexplained hitch is retained."
+    ],
+    "limits": [
+      "Microscopic float seam and full continuous walkthrough coverage not exhaustively certified.",
+      "No universally hitch-free or UE cinematic claim.",
+      "Public publication and anonymous live verification are separate."
+    ]
+  },
+  "art": {
+    "reviewer": "Zeno",
+    "readOnly": true,
+    "verdict": "PASS",
+    "blockerCount": 0,
+    "majorCount": 0,
+    "method": "All six matched before/after pairs inspected: twelve representative actual1920x1080 WebGL canvas images, no desktop/window pixels or UI interaction.",
+    "views": [
+      "house-inside",
+      "house-outside",
+      "hardware-close",
+      "door-hardware",
+      "step-close",
+      "plinth-close"
+    ],
+    "findings": [
+      "Yellow Hello and red painted scribbles visibly reach game wood and door surfaces.",
+      "Shared wood-texture repetition is the intentional manual-control proof, not an accidental redesign.",
+      "No confirmed unexpected texture, UV, shader or gross geometry loss observed.",
+      "Interior and door views remain coherent; added low step and changed handle plate are visible."
+    ],
+    "minor": [
+      "A plinth-corner dark facet remains an authored-versus-export ambiguity, not a confirmed import failure; no redesign requested."
+    ],
+    "limits": [
+      "No full continuous motion, collision, performance or global art-direction acceptance inferred from these stills."
+    ]
+  },
+  "producerArtPrecheck": {
+    "sameness": "Expected shared material reuse; unique decals were not requested.",
+    "proportionAndStructure": "Preserve user geometry and original layout; no gross loss in inspected frames.",
+    "stylizationBoundary": "Baseline rendering plus deliberate test paint, not a new style approval.",
+    "visualImpact": "User test marks are clearly readable in current interior view.",
+    "detailPriority": "Verify manual edit control before any optional aesthetic polish."
+  }
+}

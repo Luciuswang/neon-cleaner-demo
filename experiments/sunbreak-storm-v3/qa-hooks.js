@@ -16,6 +16,8 @@ if(captureName){
  const views={hero:[0,1.7,12,-.12,-.06],courtyard:[-1,1.7,3,-.45,-.03],wall:[-7,1.7,-10,.56,.06],interior:[-8.7,2.25,-9.5,.46,.03],ground:[0,1.7,10,0,-.65],npccover:[-1,1.7,6,.65,-.02],weapon:[0,1.7,12,-.12,-.19],wide:[1,3.8,15,0,-.12],sky:[0,1.7,12,0,.36],housefront:[11,2.15,-6.8,-.08,.10],houseangle:[21.5,3.1,-9.0,.83,.10],houseinside:[10.92,2.36,-16.6,0,-.03],houseout:[10.92,2.36,-19.0,Math.PI,-.035],housedoor:[10.92,2.36,-12.9,0,.035]};
  views.puddle=[-5.1,1.1,8.3,.2,-.55];
  views.househardware=[11.85,1.90,-14.75,.58,-.11];
+ views.housestep=[9.75,1.05,-10.65,-.40,-.45];
+ views.houseplinth=[6.2,1.05,-13.4,-1.06,-.13];
  const v=views[qaParams.get('view')||'hero'];if(v){pos.set(v[0],v[1],v[2]);S.yaw=v[3];S.pitch=v[4]}
  visual.setWeather(Number(qaParams.get('weather')??2));
  const weaponPose=qaParams.get('weaponPose');

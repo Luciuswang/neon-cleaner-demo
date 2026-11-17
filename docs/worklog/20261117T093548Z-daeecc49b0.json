@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T093548Z-daeecc49b0",
+  "task_id": "sunbreak-user-house-2026-11-17",
+  "timestamp_utc": "2026-11-17T09:35:48.036724+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK user house import local QA accepted: exact saved user Blender project preserved, actual packed Hello/red paint and4 object edits imported; reviewed3 foundation contract records plus matching low-step support. Preservation19/unit33/browser36+47+24 and source-bound staged collector29 PASS; independent engineering/art PASS. Final two1080p30s combat/audio samples pass; first unexplained568.5ms hitch retained. v1/v2, combat/weapon, original art kit and historical QA exact. Public Pages publication/live verification pending. Pre-existing private vault changes preserved; isolated public web slice skips private transfer, no UE portability claim.",
+  "commit_shas": [
+    "4d3bd53dfdd60848ce2239129d39fd5068336c5e"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

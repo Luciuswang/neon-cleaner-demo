@@ -685,3 +685,7 @@ Pages preflight retained exact pinned upstream TextureUtils bytes using the exis
 ## Sync note - 2026-11-17T15:27:27.6771396+08:00
 
 DONE: SUNBREAK v3 editable cabin and left-arm slice. Live https://luciuswang.github.io/neon-cleaner-demo/sunbreak/ ; art ZIP at assets/house/timber-house-art-kit.zip . Normal PR7 merged as b208c68 from source e9dfc92. Anonymous146/146 SHA verification and public start/fire/reload/download smoke PASS; v1/v2 and root/web preserved. Bounded art/engineering PASS and final two strict1080p30s pacing passes; earlier428ms hitch/remaining original right shoulder/full reload limitations retained. Public self-contained assets/LFS verified; pre-existing private vault unchanged, no full UE portability claim. Task packet and durable live QA reports complete.
+
+## Sync note - 2026-11-17T17:35:47.5829110+08:00
+
+SUNBREAK user house import local QA accepted: exact saved user Blender project preserved, actual packed Hello/red paint and4 object edits imported; reviewed3 foundation contract records plus matching low-step support. Preservation19/unit33/browser36+47+24 and source-bound staged collector29 PASS; independent engineering/art PASS. Final two1080p30s combat/audio samples pass; first unexplained568.5ms hitch retained. v1/v2, combat/weapon, original art kit and historical QA exact. Public Pages publication/live verification pending. Pre-existing private vault changes preserved; isolated public web slice skips private transfer, no UE portability claim.

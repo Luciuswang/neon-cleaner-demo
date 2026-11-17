@@ -1,0 +1,34 @@
+{
+  "schema": "sunbreak-roundtrip-browser-run-v1",
+  "phase": "captures",
+  "date": "2026-11-17T09:25:57.313Z",
+  "captureMethod": "Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels",
+  "pass": true,
+  "results": [
+    {
+      "name": "user-house-after-house-inside",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-house-outside",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-hardware-close",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-door-hardware",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-step-close",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-plinth-close",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

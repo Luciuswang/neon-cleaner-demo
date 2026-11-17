@@ -38,8 +38,8 @@
  check('ground-height enemy cannot climb stairs',collide(new THREE.Vector3(10.92,1.6,-13),'enemy'));
  for(const x of [10.09,11.75])check('stair rail blocks side crossing '+x,visual.blocksMovement({x,y:2.1,z:-13.2}));
  const traverse=(speed,dt,reverse=false)=>{
-  pos.set(10.92,reverse?2.36:1.7,reverse?-19:-12.25);vy=0;onGround=true;let clear=true,steps=0;
-  for(;steps<600&&(reverse?pos.z<-12.1:pos.z>-19);steps++){
+  pos.set(10.92,reverse?2.36:1.7,reverse?-19:-11.75);vy=0;onGround=true;let clear=true,steps=0;
+  for(;steps<600&&(reverse?pos.z<-11.8:pos.z>-19);steps++){
    const np=pos.clone();np.z+=(reverse?1:-1)*speed*dt;
    if(!collide(np))pos.copy(np);else{clear=false;break}
    stepVertical(dt,false);
@@ -49,7 +49,7 @@
  };
  for(const dt of [1/60,.05])for(const speed of [4.2,7.4])for(const reverse of [false,true]){
   const t=traverse(speed,dt,reverse);
-  check(`actual vertical solver ${reverse?'exit':'enter'} speed${speed} dt${dt}`,t.clear&&t.grounded&&(reverse?t.position[2]>-12.2&&t.position[1]===1.7:t.position[2]<-18&&Math.abs(t.position[1]-2.36)<1e-6),t);
+  check(`actual vertical solver ${reverse?'exit':'enter'} speed${speed} dt${dt}`,t.clear&&t.grounded&&(reverse?t.position[2]>-11.9&&t.position[1]===1.7:t.position[2]<-18&&Math.abs(t.position[1]-2.36)<1e-6),t);
  }
  for(const [label,z,maxHead]of [['lintel',-15.6,3.04],['inside',-18,4.5],['porch',-14.7,3.58]]){
   pos.set(10.92,2.36,z);vy=0;onGround=true;let peak=0;

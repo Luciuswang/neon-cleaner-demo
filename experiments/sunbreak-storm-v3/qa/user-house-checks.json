@@ -1,0 +1,28 @@
+{
+  "schema": "sunbreak-roundtrip-browser-run-v1",
+  "phase": "checks",
+  "date": "2026-11-17T09:24:44.248Z",
+  "captureMethod": "Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels",
+  "pass": true,
+  "results": [
+    {
+      "path": "/roundtrip-test",
+      "pass": true,
+      "checks": 36,
+      "failed": []
+    },
+    {
+      "path": "/tactical-house-test",
+      "pass": true,
+      "checks": 47,
+      "failed": []
+    },
+    {
+      "path": "/tactical-test",
+      "pass": true,
+      "checks": 24,
+      "failed": []
+    }
+  ],
+  "errors": []
+}

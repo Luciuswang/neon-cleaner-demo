@@ -1,0 +1,1686 @@
+{
+  "schema": "sunbreak-user-house-source-audit-v1",
+  "blender": "5.3.0",
+  "pass": true,
+  "method": "Read original and exact saved user Blender project; flush EDIT_MESH in memory, compare all objects/UV/materials/images, export GLB. No source resave, no geometry/material/UV redesign.",
+  "sourceFile": "timber-house-editable.blend",
+  "sourceSha256": "bf6ac17ae69835ad8f54e20c5c90b6c0610e43924a95b2e9095a29e7c1b6a2a8",
+  "preservedSource": "timber-house-user-source.blend",
+  "candidate": "timber-house-user.glb",
+  "candidateSha256": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43",
+  "savedMode": "EDIT_MESH",
+  "objectCount": 1398,
+  "meshCount": 1372,
+  "unchangedMeshes": 1368,
+  "fullUV": true,
+  "changes": [
+    {
+      "name": "DoorHandlePlate",
+      "before": {
+        "type": "MESH",
+        "parent": "DoorPivot",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          1.3300000429153442,
+          0.0,
+          1.0,
+          0.0,
+          -0.1099998950958252,
+          0.0,
+          0.0,
+          1.0,
+          1.1299998760223389,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "9ed83c86a1bcb230fdaa3a73d47f7fe964bc10edddceb2df8c6b4941569eb1b9",
+        "uv": "2e0e3f2f26a911a023376cc0ac7fba304ad0162bf2b20e3565c2fdbacae2f90b",
+        "vertices": 96,
+        "uvCorners": 396,
+        "corners": 396,
+        "triangles": 188,
+        "materials": [
+          "AgedBrass_DoorHandlePlate"
+        ],
+        "smoothFaces": 0
+      },
+      "after": {
+        "type": "MESH",
+        "parent": "DoorPivot",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          1.3300000429153442,
+          0.0,
+          1.0,
+          0.0,
+          -0.1099998950958252,
+          0.0,
+          0.0,
+          1.0,
+          1.1299998760223389,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "9ed83c86a1bcb230fdaa3a73d47f7fe964bc10edddceb2df8c6b4941569eb1b9",
+        "uv": "2e0e3f2f26a911a023376cc0ac7fba304ad0162bf2b20e3565c2fdbacae2f90b",
+        "vertices": 96,
+        "uvCorners": 396,
+        "corners": 396,
+        "triangles": 188,
+        "materials": [
+          "FoundationPlaster"
+        ],
+        "smoothFaces": 0
+      }
+    },
+    {
+      "name": "Foundation_part_0001",
+      "before": {
+        "type": "MESH",
+        "parent": "Foundation",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.800000011920929,
+          0.0,
+          0.0,
+          1.0,
+          0.3199999928474426,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "51a91a5990efae232d2d693858ba707bb0d72763d3698e877b6ae0bb9e0599c8",
+        "uv": "388953295fe8f47409cbd69e0014d53f05ee02a11d8ac99b005b7d220585e2ae",
+        "vertices": 24,
+        "uvCorners": 36,
+        "corners": 36,
+        "triangles": 12,
+        "materials": [
+          "FoundationPlaster"
+        ],
+        "smoothFaces": 0
+      },
+      "after": {
+        "type": "MESH",
+        "parent": "Foundation",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.800000011920929,
+          0.0,
+          0.0,
+          1.0,
+          0.3199999928474426,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "6126c59d5e8b9c54cb00e28fb82b4547e93ee54dfc3cf4a2bb4b4fdb970b4c5d",
+        "uv": "5256c60f4f58984883bfc03ff37fd50e5f7c4de572993313718c9447e22eaddb",
+        "vertices": 30,
+        "uvCorners": 56,
+        "corners": 56,
+        "triangles": 22,
+        "materials": [
+          "FoundationPlaster"
+        ],
+        "smoothFaces": 0
+      }
+    },
+    {
+      "name": "Foundation_part_0002",
+      "before": {
+        "type": "MESH",
+        "parent": "Foundation",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.800000011920929,
+          0.0,
+          0.0,
+          1.0,
+          0.550000011920929,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "a7a4bcc0e2f3dfec5dae3f414a1f525db6252376bfb7899fadf00607fd0f8fcb",
+        "uv": "1b7d37d95bab8029c7530a14ba120c5ae64699c9cab2abbfc254e75651045af2",
+        "vertices": 24,
+        "uvCorners": 36,
+        "corners": 36,
+        "triangles": 12,
+        "materials": [
+          "WindowTrim"
+        ],
+        "smoothFaces": 0
+      },
+      "after": {
+        "type": "MESH",
+        "parent": "Foundation",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.800000011920929,
+          0.0,
+          0.0,
+          1.0,
+          0.550000011920929,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "bda0a99d781d9fcdb086d0b280ab92e5b7fedf114ecbb2be47b53396c4433b84",
+        "uv": "801527d6922f915db7a5f2871d178730805d632e5a17982170b6df37ca9cd584",
+        "vertices": 30,
+        "uvCorners": 56,
+        "corners": 56,
+        "triangles": 22,
+        "materials": [
+          "WindowTrim"
+        ],
+        "smoothFaces": 0
+      }
+    },
+    {
+      "name": "Foundation_part_0075",
+      "before": {
+        "type": "MESH",
+        "parent": "Foundation",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0800000429153442,
+          0.0,
+          1.0,
+          0.0,
+          -5.400000095367432,
+          0.0,
+          0.0,
+          1.0,
+          0.08250000327825546,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "43e9a58370fe3a53492327c7fc48ce1d301cf1da21003c1930248376a5f55efa",
+        "uv": "6bd4a5bc3ffd8e77c8845409beca6ce713fb8f7cac278ba8464c15751ffb3210",
+        "vertices": 24,
+        "uvCorners": 36,
+        "corners": 36,
+        "triangles": 12,
+        "materials": [
+          "Timber"
+        ],
+        "smoothFaces": 0
+      },
+      "after": {
+        "type": "MESH",
+        "parent": "Foundation",
+        "matrix": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0800000429153442,
+          0.0,
+          1.0,
+          0.0,
+          -5.400000095367432,
+          0.0,
+          0.0,
+          1.0,
+          0.08250000327825546,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "hideRender": false,
+        "modifiers": [],
+        "geometry": "8895cad00ade502319876a12c876f3736745724a7fb8b9208d953b361730bb1b",
+        "uv": "916e4caf1ef954d8b00a9bc45a00050f9a21de69ba4b2093354e01c93af782f9",
+        "vertices": 32,
+        "uvCorners": 60,
+        "corners": 60,
+        "triangles": 24,
+        "materials": [
+          "Timber"
+        ],
+        "smoothFaces": 0
+      }
+    }
+  ],
+  "materialChanges": [
+    {
+      "name": "AgedBrass_DoorHandlePlate",
+      "before": {
+        "nodes": [
+          {
+            "name": "Principled BSDF",
+            "type": "BSDF_PRINCIPLED",
+            "inputs": [
+              [
+                "Base Color",
+                [
+                  0.1899999976158142,
+                  0.11500000208616257,
+                  0.041999999433755875,
+                  1.0
+                ]
+              ],
+              [
+                "Metallic",
+                0.7799999713897705
+              ],
+              [
+                "Roughness",
+                0.3799999952316284
+              ],
+              [
+                "IOR",
+                1.5
+              ],
+              [
+                "Alpha",
+                1.0
+              ],
+              [
+                "Thin Wall",
+                false
+              ],
+              [
+                "Normal",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Weight",
+                0.0
+              ],
+              [
+                "Diffuse Roughness",
+                0.0
+              ],
+              [
+                "Subsurface Weight",
+                0.0
+              ],
+              [
+                "Subsurface Radius",
+                [
+                  1.0,
+                  0.20000000298023224,
+                  0.10000000149011612
+                ]
+              ],
+              [
+                "Subsurface Scale",
+                0.004999999888241291
+              ],
+              [
+                "Subsurface IOR",
+                1.399999976158142
+              ],
+              [
+                "Subsurface Anisotropy",
+                0.0
+              ],
+              [
+                "Specular IOR Level",
+                0.5
+              ],
+              [
+                "Specular Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Anisotropic",
+                0.0
+              ],
+              [
+                "Anisotropic Rotation",
+                0.0
+              ],
+              [
+                "Tangent",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Transmission Weight",
+                0.0
+              ],
+              [
+                "Transmission Dispersion Scale",
+                0.0
+              ],
+              [
+                "Transmission Dispersion Abbe Number",
+                20.0
+              ],
+              [
+                "Coat Weight",
+                0.0
+              ],
+              [
+                "Coat Roughness",
+                0.029999999329447746
+              ],
+              [
+                "Coat IOR",
+                1.5
+              ],
+              [
+                "Coat Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Coat Normal",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Sheen Weight",
+                0.0
+              ],
+              [
+                "Sheen Roughness",
+                0.5
+              ],
+              [
+                "Sheen Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Emission Color",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Emission Strength",
+                0.0
+              ],
+              [
+                "Thin Film Thickness",
+                0.0
+              ],
+              [
+                "Thin Film IOR",
+                1.3300000429153442
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Material Output",
+            "type": "OUTPUT_MATERIAL",
+            "inputs": [
+              [
+                "Displacement",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Thickness",
+                0.0
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          }
+        ],
+        "links": [
+          [
+            "Principled BSDF",
+            "BSDF",
+            "Material Output",
+            "Surface"
+          ]
+        ]
+      },
+      "after": null
+    },
+    {
+      "name": "FoundationPlaster",
+      "before": {
+        "nodes": [
+          {
+            "name": "Principled BSDF",
+            "type": "BSDF_PRINCIPLED",
+            "inputs": [
+              [
+                "Base Color",
+                [
+                  0.800000011920929,
+                  0.800000011920929,
+                  0.800000011920929,
+                  1.0
+                ]
+              ],
+              [
+                "Metallic",
+                0.0
+              ],
+              [
+                "Roughness",
+                0.5
+              ],
+              [
+                "IOR",
+                1.5
+              ],
+              [
+                "Alpha",
+                1.0
+              ],
+              [
+                "Thin Wall",
+                false
+              ],
+              [
+                "Normal",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Weight",
+                0.0
+              ],
+              [
+                "Diffuse Roughness",
+                0.0
+              ],
+              [
+                "Subsurface Weight",
+                0.0
+              ],
+              [
+                "Subsurface Radius",
+                [
+                  1.0,
+                  0.20000000298023224,
+                  0.10000000149011612
+                ]
+              ],
+              [
+                "Subsurface Scale",
+                0.004999999888241291
+              ],
+              [
+                "Subsurface IOR",
+                1.399999976158142
+              ],
+              [
+                "Subsurface Anisotropy",
+                0.0
+              ],
+              [
+                "Specular IOR Level",
+                0.5
+              ],
+              [
+                "Specular Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Anisotropic",
+                0.0
+              ],
+              [
+                "Anisotropic Rotation",
+                0.0
+              ],
+              [
+                "Tangent",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Transmission Weight",
+                0.0
+              ],
+              [
+                "Transmission Dispersion Scale",
+                0.0
+              ],
+              [
+                "Transmission Dispersion Abbe Number",
+                20.0
+              ],
+              [
+                "Coat Weight",
+                0.0
+              ],
+              [
+                "Coat Roughness",
+                0.029999999329447746
+              ],
+              [
+                "Coat IOR",
+                1.5
+              ],
+              [
+                "Coat Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Coat Normal",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Sheen Weight",
+                0.0
+              ],
+              [
+                "Sheen Roughness",
+                0.5
+              ],
+              [
+                "Sheen Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Emission Color",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Emission Strength",
+                0.0
+              ],
+              [
+                "Thin Film Thickness",
+                0.0
+              ],
+              [
+                "Thin Film IOR",
+                1.3300000429153442
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Material Output",
+            "type": "OUTPUT_MATERIAL",
+            "inputs": [
+              [
+                "Displacement",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Thickness",
+                0.0
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Mix",
+            "type": "MIX",
+            "inputs": [
+              [
+                "Factor",
+                1.0
+              ],
+              [
+                "Factor",
+                [
+                  0.5,
+                  0.5,
+                  0.5
+                ]
+              ],
+              [
+                "A",
+                0.0
+              ],
+              [
+                "B",
+                0.0
+              ],
+              [
+                "A",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "B",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "A",
+                [
+                  0.5,
+                  0.5,
+                  0.5,
+                  1.0
+                ]
+              ],
+              [
+                "B",
+                [
+                  0.672443151473999,
+                  0.6583748459815979,
+                  0.533276379108429,
+                  1.0
+                ]
+              ],
+              [
+                "A",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "B",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": "MULTIPLY"
+          },
+          {
+            "name": "Image Texture",
+            "type": "TEX_IMAGE",
+            "inputs": [
+              [
+                "Vector",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": "Image_1",
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Math",
+            "type": "MATH",
+            "inputs": [
+              [
+                "Value",
+                0.5
+              ],
+              [
+                "Value",
+                0.0
+              ],
+              [
+                "Value",
+                0.5
+              ]
+            ],
+            "image": null,
+            "operation": "MULTIPLY",
+            "blendType": null
+          },
+          {
+            "name": "Math.001",
+            "type": "MATH",
+            "inputs": [
+              [
+                "Value",
+                0.5
+              ],
+              [
+                "Value",
+                0.8600000143051147
+              ],
+              [
+                "Value",
+                0.5
+              ]
+            ],
+            "image": null,
+            "operation": "MULTIPLY",
+            "blendType": null
+          },
+          {
+            "name": "Separate Color",
+            "type": "SEPARATE_COLOR",
+            "inputs": [
+              [
+                "Color",
+                [
+                  0.800000011920929,
+                  0.800000011920929,
+                  0.800000011920929,
+                  1.0
+                ]
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Image Texture.001",
+            "type": "TEX_IMAGE",
+            "inputs": [
+              [
+                "Vector",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": "Image_0",
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Normal Map",
+            "type": "NORMAL_MAP",
+            "inputs": [
+              [
+                "Strength",
+                0.550000011920929
+              ],
+              [
+                "Color",
+                [
+                  0.5,
+                  0.5,
+                  1.0,
+                  1.0
+                ]
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Image Texture.002",
+            "type": "TEX_IMAGE",
+            "inputs": [
+              [
+                "Vector",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": "Image_2",
+            "operation": null,
+            "blendType": null
+          }
+        ],
+        "links": [
+          [
+            "Image Texture",
+            "Color",
+            "Mix",
+            "A_Color"
+          ],
+          [
+            "Image Texture.001",
+            "Color",
+            "Separate Color",
+            "Color"
+          ],
+          [
+            "Image Texture.002",
+            "Color",
+            "Normal Map",
+            "Color"
+          ],
+          [
+            "Math",
+            "Value",
+            "Principled BSDF",
+            "Metallic"
+          ],
+          [
+            "Math.001",
+            "Value",
+            "Principled BSDF",
+            "Roughness"
+          ],
+          [
+            "Mix",
+            "Result_Color",
+            "Principled BSDF",
+            "Base Color"
+          ],
+          [
+            "Normal Map",
+            "Normal",
+            "Principled BSDF",
+            "Normal"
+          ],
+          [
+            "Principled BSDF",
+            "BSDF",
+            "Material Output",
+            "Surface"
+          ],
+          [
+            "Separate Color",
+            "Blue",
+            "Math",
+            "Value"
+          ],
+          [
+            "Separate Color",
+            "Green",
+            "Math.001",
+            "Value"
+          ]
+        ]
+      },
+      "after": {
+        "nodes": [
+          {
+            "name": "Principled BSDF",
+            "type": "BSDF_PRINCIPLED",
+            "inputs": [
+              [
+                "Base Color",
+                [
+                  0.800000011920929,
+                  0.800000011920929,
+                  0.800000011920929,
+                  1.0
+                ]
+              ],
+              [
+                "Metallic",
+                0.0
+              ],
+              [
+                "Roughness",
+                0.5
+              ],
+              [
+                "IOR",
+                1.5
+              ],
+              [
+                "Alpha",
+                1.0
+              ],
+              [
+                "Thin Wall",
+                false
+              ],
+              [
+                "Normal",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Weight",
+                0.0
+              ],
+              [
+                "Diffuse Roughness",
+                0.0
+              ],
+              [
+                "Subsurface Weight",
+                0.0
+              ],
+              [
+                "Subsurface Radius",
+                [
+                  1.0,
+                  0.20000000298023224,
+                  0.10000000149011612
+                ]
+              ],
+              [
+                "Subsurface Scale",
+                0.004999999888241291
+              ],
+              [
+                "Subsurface IOR",
+                1.399999976158142
+              ],
+              [
+                "Subsurface Anisotropy",
+                0.0
+              ],
+              [
+                "Specular IOR Level",
+                0.5
+              ],
+              [
+                "Specular Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Anisotropic",
+                0.0
+              ],
+              [
+                "Anisotropic Rotation",
+                0.0
+              ],
+              [
+                "Tangent",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Transmission Weight",
+                0.0
+              ],
+              [
+                "Transmission Dispersion Scale",
+                0.0
+              ],
+              [
+                "Transmission Dispersion Abbe Number",
+                20.0
+              ],
+              [
+                "Coat Weight",
+                0.0
+              ],
+              [
+                "Coat Roughness",
+                0.029999999329447746
+              ],
+              [
+                "Coat IOR",
+                1.5
+              ],
+              [
+                "Coat Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Coat Normal",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Sheen Weight",
+                0.0
+              ],
+              [
+                "Sheen Roughness",
+                0.5
+              ],
+              [
+                "Sheen Tint",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Emission Color",
+                [
+                  1.0,
+                  1.0,
+                  1.0,
+                  1.0
+                ]
+              ],
+              [
+                "Emission Strength",
+                0.0
+              ],
+              [
+                "Thin Film Thickness",
+                0.0
+              ],
+              [
+                "Thin Film IOR",
+                1.3300000429153442
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Material Output",
+            "type": "OUTPUT_MATERIAL",
+            "inputs": [
+              [
+                "Displacement",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "Thickness",
+                0.0
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Mix",
+            "type": "MIX",
+            "inputs": [
+              [
+                "Factor",
+                1.0
+              ],
+              [
+                "Factor",
+                [
+                  0.5,
+                  0.5,
+                  0.5
+                ]
+              ],
+              [
+                "A",
+                0.0
+              ],
+              [
+                "B",
+                0.0
+              ],
+              [
+                "A",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "B",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "A",
+                [
+                  0.5,
+                  0.5,
+                  0.5,
+                  1.0
+                ]
+              ],
+              [
+                "B",
+                [
+                  0.672443151473999,
+                  0.6583748459815979,
+                  0.533276379108429,
+                  1.0
+                ]
+              ],
+              [
+                "A",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ],
+              [
+                "B",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": "MULTIPLY"
+          },
+          {
+            "name": "Image Texture",
+            "type": "TEX_IMAGE",
+            "inputs": [
+              [
+                "Vector",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": "Image_1",
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Math",
+            "type": "MATH",
+            "inputs": [
+              [
+                "Value",
+                0.5
+              ],
+              [
+                "Value",
+                0.0
+              ],
+              [
+                "Value",
+                0.5
+              ]
+            ],
+            "image": null,
+            "operation": "MULTIPLY",
+            "blendType": null
+          },
+          {
+            "name": "Math.001",
+            "type": "MATH",
+            "inputs": [
+              [
+                "Value",
+                0.5
+              ],
+              [
+                "Value",
+                0.8600000143051147
+              ],
+              [
+                "Value",
+                0.5
+              ]
+            ],
+            "image": null,
+            "operation": "MULTIPLY",
+            "blendType": null
+          },
+          {
+            "name": "Separate Color",
+            "type": "SEPARATE_COLOR",
+            "inputs": [
+              [
+                "Color",
+                [
+                  0.800000011920929,
+                  0.800000011920929,
+                  0.800000011920929,
+                  1.0
+                ]
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Image Texture.001",
+            "type": "TEX_IMAGE",
+            "inputs": [
+              [
+                "Vector",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": "Image_1",
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Normal Map",
+            "type": "NORMAL_MAP",
+            "inputs": [
+              [
+                "Strength",
+                0.550000011920929
+              ],
+              [
+                "Color",
+                [
+                  0.5,
+                  0.5,
+                  1.0,
+                  1.0
+                ]
+              ]
+            ],
+            "image": null,
+            "operation": null,
+            "blendType": null
+          },
+          {
+            "name": "Image Texture.002",
+            "type": "TEX_IMAGE",
+            "inputs": [
+              [
+                "Vector",
+                [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              ]
+            ],
+            "image": "Image_2",
+            "operation": null,
+            "blendType": null
+          }
+        ],
+        "links": [
+          [
+            "Image Texture",
+            "Color",
+            "Mix",
+            "A_Color"
+          ],
+          [
+            "Image Texture.001",
+            "Color",
+            "Separate Color",
+            "Color"
+          ],
+          [
+            "Image Texture.002",
+            "Color",
+            "Normal Map",
+            "Color"
+          ],
+          [
+            "Math",
+            "Value",
+            "Principled BSDF",
+            "Metallic"
+          ],
+          [
+            "Math.001",
+            "Value",
+            "Principled BSDF",
+            "Roughness"
+          ],
+          [
+            "Mix",
+            "Result_Color",
+            "Principled BSDF",
+            "Base Color"
+          ],
+          [
+            "Normal Map",
+            "Normal",
+            "Principled BSDF",
+            "Normal"
+          ],
+          [
+            "Principled BSDF",
+            "BSDF",
+            "Material Output",
+            "Surface"
+          ],
+          [
+            "Separate Color",
+            "Blue",
+            "Math",
+            "Value"
+          ],
+          [
+            "Separate Color",
+            "Green",
+            "Math.001",
+            "Value"
+          ]
+        ]
+      }
+    }
+  ],
+  "packedImages": {
+    "Image_0": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "b02fa2f0fce1283ab1a093ba5a1995be3f502a11c1129b6ea5a178629f6ae4bd"
+    },
+    "Image_1": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "332e3e4cdb9141ecf855ca2007b3b81f2ef4315c3124465f7ab9160ae110ba57"
+    },
+    "Image_10": {
+      "size": [
+        64,
+        64
+      ],
+      "packed": true,
+      "sha256": "01e83c53e4d39255d4c1013dcab5523a896dc73678a2a28f4579f5373a13c258"
+    },
+    "Image_2": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "38b6af20e7c38a4f06610cedaeca076aa1ff0863262351393beb591da2b142b7"
+    },
+    "Image_3": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "d27a8eb0a594f48702839aa726a46d01b4151359f11489188288aba60c1516b2"
+    },
+    "Image_4": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "9b5a5599ac2d0ffa134cb292df3dec430cafcede4fb518a9118c3b017a3ae875"
+    },
+    "Image_5": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "0dbcda70ba470bf0466418b1f942dda5aad389281c073d3f36743490625e61a2"
+    },
+    "Image_6": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "d27a8eb0a594f48702839aa726a46d01b4151359f11489188288aba60c1516b2"
+    },
+    "Image_7": {
+      "size": [
+        1024,
+        1024
+      ],
+      "packed": true,
+      "sha256": "d27a8eb0a594f48702839aa726a46d01b4151359f11489188288aba60c1516b2"
+    },
+    "Image_8": {
+      "size": [
+        64,
+        64
+      ],
+      "packed": true,
+      "sha256": "01e83c53e4d39255d4c1013dcab5523a896dc73678a2a28f4579f5373a13c258"
+    },
+    "Image_9": {
+      "size": [
+        64,
+        64
+      ],
+      "packed": true,
+      "sha256": "51036272366859512b4c0aaea31b711d998a88d4644a51fd48cb627d2686e1ea"
+    }
+  },
+  "imageDiffs": [
+    {
+      "name": "Image_1",
+      "maxPixelDelta": 0.0,
+      "meanPixelDelta": 0.0,
+      "changedChannels": 0
+    },
+    {
+      "name": "Image_4",
+      "maxPixelDelta": 0.6705883145332336,
+      "meanPixelDelta": 0.007208023685961962,
+      "changedChannels": 167896
+    }
+  ],
+  "surfaceBefore": {
+    "Foundation_part_0001": {
+      "localAxisPlanesSignedAreas": {
+        "0:4.000000:1": 4.0960002276599345,
+        "0:-4.000000:-1": 4.0960002276599345,
+        "2:0.320000:1": 51.20000181198117,
+        "2:-0.320000:-1": 51.20000181198117,
+        "1:-3.200000:-1": 5.11999993532896,
+        "1:3.200000:1": 5.11999993532896
+      },
+      "degenerate": 0
+    },
+    "Foundation_part_0002": {
+      "localAxisPlanesSignedAreas": {
+        "0:4.060000:1": 0.6520000168911516,
+        "0:-4.060000:-1": 0.6520000168911516,
+        "2:0.050000:1": 52.94239757451017,
+        "2:-0.050000:-1": 52.94239757451017,
+        "1:-3.260000:-1": 0.8119999740769707,
+        "1:3.260000:1": 0.8119999740769707
+      },
+      "degenerate": 0
+    },
+    "Foundation_part_0075": {
+      "localAxisPlanesSignedAreas": {
+        "0:0.770000:1": 0.06600000786442602,
+        "0:-0.770000:-1": 0.06600000786442602,
+        "2:0.082500:1": 0.6159999867197754,
+        "2:-0.082500:-1": 0.6159999867197754,
+        "1:-0.200000:-1": 0.2540999920479099,
+        "1:0.200000:1": 0.2540999920479099
+      },
+      "degenerate": 0
+    }
+  },
+  "surfaceAfter": {
+    "Foundation_part_0001": {
+      "localAxisPlanesSignedAreas": {
+        "0:4.000000:1": 4.0960002276599345,
+        "2:0.320000:1": 51.20000181198117,
+        "2:-0.320000:-1": 51.20000181198117,
+        "1:-3.200000:-1": 5.11999993532896,
+        "1:3.200000:1": 5.11999993532896,
+        "0:-4.000000:-1": 3.9968696812115585
+      },
+      "degenerate": 0
+    },
+    "Foundation_part_0002": {
+      "localAxisPlanesSignedAreas": {
+        "0:4.060000:1": 0.6520000168911516,
+        "2:0.050000:1": 52.94239757451017,
+        "2:-0.050000:-1": 52.94239757451017,
+        "1:-3.260000:-1": 0.8119999740769707,
+        "1:3.260000:1": 0.8119999740769707,
+        "0:-4.060000:-1": 0.6322792893215229
+      },
+      "degenerate": 0
+    },
+    "Foundation_part_0075": {
+      "localAxisPlanesSignedAreas": {
+        "0:0.770000:1": 0.06600000786442602,
+        "0:-0.770000:-1": 0.06600000786442602,
+        "2:0.082500:1": 0.6159999867197754,
+        "2:-0.082500:-1": 0.6159999867197754,
+        "1:-0.200000:-1": 0.2540999920479099,
+        "1:0.200000:1": 0.2540999920479099,
+        "2:-0.200526:-1": 0.4549148987214363,
+        "0:-0.821527:-1": 0.0832204059779147,
+        "2:-0.007720:1": 0.4549148987214363,
+        "0:0.232423:1": 0.08322041437119142,
+        "1:-0.200000:1": 0.2032077877355965,
+        "1:-0.631629:-1": 0.20320778773559617
+      },
+      "degenerate": 0
+    }
+  },
+  "notes": [
+    "Supplied GLB/textures were the previous release; actual edits came from saved .blend.",
+    "Plinth/cap have small coplanar side-corner cutouts below the walk floor, not a new building silhouette.",
+    "Extra low bottom-step box needs an explicit reviewed walk-support footprint.",
+    "This report approves export integrity only, not collision/runtime/visual acceptance."
+  ]
+}

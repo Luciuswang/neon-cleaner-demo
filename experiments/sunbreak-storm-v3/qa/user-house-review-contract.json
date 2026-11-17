@@ -1,0 +1,19 @@
+{
+  "schema": "sunbreak-roundtrip-browser-run-v1",
+  "phase": "review-contract",
+  "date": "2026-11-17T09:21:05.272Z",
+  "captureMethod": "Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels",
+  "pass": true,
+  "results": [
+    {
+      "pass": true,
+      "changed": [
+        "Foundation_part_0001",
+        "Foundation_part_0002",
+        "Foundation_part_0075"
+      ],
+      "status": "candidate contract only; independent review required before live swap"
+    }
+  ],
+  "errors": []
+}

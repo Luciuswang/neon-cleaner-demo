@@ -3,10 +3,24 @@
  const {validateHouseAsset,applyHouseAsset}=await import('./house-asset.js'),{GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js'),T=await import('three');
  const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,...(detail===undefined?{}:{detail})});
  const contract=await(await fetch('./assets/house/house-contract.json')).json(),loader=new GLTFLoader();
+ const originalContract=await(await fetch('./authoring/timber-house/house-contract.json')).json();
  const original=await loader.loadAsync('./authoring/timber-house/timber-house-source.glb'),edited=await loader.loadAsync('./assets/house/timber-house-edited.glb');
- const sourceProof=await validateHouseAsset(T,original.scene,contract),editedProof=await validateHouseAsset(T,edited.scene,contract);
+ const sourceProof=await validateHouseAsset(T,original.scene,originalContract),editedProof=await validateHouseAsset(T,edited.scene,contract);
  check('actual source GLB loads and passes fixed-layout validator',sourceProof.validated,sourceProof);
- check('actual Blender-edited GLB loads and passes same validator',editedProof.validated,editedProof);
+ check('actual user Blender-edited GLB passes explicitly reviewed revision with unchanged strict validator',editedProof.validated,editedProof);
+ check('only three reviewed structural contract records differ',JSON.stringify(contract.records.filter((r,i)=>JSON.stringify(r)!==JSON.stringify(originalContract.records[i])).map(r=>r.name))===JSON.stringify(['Foundation_part_0001','Foundation_part_0002','Foundation_part_0075']));
+ check('strict geometry tolerance remains twenty micrometres',contract.geometryToleranceMetres===.00002);
+ check('user plate material assignment imported',edited.scene.getObjectByName('DoorHandlePlate').material.name==='FoundationPlaster');
+ check('user low step world support height exact',Math.abs(visual.floorHeight(10.7,-12.2)-.07477977)<1e-8);
+ check('outside user low step still original ground',visual.floorHeight(11.3,-12.2)===0&&visual.floorHeight(10.7,-11.9)===0);
+ const stepRay=new T.Raycaster(new T.Vector3(10.7,1,-12.2),new T.Vector3(0,-1,0));
+ const stepHit=stepRay.intersectObject(visual.houseQA.root,true)[0];
+ check('low step walk height matches actual rendered surface',stepHit&&Math.abs(stepHit.point.y-visual.floorHeight(10.7,-12.2))<1e-6,stepHit?.point.toArray());
+ let oldContractError;try{await validateHouseAsset(T,edited.scene,originalContract)}catch(e){oldContractError=e.message}
+ check('original contract still rejects unreviewed new geometry',!!oldContractError,oldContractError);
+ const assetBytes=await(await fetch('./assets/house/timber-house-edited.glb')).arrayBuffer();
+ const assetSHA=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',assetBytes)),b=>b.toString(16).padStart(2,'0')).join('');
+ check('reviewed revision pinned to exact actual loaded user export',assetSHA===contract.artistRevision.assetSha256,assetSHA);
  const sourceHandle=original.scene.getObjectByName('DoorHandleGrip'),editedHandle=edited.scene.getObjectByName('DoorHandleGrip');
  check('real mesh edit changed handle vertex count',editedHandle.geometry.attributes.position.count>sourceHandle.geometry.attributes.position.count,{source:sourceHandle.geometry.attributes.position.count,edited:editedHandle.geometry.attributes.position.count});
  check('real edit changed hardware PBR material',editedHandle.material.name.startsWith('AgedBrass')&&editedHandle.material.metalness>.7&&Math.abs(editedHandle.material.roughness-.38)<1e-6,{name:editedHandle.material.name,metalness:editedHandle.material.metalness,roughness:editedHandle.material.roughness});
@@ -47,7 +61,7 @@
  const same=(a,b)=>a.length===b.length&&a.every((x,i)=>x===b[i]),currentLights=[];root.traverse(o=>{if(o.isLight)currentLights.push(o)});
  check('injected batching failure is exercised',batchingError==='injected batching failure',batchingError);
  check('failed replacement retains original live root/door children and lights',same(snapshot.rootChildren,root.children)&&same(snapshot.doorChildren,pivot.children)&&same(snapshot.lights,currentLights)&&snapshot.asset===JSON.stringify(visual.info().house.asset));
- const report={schema:'sunbreak-house-roundtrip-browser-v1',date:new Date().toISOString(),method:'actual Three GLTFLoader source and Blender derivative, running world integration and negative contract probes; not human manual editing or continuous playthrough',pass:checks.every(c=>c.pass),checks,sourceProof,editedProof};
+ const report={schema:'sunbreak-house-roundtrip-browser-v1',date:new Date().toISOString(),method:'actual Three GLTFLoader original and manually painted/edited user Blender derivative, explicit reviewed structural revision, running-world and negative probes; not continuous playthrough',pass:checks.every(c=>c.pass),checks,sourceProof,editedProof};
  const el=document.createElement('pre');el.id='roundtrip-result';el.textContent=JSON.stringify(report,null,2);document.body.append(el);
  const response=await fetch('/qa/report',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:'roundtrip-browser',report,loadedBuildHashes:qaBuildHashes})});
  document.body.dataset.roundtripReport=response.ok?'saved':'failed';

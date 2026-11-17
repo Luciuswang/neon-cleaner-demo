@@ -94,6 +94,35 @@ Comparisons: `original/` and `v2/` below that address. All three were started
 and fired in an actual public browser on 2026-11-17 for the earlier tactical
 release; its138 deployed file hashes and original root/web entry were verified.
 
+## User manual-edit verification — 2026-11-17
+
+The current runtime cabin uses the user's saved Blender project, including the
+yellow handwritten Hello / red wood-texture paint, changed door plate material
+and three edited foundation/stair meshes. Source and export are preserved in
+`authoring/user-house-2026-11-17/`; the original downloadable55MB art kit remains
+unchanged as the comparison baseline, NOT the user's latest source.
+
+The submitted GLB and external textures were still old. Actual changes were
+inside `timber-house-editable.blend` (packed images and saved edit mode). Import
+flushed edit data in memory and exported without saving the original file.
+User paint is on shared wood, so its appearance on walls, floor, ceiling and
+furniture is expected shared-texture reuse, not newly painted individual props.
+Packed Image_1 is only reencoded; Image_4 has the real changed pixels.
+
+The reviewed contract changes exactly three structural records while retaining
+the generic20micrometre/oriented-triangle checks. The user's new small bottom
+step has a matching7.478cm walk-support area. Two small below-floor plinth side
+corner cutouts are retained as authored, not silently filled or certified as
+watertight. Door layout, combat and v1/v2 are preserved.
+
+Reproduce this specific source audit/export with Blender background:
+`--background --factory-startup --python-exit-code 1 --python tools/import-user-house.py`.
+This tool pins this particular source and expected edit set; it is intentionally
+not a general contract-regeneration bypass for arbitrary future architecture.
+New reports/canvases use `qa/user-house-*`, preserving the previous QA.
+Local immediate visual check: `/?view=houseinside&capture=manual-house&clean=1`.
+Normal play remains `/`; final current task/QA receipt is in the task packet.
+
 `node tools/github-pages.mjs` reads the existing Pages status without mutation.
 After committing and building validated source, `--publish` installs only the
 sanitized static `dist/` under `sunbreak/` through a normal protected-main PR,

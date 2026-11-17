@@ -1,13 +1,18 @@
 import assert from 'node:assert/strict';
 import {readFileSync,writeFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
-import {HOUSE,floorHeight,underRoof,doorBounds,bodyOverlaps,swingOccupied,createDoorState} from '../house-logic.js';
+import {HOUSE,ARTIST_STEP,floorHeight,underRoof,doorBounds,bodyOverlaps,swingOccupied,createDoorState} from '../house-logic.js';
 const checks=[],check=(name,fn)=>{try{fn();checks.push({name,pass:true})}catch(e){checks.push({name,pass:false,error:e.message})}};
 const eq=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
 check('actual room floor .66m',()=>eq(floorHeight(12,-18),.66));
 check('veranda uses same floor',()=>eq(floorHeight(11,-14.5),.66));
 check('original spawn9,-13 stays at ground',()=>eq(floorHeight(9,-13),0));
 check('original player spawn stays at ground',()=>eq(floorHeight(0,12),0));
+check('user low step supports exact modeled top',()=>eq(floorHeight(10.7,-12.2),.07477977));
+check('right of user step stays original ground',()=>eq(floorHeight(11.3,-12.2),0));
+check('front of user step stays original ground',()=>eq(floorHeight(10.7,-11.9),0));
+check('new step joins original first tread without replacing it',()=>eq(floorHeight(10.7,-12.41),.165));
+check('recorded local step footprint has original small riser',()=>assert.ok(ARTIST_STEP.top>0&&ARTIST_STEP.top<.165));
 for(let i=0;i<4;i++)check('stair tread '+(i+1),()=>eq(floorHeight(10.92,-12.6-i*.4),.165*(i+1)));
 check('all outdoor floor samples unchanged',()=>{
  for(const [x,z]of [[0,0],[-13,-12],[20,12],[9,-13],[14,-12],[17,-18],[12,-23]])eq(floorHeight(x,z),0);
@@ -34,5 +39,7 @@ check('animation cannot close through player',()=>{
 check('upper lintel does not block crouchless doorway',()=>assert.equal(bodyOverlaps({x:10.92,y:2.36,z:-15.6},{min:{x:10,y:3.15,z:-15.8},max:{x:12,y:4.7,z:-15.4}}),false));
 check('door resets completely',()=>{const d=createDoorState();d.toggle(permit);d.step(1,null);d.reset();eq(d.angle,0);eq(d.target,0);eq(d.info().toggles,0)});
 const source=readFileSync(new URL('../house-logic.js',import.meta.url)),report={date:new Date().toISOString(),method:'isolated deterministic architecture logic; not browser playthrough/performance',sourceSha256:createHash('sha256').update(source).digest('hex'),pass:checks.every(c=>c.pass),checks};
-writeFileSync(new URL('./house-unit.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+const reportName=process.argv.find(a=>a.startsWith('--report='))?.slice('--report='.length)||'house-unit';
+assert.match(reportName,/^[a-z0-9-]+$/);
+writeFileSync(new URL('./'+reportName+'.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({pass:report.pass,checks:checks.length,failed:checks.filter(c=>!c.pass)},null,2));if(!report.pass)process.exitCode=1;

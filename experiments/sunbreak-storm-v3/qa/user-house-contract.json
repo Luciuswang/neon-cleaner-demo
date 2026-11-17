@@ -1,0 +1,87 @@
+{
+  "schema": "sunbreak-user-house-preservation-v1",
+  "date": "2026-11-17T09:24:15.666Z",
+  "base": "4d3bd53dfdd60848ce2239129d39fd5068336c5e",
+  "pass": true,
+  "checks": [
+    {
+      "name": "exact saved user Blender project preserved without resave",
+      "pass": true
+    },
+    {
+      "name": "runtime bytes are exact user-project GLB export",
+      "pass": true
+    },
+    {
+      "name": "all UV intact; only four expected edited objects",
+      "pass": true
+    },
+    {
+      "name": "painted texture is a real pixel edit, not only file reencoding",
+      "pass": true
+    },
+    {
+      "name": "actual loaded GLB embeds user painted wood pixels byte-exact",
+      "pass": true
+    },
+    {
+      "name": "only three explicitly reviewed structural pins changed",
+      "pass": true
+    },
+    {
+      "name": "index.html exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "world.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "weapon.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "weapon-provenance.json exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "actors.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "tactical-ai.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "audio.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "storm.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "storm-audio.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "house-asset.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "timber-house.js exact previous released bytes",
+      "pass": true
+    },
+    {
+      "name": "v1/v2 source, previous authoring kit, ZIP and historical evidence exact",
+      "pass": true
+    },
+    {
+      "name": "floor logic change is only the reviewed added block support",
+      "pass": true
+    }
+  ],
+  "sourceSha256": "bf6ac17ae69835ad8f54e20c5c90b6c0610e43924a95b2e9095a29e7c1b6a2a8",
+  "candidateSha256": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43",
+  "method": "Exact source/material/embedded paint checks and narrowly scoped collision contract; not runtime or art acceptance."
+}

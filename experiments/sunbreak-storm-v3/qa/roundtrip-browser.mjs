@@ -7,10 +7,12 @@ import {resolve,dirname,basename} from 'node:path';
 import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
-const game=fileURLToPath(new URL('../',import.meta.url)),evidence=resolve(game,'qa/roundtrip-evidence');
+const prefix=process.argv.find(a=>a.startsWith('--report-prefix='))?.slice('--report-prefix='.length)||'roundtrip';
+assert.match(prefix,/^[a-z0-9-]+$/);
+const game=fileURLToPath(new URL('../',import.meta.url)),evidence=resolve(game,'qa/'+prefix+'-evidence');
 await mkdir(evidence,{recursive:true});
 const phase=process.argv.find(a=>a.startsWith('--phase='))?.split('=')[1]||'checks';
-assert.ok(['export','checks','captures','benchmark','public-smoke'].includes(phase));
+assert.ok(['export','review-contract','checks','captures','benchmark','public-smoke'].includes(phase));
 const chrome=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 assert.ok(chrome);
 const profile=await mkdtemp(resolve(tmpdir(),'sunbreak-roundtrip-'));
@@ -55,6 +57,34 @@ try{
   await wait("document.body?.dataset.export==='saved'||document.body?.dataset.export==='failed'");
   const result=await evaluate("({pass:document.body.dataset.export==='saved',status:document.getElementById('status').textContent})");
   results.push(result);console.log(result);assert.ok(result.pass);
+ }else if(phase==='review-contract'){
+  await navigate('/');
+  await wait("!!document.body.dataset.render");
+  const generated=await evaluate(`(async()=>{
+   const T=await import('three'),{GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js');
+   const {makeHouseContract,validateHouseAsset}=await import('./house-asset.js');
+   const baseline=await(await fetch('./assets/house/house-contract.json')).json();
+   const gltf=await new GLTFLoader().loadAsync('./authoring/user-house-2026-11-17/timber-house-user.glb');
+   const candidate=await makeHouseContract(T,gltf.scene,baseline.dimensions);
+   const allowed=['Foundation_part_0001','Foundation_part_0002','Foundation_part_0075'];
+   const byName=new Map(candidate.records.map(r=>[r.name,r]));
+   const reviewed={...baseline,records:baseline.records.map(r=>allowed.includes(r.name)?byName.get(r.name):r)};
+   await validateHouseAsset(T,gltf.scene,reviewed);
+   return reviewed;
+  })()`);
+  const baseline=JSON.parse(await readFile(resolve(game,'assets/house/house-contract.json'),'utf8'));
+  const changed=baseline.records.filter((r,i)=>JSON.stringify(r)!==JSON.stringify(generated.records[i]));
+  assert.deepEqual(generated.records.map(r=>r.name),baseline.records.map(r=>r.name));
+  assert.deepEqual(changed.map(r=>r.name),['Foundation_part_0001','Foundation_part_0002','Foundation_part_0075']);
+  for(const key of ['schema','units','upAxis','dimensions','doorPivot','geometryToleranceMetres','cosmeticBoundsToleranceMetres','maximumTriangles'])
+   assert.deepEqual(generated[key],baseline[key],key);
+  const audit=JSON.parse(await readFile(resolve(game,'authoring/user-house-2026-11-17/source-audit.json'),'utf8'));
+  const reviewed={...baseline,records:baseline.records.map((r,i)=>changed.includes(r)?generated.records[i]:r),
+   artistRevision:{id:'user-house-2026-11-17',sourceSha256:audit.sourceSha256,assetSha256:audit.candidateSha256,
+    reviewedStructuralParts:changed.map(r=>r.name),support:{minX:-1.90152734,maxX:-.84757660,minZ:5.60000038,maxZ:6.03162861,top:.07477977},
+    notes:'Explicit candidate for review, not automatic arbitrary architecture acceptance. Two below-floor plinth side-corner cutouts retain original movement envelope; added low step has matched local walk support. All other structural records and strict tolerances remain pinned.'}};
+  await writeFile(resolve(game,'authoring/user-house-2026-11-17/house-contract.json'),JSON.stringify(reviewed,null,2)+'\n');
+  results.push({pass:true,changed:changed.map(r=>r.name),status:'candidate contract only; independent review required before live swap'});
  }else if(phase==='checks'){
   for(const [path,flag,name]of [['/roundtrip-test','roundtripReport','roundtrip-browser'],['/tactical-house-test','houseReport','house-current'],['/tactical-test','tacticalReport','tactical-browser']]){
    await navigate(path);await wait(`document.body.dataset.${flag}==='saved'`);
@@ -64,12 +94,18 @@ try{
    console.log(name,report.pass,report.checks.length);assert.ok(report.pass);
   }
  }else if(phase==='captures'){
-  for(const [name,query]of [
+  const houseViews=[
+   ['house-inside','view=houseinside'],['house-outside','view=houseangle&door=open'],
+   ['hardware-close','view=househardware'],['door-hardware','view=housedoor&door=open'],
+   ['step-close','view=housestep'],['plinth-close','view=houseplinth']
+  ].map(([n,q])=>[prefix+'-'+n,q]);
+  const views=process.argv.includes('--house-only')?houseViews:[
    ['roundtrip-house-inside','view=houseinside'],['roundtrip-house-outside','view=houseangle&door=open'],
    ['roundtrip-hardware-close','view=househardware'],
    ['roundtrip-door-hardware','view=housedoor&door=open'],
    ...['idle','ads','fire','ads-fire','reload-early','reload-mid','reload-late'].map(p=>['roundtrip-arm-'+p,'view=houseinside&weaponPose='+p])
-  ]){
+  ];
+  for(const [name,query]of views){
    await navigate('/?capture='+name+'&clean=1&'+query);await wait("document.body.dataset.capture==='saved'");
    for(const extension of ['png','json'])await copyFile(resolve(game,'qa/captures/'+name+'.'+extension),resolve(evidence,name+'.'+extension));
    results.push({name,pass:true});console.log('canvas',name);
@@ -108,7 +144,7 @@ try{
   await evaluate("document.getElementById('bPause').click()");
  }
  const report={schema:'sunbreak-roundtrip-browser-run-v1',phase,date:new Date().toISOString(),captureMethod:'Actual native hardware headless WebGL, game-owned canvas export only; no desktop or window pixels',pass:errors.length===0&&results.every(r=>r.pass),results,errors};
- await writeFile(resolve(game,'qa/roundtrip-'+phase+'.json'),JSON.stringify(report,null,2)+'\n');
+ await writeFile(resolve(game,'qa/'+prefix+'-'+phase+'.json'),JSON.stringify(report,null,2)+'\n');
  if(!report.pass)process.exitCode=1;
 }finally{
  if(socket?.readyState===WebSocket.OPEN){try{await send('Browser.close',{},null)}catch{}socket.close()}

@@ -1,0 +1,492 @@
+{
+  "schema": "sunbreak-user-house-release-v1",
+  "quality_profile": "offscreen-cinematic-v1",
+  "task": "sunbreak-user-house-2026-11-17",
+  "date": "2026-11-17T09:35:16.762Z",
+  "scope": "Three.js browser demo manual house-edit control proof only; NOT UE cinematic or continuous-animation approval",
+  "pass": true,
+  "checks": [
+    {
+      "name": "qa/user-house-contract.json PASS",
+      "pass": true
+    },
+    {
+      "name": "qa/user-house-unit.json PASS",
+      "pass": true
+    },
+    {
+      "name": "qa/user-house-checks.json PASS",
+      "pass": true
+    },
+    {
+      "name": "roundtrip-browser all assertions",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-evidence/roundtrip-browser.json",
+      "pass": true
+    },
+    {
+      "name": "house-current all assertions",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-evidence/house-current.json",
+      "pass": true
+    },
+    {
+      "name": "tactical-browser all assertions",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-evidence/tactical-browser.json",
+      "pass": true
+    },
+    {
+      "name": "six actual-game current canvas views",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-after-evidence/user-house-after-house-inside.json",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-house-inside native1080p nonblank imported model",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-after-evidence/user-house-after-house-outside.json",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-house-outside native1080p nonblank imported model",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-after-evidence/user-house-after-hardware-close.json",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-hardware-close native1080p nonblank imported model",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-after-evidence/user-house-after-door-hardware.json",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-door-hardware native1080p nonblank imported model",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-after-evidence/user-house-after-step-close.json",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-step-close native1080p nonblank imported model",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-after-evidence/user-house-after-plinth-close.json",
+      "pass": true
+    },
+    {
+      "name": "user-house-after-plinth-close native1080p nonblank imported model",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-evidence/performance-1.json",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-evidence/performance-2.json",
+      "pass": true
+    },
+    {
+      "name": "loaded current source qa/user-house-evidence/performance-3.json",
+      "pass": true
+    },
+    {
+      "name": "final two consecutive current strict pacing samples pass",
+      "pass": true
+    },
+    {
+      "name": "latest hardware1080p30s combat/audio strict sample",
+      "pass": true
+    },
+    {
+      "name": "independent engineering and bounded art acceptance",
+      "pass": true
+    },
+    {
+      "name": "staged source/evidence and Git LFS exact bytes",
+      "pass": true
+    }
+  ],
+  "sourceHashes": {
+    "index.html": "c7efebdeedb6b5e8be6ff6649332747f81afd50d2359d320bcb818de6fe8db01",
+    "world.js": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+    "weapon.js": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+    "house-asset.js": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "vendor/manifest.json": "3f2490c003a184ed166a8c4b2f951b2f947157fdb98f8eee004a2c2b1e788230",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "assets/house/house-contract.json": "dae7312e1bb3b8c86c0aac3ac6aa3410c87f6b9e23d5fe7af2fc182f1f8a3453",
+    "assets/house/timber-house-edited.glb": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43",
+    "authoring/timber-house/house-contract.json": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde",
+    "authoring/user-house-2026-11-17/source-audit.json": "458be20db1feae77eabe6fd2a58ee6a81ace0037d51386c71083de89b36ff6df",
+    "qa-hooks.js": "2e6dd27b72f5ef9177214cef0d54e3e57910bb6da4f55ff5ab406387315dbdd3",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "19d64eb28fab5108bc6e31064ff4df8665aa064c0965b382db7df600a47834d1",
+    "qa/house-roundtrip-checks.js": "db54e46d301c900a19f1b624f92ddf0f5e124826240d4d358f361561a320b9f2",
+    "qa/tactical-checks.js": "8009d75d8cdfcd3306503624e839548cd22331ea3e53b9c44d5559d25359418f",
+    "qa/check-house-logic.mjs": "4f450633be94ba677fb3240f6b11966172b1fb8dc1e414e92ca2402346d5229d",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "5d9f50c9d316c835e49992fdc5d42bf377b47c5594c7b3cc1ade2a42b1116db5"
+  },
+  "evidence": [
+    {
+      "path": "qa/user-house-contract.json",
+      "bytes": 2354,
+      "sha256": "bd7ddc4551e4d40b5062cb9f11a32b2f33e18cfebe12c08af181688e72c8f59f"
+    },
+    {
+      "path": "qa/user-house-unit.json",
+      "bytes": 2843,
+      "sha256": "e0e0367c93d5609370829da70b7bf37c398b9209f3e5702d056cd7b223b544b6"
+    },
+    {
+      "path": "qa/user-house-checks.json",
+      "bytes": 601,
+      "sha256": "dc069b722daca14250da7eb827e8c8173a48a17b1cce4fbcb87fb9961bfc459a"
+    },
+    {
+      "path": "qa/user-house-evidence/roundtrip-browser.json",
+      "bytes": 9640,
+      "sha256": "4c3248d95e287ef2aacbec02cbac603898bf3050f1e9de70ba6c8065811fc096"
+    },
+    {
+      "path": "qa/user-house-evidence/house-current.json",
+      "bytes": 12925,
+      "sha256": "f53607f9d0d1057a3f8c131cacbd71da5d9b4c3e108291bfe4d925c5a9ed104a"
+    },
+    {
+      "path": "qa/user-house-evidence/tactical-browser.json",
+      "bytes": 333040,
+      "sha256": "8a817914e132cfec7ac6b180968812c9e01d35519556e97b3879136833e9f9ac"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-house-inside.json",
+      "bytes": 30894,
+      "sha256": "71acaa00e77d6806f1d3692ca52f841f99fe92e1756ca55b3f30a1ea8bbd1878"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-house-inside.png",
+      "bytes": 3997448,
+      "sha256": "81c2056a91b22b63bdd6862a7afb85b8046bc1506a62f557c0b3f48965a721b7"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-house-outside.json",
+      "bytes": 30874,
+      "sha256": "d5e8a1778830646fcbe75dad6e292b3d68fba8c0550c529425e36f17532f51fd"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-house-outside.png",
+      "bytes": 2817535,
+      "sha256": "3a4cc2ef910385abbe2404c8adbc2bbd7b875c14ca3a919c88ff6719c01b890b"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-hardware-close.json",
+      "bytes": 30862,
+      "sha256": "cc96b5a74ed78ddf3a11badadbd7f6598a7dd74edb69eb4e62c617f49258a26a"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-hardware-close.png",
+      "bytes": 3322526,
+      "sha256": "2e0f923ab4bcfddfb000466cfb61c743d1b5f4191e4288f15f03ec1ec0497fb6"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-door-hardware.json",
+      "bytes": 30884,
+      "sha256": "b86e4b46cc1120dd7695dfd8a7658f6536fbe0acf51e7389949061b98e3e8539"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-door-hardware.png",
+      "bytes": 3183980,
+      "sha256": "27abd5794a678f3b9ed9c1a01ae52b813075eacf4cf0ee65afff499e3a294161"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-step-close.json",
+      "bytes": 30892,
+      "sha256": "46e9cf4db19383a77c14ce476559b2dd55a6ba101a818cb64eb053e8d7cb1a49"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-step-close.png",
+      "bytes": 4150829,
+      "sha256": "8f719ac2b3b6465cb87152dfd2306caee235a20a6fceadc3c2935870a0f8022e"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-plinth-close.json",
+      "bytes": 30894,
+      "sha256": "e7f625064a090dc2a5d03dbec9d4128746d7f658de838c00a682824b8fbc5cf3"
+    },
+    {
+      "path": "qa/user-house-after-evidence/user-house-after-plinth-close.png",
+      "bytes": 3731966,
+      "sha256": "1e5231863625b67417e411bad29d7942c79e1c30dbe9ac366d894b03b22d2f2b"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-house-inside.json",
+      "bytes": 30666,
+      "sha256": "4fab234241100bf34fab5ab50582d62e898a90b1bec88c347eb718a15dfdc00a"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-house-inside.png",
+      "bytes": 3902845,
+      "sha256": "ae44284058ba5f423b5fc5bd866ad4ef260acc43a747231eed99bb75eb6d6816"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-house-outside.json",
+      "bytes": 30645,
+      "sha256": "17c6168566febeca53ff66d3107bdca060a392bab135160d3ee0560fcafa9ee2"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-house-outside.png",
+      "bytes": 2809198,
+      "sha256": "627199ecb3affd41e9012471c07c5296c4da384f879aab5a29de155c7db0eff1"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-hardware-close.json",
+      "bytes": 30667,
+      "sha256": "742b3d7312c844eb3808f41d6623ec74dcc38600be7f1ce529c055caff3ceb4e"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-hardware-close.png",
+      "bytes": 3278357,
+      "sha256": "fc84eaf3b4c87fc701044041dbec03efa4535f9ac056efa1a1eb9feffee46afd"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-door-hardware.json",
+      "bytes": 30672,
+      "sha256": "385c4865113e2c1d6477d960afa9a48eaca2f18deb5c1f51df058d2ab9627451"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-door-hardware.png",
+      "bytes": 3145983,
+      "sha256": "74011c24d5c471be6028c2fcb3481d5761f83ca5d71338d80c8577eb150f9fd7"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-step-close.json",
+      "bytes": 30665,
+      "sha256": "6902c4d2cc7e4ce96d1cd348683262bc8afd67b3dd9951aa6426301f9e91de28"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-step-close.png",
+      "bytes": 4122056,
+      "sha256": "442e1957c9571124b1dc183266b67eee8b8d22a395c054de78a97bc070374617"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-plinth-close.json",
+      "bytes": 30665,
+      "sha256": "93a998f11623ff7fbbce8331fbca9f03d9eca9ca175a01ff4ce0785f0af40fb1"
+    },
+    {
+      "path": "qa/user-house-before-evidence/user-house-before-plinth-close.png",
+      "bytes": 3705235,
+      "sha256": "b94f1896558b95266107cc3528f5e388459712137e387a623669ecd2c52eb026"
+    },
+    {
+      "path": "qa/user-house-evidence/performance-1.json",
+      "bytes": 331043,
+      "sha256": "1006111344fbc8e6dee54269fc419cbee626ef8b0e67394d1b860880b4af4d90"
+    },
+    {
+      "path": "qa/user-house-evidence/performance-1-diagnostics.json",
+      "bytes": 328,
+      "sha256": "86a72be8f90947071523cbfc12ecaf0783c19637553f310eecdde3376f0f3717"
+    },
+    {
+      "path": "qa/user-house-evidence/performance-2.json",
+      "bytes": 337127,
+      "sha256": "254ffd99ac6461e2bc1b8bfa7d0c4e88104731f5fb09a303612fd2e582be10ce"
+    },
+    {
+      "path": "qa/user-house-evidence/performance-2-diagnostics.json",
+      "bytes": 328,
+      "sha256": "f1db3594a1c691f0809b79f8568b97d8e44c452ea08459a37df79efca9309b8e"
+    },
+    {
+      "path": "qa/user-house-evidence/performance-3.json",
+      "bytes": 336529,
+      "sha256": "8ec7e629bd12e7baa2b3afe688730a43dc39d96b437ad9568f1a9a1c42dbbdc7"
+    },
+    {
+      "path": "qa/user-house-evidence/performance-3-diagnostics.json",
+      "bytes": 326,
+      "sha256": "7295d21688a4527aba57b549c371154ffe4fe3dafbb180b181b51fdf76d2eccf"
+    },
+    {
+      "path": "qa/user-house-independent-review.json",
+      "bytes": 2735,
+      "sha256": "121ad37ca060c76e2f39a94e8423248e2650ea63cfe82d450e224300daa94b6b"
+    },
+    {
+      "path": "qa/user-house-after-captures.json",
+      "bytes": 760,
+      "sha256": "2fdab1ae1c5016898fcd2545dcfce2253029f1c35ebc07af0fd014b78e32c53d"
+    },
+    {
+      "path": "qa/user-house-before-captures.json",
+      "bytes": 766,
+      "sha256": "efe2e5559a44932bc233c6089a0b42dd78a1343a1a9948f8a2ac07e8db905b37"
+    },
+    {
+      "path": "qa/user-house-benchmark.json",
+      "bytes": 1249,
+      "sha256": "2fb39397a35ceccffd0832a0be5685863395e1bf49b590f281f70566eefcb72e"
+    },
+    {
+      "path": "assets/house/timber-house-edited.glb",
+      "bytes": 17521164,
+      "sha256": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43"
+    },
+    {
+      "path": "assets/house/house-contract.json",
+      "bytes": 4000820,
+      "sha256": "dae7312e1bb3b8c86c0aac3ac6aa3410c87f6b9e23d5fe7af2fc182f1f8a3453"
+    },
+    {
+      "path": "authoring/user-house-2026-11-17/source-audit.json",
+      "bytes": 38963,
+      "sha256": "458be20db1feae77eabe6fd2a58ee6a81ace0037d51386c71083de89b36ff6df"
+    },
+    {
+      "path": "authoring/user-house-2026-11-17/timber-house-user-source.blend",
+      "bytes": 13464940,
+      "sha256": "bf6ac17ae69835ad8f54e20c5c90b6c0610e43924a95b2e9095a29e7c1b6a2a8"
+    },
+    {
+      "path": "authoring/user-house-2026-11-17/timber-house-user.glb",
+      "bytes": 17521164,
+      "sha256": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43"
+    },
+    {
+      "path": "authoring/user-house-2026-11-17/Image_4.png",
+      "bytes": 1484612,
+      "sha256": "9b5a5599ac2d0ffa134cb292df3dec430cafcede4fb518a9118c3b017a3ae875"
+    }
+  ],
+  "review": {
+    "schema": "sunbreak-user-house-independent-review-v1",
+    "date": "2026-11-17",
+    "scope": "Visible manual house-edit propagation and engineering import only; not global demo or UE/AAA acceptance.",
+    "engineering": {
+      "reviewer": "Planck",
+      "readOnly": true,
+      "verdict": "PASS",
+      "basis": [
+        "Exact saved source, packed painted texture provenance and actual loaded candidate reviewed.",
+        "Three explicit structural pins and narrow low-step floor support; original strict generic importer, combat, arms, v1/v2 and original kit preserved.",
+        "Source-bound roundtrip36, house47 and tactical24; preservation19 and floor33 assertions pass.",
+        "Final two current30s1080p native-hardware combat/audio samples strictly pass. First568.5ms unexplained hitch is retained."
+      ],
+      "limits": [
+        "Microscopic float seam and full continuous walkthrough coverage not exhaustively certified.",
+        "No universally hitch-free or UE cinematic claim.",
+        "Public publication and anonymous live verification are separate."
+      ]
+    },
+    "art": {
+      "reviewer": "Zeno",
+      "readOnly": true,
+      "verdict": "PASS",
+      "blockerCount": 0,
+      "majorCount": 0,
+      "method": "All six matched before/after pairs inspected: twelve representative actual1920x1080 WebGL canvas images, no desktop/window pixels or UI interaction.",
+      "views": [
+        "house-inside",
+        "house-outside",
+        "hardware-close",
+        "door-hardware",
+        "step-close",
+        "plinth-close"
+      ],
+      "findings": [
+        "Yellow Hello and red painted scribbles visibly reach game wood and door surfaces.",
+        "Shared wood-texture repetition is the intentional manual-control proof, not an accidental redesign.",
+        "No confirmed unexpected texture, UV, shader or gross geometry loss observed.",
+        "Interior and door views remain coherent; added low step and changed handle plate are visible."
+      ],
+      "minor": [
+        "A plinth-corner dark facet remains an authored-versus-export ambiguity, not a confirmed import failure; no redesign requested."
+      ],
+      "limits": [
+        "No full continuous motion, collision, performance or global art-direction acceptance inferred from these stills."
+      ]
+    },
+    "producerArtPrecheck": {
+      "sameness": "Expected shared material reuse; unique decals were not requested.",
+      "proportionAndStructure": "Preserve user geometry and original layout; no gross loss in inspected frames.",
+      "stylizationBoundary": "Baseline rendering plus deliberate test paint, not a new style approval.",
+      "visualImpact": "User test marks are clearly readable in current interior view.",
+      "detailPriority": "Verify manual edit control before any optional aesthetic polish."
+    }
+  },
+  "performance": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "latest": {
+      "path": "qa/user-house-evidence/performance-3.json",
+      "pass": true,
+      "p95_ms": 18.399999999997817,
+      "p99_ms": 18.5,
+      "max_ms": 42.80000000000291,
+      "hitches": 0
+    },
+    "attempts": [
+      {
+        "path": "qa/user-house-evidence/performance-1.json",
+        "pass": false,
+        "p95_ms": 18.399999999997817,
+        "p99_ms": 18.599999999998545,
+        "max_ms": 568.5,
+        "hitches": 1
+      },
+      {
+        "path": "qa/user-house-evidence/performance-2.json",
+        "pass": true,
+        "p95_ms": 18.30000000000291,
+        "p99_ms": 18.599999999998545,
+        "max_ms": 18.700000000004366,
+        "hitches": 0
+      },
+      {
+        "path": "qa/user-house-evidence/performance-3.json",
+        "pass": true,
+        "p95_ms": 18.399999999997817,
+        "p99_ms": 18.5,
+        "max_ms": 42.80000000000291,
+        "hitches": 0
+      }
+    ],
+    "caveat": "Every attempt retained. First attempt had a568.5ms unexplained hitch; a subsequent strict pass does not establish universally hitch-free play."
+  },
+  "limits": [
+    "Shared wood texture deliberately repeats Hello/red test paint on all users of that texture.",
+    "Two small below-floor foundation corner cutouts are preserved as authored, not certified watertight.",
+    "Representative real canvas views, not full continuous visual review.",
+    "Pre-existing private vault conflict preserved; isolated public web checkpoint only.",
+    "Original downloadable art kit remains the old comparison baseline; saved latest user source is in authoring/user-house-2026-11-17."
+  ],
+  "publication": "Source checkpoint and normal protected-main Pages publication/live hashes are separately recorded in user-house-public-live.json."
+}

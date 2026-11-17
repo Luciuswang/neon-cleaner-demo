@@ -1,0 +1,479 @@
+{
+  "date": "2026-11-17T09:24:35.442Z",
+  "method": "actual browser synthetic house geometry/input integration; not human walkthrough or real-time performance",
+  "pass": true,
+  "checks": [
+    {
+      "name": "historical proxy baseline hash pinned",
+      "pass": true,
+      "detail": "c40854b2293dda1beeaffb950edbfae4d7c12c6989c4e6dfccf7bd921a79a232"
+    },
+    {
+      "name": "other17 movement proxy bounds unchanged",
+      "pass": true
+    },
+    {
+      "name": "authorized six tactical spawn anchors",
+      "pass": true,
+      "detail": [
+        [
+          -6.1,
+          0.55
+        ],
+        [
+          5,
+          -5.55
+        ],
+        [
+          -15.6,
+          10.1
+        ],
+        [
+          15.6,
+          -6.15
+        ],
+        [
+          -12,
+          -20.45
+        ],
+        [
+          12.25,
+          -17.5
+        ]
+      ]
+    },
+    {
+      "name": "legacy body no longer ray blocker",
+      "pass": true
+    },
+    {
+      "name": "actual room and reference components installed",
+      "pass": true,
+      "detail": {
+        "target": "former MERCADO12",
+        "reference": "user supplied timber cabin; structure only, no photo/watermark copied",
+        "footprint": [
+          8,
+          8
+        ],
+        "root": [
+          12,
+          0,
+          -18
+        ],
+        "floor": 0.66,
+        "logs": 195,
+        "lapEnds": 88,
+        "windows": 8,
+        "realInterior": true,
+        "interiorLights": 2,
+        "exteriorLights": 2,
+        "remainingOriginalMovementProxies": 17,
+        "raycastUsesVisibleAssembly": true,
+        "roof": {
+          "style": "black/dark-slate overlapping tiles",
+          "tiles": 723,
+          "ridgeCaps": 27,
+          "panels": 3,
+          "drawCalls": 3,
+          "drawCallScope": "per color pass; shadows/reflections additional",
+          "triangles": 26616,
+          "metalness": 0.035,
+          "roughnessRange": [
+            0.3768627450980392,
+            0.5786666666666667
+          ],
+          "authoredNormal": true,
+          "collisionChanged": false
+        },
+        "door": {
+          "angle": 0,
+          "target": 0,
+          "moving": false,
+          "open": false,
+          "message": "",
+          "toggles": 0
+        },
+        "near": false,
+        "visible": false,
+        "asset": {
+          "mode": "imported-glb",
+          "validated": true,
+          "meshes": 1372,
+          "triangles": 54344,
+          "lightsInAsset": 0,
+          "doorPivot": [
+            -1.840000033378601,
+            0.6600000262260437,
+            2.4000000953674316
+          ],
+          "contract": "sunbreak-house-fixed-layout-v1",
+          "url": "./assets/house/timber-house-edited.glb",
+          "staticBatches": 11,
+          "roundtrip": "Blender edited derivative; source authoring GLB retained"
+        }
+      }
+    },
+    {
+      "name": "closed door blocks outside shot",
+      "pass": true
+    },
+    {
+      "name": "closed door blocks inside shot",
+      "pass": true
+    },
+    {
+      "name": "closed door blocks player movement",
+      "pass": true
+    },
+    {
+      "name": "open door permits outside shot through opening",
+      "pass": true
+    },
+    {
+      "name": "open door permits inside shot through opening",
+      "pass": true
+    },
+    {
+      "name": "open door permits walking through threshold",
+      "pass": true
+    },
+    {
+      "name": "partly open real leaf still blocks rays",
+      "pass": true
+    },
+    {
+      "name": "partly open leaf blocks matching movement bounds",
+      "pass": true
+    },
+    {
+      "name": "walls block from outdoors",
+      "pass": true
+    },
+    {
+      "name": "walls block from inside",
+      "pass": true
+    },
+    {
+      "name": "fixed enemy9,-13 stays clear",
+      "pass": true
+    },
+    {
+      "name": "fixed enemy westward exit stays clear",
+      "pass": true
+    },
+    {
+      "name": "ground-height enemy cannot climb stairs",
+      "pass": true
+    },
+    {
+      "name": "stair rail blocks side crossing 10.09",
+      "pass": true
+    },
+    {
+      "name": "stair rail blocks side crossing 11.75",
+      "pass": true
+    },
+    {
+      "name": "actual vertical solver enter speed4.2 dt0.016666666666666666",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          2.36,
+          -19.03000000000003
+        ],
+        "steps": 104,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver exit speed4.2 dt0.016666666666666666",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          1.7,
+          -11.78999999999997
+        ],
+        "steps": 103,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver enter speed7.4 dt0.016666666666666666",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          2.36,
+          -19.026666666666696
+        ],
+        "steps": 59,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver exit speed7.4 dt0.016666666666666666",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          1.7,
+          -11.723333333333306
+        ],
+        "steps": 59,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver enter speed4.2 dt0.05",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          2.36,
+          -19.10000000000003
+        ],
+        "steps": 35,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver exit speed4.2 dt0.05",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          1.7,
+          -11.64999999999997
+        ],
+        "steps": 35,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver enter speed7.4 dt0.05",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          2.36,
+          -19.15
+        ],
+        "steps": 20,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual vertical solver exit speed7.4 dt0.05",
+      "pass": true,
+      "detail": {
+        "clear": true,
+        "position": [
+          10.92,
+          1.7,
+          -11.600000000000001
+        ],
+        "steps": 20,
+        "grounded": true
+      }
+    },
+    {
+      "name": "actual jump resolves lintel",
+      "pass": true,
+      "detail": {
+        "peak": 3.0399999999999996,
+        "maxHead": 3.04
+      }
+    },
+    {
+      "name": "actual jump resolves inside",
+      "pass": true,
+      "detail": {
+        "peak": 3.3349999999999995,
+        "maxHead": 4.5
+      }
+    },
+    {
+      "name": "actual jump resolves porch",
+      "pass": true,
+      "detail": {
+        "peak": 3.3349999999999995,
+        "maxHead": 3.58
+      }
+    },
+    {
+      "name": "outside jump trajectory exactly baseline",
+      "pass": true
+    },
+    {
+      "name": "leaving raised stair clears grounded before mid-air jump",
+      "pass": true,
+      "detail": {
+        "y": 2.355833333333333,
+        "vy": -0.25,
+        "onGround": false
+      }
+    },
+    {
+      "name": "outdoor support unchanged",
+      "pass": true
+    },
+    {
+      "name": "actual near aimed door exposes interaction",
+      "pass": true
+    },
+    {
+      "name": "actual repeat guard",
+      "pass": true
+    },
+    {
+      "name": "actual focused UI guard",
+      "pass": true
+    },
+    {
+      "name": "actual E key event opens door",
+      "pass": true
+    },
+    {
+      "name": "pause blocks immediately before another frame",
+      "pass": true
+    },
+    {
+      "name": "actual pause freezes door and hides prompt",
+      "pass": true
+    },
+    {
+      "name": "paused handler cannot change target",
+      "pass": true
+    },
+    {
+      "name": "reset closes actual rendered leaf",
+      "pass": true
+    },
+    {
+      "name": "presentation blocks immediately before another frame",
+      "pass": true
+    },
+    {
+      "name": "blur pauses and blocks actual E event",
+      "pass": true
+    },
+    {
+      "name": "text input E event cannot toggle door",
+      "pass": true
+    },
+    {
+      "name": "actual proximity button opens",
+      "pass": true
+    },
+    {
+      "name": "door UI does not swallow held movement release",
+      "pass": true
+    }
+  ],
+  "house": {
+    "target": "former MERCADO12",
+    "reference": "user supplied timber cabin; structure only, no photo/watermark copied",
+    "footprint": [
+      8,
+      8
+    ],
+    "root": [
+      12,
+      0,
+      -18
+    ],
+    "floor": 0.66,
+    "logs": 195,
+    "lapEnds": 88,
+    "windows": 8,
+    "realInterior": true,
+    "interiorLights": 2,
+    "exteriorLights": 2,
+    "remainingOriginalMovementProxies": 17,
+    "raycastUsesVisibleAssembly": true,
+    "roof": {
+      "style": "black/dark-slate overlapping tiles",
+      "tiles": 723,
+      "ridgeCaps": 27,
+      "panels": 3,
+      "drawCalls": 3,
+      "drawCallScope": "per color pass; shadows/reflections additional",
+      "triangles": 26616,
+      "metalness": 0.035,
+      "roughnessRange": [
+        0.3768627450980392,
+        0.5786666666666667
+      ],
+      "authoredNormal": true,
+      "collisionChanged": false
+    },
+    "door": {
+      "angle": 0,
+      "target": 0,
+      "moving": false,
+      "open": false,
+      "message": "",
+      "toggles": 0
+    },
+    "near": true,
+    "visible": true,
+    "asset": {
+      "mode": "imported-glb",
+      "validated": true,
+      "meshes": 1372,
+      "triangles": 54344,
+      "lightsInAsset": 0,
+      "doorPivot": [
+        -1.840000033378601,
+        0.6600000262260437,
+        2.4000000953674316
+      ],
+      "contract": "sunbreak-house-fixed-layout-v1",
+      "url": "./assets/house/timber-house-edited.glb",
+      "staticBatches": 11,
+      "roundtrip": "Blender edited derivative; source authoring GLB retained"
+    }
+  },
+  "buildHashes": {
+    "index.html": "c7efebdeedb6b5e8be6ff6649332747f81afd50d2359d320bcb818de6fe8db01",
+    "world.js": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+    "weapon.js": "f85489fad56913d74b90e541d6bbaea98e38c15621f761b34de328506dc44cbe",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "b1d79072ec9eb99c4fe5a2793e34f2c31dca8214f51b538a038569e171c48fff",
+    "storm.js": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "timber-house.js": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+    "house-asset.js": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "tactical-ai.js": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+    "boot-ui.js": "f2d6fa871f7236e9e4df39f5cf39097c570830f04409ace42978ef294cb76868",
+    "assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "vendor/manifest.json": "3f2490c003a184ed166a8c4b2f951b2f947157fdb98f8eee004a2c2b1e788230",
+    "assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "assets/house/house-contract.json": "dae7312e1bb3b8c86c0aac3ac6aa3410c87f6b9e23d5fe7af2fc182f1f8a3453",
+    "assets/house/timber-house-edited.glb": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43",
+    "authoring/timber-house/house-contract.json": "f372837736ca8b868b4d6c13cc041e54d0c255e0b3f05bca1f9d06b11d5dfbde",
+    "authoring/user-house-2026-11-17/source-audit.json": "458be20db1feae77eabe6fd2a58ee6a81ace0037d51386c71083de89b36ff6df",
+    "qa-hooks.js": "2e6dd27b72f5ef9177214cef0d54e3e57910bb6da4f55ff5ab406387315dbdd3",
+    "qa/runtime-checks.js": "e817e9a5117e344595105016fa213f0c9664794da624568b806ec904c84a52a0",
+    "qa/storm-checks.js": "f1f193a6417e292a0d6d0dcf4f155a2f4cd987020a235db05965d6495944914e",
+    "qa/house-checks.js": "19d64eb28fab5108bc6e31064ff4df8665aa064c0965b382db7df600a47834d1",
+    "qa/house-roundtrip-checks.js": "db54e46d301c900a19f1b624f92ddf0f5e124826240d4d358f361561a320b9f2",
+    "qa/tactical-checks.js": "8009d75d8cdfcd3306503624e839548cd22331ea3e53b9c44d5559d25359418f",
+    "qa/check-house-logic.mjs": "4f450633be94ba677fb3240f6b11966172b1fb8dc1e414e92ca2402346d5229d",
+    "qa/compare-gameplay.mjs": "ea0fac523b966717f1862c045cd9a627cca21b2c3bc55ac4a59388631615271e",
+    "serve.mjs": "5d9f50c9d316c835e49992fdc5d42bf377b47c5594c7b3cc1ade2a42b1116db5"
+  }
+}
