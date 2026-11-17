@@ -1,0 +1,41 @@
+{
+  "pass": false,
+  "date": "2026-11-17T10:55:17.902Z",
+  "error": "Error: FAIL released mouse stops immediately\n    at check (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-arena-v4/qa/browser.mjs:37:107)\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-arena-v4/qa/browser.mjs:79:50",
+  "results": [
+    {
+      "name": "held actual left mouse fires repeatedly",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 25,
+          "reserve": 90
+        }
+      }
+    },
+    {
+      "name": "released mouse stops immediately",
+      "pass": false
+    }
+  ],
+  "errors": [],
+  "diagnostics": {
+    "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/",
+    "error": "",
+    "qa": "{\"state\":\"play\",\"version\":\"arena-v4\",\"style\":\"热带竞技\",\"styleIndex\":0,\"health\":100,\"ammo\":{\"mag\":24,\"reserve\":90},\"kills\":0,\"firing\":{\"mouse\":false,\"keyboard\":false,\"held\":false},\"reloadSeconds\":2.25,\"reloadProgress\":0,\"shots\":6,\"camera\":{\"x\":0,\"y\":1.7,\"z\":12,\"yaw\":-0.12,\"pitch\":0.871},\"enemies\":[{\"i\":0,\"alive\":true,\"hp\":100,\"x\":-6.35,\"y\":0,\"z\":0.5,\"mode\":\"hide\",\"stance\":0.9999976860457576},{\"i\":1,\"alive\":true,\"hp\":100,\"x\":5.41,\"y\":0,\"z\":-5.57,\"mode\":\"hide\",\"stance\":0.9999875956762256},{\"i\":2,\"alive\":true,\"hp\":100,\"x\":-15.68,\"y\":0,\"z\":10.54,\"mode\":\"hide\",\"stance\":0.9999671293336824},{\"i\":3,\"alive\":true,\"hp\":100,\"x\":15.62,\"y\":0,\"z\":-6.45,\"mode\":\"hide\",\"stance\":0.9999578005530408},{\"i\":4,\"alive\":true,\"hp\":100,\"x\":-9.04,\"y\":0,\"z\":-20.33,\"mode\":\"advance\",\"stance\":0.3000695910254744},{\"i\":5,\"alive\":true,\"hp\":100,\"x\":12.25,\"y\":0.66,\"z\":-17.5,\"mode\":\"guard\",\"stance\":1}],\"tactical\":{\"method\":\"authored cover-pair state machine + obstacle grid A*, not human simulation\",\"elapsed\":1.8279000000953671,\"totalShots\":0,\"totalMovementMeters\":4.3767000006437184,\"decisions\":6,\"navigation\":{\"width\":83,\"height\":78,\"blocked\":1214,\"cells\":6474},\"coverPairs\":136,\"actors\":[{\"id\":0,\"role\":\"cover rifleman\",\"mode\":\"hide\",\"cover\":\"5:0:-1:-1\",\"shots\":0,\"bursts\":0,\"moves\":0.25222499978542273,\"stance\":0.9999976860457576,\"pathPoints\":0},{\"id\":1,\"role\":\"corner rifleman\",\"mode\":\"hide\",\"cover\":\"6:0:-1:1\",\"shots\":0,\"bursts\":0,\"moves\":0.41242500042915414,\"stance\":0.9999875956762256,\"pathPoints\":0},{\"id\":2,\"role\":\"cover rifleman\",\"mode\":\"hide\",\"cover\":\"8:-1:0:-1\",\"shots\":0,\"bursts\":0,\"moves\":0.4499999999999975,\"stance\":0.9999671293336824,\"pathPoints\":0},{\"id\":3,\"role\":\"corner rifleman\",\"mode\":\"hide\",\"cover\":\"10:1:0:-1\",\"shots\":0,\"bursts\":0,\"moves\":0.29970000064372937,\"stance\":0.9999578005530408,\"pathPoints\":0},{\"id\":4,\"role\":\"cover rifleman\",\"mode\":\"advance\",\"cover\":\"9:0:-1:-1\",\"shots\":0,\"bursts\":0,\"moves\":2.962349999785416,\"stance\":0.3000695910254744,\"pathPoints\":2},{\"id\":5,\"role\":\"cabin defender\",\"mode\":\"guard\",\"cover\":\"cabin-door\",\"shots\":0,\"bursts\":0,\"moves\":0,\"stance\":1,\"pathPoints\":0}]},\"presentation\":false,\"reloading\":0,\"renderer\":\"ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)\",\"viewport\":[1920,1080]}",
+    "resources": [
+      {
+        "name": "https://luciuswang.github.io/favicon.ico",
+        "status": 404
+      },
+      {
+        "name": "https://luciuswang.github.io/favicon.ico",
+        "status": 404
+      }
+    ]
+  }
+}

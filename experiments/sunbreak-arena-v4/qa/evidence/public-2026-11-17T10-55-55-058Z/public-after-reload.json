@@ -1,0 +1,171 @@
+{
+  "state": "play",
+  "version": "arena-v4",
+  "style": "热带竞技",
+  "styleIndex": 0,
+  "health": 61,
+  "ammo": {
+    "mag": 30,
+    "reserve": 84
+  },
+  "kills": 0,
+  "firing": {
+    "mouse": false,
+    "keyboard": false,
+    "held": false
+  },
+  "reloadSeconds": 2.25,
+  "reloadProgress": 0,
+  "shots": 6,
+  "camera": {
+    "x": 0,
+    "y": 1.7,
+    "z": 12,
+    "yaw": -0.12,
+    "pitch": 0.872
+  },
+  "enemies": [
+    {
+      "i": 0,
+      "alive": true,
+      "hp": 100,
+      "x": -6.56,
+      "y": 0,
+      "z": 0.47,
+      "mode": "hide",
+      "stance": 0.9997349261554729
+    },
+    {
+      "i": 1,
+      "alive": true,
+      "hp": 100,
+      "x": 6.74,
+      "y": 0,
+      "z": -5.63,
+      "mode": "burst",
+      "stance": 0.000001390982815902844
+    },
+    {
+      "i": 2,
+      "alive": true,
+      "hp": 100,
+      "x": -15.71,
+      "y": 0,
+      "z": 10.95,
+      "mode": "retreat",
+      "stance": 0.9889176346716938
+    },
+    {
+      "i": 3,
+      "alive": true,
+      "hp": 100,
+      "x": 15.63,
+      "y": 0,
+      "z": -6.67,
+      "mode": "hide",
+      "stance": 0.9994665803553716
+    },
+    {
+      "i": 4,
+      "alive": true,
+      "hp": 100,
+      "x": -3.49,
+      "y": 0,
+      "z": -16.61,
+      "mode": "advance",
+      "stance": 0.3000000000000172
+    },
+    {
+      "i": 5,
+      "alive": true,
+      "hp": 100,
+      "x": 12.25,
+      "y": 0.66,
+      "z": -17.5,
+      "mode": "guard",
+      "stance": 1
+    }
+  ],
+  "tactical": {
+    "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+    "elapsed": 4.985999999523155,
+    "totalShots": 10,
+    "totalMovementMeters": 19.967547998938578,
+    "decisions": 6,
+    "navigation": {
+      "width": 83,
+      "height": 78,
+      "blocked": 1214,
+      "cells": 6474
+    },
+    "coverPairs": 136,
+    "actors": [
+      {
+        "id": 0,
+        "role": "cover rifleman",
+        "mode": "hide",
+        "cover": "5:0:-1:-1",
+        "shots": 2,
+        "bursts": 1,
+        "moves": 2.7375109997177165,
+        "stance": 0.9997349261554729,
+        "pathPoints": 0
+      },
+      {
+        "id": 1,
+        "role": "corner rifleman",
+        "mode": "burst",
+        "cover": "6:0:-1:1",
+        "shots": 3,
+        "bursts": 1,
+        "moves": 1.7450170005702936,
+        "stance": 0.000001390982815902844,
+        "pathPoints": 0
+      },
+      {
+        "id": 2,
+        "role": "cover rifleman",
+        "mode": "retreat",
+        "cover": "8:-1:0:-1",
+        "shots": 3,
+        "bursts": 1,
+        "moves": 2.7089949995088474,
+        "stance": 0.9889176346716938,
+        "pathPoints": 1
+      },
+      {
+        "id": 3,
+        "role": "corner rifleman",
+        "mode": "hide",
+        "cover": "10:1:0:-1",
+        "shots": 2,
+        "bursts": 1,
+        "moves": 2.7417000006437187,
+        "stance": 0.9994665803553716,
+        "pathPoints": 0
+      },
+      {
+        "id": 4,
+        "role": "cover rifleman",
+        "mode": "advance",
+        "cover": "9:0:-1:-1",
+        "shots": 0,
+        "bursts": 0,
+        "moves": 10.034324998497961,
+        "stance": 0.3000000000000172,
+        "pathPoints": 1
+      },
+      {
+        "id": 5,
+        "role": "cabin defender",
+        "mode": "guard",
+        "cover": "cabin-door",
+        "shots": 0,
+        "bursts": 0,
+        "moves": 0,
+        "stance": 1,
+        "pathPoints": 0
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema": "sunbreak-auto-browser-v1",
+  "harnessAdapter": {
+    "method": "Exact anonymous-public harness using synchronous read-only production snapshot instead of200ms HUD mirror; no runtime mutation, timing or assertion changes",
+    "source": "qa/public.mjs",
+    "sourceSha256": "42ce5f9e3483e7295f6ea48b355aa0e0b0bbb1f39bc65418d6ed5419902298f5",
+    "baseSourceSha256": "f17969ada39aba1f5f644f3789a18146dcba14e5a3f4429e70e90b9a134dc52e",
+    "adaptedProgramSha256": "11b657952b37c71d2c251b4b59445e5e552ff92bf39694fcba94ea50070c7475"
+  },
+  "date": "2026-11-17T10:56:33.905Z",
+  "phase": "public",
+  "method": "native-headless actual WebGL canvas; no desktop/window interaction",
+  "pass": true,
+  "results": [
+    {
+      "name": "held actual left mouse fires repeatedly",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 24,
+          "reserve": 90
+        }
+      }
+    },
+    {
+      "name": "released mouse stops immediately",
+      "pass": true
+    },
+    {
+      "name": "right mouse aims but never fires",
+      "pass": true
+    },
+    {
+      "name": "middle mouse never fires",
+      "pass": true
+    },
+    {
+      "name": "reload starts and defers replenishment",
+      "pass": true
+    },
+    {
+      "name": "reload blocks fire",
+      "pass": true
+    },
+    {
+      "name": "reload completes once and conserves total ammunition",
+      "pass": true,
+      "details": {
+        "before": {
+          "mag": 24,
+          "reserve": 90
+        },
+        "after": {
+          "mag": 30,
+          "reserve": 84
+        }
+      }
+    }
+  ],
+  "errors": []
+}

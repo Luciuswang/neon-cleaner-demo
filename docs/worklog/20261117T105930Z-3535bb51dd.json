@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T105930Z-3535bb51dd",
+  "task_id": "sunbreak-auto-arena-2026-11-17",
+  "timestamp_utc": "2026-11-17T10:59:30.521449+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "SUNBREAK v4 DONE bounded single-player CONDITIONAL PASS: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/ . Public runtime source f5fc3012a775995052dac5fc7fb623d12fea7f85; normal PR9 publication e2c0faf2c51b79c44e3589e08987b6feb225294a; Pages action44068884546SUCCESS. Anonymous126file hashes and7actual-public input checks PASS; Planck publication review PASS. Earlier3demos unchanged. Prior hitches, failed capture density and stale-HUD first public test retained. Continuous motion UNVERIFIED;4v4 NOT IMPLEMENTED, next choose authorized real-time host/budget. Existing private-vault state untouched; no full UE/private portability claim. No SeaTalk/email sent.",
+  "commit_shas": [
+    "f5fc3012a775995052dac5fc7fb623d12fea7f85"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

@@ -54,10 +54,27 @@ function walk(dir){
 walk(evidence);
 const densityPath=resolve(chosen.movie,'../decoded/decode.json'),density=read(densityPath);
 assert.equal(density.source_sha256,hash(readFileSync(resolve(chosen.movie,'../reload-live.webm'))));
+let publication='PENDING separate protected-main PR and anonymous hash/browser verification';
+if(process.argv.includes('--published')){
+ assert.equal(review.publicationEngineering?.verdict,'PASS','Separate publication engineering review required');
+ const receipt=read(resolve(repo,'.local/sunbreak-v4-publication.json')),live=read(resolve(qa,'public-live.json'));
+ assert.ok(receipt.uploaded&&receipt.liveVerified&&live.pass&&live.errors.length===0);
+ assert.equal(live.sourceCommit,receipt.sourceCommit);assert.equal(live.publicCommit,receipt.publicCommit);
+ assert.equal(overlay.sourceCommit,receipt.sourceCommit);assert.equal(live.files.length,126);
+ for(const f of overlay.files)assert.equal(live.files.find(p=>p.path===f.path)?.sha256,f.sha256,'Published bytes '+f.path);
+ for(const f of overlay.sharedFiles)assert.equal(live.files.find(p=>p.path==='../'+f.path)?.sha256,f.sha256,'Published shared bytes '+f.path);
+ const path=latest('public'),smoke=read(path);
+ assert.ok(smoke.pass&&smoke.results.length>=7&&smoke.errors.length===0);
+ assert.equal(smoke.harnessAdapter?.sourceSha256,hash(readFileSync(resolve(qa,'public.mjs'))));
+ assert.equal(smoke.harnessAdapter?.baseSourceSha256,sources['qa/browser.mjs']);
+ publication={...receipt,hashVerification:'qa/public-live.json',anonymousFilesVerified:live.files.length,
+  browserVerification:relative(root,path).split(sep).join('/'),browserAssertions:smoke.results.length,
+  publicHarness:smoke.harnessAdapter,engineeringReview:review.publicationEngineering,singlePlayerOnly:true};
+}
 const report={schema:'sunbreak-auto-release-v1',date:new Date().toISOString(),verdict:'CONDITIONAL PASS',scope:'Single-player held automatic fire and authored reload prototype only; not 4v4, full continuous motion, subjective audio or UE/AAA acceptance',
  currentSourceBinding:true,sources,checks:checks.results.length,unitGroups:unit.results.length,sharedFiles:overlay.sharedFiles,performance,
  engineering:review.engineering,art:review.art,continuousMotion:{verdict:'UNVERIFIED',captureDensityPass:density.pass,frames:density.frames,reason:'Requested/container capture fps does not prove delivered frames; failed sparse recordings retained. Sampled actual game-canvas poses and functional clock tests only.'},
- retainedFailures:['Initial cuff/hand pose and sanitized twist-name mismatch; rejected images retained.','Independent review caught repeat-F and focused-control trigger defects; fixed and final32-group regression passed.','Initial strict benchmark failed with unexplained1333.2ms hitch. Two subsequent PASS samples used finite90reserve and are mixed combat/rendering, not sustained stress.','Sustained sample benchmark-2026-11-17T10-44-34-752Z failed with one52.6ms frame during reload.4667, cause unknown. Retained alongside all four sustained attempts; the final declared pair passed unchanged thresholds/runtime. No universally hitch-free claim.','Both initial live-timer recordings failed density; do not claim full continuous acceptance.'],
- releaseFiles:overlay.files,artifacts,publication:'PENDING separate protected-main PR and anonymous hash/browser verification'};
+ retainedFailures:['Initial cuff/hand pose and sanitized twist-name mismatch; rejected images retained.','Independent review caught repeat-F and focused-control trigger defects; fixed and final32-group regression passed.','Initial strict benchmark failed with unexplained1333.2ms hitch. Two subsequent PASS samples used finite90reserve and are mixed combat/rendering, not sustained stress.','Sustained sample benchmark-2026-11-17T10-44-34-752Z failed with one52.6ms frame during reload.4667, cause unknown. Retained alongside all four sustained attempts; the final declared pair passed unchanged thresholds/runtime. No universally hitch-free claim.','Both initial live-timer recordings failed density; do not claim full continuous acceptance.','First public mouse-release smoke read the200ms HUD mirror and observed25 then24rounds. Failure retained. Public adapter instead reads the already-published synchronous production snapshot, without runtime/timing/assertion changes.'],
+ releaseFiles:overlay.files,artifacts,publication};
 writeFileSync(resolve(qa,'release.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({verdict:report.verdict,currentSourceBinding:true,checks:report.checks,unitGroups:report.unitGroups,sharedFiles:report.sharedFiles.length,artifacts:artifacts.length,performance,continuousMotion:report.continuousMotion}));

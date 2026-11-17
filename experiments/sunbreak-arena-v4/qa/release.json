@@ -1,6 +1,6 @@
 {
   "schema": "sunbreak-auto-release-v1",
-  "date": "2026-11-17T10:50:44.022Z",
+  "date": "2026-11-17T10:59:19.192Z",
   "verdict": "CONDITIONAL PASS",
   "scope": "Single-player held automatic fire and authored reload prototype only; not 4v4, full continuous motion, subjective audio or UE/AAA acceptance",
   "currentSourceBinding": true,
@@ -617,7 +617,8 @@
       "32 browser assertion groups and 21 current source/harness bindings checked.",
       "Repeated-F rearming and focused-control held-fire defects were REWORK, corrected and regressed.",
       "Independent CPU geometry check found 5867 right-only vertices unchanged and exact held-pose restoration.",
-      "103 pinned shared dependencies verified. Earlier ordinary-reserve benchmarks were correctly classified as mixed combat/rendering, not sustained stress."
+      "103 pinned shared dependencies verified. Earlier ordinary-reserve benchmarks were correctly classified as mixed combat/rendering, not sustained stress.",
+      "Final read-only review recomputed both sustained raw results: 21 source hashes, adapter and reconstructed program hash match; strict frame-time gates pass at 1080p on RTX5070, with no empty/non-reloading frames. Counts230/229 include 10s warmup; the measured30s intervals contain170/169shots. Earlier52.6ms and1333.2ms failures remain explicitly failed."
     ]
   },
   "art": {
@@ -647,7 +648,8 @@
     "Independent review caught repeat-F and focused-control trigger defects; fixed and final32-group regression passed.",
     "Initial strict benchmark failed with unexplained1333.2ms hitch. Two subsequent PASS samples used finite90reserve and are mixed combat/rendering, not sustained stress.",
     "Sustained sample benchmark-2026-11-17T10-44-34-752Z failed with one52.6ms frame during reload.4667, cause unknown. Retained alongside all four sustained attempts; the final declared pair passed unchanged thresholds/runtime. No universally hitch-free claim.",
-    "Both initial live-timer recordings failed density; do not claim full continuous acceptance."
+    "Both initial live-timer recordings failed density; do not claim full continuous acceptance.",
+    "First public mouse-release smoke read the200ms HUD mirror and observed25 then24rounds. Failure retained. Public adapter instead reads the already-published synchronous production snapshot, without runtime/timing/assertion changes."
   ],
   "releaseFiles": [
     {
@@ -1203,6 +1205,26 @@
       "sha256": "43cba61cbab4be6b4d6d44938bb9c03af43cd132b00f81dc3674e69d3a9b290f"
     },
     {
+      "path": "qa/evidence/public-2026-11-17T10-54-10-643Z/public-failure-1.json",
+      "bytes": 3659,
+      "sha256": "22aecd1491efc755de3b3186c3615a204361282a5f64575d3035e197d87c0adc"
+    },
+    {
+      "path": "qa/evidence/public-2026-11-17T10-55-55-058Z/public-1.json",
+      "bytes": 1682,
+      "sha256": "a7cdc20d4810feeca736b528fd6173d673123b51c0b6c0b7fe677a36ec04844a"
+    },
+    {
+      "path": "qa/evidence/public-2026-11-17T10-55-55-058Z/public-after-reload.json",
+      "bytes": 3402,
+      "sha256": "62851c44890bbc0b9e3603e9e0034ad046663ae5d0d926003693695cdcfe8090"
+    },
+    {
+      "path": "qa/evidence/public-2026-11-17T10-55-55-058Z/public-after-reload.png",
+      "bytes": 1928280,
+      "sha256": "11b45a21f59b805d5b9fa16c33483cc4dcd672ece5bd2c17a3f549c9b639db5b"
+    },
+    {
       "path": "qa/evidence/reload-15.json",
       "bytes": 8990,
       "sha256": "6e60916ca3a5b653bfc17c30b28ef1c3cb95ff02225899f35f28739adc52c4e9"
@@ -1283,5 +1305,35 @@
       "sha256": "bd9e3a45899eaaafee9dd02b92f75e91d24c857d85712f47cd3c11bd2e8405fb"
     }
   ],
-  "publication": "PENDING separate protected-main PR and anonymous hash/browser verification"
+  "publication": {
+    "pr": 9,
+    "publicCommit": "e2c0faf2c51b79c44e3589e08987b6feb225294a",
+    "sourceCommit": "f5fc3012a775995052dac5fc7fb623d12fea7f85",
+    "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/",
+    "uploaded": true,
+    "liveVerified": true,
+    "hashVerification": "qa/public-live.json",
+    "anonymousFilesVerified": 126,
+    "browserVerification": "qa/evidence/public-2026-11-17T10-55-55-058Z/public-1.json",
+    "browserAssertions": 7,
+    "publicHarness": {
+      "method": "Exact anonymous-public harness using synchronous read-only production snapshot instead of200ms HUD mirror; no runtime mutation, timing or assertion changes",
+      "source": "qa/public.mjs",
+      "sourceSha256": "42ce5f9e3483e7295f6ea48b355aa0e0b0bbb1f39bc65418d6ed5419902298f5",
+      "baseSourceSha256": "f17969ada39aba1f5f644f3789a18146dcba14e5a3f4429e70e90b9a134dc52e",
+      "adaptedProgramSha256": "11b657952b37c71d2c251b4b59445e5e552ff92bf39694fcba94ea50070c7475"
+    },
+    "engineeringReview": {
+      "reviewer": "Planck",
+      "verdict": "PASS",
+      "scope": "Read-only review of stored publication evidence and validation semantics; not an additional live-site test.",
+      "findings": [
+        "Public adapter, base-harness and reconstructed-program hashes match; latest anonymous-public smoke is7/7PASS.",
+        "Collector validates18v4 plus103shared hashes, passes current evidence and rejects an altered shared hash.",
+        "Receipt/report agree on sourcef5fc3012, publicatione2c0faf2 and126verified records.",
+        "Stale-HUD diagnosis is consistent with retained failure; the attempt remains failed and included in release artifacts."
+      ]
+    },
+    "singlePlayerOnly": true
+  }
 }

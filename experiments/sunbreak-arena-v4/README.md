@@ -63,6 +63,13 @@ releases; never delete v4 to satisfy that older assertion.
   Runtime ammunition remains30/90. Same10s contiguous combat warmup and strict30s
   measurement, every warmup/measured frame retained, no threshold/timing change.
 - `--phase=public`: actual anonymous public startup/mouse hold/release/reload.
+- Use `node experiments/sunbreak-arena-v4/qa/public.mjs --phase=public` for the
+  public input check. It reuses the exact harness and existing synchronous
+  read-only production snapshot, rather than the200ms HUD mirror. No hooks,
+  runtime mutation, changed delay or weakened assertion. The first HUD-based
+  public release assertion failed on stale data; that attempt is retained.
+- `qa/collect-release.mjs --published` separately binds local gates, the
+  uploaded runtime, anonymous shared/earlier-demo hashes and public input result.
 
 Local hooks are injected only by the local server; public HTML has none.
 All attempts retain separate evidence paths. Sampled poses and a recorded

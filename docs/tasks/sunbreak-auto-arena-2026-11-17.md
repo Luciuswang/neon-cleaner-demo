@@ -1,7 +1,7 @@
 # Task Packet: SUNBREAK automatic fire and magazine reload
 
 - Task: sunbreak-auto-arena-2026-11-17
-- State: QA
+- State: DONE - bounded single-player slice, CONDITIONAL PASS; 4v4 not implemented
 - Owner: main Producer; single runtime writer
 - Created: 2026-11-17
 - Branch: codex/character-continuity-pipeline
@@ -63,7 +63,7 @@ claim Internet multiplayer without actual end-to-end evidence.
       than arm stretching; restored held pose has no accumulated drift.
 - [x] Current-build browser assertions and representative canvas poses;
       independent engineering/art verdicts describe exact review limits.
-- [ ] Public start/hold/release/reload check and scoped file hashes verified.
+- [x] Public start/hold/release/reload check and scoped file hashes verified.
 - [x] 4v4 status and hosting requirement are explicit, not a false delivery claim.
 
 ## Review decision / results
@@ -146,10 +146,61 @@ PASS is10-43-40-096Z; the second10-44-34-752Z is strict FAIL for one52.6ms frame
 during reload.4667 (cause unknown). No threshold/runtime was changed.
 The final declared pair10-47-09-607Z/10-48-02-632Z both PASS: p95 about18.3ms,
 p99 about18.5ms, max20.2/18.7ms, zero frames over50ms. They fire230/229shots
-with2790reserve remaining, so unlike earlier mixed samples they sustain fire
+including10s warmup (170/169 within the measured30s), with2790reserve remaining,
+so unlike earlier mixed samples they sustain fire
 and reload throughout. All failures remain evidence; no universal no-hitch claim.
 
 Overall local gate is CONDITIONAL PASS for a single-player browser prototype.
 Continuous-motion density, subjective audio, multiplayer and UE/AAA clearance
 are not passed. Publication is PENDING a clean source checkpoint, normal
 protected-main PR and separate anonymous public hash and input checks.
+
+Planck's final independent raw-frame/source/adapter reconstruction confirms
+the sustained pair and exact measured-shot counts above. Source checkpoint
+f5fc3012a775995052dac5fc7fb623d12fea7f85 is uploaded. Normal protected-main PR9
+merged as e2c0faf2c51b79c44e3589e08987b6feb225294a, containing only19files
+under sunbreak/v4/. GitHub Pages deployment/public verification is still pending
+at this intermediate record; a merge is not a claim that the URL is live.
+
+## Published receipt / final status - 2026-11-17
+
+GitHub Pages action44068884546 completed SUCCESS for public commit
+e2c0faf2c51b79c44e3589e08987b6feb225294a. Source checkpoint remains
+f5fc3012a775995052dac5fc7fb623d12fea7f85; subsequent source commits contain
+documentation/evidence only, not changed runtime.
+
+Playable fourth page:
+https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/
+
+Anonymous byte verification PASS126files:18v4runtime files,103pinned shared
+dependencies, and5unchanged prior root/web/demo entrypoints. No retry/errors.
+See experiments/sunbreak-arena-v4/qa/public-live.json.
+
+First public mouse-release assertion failed because it compared200ms HUD
+snapshots:25rounds in a stale mirror, then24after refresh. The failure is kept
+under qa/evidence/public-2026-11-17T10-54-10-643Z/; the evidence is indexed
+with its SHA in qa/release.json (never delete the attempt).
+Production already exposes synchronous read-only demoQA.snapshot(); the new
+qa/public.mjs adapter changes only the harness read to that function, no
+assertions/delays/gameplay/runtime injection. The original browser harness
+and21source bindings remain unchanged.
+
+Final anonymous native-browser public test PASS7/7, zero runtime/console errors:
+qa/evidence/public-2026-11-17T10-55-55-058Z/public-1.json. Actual left mouse
+hold/release, right/middle non-fire, R reload timing, blocked firing during
+reload and exact ammunition conservation verified on the deployed URL.
+qa/collect-release.mjs --published PASS combines the current-source local gate,
+all126anonymous bytes and final public input evidence. Overall verdict stays
+CONDITIONAL PASS with the full prior failures and motion limits preserved.
+Planck independently reviewed stored public evidence, adapter/reconstructed
+program hashes and collector semantics: PASS, including rejection of a
+deliberately altered shared hash. This was not claimed as a second live-site test.
+
+Handoff: hold left mouse (or F) to fire, release to stop, R reloads in2.25s.
+Earlier3demos/user cabin unchanged. Remaining visual work is finer fingers,
+dark contact and exchange framing, with full continuous-motion review still
+UNVERIFIED. Existing licensed AR15/M4 audio is not an MP5 field recording.
+Public4v4 is NOT IMPLEMENTED: next concrete action is to choose an authorized
+real-time server host/budget, then a separate invite-room4+4 authoritative
+movement/fire/health/score slice with independent-client/network abuse tests.
+No hosting purchase, fake networking, SeaTalk message or email was performed.

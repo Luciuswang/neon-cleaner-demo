@@ -19,7 +19,8 @@
       "32 browser assertion groups and 21 current source/harness bindings checked.",
       "Repeated-F rearming and focused-control held-fire defects were REWORK, corrected and regressed.",
       "Independent CPU geometry check found 5867 right-only vertices unchanged and exact held-pose restoration.",
-      "103 pinned shared dependencies verified. Earlier ordinary-reserve benchmarks were correctly classified as mixed combat/rendering, not sustained stress."
+      "103 pinned shared dependencies verified. Earlier ordinary-reserve benchmarks were correctly classified as mixed combat/rendering, not sustained stress.",
+      "Final read-only review recomputed both sustained raw results: 21 source hashes, adapter and reconstructed program hash match; strict frame-time gates pass at 1080p on RTX5070, with no empty/non-reloading frames. Counts230/229 include 10s warmup; the measured30s intervals contain170/169shots. Earlier52.6ms and1333.2ms failures remain explicitly failed."
     ]
   },
   "art": {
@@ -36,6 +37,17 @@
       "Reload48/60 partly crop the exchange below frame.",
       "Dark surfaces obscure fine contact and finger detail.",
       "Earlier sampled review was CONDITIONAL PASS; this final sampled PASS does not promote continuous motion, cinematic or AAA quality."
+    ]
+  },
+  "publicationEngineering": {
+    "reviewer": "Planck",
+    "verdict": "PASS",
+    "scope": "Read-only review of stored publication evidence and validation semantics; not an additional live-site test.",
+    "findings": [
+      "Public adapter, base-harness and reconstructed-program hashes match; latest anonymous-public smoke is7/7PASS.",
+      "Collector validates18v4 plus103shared hashes, passes current evidence and rejects an altered shared hash.",
+      "Receipt/report agree on sourcef5fc3012, publicatione2c0faf2 and126verified records.",
+      "Stale-HUD diagnosis is consistent with retained failure; the attempt remains failed and included in release artifacts."
     ]
   },
   "continuousMotion": {

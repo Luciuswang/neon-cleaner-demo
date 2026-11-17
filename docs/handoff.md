@@ -697,3 +697,7 @@ DONE: manual house-edit control verified and live at https://luciuswang.github.i
 ## Sync note - 2026-11-17T18:51:19.3006590+08:00
 
 SUNBREAK v4 local single-player auto-fire/reload checkpoint:32 browser groups and8 unit groups PASS; independent engineering and bounded sampled-art PASS. Final sustained1080p pair PASS; prior1333.2ms and52.6ms hitches retained. Continuous-motion recording density FAIL/UNVERIFIED, no4v4 claim. Previous3demos/shared assets unchanged. Publication pending normal protected-main PR and anonymous public verification. Existing private-vault dirty state untouched; this public-web slice has no new private asset dependencies.
+
+## Sync note - 2026-11-17T18:59:30.0577235+08:00
+
+SUNBREAK v4 DONE bounded single-player CONDITIONAL PASS: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/ . Public runtime source f5fc3012a775995052dac5fc7fb623d12fea7f85; normal PR9 publication e2c0faf2c51b79c44e3589e08987b6feb225294a; Pages action44068884546SUCCESS. Anonymous126file hashes and7actual-public input checks PASS; Planck publication review PASS. Earlier3demos unchanged. Prior hitches, failed capture density and stale-HUD first public test retained. Continuous motion UNVERIFIED;4v4 NOT IMPLEMENTED, next choose authorized real-time host/budget. Existing private-vault state untouched; no full UE/private portability claim. No SeaTalk/email sent.

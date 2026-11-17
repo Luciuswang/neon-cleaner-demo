@@ -1,0 +1,637 @@
+{
+  "schema": "sunbreak-auto-public-v1",
+  "date": "2026-11-17T10:55:07.396Z",
+  "pass": true,
+  "sourceCommit": "f5fc3012a775995052dac5fc7fb623d12fea7f85",
+  "publicCommit": "e2c0faf2c51b79c44e3589e08987b6feb225294a",
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/v4/",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "a82e7db9e8e95804f1daf0cd9b157df270fb906e0d65321145aa0b5237d008bd",
+      "bytes": 42175
+    },
+    {
+      "path": "weapon.js",
+      "sha256": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+      "bytes": 13103
+    },
+    {
+      "path": "actors.js",
+      "sha256": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+      "bytes": 14612
+    },
+    {
+      "path": "world.js",
+      "sha256": "40324e61fb5fe7cfbd36045293b76ec47f111335ebd33bbf5573fc3f73788998",
+      "bytes": 44923
+    },
+    {
+      "path": "audio.js",
+      "sha256": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+      "bytes": 7080
+    },
+    {
+      "path": "storm.js",
+      "sha256": "b92c1174c3a8c8c214653635c483d4bbec40e4af60de59fda0f281096f8ab289",
+      "bytes": 32553
+    },
+    {
+      "path": "storm-audio.js",
+      "sha256": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+      "bytes": 2974
+    },
+    {
+      "path": "timber-house.js",
+      "sha256": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+      "bytes": 23126
+    },
+    {
+      "path": "house-asset.js",
+      "sha256": "9aa2817bf8e868c1feb3d9fa99e784f1ecd305dc1ecd5b0474f94cdc4e217ef2",
+      "bytes": 11124
+    },
+    {
+      "path": "house-logic.js",
+      "sha256": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+      "bytes": 3106
+    },
+    {
+      "path": "tactical-ai.js",
+      "sha256": "000e72df493dcc922899728132cced1e452e8594add10b2c55027c767c3729e2",
+      "bytes": 12907
+    },
+    {
+      "path": "boot-ui.js",
+      "sha256": "8d16291f057612e87a1414c4e7c215446b3416ceb494bd483df24931e3aab2ec",
+      "bytes": 808
+    },
+    {
+      "path": "reload-pose.js",
+      "sha256": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+      "bytes": 8250
+    },
+    {
+      "path": "credits.html",
+      "sha256": "3f906a4c247f7cd5acbb3bd5895d292aaf74e81fd5f664944bc1c1adc96f0557",
+      "bytes": 4187
+    },
+    {
+      "path": "combat-controls.js",
+      "sha256": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+      "bytes": 850
+    },
+    {
+      "path": "assets-manifest.json",
+      "sha256": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+      "bytes": 31018
+    },
+    {
+      "path": "weapon-provenance.json",
+      "sha256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+      "bytes": 4574
+    },
+    {
+      "path": "soldier-provenance.json",
+      "sha256": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+      "bytes": 1201
+    },
+    {
+      "path": "../assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "sha256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+      "bytes": 3075676
+    },
+    {
+      "path": "../assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "sha256": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+      "bytes": 2230457
+    },
+    {
+      "path": "../assets/audio/confirm.wav",
+      "sha256": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba",
+      "bytes": 17516
+    },
+    {
+      "path": "../assets/audio/magin.wav",
+      "sha256": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c",
+      "bytes": 14418
+    },
+    {
+      "path": "../assets/audio/enemy.wav",
+      "sha256": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e",
+      "bytes": 149984
+    },
+    {
+      "path": "../assets/audio/magout.wav",
+      "sha256": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7",
+      "bytes": 20650
+    },
+    {
+      "path": "../assets/audio/manifest.json",
+      "sha256": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+      "bytes": 6219
+    },
+    {
+      "path": "../assets/audio/NOTICE.md",
+      "sha256": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1",
+      "bytes": 1501
+    },
+    {
+      "path": "../assets/audio/player.wav",
+      "sha256": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7",
+      "bytes": 158804
+    },
+    {
+      "path": "../assets/audio/provenance/firearm-source.html.txt",
+      "sha256": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868",
+      "bytes": 45130
+    },
+    {
+      "path": "../assets/audio/provenance/reload-source.html.txt",
+      "sha256": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1",
+      "bytes": 22908
+    },
+    {
+      "path": "../assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "sha256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+      "bytes": 729893
+    },
+    {
+      "path": "../assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "sha256": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+      "bytes": 201307
+    },
+    {
+      "path": "../assets/approaching_storm/approaching_storm_2k.hdr",
+      "sha256": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+      "bytes": 6388690
+    },
+    {
+      "path": "../assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "sha256": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+      "bytes": 118806
+    },
+    {
+      "path": "../assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "sha256": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983",
+      "bytes": 2313976
+    },
+    {
+      "path": "../assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "sha256": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488",
+      "bytes": 181942
+    },
+    {
+      "path": "../assets/house/house-contract.json",
+      "sha256": "dae7312e1bb3b8c86c0aac3ac6aa3410c87f6b9e23d5fe7af2fc182f1f8a3453",
+      "bytes": 4000820
+    },
+    {
+      "path": "../assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "sha256": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+      "bytes": 9122344
+    },
+    {
+      "path": "../assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "sha256": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798",
+      "bytes": 1435119
+    },
+    {
+      "path": "../assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "sha256": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe",
+      "bytes": 5535944
+    },
+    {
+      "path": "../assets/mp5/9452ce4cddde4110a4fd73e555a8e412-license.json",
+      "sha256": "e2d1d84ca8727fe5b236c03afba067e58631f8c3a01d2a8ddb65f6b42ea51d7c",
+      "bytes": 726
+    },
+    {
+      "path": "../assets/mp5/94be8385c402474cacd39bc096c6ca14-license.json",
+      "sha256": "bb8204a3b47df38c78b007b1f851727c6ca38da8dd9dbf7cecc656a7efc6190e",
+      "bytes": 750
+    },
+    {
+      "path": "../assets/mp5/a73b61932a0e4eecb5db5c63c158aa24-license.json",
+      "sha256": "d39fcf1c2a8168db7a33281fc83303d8551292d4ab666b7f7d5da6e0fad81eac",
+      "bytes": 823
+    },
+    {
+      "path": "../assets/mp5/arms_basecolor.webp",
+      "sha256": "4657bc61099b7cf92084c5481c0c6d19a1d8219c8ee8c08e546f9f823fec6946",
+      "bytes": 136406
+    },
+    {
+      "path": "../assets/mp5/arms_normal.webp",
+      "sha256": "0500bdd5e6045621d980105cc281312dd6d7fc66a6649ddbe632fea802dba881",
+      "bytes": 278326
+    },
+    {
+      "path": "../assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "sha256": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+      "bytes": 4335717
+    },
+    {
+      "path": "../assets/mp5/NOTICE.md",
+      "sha256": "85b1bf00deab4d9e6e56ab3bcefc0402697e8ac8f20d869d24cef70300e43c90",
+      "bytes": 1566
+    },
+    {
+      "path": "../assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "sha256": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66",
+      "bytes": 1105673
+    },
+    {
+      "path": "../assets/mp5/mp5a5.glb",
+      "sha256": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+      "bytes": 1913500
+    },
+    {
+      "path": "../assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "sha256": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c",
+      "bytes": 919232
+    },
+    {
+      "path": "../assets/social-cover-provenance.json",
+      "sha256": "ab34397cc72189c8c1aa92e3eb8669d51351f1cda675865d07a95600678fd5b0",
+      "bytes": 521
+    },
+    {
+      "path": "../assets/social-cover.png",
+      "sha256": "091b0dcb75e0571fd6e3ec9d1392fbcab5588fcd31ea6584071c98c64f129664",
+      "bytes": 2740539
+    },
+    {
+      "path": "../assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "sha256": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c",
+      "bytes": 5477255
+    },
+    {
+      "path": "../assets/soldier/author-metadata.json",
+      "sha256": "191b82f819a1cc2a5a44a6429a028616ce7aa3e52ac66d2ae615725df0a8a0c8",
+      "bytes": 10142
+    },
+    {
+      "path": "../assets/soldier/NOTICE.md",
+      "sha256": "ce156d840933bdbf74bcd3f7e46861d492e8d8537e0d319c08d4962d276a43d1",
+      "bytes": 762
+    },
+    {
+      "path": "../assets/house/timber-house-edited.glb",
+      "sha256": "a9be9861675c1231e7a2fb4848bb61b8b78bb3d4a9d5fdd98182d668ae167c43",
+      "bytes": 17521164
+    },
+    {
+      "path": "../assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "sha256": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29",
+      "bytes": 226049
+    },
+    {
+      "path": "../assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "sha256": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9",
+      "bytes": 234672
+    },
+    {
+      "path": "../assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "sha256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+      "bytes": 750361
+    },
+    {
+      "path": "../assets/soldier/soldier_tac.glb",
+      "sha256": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e",
+      "bytes": 4532132
+    },
+    {
+      "path": "../assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "sha256": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6",
+      "bytes": 242497
+    },
+    {
+      "path": "../assets-manifest.json",
+      "sha256": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+      "bytes": 31018
+    },
+    {
+      "path": "../credits.html",
+      "sha256": "3f906a4c247f7cd5acbb3bd5895d292aaf74e81fd5f664944bc1c1adc96f0557",
+      "bytes": 4187
+    },
+    {
+      "path": "../soldier-provenance.json",
+      "sha256": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+      "bytes": 1201
+    },
+    {
+      "path": "../vendor/manifest.json",
+      "sha256": "3f2490c003a184ed166a8c4b2f951b2f947157fdb98f8eee004a2c2b1e788230",
+      "bytes": 17387
+    },
+    {
+      "path": "../vendor/meshoptimizer-LICENSE.md",
+      "sha256": "063805e3b8e24ceab4c5dea358b03245ee41c31be87cf65c61d836636cb494bb",
+      "bytes": 1079
+    },
+    {
+      "path": "../vendor/presentation/build/three.module.js",
+      "sha256": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+      "bytes": 1273409
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/exporters/GLTFExporter.js",
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+      "bytes": 77714
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "sha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+      "bytes": 4625
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "sha256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+      "bytes": 24850
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/loaders/GLTFLoader.js",
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+      "bytes": 108522
+    },
+    {
+      "path": "../assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "sha256": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2",
+      "bytes": 6305092
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/loaders/RGBELoader.js",
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+      "bytes": 11377
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/math/SimplexNoise.js",
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+      "bytes": 14351
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/objects/Reflector.js",
+      "sha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+      "bytes": 7043
+    },
+    {
+      "path": "../assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "sha256": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76",
+      "bytes": 5335659
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/EffectComposer.js",
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+      "bytes": 4651
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/MaskPass.js",
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+      "bytes": 2231
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/OutputPass.js",
+      "sha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+      "bytes": 2398
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/Pass.js",
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+      "bytes": 1706
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/RenderPass.js",
+      "sha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+      "bytes": 1915
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/ShaderPass.js",
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+      "bytes": 1576
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/SMAAPass.js",
+      "sha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+      "bytes": 49467
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/SSAOPass.js",
+      "sha256": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea",
+      "bytes": 11734
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/shaders/CopyShader.js",
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+      "bytes": 571
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "sha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+      "bytes": 12406
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "sha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+      "bytes": 1192
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/shaders/OutputShader.js",
+      "sha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+      "bytes": 1393
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/shaders/SMAAShader.js",
+      "sha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+      "bytes": 14628
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/shaders/SSAOShader.js",
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+      "bytes": 6478
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js",
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+      "bytes": 31906
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/utils/SkeletonUtils.js",
+      "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+      "bytes": 8007
+    },
+    {
+      "path": "../vendor/presentation/examples/jsm/utils/TextureUtils.js",
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+      "bytes": 2367
+    },
+    {
+      "path": "../vendor/presentation/LICENSE",
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+      "bytes": 1081
+    },
+    {
+      "path": "../vendor/three/examples/jsm/exporters/GLTFExporter.js",
+      "sha256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+      "bytes": 77714
+    },
+    {
+      "path": "../vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "sha256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+      "bytes": 4625
+    },
+    {
+      "path": "../vendor/three/build/three.module.js",
+      "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495",
+      "bytes": 1272972
+    },
+    {
+      "path": "../vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "sha256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+      "bytes": 108522
+    },
+    {
+      "path": "../vendor/three/examples/jsm/loaders/RGBELoader.js",
+      "sha256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+      "bytes": 11377
+    },
+    {
+      "path": "../vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
+      "sha256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+      "bytes": 24850
+    },
+    {
+      "path": "../vendor/three/examples/jsm/math/SimplexNoise.js",
+      "sha256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+      "bytes": 14351
+    },
+    {
+      "path": "../vendor/three/examples/jsm/objects/Reflector.js",
+      "sha256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+      "bytes": 7043
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/EffectComposer.js",
+      "sha256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+      "bytes": 4651
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/MaskPass.js",
+      "sha256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+      "bytes": 2231
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/OutputPass.js",
+      "sha256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+      "bytes": 2398
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/Pass.js",
+      "sha256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+      "bytes": 1706
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/RenderPass.js",
+      "sha256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+      "bytes": 1915
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/ShaderPass.js",
+      "sha256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+      "bytes": 1576
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/SMAAPass.js",
+      "sha256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+      "bytes": 49467
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/SSAOPass.js",
+      "sha256": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d",
+      "bytes": 11421
+    },
+    {
+      "path": "../vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "sha256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+      "bytes": 12406
+    },
+    {
+      "path": "../vendor/three/examples/jsm/shaders/CopyShader.js",
+      "sha256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+      "bytes": 571
+    },
+    {
+      "path": "../vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "sha256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+      "bytes": 1192
+    },
+    {
+      "path": "../vendor/three/examples/jsm/shaders/OutputShader.js",
+      "sha256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+      "bytes": 1393
+    },
+    {
+      "path": "../vendor/three/examples/jsm/shaders/SMAAShader.js",
+      "sha256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+      "bytes": 14628
+    },
+    {
+      "path": "../vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "sha256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+      "bytes": 31906
+    },
+    {
+      "path": "../vendor/three/examples/jsm/shaders/SSAOShader.js",
+      "sha256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+      "bytes": 6478
+    },
+    {
+      "path": "../vendor/three/examples/jsm/utils/SkeletonUtils.js",
+      "sha256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+      "bytes": 8007
+    },
+    {
+      "path": "../vendor/three/LICENSE",
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+      "bytes": 1081
+    },
+    {
+      "path": "../vendor/three/examples/jsm/utils/TextureUtils.js",
+      "sha256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+      "bytes": 2367
+    },
+    {
+      "path": "../weapon-provenance.json",
+      "sha256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+      "bytes": 4574
+    },
+    {
+      "path": "../assets/house/timber-house-art-kit.zip",
+      "sha256": "d50789e1e389e0b34d122bda60096e0f19c63dfe86fb81d5207b3a649340256d",
+      "bytes": 54851845
+    },
+    {
+      "path": "preserved:index.html",
+      "sha256": "39cf06935492324d05fdfa74c838d04b88ca0c41ad41cb5b4489f5c35e40c8c0"
+    },
+    {
+      "path": "preserved:web/index.html",
+      "sha256": "06e8703c32e75db9bdf35aead5b16a1c3b60dee641570ccf626353d8ae915677"
+    },
+    {
+      "path": "preserved:sunbreak/index.html",
+      "sha256": "c7efebdeedb6b5e8be6ff6649332747f81afd50d2359d320bcb818de6fe8db01"
+    },
+    {
+      "path": "preserved:sunbreak/original/index.html",
+      "sha256": "4b0de43249fd1c787554ea1735c84669b1df687fc9e03aba263571c48a101a85"
+    },
+    {
+      "path": "preserved:sunbreak/v2/index.html",
+      "sha256": "5309e44e55ca33187d55879d81b3b00c9287703a3f0a2ebd71011bb15aa077ff"
+    }
+  ],
+  "errors": [],
+  "retries": []
+}

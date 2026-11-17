@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "event_id": "20261117T105819Z-774f2f6133",
+  "task_id": "sunbreak-auto-arena-2026-11-17",
+  "timestamp_utc": "2026-11-17T10:58:19.877141+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "done",
+  "summary": "Published separate SUNBREAK v4 held automatic-fire and visible magazine reload prototype; earlier3demos preserved. Overall CONDITIONAL PASS, bounded single-player scope.",
+  "commit_shas": [
+    "f5fc3012a775995052dac5fc7fb623d12fea7f85",
+    "e2c0faf2c51b79c44e3589e08987b6feb225294a"
+  ],
+  "evidence": [
+    "experiments/sunbreak-arena-v4/qa/release.json",
+    "experiments/sunbreak-arena-v4/qa/public-live.json",
+    "experiments/sunbreak-arena-v4/qa/evidence/public-2026-11-17T10-55-55-058Z/public-1.json"
+  ],
+  "blockers": [
+    "4v4 not implemented; separate authorized real-time hosting destination/budget needed.",
+    "Full continuous-motion acceptance UNVERIFIED: both retained recordings failed decoded-frame density. Prior performance hitches retained."
+  ],
+  "next_action": "Choose permitted match-server hosting/budget before a separate authoritative invite-room4+4 implementation and independent-client validation. For animation polish, refine exchange framing/fingers and obtain dense continuous visual evidence.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
