@@ -665,3 +665,7 @@ Completed scoped third-demo cabin wood-grain correction: horizontal front/back/s
 ## Sync note - 2026-11-17T13:33:23.0557204+08:00
 
 SUNBREAK v3 tactical/public slice: cover navigation, aligned production fire, skeletal IK, black tile roof and wet-field rain impacts implemented. Exact player contract9, AI10, actor19, environment16, browser24 and house47 checks PASS; source-bound canvas sequences archived. Final1080p30s combat/audio run p95/p9916.8ms max50ms zero>50; earlier160.6ms hitch retained, bounded engineering CONDITIONAL PASS. Source checkpoint precedes separate sanitized GitHub Pages sunbreak/ publication and anonymous live verification. Earlier v1/v2 source unchanged. Unrelated dirty private vault preserved; private transfer skipped, no full UE portability claim.
+
+## Sync note - 2026-11-17T13:36:33.0888301+08:00
+
+Pages preparation stopped before publishing on original whitespace in ten pinned third-party license/vendor snapshots. Preserve their byte hashes; limit formatting-lint exceptions to those exact files. Authored code, asset/staged blob hashes and full publication whitelist remain enforced. Browser runtime and validated evidence unchanged; retry sanitized main:/sunbreak release next.

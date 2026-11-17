@@ -105,3 +105,13 @@ or change speculative slugs. No .openai/hosting.json exists for this game.
   cross-PC asset-portability claim.
 - Next: upload validated source checkpoint, publish static subtree, verify
   anonymous playable URL/all assets and retain public receipt.
+
+## Publication preparation recovery
+
+First isolated publish safely stopped before commit/push: the generic formatting
+check rejected original whitespace inside four byte-preserved audio-license HTML
+snapshots and six pinned vendor library/shader files. Actual staged asset hashes
+and full subtree whitelist had passed. Keep those bytes unchanged; exclude ONLY
+those ten explicit third-party files from whitespace lint, retaining byte-hash
+validation and all authored-code checks.
+No live site content was changed by this failed preparation.

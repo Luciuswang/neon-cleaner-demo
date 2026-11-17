@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261117T053633Z-987243c044",
+  "task_id": "sunbreak-tactical-public-2026-11-17",
+  "timestamp_utc": "2026-11-17T05:36:33.513089+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Pages preparation stopped before publishing on original whitespace in ten pinned third-party license/vendor snapshots. Preserve their byte hashes; limit formatting-lint exceptions to those exact files. Authored code, asset/staged blob hashes and full publication whitelist remain enforced. Browser runtime and validated evidence unchanged; retry sanitized main:/sunbreak release next.",
+  "commit_shas": [
+    "c4aad234e14117cc2d45d7a4339991b1f2573bf8"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

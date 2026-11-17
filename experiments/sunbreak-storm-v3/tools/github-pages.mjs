@@ -83,7 +83,21 @@ if(!process.argv.includes('--publish')){
  }
  const publishedPaths=git(['ls-files','--','sunbreak'],checkout).trim().split('\n');
  assert.deepEqual(publishedPaths.sort(),[...files.map(f=>'sunbreak/'+f.path),'sunbreak/public-release.json'].sort(),'Unexpected stale/public paths');
- git(['diff','--cached','--check'],checkout);
+ // Preserved upstream HTML license/source snapshots intentionally retain
+ // whitespace. Their exact staged hashes were checked above; do not rewrite
+ // provenance bytes merely to make the authored-code formatting check pass.
+ const preservedArchives=[
+  'sunbreak/assets/audio/provenance/firearm-source.html.txt',
+  'sunbreak/assets/audio/provenance/reload-source.html.txt',
+  'sunbreak/v2/assets/audio/provenance/firearm-source.html.txt',
+  'sunbreak/v2/assets/audio/provenance/reload-source.html.txt',
+  ...['presentation','three'].flatMap(tree=>[
+   'sunbreak/vendor/'+tree+'/build/three.module.js',
+   'sunbreak/vendor/'+tree+'/examples/jsm/shaders/OutputShader.js',
+   'sunbreak/vendor/'+tree+'/examples/jsm/shaders/SSAOShader.js'
+  ])
+ ];
+ git(['diff','--cached','--check','--','sunbreak',...preservedArchives.map(p=>':(exclude)'+p)],checkout);
  git(['commit','-m',`publish: SUNBREAK tactical demo from ${sourceCommit.slice(0,12)}`],checkout);
  const publicCommit=git(['rev-parse','HEAD'],checkout).trim();
  // Ordinary fast-forward only. Preserve this isolated commit if another
