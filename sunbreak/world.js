@@ -10,6 +10,7 @@ import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
 import {installStorm} from './storm.js';
 import {buildTimberHouse} from './timber-house.js';
+import {installHouseAsset} from './house-asset.js';
 import * as PresentationThree from 'three';
 
 // Other17 original proxies are unchanged. The user-approved MERCADO12 timber
@@ -423,6 +424,7 @@ export async function buildWorld(ctx){
  addEventListener('resize',()=>{composer.setSize(innerWidth,innerHeight);ao.setSize(innerWidth,innerHeight)});
  storm=await installStorm({T,scene,cam,rnd,gscene,world,materials,groundMat,floor,wetMap,wetCanvas,wetStrength,reflection,skyMaterial,atmosphere,hdrSky,sun,amb,weaponKeys,weaponHemi,practicals,lampGlass,facadeMaterials,windTrees,rain,rainMaterial,composer,grade,ao,textureErrors});
  const house=buildTimberHouse({T,world,materials,solids,colliders,cam,getInteractionState:ctx.getInteractionState});
+ await installHouseAsset({T,house});
  applyWeather();
  function update(dt,{S,pres,live,player}){
   const now=performance.now();if(frame++>120){samples.push(now-last);if(samples.length>3600)samples.shift()}last=now;

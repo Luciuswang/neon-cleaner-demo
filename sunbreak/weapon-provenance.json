@@ -48,6 +48,15 @@
     "KHR_mesh_quantization"
   ],
   "original_units": "K=2 real metres, -Z forward / +Y up; source MuzzleSocket retained within imported model",
-  "changes": "SUNBREAK: uniform display fit 1.70 to original tracer socket, storm lighting, unused zero-weight morph removed, source held arm pose baked and rear upper sleeve smoothly fitted toward the offscreen torso. Original continuous fabric/material and UV0/UV1 retained; no joined procedural cloth. Float32 normals recomputed after the fit; wrists/grip unchanged. Original parent, firing, damage, reload timing and gameplay anchors unchanged. No source animation or recoil code copied.",
-  "limits": "A detailed real-world-type game asset, not a photogrammetric firearm, not a claim of exact manufacturer dimensions; inherited recorded gun audio is AR-15/M4, not MP5."
+  "changes": "SUNBREAK left-arm repair, 2026-11-17: remove the nonrigid rearOffset vertex translation. Derive axes from actual source joints; rigidly repose the left arm 25 degrees about the held wrist and the upper arm 15 degrees about its elbow, without changing bone scales or segment lengths. Independent hand/finger bone transforms retain the authored held pose. Pure hand/digit vertices and fingertip-influenced vertices are contact-locked before Float32 bake; authored mixed wrist/cuff skin blending is retained. Complete the original open left shoulder garment with 25 new vertices / 72 triangles, ending at the measured source shoulder joint (approximately 0.146 source units from the open edge centroid), tapering the end cross-section to 0.86 rather than widening the arm. This is explicitly new source-material garment geometry, not stretched original forearm vertices. Existing UV0/UV1 values retained to Float32 precision; new shoulder faces sample the existing fabric island. Normals recomputed on the baked display mesh. Original GLB and textures untouched. Uniform display fit 1.70, authored MuzzleSocket coincidence with [0,0.005,-1.85], parent aim/recoil/reload transforms, magazine/handle cosmetics, firing, damage and all gameplay anchors unchanged. No upstream animation or recoil code copied.",
+  "arm_repair_qa": {
+    "task": "sunbreak-house-roundtrip-arms-2026-11-17",
+    "report": "qa/arm-after-report.json",
+    "notes": "qa/arm-handoff.md",
+    "comparison": "qa/arm-before-report.json",
+    "native_pose_diagnostic": "qa/arm-native-report.json",
+    "rejected_contact_lock_test": "qa/arm-rejected-hard-pin-report.json",
+    "method": "Isolated native Three.js WebGL renderer-canvas samples using the actual licensed asset and FOV52 baseline parent formulas; no desktop/window capture. Independent real-game and art review remain with main."
+  },
+  "limits": "A detailed real-world-type game asset, not photogrammetry or a claim of manufacturer dimensions. Static baked held arms plus original parent and magazine/handle reload cosmetics, not a hand-driven reload or motion capture. Mixed cuff skin deforms naturally at the reposed joints; original bone lengths and grip are independently checked. The new shoulder closure is a small procedural garment completion, not a complete reauthored shoulder/body. Representative software-rendered stills and numerical pose sweeps are not continuous visual review or a hardware benchmark. Inherited recorded gun audio is AR-15/M4, not MP5."
 }

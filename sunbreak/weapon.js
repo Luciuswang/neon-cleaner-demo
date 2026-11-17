@@ -12,9 +12,8 @@ export async function buildWeapon({THREE:T,gun,gscene}){
  const muzzle=root.getObjectByName('MuzzleSocket');
  if(!muzzle)throw Error('MP5 source has no authored muzzle socket');
  const sourceMuzzle=root.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));
- const sleeve=fitSleeveEnd(T,root);
- // A uniform display fit, not a geometry stretch. The original oversized
- // viewmodel framing is retained for the comparison. Exact muzzle coincidence.
+ const sleeve=repairLeftSleeve(T,root);
+ // The baseline's uniform fit and exact authoritative muzzle are unchanged.
  const displayScale=1.70,fit=new T.Group();fit.name='mp5-original-muzzle-fit';
  root.scale.setScalar(displayScale);
  fit.position.set(-sourceMuzzle.x*displayScale,.005-sourceMuzzle.y*displayScale,-1.85-sourceMuzzle.z*displayScale);
@@ -22,8 +21,6 @@ export async function buildWeapon({THREE:T,gun,gscene}){
  const owned=new Set(),maps=new Set();let meshes=0,triangles=0,skinned=0;
  root.traverse(o=>{
   if(!o.isMesh)return;
-  // The unused zero-weight source arm shape key is not animated here. Drop it
-  // so the baseline renderer does not allocate an extra UUID/morph texture.
   if(o.morphTargetInfluences?.every(v=>v===0)){o.geometry.morphAttributes={};delete o.morphTargetInfluences;delete o.morphTargetDictionary}
   meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;
   if(o.isSkinnedMesh){skinned++;if(!o.skeleton.boneTexture)o.skeleton.computeBoneTexture()}
@@ -37,7 +34,6 @@ export async function buildWeapon({THREE:T,gun,gscene}){
    for(const v of Object.values(m))if(v?.isTexture){v.anisotropy=8;maps.add(v)}
   }
  });
- // Do not remove the old visuals until the actual source model has loaded.
  for(const child of gun.children.slice()){
   if(child.isLight)continue;
   const lights=[];child.traverse(o=>{if(o.isLight)lights.push(o)});lights.forEach(l=>gun.attach(l));
@@ -53,37 +49,120 @@ export async function buildWeapon({THREE:T,gun,gscene}){
  let disposed=false,lastAim=0;
  return{
   update(dt,state){
-   // Cosmetic movement only; original 1.2 s reload timer and parent animation
-   // remain authoritative. Arms retain the source's authored grip pose.
+   // The original parent and 1.2 s timer still own reload. Static held arms,
+   // cosmetic magazine/handle only; this is not a hand-driven reload clip.
    const phase=state.reload>0?Math.max(0,Math.min(1,(1.2-state.reload)/1.2)):0;
    if(magazine&&magHome){magazine.position.copy(magHome);if(phase>0)magazine.position.y-=Math.sin(phase*Math.PI)**3*.18}
    if(charging&&chargeHome){charging.position.copy(chargeHome);if(phase>.75)charging.position.z+=Math.sin((phase-.75)*4*Math.PI)*.055}
    flashMaterial.opacity=Math.min(.75,(baselineLight?.intensity||0)*.035);
    flashMesh.visible=flashMaterial.opacity>.015;lastAim=state.aim;
   },
-  info(){root.updateWorldMatrix(true,true);const actual=gun.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));return{loaded:true,asset:'Rotuma MP5 / gloved first-person arms',license:'CC-BY-4.0',meshes,triangles,skinnedMeshes:skinned,sleeve,textureMaps:maps.size,uniformDisplayScale:displayScale,sourceMuzzle:sourceMuzzle.toArray(),fittedMuzzle:actual.toArray(),aim:lastAim,animation:'baseline root recoil/reload + cosmetic magazine/handle; source held pose baked with rear sleeve fit, original fabric and grip retained; not a full reload animation'}},
+  info(){root.updateWorldMatrix(true,true);const actual=gun.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));return{loaded:true,asset:'Rotuma MP5 / gloved first-person arms',license:'CC-BY-4.0',meshes,triangles,skinnedMeshes:skinned,sleeve,textureMaps:maps.size,uniformDisplayScale:displayScale,sourceMuzzle:sourceMuzzle.toArray(),fittedMuzzle:actual.toArray(),muzzleFitError:actual.distanceTo(new T.Vector3(0,.005,-1.85)),aim:lastAim,animation:'baseline root recoil/reload + cosmetic magazine/handle; articulated static left sleeve, source hand/finger vertices locked, added shoulder garment closure; not a full reload animation or motion capture'}},
   dispose(){if(disposed)return;disposed=true;fit.removeFromParent();flashMesh.removeFromParent();root.traverse(o=>o.geometry?.dispose());for(const m of owned)m.dispose();for(const t of maps)t.dispose();flashMesh.geometry.dispose();flashMaterial.dispose()}
  };
 }
 
-function fitSleeveEnd(T,root){
- let source;root.traverse(o=>{if(o.isSkinnedMesh&&o.geometry.attributes.position.count>12529)source=o});
- if(!source)throw Error('Pinned source arm mesh missing');
+function repairLeftSleeve(T,root){
+ let source;root.traverse(o=>{if(o.isSkinnedMesh&&o.name==='FPArms')source=o});
+ if(!source||source.geometry.attributes.position.count!==13137)throw Error('Pinned source arm mesh changed; sleeve repair requires revalidation');
+ const bone=name=>{const b=root.getObjectByName(name);if(!b)throw Error('Missing source arm joint: '+name);return b};
+ const arm=bone('Arm_L'),upper=bone('UpArm_L'),elbow=bone('Forearm_L'),hand=bone('IK_Hand_Cntrl_L');
+ const wp=o=>o.getWorldPosition(new T.Vector3()),wq=o=>o.getWorldQuaternion(new T.Quaternion());
+ const positions=[],original=[],grip=[],left=[],joints=source.geometry.attributes.skinIndex,weights=source.geometry.attributes.skinWeight,v=new T.Vector3();
  source.skeleton.update();
- const geometry=source.geometry.clone(),v=new T.Vector3(),rearOffset=new T.Vector3(-.13,-.18,.36),positions=[];let adjusted=0;
- for(let i=0;i<geometry.attributes.position.count;i++){
+ for(let i=0;i<13137;i++){
+  source.getVertexPosition(i,v);original.push(v.clone());
+  let contactWeight=0,isLeft=false,tip=false;
+  for(let k=0;k<4;k++)if(weights.getComponent(i,k)>0){
+   const name=source.skeleton.bones[joints.getComponent(i,k)].name;
+   if(/^(Hand_[LR]|Bone_[LR]\d)/.test(name))contactWeight+=weights.getComponent(i,k);
+   if(/^Bone_[LR](006|007|010|011|014|015|018|019|021|022)$/.test(name))tip=true;
+   if(/_L|Twist_0\dL/.test(name))isLeft=true;
+  }
+  grip.push(contactWeight>.999||tip);left.push(isLeft);
+ }
+ const wrist=wp(hand),elbowHome=wp(elbow),shoulderHome=wp(upper);
+ const lengths=[wrist.distanceTo(elbowHome),elbowHome.distanceTo(shoulderHome)];
+ // Axes derive from actual joint positions. Rigid joint reposing, never
+ // position-weighted rear translation, bone scaling, or forearm elongation.
+ function turnArm(pivot,axis,angle,keepForearm=false){
+  const rotation=new T.Quaternion().setFromAxisAngle(axis.normalize(),angle),q=keepForearm?wq(elbow):null;
+  const position=wp(arm).sub(pivot).applyQuaternion(rotation).add(pivot),quaternion=rotation.clone().multiply(wq(arm));
+  arm.position.copy(arm.parent.worldToLocal(position));
+  arm.quaternion.copy(wq(arm.parent).invert().multiply(quaternion));
+  root.updateMatrixWorld(true);
+  if(q){elbow.quaternion.copy(wq(elbow.parent).invert().multiply(q));root.updateMatrixWorld(true)}
+ }
+ const wristAxis=elbowHome.clone().sub(wrist).cross(new T.Vector3(0,-1,0)).normalize();
+ turnArm(wrist,wristAxis.clone(),25*Math.PI/180);
+ const pivot=wp(elbow),elbowAxis=wp(upper).sub(pivot).cross(new T.Vector3(0,-1,0)).normalize();
+ turnArm(pivot,elbowAxis.clone(),15*Math.PI/180,true);source.skeleton.update();
+ let changed=0,gripCount=0,maxGripDelta=0;
+ for(let i=0;i<13137;i++){
   source.getVertexPosition(i,v);
-  // Only the rear upper sleeve is fitted toward the offscreen torso. The
-  // original continuous fabric, UV0/UV1 and material are retained, not joined
-  // to a different material. Hands and front grip have zero blend weight.
-  const z=T.MathUtils.smoothstep(v.z,.015,.17),left=T.MathUtils.smoothstep(-v.x,.20,.30),weight=z*left;
-  if(weight>0){v.addScaledVector(rearOffset,weight);adjusted++}
+  // Pure hand/digit vertices and finger tips preserve exact contact; retain
+  // authored mixed wrist weights
+  // instead of hard-pinning their cuff transition into a stretched seam.
+  if(grip[i]){v.copy(original[i]);gripCount++}
+  if(v.distanceTo(original[i])>1e-6)changed++;
   positions.push(v.x,v.y,v.z);
  }
- geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));
- geometry.morphAttributes={};geometry.deleteAttribute('skinIndex');geometry.deleteAttribute('skinWeight');geometry.deleteAttribute('tangent');geometry.deleteAttribute('normal');geometry.computeVertexNormals();
- const mesh=new T.Mesh(geometry,source.material);mesh.name='source-fabric-offscreen-sleeve-fit';
+ // Complete the missing shoulder garment to its measured joint. Do not
+ // stretch original cloth to fake a longer forearm. Weld only for discovery;
+ // the real source positions, UV seams, indices and hand contact are retained.
+ const old=source.geometry,index=Array.from(old.index.array),weld=new Map(),ids=[],members=[],edges=new Map();
+ for(let i=0;i<13137;i++){
+  const key=original[i].toArray().map(x=>Math.round(x/1e-5)).join(',');
+  if(!weld.has(key)){weld.set(key,weld.size);members.push(i)}
+  ids.push(weld.get(key));
+ }
+ for(let i=0;i<index.length;i+=3)for(let k=0;k<3;k++){
+  const a=ids[index[i+k]],b=ids[index[i+(k+1)%3]];if(a===b)continue;
+  const key=a<b?a+':'+b:b+':'+a;
+  if(edges.has(key))edges.get(key).count++;else edges.set(key,{a,b,count:1});
+ }
+ const boundary=[...edges.values()].filter(e=>e.count===1&&left[members[e.a]]&&left[members[e.b]]);
+ if(boundary.length!==24)throw Error('Pinned source shoulder opening changed');
+ const next=new Map();for(const e of boundary){if(!next.has(e.a))next.set(e.a,[]);if(!next.has(e.b))next.set(e.b,[]);next.get(e.a).push(e.b);next.get(e.b).push(e.a)}
+ const loop=[boundary[0].a];let prev=-1;
+ while(loop.length<24){const choices=next.get(loop.at(-1));if(choices?.length!==2)throw Error('Non-manifold sleeve opening');const id=choices.find(id=>id!==prev);prev=loop.at(-1);if(loop.includes(id))throw Error('Incomplete sleeve loop');loop.push(id)}
+ const ring=loop.map(id=>members[id]);
+ const sameDirection=index.some((_,i)=>i%3===0&&[index[i],index[i+1],index[i+2]].some((a,k,tri)=>ids[a]===loop[0]&&ids[tri[(k+1)%3]]===loop[1]));
+ if(sameDirection)ring.reverse();
+ const center=new T.Vector3();for(const i of ring)center.add(new T.Vector3().fromArray(positions,i*3));center.divideScalar(24);
+ const shoulder=source.worldToLocal(wp(upper)),extension=shoulder.clone().sub(center);
+ const uv=Array.from({length:old.attributes.uv.count},(_,i)=>[old.attributes.uv.getX(i),old.attributes.uv.getY(i)]).flat();
+ const uv1=Array.from({length:old.attributes.uv1.count},(_,i)=>[old.attributes.uv1.getX(i),old.attributes.uv1.getY(i)]).flat();
+ const meanUV=new T.Vector2(),meanUV1=new T.Vector2();
+ for(const i of ring){meanUV.add(new T.Vector2().fromArray(uv,i*2));meanUV1.add(new T.Vector2().fromArray(uv1,i*2))}
+ meanUV.divideScalar(24);meanUV1.divideScalar(24);
+ const start=positions.length/3;
+ for(const i of ring){
+  v.fromArray(positions,i*3).sub(center).multiplyScalar(.86).add(center).add(extension);
+  positions.push(v.x,v.y,v.z);
+  // Use the source fabric island interior for new faces, never a zero-width
+  // UV strip. Original UV0/UV1 retain their values to Float32 precision.
+  for(const [data,mean]of [[uv,meanUV],[uv1,meanUV1]])data.push(data[i*2]+(mean.x-data[i*2])*.4,data[i*2+1]+(mean.y-data[i*2+1])*.4);
+ }
+ const cap=positions.length/3;positions.push(shoulder.x,shoulder.y,shoulder.z);uv.push(meanUV.x,meanUV.y);uv1.push(meanUV1.x,meanUV1.y);
+ for(let k=0;k<24;k++){const j=(k+1)%24,a=ring[k],b=ring[j],c=start+k,d=start+j;index.push(a,b,c,b,d,c,c,d,cap)}
+ const geometry=old.clone();
+ geometry.setAttribute('position',new T.Float32BufferAttribute(positions,3));geometry.setIndex(index);
+ geometry.setAttribute('uv',new T.Float32BufferAttribute(uv,2));geometry.setAttribute('uv1',new T.Float32BufferAttribute(uv1,2));
+ geometry.morphAttributes={};for(const name of ['skinIndex','skinWeight','tangent','normal'])geometry.deleteAttribute(name);
+ geometry.computeVertexNormals();geometry.computeBoundingBox();geometry.computeBoundingSphere();
+ for(let i=0;i<13137;i++)if(grip[i]){v.fromBufferAttribute(geometry.attributes.position,i);maxGripDelta=Math.max(maxGripDelta,v.distanceTo(original[i]))}
+ const afterLengths=[wp(hand).distanceTo(wp(elbow)),wp(elbow).distanceTo(wp(upper))];
+ const mesh=new T.Mesh(geometry,source.material);mesh.name='source-fabric-articulated-held-arms';
  mesh.position.copy(source.position);mesh.quaternion.copy(source.quaternion);mesh.scale.copy(source.scale);
- source.parent.add(mesh);source.removeFromParent();
- return{bakedHeldPose:true,retainedSourceFabric:true,proceduralExtension:false,rearSleeveVerticesAdjusted:adjusted,note:'Original continuous sleeve fitted offscreen; no joined material, wrists/grip unchanged'};
+ source.parent.add(mesh);source.removeFromParent();old.dispose();source.skeleton.dispose();
+ return{repair:'rigid-joint-repose-and-shoulder-closure',bakedHeldPose:true,retainedSourceFabric:true,
+  proceduralExtension:true,extensionKind:'new tapered shoulder garment closure, not stretched original vertices',
+  rearSleeveVerticesAdjusted:0,nonrigidRearTranslation:false,wristDegrees:25,upperArmDegrees:15,
+  wristAxis:wristAxis.toArray(),upperArmAxis:elbowAxis.toArray(),sourceVertices:13137,articulatedVertices:changed,
+  lockedGripVertices:gripCount,maxGripVertexDelta:maxGripDelta,sourceJointLengths:lengths,posedJointLengths:afterLengths,
+  maxJointLengthError:Math.max(...lengths.map((x,i)=>Math.abs(x-afterLengths[i]))),
+  addedGarmentVertices:25,addedGarmentTriangles:72,garmentClosureLength:extension.length(),garmentEnd:'measured source shoulder joint',garmentEndRadiusScale:.86,
+  sourceBounds:new T.Box3().setFromPoints(original),posedBounds:geometry.boundingBox.clone(),
+  note:'Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap.'};
 }
