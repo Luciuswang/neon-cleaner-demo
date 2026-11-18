@@ -3,7 +3,7 @@ import {createTacticalAI} from '../tactical-ai.js';
 import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
-const blocked=p=>m.blocked(p.x,p.z,.4,p.y);
+const blocked=p=>m.blocked(p.x,p.z,.4,p.y,'enemy');
 const actor=()=>({alive:true,g:{position:{x:0,y:0,z:0},rotation:{y:0}},wg2:{position:{x:.22,y:0,z:0},rotation:{x:0}}});
 const cases=[];
 for(const z of [...m.crossings,0])for(const side of [-1,1])cases.push({name:`cross-${z}-${side}`,start:{x:side*10,z},end:{x:-side*10,z}});

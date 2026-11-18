@@ -1,0 +1,2 @@
+# Original CC0 model buffers are source-only, retained through LFS for reproducibility.
+*.bin filter=lfs diff=lfs merge=lfs -text

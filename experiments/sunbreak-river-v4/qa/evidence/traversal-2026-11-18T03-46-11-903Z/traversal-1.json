@@ -1,0 +1,2636 @@
+{
+  "schema": "sunbreak-auto-browser-v1",
+  "date": "2026-11-18T03:47:15.964Z",
+  "phase": "traversal",
+  "method": "native-headless actual WebGL canvas; no desktop/window interaction",
+  "pass": true,
+  "results": [
+    {
+      "name": "licensed weapon and all textures loaded",
+      "pass": true,
+      "details": {
+        "state": "menu",
+        "version": "river-v4",
+        "style": "热带竞技",
+        "styleIndex": 0,
+        "health": 100,
+        "ammo": {
+          "mag": 30,
+          "reserve": 90
+        },
+        "kills": 0,
+        "firing": {
+          "mouse": false,
+          "keyboard": false,
+          "held": false
+        },
+        "reloadSeconds": 2.25,
+        "reloadProgress": 0,
+        "shots": 0,
+        "camera": {
+          "x": -26,
+          "y": 1.7,
+          "z": 22,
+          "yaw": -1.35,
+          "pitch": -0.06
+        },
+        "enemies": [
+          {
+            "i": 0,
+            "alive": true,
+            "hp": 100,
+            "x": -25,
+            "y": 0,
+            "z": -25,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 1,
+            "alive": true,
+            "hp": 100,
+            "x": 25,
+            "y": 0,
+            "z": -25,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 2,
+            "alive": true,
+            "hp": 100,
+            "x": -9,
+            "y": 0,
+            "z": -10,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 3,
+            "alive": true,
+            "hp": 100,
+            "x": 9,
+            "y": 0,
+            "z": -10,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 4,
+            "alive": true,
+            "hp": 100,
+            "x": -25,
+            "y": 0,
+            "z": 20,
+            "mode": "hide",
+            "stance": 1
+          },
+          {
+            "i": 5,
+            "alive": true,
+            "hp": 100,
+            "x": 25,
+            "y": 0,
+            "z": 20,
+            "mode": "hide",
+            "stance": 1
+          }
+        ],
+        "tactical": {
+          "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+          "elapsed": 0,
+          "totalShots": 0,
+          "totalMovementMeters": 0,
+          "decisions": 0,
+          "navigation": {
+            "width": 83,
+            "height": 78,
+            "blocked": 755,
+            "cells": 6474
+          },
+          "coverPairs": 336,
+          "actors": [
+            {
+              "id": 0,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 1,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 2,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 3,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 4,
+              "role": "cover rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            },
+            {
+              "id": 5,
+              "role": "corner rifleman",
+              "mode": "hide",
+              "cover": null,
+              "shots": 0,
+              "bursts": 0,
+              "moves": 0,
+              "stance": 1,
+              "pathPoints": 0
+            }
+          ]
+        },
+        "remaining": 0,
+        "presentation": false,
+        "audio": {
+          "unlocked": false,
+          "failed": false,
+          "loaded": 0,
+          "ready": false,
+          "muted": false,
+          "volume": 0.65,
+          "droppedBeforeReady": 0
+        },
+        "weapon": {
+          "loaded": true,
+          "asset": "Rotuma MP5 / gloved first-person arms",
+          "license": "CC-BY-4.0",
+          "meshes": 4,
+          "triangles": 29172,
+          "skinnedMeshes": 0,
+          "sleeve": {
+            "repair": "rigid-joint-repose-and-shoulder-closure",
+            "bakedHeldPose": true,
+            "retainedSourceFabric": true,
+            "proceduralExtension": true,
+            "extensionKind": "new tapered shoulder garment closure, not stretched original vertices",
+            "rearSleeveVerticesAdjusted": 0,
+            "nonrigidRearTranslation": false,
+            "wristDegrees": 25,
+            "upperArmDegrees": 15,
+            "wristAxis": [
+              0.9365777985940499,
+              0,
+              0.3504597368895943
+            ],
+            "upperArmAxis": [
+              0.7644669403551073,
+              0,
+              0.6446629329379042
+            ],
+            "sourceVertices": 13137,
+            "articulatedVertices": 2135,
+            "lockedGripVertices": 9136,
+            "maxGripVertexDelta": 2.990487657476475e-8,
+            "sourceJointLengths": [
+              0.4156460972458126,
+              0.2801601167903537
+            ],
+            "posedJointLengths": [
+              0.41564608592879365,
+              0.2801600948286502
+            ],
+            "maxJointLengthError": 2.196170351131954e-8,
+            "addedGarmentVertices": 25,
+            "addedGarmentTriangles": 72,
+            "garmentClosureLength": 0.14593525919265735,
+            "garmentEnd": "measured source shoulder joint",
+            "garmentEndRadiusScale": 0.86,
+            "sourceBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4305158590129535,
+                "y": -0.36869354874812804,
+                "z": -0.6590875972733896
+              },
+              "max": {
+                "x": 0.5098885395759611,
+                "y": 0.13424714291235695,
+                "z": 0.5919467888514625
+              }
+            },
+            "posedBounds": {
+              "isBox3": true,
+              "min": {
+                "x": -0.4682203531265259,
+                "y": -0.39581435918807983,
+                "z": -0.659087598323822
+              },
+              "max": {
+                "x": 0.5098885297775269,
+                "y": 0.13424713909626007,
+                "z": 0.5919467806816101
+              }
+            },
+            "note": "Source GLB unchanged; pure hand/digit contact vertices locked; authored mixed wrist skin blends retained. Original UVs retained to Float32 precision. Joint repose then bake and short shoulder closure. No arm widening, bone-length scaling, full reload clip or mocap."
+          },
+          "textureMaps": 12,
+          "uniformDisplayScale": 1.7,
+          "sourceMuzzle": [
+            0,
+            0.0987987294793129,
+            -0.6800000667572021
+          ],
+          "fittedMuzzle": [
+            0,
+            0.005000000000000061,
+            -1.85
+          ],
+          "muzzleFitError": 6.071532165918825e-17,
+          "aim": 0,
+          "reload": {
+            "stage": "held",
+            "phase": 0,
+            "upperLengthError": 0,
+            "foreLengthError": 0,
+            "reachError": 0,
+            "wrist": [
+              -0.12115013359914868,
+              0.026542065710778506,
+              -0.33372352039334946
+            ],
+            "maximumLengthError": 0,
+            "lastPhase": 0,
+            "method": "authored magazine/hand tracks, fixed-length two-bone IK, original arm skin weights on repaired visible mesh",
+            "anchors": {
+              "shoulder": [
+                -0.4093765851995752,
+                -0.3106284942569422,
+                0.18299935890445104
+              ],
+              "elbow": [
+                -0.23882406332865824,
+                -0.21844781573060773,
+                -0.019248604062529706
+              ],
+              "wrist": [
+                -0.12115013359914868,
+                0.026542065710778506,
+                -0.33372352039334946
+              ],
+              "palm": [
+                -0.01583920192372215,
+                0.03789707585799797,
+                -0.5490143114712154
+              ],
+              "magGrip": [
+                -0.035626061260700226,
+                -0.045367330312728896,
+                -0.2198716253042221
+              ]
+            },
+            "sourceRightHandUnchanged": true,
+            "sourceAssetsUnchanged": true
+          },
+          "animation": "authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap"
+        },
+        "errors": [],
+        "times": [],
+        "buildHashes": {
+          "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+          "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+          "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+          "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+          "buffer-house-logic.js": "6c1049ced1f1c8378bec1f6cd8d5f4631610f4630e79674c288132a7588fa2c3",
+          "buffer-house.js": "899420ff022e6937da865918fcbedd072269e57eefed7df74e7c7fcd07db1c63",
+          "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+          "credits.html": "4d7998ad88d62013bce5496606442ba56b820595e543dc55a3889a435ea13179",
+          "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+          "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
+          "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+          "foliage-revision.json": "9eca1cc5b457f52130188929a62459c83ba8b50d54b2aa02cb0a72811378a84a",
+          "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+          "house-logic.js": "04846c4b79a18e6e0b531afea6ad130842d855a27fff29af86f722a0a08b1ab1",
+          "index.html": "bd193217733020e68d4eb35803e77302a6db726d158192986bd624b21767187b",
+          "map-layout.js": "e9c75594c2b2f10cf32560e795ff04673ee6e161c828aad64db0a6a712b47213",
+          "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+          "ruins.js": "3da7d4d4f76a44d9ac8f56578dc59eae0b46ef0048bdee1ddacc8188b3f7a075",
+          "serve.mjs": "f6bfe0654223e8c7187f4ce61f86fcb30fa947f97c9d6db6556efc83ac7514c3",
+          "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+          "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+          "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+          "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+          "timber-house.js": "48d4a018dc183bf34743ef01b2c7c7c261fa0f1342cb3cead4f63d2d27a33395",
+          "vegetation.js": "e063d73aada47a3c29bf6027ea988cd9aaaa7e146b66bf03f6428532a2847b99",
+          "village.js": "73bfa7fe40d565b698a9ce3004d2d5cf7703d09ad3fd50c43592ed8bf76fc698",
+          "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+          "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+          "world.js": "4b2a78dfabe633176a8027d4cf3bf9ceaee2427badf95a52902f9b770ea549ed",
+          "qa/hooks.js": "976a8185df147a3a3fba97ea765569ecb9b285a01939d03daf6c8ac6164500be",
+          "qa/browser.mjs": "c77c4aa9dd8c818f463c864d00e2f9ce9e4765ca0fc57296580c11d1b24e8a87"
+        },
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+      }
+    },
+    {
+      "name": "actual player -23 side -1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          9.969300000000006,
+          1.7,
+          -23
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -20.773630275639814,
+              0,
+              -27.113184862180095
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.829534265326707,
+              0,
+              -26.578965204057685
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.395188701970996,
+              0,
+              -11.972223637388009
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              9.630778533809082,
+              0,
+              -11.954322643348265
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.347836764520157,
+              0,
+              20.146685609572867
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.70103834891271,
+              0,
+              12.213512133945105
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded -23 side -1",
+      "pass": true,
+      "details": {
+        "position": [
+          9.969300000000006,
+          1.7,
+          -23
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -20.773630275639814,
+              0,
+              -27.113184862180095
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.829534265326707,
+              0,
+              -26.578965204057685
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.395188701970996,
+              0,
+              -11.972223637388009
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              9.630778533809082,
+              0,
+              -11.954322643348265
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.347836764520157,
+              0,
+              20.146685609572867
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.70103834891271,
+              0,
+              12.213512133945105
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support -23 side -1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -20.773630275639814,
+            0,
+            -27.113184862180095
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            16.829534265326707,
+            0,
+            -26.578965204057685
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -10.395188701970996,
+            0,
+            -11.972223637388009
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            9.630778533809082,
+            0,
+            -11.954322643348265
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -17.347836764520157,
+            0,
+            20.146685609572867
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            21.70103834891271,
+            0,
+            12.213512133945105
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player -23 side 1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.900000000000006,
+          1.7,
+          -23
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -16.82974824029233,
+              0,
+              -26.57914981664685
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.196648368127207,
+              0,
+              -25.644889682554588
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.395407543318884,
+              0,
+              -11.972286009588663
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              3.5762449543377484,
+              -0.2972215750851283,
+              -11.99150073494941
+            ],
+            "support": -0.2972215750851283
+          },
+          {
+            "position": [
+              -17.34120090115553,
+              0,
+              20.184204737768205
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.446350208392644,
+              0,
+              12.244874099998528
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded -23 side 1",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.900000000000006,
+          1.7,
+          -23
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -16.82974824029233,
+              0,
+              -26.57914981664685
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.196648368127207,
+              0,
+              -25.644889682554588
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.395407543318884,
+              0,
+              -11.972286009588663
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              3.5762449543377484,
+              -0.2972215750851283,
+              -11.99150073494941
+            ],
+            "support": -0.2972215750851283
+          },
+          {
+            "position": [
+              -17.34120090115553,
+              0,
+              20.184204737768205
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.446350208392644,
+              0,
+              12.244874099998528
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support -23 side 1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -16.82974824029233,
+            0,
+            -26.57914981664685
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            17.196648368127207,
+            0,
+            -25.644889682554588
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -10.395407543318884,
+            0,
+            -11.972286009588663
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            3.5762449543377484,
+            -0.2972215750851283,
+            -11.99150073494941
+          ],
+          "support": -0.2972215750851283
+        },
+        {
+          "position": [
+            -17.34120090115553,
+            0,
+            20.184204737768205
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            21.446350208392644,
+            0,
+            12.244874099998528
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player -4 side -1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          9.89957999839782,
+          1.7,
+          -4
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.28403486614132,
+              0,
+              -18.77467952546709
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              15.83417410791681,
+              0,
+              -27.297541162916364
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -9.257468008134591,
+              0,
+              -13.992876156825234
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.885411786542157,
+              0,
+              -6.868835847950974
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.14213708958331,
+              0,
+              20.24862985985505
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              20.56367232977924,
+              0,
+              12.830397343227306
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded -4 side -1",
+      "pass": true,
+      "details": {
+        "position": [
+          9.89957999839782,
+          1.7,
+          -4
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.28403486614132,
+              0,
+              -18.77467952546709
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              15.83417410791681,
+              0,
+              -27.297541162916364
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -9.257468008134591,
+              0,
+              -13.992876156825234
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.885411786542157,
+              0,
+              -6.868835847950974
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.14213708958331,
+              0,
+              20.24862985985505
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              20.56367232977924,
+              0,
+              12.830397343227306
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support -4 side -1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -18.28403486614132,
+            0,
+            -18.77467952546709
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            15.83417410791681,
+            0,
+            -27.297541162916364
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -9.257468008134591,
+            0,
+            -13.992876156825234
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            16.885411786542157,
+            0,
+            -6.868835847950974
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -17.14213708958331,
+            0,
+            20.24862985985505
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            20.56367232977924,
+            0,
+            12.830397343227306
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player -4 side 1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.900839999198915,
+          1.7,
+          -4
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -21.271780017092347,
+              0,
+              -26.11854339983689
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.275940225306268,
+              0,
+              -25.792577597495637
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -16.775077950488207,
+              0,
+              -6.588974944834333
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              9.256469867084334,
+              0,
+              -13.992944021324542
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -16.310532234466812,
+              0,
+              21.42841885502946
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.17461975163924,
+              0,
+              20.888909331155197
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded -4 side 1",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.900839999198915,
+          1.7,
+          -4
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -21.271780017092347,
+              0,
+              -26.11854339983689
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.275940225306268,
+              0,
+              -25.792577597495637
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -16.775077950488207,
+              0,
+              -6.588974944834333
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              9.256469867084334,
+              0,
+              -13.992944021324542
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -16.310532234466812,
+              0,
+              21.42841885502946
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.17461975163924,
+              0,
+              20.888909331155197
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support -4 side 1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -21.271780017092347,
+            0,
+            -26.11854339983689
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            17.275940225306268,
+            0,
+            -25.792577597495637
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -16.775077950488207,
+            0,
+            -6.588974944834333
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            9.256469867084334,
+            0,
+            -13.992944021324542
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -16.310532234466812,
+            0,
+            21.42841885502946
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            17.17461975163924,
+            0,
+            20.888909331155197
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player 15 side -1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          9.900000000000015,
+          1.7,
+          15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.490665289293723,
+              0,
+              -17.787727982754582
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              15.828726545511048,
+              0,
+              -27.35265692790116
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -15.550871823376397,
+              0,
+              -7.283685957061324
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              6.330716201020306,
+              0,
+              -13.97915453593028
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.26603753311651,
+              0,
+              20.188675150852156
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.18961011168853,
+              0,
+              13.583540343516956
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded 15 side -1",
+      "pass": true,
+      "details": {
+        "position": [
+          9.900000000000015,
+          1.7,
+          15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.490665289293723,
+              0,
+              -17.787727982754582
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              15.828726545511048,
+              0,
+              -27.35265692790116
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -15.550871823376397,
+              0,
+              -7.283685957061324
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              6.330716201020306,
+              0,
+              -13.97915453593028
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.26603753311651,
+              0,
+              20.188675150852156
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.18961011168853,
+              0,
+              13.583540343516956
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support 15 side -1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -18.490665289293723,
+            0,
+            -17.787727982754582
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            15.828726545511048,
+            0,
+            -27.35265692790116
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -15.550871823376397,
+            0,
+            -7.283685957061324
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            6.330716201020306,
+            0,
+            -13.97915453593028
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -17.26603753311651,
+            0,
+            20.188675150852156
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            21.18961011168853,
+            0,
+            13.583540343516956
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player 15 side 1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.97013999919892,
+          1.7,
+          15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.24981629125887,
+              0,
+              -18.34047801251751
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.18882780795794,
+              0,
+              -25.570455997017405
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -6.330593645160489,
+              0,
+              -13.979124864575237
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              12.372769476357874,
+              0,
+              -5.556847801821219
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.233419702123673,
+              0,
+              19.956336486336124
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.189610111688545,
+              0,
+              13.583540343516974
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded 15 side 1",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.97013999919892,
+          1.7,
+          15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.24981629125887,
+              0,
+              -18.34047801251751
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.18882780795794,
+              0,
+              -25.570455997017405
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -6.330593645160489,
+              0,
+              -13.979124864575237
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              12.372769476357874,
+              0,
+              -5.556847801821219
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.233419702123673,
+              0,
+              19.956336486336124
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.189610111688545,
+              0,
+              13.583540343516974
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support 15 side 1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -18.24981629125887,
+            0,
+            -18.34047801251751
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            17.18882780795794,
+            0,
+            -25.570455997017405
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -6.330593645160489,
+            0,
+            -13.979124864575237
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            12.372769476357874,
+            0,
+            -5.556847801821219
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -17.233419702123673,
+            0,
+            19.956336486336124
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            21.189610111688545,
+            0,
+            13.583540343516974
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player 0 side -1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          9.89957999839782,
+          1.7,
+          -1.1572655075133586e-15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.284159401825207,
+              0,
+              -18.774733174509983
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.19667268655367,
+              0,
+              -25.649859019886303
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -9.84928038334594,
+              0,
+              -14.008062499334994
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.138162101333958,
+              0,
+              -6.334509051180129
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.260631678103195,
+              0,
+              20.646972558974756
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              22.653618298878392,
+              0,
+              12.843213123224634
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded 0 side -1",
+      "pass": true,
+      "details": {
+        "position": [
+          9.89957999839782,
+          1.7,
+          -1.1572655075133586e-15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.284159401825207,
+              0,
+              -18.774733174509983
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.19667268655367,
+              0,
+              -25.649859019886303
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -9.84928038334594,
+              0,
+              -14.008062499334994
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              17.138162101333958,
+              0,
+              -6.334509051180129
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.260631678103195,
+              0,
+              20.646972558974756
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              22.653618298878392,
+              0,
+              12.843213123224634
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support 0 side -1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -18.284159401825207,
+            0,
+            -18.774733174509983
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            17.19667268655367,
+            0,
+            -25.649859019886303
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -9.84928038334594,
+            0,
+            -14.008062499334994
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            17.138162101333958,
+            0,
+            -6.334509051180129
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -17.260631678103195,
+            0,
+            20.646972558974756
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            22.653618298878392,
+            0,
+            12.843213123224634
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "actual player 0 side 1 crosses",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.969720001602168,
+          1.7,
+          -1.161560344034178e-15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.45624079162028,
+              0,
+              -17.773718478762397
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.994091531483082,
+              0,
+              -25.64235498006139
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.118732841336524,
+              0,
+              -5.997723819814789
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              9.257460875593223,
+              0,
+              -13.99290639193218
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -16.285142603988508,
+              0,
+              21.48033345486313
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.412135985031227,
+              0,
+              21.25075047943032
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "player grounded 0 side 1",
+      "pass": true,
+      "details": {
+        "position": [
+          -9.969720001602168,
+          1.7,
+          -1.161560344034178e-15
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -18.45624079162028,
+              0,
+              -17.773718478762397
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.994091531483082,
+              0,
+              -25.64235498006139
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -17.118732841336524,
+              0,
+              -5.997723819814789
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              9.257460875593223,
+              0,
+              -13.99290639193218
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -16.285142603988508,
+              0,
+              21.48033345486313
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              16.412135985031227,
+              0,
+              21.25075047943032
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "NPC feet track support 0 side 1",
+      "pass": true,
+      "details": [
+        {
+          "position": [
+            -18.45624079162028,
+            0,
+            -17.773718478762397
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            16.994091531483082,
+            0,
+            -25.64235498006139
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -17.118732841336524,
+            0,
+            -5.997723819814789
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            9.257460875593223,
+            0,
+            -13.99290639193218
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            -16.285142603988508,
+            0,
+            21.48033345486313
+          ],
+          "support": 0
+        },
+        {
+          "position": [
+            16.412135985031227,
+            0,
+            21.25075047943032
+          ],
+          "support": 0
+        }
+      ]
+    },
+    {
+      "name": "bridge long-edge crossing x-2 dir-1",
+      "pass": true,
+      "details": {
+        "position": [
+          -2,
+          1.12,
+          -8.400420001602177
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -22.574137078550518,
+              0,
+              -21.209589185235203
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.209730612907748,
+              0,
+              -26.895134693546122
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.103832368132608,
+              0,
+              -13.454762531078654
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.225738639131912,
+              0,
+              -13.18018447195459
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.769677924561442,
+              0,
+              20.83870431167574
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51450093891763,
+              0,
+              17.307532951788325
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge edge ends grounded x-2 dir-1",
+      "pass": true,
+      "details": {
+        "position": [
+          -2,
+          1.12,
+          -8.400420001602177
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -22.574137078550518,
+              0,
+              -21.209589185235203
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.209730612907748,
+              0,
+              -26.895134693546122
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.103832368132608,
+              0,
+              -13.454762531078654
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.225738639131912,
+              0,
+              -13.18018447195459
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.769677924561442,
+              0,
+              20.83870431167574
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51450093891763,
+              0,
+              17.307532951788325
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge long-edge crossing x-2 dir1",
+      "pass": true,
+      "details": {
+        "position": [
+          -2,
+          1.12,
+          0.4000000000000044
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -22.48819872822742,
+              0,
+              -21.27276833856922
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.209931859793436,
+              0,
+              -26.895034070103286
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.103832368132608,
+              0,
+              -13.454762531078647
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              12.481248049599916,
+              0,
+              -8.945076348606081
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.785963138361147,
+              0,
+              20.899930321258882
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51439224713742,
+              0,
+              17.307335947936686
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge edge ends grounded x-2 dir1",
+      "pass": true,
+      "details": {
+        "position": [
+          -2,
+          1.12,
+          0.4000000000000044
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -22.48819872822742,
+              0,
+              -21.27276833856922
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.209931859793436,
+              0,
+              -26.895034070103286
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.103832368132608,
+              0,
+              -13.454762531078647
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              12.481248049599916,
+              0,
+              -8.945076348606081
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.785963138361147,
+              0,
+              20.899930321258882
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51439224713742,
+              0,
+              17.307335947936686
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge long-edge crossing x0 dir-1",
+      "pass": true,
+      "details": {
+        "position": [
+          0,
+          1.12,
+          -8.400000000000007
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -22.554124711227487,
+              0,
+              -21.178319861292966
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.17632375847545,
+              0,
+              -26.911838120762273
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.088671930957503,
+              0,
+              -13.489046908638887
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.21088786996156,
+              0,
+              -13.213867848216564
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.749996433464613,
+              0,
+              20.91000099862991
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51460963277097,
+              0,
+              17.307729959397523
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge edge ends grounded x0 dir-1",
+      "pass": true,
+      "details": {
+        "position": [
+          0,
+          1.12,
+          -8.400000000000007
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -22.554124711227487,
+              0,
+              -21.178319861292966
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.17632375847545,
+              0,
+              -26.911838120762273
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.088671930957503,
+              0,
+              -13.489046908638887
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.21088786996156,
+              0,
+              -13.213867848216564
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.749996433464613,
+              0,
+              20.91000099862991
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51460963277097,
+              0,
+              17.307729959397523
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge long-edge crossing x0 dir1",
+      "pass": true,
+      "details": {
+        "position": [
+          -1.028703311283776e-15,
+          1.12,
+          0.4000000000000105
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -20.975077640500462,
+              0,
+              -27.01246117974977
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.20973061482698,
+              0,
+              -26.895134692586513
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.103832369004895,
+              0,
+              -13.454762529118181
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.225793387274857,
+              0,
+              -13.180358429921334
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.78574647269653,
+              0,
+              20.89999098764499
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51450093995419,
+              0,
+              17.30753295366709
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge edge ends grounded x0 dir1",
+      "pass": true,
+      "details": {
+        "position": [
+          -1.028703311283776e-15,
+          1.12,
+          0.4000000000000105
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -20.975077640500462,
+              0,
+              -27.01246117974977
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.20973061482698,
+              0,
+              -26.895134692586513
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.103832369004895,
+              0,
+              -13.454762529118181
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.225793387274857,
+              0,
+              -13.180358429921334
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.78574647269653,
+              0,
+              20.89999098764499
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.51450093995419,
+              0,
+              17.30753295366709
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge long-edge crossing x2 dir-1",
+      "pass": true,
+      "details": {
+        "position": [
+          2,
+          1.12,
+          -8.469720001602186
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -20.941670784148943,
+              0,
+              -27.02916460792553
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.17632375847546,
+              0,
+              -26.911838120762273
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.08864899818245,
+              0,
+              -13.488887121637122
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.210481826145,
+              0,
+              -13.215068108832288
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.749996433464638,
+              0,
+              20.91000099862992
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.98723956222289,
+              0,
+              20.782217720153096
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge edge ends grounded x2 dir-1",
+      "pass": true,
+      "details": {
+        "position": [
+          2,
+          1.12,
+          -8.469720001602186
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -20.941670784148943,
+              0,
+              -27.02916460792553
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.17632375847546,
+              0,
+              -26.911838120762273
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.08864899818245,
+              0,
+              -13.488887121637122
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.210481826145,
+              0,
+              -13.215068108832288
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.749996433464638,
+              0,
+              20.91000099862992
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.98723956222289,
+              0,
+              20.782217720153096
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge long-edge crossing x2 dir1",
+      "pass": true,
+      "details": {
+        "position": [
+          2,
+          1.12,
+          0.4000000000000111
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -26.08102523144256,
+              0,
+              -20.63177559539536
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.20993185979342,
+              0,
+              -26.895034070103293
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.435083652814413,
+              0,
+              -13.50252854154986
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.225848128967364,
+              0,
+              -13.18053237704598
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.785963140427494,
+              0,
+              20.89993032068032
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              22.074996790118185,
+              0,
+              20.819000898766923
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "bridge edge ends grounded x2 dir1",
+      "pass": true,
+      "details": {
+        "position": [
+          2,
+          1.12,
+          0.4000000000000111
+        ],
+        "support": -0.58,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -26.08102523144256,
+              0,
+              -20.63177559539536
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              21.20993185979342,
+              0,
+              -26.895034070103293
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -10.435083652814413,
+              0,
+              -13.50252854154986
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              10.225848128967364,
+              0,
+              -13.18053237704598
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -21.785963140427494,
+              0,
+              20.89993032068032
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              22.074996790118185,
+              0,
+              20.819000898766923
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "actual doorway enters intact house",
+      "pass": true,
+      "details": {
+        "position": [
+          -17,
+          1.7,
+          -21.430139999198964
+        ],
+        "support": 0,
+        "blocked": false,
+        "enemies": [
+          {
+            "position": [
+              -23.356422954882223,
+              0,
+              -25.821788522558887
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              23.591277174175175,
+              0,
+              -25.704361412912412
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -8.000361647846441,
+              0,
+              -10.791542430596307
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              8.029502904583458,
+              0,
+              -9.90485322593955
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              -24.34999928669292,
+              0,
+              20.182000199725984
+            ],
+            "support": 0
+          },
+          {
+            "position": [
+              24.602849563756113,
+              0,
+              20.11120212214829
+            ],
+            "support": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "wall blocks ray",
+      "pass": true
+    },
+    {
+      "name": "doorway passes ray",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

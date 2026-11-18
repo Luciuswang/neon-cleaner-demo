@@ -3,7 +3,7 @@ import {spawn} from 'node:child_process';
 import {readFile,mkdtemp,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
-const prompt=await readFile(new URL('../brief-fable-compact.md',import.meta.url),'utf8');
+const prompt=await readFile(process.argv[2]||new URL('../brief-fable-compact.md',import.meta.url),'utf8');
 const temp=await mkdtemp(join(tmpdir(),'sunbreak-fable-river-'));
 const proc=spawn('cmd.exe',['/d','/s','/c','npx --yes --package=@anthropic-ai/claude-code@2.1.326 claude -p --model claude-fable-5-2 --effort low --tools "" --system-prompt "Return concise complete JavaScript only. Do not plan or narrate." --no-session-persistence --output-format stream-json --include-partial-messages --verbose --max-budget-usd 2'],{cwd:temp,windowsHide:true,env:{...process.env,MAX_THINKING_TOKENS:'0',CLAUDE_CODE_MAX_OUTPUT_TOKENS:'8000'},stdio:['pipe','pipe','pipe']});
 let stdout='',stderr='';proc.stdout.on('data',d=>stdout+=d);proc.stderr.on('data',d=>stderr+=d);proc.stdin.end(prompt);

@@ -1,0 +1,80 @@
+{
+  "pass": false,
+  "date": "2026-11-18T03:33:50.320Z",
+  "error": "Error: Timed out: !!document.body?.dataset.qa&&!document.getElementById('bStart').disabled\n    at wait (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:30:8)\n    at async file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:67:2",
+  "results": [],
+  "errors": [
+    {
+      "exceptionId": 1,
+      "text": "Uncaught",
+      "lineNumber": 57,
+      "columnNumber": 9,
+      "scriptId": "38",
+      "url": "http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "stackTrace": {
+        "callFrames": [
+          {
+            "functionName": "decode",
+            "scriptId": "38",
+            "url": "http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+            "lineNumber": 57,
+            "columnNumber": 9
+          },
+          {
+            "functionName": "",
+            "scriptId": "38",
+            "url": "http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+            "lineNumber": 170,
+            "columnNumber": 4
+          }
+        ]
+      },
+      "exception": {
+        "type": "object",
+        "subtype": "error",
+        "className": "Error",
+        "description": "Error: Malformed buffer data: -3\n    at decode (http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js:58:10)\n    at http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js:171:5",
+        "objectId": "5085610184949522787.2.1",
+        "preview": {
+          "type": "object",
+          "subtype": "error",
+          "description": "Error: Malformed buffer data: -3\n    at decode (http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js:58:10)\n    at http://127.0.0.1:5190/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js:171:5",
+          "overflow": false,
+          "properties": [
+            {
+              "name": "stack",
+              "type": "string",
+              "value": "Error: Malformed buffer data: -3\n    at decode (ht…examples/jsm/libs/meshopt_decoder.module.js:171:5"
+            },
+            {
+              "name": "message",
+              "type": "string",
+              "value": "Malformed buffer data: -3"
+            }
+          ]
+        }
+      },
+      "executionContextId": 2
+    },
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/44113056-3d80-495f-a364-a54b77a859f0",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/4a858467-6fd6-441d-86a9-0f707607e459",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/2e66cf52-5ffe-4048-ac44-ef8950ae3363",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/2179f777-3173-4cf3-b0dc-490840ac6db3",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/1553711f-8b67-4c9d-a835-5bdbc35fd31e",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/21dd6d3b-2c92-4845-95f0-439132158db0",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/abbe40e5-1a35-4e1f-a6d4-9157b84f1168",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/37e1280f-0480-4d40-ad97-6fb96d758710",
+    "THREE.GLTFLoader: Couldn't load texture blob:http://127.0.0.1:5190/84dedf74-c952-4123-b717-0a45cf2825e6"
+  ],
+  "diagnostics": {
+    "url": "http://127.0.0.1:5190/river/",
+    "boot": "正在装载雨林河谷、植被与材质…",
+    "error": "初始化失败 / Error: Uncaught Error: Malformed buffer data: -3",
+    "resources": [
+      {
+        "name": "http://127.0.0.1:5190/favicon.ico",
+        "status": 404
+      }
+    ]
+  }
+}

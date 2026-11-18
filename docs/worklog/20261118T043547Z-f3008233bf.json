@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261118T043547Z-f3008233bf",
+  "task_id": "sunbreak-river-art-2026-11-18",
+  "timestamp_utc": "2026-11-18T04:35:47.860980+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall reference-led art WIP checkpoint: two diagonally paired enterable timber cabins, scanned foliage and wet ground, static layered ruins, bounded Fable5.2 chipped-slab contribution. Final source-bound 6 unit suites, 15 cabin interactions, 32 controls and 40 traversal checks pass. Independent geometry/input PASS; art REVISE and strict performance BLOCKED (53ms max, 2 frames above50ms; diagnostic53.2ms). Retain all failed evidence, including corrected pointer-lock test lifecycle race. qa/release.json is BLOCKED; prior accepted release archived separately. No Pages update; local preview http://127.0.0.1:5190/river/. Older four demos and weapon/NPC animations unchanged. Next: resolve cabin bright seams, layered ruin breaks, understory/water-edge transitions and diagnose long frames before fresh acceptance. Pre-existing unrelated dirty private vault untouched, private transfer explicitly skipped; no UE/private portability claim.",
+  "commit_shas": [
+    "0a0c45ce47e577359f0de84b2acbd65c035c2d63"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

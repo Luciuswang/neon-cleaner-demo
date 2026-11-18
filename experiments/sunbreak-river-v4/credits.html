@@ -12,11 +12,12 @@
 <h2>战术角色 · CC BY 4.0</h2>
 <p><a href="https://sketchfab.com/3d-models/military-tactical-suit-lowpolygameready-ef698ce36b1545a78ce592dd3db4c7ed">Military tactical suit — DanlyVostok</a>，经 cktang88/3d-fps 的优化 GLB 分发。<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。修改：移除脱离头部的耳机附件、统一缩放落地、自制骨骼步态、蹲伏、瞄准与射击反馈。第三版使用自制掩体状态机与绕障寻路，命中体积随姿态变化。没有导入动画片段或动作捕捉数据；前两版的原始玩法与角色表现另存保留。</p>
 <h2>扫描地表、植被、建筑材质与 HDR 天空 · CC0</h2>
-<p><a href="https://polyhaven.com/">Poly Haven</a>：brown_mud_02、rocky_gravel、brick_moss_001、fern_02、grass_bermuda_01、island_tree_02，以及保留的 approaching_storm、worn_plaster_wall、roof_tiles、weathered_brown_planks、bark_brown_01。<a href="https://polyhaven.com/license">CC0 许可说明</a>。模型修改：实例化、缩放、风动着色；树干/树枝减面，完整叶片分组抽稀并扩大叶冠轮廓。不是未经修改的原始扫描。原始下载与衍生文件的校验值见 asset-sources.json / foliage-derivatives.json。</p>
+<p><a href="https://polyhaven.com/">Poly Haven</a>：brown_mud_02、rocky_gravel、brick_moss_001、island_tree_01、tree_small_02、grass_medium_01、grass_medium_02、grass_bermuda_01，以及保留的 kloofendal_overcast_puresky、worn_plaster_wall、roof_tiles、weathered_brown_planks、bark_brown_01。<a href="https://polyhaven.com/license">CC0 许可说明</a>。新植被使用官方透明度图、受误差约束的减面、分片实例化与风动；近树保留完整叶片分布，不再将少量叶片放大填冠。Tree Small 02 为视觉替代树种，未声称是经考证的越南原生植物。原始下载与衍生文件的校验值见 asset-sources.json / foliage-revision.json。旧树与蕨类文件为版本兼容保留，不再用于当前树林。</p>
 <h2>枪声 · CC0 实录素材</h2>
 <p><a href="https://opengameart.org/content/the-free-firearm-sound-library">The Free Firearm Sound Library</a> — Ben Jaszczak、Brian Nelson、Kevin Heras、Matthew Nanney。使用 AR-15/M4 实录，不是 MP5 实录。<br>
 <a href="https://opengameart.org/content/gun-reload-sound-effects">机械音效 — BMacZero / Brian MacIntosh</a>。雨、风、雷声是合成环境声，并非实录。</p>
 <h2>技术与画面说明</h2>
 <p><a href="https://threejs.org/">Three.js r160 核心及已有 presentation 模块</a> / MIT，含 Meshopt 解码器及随附许可。实时 WebGL 光栅化、PBR、阴影贴图、河水平面反射、雨涟漪、SSAO、SMAA 与可关闭的调色。不是 Unreal Engine，没有 Lumen、Nanite 或硬件光追。</p>
-<p>全新六栋双岸村落，完整、半坍塌和废墟三种状态；房门为固定敞开通道。中间木桥、两处浅滩和可涉水的河床。两岸大尺度碰撞与路径镜像，装饰有所变化；这不等于已经验证竞技平衡。沿用第四版的 NPC、美术动画、105ms 连射间隔及 2.25 秒换弹；仍是单人六敌人原型，不是 4v4 联机或 3A 成品。分享封面沿用早期 AI 宣传图，不是当前地图截图或质量证据。</p>
+<p>六栋双岸村落保留完整、半坍塌和废墟三种状态，另加两栋河岸斜对称木屋：E 开关门、台阶、可进入室内和暖光。碎墙使用有厚度的破碎几何、倒塌墙片与共享行走高度的碎屑堆；这是静态破坏美术，不是实时物理拆房。中间木桥、两处浅滩和可涉水河床保留。新增木屋为绕河道中心旋转180度匹配，并非全图左右镜像；两队原有出发路线不完全等长，不能视为已验证竞技平衡。</p>
+<p>沿用第四版的 NPC、美术动画、105ms 连射间隔及 2.25 秒换弹；仍是单人六敌人实验，不是 4v4 联机或 3A 成品。本轮再次实际调用 claude-fable-5-2，生成破碎墙片几何；木屋、材质、植被、布局、光照、整合和测试由 Codex 完成，详见 fable-art-revision.json。分享封面沿用早期 AI 宣传图，不是当前地图截图或质量证据。</p>
 <small>原版、第二版、第三版和第四版的原有网页全部保留。实际画面与验证记录单独保存。</small></main></html>

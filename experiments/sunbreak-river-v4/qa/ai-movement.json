@@ -1,11 +1,11 @@
 {
-  "date": "2026-11-17T13:36:46.863Z",
+  "date": "2026-11-18T04:27:24.323Z",
   "pass": true,
   "method": "Actual AI update-loop movement along navigation-generated routes; decisions held, not shot approval or human playtesting",
   "sources": {
-    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
-    "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
-    "qa/ai-movement.mjs": "c2173390b5a7c95fa7ad5939f7c49e05855c7b2572212522095197f0740b10c3"
+    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "qa/ai-movement.mjs": "bea010eb3784252494bf3e6947597fe3ee960b36569ff9b52af0934056859e7e"
   },
   "traversals": [
     {
@@ -117,20 +117,20 @@
       "maxFloorError": 0
     },
     {
-      "name": "spawn--25-6",
+      "name": "spawn--25-20",
       "dt": 0.016666666666666666,
       "pass": true,
-      "error": 0.08749999999953673,
-      "steps": 1332,
+      "error": 0.11312699188113523,
+      "steps": 1350,
       "penetration": false,
       "maxFloorError": 0
     },
     {
-      "name": "spawn-25-6",
+      "name": "spawn-25-20",
       "dt": 0.016666666666666666,
       "pass": true,
-      "error": 0.08749999999953673,
-      "steps": 1332,
+      "error": 0.11312699188113523,
+      "steps": 1350,
       "penetration": false,
       "maxFloorError": 0
     },
@@ -138,8 +138,8 @@
       "name": "entry--1--23",
       "dt": 0.016666666666666666,
       "pass": true,
-      "error": 0.09180394894594633,
-      "steps": 1374,
+      "error": 0.09405504085468462,
+      "steps": 1516,
       "penetration": false,
       "maxFloorError": 0
     },
@@ -147,8 +147,8 @@
       "name": "entry--1--4",
       "dt": 0.016666666666666666,
       "pass": true,
-      "error": 0.1081306431011643,
-      "steps": 912,
+      "error": 0.0973971215420327,
+      "steps": 1040,
       "penetration": false,
       "maxFloorError": 0
     },
@@ -396,20 +396,20 @@
       "maxFloorError": 0
     },
     {
-      "name": "spawn--25-6",
+      "name": "spawn--25-20",
       "dt": 0.05,
       "pass": true,
-      "error": 0.04999999999980531,
-      "steps": 445,
+      "error": 0.011178649607233748,
+      "steps": 453,
       "penetration": false,
       "maxFloorError": 0
     },
     {
-      "name": "spawn-25-6",
+      "name": "spawn-25-20",
       "dt": 0.05,
       "pass": true,
-      "error": 0.04999999999980531,
-      "steps": 445,
+      "error": 0.011178649607233748,
+      "steps": 453,
       "penetration": false,
       "maxFloorError": 0
     },
@@ -417,8 +417,8 @@
       "name": "entry--1--23",
       "dt": 0.05,
       "pass": true,
-      "error": 0.061983660226060805,
-      "steps": 461,
+      "error": 0.02414862269816478,
+      "steps": 509,
       "penetration": false,
       "maxFloorError": 0
     },
@@ -426,8 +426,8 @@
       "name": "entry--1--4",
       "dt": 0.05,
       "pass": true,
-      "error": 0.03313064310119802,
-      "steps": 306,
+      "error": 0.1027263473840569,
+      "steps": 349,
       "penetration": false,
       "maxFloorError": 0
     },

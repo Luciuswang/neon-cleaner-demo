@@ -1,856 +1,202 @@
 {
   "schema": "sunbreak-river-release-v1",
-  "date": "2026-11-17T13:52:26.007Z",
-  "verdict": "CONDITIONAL PASS",
-  "scope": "Independent single-player river-map experiment; not AAA parity, real4v4, continuous-motion approval or competitive-balance certification",
-  "currentSourceBinding": true,
+  "protocol": "offscreen-cinematic-v1",
+  "date": "2026-11-18T04:34:46.783Z",
+  "task": "sunbreak-river-art-2026-11-18",
+  "verdict": "BLOCKED",
+  "taskState": "REWORK",
+  "releaseEligible": false,
+  "scope": "Playable local work-in-progress environment revision; not accepted final art or AAA reference parity.",
+  "engine": "Actual browser WebGL; not Unreal Engine",
   "sources": {
     "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
     "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
     "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
     "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
-    "credits.html": "d0fa93a1e859cb4093f36f50b6e3d0322813c0a6cc59157ab9ef25af80ba1913",
-    "index.html": "22c8f95f30bcda5d7062148da975d9a88a960961bbd88acd7cbab01d390271d7",
-    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
+    "credits.html": "0b26739175546181fb94be5f3e9f7be76341f47661dd8810f4b4ec9727796b78",
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "index.html": "0398436482bb501dc389f347f383f0e0104a59e38ccb02ed30d6bf511c99c8b7",
+    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
     "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
-    "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
-    "vegetation.js": "c10196e24e55e02533eee1d4c15ccf917e629ce80d57710960f8b0da15a0812d",
-    "village.js": "6ded36f88c1acd84706df58f4a89f1469aecd33871aa6aef5897cb63ec412812",
+    "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
+    "vegetation.js": "525eac366c2f5b9d2e1af66a15896924ddc5b200d047ef6618101cb6e0ab71e9",
+    "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
     "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
-    "world.js": "63451e1548bca820b87d2aba95d3b08adc82eeb684e7e246aee3deb7c8fd517f",
+    "world.js": "4b2a78dfabe633176a8027d4cf3bf9ceaee2427badf95a52902f9b770ea549ed",
     "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
     "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
-    "qa/hooks.js": "2a57b916bb9995fded20222c344dfa6fdedb078df1ee8caec6f08414ea7332fd",
-    "qa/browser.mjs": "cd4cd094579f830d70468379cbffa14bf01fbbe6cd0a8d5fdcb89e9ecfc86217"
+    "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+    "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+    "qa/hooks.js": "976a8185df147a3a3fba97ea765569ecb9b285a01939d03daf6c8ac6164500be",
+    "qa/browser.mjs": "38d05248718e86b5c20225f2db53c661a61bd692f6d16fee3a035435aa3f4a1e",
+    "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+    "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+    "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561"
   },
-  "chosen": {
-    "map": "qa/evidence/map-2026-11-17T13-31-56-003Z/map-1.json",
-    "checks": "qa/evidence/checks-2026-11-17T13-30-26-033Z/checks-1.json",
-    "traversal": "qa/evidence/traversal-2026-11-17T13-30-58-412Z/traversal-1.json"
+  "currentSourceBinding": {
+    "unitsAndFunctionalStills": true,
+    "performance": false,
+    "independentArt": "04:18 stills, followed only by whitespace/harness edits; explicit scope in independent-review.json"
   },
-  "summaries": {
-    "map": 2,
-    "checks": 32,
-    "traversal": 40
-  },
-  "unit": {
-    "map-checks": 18,
-    "terrain-rays": 175,
-    "ai-movement": 62,
-    "village-checks": 76
-  },
-  "performance": [
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-28-47-367Z/benchmark-1.json",
-      "p50": 17.5,
-      "p95": 18.30000000000291,
-      "p99": 18.5,
-      "max": 18.700000000000728,
-      "over50": 0,
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "shots": 232,
-      "enemyShots": 55
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-29-37-275Z/benchmark-1.json",
-      "p50": 17.599999999998545,
-      "p95": 18.39999999999418,
-      "p99": 18.5,
-      "max": 18.799999999999272,
-      "over50": 0,
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "shots": 232,
-      "enemyShots": 54
-    }
-  ],
-  "review": {
-    "date": "2026-11-17",
-    "sources": {
-      "index.html": "22c8f95f30bcda5d7062148da975d9a88a960961bbd88acd7cbab01d390271d7",
-      "world.js": "63451e1548bca820b87d2aba95d3b08adc82eeb684e7e246aee3deb7c8fd517f",
-      "village.js": "6ded36f88c1acd84706df58f4a89f1469aecd33871aa6aef5897cb63ec412812",
-      "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
-      "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
-      "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
-      "vegetation.js": "c10196e24e55e02533eee1d4c15ccf917e629ce80d57710960f8b0da15a0812d",
-      "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
-      "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
-      "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c"
-    },
-    "engineering": {
-      "reviewer": "Planck",
-      "verdict": "PASS",
-      "scope": "Bounded current geometry/input code; separate final runtime gates below are checked by integrator",
-      "notes": [
-        "Swept neighbor edges, start connector, thin cover and terrain Float32/material-side regressions resolved.",
-        "Mirrored river width/ford offset and12m bridge support/shot proxy agree.",
-        "Post-review allocation-only changes remove identical temporary-array expressions; no gameplay/visual value change."
-      ]
+  "reports": {
+    "map": {
+      "path": "qa/evidence/map-2026-11-18T04-30-13-312Z/map-1.json",
+      "sha256": "9e679996d5d34a6cff587f7e6d95d0017e1e7b1c167091c6d09c2d552546f848",
+      "pass": true,
+      "checks": 2,
+      "sourceMismatches": []
     },
     "art": {
-      "reviewer": "Zeno",
-      "verdict": "CONDITIONAL PASS",
-      "evidence": "qa/evidence/map-2026-11-17T13-21-00-181Z",
-      "scope": "Eight representative actual WebGL canvas stills, not continuous motion or AAA acceptance",
-      "confirmed": [
-        "Varied shore/curved fords and quieter reflection reduce canal appearance.",
-        "Reduced surface contrast resolves overwhelming material noise.",
-        "Water tank landmark and broken masonry/fallen beams improve identity and ruin read."
-      ],
-      "limits": [
-        "Overall river is still straight and shallow edges are angular.",
-        "Walls now somewhat flat/clean.",
-        "Mirrored houses and repeated tree forms remain apparent."
-      ],
-      "subsequentChange": "Only mathematically identical allocation removal in rain/splash and groundHeight. Fresh final images must remain source-bound; no new art feature added."
-    },
-    "runtime": {
-      "reviewer": "integrator",
-      "verdict": "PASS",
-      "independentRuntimeReview": "Planck independently recalculated final13:28/13:29 raw frames, confirmed source-bound32controls/40traversals/eight1080p file metadata. Bounded runtime PASS; no art/publication/AAA acceptance.",
-      "strictPerformanceThreshold": {
-        "p95ms": 33.3,
-        "p99ms": 33.3,
-        "maxms": 50,
-        "over50": 0
-      },
-      "historicalStalls": "Retain all failures. CPU stage timing did not establish a cause for intermittent176–318ms stalls; no universal hitch-free claim."
-    },
-    "publicationPreflight": {
-      "reviewer": "Planck",
-      "verdict": "PASS",
-      "scope": "Publisher/anonymous verifier only; deployment and live checks separately gated",
-      "notes": [
-        "Prepared PR number/head/repositories/main base and exact manifest pinned before merge.",
-        "Anonymous live manifest pinned to prepared/merged commits; fixed file set and completion count.",
-        "Independent 2positive/10negative publication-contract regression run PASS."
-      ]
-    },
-    "publicationEvidence": {
-      "reviewer": "Planck",
-      "verdict": "PASS",
-      "scope": "Read-only evidence sanity-check; no broader art/multiplayer acceptance",
-      "notes": [
-        "Full source/prepared-head/public-merge identities and exact manifest hashes agree.",
-        "154 unique byte/preservation checks and7public input checks PASS; zero recorded errors/retries.",
-        "Public smoke does not independently embed a commit digest; release identity is established by separate pinned-hash verification."
-      ]
-    },
-    "continuousMotion": {
-      "verdict": "UNVERIFIED",
-      "reason": "Representative stills plus functional checks; no full continuous motion acceptance"
-    },
-    "competitiveBalance": {
-      "verdict": "UNVERIFIED",
-      "reason": "Mirrored geometry/path lengths only; no human multiplayer playtest"
-    },
-    "multiplayer": "NOT IMPLEMENTED",
-    "AAA": "NOT ACCEPTED"
-  },
-  "artifacts": [
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T12-50-20-383Z/benchmark-1.json",
-      "sha256": "a2f192ebce5d9b4862b01951ef36b3d32c662eff11463d0df6914d244a230975",
-      "bytes": 284692
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T12-53-32-300Z/benchmark-1.json",
-      "sha256": "31f22d85b7f5086ad486bcda25a437602b32b1800be63322073f16d9d1169871",
-      "bytes": 345188
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-14-25-107Z/benchmark-1.json",
-      "sha256": "3b594166f510dafd0d8d858d80d6722ebfed862d94d9d65df3a4c523bb918dc2",
-      "bytes": 343340
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-17-32-171Z/benchmark-1.json",
-      "sha256": "eb938226e12d80415fe5cd9284b1b06de62a71660ec4eabc7be06255d8abe39b",
-      "bytes": 347474
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-21-36-074Z/benchmark-1.json",
-      "sha256": "db6a40e6b0ac8253c765f62085278fb5db4b3f22ad78d4568ffa0b3d681a33b7",
-      "bytes": 346223
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-23-08-819Z/benchmark-1.json",
-      "sha256": "f468792dd536601db0f078bdce60f766d25b7945890072d1b34c41693611dad4",
-      "bytes": 346489
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-24-34-643Z/benchmark-1.json",
-      "sha256": "99ee1726427e38c52dff20264f271753988896b847f638ea1c9aaba7d029894a",
-      "bytes": 343697
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-28-47-367Z/benchmark-1.json",
-      "sha256": "f0daabcfba3493cc39e5ac6b908df2c338b967e87a9d88d2e4275246f22a5b4e",
-      "bytes": 349195
-    },
-    {
-      "path": "qa/evidence/benchmark-2026-11-17T13-29-37-275Z/benchmark-1.json",
-      "sha256": "f914b96c124c7172f772d22e84d070ae1bf558c261b1fe974fbe2870c3268fb6",
-      "bytes": 347394
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T12-58-12-187Z/checks-failure-1.json",
-      "sha256": "9170d7e9cec456b62c27ba53f61cb1f2d65409cafda8b09e23a7e110a2df95d7",
-      "bytes": 21658
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-01-42-113Z/checks-1.json",
-      "sha256": "a2d2c53b71c06f2aa2986b82f6fa22837a5b1a423c6e8cd63151db9c42299b08",
-      "bytes": 16956
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-01-42-113Z/checks-final.json",
-      "sha256": "d3c4888d1117e667341adddc80d1c8df92219d41d62f6b14b27113238773e57e",
-      "bytes": 10323
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-01-42-113Z/checks-final.png",
-      "sha256": "8621db7cd00e687fe70a6fc3b86337ee347fc4ea497b6da226665ea4e776d603",
-      "bytes": 2603670
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-16-20-686Z/checks-1.json",
-      "sha256": "3e6beeaa544f818d0c62d9da8e858836110d4d710c80f1e5a17975345cf855f2",
-      "bytes": 17072
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-16-20-686Z/checks-final.json",
-      "sha256": "74faa55d78ae2a494831ba50c434d185ad52b2b54a43edccbc78ed13525ae3f5",
-      "bytes": 10570
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-16-20-686Z/checks-final.png",
-      "sha256": "c4db88fcda45cfc3d549dc3aca5635e692fd88f74e9127dbfce2a729e9898dfa",
-      "bytes": 2613282
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-30-26-033Z/checks-1.json",
-      "sha256": "249873197b2d89ba374659808faa1919ce0380f5e6dd19cbead61cf89a9d99a7",
-      "bytes": 17244
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-30-26-033Z/checks-final.json",
-      "sha256": "8f5be17a1c8dd4bdb7390abc3a49894e522edca78a8b1df5ae256a6e08ae8645",
-      "bytes": 10788
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-17T13-30-26-033Z/checks-final.png",
-      "sha256": "2888a05bed09cad2f9fbf17932630e3da837ee6b25f850c91bb3818943f4737c",
-      "bytes": 2613625
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/east-village.json",
-      "sha256": "ef4b08b05032149191bb60a003028944355429010de7c2bfe836e080b69d9c37",
-      "bytes": 8926
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/east-village.png",
-      "sha256": "8edd9cd3883040dc2e383b5ca5bbd13e2e489c75bcf1c014154a93dbb4fa45d7",
-      "bytes": 2753526
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/map-failure-1.json",
-      "sha256": "6769ead710c8053e3ee4d2b5137e0bbec6e4315a7b254fb9ec0641d8134ef131",
-      "bytes": 20007
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/river-hero.json",
-      "sha256": "8b2c1a4b5868d1f195d7b9a6e19e726e578dc78f95744b55964d27cbeacf61d9",
-      "bytes": 8928
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/river-hero.png",
-      "sha256": "9ed15b5e94ed9384b2863d2ee23c7966b1fd14e62babc8c9c9a45f2ff548248d",
-      "bytes": 2958790
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/west-village.json",
-      "sha256": "1acd1c3be767b53a26e629000c3a81db31f985a0642285efff9c3b0444361f90",
-      "bytes": 8926
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-37-02-913Z/west-village.png",
-      "sha256": "722fc1f655752b4597d2856a135ddcaa4fe05fa228ff8f6a1c6af9eaba7cb42a",
-      "bytes": 2977227
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T12-39-25-301Z/map-failure-1.json",
-      "sha256": "a5aee4496b5b8ca93b1ead9d7f243362c39987058bc8a7c6288609a7f3fe0c04",
-      "bytes": 11460
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/bridge.json",
-      "sha256": "86ae01fa8f9979a0abd29c4885537981dc98b818f97ad5311bdb75ffca4a70a2",
-      "bytes": 9115
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/bridge.png",
-      "sha256": "4c0d454e83e049689c2a4dac8814e5bc447fdcb0b3dbd98f4d95470aa560502c",
-      "bytes": 4189789
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/east-village.json",
-      "sha256": "d516301ee89c830ac95fc1625e0bfb844a7a8acceb346e8cff5df1623c5fb636",
-      "bytes": 9117
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/east-village.png",
-      "sha256": "55a06b918ff44928de0e20569932172e2e837771919faa16a68e23f49967b3cf",
-      "bytes": 4068547
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/layout.json",
-      "sha256": "a9967ead9efb4c7826ca0bae57ef980a696058d9f8eb3f87caf69dd0a35a1e26",
-      "bytes": 9114
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/layout.png",
-      "sha256": "33bc383c07580130d1734b40ba7becb4e2af1247f46c33c952f5abeec06ffba1",
-      "bytes": 4487665
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/map-1.json",
-      "sha256": "ae4bd70a6d126e69dd79899d6d25dfdaf48903c800341315e6ab01cb01dfbb67",
-      "bytes": 18751
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/river-ford.json",
-      "sha256": "25482bdcb435128462a7c4276caa462fa9fd79c276feb2acd8ceb905039d9446",
-      "bytes": 9114
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/river-ford.png",
-      "sha256": "2131cc54e06a6a98c5feb0f46ddc2d5a39e6bbfcad9f5f8d49494a5e5b0a5da9",
-      "bytes": 4470374
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/river-hero.json",
-      "sha256": "921dc484837d230d5febb62c0b133be983b68d4fb6e0732f9dcff34d5ee5921a",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/river-hero.png",
-      "sha256": "349f6d406e5319d95cffde662d13220e7458ca7bea7d86fa5ae07367bdd0876d",
-      "bytes": 4003835
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/ruin.json",
-      "sha256": "6a2fb12eb29239254bc1fcd6962494a806ea289c9a416f86442bcd6a0b18509b",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/ruin.png",
-      "sha256": "d31e1d4ed2687e616bdebc3a27dc4ac485d15a925aa93d965ee3f2e118a7cc3a",
-      "bytes": 4176219
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/west-village.json",
-      "sha256": "4df2cb925e7f87b33b0336e03abce44b04890eae9eb49df18e87cf995cdc54b9",
-      "bytes": 9117
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/west-village.png",
-      "sha256": "c2780177408ca84bb4ebd257e8bc1ddace04771ba21a6846fd802af162ca5782",
-      "bytes": 4162611
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/wet-mud.json",
-      "sha256": "150d557d15a84d8a9fb41d94ba9736c0418ea71591c7c4d96db0fa2ea44612ed",
-      "bytes": 9116
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-09-48-708Z/wet-mud.png",
-      "sha256": "69b080d067a44d439e6a2a3c7a689da1763104b8fbe932a5e22810f142ab64cf",
-      "bytes": 4573095
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/bridge.json",
-      "sha256": "bc16ac1729bd283b041b315383d1824ce48f718456aafe414ef55f7b3f1aef56",
-      "bytes": 9115
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/bridge.png",
-      "sha256": "0a197462bb8c673c627bae2de89f2562c2c5c06e8c4c0753baed2fd0374746f1",
-      "bytes": 4243520
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/east-village.json",
-      "sha256": "c92e954e3b8507864890d772e8fca343da8509c22b7a9131f8e25115e6179f0a",
-      "bytes": 9117
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/east-village.png",
-      "sha256": "b887ad02af36ec28019d4238a1b65a77307e74873e018c44c364a40d85404d47",
-      "bytes": 4090812
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/layout.json",
-      "sha256": "4ae527a709ea490a9ce9c363df8655de659d8a3cb3c94a2eca7ceb5fd9ba4650",
-      "bytes": 9114
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/layout.png",
-      "sha256": "dc34869f3e0d8b995b7cfc777ed15c704461fe5aa0b96d0d6949c86edc6a309a",
-      "bytes": 4483369
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/map-1.json",
-      "sha256": "aa82ee524a2fe10cce7c72cdaa435741ca66df66f8df7118adf42252a2272f3c",
-      "bytes": 18752
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/river-ford.json",
-      "sha256": "e3cf2811a9138df157e8415b4c6e2ce0b31f5a3c45c2a6e1db3e59168016ba3d",
-      "bytes": 9114
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/river-ford.png",
-      "sha256": "78b2ae41e783dbe0d4ed6925cfc8cca80a44fc7aba3f30058e40ae1b10d7b538",
-      "bytes": 4487502
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/river-hero.json",
-      "sha256": "2a303d227aad919375e098c968e1294ec9615999d09f86e5c223efd117f646af",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/river-hero.png",
-      "sha256": "e0f70a1c5ef563e871a504136aabce09465a2be4a2f4bc23d789cb78e8d8a3c9",
-      "bytes": 4030726
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/ruin.json",
-      "sha256": "063bcf99ba33f7beb27f85452f894b95e02db5f2af376873d03d66c192737422",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/ruin.png",
-      "sha256": "b9a22cd3606442bcd388a0117281a64d91728d69d8b5c29540e9550c1cb2d319",
-      "bytes": 4178664
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/west-village.json",
-      "sha256": "c47c710609b48d6c25014fceae6cb3b8445a28aa4fffe69ca435ae5c13a295c6",
-      "bytes": 9117
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/west-village.png",
-      "sha256": "6f4d6842bd627f4a1daa7aa8a57dd2cdd186f718d933bb4277bfd781451f5154",
-      "bytes": 4174013
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/wet-mud.json",
-      "sha256": "d378259f4e03f9eef659d853c8d86c8c979fb8960d025c73ac5ced09ba95dac5",
-      "bytes": 9116
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-12-16-558Z/wet-mud.png",
-      "sha256": "97773b9382589a82207d220cfe63015001e5295f6a2aeec5035e302020e7a589",
-      "bytes": 4637443
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/bridge.json",
-      "sha256": "68e041064bfd96357930d21c7493e55cd56489e62cd52289bd30866abda0745d",
-      "bytes": 9115
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/bridge.png",
-      "sha256": "86817a93b406ae5955ab6b9ba792b6fe2191233dc62b3f168ee0334904c2cd88",
-      "bytes": 4255100
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/east-village.json",
-      "sha256": "3799a5ebcc00e1a867832cdb256c5aac4d6c947f26647ef812368844dca34d78",
-      "bytes": 9117
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/east-village.png",
-      "sha256": "d425a9e823ec1c8ab15d38913b11e79e5104fc768f2edf34cb626441ee25cb5c",
-      "bytes": 4108126
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/layout.json",
-      "sha256": "4ca8d109bb03c3e0d0abe08d0fc7fd3b379c7f2b8773d94347123370dfd5583f",
-      "bytes": 9114
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/layout.png",
-      "sha256": "23d0aab572366b6b196c957692e4ade127b23ae5ece39e349a63fe23cd441224",
-      "bytes": 4499889
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/map-1.json",
-      "sha256": "151d4abc316ea0201dee61a21ed0608a890213973a3d6e8c02e7da904c20333c",
-      "bytes": 18752
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/river-ford.json",
-      "sha256": "57ee220a32affb45fc744f1aae03d9e3db5516a9976cbbce750cef2589a3ea98",
-      "bytes": 9114
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/river-ford.png",
-      "sha256": "05f2848c62d3e8f7905d81f91e49244e5532d29d4152781c153ab12358c8b5e0",
-      "bytes": 4483719
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/river-hero.json",
-      "sha256": "8d7a6a120e20af48ae98245edb0864ca44e5f9f48ceff9628efe9cd5aa092ae1",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/river-hero.png",
-      "sha256": "524c6deac9747303acadd13f7472dda86d6d1bf893c8bf47c60005d07dbf2d10",
-      "bytes": 4035168
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/ruin.json",
-      "sha256": "00ff4d6b888ab280c52807726ba8bf1be729ad5bf3ddf9f6a25e38493b02651b",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/ruin.png",
-      "sha256": "90ca5d502ce5f85d28f0ddb847708a921dff2a1512b655694c6dad2ac2d1517d",
-      "bytes": 4186993
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/west-village.json",
-      "sha256": "bf6fd9b1878d8601c973d18e132a21299ddb2449fa6f86bec31cc0bd3be7c4f2",
-      "bytes": 9117
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/west-village.png",
-      "sha256": "732fca12c7997a175294a5461ab44054ffa0b954ac5e31d682c93201c450a8ac",
-      "bytes": 4182415
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/wet-mud.json",
-      "sha256": "aa72ed7c0c7af704813bfbc1e953d936128fd55a1ac76970ca0e69ef55f93b9a",
-      "bytes": 9116
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-13-51-677Z/wet-mud.png",
-      "sha256": "29f3a9cc3cc997c825302ee71c517ea30ce80948e904512db9a315d433d1a23a",
-      "bytes": 4637442
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/bridge.json",
-      "sha256": "c17dd27d996b2d117edee53d83d0e9a145117e9a1c6e850cf4da1a85902816cc",
-      "bytes": 9212
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/bridge.png",
-      "sha256": "1064acf2764afcaefd636f04df027ee4c89efd096bcbd1a5f09120bb922cb6d2",
-      "bytes": 4128686
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/east-village.json",
-      "sha256": "b0f61bd09d614fd8d868ae1f59f5e48377e6f0f3e9b61bdeba5cc7e932a34fa6",
-      "bytes": 9214
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/east-village.png",
-      "sha256": "b8aed524ede9e3885279ec6e5e915189000d9d472ce29888aa5b47b7ba61265b",
-      "bytes": 3988775
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/layout.json",
-      "sha256": "dc67a472cc63b9b6d3d0747256cb964ff170551ab80d4a23c034e9824b27acef",
-      "bytes": 9211
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/layout.png",
-      "sha256": "90b96bb2eb4a48c49ed87ed984ea5c684bdc93d01766df20691babc6ae3ef800",
-      "bytes": 4481408
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/map-1.json",
-      "sha256": "a76957f68ee5f6dddb95297ed0dc98c6da7a9ac1266fd008b997b0077d07c111",
-      "bytes": 18854
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/river-ford.json",
-      "sha256": "eca2ab120d7e516f239924b2fdc3e4dd0b84946b25ba26cd6e61448493d414d2",
-      "bytes": 9211
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/river-ford.png",
-      "sha256": "b5a395d5017c39bf685263f9fb97da71b945865ad68ffe1841e9afa6a02c280a",
-      "bytes": 4397843
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/river-hero.json",
-      "sha256": "cddf6006c9ebaff7d9473a2d04c12967c3ad25d72f4a5d5c9633cc59066ab273",
-      "bytes": 9216
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/river-hero.png",
-      "sha256": "f3371a317b0ebcbc7379888a0f2848dbd3916e10d1d43b345bfca4f2a6d080ba",
-      "bytes": 4041035
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/ruin.json",
-      "sha256": "50e8b11d1f0bac47defe38059d7010524f5b87a7b0582d780f1fa82408e7d5cc",
-      "bytes": 9216
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/ruin.png",
-      "sha256": "861242205315727d62919c01c106ed8fd53901558470a5cf03b09a28fa6bf67a",
-      "bytes": 4143106
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/west-village.json",
-      "sha256": "5f9fca48306b4baba43fc306dff499c3702048e8f6d1069627c1a6e2f32236b3",
-      "bytes": 9214
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/west-village.png",
-      "sha256": "8ac4e360a7c9c48e7a75c6e4b057c7ddd07022246a544bb5ccc77afdcc774f20",
-      "bytes": 4059824
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/wet-mud.json",
-      "sha256": "52c0404f02a936572121073c954fbcd2e9818b3a73c199cc5e2d9ecb5a42f301",
-      "bytes": 9213
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-21-00-181Z/wet-mud.png",
-      "sha256": "f4d11050ebca00efca9007b845c7b2d7e79c78d0411cc8f5b0295f0a1f1a261c",
-      "bytes": 4409579
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/bridge.json",
-      "sha256": "49a08da479165f4e5ae414da45baf3a91eb2b351664457888658757db6baf523",
-      "bytes": 9389
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/bridge.png",
-      "sha256": "148cf2b15bb439844760c30f794354cf15d0f3b945d429e4d053f3932545c2cd",
-      "bytes": 4128933
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/east-village.json",
-      "sha256": "bc7fe24bae81370c24f3bdded4d0501161755363e4cb813ee200c7044d986127",
-      "bytes": 9391
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/east-village.png",
-      "sha256": "0ae631abf37152a6bf335a56947829ba267ed70bd0cc08933e3af026ba921509",
-      "bytes": 3987965
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/layout.json",
-      "sha256": "4253b16752b0064882111585d862c7ac76003ac08571b98dec6150f834a4ea2d",
-      "bytes": 9388
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/layout.png",
-      "sha256": "40db343e725f2fd25c3c6ec7fd23f7e40daa20a73d38007a1a85ec9dfa28b949",
-      "bytes": 4481977
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/map-1.json",
-      "sha256": "23915393d2c68342645b87bd577b068482b2c50fa53dd33c7ff854758b0273b3",
-      "bytes": 19043
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/river-ford.json",
-      "sha256": "4e108fc6679ee040eb40a491f7a6aec37245147322bbf36ef2ca0b36765da3ce",
-      "bytes": 9388
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/river-ford.png",
-      "sha256": "3c2c0ef911a549e8789cb0ea5d9c3e273ba1cfd7da9dfdf317788641af96223c",
-      "bytes": 4397075
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/river-hero.json",
-      "sha256": "ebc90d3ceced7778db1e0f5079c283900272e4b6b534f93cf0350c52c3647753",
-      "bytes": 9393
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/river-hero.png",
-      "sha256": "559bd9f86f5c6ec458339deb369af9724766e72e8a7c474928998346dd19c46b",
-      "bytes": 4040654
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/ruin.json",
-      "sha256": "7e45af84b20797be18ec20ca76ce286fe19d7f45ebdecf7f65f16b93907db9d4",
-      "bytes": 9393
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/ruin.png",
-      "sha256": "9a9792ca0c8e2c38cd4c310344f03258fd2ef941a9e50839a228cbe7b6a4d1d8",
-      "bytes": 4143452
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/west-village.json",
-      "sha256": "6d979a149ab142e8dba9055e9600072b9048c0e986289a3a4b6964e8d2bba106",
-      "bytes": 9391
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/west-village.png",
-      "sha256": "28fedd7c986e12e0a99c27f7df2beb9082231d621fe518d3dca92c358ec58ffc",
-      "bytes": 4060241
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/wet-mud.json",
-      "sha256": "e1e04618fa65aea837ccf91522a6a11a8ff22a6d2f8aafe6d2addf0c71c22e51",
-      "bytes": 9390
-    },
-    {
-      "path": "qa/evidence/map-2026-11-17T13-31-56-003Z/wet-mud.png",
-      "sha256": "df4b5d9a6f17a93c0e200fd4bc86a10670f6796ae9e10909e59ad1a6a6abff17",
-      "bytes": 4409266
-    },
-    {
-      "path": "qa/evidence/profile-2026-11-17T13-26-46-030Z/long-trace.json",
-      "sha256": "a859430b3cf5da437050ca2d35acf922d85a0b214fb9251fa29648fb50646a22",
-      "bytes": 313
-    },
-    {
-      "path": "qa/evidence/profile-2026-11-17T13-26-46-030Z/profile-1.json",
-      "sha256": "7c7d9134bcd151bdc7b7999c0e0dfc8eb2ce4ef6eed442c81ea4a85b5f43734c",
-      "bytes": 344530
-    },
-    {
-      "path": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-1.json",
-      "sha256": "8ec9c007f30a6b7738586b7194272b3cc5662db0bad2a1fdbd8192109dfc915d",
-      "bytes": 1176
-    },
-    {
-      "path": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-after-reload.json",
-      "sha256": "652f0eda8db7e3b08d9fe7b35da61c3dfca2b31e3f3b53c3cdeda29afda85478",
-      "bytes": 3466
-    },
-    {
-      "path": "qa/evidence/public-2026-11-17T13-49-06-186Z/public-after-reload.png",
-      "sha256": "8c099a828e592ac2c449d461fa4ac27c6b76554fb53632376d55b50f1701bf91",
-      "bytes": 1898588
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-42-26-472Z/quick-failure-1.json",
-      "sha256": "739085f403e1e9c7e2a127653738346f5b499378c76c199cfed80a28e1ba85bf",
-      "bytes": 11461
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-44-34-454Z/quick-failure-1.json",
-      "sha256": "6be4eb43002348f76a9e87bddf43b8d570dc128e9af3de77047b6d3925f6caa4",
-      "bytes": 11461
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-48-50-749Z/quick-1.json",
-      "sha256": "e5f2fb204a7e8634bf7d5fc2b09a0667412e7837a0b674ddbe577192fb363aee",
-      "bytes": 11318
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-48-50-749Z/quick.json",
-      "sha256": "416cf6e28f5e5c1f0d0c2210229a998fd5454dd64d7064d657278b7adf8db955",
-      "bytes": 8929
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-48-50-749Z/quick.png",
-      "sha256": "d821db8cea4dbf89a96a5b426099e068e03b8b4620e60aa58c7c201e5ddaa70d",
-      "bytes": 4379554
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-52-30-384Z/quick-1.json",
-      "sha256": "43962a20f17a8780f9c7cea872695d69717a2add7268c5927cf43ae56862944d",
-      "bytes": 11424
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-52-30-384Z/quick.json",
-      "sha256": "0e88c2049c4da315eadc79ca13f101ce2548ef538de2ec8102bdb39dc2a1ab0f",
-      "bytes": 9029
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T12-52-30-384Z/quick.png",
-      "sha256": "84305ec988254f20a98781e845c9a3b2e7d664a4210c9a309e33a885235e1242",
-      "bytes": 4025315
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T13-00-16-620Z/quick-1.json",
-      "sha256": "08c7b84d560874daddc27321fcc2cdd6aa455376421428838da2cd248a168f1e",
-      "bytes": 11520
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T13-00-16-620Z/quick.json",
-      "sha256": "2eb82475b01b09bf3fefe5e4ab24cc7543ad5850acbf8225eee85e54ce7e22b4",
-      "bytes": 9119
-    },
-    {
-      "path": "qa/evidence/quick-2026-11-17T13-00-16-620Z/quick.png",
-      "sha256": "bb238ba09143d61f3ecc213b10b72ba3638ffc9c653d7024eb72d032994dc8b1",
-      "bytes": 4034207
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T12-55-45-330Z/traversal-1.json",
-      "sha256": "2cc66ba5b9cc48f93d1f93df3e45854ff56cb12995171f7ed4504c2d2429415b",
-      "bytes": 42787
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T12-55-45-330Z/traversal-final.json",
-      "sha256": "7e9a0d0fab50feacdff0bfb4663fd1f93d26456993e8070e5d5c01ca7a2d9ef5",
-      "bytes": 9875
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T12-55-45-330Z/traversal-final.png",
-      "sha256": "adbec959e251e33e0484fc2a5aba944a94277a6a683c5f0c56e882adf67ed66d",
-      "bytes": 4282775
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T13-11-16-814Z/traversal-1.json",
-      "sha256": "c8305bd20a265ae9fc1ab1ead802f3a4fedd54e11a793aeace224639899c40e0",
-      "bytes": 58788
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T13-11-16-814Z/traversal-final.json",
-      "sha256": "efee9cd76b9f08bb209f77eebcb599386c2d130e498d149da0afe34b649c4570",
-      "bytes": 9873
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T13-11-16-814Z/traversal-final.png",
-      "sha256": "86f0b7d0b2d5bf4dbcd6119ccc3d24d11af2103d286b3392797393e4df66d1c9",
-      "bytes": 3904163
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T13-30-58-412Z/traversal-1.json",
-      "sha256": "0b3fc490619a5f0559ae4daee7fbfd23b5f5834686efd3b2f7bd5e23d8a20e2f",
-      "bytes": 59005
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T13-30-58-412Z/traversal-final.json",
-      "sha256": "59fa87044e95dde6dfa77d878554a45acc8dface7077576bae9d07ee8958a3ae",
-      "bytes": 10157
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-17T13-30-58-412Z/traversal-final.png",
-      "sha256": "606647b9909f774b78a132cae424fd058a129992187885331bc8c05995241efe",
-      "bytes": 3481322
+      "path": "qa/evidence/art-2026-11-18T04-30-35-816Z/art-1.json",
+      "sha256": "9d787c909e0e01b9b3b0c79402d54ec0a5d31316468eac2f293b023f2c67eb7a",
+      "pass": true,
+      "checks": 2,
+      "sourceMismatches": []
+    },
+    "cabins": {
+      "path": "qa/evidence/cabins-2026-11-18T04-31-07-235Z/cabins-1.json",
+      "sha256": "0d922c89418736d419852db9c3647b733f008a9471a6c95fe11681d1ebb01020",
+      "pass": true,
+      "checks": 15,
+      "sourceMismatches": []
+    },
+    "checks": {
+      "path": "qa/evidence/checks-2026-11-18T04-31-33-703Z/checks-1.json",
+      "sha256": "dd3675113c613dfe3fd7f75beba44fe63c7cdf1a8d49f03cd38935dfdac08fee",
+      "pass": true,
+      "checks": 32,
+      "sourceMismatches": []
+    },
+    "traversal": {
+      "path": "qa/evidence/traversal-2026-11-18T04-32-14-421Z/traversal-1.json",
+      "sha256": "f1b8f1e2765354fd14b88e3b62632b17d544bad1d5ba17797567a17b3e364d96",
+      "pass": true,
+      "checks": 40,
+      "sourceMismatches": []
     }
-  ],
-  "retainedFailures": [
-    "Two long Fable generations exceeded response length; compact extraction initially lost code; only complete visible-text candidate applied.",
-    "Early terrain/wind shader errors; rejected images retained.",
-    "Unchunked canvas transport timed out; corrected without changing renderer acceptance.",
-    "Navigation start/corner/doorway and terrain Float32/material-side defects found independently and fixed with regressions.",
-    "Initial terrain raycaster caused frequent long frames; exact grid DDA substituted and compared with stock raycasting.",
-    "Later benchmark13:14 had two176–191ms hitches with unknown cause; instrumented rerun passed, no universally hitch-free claim.",
-    "Input test initially outran asynchronous pointer-lock exit; harness now awaits lifecycle settlement before resuming.",
-    "Art first review REVISE: straight canal, noisy material, cloned silhouettes; source-bound rework reviewed separately."
-  ],
+  },
+  "unit": {
+    "map-checks": {
+      "path": "qa/map-checks.json",
+      "sha256": "cadf9c7759dc091363bb133ea6916ccb2d25861e69ebaac65f782e7b26625b28",
+      "pass": true,
+      "sourceMismatches": []
+    },
+    "terrain-rays": {
+      "path": "qa/terrain-rays.json",
+      "sha256": "5728e55340d33b121c5f2f78c5a3c52b3e00100c0df144c955f5730c83dd9979",
+      "pass": true,
+      "sourceMismatches": []
+    },
+    "ai-movement": {
+      "path": "qa/ai-movement.json",
+      "sha256": "7f6741c33e91043bf379a74cf7573149ec356f9d94b91f45f9f4a10f89585033",
+      "pass": true,
+      "sourceMismatches": []
+    },
+    "village-checks": {
+      "path": "qa/village-checks.json",
+      "sha256": "83ee15cb5b0121cb33fcb11d15510f20883ea8e7ed2927420dac74dee056e207",
+      "pass": true,
+      "sourceMismatches": []
+    },
+    "fracture-checks": {
+      "path": "qa/fracture-checks.json",
+      "sha256": "018092a997405ec867162bc2414b771f1fd55338eea3f6454658d3e4ee78e179",
+      "pass": true,
+      "sourceMismatches": []
+    },
+    "buffer-checks": {
+      "path": "qa/buffer-checks.json",
+      "sha256": "ac4d4ccaef5ada8d9e09e35717f5ad7a385164a771a5fb258df518cc9a35e7eb",
+      "pass": true,
+      "sourceMismatches": []
+    }
+  },
+  "performance": {
+    "verdict": "BLOCKED",
+    "evidence": [
+      {
+        "path": "qa/evidence/benchmark-2026-11-18T04-21-15-368Z/benchmark-1.json",
+        "sha256": "acea477795e38c57d621a5430867734a56e04f6931f1ce91481af336cd6f0c25",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "duration": 30007.9,
+        "p50": 17.599999999998545,
+        "p95": 18.30000000000291,
+        "p99": 18.599999999998545,
+        "max": 53,
+        "over50": 2,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "shots": 230,
+        "enemyShots": 25
+      },
+      {
+        "path": "qa/evidence/profile-2026-11-18T04-22-58-263Z/profile-1.json",
+        "sha256": "d66303eeee1c0c2f3354684bce9404c829845d6b54b6b5e63d8ae6e88b04e396",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "duration": 30013.9,
+        "p50": 17.599999999998545,
+        "p95": 18.30000000000291,
+        "p99": 18.599999999998545,
+        "max": 53.19999999999709,
+        "over50": 1,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "shots": 229,
+        "enemyShots": 26
+      }
+    ],
+    "requirements": {
+      "width": 1920,
+      "height": 1080,
+      "durationMS": 30000,
+      "warmupMS": 10000,
+      "p95MS": 33.3,
+      "p99MS": 33.3,
+      "maxMS": 50,
+      "over50": 0,
+      "consecutiveSamples": 2
+    },
+    "notes": "Both retained samples failed. Only trailing-empty-line normalization and test lifecycle synchronization followed them. No current-byte performance PASS, full continuous review or cause attribution is claimed."
+  },
+  "independentReview": "qa/independent-review.json",
+  "retainedFailures": "qa/rework-history-2026-11-18.json",
   "publication": {
-    "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
-    "sourceCommit": "98e650e7aa2e96e60f9df7a51176d66d72f29cfc",
-    "publicCommit": "91924b389a170a15ffc7665446b56c363f7fcca3",
-    "hashes": 154,
-    "inputChecks": 7
-  }
+    "status": "NOT UPDATED",
+    "reason": "Art REVISE and strict runtime BLOCKED",
+    "localPreview": "http://127.0.0.1:5190/river/",
+    "previousReleaseRecord": "qa/last-published-release-2026-11-17.json",
+    "previousPublicURL": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+    "previousSourceCommit": "98e650e7aa2e96e60f9df7a51176d66d72f29cfc",
+    "previousPublicCommit": "91924b389a170a15ffc7665446b56c363f7fcca3"
+  },
+  "privateAssets": "Transfer explicitly skipped for pre-existing unrelated dirty private vault; no UE/private portability assertion",
+  "limits": [
+    "Single-player only; retained weapon/NPC animation; no new indoor NPC navigation.",
+    "Static staged rubble, not dynamic destruction.",
+    "Earlier four demos and shared assets unchanged.",
+    "Diagonal cabin transforms do not certify competitive whole-map balance."
+  ]
 }

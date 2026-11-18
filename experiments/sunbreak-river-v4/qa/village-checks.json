@@ -1,21 +1,21 @@
 {
   "pass": true,
-  "date": "2026-11-17T13:36:47.034Z",
-  "wallBoxes": 76,
+  "date": "2026-11-18T04:27:24.498Z",
+  "wallBoxes": 72,
   "architecture": {
     "houses": 6,
-    "walls": 76,
-    "boxes": 856,
-    "solids": 247,
+    "walls": 72,
+    "boxes": 756,
+    "solids": 205,
     "tiles": 2496,
     "drawCalls": 13,
-    "triangles": 50304,
+    "triangles": 50224,
     "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
   },
   "checks": "exact wall geometry; six clear passages and solid walls; roof slabs/half-collapse openings; bridge shot occlusion; batching budgets",
   "sources": {
-    "village.js": "6ded36f88c1acd84706df58f4a89f1469aecd33871aa6aef5897cb63ec412812",
-    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
+    "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
+    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
     "qa/village-checks.mjs": "7f1af45b33a6f52ebac8366de8dcdc790f873a76852c373bdd3dfa6981ec46cd"
   }
 }

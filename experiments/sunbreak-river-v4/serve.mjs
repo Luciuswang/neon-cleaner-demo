@@ -5,7 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('.',import.meta.url)),shared=resolve(root,'../sunbreak-storm-v3');
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.jpg':'image/jpeg','.png':'image/png','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.hdr':'application/octet-stream','.wav':'audio/wav'};
-async function hashes(){const out={};for(const name of [...await readdir(root),'qa/hooks.js','qa/browser.mjs'])if(/\.(js|html|json|mjs)$/.test(name))out[name]=createHash('sha256').update(await readFile(resolve(root,name))).digest('hex');return out}
+async function hashes(){const out={};for(const name of [...await readdir(root),'qa/hooks.js','qa/browser.mjs'])if(/\.(js|html|json|mjs)$/.test(name))out[name]=createHash('sha256').update(await readFile(resolve(root,name))).digest('hex');
+ const foliage=JSON.parse(await readFile(resolve(root,'foliage-revision.json')));for(const f of foliage.derivatives)out[f.file]=createHash('sha256').update(await readFile(resolve(root,f.file))).digest('hex');return out}
 http.createServer(async(req,res)=>{
  try{
   const path=decodeURIComponent(new URL(req.url,'http://127.0.0.1:5190').pathname);

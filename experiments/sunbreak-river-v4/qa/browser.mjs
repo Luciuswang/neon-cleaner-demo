@@ -67,11 +67,43 @@ try {
  await wait("!!document.body?.dataset.qa&&!document.getElementById('bStart').disabled");
  if(!live)check('licensed weapon and all textures loaded',(await snapshot()).weapon?.loaded&&(await snapshot()).errors.length===0,await snapshot());
  if(phase==='quick'){
-  console.log('Ready');await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
+  console.log('Ready');if(process.argv.includes('--no-post'))await evaluate("document.getElementById('bPost').click()");await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
  }else if(phase==='map'){
   const views=[['river-hero',-7,1.7,24,-.24,-.1],['west-village',-8,1.7,7,1.1,-.02],['east-village',8,1.7,7,-1.1,-.02],['river-ford',0,1.7,22,0,-.2],['bridge',7,1.7,2,.9,-.1],['layout',0,32,33,0,-.83],['wet-mud',-10,1.7,12,0,-.7],['ruin',-12,1.7,22,.9,-.05]];
   for(const [name,...v]of views){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(300);await capture(name)}
   results.push({name:'map rendered multi-view evidence',pass:true,info:await evaluate('arenaQA.mapInfo()')});
+ }else if(phase==='art'){
+  for(const id of ['west-buffer','east-buffer'])for(const [name,x,y,z,yaw,pitch]of [['front',-7,2.0,12,-.50,.08],['side',-8,2.1,6,-.95,.05],['interior',0,2.36,1.3,.15,.04]]){
+   await evaluate(`arenaQA.cabinView('${id}',${x},${y},${z},${yaw},${pitch})`);await delay(400);await capture(id+'-'+name);
+  }
+  for(const weather of [2,0]){
+   await evaluate(`arenaQA.weather(${weather})`);
+   for(const [name,...v]of [['ground',-10.7,1.7,3,.1,-.67],['tree-root',-27,1.7,-8,.8,-.1],['ruin-break',-13,1.7,22,.8,-.15],['ruin-inside',-17,1.7,19.5,.5,-.3]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(350);await capture(name+'-weather'+weather)}
+  }
+  results.push({name:'cabins, ground, trees and ruins in default rain and neutral daylight',pass:true,info:await evaluate('arenaQA.mapInfo()')});
+ }else if(phase==='cabins'){
+  await evaluate("document.getElementById('bStart').click()",true);await delay(150);
+  for(const id of ['west-buffer','east-buffer']){
+   await evaluate(`arenaQA.cabinTravel('${id}',-1.08,6.8)`);
+   await key('KeyW');await delay(380);await key('KeyW',false);
+   let s=await evaluate('arenaQA.walkState()');check(id+' actual steps support player',s.support>.1&&Math.abs(s.position[1]-s.support-1.7)<.04,s);
+   await evaluate(`arenaQA.cabinTravel('${id}',-1.08,3.8)`);await delay(100);
+   await key('KeyE');await key('KeyE',false);await delay(950);
+   let c=await evaluate('arenaQA.cabinState()');check(id+' actual E opens nearest door',c.houses.find(h=>h.id===id).door.open,c);
+   check(id+' does not toggle other door',c.houses.filter(h=>h.id!==id).every(h=>h.door.toggles===0));
+   await key('KeyW');await delay(600);await key('KeyW',false);
+   s=await evaluate('arenaQA.walkState()');check(id+' player enters supported interior',Math.abs(s.support-.66)<.01&&!s.blocked,s);
+   await key('KeyS');await delay(650);await key('KeyS',false);
+   await key('KeyE');await key('KeyE',false);await delay(950);
+   c=await evaluate('arenaQA.cabinState()');check(id+' actual E closes door',c.houses.find(h=>h.id===id).door.angle<.02,c);
+   await evaluate(`arenaQA.cabinTravel('${id}',-1.08,3.8)`);await key('KeyW');await delay(500);await key('KeyW',false);
+   s=await evaluate('arenaQA.walkState()');const door=await evaluate(`arenaQA.cabinPoint('${id}',-1.08,2.36,2.4)`);
+   check(id+' closed leaf blocks actual movement',Math.hypot(s.position[0]-door.x,s.position[2]-door.z)>.42,s);
+   // Pause releases pointer lock asynchronously. Settle that lifecycle before
+   // the next cabin reset, or its late event pauses the next travel test.
+   await evaluate('arenaQA.pause();arenaQA.loseLock()');await key('KeyE');await key('KeyE',false);check(id+' paused E rejected',(await evaluate('arenaQA.cabinState()')).houses.every(h=>h.door.toggles===0));
+  }
+  await capture('cabins-final');
  }else if(phase==='traversal'){
   await evaluate("document.getElementById('bStart').click()",true);await delay(150);
   for(const z of [-23,-4,15,0])for(const side of [-1,1]){

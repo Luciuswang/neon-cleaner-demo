@@ -1,13 +1,17 @@
 {
-  "date": "2026-11-17T13:28:45.112Z",
+  "date": "2026-11-18T04:27:22.317Z",
   "pass": true,
   "checks": [
     {
-      "name": "all large collision walls have exact mirrored counterparts",
+      "name": "original six building walls and river cover retain mirrored geometry",
       "pass": true
     },
     {
-      "name": "spawns clear, grounded and equal two-bank entry positions",
+      "name": "spawns clear of all enemy obstacles, grounded on both banks",
+      "pass": true
+    },
+    {
+      "name": "two cabin transforms are diagonally symmetric about river center",
       "pass": true
     },
     {
@@ -39,7 +43,7 @@
       "pass": true
     },
     {
-      "name": "mirrored walkable spawn-to-crossing routes",
+      "name": "both-bank spawn-to-crossing routes remain reachable with cabin obstacles",
       "pass": true
     },
     {
@@ -79,23 +83,26 @@
     {
       "crossing": -23,
       "distances": [
-        51.475639315325694,
+        56.9088051269578,
         51.475639315325694
-      ]
+      ],
+      "difference": 5.433165811632108
     },
     {
       "crossing": -4,
       "distances": [
-        34.23562687215586,
+        39.102188308938665,
         34.23562687215586
-      ]
+      ],
+      "difference": 4.866561436782803
     },
     {
       "crossing": 15,
       "distances": [
         24.252840835665797,
         24.252840835665797
-      ]
+      ],
+      "difference": 0
     }
   ],
   "reused": {
@@ -107,9 +114,9 @@
     "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
   },
   "sources": {
-    "map-layout.js": "20ad174b41f370a5a2ede3af1eeefd2bfe6ba597106a59b6e722b3c37cf740e4",
-    "tactical-ai.js": "09f3a295af8277ee39fb92fe4914ffac9bc87260e41356a6fe1e8824ebee16bb",
-    "qa/map-checks.mjs": "ca4703a753dab60e672f443a24403ff5bac97b80df0c663deb74edb50b4645a8"
+    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "qa/map-checks.mjs": "3d2def8d92b815c807da09470fec2dce76e09dd8621c79d655273cd8fcd7c0e7"
   },
-  "limits": "Geometric fairness only; not multiplayer balance or actual-browser traversal proof."
+  "limits": "Diagonal cabin pair is rotationally matched. Existing building/crossing centers preserved. Full map no longer exact X-mirror; route differences measured, NOT certified multiplayer balance or actual-browser traversal proof."
 }

@@ -13,7 +13,9 @@ import {createStormAudio} from './storm-audio.js';
 import {buildVillage} from './village.js';
 import {buildVegetation} from './vegetation.js';
 import {installTerrainRaycast} from './terrain-ray.js';
-import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth} from './map-layout.js';
+import {buildBufferHouses} from './buffer-house.js';
+import {buildRuins} from './ruins.js';
+import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
  const {scene,cam,rnd,gscene,gun,sun,amb,enemies,solids,colliders}=ctx;
@@ -21,7 +23,7 @@ export async function buildWorld(ctx){
  for(const child of scene.children)if(!keep.has(child))child.visible=false;
  // Remove old-map proxies before creating the new authoritative map.
  solids.length=colliders.length=0;
- for(const b of bounds)colliders.push(new T.Box3(new T.Vector3(b.min.x,b.min.y,b.min.z),new T.Vector3(b.max.x,b.max.y,b.max.z)));
+ for(const b of bounds){const box=new T.Box3(new T.Vector3(b.min.x,b.min.y,b.min.z),new T.Vector3(b.max.x,b.max.y,b.max.z));if(b.profileWall)box.topAt=(x,z,r)=>wallTopAt(b.profileWall,x,z,r);colliders.push(box)}
  const world=new T.Group();world.name='Riverfall village';scene.add(world);
  const textureErrors=[],loader=new T.TextureLoader(),materials={};
  let seed=519214,time=0,weather=2,style=0,post=true,flashes=true,flash=0,lightningAt=9;
@@ -42,21 +44,40 @@ export async function buildWorld(ctx){
  const hdr=await new RGBELoader().loadAsync('./assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr');hdr.mapping=T.EquirectangularReflectionMapping;
  const pmrem=new T.PMREMGenerator(rnd),env=pmrem.fromEquirectangular(hdr);scene.environment=gscene.environment=env.texture;pmrem.dispose();
  scene.background=hdr;scene.backgroundIntensity=.55;scene.backgroundBlurriness=.07;
- sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=sun.shadow.camera.bottom=-44;sun.shadow.camera.right=sun.shadow.camera.top=44;
+ sun.shadow.mapSize.set(4096,4096);sun.shadow.camera.left=sun.shadow.camera.bottom=-46;sun.shadow.camera.right=sun.shadow.camera.top=46;
  sun.shadow.camera.near=1;sun.shadow.camera.far=180;sun.shadow.bias=-.00012;sun.shadow.normalBias=.035;sun.shadow.radius=3;
  const target=new T.Object3D();target.position.set(0,0,-4);scene.add(target);sun.target=target;
  rnd.setPixelRatio(Math.min(devicePixelRatio,1.5));rnd.toneMappingExposure=1.08;
 
- const mud=materials.mud.clone();mud.roughness=.74;mud.normalScale.set(.42,.42);mud.envMapIntensity=.28;mud.color.set(0xb8a184);
+ const mud=materials.mud.clone();mud.roughness=.78;mud.normalScale.set(.64,.64);mud.envMapIntensity=.40;mud.color.set(0xd5c4ac);
  mud.onBeforeCompile=s=>{
+  s.uniforms.gravelMap={value:materials.stone.map};
   s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vGroundWorld;').replace('#include <begin_vertex>','#include <begin_vertex>\nvGroundWorld=(modelMatrix*vec4(position,1.)).xyz;');
-  s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vGroundWorld;');
+  s.fragmentShader=s.fragmentShader.replace('#include <common>',`#include <common>
+   varying vec3 vGroundWorld;uniform sampler2D gravelMap;
+   float earthHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+   float earthNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(earthHash(i),earthHash(i+vec2(1,0)),f.x),mix(earthHash(i+vec2(0,1)),earthHash(i+1.),f.x),f.y);}
+   float pathAt(vec2 p){float bank=1.-smoothstep(1.4,2.7,abs(abs(p.x)-11.2-sin(p.y*.15)*.6));float cross=1.-smoothstep(.9,2.2,min(min(abs(p.y+23.),abs(p.y+4.)),abs(p.y-15.)));return max(bank,cross);}
+  `);
   s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
-   float mudVariation=.5+.5*sin(vGroundWorld.x*.57+sin(vGroundWorld.z*.41)*2.);
-   diffuseColor.rgb*=mix(vec3(.53,.55,.49),vec3(.91,.88,.8),mudVariation);
-   float tracks=pow(.5+.5*sin(vGroundWorld.x*2.1+sin(vGroundWorld.z*.12)),12.);
-   diffuseColor.rgb*=1.-tracks*.12;`);
- };mud.customProgramCacheKey=()=> 'river-mud-v1';
+   vec2 gp=vGroundWorld.xz;float macro=earthNoise(gp*.13)*.65+earthNoise(gp*.47)*.35;
+   float road=pathAt(gp);float aggregate=smoothstep(.30,.75,earthNoise(gp*.92))*road*.46;
+   vec3 gravel=texture2D(gravelMap,gp/2.1).rgb*vec3(.70,.65,.54);
+   diffuseColor.rgb=mix(diffuseColor.rgb,gravel,aggregate);
+   diffuseColor.rgb*=mix(vec3(.66,.70,.62),vec3(1.09,1.03,.92),macro);
+   float axis=abs(gp.x)-11.2-sin(gp.y*.15)*.6;
+   float rut=(1.-smoothstep(.10,.23,abs(abs(axis)-.64)))*road;
+   float tread=pow(.5+.5*cos(gp.y*31.+axis*9.),5.);
+   diffuseColor.rgb*=1.-rut*(.09+tread*.09);
+   float soilLuma=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));
+   diffuseColor.rgb=mix(vec3(soilLuma)*vec3(.95,1.,.89),diffuseColor.rgb,.72);
+   float forestFloor=smoothstep(34.,49.,max(abs(gp.x),abs(gp.y+4.)));
+   diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.63,.83,.47),forestFloor*(.54+macro*.3));
+  `);
+  s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
+   float wetPocket=smoothstep(.35,.76,earthNoise(vGroundWorld.xz*.83));
+   roughnessFactor=clamp(mix(roughnessFactor,.32,wetPocket*.48),.26,.94);`);
+ };mud.customProgramCacheKey=()=> 'river-ground-paths-v2';
  const geo=new T.PlaneGeometry(TERRAIN_GRID.size,TERRAIN_GRID.size,TERRAIN_GRID.segments,TERRAIN_GRID.segments);geo.rotateX(-Math.PI/2);
  const p=geo.attributes.position,uv=geo.attributes.uv;
  for(let i=0;i<p.count;i++){
@@ -77,6 +98,8 @@ export async function buildWorld(ctx){
  };
  const bed=new T.Mesh(bedGeo,gravel);bed.receiveShadow=true;world.add(bed);
  const village=buildVillage({T,world,materials,layout,solids});
+ const ruins=buildRuins({T,world,materials,layout,solids});
+ const buffers=buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements});
  const foliage=await buildVegetation(T,world);
 
  // Varied riverbank stones: small enough to be visual ground dressing only.
@@ -140,15 +163,16 @@ export async function buildWorld(ctx){
  }
  const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene}),buildActors({THREE:T,enemies})]);
  const composer=new EffectComposer(rnd);composer.addPass(new RenderPass(scene,cam));
- const ao=new SSAOPass(scene,cam,innerWidth,innerHeight);ao.kernelRadius=.7;ao.minDistance=.002;ao.maxDistance=.10;composer.addPass(ao);
- const grade=new ShaderPass({uniforms:{tDiffuse:{value:null}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'uniform sampler2D tDiffuse;varying vec2 vUv;void main(){vec3 c=texture2D(tDiffuse,vUv).rgb;float l=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(l),c,1.03);c*=mix(.95,1.,smoothstep(.8,.1,distance(vUv,vec2(.5))));gl_FragColor=vec4(c,1.);}'});composer.addPass(grade);composer.addPass(new OutputPass());composer.addPass(new SMAAPass(innerWidth*rnd.getPixelRatio(),innerHeight*rnd.getPixelRatio()));
+ const ao=new SSAOPass(scene,cam,innerWidth,innerHeight);ao.kernelRadius=1.15;ao.minDistance=.002;ao.maxDistance=.12;composer.addPass(ao);
+ const grade=new ShaderPass({uniforms:{tDiffuse:{value:null}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'uniform sampler2D tDiffuse;varying vec2 vUv;void main(){vec3 c=texture2D(tDiffuse,vUv).rgb;float l=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(l),c,1.03);c*=mix(.95,1.,1.-smoothstep(.1,.8,distance(vUv,vec2(.5))));gl_FragColor=vec4(c,1.);}'});composer.addPass(grade);composer.addPass(new OutputPass());composer.addPass(new SMAAPass(innerWidth*rnd.getPixelRatio(),innerHeight*rnd.getPixelRatio()));
  addEventListener('resize',()=>composer.setSize(innerWidth,innerHeight));
  function applyWeather(){
   const wet=weather===2;
-  sun.position.set(-30,36,28);sun.color.set(style?0xffd6a0:0xe3eee5);sun.intensity=wet?1.6:weather===1?2.0:3.1;
-  amb.color.set(style?0xc5d7d1:0xd8e5e5);amb.groundColor.set(0x566344);amb.intensity=wet?1.25:1.1;
-  scene.fog=new T.Fog(wet?0x8c9f9b:0xa8b5a4,55,150);scene.backgroundIntensity=wet?.52:.85;
-  rnd.toneMappingExposure=style?1.12:1.05;rain.visible=splashes.visible=wet;mud.roughness=wet?.70:.85;
+  sun.position.set(-38,29,22);sun.color.set(style?0xffd6ac:0xffe6c9);sun.intensity=wet?3.15:weather===1?2.8:4.0;
+  amb.color.set(0xc3d2de);amb.groundColor.set(0x615c49);amb.intensity=wet?.38:.43;
+  scene.environmentIntensity=.60;gscene.environmentIntensity=.65;
+  scene.fog=new T.Fog(wet?0x889996:0xa4b5b1,65,130);scene.backgroundIntensity=wet?.38:.58;
+  rnd.toneMappingExposure=style?.95:.92;rain.visible=splashes.visible=wet;mud.roughness=wet?.76:.88;
   document.getElementById('weatherName').textContent=['雨后 · 湿润河谷','阴天 · 山林薄雾','降雨 · 双岸村落'][weather];
   document.getElementById('styleName').textContent=style?'暖调 · 雨后天光':'冷调 · 雨林河谷';
   gscene.children.filter(o=>o.isDirectionalLight).forEach((l,i)=>{l.intensity=i?.8:2.0;l.color.set(i?0xb9d5ce:0xe5e9d6)});
@@ -157,13 +181,13 @@ export async function buildWorld(ctx){
  document.getElementById('bFlash').onclick=e=>{flashes=!flashes;flash=0;flashLight.intensity=0;e.currentTarget.textContent='闪电：'+(flashes?'开启':'关闭');e.currentTarget.setAttribute('aria-pressed',String(flashes))};
  applyWeather();
  return{
-  floorHeight:terrainHeight,ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return previousY<roof?roof-.15:Infinity},blocksMovement(){return false},resetHouse(){},
-  update(dt,{S,pres,live}){
+  floorHeight(x,z){return buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))},ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))},blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),resetHouse:()=>buffers.reset(),
+  update(dt,{S,pres,live,player}){
    const active=!pres&&!['pause','dead','win'].includes(S.state);if(active)time+=dt;
-   windTime.value=time;foliage.update(time);village.update?.(dt,time);
+   windTime.value=time;foliage.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
    for(let i=0;i<rainCount;i++){
     const s=rainSeeds[i],x=s[0]+cam.position.x,z=s[2]+cam.position.z,yy=((s[1]-time*(14+s[3]*7))%21+21)%21;
-    const floor=terrainHeight(x,z),roof=roofHeight(x,z),y=yy<roof&&Number.isFinite(roof)?-20:floor+yy,k=i*6;
+    const floor=terrainHeight(x,z),roof=roofHeight(x,z),y=(floor+yy<roof&&Number.isFinite(roof))||buffers.underRoof(x,floor+yy,z)||buffers.underRoof(x+.08,floor+yy+.5+s[3]*.35,z+.03)?-20:floor+yy,k=i*6;
     rainPositions[k]=x;rainPositions[k+1]=y;rainPositions[k+2]=z;rainPositions[k+3]=x+.08;rainPositions[k+4]=y+.5+s[3]*.35;rainPositions[k+5]=z+.03;
    }rainGeo.attributes.position.needsUpdate=true;
    for(let i=0;i<splashCount;i++){const [x,z,phase,a]=splashSeeds[i],t=(time*1.7+phase)%1,surface=terrainHeight(x,z)<MAP.waterY?MAP.waterY:-20,k=i*3;splashData[k]=x+Math.cos(a)*t*.16;splashData[k+1]=surface+Math.sin(t*Math.PI)*.12;splashData[k+2]=z+Math.sin(a)*t*.16}splashGeo.attributes.position.needsUpdate=true;
@@ -174,7 +198,7 @@ export async function buildWorld(ctx){
   },
   render(){renderFrame++;composer.render()},unlockAudio(){weatherAudio.unlock()},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
-  info(){return{version:'river-v4',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),foliage:foliage.info(),map:{houses:layout.houses.length,walls:bounds.length,crossings:layout.crossings,water:'freely wadeable; three raised crossings'},weather,time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
-  actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:{}
+  info(){return{version:'river-v4-art-revision',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'freely wadeable; three raised crossings'},weather,time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
+  actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa
  };
 }

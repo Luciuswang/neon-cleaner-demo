@@ -1,0 +1,1234 @@
+[
+  {
+    "name": "EventDispatch",
+    "category": "devtools.timeline",
+    "ts": 4342745493502,
+    "durationMS": 148.098,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342745493639,
+    "durationMS": 130.483,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342745642973,
+    "durationMS": 61.718,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342745642982,
+    "durationMS": 61.706,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342745642985,
+    "durationMS": 61.697,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342745642995,
+    "durationMS": 61.684,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342745643000,
+    "durationMS": 61.677,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342745643009,
+    "durationMS": 61.667,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342745643014,
+    "durationMS": 61.656,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342745643018,
+    "durationMS": 61.649,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342745707939,
+    "durationMS": 50.974,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342745707944,
+    "durationMS": 50.968,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342745707946,
+    "durationMS": 50.964,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342745707953,
+    "durationMS": 50.95,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342745707954,
+    "durationMS": 50.82,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342745707955,
+    "durationMS": 50.818,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342745707957,
+    "durationMS": 50.809,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342745707958,
+    "durationMS": 50.801,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342745771680,
+    "durationMS": 22.961,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342745771684,
+    "durationMS": 22.956,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342745771687,
+    "durationMS": 22.952,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342745771693,
+    "durationMS": 22.943,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342745771694,
+    "durationMS": 22.894,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342745771695,
+    "durationMS": 22.893,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342745771697,
+    "durationMS": 22.884,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342745771697,
+    "durationMS": 22.882,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342745924017,
+    "durationMS": 51.308,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342745924029,
+    "durationMS": 51.295,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342745924034,
+    "durationMS": 51.289,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342745924058,
+    "durationMS": 51.262,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342745924059,
+    "durationMS": 51.221,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342745924063,
+    "durationMS": 51.216,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342745924071,
+    "durationMS": 51.2,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342745924073,
+    "durationMS": 51.192,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342746066000,
+    "durationMS": 75.448,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342746066019,
+    "durationMS": 75.428,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342746066024,
+    "durationMS": 75.42,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342746066036,
+    "durationMS": 75.405,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342746066037,
+    "durationMS": 75.353,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342746066043,
+    "durationMS": 75.347,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342746066051,
+    "durationMS": 75.332,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342746066052,
+    "durationMS": 75.325,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342746224273,
+    "durationMS": 45.155,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342746224286,
+    "durationMS": 45.141,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342746224291,
+    "durationMS": 45.135,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342746224320,
+    "durationMS": 45.103,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342746224320,
+    "durationMS": 45.064,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342746224325,
+    "durationMS": 45.059,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342746224333,
+    "durationMS": 45.044,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342746224335,
+    "durationMS": 45.035,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342746347961,
+    "durationMS": 31.146,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342746347966,
+    "durationMS": 31.14,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342746347969,
+    "durationMS": 31.136,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342746347976,
+    "durationMS": 31.127,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342746347976,
+    "durationMS": 31.095,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342746347978,
+    "durationMS": 31.093,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342746347982,
+    "durationMS": 31.083,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342746347982,
+    "durationMS": 31.077,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342747146470,
+    "durationMS": 31.228,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342747146474,
+    "durationMS": 31.224,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342747146477,
+    "durationMS": 31.219,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342747146492,
+    "durationMS": 31.202,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342747146492,
+    "durationMS": 31.168,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342747146494,
+    "durationMS": 31.166,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342747146496,
+    "durationMS": 31.157,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342747146497,
+    "durationMS": 31.149,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342747870969,
+    "durationMS": 26.449,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342747870976,
+    "durationMS": 26.441,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342747870980,
+    "durationMS": 26.436,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342747870989,
+    "durationMS": 26.425,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342747870990,
+    "durationMS": 26.39,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342747870993,
+    "durationMS": 26.387,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342747871001,
+    "durationMS": 26.373,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342747871002,
+    "durationMS": 26.366,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342748101031,
+    "durationMS": 29.755,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342748101050,
+    "durationMS": 29.735,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342748101053,
+    "durationMS": 29.73,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342748101062,
+    "durationMS": 29.719,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342748101068,
+    "durationMS": 29.677,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342748101073,
+    "durationMS": 29.671,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342748101079,
+    "durationMS": 29.659,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342748101081,
+    "durationMS": 29.651,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342749855715,
+    "durationMS": 22.514,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342749855721,
+    "durationMS": 22.507,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342749855725,
+    "durationMS": 22.502,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342749855732,
+    "durationMS": 22.482,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342749855733,
+    "durationMS": 22.444,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342749855736,
+    "durationMS": 22.44,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342749855742,
+    "durationMS": 22.428,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342749855743,
+    "durationMS": 22.421,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342751607903,
+    "durationMS": 33.359,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342751607913,
+    "durationMS": 33.347,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342751607917,
+    "durationMS": 33.342,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342751607928,
+    "durationMS": 33.319,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342751607929,
+    "durationMS": 33.27,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342751607934,
+    "durationMS": 33.264,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342751607942,
+    "durationMS": 33.233,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342751607944,
+    "durationMS": 33.223,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342755973928,
+    "durationMS": 33.452,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342755973936,
+    "durationMS": 33.443,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342755973939,
+    "durationMS": 33.439,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342755973948,
+    "durationMS": 33.42,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342755973949,
+    "durationMS": 33.381,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342755973953,
+    "durationMS": 33.376,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342755973959,
+    "durationMS": 33.364,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342755973960,
+    "durationMS": 33.317,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342760359274,
+    "durationMS": 39.555,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342760359280,
+    "durationMS": 39.548,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342760359283,
+    "durationMS": 39.544,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342760359299,
+    "durationMS": 39.526,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342760359300,
+    "durationMS": 39.486,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342760359303,
+    "durationMS": 39.483,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342760359307,
+    "durationMS": 39.472,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342760359308,
+    "durationMS": 39.465,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342763273867,
+    "durationMS": 36.502,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342763273874,
+    "durationMS": 36.494,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342763273878,
+    "durationMS": 36.488,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342763273886,
+    "durationMS": 36.478,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342763273886,
+    "durationMS": 36.442,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342763273889,
+    "durationMS": 36.438,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342763273894,
+    "durationMS": 36.426,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342763273895,
+    "durationMS": 36.419,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342763645287,
+    "durationMS": 24.503,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342763645296,
+    "durationMS": 24.493,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342763645299,
+    "durationMS": 24.488,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342763645308,
+    "durationMS": 24.471,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342763645308,
+    "durationMS": 24.436,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342763645313,
+    "durationMS": 24.431,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342763645319,
+    "durationMS": 24.419,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342763645321,
+    "durationMS": 24.413,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342769061723,
+    "durationMS": 49.806,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342769061729,
+    "durationMS": 49.799,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342769061733,
+    "durationMS": 49.794,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342769061742,
+    "durationMS": 49.783,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342769061743,
+    "durationMS": 49.741,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342769061746,
+    "durationMS": 49.738,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342769061753,
+    "durationMS": 49.724,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342769061755,
+    "durationMS": 49.715,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342769913881,
+    "durationMS": 60.897,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342769913891,
+    "durationMS": 60.886,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342769913896,
+    "durationMS": 60.879,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342769913907,
+    "durationMS": 60.866,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342769913908,
+    "durationMS": 60.825,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342769913912,
+    "durationMS": 60.818,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342769913920,
+    "durationMS": 60.797,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342769913921,
+    "durationMS": 60.79,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "WebFrameWidgetImpl::BeginMainFrame",
+    "category": "blink",
+    "ts": 4342775728652,
+    "durationMS": 27.274,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "Blink.Animate.UpdateTime",
+    "category": "blink",
+    "ts": 4342775728662,
+    "durationMS": 27.263,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "PageAnimator::serviceScriptedAnimations",
+    "category": "blink,rail",
+    "ts": 4342775728665,
+    "durationMS": 27.258,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FrameRequestCallbackCollection::ExecuteFrameCallbacks",
+    "category": "blink",
+    "ts": 4342775728676,
+    "durationMS": 27.243,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FireAnimationFrame",
+    "category": "devtools.timeline",
+    "ts": 4342775728677,
+    "durationMS": 27.21,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "AsyncTask Run",
+    "category": "blink",
+    "ts": 4342775728681,
+    "durationMS": 27.205,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "v8.callFunction",
+    "category": "v8",
+    "ts": 4342775728688,
+    "durationMS": 27.192,
+    "pid": 86260,
+    "tid": 91128
+  },
+  {
+    "name": "FunctionCall",
+    "category": "devtools.timeline",
+    "ts": 4342775728689,
+    "durationMS": 27.185,
+    "pid": 86260,
+    "tid": 91128
+  }
+]

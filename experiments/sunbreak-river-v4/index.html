@@ -113,9 +113,9 @@ html,body{background:#172229;color:#d5dedc}
   <div id="kills">击倒 <span id="kl">0</span>/6</div>
   <div id="cross"><div style="left:12px;top:0;width:2px;height:8px"></div><div style="left:12px;top:18px;width:2px;height:8px"></div><div style="left:0;top:12px;width:8px;height:2px"></div><div style="left:18px;top:12px;width:8px;height:2px"></div></div>
   <div id="flash"></div>
-  <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>按住左键 / F</span> 连射　 <span>R</span> 更换弹匣　 <span>Shift</span> 冲刺</div>
+  <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>按住左键 / F</span> 连射　 <span>R</span> 换弹　 <span>E</span> 木屋开关门　 <span>Shift</span> 冲刺</div>
 </div>
-<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / RIVER VILLAGE</div><h1>RIVER<br>FALL</h1><h2>雨林河谷 · 双岸交火</h2><p>按住鼠标左键持续开火，松开即停。<br>R 更换弹匣：取出、换入、回握。<br>穿越浅河、泥地与残破村落。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换色调</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 写实版 ↗</a><a class="compare" href="./" target="_blank" rel="noopener">03 暴雨版 ↗</a><a class="compare" href="./v4/" target="_blank" rel="noopener">04 连射版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo，4v4尚未开放。<br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./river/credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
+<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / RIVER VILLAGE</div><h1>RIVER<br>FALL</h1><h2>雨林河谷 · 双岸交火</h2><p>按住鼠标左键持续开火，松开即停。<br>R 更换弹匣，E 开关木屋门。<br>两岸斜对称木屋、浅河与坍塌村落。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换色调</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 写实版 ↗</a><a class="compare" href="./" target="_blank" rel="noopener">03 暴雨版 ↗</a><a class="compare" href="./v4/" target="_blank" rel="noopener">04 连射版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo，4v4尚未开放。<br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./river/credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
 <div id="bootStatus">正在装载雨林河谷、植被与材质…</div>
@@ -486,7 +486,7 @@ function stepVertical(dt,jump){
 function collide(p,actor='player'){
  if(visual?.blocksMovement(p,actor))return true;
  for(const b of colliders){
-  if(p.x>b.min.x-.4&&p.x<b.max.x+.4&&p.z>b.min.z-.4&&p.z<b.max.z+.4&&p.y-1.5<b.max.y&&p.y+.15>b.min.y)return true}
+  if(p.x>b.min.x-.4&&p.x<b.max.x+.4&&p.z>b.min.z-.4&&p.z<b.max.z+.4&&p.y-1.5<(b.topAt?b.topAt(p.x,p.z,.4):b.max.y)&&p.y+.15>b.min.y)return true}
  return false;}
 const clock=new THREE.Clock();
 function tick(){
