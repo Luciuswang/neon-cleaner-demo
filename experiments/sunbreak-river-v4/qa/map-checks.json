@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-18T04:27:22.317Z",
+  "date": "2026-11-18T07:42:26.948Z",
   "pass": true,
   "checks": [
     {
@@ -114,7 +114,7 @@
     "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
   },
   "sources": {
-    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "qa/map-checks.mjs": "3d2def8d92b815c807da09470fec2dce76e09dd8621c79d655273cd8fcd7c0e7"
   },

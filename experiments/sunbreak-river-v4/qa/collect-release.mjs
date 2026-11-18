@@ -4,15 +4,14 @@ import {resolve,relative} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import assert from 'node:assert/strict';
+import {runtimeHashes} from './source-binding.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url)),qa=resolve(root,'qa'),evidence=resolve(qa,'evidence');
 const read=p=>JSON.parse(readFileSync(p)),hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
-const foliage=read(resolve(root,'foliage-revision.json'));
-const names=readdirSync(root).filter(n=>/\.(js|html)$/.test(n)).concat(['asset-sources.json','foliage-derivatives.json','foliage-revision.json','fable-art-revision.json','qa/hooks.js','qa/browser.mjs',...foliage.derivatives.map(f=>f.file)]);
-const sources=Object.fromEntries(names.map(n=>[n,hash(resolve(root,n))]));
+const sources=await runtimeHashes();
 const dirs=readdirSync(evidence).sort(),latest=phase=>resolve(evidence,dirs.filter(n=>n.startsWith(phase+'-')).at(-1),phase+'-1.json');
 function bind(h,label){for(const [n,sha]of Object.entries(sources))assert.equal(h?.[n],sha,'Stale '+label+' '+n)}
 const chosen={},summaries={};
-for(const phase of ['map','art','cabins','checks','traversal']){
+for(const phase of ['map','art','afterrain','weather','cabins','checks','traversal']){
  const path=latest(phase),r=read(path);assert.ok(r.pass,phase+' failed');bind(r.results[0].details.buildHashes,phase);chosen[phase]=relative(root,path).replaceAll('\\','/');summaries[phase]=r.results.length;
 }
 assert.ok(summaries.checks>=32&&summaries.traversal>=40);
@@ -27,10 +26,13 @@ const performance=[];
 for(const d of dirs.filter(n=>n.startsWith('benchmark-')).slice(-2)){
  const r=read(resolve(evidence,d,'benchmark-1.json')),b=r.results.at(-1);assert.ok(r.pass,'Final pair failed '+d);bind(b.source,d);
  assert.ok(b.duration>=30000&&b.p95<=33.3&&b.p99<=33.3&&b.max<=50&&b.over50===0&&b.viewport[0]>=1920&&b.viewport[1]>=1080);
+ assert.equal(b.weather,2,'Strict retained storm gate cannot be replaced with sunny mode');
  assert.ok(b.stress.shots>=180&&b.stress.finalAmmo.reserve>0&&b.audio.byType.enemy>0&&b.warmupRaw.length>0);
  performance.push({path:'qa/evidence/'+d+'/benchmark-1.json',p50:b.p50,p95:b.p95,p99:b.p99,max:b.max,over50:b.over50,renderer:b.renderer,shots:b.stress.shots,enemyShots:b.audio.byType.enemy});
 }
 assert.equal(performance.length,2);
+const afterrainUnits=read(resolve(qa,'afterrain-units.json'));bind(afterrainUnits.sources,'afterrain units');for(const name of ['landscape-checks','riverbank-checks','afterrain-assets-checks'])assert.ok(afterrainUnits.units[name]?.pass,name+' missing or failed');
+const sunny=read(latest('sunny-benchmark')),sb=sunny.results.at(-1);bind(sb.source,'sunny-benchmark');assert.ok(sunny.pass&&sb.weather===0&&sb.duration>=30000&&sb.p95<=33.3&&sb.p99<=33.3&&sb.max<=50&&sb.over50===0&&sb.viewport[0]>=1920&&sb.viewport[1]>=1080);
 const unit={};for(const name of ['map-checks','terrain-rays','ai-movement','village-checks','fracture-checks','buffer-checks']){const r=read(resolve(qa,name+'.json'));assert.ok(r.pass,name);for(const [p,sha]of Object.entries(r.sources||{}))assert.equal(hash(resolve(root,p)),sha);unit[name]=(Array.isArray(r.checks)?r.checks.length:0)||r.results?.length||r.traversals?.length||r.wallBoxes||r.supportChecks}
 const review=read(resolve(qa,'independent-review.json'));for(const [p,sha]of Object.entries(review.sources))assert.equal(sources[p],sha);
 assert.deepEqual(Object.keys(review.sources).sort(),Object.keys(sources).sort(),'Independent review must bind the complete current source/asset set');

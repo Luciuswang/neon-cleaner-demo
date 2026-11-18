@@ -79,7 +79,7 @@ export function landscapeHeight(x,z){
  // Beyond the playable bounds only: rounded valley shoulders carry the forest
  // instead of leaving a bare flat horizon. The open river channel stays level.
  if(ax>38||az>40){const distance=Math.max(0,Math.max(ax-38,az-40)),bank=Math.max(0,Math.min(1,(ax-8)/18));
-  y+=distance*.24*(.84+.18*Math.sin(x*.043+z*.036)+.12*Math.sin(z*.085-x*.04))*bank;
+  y+=distance*.13*(.84+.18*Math.sin(x*.043+z*.036)+.12*Math.sin(z*.085-x*.04))*bank;
  }
  return y;
 }

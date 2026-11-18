@@ -11,7 +11,7 @@ window.arenaQA={
  lineOfSight(a,b){scene.updateMatrixWorld(true);return clearSight(a,b)},
  walkState(){return{position:pos.toArray(),support:visual.floorHeight(pos.x,pos.z),blocked:collide(pos),enemies:enemies.map(e=>({position:e.g.position.toArray(),support:visual.floorHeight(e.g.position.x,e.g.position.z)}))}},
  snapshot(){return {...window.demoQA.snapshot(),remaining:S.reload,presentation:pres,
-  audio:sound.snapshot(),weapon:visual.info().weapon,errors:visual.info().textureErrors,
+  audio:sound.snapshot(),weapon:visual.info().weapon,lighting:visual.info().lighting,weather:visual.info().weather,errors:visual.info().textureErrors,
   times:[...fireStats.times],buildHashes:loadedBuildHashes,viewport:[cv.width,cv.height],renderer:rendererName}},
  reset(){resetGame();S.state='play';hideMenu();over.classList.add('hide');S.hp=10000;S.yaw=0;S.pitch=.85;return this.snapshot()},
  pose(phase){clearKeys();S.state='pause';pres=true;hideMenu();S.reload=phase===null?0:RELOAD_SECONDS*(1-phase);return this.snapshot()},
@@ -22,6 +22,9 @@ window.arenaQA={
  async loseLock(){
   if(document.pointerLockElement===cv)await new Promise(resolve=>{document.addEventListener('pointerlockchange',resolve,{once:true});document.exitPointerLock()});
   else document.dispatchEvent(new Event('pointerlockchange'));
+  // Allow queued native lifecycle events to drain before a synthetic travel
+  // reset. This never resumes the game or bypasses runtime input handling.
+  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
  },
  outcome(){S.hp=0;S.state='dead';cancelReload();updHUD();showOver('作战失败','测试死亡取消换弹')},
  cancel(){cancelReload()},
@@ -55,7 +58,7 @@ window.arenaQA={
    }requestAnimationFrame(frame);
   });
   restore.forEach(f=>f());clearKeys();const sorted=raw.map(v=>v.frame_ms).sort((a,b)=>a-b),pct=p=>sorted[Math.min(sorted.length-1,Math.floor(sorted.length*p))];
-  return {raw,warmupRaw,warmup:{declaredSeconds:10,method:'contiguous same combat/reload workload; every frame retained',max:warmupRaw.length?Math.max(...warmupRaw.map(v=>v.frame_ms)):0},duration:raw.at(-1).elapsed_ms,viewport:[cv.width,cv.height],renderer:rendererName,p50:pct(.5),p95:pct(.95),p99:pct(.99),max:sorted.at(-1),over50:raw.filter(v=>v.frame_ms>50).length,audio:sound.snapshot(),stress:{shots:fireStats.count,finalAmmo:{mag:S.mag,reserve:S.res},tactical:tactical.info()},source:loadedBuildHashes};
+  return {raw,warmupRaw,weather:visual.info().weather,warmup:{declaredSeconds:10,method:'contiguous same combat/reload workload; every frame retained',max:warmupRaw.length?Math.max(...warmupRaw.map(v=>v.frame_ms)):0},duration:raw.at(-1).elapsed_ms,viewport:[cv.width,cv.height],renderer:rendererName,p50:pct(.5),p95:pct(.95),p99:pct(.99),max:sorted.at(-1),over50:raw.filter(v=>v.frame_ms>50).length,audio:sound.snapshot(),stress:{shots:fireStats.count,finalAmmo:{mag:S.mag,reserve:S.res},tactical:tactical.info()},source:loadedBuildHashes};
  },
  async movie(){
   const stream=cv.captureStream(30),chunks=[];

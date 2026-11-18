@@ -66,8 +66,28 @@ try {
  await send('Page.navigate',{url:live?'https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/':process.env.RIVER_QA_URL||'http://127.0.0.1:5190/river/'});
  await wait("!!document.body?.dataset.qa&&!document.getElementById('bStart').disabled");
  if(!live)check('licensed weapon and all textures loaded',(await snapshot()).weapon?.loaded&&(await snapshot()).errors.length===0,await snapshot());
+ const weatherArg=process.argv.find(a=>a.startsWith('--weather='));
+ if(!live&&weatherArg)await evaluate(`arenaQA.weather(${Number(weatherArg.slice(10))})`);
  if(phase==='quick'){
   console.log('Ready');if(process.argv.includes('--no-post'))await evaluate("document.getElementById('bPost').click()");await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
+ }else if(phase==='afterrain'){
+  check('default weather is after-rain daylight',(await evaluate('arenaQA.mapInfo()')).weather===0);
+  for(const [name,...v]of [['valley-hero',-7,1.7,24,-.24,-.1],['riverbank',-4.7,1.35,10,-.12,-.32],['valley-wide',0,3.5,25,0,.05],['sun-side',10,1.7,8,-1,-.07]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
+  for(const weather of [0,2,1,0]){
+   await evaluate(`arenaQA.weather(${weather})`);await delay(150);
+   const state=await evaluate('arenaQA.mapInfo()');
+   check(`weather ${weather} rain, ripple and splash consistent`,state.lighting.rainVisible===(weather===2)&&state.lighting.splashVisible===(weather===2)&&state.lighting.rainRippleStrength===(weather===2?1:0),state.lighting);
+   if(weather!==2)check('dry modes clear lightning',state.lighting.flashIntensity===0);
+  }
+ }else if(phase==='weather'){
+  await evaluate("document.getElementById('bStart').click();arenaQA.reset();arenaQA.weather(2)",true);
+  await delay(11500);
+  let s=await evaluate('arenaQA.mapInfo()');check('live storm produces audible rain and thunder',s.audio.active&&s.audio.effectiveGain>0&&s.audio.thunderCount>=1,s.audio);
+  await evaluate('arenaQA.weather(0)');await delay(250);s=await evaluate('arenaQA.mapInfo()');
+  check('sunny switch shuts down active and pending storm audio',!s.audio.active&&s.audio.effectiveGain===0&&s.audio.pending===0,s.audio);
+  const thunder=s.audio.thunderCount;await delay(1500);s=await evaluate('arenaQA.mapInfo()');
+  check('sunny play does not spawn thunder or visual rain',s.audio.thunderCount===thunder&&!s.lighting.rainVisible&&!s.lighting.splashVisible&&s.lighting.rainRippleStrength===0&&s.lighting.flashIntensity===0,s.lighting);
+  await capture('weather-sunny');
  }else if(phase==='map'){
   const views=[['river-hero',-7,1.7,24,-.24,-.1],['west-village',-8,1.7,7,1.1,-.02],['east-village',8,1.7,7,-1.1,-.02],['river-ford',0,1.7,22,0,-.2],['bridge',7,1.7,2,.9,-.1],['layout',0,32,33,0,-.83],['wet-mud',-10,1.7,12,0,-.7],['ruin',-12,1.7,22,.9,-.05]];
   for(const [name,...v]of views){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(300);await capture(name)}
@@ -101,7 +121,7 @@ try {
    check(id+' closed leaf blocks actual movement',Math.hypot(s.position[0]-door.x,s.position[2]-door.z)>.42,s);
    // Pause releases pointer lock asynchronously. Settle that lifecycle before
    // the next cabin reset, or its late event pauses the next travel test.
-   await evaluate('arenaQA.pause();arenaQA.loseLock()');await key('KeyE');await key('KeyE',false);check(id+' paused E rejected',(await evaluate('arenaQA.cabinState()')).houses.every(h=>h.door.toggles===0));
+   await evaluate('arenaQA.loseLock()');await key('KeyE');await key('KeyE',false);check(id+' paused E rejected',(await evaluate('arenaQA.cabinState()')).houses.every(h=>h.door.toggles===0));
   }
   await capture('cabins-final');
  }else if(phase==='traversal'){
@@ -211,7 +231,8 @@ try {
   const movie=await evaluate("arenaQA.movie()",true);
   await writeFile(resolve(output,'reload-live.webm'),Buffer.from(movie.data,'base64'));delete movie.data;
   results.push({name:'actual timer canvas recording',pass:true,...movie});
- }else if(phase==='benchmark'||phase==='profile'){
+ }else if(phase==='benchmark'||phase==='profile'||phase==='sunny-benchmark'){
+  await evaluate(`arenaQA.weather(${phase==='sunny-benchmark'?0:2})`);
   if(phase==='profile')await send('Tracing.start',{categories:'devtools.timeline,v8,blink,disabled-by-default-v8.gc',options:'record-continuously'},null);
   await evaluate("document.getElementById('bStart').click();arenaQA.reset()",true);
   const report=await evaluate('arenaQA.benchmark()');

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261118T074448Z-761d912dab",
+  "task_id": "sunbreak-river-afterrain-2026-11-18",
+  "timestamp_utc": "2026-11-18T07:44:48.559869+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall after-rain daylight and layered valley WIP: verified CC0 clear HDR/pebble-rock assets, coherent sun/sky, lower eroded ridges, wet banks, leafy groundcover redistribution; gameplay and earlier demos preserved. Final seven headless functional/evidence phases and nine CPU suites PASS with all144 runtime bindings. Independent engineering approves WIP only; art REVISE and performance BLOCKED (storm max53/247.4ms; sunny53.2ms). Historical failed performance binding gaps and cabin harness lifecycle failure retained. No Pages deployment or AAA parity. Next: local river glare/bank naturalism, rocky ridge/forest-foot transition, profile retained hitches. Pre-existing dirty private vault preserved; private transfer explicitly skipped, no UE/private portability claim. Canonical task packet and experiments/sunbreak-river-v4/qa/release.json contain evidence.",
+  "commit_shas": [
+    "f5c34e83a1268e1fe24a0815080d0aed2c2e5820"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

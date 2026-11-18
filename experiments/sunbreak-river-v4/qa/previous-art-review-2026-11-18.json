@@ -1,0 +1,181 @@
+{
+  "date": "2026-11-18T04:33:48.555Z",
+  "protocol": "offscreen-cinematic-v1",
+  "task": "sunbreak-river-art-2026-11-18",
+  "sources": {
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "credits.html": "0b26739175546181fb94be5f3e9f7be76341f47661dd8810f4b4ec9727796b78",
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "index.html": "0398436482bb501dc389f347f383f0e0104a59e38ccb02ed30d6bf511c99c8b7",
+    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+    "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
+    "vegetation.js": "525eac366c2f5b9d2e1af66a15896924ddc5b200d047ef6618101cb6e0ab71e9",
+    "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
+    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "world.js": "4b2a78dfabe633176a8027d4cf3bf9ceaee2427badf95a52902f9b770ea549ed",
+    "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+    "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+    "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+    "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+    "qa/hooks.js": "976a8185df147a3a3fba97ea765569ecb9b285a01939d03daf6c8ac6164500be",
+    "qa/browser.mjs": "38d05248718e86b5c20225f2db53c661a61bd692f6d16fee3a035435aa3f4a1e",
+    "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+    "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+    "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561"
+  },
+  "engineering": {
+    "reviewer": "Descartes",
+    "verdict": "PASS",
+    "scope": "Final tested geometry, cabin interaction, controls and traversal PASS; confirmed after 04:32 traversal. Strict runtime release remains BLOCKED. Approve WIP checkpoint only, no Pages deployment or final-quality acceptance.",
+    "notes": [
+      "Six source-bound unit suites pass; 174 exact cabin ray comparisons and fragment support regressions pass.",
+      "Independent review confirmed the only house-logic.js post-freeze runtime edit removes one trailing empty line.",
+      "Independent review confirmed harness-only pointer-lock lifecycle synchronization. Stair hold380ms, support>0.1m,height tolerance<0.04m and paused-E assertions unchanged. Failed04:28 run retained."
+    ]
+  },
+  "art": {
+    "reviewer": "Lovelace",
+    "verdict": "REVISE",
+    "AAAVerdict": "REVISE",
+    "confidence": "high",
+    "evidence": [
+      "qa/evidence/map-2026-11-18T04-18-11-491Z",
+      "qa/evidence/art-2026-11-18T04-18-34-518Z"
+    ],
+    "scope": "All8map and14art representative actual WebGL stills reviewed against three user references and baseline; not continuous-motion acceptance.",
+    "reviewedSources": {
+      "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+      "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+      "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+      "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+      "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+      "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+      "credits.html": "0b26739175546181fb94be5f3e9f7be76341f47661dd8810f4b4ec9727796b78",
+      "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+      "house-logic.js": "04846c4b79a18e6e0b531afea6ad130842d855a27fff29af86f722a0a08b1ab1",
+      "index.html": "0398436482bb501dc389f347f383f0e0104a59e38ccb02ed30d6bf511c99c8b7",
+      "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+      "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+      "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
+      "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+      "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+      "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+      "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
+      "vegetation.js": "525eac366c2f5b9d2e1af66a15896924ddc5b200d047ef6618101cb6e0ab71e9",
+      "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
+      "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+      "world.js": "4b2a78dfabe633176a8027d4cf3bf9ceaee2427badf95a52902f9b770ea549ed",
+      "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+      "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+      "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+      "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+      "qa/hooks.js": "976a8185df147a3a3fba97ea765569ecb9b285a01939d03daf6c8ac6164500be",
+      "qa/browser.mjs": "4b49a85d5b11b295dd01f44926b52be0327d5d52a0fe695ca13892f6224765f9",
+      "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+      "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+      "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+      "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+      "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+      "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+      "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561"
+    },
+    "confirmed": [
+      "Actual earlier timber-cabin identity and diagonal placement preserved; east side view is unobstructed.",
+      "Lower,asymmetric rubble piles and tilted partly-buried slabs reduce the mound-with-lid appearance.",
+      "Grass is visible and jitter reduces planted rows.",
+      "Tree canopy structure,scale variation and ground legibility improve over baseline."
+    ],
+    "majorBlockers": [
+      "Continuous bright seams remain on west gable and interior; backing code alone is not visual proof.",
+      "Ruin breaks still read as straight cuts and regular notches with continuous brick-texture caps; need layered plaster/masonry fractures and matching debris.",
+      "Bare slopes,obvious grass boundaries and inadequate understory disconnect foliage from terrain.",
+      "Polygonal puddle edges lack erosion,compaction,gravel and mid-scale wetness transitions.",
+      "Sky,distant slopes,bright walls and leaf canopies lack the reference's coherent light hierarchy."
+    ],
+    "subsequentChanges": "Only trailing blank-line normalization and test-only pointer-lock lifecycle synchronization after reviewed art. New equivalent captures generated; reviewer did not inspect later batches.",
+    "decision": "WIP checkpoint only; does not support publication or AAA acceptance."
+  },
+  "runtime": {
+    "reviewer": "integrator + independent Descartes audit",
+    "verdict": "BLOCKED",
+    "strictPerformanceThreshold": {
+      "p95ms": 33.3,
+      "p99ms": 33.3,
+      "maxms": 50,
+      "over50": 0,
+      "consecutiveSamples": 2
+    },
+    "evidence": [
+      {
+        "path": "qa/evidence/benchmark-2026-11-18T04-21-15-368Z/benchmark-1.json",
+        "sha256": "acea477795e38c57d621a5430867734a56e04f6931f1ce91481af336cd6f0c25",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "duration": 30007.9,
+        "p50": 17.599999999998545,
+        "p95": 18.30000000000291,
+        "p99": 18.599999999998545,
+        "max": 53,
+        "over50": 2,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "shots": 230,
+        "enemyShots": 25
+      },
+      {
+        "path": "qa/evidence/profile-2026-11-18T04-22-58-263Z/profile-1.json",
+        "sha256": "d66303eeee1c0c2f3354684bce9404c829845d6b54b6b5e63d8ae6e88b04e396",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "duration": 30013.9,
+        "p50": 17.599999999998545,
+        "p95": 18.30000000000291,
+        "p99": 18.599999999998545,
+        "max": 53.19999999999709,
+        "over50": 1,
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "viewport": [
+          1920,
+          1080
+        ],
+        "shots": 229,
+        "enemyShots": 26
+      }
+    ],
+    "limitations": "Both failed samples predate only trailing-blank-line normalization and test lifecycle fix; not current-byte performance acceptance. No retry-until-pass.154 trace events intentionally filtered to duration>20ms; nested events are not separate stalls. Cause remains unestablished."
+  },
+  "publication": {
+    "verdict": "BLOCKED",
+    "reason": "Bounded art review REVISE and strict performance failed; no Pages deployment this checkpoint."
+  },
+  "continuousMotion": {
+    "verdict": "UNVERIFIED",
+    "reason": "Representative stills and functional/time samples only."
+  },
+  "competitiveBalance": {
+    "verdict": "UNVERIFIED",
+    "reason": "Cabin transforms are rotationally paired; measured existing spawn-route differences5.433m/4.867m/0m. No human multiplayer test."
+  },
+  "multiplayer": "NOT IMPLEMENTED",
+  "AAA": "NOT ACCEPTED"
+}

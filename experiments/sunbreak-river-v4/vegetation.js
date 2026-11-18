@@ -9,7 +9,7 @@ export function vegetationPlan(){
  const pathDistance=(x,z)=>Math.abs(Math.abs(x)-(10+.32*Math.sin(z*.19)));
  function allowed(x,z,margin=.4){
   if(!outside(x,z))return vegetationAllowed(x,z)&&pathDistance(x,z)>1.45+margin&&crossings.every(c=>Math.abs(z-c)>2+margin);
-  return Math.abs(x)>riverWidth(z)+2.5&&outside(x,z,1)&&Math.abs(x)<63&&z>-61&&z<54;
+  return Math.abs(x)>riverWidth(z)+2.5&&outside(x,z,1)&&Math.abs(x)<91&&z>-88&&z<80;
  }
  const place=(x,z,s=1)=>({x,y:landscapeHeight(x,z)-.018,z,r:random()*Math.PI*2,s,stretch:.92+random()*.14,tone:random()});
  // Irregular groves, not a repeated circle. Near/far are spatial bands, not
@@ -38,7 +38,7 @@ export function vegetationPlan(){
  // individual placement rechecks the current map exclusion, including cabins.
  const patches=[];
  for(let i=0;i<180;i++){
-  const x=random()*108-54,z=random()*102-55;
+  const x=random()*168-84,z=random()*158-83;
   if(!allowed(x,z,.6))continue;
   if(patches.some(p=>Math.hypot(p.x-x,p.z-z)<3.3))continue;
   patches.push({x,z,rx:2.5+random()*3.4,rz:1.4+random()*2.8});
@@ -113,7 +113,7 @@ export async function buildVegetation(T,world){
    const geometry=node.geometry.clone().applyMatrix4(node.matrixWorld);
    geometry.translate(-center.x,-box.min.y,-center.z);geometry.scale(scale,scale,scale);
    const mat=node.material.clone(),leaf=!tree||/leaves/.test(mat.name);
-   mat.envMapIntensity=leaf?.7:.5;mat.roughness=Math.max(.74,mat.roughness);mat.metalness=0;
+   mat.envMapIntensity=leaf?.62:.5;mat.roughness=Math.max(.84,mat.roughness);mat.metalness=0;
    // Official packed ARM: AO is RED, roughness GREEN. Keep leaf AO subtle;
    // stacking a dark sRGB tint and strong baked AO made every crown near black.
    if(mat.roughnessMap){mat.aoMap=mat.roughnessMap;mat.aoMapIntensity=leaf?.18:.65}
@@ -154,16 +154,20 @@ export async function buildVegetation(T,world){
  if(!lowTypes.length||!mediumTypes.length||!tallTypes.length)throw Error('Foliage variant names changed: refusing silent empty ground cover');
  const tiny=lowTypes.find(n=>/tiny_a_/.test(n.name)),short=lowTypes.filter(n=>/small_/.test(n.name));
  // Thin linking stems are a small accent, not half the entire low layer.
- instances(tiny,plan.low.filter((p,k)=>!p.infill&&k%10===0),.20,'low-grass',{wind:.013});
- short.forEach((n,i)=>instances(n,plan.low.filter((p,k)=>!p.infill&&k%10!==0&&k%2===i),.25,'low-grass',{wind:.013}));
+ const stemLow=plan.low.filter((p,k)=>!p.infill&&k%3===0);
+ instances(tiny,stemLow.filter((p,k)=>k%10===0),.16,'low-grass',{wind:.013});
+ short.forEach((n,i)=>instances(n,stemLow.filter((p,k)=>k%10!==0&&k%2===i),.22,'low-grass',{wind:.013}));
  // Existing CC0 Bermuda has green, short leaf bodies, not seed heads. Keep
  // the exact infill layout, replace only its species. The flatter variants
  // stay lower so their width is ~0.32–0.35m, not giant enlarged grass blades.
  const baseTypes=assets[6].scene.children.filter(n=>/_(small_[abc]|medium_c)$/.test(n.name)).sort((a,b)=>a.name.localeCompare(b.name));
  if(baseTypes.length!==4)throw Error('Bermuda low-layer variants missing');
- const infill=plan.low.filter(p=>p.infill),baseHeight={small_a:.14,small_b:.18,small_c:.22,medium_c:.23};
+ // Reassign existing thin-stem placements, not extra density. Leafy low grass
+ // carries the green mass; taller seed heads are now an accent instead of noise.
+ const infill=[...plan.low.filter((p,k)=>p.infill||k%3!==0),...plan.medium.filter((p,k)=>k%3!==0)],baseHeight={small_a:.14,small_b:.18,small_c:.22,medium_c:.23};
  baseTypes.forEach((n,i)=>instances(n,infill.filter((_,k)=>k%4===i),baseHeight[n.name.replace('grass_bermuda_01_','')],'bermuda-base',{wind:.013}));
- mediumTypes.forEach((n,i)=>instances(n,plan.medium.filter((_,k)=>k%mediumTypes.length===i),.43,'dense-grass',{wind:.022}));
+ const stemMedium=plan.medium.filter((_,k)=>k%3===0);
+ mediumTypes.forEach((n,i)=>instances(n,stemMedium.filter((_,k)=>k%mediumTypes.length===i),.36,'dense-grass',{wind:.022}));
  tallTypes.forEach((n,i)=>instances(n,plan.tall.filter((_,k)=>k%tallTypes.length===i),.66,'seed-grass',{wind:.028}));
  const triangles=batches.reduce((n,b)=>n+b.triangles,0),shadowTriangles=batches.filter(b=>b.shadow).reduce((n,b)=>n+b.triangles,0);
  return{update(t){time.value=t},info(){return{revision:'layered-foliage-2026-11-18-bermuda-base',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,patches:plan.patches.length,infill:{...plan.infill,asset:'grass_bermuda_01',variants:4,triangles:batches.filter(b=>b.label==='bermuda-base').reduce((n,b)=>n+b.triangles,0),drawCalls:batches.filter(b=>b.label==='bermuda-base').length},treeCollidersNeeded:0,source:'Poly Haven CC0; full near components, verified winding and source-clipped compound alpha; spatial instance culling',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};

@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-18T04:27:28.104Z",
+  "date": "2026-11-18T07:42:33.320Z",
   "pass": true,
   "samples": 160,
   "triangles": 7014,
@@ -19,7 +19,7 @@
   "sources": {
     "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
     "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
-    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
     "qa/fracture-checks.mjs": "eb2a933f0dd9c35cb813232f5c322efddbec7db250680e147d08304602757bd4"
   },
   "limits": "Static geometry and exact support for every fragment and coarse pile. Not dynamic destruction or visual acceptance."

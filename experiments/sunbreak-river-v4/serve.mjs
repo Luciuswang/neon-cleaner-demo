@@ -1,12 +1,10 @@
 import http from 'node:http';
-import {readFile,readdir} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
 import {resolve,extname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {createHash} from 'node:crypto';
+import {runtimeHashes} from './qa/source-binding.mjs';
 const root=fileURLToPath(new URL('.',import.meta.url)),shared=resolve(root,'../sunbreak-storm-v3');
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.jpg':'image/jpeg','.png':'image/png','.glb':'model/gltf-binary','.gltf':'model/gltf+json','.hdr':'application/octet-stream','.wav':'audio/wav'};
-async function hashes(){const out={};for(const name of [...await readdir(root),'qa/hooks.js','qa/browser.mjs'])if(/\.(js|html|json|mjs)$/.test(name))out[name]=createHash('sha256').update(await readFile(resolve(root,name))).digest('hex');
- const foliage=JSON.parse(await readFile(resolve(root,'foliage-revision.json')));for(const f of foliage.derivatives)out[f.file]=createHash('sha256').update(await readFile(resolve(root,f.file))).digest('hex');return out}
 http.createServer(async(req,res)=>{
  try{
   const path=decodeURIComponent(new URL(req.url,'http://127.0.0.1:5190').pathname);
@@ -16,7 +14,7 @@ http.createServer(async(req,res)=>{
   if(!local&&!/^(assets\/|vendor\/|credits\.html$|assets-manifest\.json$)/.test(name)){res.writeHead(404);res.end();return}
   let data=await readFile(file);
   if(local&&name==='index.html'&&!new URL(req.url,'http://localhost').searchParams.has('public')){
-   const hooks=await readFile(resolve(root,'qa/hooks.js'),'utf8'),sourceHashes=await hashes();data=Buffer.from(data.toString().replace('</script>\n</body>',()=>`\nconst loadedBuildHashes=${JSON.stringify(sourceHashes)};\n${hooks}\n</script>\n</body>`));
+   const hooks=await readFile(resolve(root,'qa/hooks.js'),'utf8'),sourceHashes=await runtimeHashes();data=Buffer.from(data.toString().replace('</script>\n</body>',()=>`\nconst loadedBuildHashes=${JSON.stringify(sourceHashes)};\n${hooks}\n</script>\n</body>`));
   }
   res.writeHead(200,{'Content-Type':types[extname(file)]||'application/octet-stream','Cache-Control':'no-store'});res.end(data);
  }catch(e){res.writeHead(404);res.end(String(e.message))}

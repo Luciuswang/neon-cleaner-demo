@@ -1,6 +1,6 @@
 {
   "pass": true,
-  "date": "2026-11-18T04:27:24.498Z",
+  "date": "2026-11-18T07:42:29.564Z",
   "wallBoxes": 72,
   "architecture": {
     "houses": 6,
@@ -15,7 +15,7 @@
   "checks": "exact wall geometry; six clear passages and solid walls; roof slabs/half-collapse openings; bridge shot occlusion; batching budgets",
   "sources": {
     "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
-    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
     "qa/village-checks.mjs": "7f1af45b33a6f52ebac8366de8dcdc790f873a76852c373bdd3dfa6981ec46cd"
   }
 }

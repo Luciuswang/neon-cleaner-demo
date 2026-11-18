@@ -1,0 +1,28 @@
+{
+  "protocol": "offscreen-cinematic-v1",
+  "task": "sunbreak-river-afterrain-2026-11-18",
+  "engineering": {
+    "reviewer": "Descartes",
+    "verdict": "CONDITIONAL PASS",
+    "checkpointApproval": "Descartes independently verified final checkpoint: all seven functional/evidence phases and nine persisted CPU suites PASS; all144 current source bindings match including actual legacy Three. APPROVED FOR WIP CHECKPOINT ONLY. Release remains BLOCKED; original failed performance samples not backfilled.",
+    "scope": "Reviewed implementation only; no new must-fix in HDR/sun alignment, weather gating, bank placement or ridge integration. Release BLOCKED independently.",
+    "verified": ["afterrain 9 checks", "live weather 4 checks", "cabins 15 checks", "controls 32 checks"],
+    "auditFinding": "07:24-07:31 evidence omitted actual vendor/three dependency, although bundled presentation renderer was bound. Source-binding tool corrected after capture; never silently backfill historical snapshots. Subsequent current captures bind both builds."
+  },
+  "art": {
+    "reviewer": "Lovelace",
+    "verdict": "REVISE",
+    "AAAVerdict": "REVISE",
+    "confidence": "high",
+    "evidence": ["qa/evidence/afterrain-2026-11-18T07-24-43-934Z/valley-hero.png", "qa/evidence/afterrain-2026-11-18T07-24-43-934Z/riverbank.png", "qa/evidence/afterrain-2026-11-18T07-24-43-934Z/valley-wide.png", "qa/evidence/afterrain-2026-11-18T07-24-43-934Z/sun-side.png"],
+    "scope": "Four representative actual WebGL stills; not map/art batch review, independently verified source hashes, continuous-motion or performance acceptance.",
+    "improvements": ["Over-tall cliff wall corrected; more open skyline", "Mountains less white, now blue-gray; outer soil more matte", "Clearer sunlight/shadow and wet/dry distinction; after-rain direction established"],
+    "remaining": [
+      {"severity": "Major", "issue": "Water glare remains too broad; shallow bed detail and some vegetation shadow information are lost", "next": "Local reflection/roughness shaping, not further global exposure reduction"},
+      {"severity": "Major", "issue": "Continuous gravel band and segmented narrow water still read as laid-out strips", "next": "One hero bank sample with irregular mud tongues, buried stone groups and varied grass, retaining traversal"},
+      {"severity": "Major", "issue": "Repeated rounded ridges and bare foothill transition remain", "next": "Keep height, improve offset rocky strata and graded forest-foot vegetation; do not hide with heavier fog"}
+    ]
+  },
+  "releaseVerdict": "BLOCKED",
+  "publication": "WIP checkpoint only; no Pages publication or AAA parity claim"
+}

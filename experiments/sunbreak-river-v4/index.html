@@ -107,7 +107,7 @@ html,body{background:#172229;color:#d5dedc}
   <div class="btns"><button class="btn" id="bStyle" title="切换冷暖色调 (V)">冷调 / 暖调</button><button class="btn" id="bWeather" title="切换天气 (T)">天气</button><button class="btn" id="bPause" title="暂停或继续 (P)">暂停/继续</button><button class="btn" id="bPres" title="演示模式 (G)">演示</button><button class="btn hide" id="bPresOff">退出演示</button></div>
   <div id="soundControls"><button class="btn" id="bMute" aria-pressed="false">静音</button><label for="soundVolume">音量</label><input id="soundVolume" type="range" min="0" max="100" value="65" aria-label="音效音量"/><span id="audioStatus" role="status">点击开始启用音效</span></div>
   <div id="stormControls"><button class="btn" id="bPost" aria-pressed="true">后期：开</button><button class="btn" id="bFlash" aria-pressed="true">闪电：开启</button></div>
-  <div id="quality"><strong>RIVERFALL</strong> / 新地图<br><span id="weatherName">暴雨 · 闪电</span></div><div id="tip"></div>
+  <div id="quality"><strong>RIVERFALL</strong> / 新地图<br><span id="weatherName">雨后 · 山谷日照</span></div><div id="tip"></div>
   <div class="bar"><b id="styleName">热带竞技</b><b>生命值 HP</b><div class="track"><div class="fill" id="hpf"></div></div></div>
   <div id="ammo"><i id="am">30</i><s>/90</s><em>全自动 · R 更换弹匣</em><progress id="reloadProgress" max="1" value="0" aria-label="换弹进度" style="display:none;width:120px;height:3px;accent-color:#ddbd8a"></progress></div>
   <div id="kills">击倒 <span id="kl">0</span>/6</div>
@@ -144,7 +144,7 @@ rnd.shadowMap.enabled=true;rnd.shadowMap.type=THREE.PCFSoftShadowMap;
 rnd.toneMapping=THREE.ACESFilmicToneMapping;rnd.toneMappingExposure=1.02;app.appendChild(rnd.domElement);
 
 const scene=new THREE.Scene();
-const cam=new THREE.PerspectiveCamera(72,innerWidth/innerHeight,.05,600);
+const cam=new THREE.PerspectiveCamera(72,innerWidth/innerHeight,.05,1000);
 const gcam=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,.01,10);
 const M=(c,r,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
 const box=(w,h,d,mat,x,y,z,p=scene,ry=0)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);o.position.set(x,y,z);o.rotation.y=ry;o.castShadow=o.receiveShadow=true;p.add(o);return o};

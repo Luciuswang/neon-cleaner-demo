@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-18T04:27:24.323Z",
+  "date": "2026-11-18T07:42:29.261Z",
   "pass": true,
   "method": "Actual AI update-loop movement along navigation-generated routes; decisions held, not shot approval or human playtesting",
   "sources": {
-    "map-layout.js": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e",
+    "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "qa/ai-movement.mjs": "bea010eb3784252494bf3e6947597fe3ee960b36569ff9b52af0934056859e7e"
   },
