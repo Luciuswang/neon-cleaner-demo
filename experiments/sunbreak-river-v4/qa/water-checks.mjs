@@ -19,7 +19,7 @@ check(FLOW_WAVES.every(w=>w.kz>0&&w.speed>0),'all wave phase velocities downstre
 const differences=[];
 for(let x=-6.5;x<=6.5;x+=.21)for(let z=-34;z<=26;z+=.29){
  const a=sampleRiverSurface(x,z,0),b=sampleRiverSurface(x,z,.75);
- check(a.depth===MAP.waterY-groundHeight(x,z),'unaltered riverbed depth contract');
+ check(a.depth===MAP.waterY-groundHeight(x,z),'shared riverbed depth contract');
  check(Math.abs(shaderDepth({x,y:z},Math.abs,Math.cos,Math.sin,Math.min,clamp)-a.depth)<1e-9,'actual GLSL depth expression matches support function');
  check(Math.abs(shaderFlow({x,y:z},.75,Math.sin,smoothstep,depth)-b.displacement)<1e-9,'actual bent GLSL displacement matches CPU spectrum');
  check(Math.abs(a.displacement)<=max,'height stays inside amplitude bound');
@@ -28,7 +28,10 @@ for(let x=-6.5;x<=6.5;x+=.21)for(let z=-34;z<=26;z+=.29){
  if(a.depth>.14)differences.push(Math.abs(a.height-b.height));
 }
 check(differences.reduce((a,b)=>a+b,0)/differences.length>.003,'nonstatic directional surface');
-for(const z of crossings.filter(z=>z!==-4))for(let x=-6;x<=6;x+=.1)check(!sampleRiverSurface(x,z,8).wet,'dry ford untouched');
+for(const z of crossings.filter(z=>z!==-4))for(let x=-2;x<=2;x+=.1){
+ const s=sampleRiverSurface(x,z,8);check(s.wet&&s.depth>.13&&s.depth<.17,'formerly dry ford is shallow connected water');
+}
+for(let z=-80;z<=80;z+=.1)for(const x of [-1,0,1])check(sampleRiverSurface(x,z,8).depth>.14,'continuous three-metre channel through both fords');
 check(sampleRiverSurface(0,-4,3).wet,'flow remains beneath central wooden bridge');
 // Verify each physically meaningful phase advects coherently along its velocity.
 for(const w of FLOW_WAVES){

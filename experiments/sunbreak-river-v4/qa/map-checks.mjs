@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile,writeFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {layout,terrainHeight,groundHeight,blocked,roofHeight,riverWidth,teamSpawns,bufferPlacements,navigationBounds} from '../map-layout.js';
+import {MAP,layout,terrainHeight,groundHeight,blocked,roofHeight,riverWidth,teamSpawns,bufferPlacements,navigationBounds} from '../map-layout.js';
 import {createNavigation,coverPairs} from '../tactical-ai.js';
 const checks=[];
 function check(name,fn){fn();checks.push({name,pass:true})}
@@ -11,12 +11,17 @@ check('original six building walls and river cover retain mirrored geometry',()=
 });
 check('spawns clear of all enemy obstacles, grounded on both banks',()=>{for(const [x,y,z]of [...layout.spawns,...teamSpawns]){assert.ok(!blocked(x,z,.4,1.6,'enemy'));assert.equal(y,terrainHeight(x,z))}});
 check('two cabin transforms are diagonally symmetric about river center',()=>{const [a,b]=bufferPlacements;assert.equal(a.x,-b.x);assert.equal(a.z+b.z,-8);assert.equal(b.yaw-a.yaw,Math.PI);for(const p of bufferPlacements)assert.ok(navigationBounds.some(b=>b.id===p.id&&p.x>b.min.x&&p.x<b.max.x&&p.z>b.min.z&&p.z<b.max.z))});
-check('riverbed symmetrical, dry crossings and slope bounded',()=>{
+check('riverbed symmetrical, submerged fords, dry bridge and slope bounded',()=>{
  for(let z=-33;z<25;z+=.2)for(let x=0;x<10;x+=.2){assert.equal(terrainHeight(x,z),terrainHeight(-x,z));assert.ok(Math.abs(groundHeight(x+.1,z)-groundHeight(x,z))<.05);assert.ok(Math.abs(groundHeight(x,z+.1)-groundHeight(x,z))<.05)}
  for(const z of layout.crossings)for(let x=-30;x<30;x+=.25){
-  // Two gravel fords are level; bridge approaches follow the dry bank slope.
-  if(z!==-4||Math.abs(x)<=6)assert.equal(terrainHeight(x,z),0);
-  else assert.ok(terrainHeight(x,z)>-.08,'bridge approach must stay above water');
+  if(z===-4){
+   if(Math.abs(x)<=6)assert.equal(terrainHeight(x,z),0);
+   else assert.ok(terrainHeight(x,z)>-.08,'bridge approach must stay above water');
+  }else{
+   assert.equal(terrainHeight(x,z),groundHeight(x,z),'ford uses actual lowered support');
+   if(Math.abs(x)<riverWidth(z)-1.1){assert.ok(terrainHeight(x,z)<MAP.waterY-.14);assert.ok(terrainHeight(x,z)>=-.341,'shallow gravel shelf, not deep trench');}
+   if(Math.abs(x)>riverWidth(z)+1.8)assert.equal(terrainHeight(x,z),0);
+  }
  }
  assert.equal(terrainHeight(0,0),-.58);assert.ok(riverWidth(0)>3);
 });

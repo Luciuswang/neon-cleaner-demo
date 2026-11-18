@@ -3,22 +3,27 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
+import {inflateSync} from 'node:zlib';
 import {vegetationPlan,grassAllowed,grassBatches,GRASS_VARIANTS,inGrassGap} from '../vegetation.js';
 import {MAP,vegetationAllowed,landscapeHeight,riverWidth,crossings,inBuffer,rubbleHeight,houses,bounds} from '../map-layout.js';
 
 // Captured from the unedited source and local GLB accessor counts before this
 // slice, not count targets for the new distribution. Trees dominate this cost.
-const baseline={sourceSHA256:'bd862f7cfe54f69787085bb9e3d77b5ace2888db614deefd54d468a075492845',
+const baseline={sourceSHA256:'b289362e5e91e062f39d7dac19c85d58a172165c81c6150728ff6d5c9fc70960',
  treeTransformsSHA256:'76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a',
- triangles:32850886,drawCalls:125,placements:38953,grassPlacements:38858};
-const hash=b=>createHash('sha256').update(b).digest('hex'),checks=[],sources={},assets=new Map();
+ triangles:30842052,drawCalls:112,placements:13969,grassPlacements:13874};
+const hash=b=>createHash('sha256').update(b).digest('hex'),checks=[],sources={},assets=new Map(),assetBytes=new Map();
 for(const name of ['../vegetation.js','./vegetation-clumps.mjs','../map-layout.js'])sources[name]=hash(await readFile(new URL(name,import.meta.url)));
-const assetNames=['island_tree_01','island_tree_01-far','tree_small_02','tree_small_02-far','grass_medium_01','grass_medium_02','grass_bermuda_01'];
+const assetNames=['island_tree_01','island_tree_01-far','tree_small_02','tree_small_02-far','grass_bermuda_01','wild_leafy_a','wild_leafy_b','wild_upright_a','wild_upright_b'];
 for(const name of assetNames){
- const b=await readFile(new URL(`../assets/foliage-revision/${name}.glb`,import.meta.url));
+ const b=await readFile(new URL(`../assets/${name.startsWith('wild_')?'wild-grass':'foliage-revision'}/${name}.glb`,import.meta.url));
  assert.equal(b.readUInt32LE(0),0x46546c67);assert.equal(b.readUInt32LE(4),2);
- assets.set(name,JSON.parse(b.subarray(20,20+b.readUInt32LE(12)).toString()));sources[`${name}.glb`]=hash(b);
+ assets.set(name,JSON.parse(b.subarray(20,20+b.readUInt32LE(12)).toString()));assetBytes.set(name,b);sources[`${name}.glb`]=hash(b);
 }
+const manifestBytes=await readFile(new URL('../wild-grass-assets.json',import.meta.url)),manifest=JSON.parse(manifestBytes),manifestContents=new Map();
+sources['wild-grass-assets.json']=hash(manifestBytes);
+for(const f of manifest.files){assert.match(f.file,/^assets\/wild-grass\/[\w/.-]+$/);assert.ok(!f.file.includes('..'));manifestContents.set(f.file,await readFile(new URL('../'+f.file,import.meta.url)))}
+const prepareBytes=await readFile(new URL('../tools/prepare-wild-grass.mjs',import.meta.url)),vegetationSource=(await readFile(new URL('../vegetation.js',import.meta.url))).toString();
 const near=(a,b,e=1e-9)=>assert.ok(Math.abs(a-b)<=e,`${a} != ${b}`);
 function check(name,fn){try{const evidence=fn();checks.push({name,pass:true,...evidence===undefined?{}:{evidence}})}catch(e){checks.push({name,pass:false,error:e.message})}}
 function rng(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296}}
@@ -33,6 +38,21 @@ function spatial(points,size=.5){
 }
 const index=spatial(all),quantile=(values,q)=>[...values].sort((a,b)=>a-b)[Math.floor((values.length-1)*q)];
 const phaseCoherence=(points,axis,pitch)=>Math.hypot(points.reduce((s,p)=>s+Math.cos(p[axis]*Math.PI*2/pitch),0),points.reduce((s,p)=>s+Math.sin(p[axis]*Math.PI*2/pitch),0))/points.length;
+// Decode source PNG rows on CPU: colorType alone does not prove useful alpha.
+function alphaCoverage(png){
+ const width=png.readUInt32BE(16),height=png.readUInt32BE(20),stride=width*4,idat=[];
+ assert.equal(png[24],8);assert.equal(png[25],6);assert.equal(png[28],0);
+ for(let at=8;at<png.length;){const len=png.readUInt32BE(at),type=png.subarray(at+4,at+8).toString();if(type==='IDAT')idat.push(png.subarray(at+8,at+8+len));at+=12+len}
+ const encoded=inflateSync(Buffer.concat(idat)),pixels=Buffer.alloc(stride*height);
+ assert.equal(encoded.length,(stride+1)*height);
+ const paeth=(a,b,c)=>{const p=a+b-c,pa=Math.abs(p-a),pb=Math.abs(p-b),pc=Math.abs(p-c);return pa<=pb&&pa<=pc?a:pb<=pc?b:c};
+ for(let y=0;y<height;y++){const filter=encoded[y*(stride+1)];assert.ok(filter<=4);for(let x=0;x<stride;x++){
+  const i=y*stride+x,left=x>=4?pixels[i-4]:0,up=y?pixels[i-stride]:0,ul=x>=4&&y?pixels[i-stride-4]:0;
+  pixels[i]=(encoded[y*(stride+1)+1+x]+[0,left,up,Math.floor((left+up)/2),paeth(left,up,ul)][filter])&255;
+ }}
+ let clear=0,leaf=0;for(let i=3;i<pixels.length;i+=4){if(pixels[i]<10)clear++;if(pixels[i]>245)leaf++}
+ return {clear:clear/(width*height),leaf:leaf/(width*height),pixels,width,height};
+}
 
 check('original tree/shrub transforms and species/shadow flags byte-identical',()=>{
  assert.equal(hash(trees()),baseline.treeTransformsSHA256);return {sha256:hash(trees()),near:plan.near.map(a=>a.length),far:plan.far.map(a=>a.length),shrubs:plan.shrubs.length};
@@ -88,10 +108,21 @@ check('each root belongs to an actual irregular lobe and a valid species communi
  for(const p of all){
   const c=clumpById.get(p.clumpId),patch=patchById.get(p.patchId);assert.ok(c&&patch);assert.equal(c.patchId,p.patchId);assert.ok(patch.lobes.includes(c.id));
   const dx=p.x-c.x,dz=p.z-c.z,u=dx*Math.cos(c.angle)+dz*Math.sin(c.angle),v=-dx*Math.sin(c.angle)+dz*Math.cos(c.angle);
-  assert.ok(Math.hypot(u/c.rx,v/c.rz)<=1.2*1.25+1e-9);assert.ok([c.baseVariant,c.mediumVariant,c.tallVariant].includes(p.variant));
+  assert.ok(Math.hypot(u/c.rx,v/c.rz)<=1.2*1.25+1e-9);assert.ok([c.baseVariant,4,5,c.tallVariant].includes(p.variant));
   if(p.zone==='satellite')assert.equal(p.variant,c.baseVariant);if(p.variant>=6)assert.equal(c.seedHeads,true);
  }
  for(const c of plan.clumps){assert.equal(byClump.get(c.id).length,c.rootCount);assert.equal(c.baseVariant,patchById.get(c.patchId).baseVariant)}
+});
+check('posture mix contracts old footprints and feathers existing clumps without new infill',()=>{
+ for(const p of all){assert.ok(Number.isFinite(p.previousClearanceRadius));assert.ok(p.clearanceRadius<=p.previousClearanceRadius+1e-9)}
+ const mixed=plan.clumps.filter(c=>{const ps=byClump.get(c.id).filter(p=>p.zone==='core');return ps.some(p=>p.variant<4)&&ps.some(p=>p.variant===4||p.variant===5)});
+ assert.ok(mixed.some(c=>c.featured&&c.x<0)&&mixed.some(c=>c.featured&&c.x>0),'Both viewed banks need coherent short/tall core pockets');
+ const a=all.filter(p=>p.variant===4),b=all.filter(p=>p.variant===5),low=all.filter(p=>p.zone==='core'&&p.variant<4),edge=all.filter(p=>p.zone==='satellite');
+ assert.ok(quantile(b.map(p=>p.height),.5)<quantile(a.map(p=>p.height),.5)*.8,'Outward posture must actually render lower, not just rename the asset');
+ assert.ok(quantile(a.map(p=>p.height),.9)>quantile(a.map(p=>p.height),.1)*1.5,'Clump shoulders require meaningful height variation');
+ assert.ok(quantile(edge.map(p=>p.height),.5)<quantile(a.map(p=>p.height),.5));
+ assert.ok(assets.get('wild_leafy_b').extras.sourceRadiusRatio>assets.get('wild_leafy_a').extras.sourceRadiusRatio*1.8);
+ return {mixedClumps:mixed.length,lowCoreRoots:low.length,uprightHeightMedian:quantile(a.map(p=>p.height),.5),outwardHeightMedian:quantile(b.map(p=>p.height),.5),edgeHeightMedian:quantile(edge.map(p=>p.height),.5),rootCountReduced:all.length<baseline.grassPlacements};
 });
 check('core density exceeds feathered satellite density by sampled physical area',()=>{
  let core=0,satellite=0,coreArea=0,satelliteArea=0;
@@ -185,6 +216,63 @@ check('source GLB bounds support declared radius and plausible leaf scale',()=>{
   const ratio=Math.hypot(hi[0]-lo[0],hi[2]-lo[2])/(2*(hi[1]-lo[1]));assert.ok(ratio<=b.radiusRatio,b.node);
   for(const p of b.placements)assert.ok(ratio*b.height*p.s+.03<=p.clearanceRadius+1e-9);
  }
+});
+
+check('CC0 source/license snapshots, derivative hashes and closed public whitelist',()=>{
+ assert.equal(manifest.license,'CC0-1.0');assert.equal(hash(prepareBytes),manifest.preparation.sha256);
+ assert.equal(new Set(manifest.files.map(f=>f.file)).size,manifest.files.length);
+ for(const f of manifest.files){const b=manifestContents.get(f.file);assert.equal(b.length,f.bytes,f.file);assert.equal(hash(b),f.sha256,f.file);assert.equal(f.license,'CC0-1.0');assert.ok(f.source.startsWith('https://'));assert.ok(f.derivatives.length>10)}
+ const official=manifestContents.get('assets/wild-grass/source/license/ambientcg-license.html').toString();
+ assert.match(official,/All ambientCG assets are provided under/);assert.match(official,/Creative Commons CC0/);
+ assert.match(manifestContents.get('assets/wild-grass/source/license/CC0-1.0.txt').toString(),/CC0 1.0 Universal/);
+ assert.deepEqual(manifest.sourceAssets.map(a=>a.id),['Foliage001','Foliage006']);
+ for(const file of manifest.publicWhitelist){assert.ok(manifestContents.has(file));assert.ok(!file.includes('/source/'));assert.ok(/\.(glb|txt)$/.test(file))}
+ for(const spec of GRASS_VARIANTS.slice(4)){assert.ok(spec.asset.startsWith('wild_'));assert.ok(manifest.publicWhitelist.includes(`assets/wild-grass/${spec.asset}.glb`))}
+ return {filesVerified:manifest.files.length,publicFiles:manifest.publicWhitelist.length,sourceAssets:manifest.sourceAssets.map(a=>a.source)};
+});
+const atlasMedians=[];
+check('wild tufts have finite nondegenerate curved geometry, correct winding and embedded cutout atlas',()=>{
+ const evidence=[];
+ for(const def of manifest.definitions){
+  const b=assetBytes.get(def.name),j=assets.get(def.name),binStart=20+b.readUInt32LE(12)+8;
+  assert.equal(b.length,b.readUInt32LE(8));assert.equal(j.images.length,1);assert.ok(!j.images[0].uri);assert.ok(!j.buffers[0].uri);
+  const imageView=j.bufferViews[j.images[0].bufferView],png=b.subarray(binStart+imageView.byteOffset,binStart+imageView.byteOffset+imageView.byteLength);
+  assert.equal(png.subarray(1,4).toString(),'PNG');assert.equal(png.readUInt32BE(16),1024);assert.equal(png.readUInt32BE(20),1024);assert.equal(png[25],6,'RGBA required, not opaque rectangular cards');
+  const coverage=alphaCoverage(png);assert.ok(coverage.clear>.5,'Atlas must be mostly transparent');assert.ok(coverage.leaf>.01&&coverage.leaf<.5,'Actual leaves must survive alpha');
+  const channels=[[],[],[]];for(let i=0;i<coverage.pixels.length;i+=4)if(coverage.pixels[i+3]>200)for(let c=0;c<3;c++)channels[c].push(coverage.pixels[i+c]);
+  const median=channels.map(v=>quantile(v,.5));atlasMedians.push({id:def.id,median});
+  const mat=j.materials[0];assert.equal(mat.alphaMode,'MASK');assert.equal(mat.doubleSided,true);assert.equal(mat.pbrMetallicRoughness.metallicFactor,0);assert.ok(mat.pbrMetallicRoughness.roughnessFactor>=.9);
+  assert.equal(j.extras.blades,def.blades);assert.equal(j.extras.segments,6);assert.ok(j.extras.maxBladeWidth<=.009);assert.ok(j.extras.bladeInfo.every(v=>v.width>0&&v.reach>0&&v.crop[0]>=0&&v.crop[1]>=0&&v.crop[0]+v.crop[2]<=1024&&v.crop[1]+v.crop[3]<=1024));
+  const blades=j.extras.bladeInfo;assert.ok(Math.max(...blades.map(v=>v.height))>Math.min(...blades.map(v=>v.height))*2);
+  assert.ok(blades.some(v=>v.arc<Math.PI/2)&&blades.some(v=>v.arc>Math.PI/2),'Both upward and drooping tips required');
+  assert.equal(new Set(blades.map(v=>v.root.join(','))).size,blades.length);assert.ok(Math.max(...blades.map(v=>Math.hypot(...v.root)))>.025);
+  function values(i){const a=j.accessors[i],v=j.bufferViews[a.bufferView],width={VEC3:3,VEC2:2,SCALAR:1}[a.type],n=a.count*width,at=binStart+v.byteOffset+(a.byteOffset||0);return Array.from({length:n},(_,k)=>a.componentType===5126?b.readFloatLE(at+k*4):b.readUInt16LE(at+k*2))}
+  const p=j.meshes[0].primitives[0],pos=values(p.attributes.POSITION),norm=values(p.attributes.NORMAL),uv=values(p.attributes.TEXCOORD_0),ix=values(p.indices);
+  assert.ok(pos.every(Number.isFinite));assert.ok(norm.every(Number.isFinite));assert.ok(uv.every(v=>v>=0&&v<=1));assert.equal(ix.length/3,def.blades*6*2);
+  for(let i=0;i<norm.length;i+=3)near(Math.hypot(...norm.slice(i,i+3)),1,1e-6);
+  for(let i=0;i<ix.length;i+=3){const a=ix[i]*3,b=ix[i+1]*3,c=ix[i+2]*3;assert.ok(Math.max(a,b,c)<pos.length);const u=pos.slice(b,b+3).map((v,k)=>v-pos[a+k]),v=pos.slice(c,c+3).map((v,k)=>v-pos[a+k]),n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]],len=Math.hypot(...n);assert.ok(len>1e-9);assert.ok(n.reduce((sum,x,k)=>sum+x*norm[a+k],0)/len>.8,'Winding must match supplied normals')}
+  const spec=GRASS_VARIANTS.find(v=>v.asset===def.name),positionAccessor=j.accessors[p.attributes.POSITION],sourceHeight=positionAccessor.max[1]-positionAccessor.min[1];
+  for(const placement of all.filter(p=>GRASS_VARIANTS[p.variant].asset===def.name))assert.ok(j.extras.maxBladeWidth*spec.height/sourceHeight*placement.s<=.015,'Rendered blade width must remain physically narrow');
+  evidence.push({name:def.name,blades:def.blades,triangles:ix.length/3,maxBladeWidth:j.extras.maxBladeWidth,transparentPixelFraction:coverage.clear,opaqueLeafFraction:coverage.leaf,opaqueRGBMedian:median});
+ }return evidence;
+});
+check('two source atlases retain distinct but neighboring authored olive palettes',()=>{
+ assert.equal(atlasMedians.length,4);for(const {id,median}of atlasMedians)for(let c=0;c<3;c++)assert.ok(Math.abs(median[c]-manifest.palette[id][c])<=7);
+ const a=atlasMedians.find(v=>v.id==='Foliage001'),b=atlasMedians.find(v=>v.id==='Foliage006');
+ assert.notDeepEqual(a.median,b.median);assert.ok(a.median.every((v,c)=>Math.abs(v-b.median[c])<=7));
+ return {sourcePixelMedians:atlasMedians.slice(0,2),scope:'Authoring normalization only, not rendered art acceptance'};
+});
+check('root shading is grass-only; unchanged wind deformation also binds shadow materials',()=>{
+ const start=vegetationSource.indexOf('function windMaterial('),end=vegetationSource.indexOf('function instances(',start);
+ assert.ok(start>=0&&end>start);const compile=Function('time','return ('+vegetationSource.slice(start,end).trim()+')')({value:0});
+ const shader=()=>({uniforms:{},vertexShader:'#include <common>\n#include <begin_vertex>',fragmentShader:'#include <common>\n#include <color_fragment>'});
+ const tree={},grass={},depth={},ts=shader(),gs=shader(),ds=shader();
+ compile(tree,.34,.022,'probe',false);compile(grass,.34,.022,'probe',true);compile(depth,.34,.022,'probe');tree.onBeforeCompile(ts);grass.onBeforeCompile(gs);depth.onBeforeCompile(ds);
+ assert.equal(ts.vertexShader,ds.vertexShader);assert.equal(ts.fragmentShader,ds.fragmentShader);assert.ok(!ts.fragmentShader.includes('vGrassRootHeight'));
+ assert.match(gs.vertexShader,/position\.y\*length\(instanceMatrix\[1\]\.xyz\)/);assert.match(gs.fragmentShader,/mix\(\.55,1\.,smoothstep\(\.012,\.13,vGrassRootHeight\)\)/);
+ assert.match(vegetationSource,/windMaterial\(mat,height,wind,label,!tree\)/);assert.match(vegetationSource,/windMaterial\(inst.customDepthMaterial,height,wind,label\)/);
+ const wind=s=>s.slice(s.indexOf('float foliagePhase'));assert.equal(wind(ts.vertexShader),wind(gs.vertexShader));assert.notEqual(tree.customProgramCacheKey(),grass.customProgramCacheKey());
+ return {rootHeightMeters:[.012,.13],minimumAlbedoFactor:.55,treeAndShadowRootShading:false};
 });
 
 const measurements={triangles:0,drawCalls:0,placements:0,grassTriangles:0,grassDrawCalls:0,byBatch:[]};

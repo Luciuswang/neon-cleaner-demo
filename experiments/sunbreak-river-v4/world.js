@@ -18,6 +18,7 @@ import {buildRuins} from './ruins.js';
 import {buildRiverbankDetail} from './riverbank-detail.js';
 import {buildDistantLandscape} from './distant-landscape.js';
 import {buildRiverWater} from './river-water.js';
+import {SOIL_MOISTURE_GLSL,soilMoisture} from './ground-moisture.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
@@ -76,12 +77,14 @@ export async function buildWorld(ctx){
  const target=new T.Object3D();target.position.set(0,0,-4);scene.add(target);sun.target=target;
  rnd.setPixelRatio(Math.min(devicePixelRatio,1.5));rnd.toneMappingExposure=1.08;
 
- const mud=materials.mud.clone();mud.roughness=.78;mud.normalScale.set(.80,.80);mud.envMapIntensity=.48;mud.color.set(0xc2b6a1);
+ const mud=materials.mud.clone();mud.roughness=.94;mud.normalScale.set(.80,.80);mud.envMapIntensity=.38;mud.color.set(0xd5c9b4);
  mud.onBeforeCompile=s=>{
   s.uniforms.gravelMap={value:materials.stone.map};
+  s.uniforms.soilRain=rainStrength;
   s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vGroundWorld;').replace('#include <begin_vertex>','#include <begin_vertex>\nvGroundWorld=(modelMatrix*vec4(position,1.)).xyz;');
   s.fragmentShader=s.fragmentShader.replace('#include <common>',`#include <common>
-   varying vec3 vGroundWorld;uniform sampler2D gravelMap;
+   varying vec3 vGroundWorld;uniform sampler2D gravelMap;uniform float soilRain;
+   ${SOIL_MOISTURE_GLSL}
    float earthHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
    float earthNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(earthHash(i),earthHash(i+vec2(1,0)),f.x),mix(earthHash(i+vec2(0,1)),earthHash(i+1.),f.x),f.y);}
    float pathAt(vec2 p){float bank=1.-smoothstep(1.4,2.7,abs(abs(p.x)-11.2-sin(p.y*.15)*.6));float cross=1.-smoothstep(.9,2.2,min(min(abs(p.y+23.),abs(p.y+4.)),abs(p.y-15.)));return max(bank,cross);}
@@ -100,14 +103,19 @@ export async function buildWorld(ctx){
    diffuseColor.rgb=mix(vec3(soilLuma)*vec3(.95,1.,.89),diffuseColor.rgb,.72);
    float forestFloor=smoothstep(34.,49.,max(abs(gp.x),abs(gp.y+4.)));
    diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.63,.83,.47),forestFloor*(.54+macro*.3));
-   float shoreWidth=3.4+.8*cos(gp.y*.17)+.35*sin(gp.y*.47);
-   float damp=(1.-smoothstep(shoreWidth-.6,shoreWidth+3.4,abs(gp.x)+earthNoise(gp*1.4)*.8));
-   diffuseColor.rgb*=1.-damp*.24;
+   float soilWet=soilMoisture(gp,soilRain);
+   // Dry mineral fines are lighter and matte; saturated bank mud is darker.
+   // Keep scanned structure and broad dry areas rather than a uniform grade.
+   vec3 drySoil=diffuseColor.rgb*vec3(1.48,1.40,1.25);
+   vec3 wetSoil=diffuseColor.rgb*vec3(.66,.70,.67);
+   diffuseColor.rgb=mix(drySoil,wetSoil,soilWet);
   `);
   s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
-   float wetPocket=smoothstep(.35,.76,earthNoise(vGroundWorld.xz*.83))*(1.-smoothstep(32.,55.,max(abs(vGroundWorld.x),abs(vGroundWorld.z+4.))));
-   roughnessFactor=clamp(mix(roughnessFactor,.32,wetPocket*.48),.26,.94);`);
- };mud.customProgramCacheKey=()=> 'river-ground-paths-v2';
+   float pore=earthNoise(vGroundWorld.xz*2.3);
+   roughnessFactor=mix(max(roughnessFactor,.89),.34+pore*.14,soilWet);`);
+  s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
+   normal=normalize(mix(nonPerturbedNormal,normal,mix(1.,.68,soilWet)));`);
+ };mud.customProgramCacheKey=()=> 'river-wet-bank-dry-village-v3';
  const geo=new T.PlaneGeometry(TERRAIN_GRID.size,TERRAIN_GRID.size,TERRAIN_GRID.segments,TERRAIN_GRID.segments);geo.rotateX(-Math.PI/2);
  const p=geo.attributes.position,uv=geo.attributes.uv;
  for(let i=0;i<p.count;i++){
@@ -117,7 +125,9 @@ export async function buildWorld(ctx){
  }geo.computeVertexNormals();
  const terrain=new T.Mesh(geo,mud);terrain.receiveShadow=true;installTerrainRaycast(T,terrain,TERRAIN_GRID.size,TERRAIN_GRID.segments);world.add(terrain);solids.push(terrain);
  // A separate measured riverbed follows the same height contract, with gravel.
- const bedGeo=new T.PlaneGeometry(18,160,72,320);bedGeo.rotateX(-Math.PI/2);
+ // Same 0.5m cells/diagonals as the ground underneath. Finer mismatched
+ // triangles could dip through it between vertices and reveal straight seams.
+ const bedGeo=new T.PlaneGeometry(18,160,36,320);bedGeo.rotateX(-Math.PI/2);
  const bp=bedGeo.attributes.position,bu=bedGeo.attributes.uv;
  for(let i=0;i<bp.count;i++){const x=bp.getX(i),z=bp.getZ(i);bp.setY(i,groundHeight(x,z)+.008);bu.setXY(i,x/2,z/2)}bedGeo.computeVertexNormals();
  const gravel=materials.stone.clone();gravel.color.set(0x9ca28d);gravel.roughness=.78;gravel.transparent=true;gravel.depthWrite=false;
@@ -142,9 +152,9 @@ export async function buildWorld(ctx){
  for(const side of [-1,1])for(const z of [-28,-17,-9,3,11,22]){
   const pond=new T.Mesh(puddleGeometry,puddleMaterial);pond.rotation.x=-Math.PI/2;pond.position.set(side*(10+random()*2),.019,z);pond.scale.set(1.1+random(),.42+random()*.6,1);world.add(pond);puddles.push(pond);
  }
- puddleMaterial.onBeforeCompile=s=>{s.uniforms.uTime=windTime;s.uniforms.uRain=rainStrength;s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 wetPos;varying vec2 wetLocal;').replace('#include <begin_vertex>','#include <begin_vertex>\nwetLocal=position.xy;wetPos=(modelMatrix*vec4(position,1.)).xyz;');s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nuniform float uTime;uniform float uRain;varying vec3 wetPos;varying vec2 wetLocal;').replace('#include <alphatest_fragment>',`float irregular=sin(wetPos.x*11.+sin(wetPos.z*6.))*sin(wetPos.z*14.)*.035;
+ puddleMaterial.onBeforeCompile=s=>{s.uniforms.uTime=windTime;s.uniforms.uRain=rainStrength;s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 wetPos;varying vec2 wetLocal;').replace('#include <begin_vertex>','#include <begin_vertex>\nwetLocal=position.xy;wetPos=(modelMatrix*vec4(position,1.)).xyz;');s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nuniform float uTime;uniform float uRain;varying vec3 wetPos;varying vec2 wetLocal;\n'+SOIL_MOISTURE_GLSL).replace('#include <alphatest_fragment>',`float irregular=sin(wetPos.x*11.+sin(wetPos.z*6.))*sin(wetPos.z*14.)*.035;
   float wetAngle=atan(wetLocal.y,wetLocal.x),wetBoundary=.85+.1*sin(wetAngle*5.)+.05*sin(wetAngle*9.+.7);
-  diffuseColor.a*=1.-smoothstep(wetBoundary-.24,wetBoundary-.055,length(wetLocal)+irregular);if(diffuseColor.a<.005)discard;
+  diffuseColor.a*=(1.-smoothstep(wetBoundary-.24,wetBoundary-.055,length(wetLocal)+irregular))*smoothstep(.30,.70,soilMoisture(wetPos.xz,uRain));if(diffuseColor.a<.005)discard;
   #include <alphatest_fragment>`).replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
   vec2 q=wetPos.xz*2.3,id=floor(q),f=fract(q)-.5;float t=fract(uTime*1.3+fract(sin(dot(id,vec2(12.1,78.2)))*4375.));
   float wave=sin((length(f)-t*.65)*60.)*exp(-abs(length(f)-t*.65)*26.)*(1.-t);
@@ -225,7 +235,7 @@ export async function buildWorld(ctx){
   },
   render(){water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
-  info(){return{version:'river-v4-reference-water',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'freely wadeable; three raised crossings'},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
+  info(){return{version:'river-v4-wildbank',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
   actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa
  };
 }

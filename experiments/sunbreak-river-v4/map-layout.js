@@ -1,7 +1,7 @@
 import {CABIN_NAVIGATION_LOCAL_BOUNDS,createHouseTransform} from './buffer-house-logic.js';
 // One shared geometric contract for rendering, movement, ray occlusion and AI.
 export const MAP={minX:-32,maxX:32,minZ:-34,maxZ:26,waterY:-.18};
-export const TERRAIN_GRID={size:260,segments:400};
+export const TERRAIN_GRID={size:260,segments:520};
 export const crossings=[-23,-4,15];
 export const teamSpawns=[[-27,0,22],[27,0,22]];
 export const bufferPlacements=[{id:'west-buffer',x:-26,z:9,yaw:0},{id:'east-buffer',x:26,z:-17,yaw:Math.PI}];
@@ -66,9 +66,10 @@ export function groundHeight(x,z){
  const meander=.32*Math.sin(ax*.9)+.14*Math.sin(ax*2.8);
  const distance=Math.min(Math.abs(z+23-meander),Math.abs(z-15-meander));
  const ford=Math.max(0,Math.min(1,(distance-1.2)/1.8));
- if(ford===0)return 0;
  const t=Math.max(0,Math.min(1,(ax-width+1.1)/2.9));
- return -.58*(1-t*t*(3-2*t))*ford*ford*(3-2*ford);
+ // Submerged gravel fords: 16cm of water over the central shelf, not dams.
+ // Smooth shoulders preserve existing cross-river routes and movement limits.
+ return -(.58-.24*(1-ford*ford*(3-2*ford)))*(1-t*t*(3-2*t));
 }
 export function terrainHeight(x,z){
  // Center footbridge has a traversable deck while water flows under it.

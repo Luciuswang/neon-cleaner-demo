@@ -1,3 +1,5 @@
 # Preserve source/evidence/upstream text bytes across Windows and Linux.
 # Root LFS filters for GLB remain inherited; only text conversion is disabled.
 * -text
+# Preserve this exact upstream license snapshot, including its original spaces.
+assets/wild-grass/source/license/ambientcg-license.html -whitespace

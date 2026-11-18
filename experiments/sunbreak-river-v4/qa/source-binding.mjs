@@ -10,7 +10,7 @@ export async function runtimeHashes(){
  const read=async p=>JSON.parse(await readFile(resolve(root,p),'utf8'));
  const foliage=await read('foliage-revision.json');for(const f of foliage.derivatives)names.add(f.file);
  const local=await read('asset-sources.json');for(const a of local.assets.filter(a=>a.kind==='surface'))for(const f of a.files)names.add(f.path.replace('./river/',''));
- for(const manifest of ['daylight-assets.json','afterrain-assets.json']){
+ for(const manifest of ['daylight-assets.json','afterrain-assets.json','wild-grass-assets.json']){
   let m;try{m=await read(manifest)}catch(e){if(e.code==='ENOENT')continue;throw e}
   for(const f of m.files||[])names.add(f.file||f.path);
   for(const a of m.assets||[])for(const f of a.files||[])names.add(f.file||f.path);

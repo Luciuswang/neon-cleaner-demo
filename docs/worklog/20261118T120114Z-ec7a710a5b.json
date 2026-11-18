@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261118T120114Z-ec7a710a5b",
+  "task_id": "sunbreak-river-wildbank-2026-11-18",
+  "timestamp_utc": "2026-11-18T12:01:14.583899+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall wildbank source-only WIP: CC0 atlas-based mixed grass, two connected submerged fords and irregular wet-bank to dry-soil transition implemented; bridge, older demos, combat, weapons/NPC animation and buildings preserved. Final12 CPU suites and9 current browser phases PASS;182 runtime bindings and245 staged byte identities verified. Descartes engineering CONDITIONAL PASS for WIP, Lovelace four final target stills PASS for the three annotated corrections only; overall reference art REVISE, continuous motion UNVERIFIED. Strict release BLOCKED: sunny max1173.1ms/3 frames>50ms; storms52.6ms/1 and53.6ms/4. Causes unknown, failed evidence retained, no retry-until-pass. No Pages update; local http://127.0.0.1:5190/river/ . Next: diagnose retained hitches, then pale water-edge reflection and sediment relief. See task packet and experiments/sunbreak-river-v4/qa/release.json. Pre-existing dirty private vault preserved/skipped; no full UE/private portability or AAA claim.",
+  "commit_shas": [
+    "e9c05a860b3e22fadb3ebf1fbee565db9b5eefc2"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

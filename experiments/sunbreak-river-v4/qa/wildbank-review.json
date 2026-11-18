@@ -1,0 +1,59 @@
+{
+  "protocol": "offscreen-cinematic-v1",
+  "task": "sunbreak-river-wildbank-2026-11-18",
+  "engineering": {
+    "reviewer": "Descartes",
+    "verdict": "CONDITIONAL PASS",
+    "scope": "Source-only WIP checkpoint approved by independent engineering review. All9 functional phases/182 runtime bindings and12 CPU suites/test hashes, terrain agreement, asset provenance/preparation and package bytes verified. Expanded staged-byte audit must pass before upload; upload acknowledgement remains separate. No release acceptance.",
+    "releaseBlockers": [
+      "Three prescribed strict performance failures retained: sunny max1173.1ms with3 frames>50ms; storms52.6ms/1 and53.6ms/4. Cause unknown; no retry-until-pass.",
+      "Art PASS is limited to the four final target stills/three annotated corrections; overall AAA remains REVISE.",
+      "Continuous motion UNVERIFIED. No Pages publication."
+    ],
+    "fixedAuditFindings": [
+      "Rendered/support3.805cm error corrected with aligned0.5m grid; dense5cm probes and reviewer regressions retain original3cm limit, max2.4436cm.",
+      "Riverbed overlay uses same grid/diagonals; double-ray probes establish8mm separation instead of intersecting triangles.",
+      "Modified fords have120ms intermediate support samples, not just endpoints; these are sampled, NOT per-frame continuous review.",
+      "Unchanged deep-channel ballistic descent keeps no-penetration/grounded endpoint tests; original overly broad contact failure retained.",
+      "Cabin tests now require actual door-plane entry and measured key-driven return to porch with timeout/position/support/selection checks. Exact original failed close cause remains unproven."
+    ]
+  },
+  "art": {
+    "reviewer": "Lovelace",
+    "verdict": "PASS",
+    "scope": "ONLY the three annotated static-visual corrections: naturalized mixed grass, two connected shallow fords and wet-to-dry ground. Not whole-map/AAA or release acceptance.",
+    "AAAVerdict": "REVISE",
+    "confidence": "high",
+    "evidence": [
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wild-grass.png",
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wet-to-dry.png",
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/south-ford.png",
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/north-ford.png"
+    ],
+    "priorNineViewReview": [
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/wild-grass.png",
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/wet-to-dry.png",
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/south-ford.png",
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/north-ford.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/riverbank.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/reference-close.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/valley-hero.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/valley-wide.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/sun-side.png"
+    ],
+    "improvements": [
+      "Tall upright and low outward leaves now mix with open cores and shorter sparser edges; pale stems, fluorescent tones and mismatched cyan/lime islands have not returned.",
+      "Both river sections visibly connected without exposed earth dams; central bridge preserved.",
+      "Wet reflective margin grades to matte outer soil, not uniform wet film."
+    ],
+    "remaining": [
+      {"severity":"Minor","scope":"this correction","issue":"Some flat leaves and repeated fan silhouettes remain noticeable up close."},
+      {"severity":"Major","scope":"whole-map reference quality","issue":"Pale shore wedge and shallow/deep reflection-transmission relationships remain unfinished."},
+      {"severity":"Major","scope":"whole-map reference quality","issue":"Sediment still has planar texture character; embedded rocks/relief, village and mountains remain below reference fidelity."}
+    ],
+    "captureLimit": "Lovelace independently reopened all four listed11:48 current-bound target stills and confirmed scoped static PASS. The11:36 nine-view review is listed separately; final11:48 afterrain views were NOT independently reopened. No continuous-motion, source/license or performance acceptance by visual review."
+  },
+  "temporal": {"verdict":"UNVERIFIED","note":"Six timed live-rendered frames are not uninterrupted motion review; prior recording failures retained."},
+  "releaseVerdict":"BLOCKED",
+  "publication":"Source-only WIP checkpoint; no Pages update, AAA/UE5 parity or multiplayer claim."
+}

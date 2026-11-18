@@ -22,7 +22,7 @@ export const RIVER_DEPTH_GLSL=`
   float meander=.32*sin(ax*.9)+.14*sin(ax*2.8);
   float ford=min(abs(p.y+23.-meander),abs(p.y-15.-meander));
   float ft=clamp((ford-1.2)/1.8,0.,1.),bt=clamp((ax-w+1.1)/2.9,0.,1.);
-  return -.18+.58*(1.-bt*bt*(3.-2.*bt))*ft*ft*(3.-2.*ft);
+  return -.18+(.58-.24*(1.-ft*ft*(3.-2.*ft)))*(1.-bt*bt*(3.-2.*bt));
  }
  float flowHeight(vec2 p,float t){
   float bend=.16*sin(p.x*1.7+p.y*.43)+.08*sin(p.x*3.3-p.y*.74);

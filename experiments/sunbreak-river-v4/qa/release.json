@@ -1,11 +1,40 @@
 {
-  "schema": "river-reference-water-checkpoint-v1",
+  "schema": "river-wildbank-checkpoint-v1",
   "protocol": "offscreen-cinematic-v1",
   "captureMethod": "native-headless actual browser WebGL canvas, NOT UE SceneCapture or desktop capture",
-  "task": "sunbreak-river-reference-water-2026-11-18",
-  "date": "2026-11-18T10:02:01.404Z",
+  "task": "sunbreak-river-wildbank-2026-11-18",
+  "date": "2026-11-18T11:59:16.021Z",
   "verdict": "BLOCKED",
-  "scope": "Playable visual WIP. Reference art/AAA/UE5 parity unaccepted. No public release, multiplayer or continuous-motion claim.",
+  "scope": "Targeted playable visual WIP. Source checkpoint only; no AAA/UE5 parity, Pages release or continuous-motion acceptance.",
+  "developmentEvidence": [
+    {
+      "path": "qa/evidence/wildbank-2026-11-18T11-09-47-525Z/",
+      "status": "INTERMEDIATE",
+      "note": "Old pale grass; early wet/dry and ford correction."
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-18T11-13-05-439Z/traversal-failure-1.json",
+      "status": "FAIL RETAINED",
+      "note": "New assertion incorrectly required continuous contact in unchanged deep channel z=0; observed3.728cm positive ballistic gap, no sinking. Modified fords keep original3cm bound; deepchannel retains no-penetration and endpoint contact.",
+      "sha256": "d3113bbffb9b64c002e2701e2beeb223ec89954a19a54b736b3a9478fd4aa22a"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-18T11-38-35-358Z/cabins-failure-1.json",
+      "status": "FAIL RETAINED",
+      "note": "East close E had no selected door: near=true, visible=false, toggles1. Exact pre-close player position was not captured, so precise cause remains unproven. Replaced open-loop timed retreat with actual key movement to measured porch position and explicit selection assertion; no runtime door change. Corrected test passes17 checks.",
+      "sha256": "ef112701d7881b3b881b97955b169e18854c40faf44e986900319bdb6ca89c46"
+    },
+    {
+      "path": "qa/evidence/wildbank-2026-11-18T11-16-51-494Z/",
+      "status": "REJECTED",
+      "note": "First grass atlas pass fluorescent and broad paper-ribbon silhouettes."
+    },
+    {
+      "path": "qa/evidence/wildbank-2026-11-18T11-24-16-085Z/",
+      "status": "REVISE",
+      "note": "Olive palette, ford continuity and wet/dry approved within still scope; repeated upright grass fan silhouettes need more variation."
+    }
+  ],
   "sources": {
     "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
     "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
@@ -118,12 +147,47 @@
     "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
     "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
     "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
+    "assets/wild-grass/Foliage001-leaf-rgba.png": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+    "assets/wild-grass/Foliage006-leaf-rgba.png": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+    "assets/wild-grass/LICENSE.txt": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+    "assets/wild-grass/source/Foliage001/Foliage001.png": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+    "assets/wild-grass/source/Foliage001/metadata.json": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+    "assets/wild-grass/source/Foliage006/Foliage006.png": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+    "assets/wild-grass/source/Foliage006/metadata.json": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+    "assets/wild-grass/source/license/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/wild-grass/source/license/ambientcg-license.html": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+    "assets/wild-grass/wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "assets/wild-grass/wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "assets/wild-grass/wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "assets/wild-grass/wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
     "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
     "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
     "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
     "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
     "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
-    "credits.html": "153148b1c5a6b473ecb56bf630f0e6d4b1194435124806a700a8fc33cd98c70e",
+    "credits.html": "2b3d14655e1fed6117e7f55d88bcc4c1050ad7547a28bc975417fbc040544276",
     "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
     "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
     "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
@@ -131,14 +195,15 @@
     "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
     "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
     "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
     "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
-    "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
-    "qa/browser.mjs": "cca11a007063abc4a817e513d8bb8b30b19e3d6dcd4bd593d238c70f41a0e576",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "qa/browser.mjs": "065726152677ebcfd92c7dd64ddf35d14e28c2c2c5768284bb7ebba4563d91b8",
     "qa/hooks.js": "fa53187e7312b77c83381b8201c102d5711f0a38c127dd5f29969a82a182e695",
-    "qa/source-binding.mjs": "90ee606d4936ea2f5b6e3fe72d0cf125f5e7e6115223341d2ff6fb1c6b128c4d",
+    "qa/source-binding.mjs": "56c0396542f83abda0251e0f584411baa8232806ad2519941a46231cf85877f8",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
-    "river-water.js": "ce9467eaf4ca2674f1d171e019872c69fd87bbec3605f4cca01170da2e32b665",
+    "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
     "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
     "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
     "serve.mjs": "bf00904582bfbdb3ce43d51f7f6ee1b18557215443584d9e29549b50643aca1a",
@@ -147,66 +212,74 @@
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
     "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
-    "vegetation.js": "3d384f11a2dc381a76ffc93e9ba99d64f27d609e968de6df93f205509c449f60",
+    "vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
     "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
     "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
     "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
-    "world.js": "e16654460e06726bc1858b87dcab6ceac2c7b5e4d1c694daace80d8f92927f9c"
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
+    "world.js": "692e65a25de8de60005b001acba48f29ae7e5c1afae22e1e5b877e239ca95ae6"
   },
   "functional": true,
   "reports": {
+    "wildbank": {
+      "path": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wildbank-1.json",
+      "sha256": "57531a435952f4ebf4e92818d2d873768cbbf2f9bde74f55aa842a48ec60184e",
+      "pass": true,
+      "checks": 5,
+      "sourceMismatches": []
+    },
     "afterrain": {
-      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/afterrain-1.json",
-      "sha256": "9f35143fca9c2aca0e1b469422a00a8dc5d1bb3f19907ec9761b74be31e7b3da",
+      "path": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/afterrain-1.json",
+      "sha256": "54ebfa0842eb0d23de713dc1dbbdf8353dc64d8fea641e545dc58225a8bc3ac5",
       "pass": true,
       "checks": 9,
       "sourceMismatches": []
     },
     "map": {
-      "path": "qa/evidence/map-2026-11-18T09-53-12-356Z/map-1.json",
-      "sha256": "27be32bf2b2c3a5ad97bc0b22d1d8d22c5334368f79fd6347bbe35d11281ed7a",
+      "path": "qa/evidence/map-2026-11-18T11-49-10-571Z/map-1.json",
+      "sha256": "7a5a2c0e7365b2c364b6694f5c8cbd026664f90a11d610445db6faf3a310de36",
       "pass": true,
       "checks": 2,
       "sourceMismatches": []
     },
     "art": {
-      "path": "qa/evidence/art-2026-11-18T09-53-39-646Z/art-1.json",
-      "sha256": "0a653f043fd6bd936eeb7b68e817f4c8e8e1965288113030d562044fc2d261b1",
+      "path": "qa/evidence/art-2026-11-18T11-49-36-107Z/art-1.json",
+      "sha256": "5005f636173f02cab6fb4eec0bac2964c211d019f86854772a32ad8d7a330445",
       "pass": true,
       "checks": 2,
       "sourceMismatches": []
     },
     "weather": {
-      "path": "qa/evidence/weather-2026-11-18T09-54-11-768Z/weather-1.json",
-      "sha256": "57778bba44b0a8270a76202b957e7afb80e2e1d395d058181b862ae8e87cc345",
+      "path": "qa/evidence/weather-2026-11-18T11-44-49-757Z/weather-1.json",
+      "sha256": "f1c208aa42b2e605a2a838061c74d174cbd6ec09ac808e3c6812b4d5f048ac4b",
       "pass": true,
       "checks": 4,
       "sourceMismatches": []
     },
     "cabins": {
-      "path": "qa/evidence/cabins-2026-11-18T09-54-44-074Z/cabins-1.json",
-      "sha256": "55c930f8180034a71f7944e535a55596c5975da1f8e8820ffe151268e858f44f",
+      "path": "qa/evidence/cabins-2026-11-18T11-50-09-821Z/cabins-1.json",
+      "sha256": "95503d7d8483860bf43f9b33fd47788c0e41b37ef99e3b8e7bec7aad4018f2f0",
       "pass": true,
-      "checks": 15,
+      "checks": 17,
       "sourceMismatches": []
     },
     "checks": {
-      "path": "qa/evidence/checks-2026-11-18T09-55-11-504Z/checks-1.json",
-      "sha256": "16851a7b2033f236fcab7be8adec51e138734e5e537e6e4f01dddd253015322c",
+      "path": "qa/evidence/checks-2026-11-18T11-45-22-309Z/checks-1.json",
+      "sha256": "d589ad18f137067638058f7622bb798a6059e68d837eb0d052d90fb8112a5b65",
       "pass": true,
       "checks": 32,
       "sourceMismatches": []
     },
     "traversal": {
-      "path": "qa/evidence/traversal-2026-11-18T09-55-53-920Z/traversal-1.json",
-      "sha256": "1f75919930a413d6c172e16b2750e934c7a5269af409a87f26326efa4cc95a88",
+      "path": "qa/evidence/traversal-2026-11-18T11-46-05-884Z/traversal-1.json",
+      "sha256": "7e59a0266ea8aaca478b2a8b9de9f56b11280719d947834e849783f925e2ba31",
       "pass": true,
-      "checks": 40,
+      "checks": 54,
       "sourceMismatches": []
     },
     "water-samples": {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/water-samples-1.json",
-      "sha256": "0aa7d8e7465cf7a7062e7f899eecb74b7e8e7ea419d88756eb746952319dfb6b",
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/water-samples-1.json",
+      "sha256": "bca44577d0f59f303d39451c9bcd2a426d02496f5f8c62704943fd23a82c7dec",
       "pass": true,
       "checks": 2,
       "sourceMismatches": []
@@ -214,111 +287,173 @@
   },
   "visuals": [
     {
-      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/reference-close.png",
-      "sha256": "2df50385b759dea4cb2bf7ccaf33ef45373ff113d42518d85b561cb57cf4a854",
+      "path": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/north-ford.png",
+      "sha256": "4632e7eb52374f4642e7d724147cbb58b626a0bf24c44a78b1d7fc3572e3e1de",
+      "statePath": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/north-ford.json",
+      "stateSHA256": "24509eacac6aa9a5f809c167d16c68ffb276db234f2b7d4d841f49b28abc9f3e",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 0.30590000057220457
+      "waterTime": 0.31180000019073484
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/riverbank.png",
-      "sha256": "1bd0767892b634ed1f13170ff42707bd96d097f0278de669f55ffd67447525d3",
+      "path": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/south-ford.png",
+      "sha256": "083481b0d265703bfa88006d2796900c554dcd402e4eaa50a5a289c7efba7a0e",
+      "statePath": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/south-ford.json",
+      "stateSHA256": "2078f925abcf3e7d3d8d7932720d6742fd3b93353b9addeae5682f15f2f8e7ff",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 0.30590000057220457
+      "waterTime": 0.31180000019073484
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/sun-side.png",
-      "sha256": "c61aa72b78b9642acc0e65573939a0c793f08180a0d3ec7e5437894b9067694f",
+      "path": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wet-to-dry.png",
+      "sha256": "c9fecbad8b6d942212897c7ea563eacb18b904de79e62a65f9d2995a0108f1ba",
+      "statePath": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wet-to-dry.json",
+      "stateSHA256": "5e0d5c8f414bd2b997b8e2b1fb9ab44ae97c780f1bfd52a754d38a2aebff32d5",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 0.30590000057220457
+      "waterTime": 0.31180000019073484
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/valley-hero.png",
-      "sha256": "a6c925ae149a31ec3742d2ca7a71991c392fa5e5e5bb685755caac862fcd07ac",
+      "path": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wild-grass.png",
+      "sha256": "1a2a94d8d62da4a4cc1a476078e89de00f6e50f85d137462bd3739ebb24afb47",
+      "statePath": "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wild-grass.json",
+      "stateSHA256": "5fc6cec3fb57252b53171e44c133cf89186238373eaa3251b445ce1aadd8f127",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 0.30590000057220457
+      "waterTime": 0.31180000019073484
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/valley-wide.png",
-      "sha256": "f19916d62bac7fdd9973b549b594c0887fb2eaa7046735d3bdc8b528784e79b4",
+      "path": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/reference-close.png",
+      "sha256": "fb93e531b5f8df40548bf593dffb5a72da50d73b61baef15ea52adb323c91c04",
+      "statePath": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/reference-close.json",
+      "stateSHA256": "4aa7d39e96bfe3b1f02a19eaa348b4493b91fdb635ead36b252a1e5a3e5eb0c4",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 0.30590000057220457
+      "waterTime": 0.3187000007629395
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-0.png",
-      "sha256": "7beeb569763b3b460e8656d66c788b9b252b9794b84f454b6f93d2938031d992",
+      "path": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/riverbank.png",
+      "sha256": "388f6567003a57e12214a733874c0689c074eb32986125093010fc0464f81da1",
+      "statePath": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/riverbank.json",
+      "stateSHA256": "4f1355ff5da16b73b9d16350d1eb85bd2c0c4241fc7a69392688f1a0d107633e",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 1.767400000572205
+      "waterTime": 0.3187000007629395
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-1.png",
-      "sha256": "cbdcc52e6f7d1b546ef384d2a45de328160d49cb116db4a48395a9ad04740437",
+      "path": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/sun-side.png",
+      "sha256": "e4ebb24cad20fd9a7c2dd82d2b70145fa1aa18592f11965453867ad1eb5e06a2",
+      "statePath": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/sun-side.json",
+      "stateSHA256": "f45a71deef42b8514c9897bd3e499db88990ee16b855a142dc368b1fbce20bcb",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 2.9273000011444124
+      "waterTime": 0.3187000007629395
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-2.png",
-      "sha256": "be67e1407542e451fbca27bda2985beb7879b1f4a481de400bb7588d29c4b08f",
+      "path": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/valley-hero.png",
+      "sha256": "42d31aa897e6d8d5e71b5aa67412d5adc824f2f8b4bea1de2e3113d102f246ae",
+      "statePath": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/valley-hero.json",
+      "stateSHA256": "bfb604d0ba277749b12cae565513b0a85a2f35c8c1747bfc26f258354f4a219a",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 4.101100001335149
+      "waterTime": 0.3187000007629395
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-3.png",
-      "sha256": "6680616edb3e68ab15d3e5339485b070dda3287f16647cb4b115578d3e80cbd1",
+      "path": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/valley-wide.png",
+      "sha256": "8d6f357493d5467cb633f5aced088331103df6a9fe0a986397448fd876911cb8",
+      "statePath": "qa/evidence/afterrain-2026-11-18T11-48-47-979Z/valley-wide.json",
+      "stateSHA256": "adca7d098ae3479a18e91b818a883e8acc437b123a127c818af9f152d54ca512",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 5.513400000572211
+      "waterTime": 0.3187000007629395
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-4.png",
-      "sha256": "039c9fedeb75a5718642830880094bfb7dbb9f65f51a09691a95018a21f57785",
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-0.png",
+      "sha256": "675586d126ea37f84d38fb4a014b79f23911c9ecf7d9bee0f1f348f7c3e6865f",
+      "statePath": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-0.json",
+      "stateSHA256": "d06e4393d1d2307f6f37358f1c1f7f0ee997dea4b8b2ad5d7634f045fa96ceac",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 6.87980000019074
+      "waterTime": 1.744899999618531
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-5.png",
-      "sha256": "d9bda8a2ae37e4b1ac4a2222a2fbc75b802d2251e0b52d8683f362788a9b8400",
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-1.png",
+      "sha256": "e7f4b791eea17597c4559b895832fd415ef66dd6df4dccd0155cd540a4ddebc5",
+      "statePath": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-1.json",
+      "stateSHA256": "67fa56e696a333c0c7f4ed4f3bae0c778a20a1bbe2d76d2f68838e59f12748c4",
       "width": 1920,
       "height": 1080,
       "sourceMismatches": [],
-      "waterTime": 8.315600000381476
+      "waterTime": 2.9152999992370616
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-2.png",
+      "sha256": "466944c195c2d46b6a983f356f41b889485cb1c827add76faee476af834ccb2f",
+      "statePath": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-2.json",
+      "stateSHA256": "f9c42a133a5bcb4f7345a326e8bc61a17f86b9ae43ca473b3fa9f609645e7543",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 4.193199999809268
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-3.png",
+      "sha256": "d9d30e59d86bbcd40018665d014be700995cea76fcea03ac63d9c7aa2ef04f19",
+      "statePath": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-3.json",
+      "stateSHA256": "f0ac0c5b9b12c369a4b2e2d9bf5a7b89fa5383faf99b754138cda58d4c361b73",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 5.753699999809268
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-4.png",
+      "sha256": "53c68c2ebd082152abd3d13cba740183023ced329e46a289c0df5836c057e9a0",
+      "statePath": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-4.json",
+      "stateSHA256": "f0ab14ee80a86e210b26b1da79f0c6213dd1eeafde818306fb9a04d78db16ff9",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 7.348500000000004
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-5.png",
+      "sha256": "00365b97b6433dc4060eb21bc27c8edac18bf7a432ff602582a4ca7168c77945",
+      "statePath": "qa/evidence/water-samples-2026-11-18T11-47-13-754Z/flow-5.json",
+      "stateSHA256": "d1b1c8fc1e6d0df25f1f5425f7aeb9281c47a1552a9831ce358e8f6c310226c1",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 8.76969999980926
     }
   ],
-  "unitReport": "qa/reference-water-units.json",
+  "unitReport": "qa/wildbank-units.json",
   "independentReview": "qa/independent-review.json",
   "performance": {
     "verdict": "BLOCKED",
     "storm": [
       {
-        "path": "qa/evidence/benchmark-2026-11-18T09-50-25-458Z/benchmark-1.json",
-        "sha256": "e3f1eee016bc1257a869a6e8bc7110e4b39342ec20cb8501592f2ac41a143b05",
+        "path": "qa/evidence/benchmark-2026-11-18T11-51-40-853Z/benchmark-1.json",
+        "sha256": "4c209079bd3b7ff29f057bb900715485fdc8ee765ad00a706dd2039ce303dc36",
         "pass": false,
         "checks": 2,
         "sourceMismatches": [],
         "weather": 2,
-        "duration": 30016.899999999998,
+        "duration": 30010.699999999997,
         "p50": 17.5,
         "p95": 18.30000000000291,
         "p99": 18.599999999998545,
-        "max": 52.700000000004366,
+        "max": 52.599999999998545,
         "over50": 1,
         "viewport": [
           1920,
@@ -328,45 +463,45 @@
         "shots": 228
       },
       {
-        "path": "qa/evidence/benchmark-2026-11-18T09-51-22-738Z/benchmark-1.json",
-        "sha256": "d2ef4ef566574343a0a64b1a83eac7cb657e127ab8277667f26c87e5f20255ed",
+        "path": "qa/evidence/benchmark-2026-11-18T11-52-48-193Z/benchmark-1.json",
+        "sha256": "0c26c84487681c4bf2db3df8a81973516886a7530936856e3de42f6c4ae8b816",
         "pass": false,
         "checks": 2,
         "sourceMismatches": [],
         "weather": 2,
-        "duration": 30011.1,
+        "duration": 30012.000000000004,
         "p50": 17.5,
-        "p95": 18.39999999999418,
+        "p95": 18.30000000000291,
         "p99": 18.599999999998545,
-        "max": 390.6000000000022,
-        "over50": 2,
+        "max": 53.599999999998545,
+        "over50": 4,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "shots": 226
+        "shots": 228
       }
     ],
     "sunny": {
-      "path": "qa/evidence/sunny-benchmark-2026-11-18T09-49-27-764Z/sunny-benchmark-1.json",
-      "sha256": "99e8399205f11fb4c6728837e37f639dc1a3265ad2fdf0b64e264e151f89548b",
+      "path": "qa/evidence/sunny-benchmark-2026-11-18T11-50-37-069Z/sunny-benchmark-1.json",
+      "sha256": "c11ccdfdd06883c10ab509647c3f3f04d9eba5871c4a8ed35969201cbb8579ff",
       "pass": false,
       "checks": 2,
       "sourceMismatches": [],
       "weather": 0,
-      "duration": 30001.399999999998,
-      "p50": 17.5,
-      "p95": 18.30000000000291,
-      "p99": 18.599999999998545,
-      "max": 53.30000000000291,
-      "over50": 1,
+      "duration": 30016.5,
+      "p50": 16.69999999999709,
+      "p95": 16.80000000000291,
+      "p99": 16.900000000001455,
+      "max": 1173.1000000000058,
+      "over50": 3,
       "viewport": [
         1920,
         1080
       ],
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "shots": 229
+      "shots": 210
     },
     "requirements": {
       "width": 1920,
@@ -387,16 +522,14 @@
       "qa/evidence/water-motion-2026-11-18T09-35-21-053Z/water-motion-failure-1.json",
       "qa/evidence/water-motion-2026-11-18T09-38-02-368Z/water-motion-failure-1.json"
     ],
-    "cause": "Unknown; both direct canvas recording and diagnostic copied-canvas recording timed out. No full recording accepted."
+    "cause": "Unknown; retain prior direct/copied-canvas recording timeouts. No unchanged retry or video acceptance."
   },
   "changes": [
-    "Removed regular grass infill; deterministic irregular dense clumps, satellites and bare intervals.",
-    "Dimensional gravel/submerged stones, mixed mineral palettes and broken pebble-to-mud deposits; existing step/crossing/cabin clearances retained.",
-    "Analytic downstream multi-wave surface with real centimetric relief, shared depth mask, camera-space rough reflection and depth-dependent absorption.",
-    "HDR and sun jointly rotated to light visible riverbank faces; brighter cool shade; wet bed no longer double-counts broad specular.",
-    "Transparent/clipped surfaces and alpha foliage excluded from opaque SSAO override; authored AO/alpha-correct tree shadows retained."
+    "Former dry earth fords now submerged gravel shelves; matching terrain support and GLSL depth, central bridge preserved.",
+    "Geographic irregular wet-bank to dry-village transition changes albedo, roughness, normal response and puddle visibility.",
+    "Redistributable source-backed mixed wild-grass replacement with provenance and bounded runtime budget."
   ],
-  "preserved": "map-layout/weapon/actor/combat modules and earlier four demos unchanged; no private asset edits",
+  "preserved": "weapon/actor/combat, buildings, original tree transforms and earlier four demos; no private asset edits",
   "publication": {
     "status": "NOT UPDATED",
     "localPreview": "http://127.0.0.1:5190/river/",

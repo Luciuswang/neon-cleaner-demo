@@ -1,65 +1,76 @@
 {
   "protocol": "offscreen-cinematic-v1",
-  "task": "sunbreak-river-reference-water-2026-11-18",
+  "task": "sunbreak-river-wildbank-2026-11-18",
   "engineering": {
     "reviewer": "Descartes",
     "verdict": "CONDITIONAL PASS",
-    "scope": "Descartes independently verified final145 runtime bindings,8 current-bound evidence/functional phases and11 CPU suites. APPROVED FOR WIP CHECKPOINT ONLY. All three current-build performance failures retained; art REVISE, continuous motion UNVERIFIED. No new checkpoint blocker, no Pages/AAA approval.",
+    "scope": "Source-only WIP checkpoint approved by independent engineering review. All9 functional phases/182 runtime bindings and12 CPU suites/test hashes, terrain agreement, asset provenance/preparation and package bytes verified. Expanded staged-byte audit must pass before upload; upload acknowledgement remains separate. No release acceptance.",
+    "releaseBlockers": [
+      "Three prescribed strict performance failures retained: sunny max1173.1ms with3 frames>50ms; storms52.6ms/1 and53.6ms/4. Cause unknown; no retry-until-pass.",
+      "Art PASS is limited to the four final target stills/three annotated corrections; overall AAA remains REVISE.",
+      "Continuous motion UNVERIFIED. No Pages publication."
+    ],
     "fixedAuditFindings": [
-      "Water surface now resolves highest warped spatial phase on both axes.",
-      "Reflection disturbance projected using reflected-camera tangent basis.",
-      "Actual exported GLSL depth and bent flow functions tested independently against support and CPU height.",
-      "Normal override excludes clipped/alpha geometry and preserves true sun shadow cache.",
-      "Sampled live-water sidecars include actual camera pose/FOV equality checks."
+      "Rendered/support3.805cm error corrected with aligned0.5m grid; dense5cm probes and reviewer regressions retain original3cm limit, max2.4436cm.",
+      "Riverbed overlay uses same grid/diagonals; double-ray probes establish8mm separation instead of intersecting triangles.",
+      "Modified fords have120ms intermediate support samples, not just endpoints; these are sampled, NOT per-frame continuous review.",
+      "Unchanged deep-channel ballistic descent keeps no-penetration/grounded endpoint tests; original overly broad contact failure retained.",
+      "Cabin tests now require actual door-plane entry and measured key-driven return to porch with timeout/position/support/selection checks. Exact original failed close cause remains unproven."
     ]
   },
   "art": {
     "reviewer": "Lovelace",
-    "verdict": "REVISE",
+    "verdict": "PASS",
+    "scope": "ONLY the three annotated static-visual corrections: naturalized mixed grass, two connected shallow fords and wet-to-dry ground. Not whole-map/AAA or release acceptance.",
     "AAAVerdict": "REVISE",
     "confidence": "high",
     "evidence": [
-      "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/riverbank.png",
-      "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/reference-close.png"
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wild-grass.png",
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wet-to-dry.png",
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/south-ford.png",
+      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/north-ford.png"
     ],
-    "previousFiveViewReview": [
-      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/riverbank.png",
-      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/reference-close.png",
-      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/valley-hero.png",
-      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/valley-wide.png",
-      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/sun-side.png"
+    "priorNineViewReview": [
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/wild-grass.png",
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/wet-to-dry.png",
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/south-ford.png",
+      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/north-ford.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/riverbank.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/reference-close.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/valley-hero.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/valley-wide.png",
+      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/sun-side.png"
     ],
-    "scope": "Lovelace independently re-opened the two listed09:52 current-build stills after the shadow-cache guard; same REVISE with high confidence for those two. Earlier five-view review retained separately; the other three09:52 views were not re-reviewed. NOT full continuous motion, source-hash or performance acceptance.",
     "improvements": [
-      "Large white mirror sheet substantially reduced; shallow bed visible and reflections disturbed.",
-      "Daylight/shadow readability improved.",
-      "Gravel continues underwater and compound grass bodies are fuller than early iteration."
+      "Tall upright and low outward leaves now mix with open cores and shorter sparser edges; pale stems, fluorescent tones and mismatched cyan/lime islands have not returned.",
+      "Both river sections visibly connected without exposed earth dams; central bridge preserved.",
+      "Wet reflective margin grades to matte outer soil, not uniform wet film."
     ],
     "remaining": [
       {
-        "severity": "Major",
-        "issue": "Near-shore pale wedge persists; bed contrast is strong and water depth separation insufficient",
-        "next": "Diagnose the actual highlight source, then refine depth-dependent transmission and bed attenuation."
+        "severity": "Minor",
+        "scope": "this correction",
+        "issue": "Some flat leaves and repeated fan silhouettes remain noticeable up close."
       },
       {
         "severity": "Major",
-        "issue": "Close pebble substrate still reads as planar texture plus scattered stones",
-        "next": "Author one near-bank low-relief sediment and embedded-rock section, not more uniform coverage."
+        "scope": "whole-map reference quality",
+        "issue": "Pale shore wedge and shallow/deep reflection-transmission relationships remain unfinished."
       },
       {
         "severity": "Major",
-        "issue": "Isolated grass islands still repeat; pale seed stems compete with low leafy layer",
-        "next": "More distinct clump masses and foliage layering while retaining mud and route gaps."
+        "scope": "whole-map reference quality",
+        "issue": "Sediment still has planar texture character; embedded rocks/relief, village and mountains remain below reference fidelity."
       }
     ],
-    "conclusion": "WIP progress only. Reference quality not reached even within this slice; no UE5/AAA parity. Village/mountain reconstruction not required by this bounded review."
+    "captureLimit": "Lovelace independently reopened all four listed11:48 current-bound target stills and confirmed scoped static PASS. The11:36 nine-view review is listed separately; final11:48 afterrain views were NOT independently reopened. No continuous-motion, source/license or performance acceptance by visual review."
   },
   "temporal": {
     "verdict": "UNVERIFIED",
-    "note": "Two recordings timed out; six actual timed images cannot establish uninterrupted motion quality."
+    "note": "Six timed live-rendered frames are not uninterrupted motion review; prior recording failures retained."
   },
   "releaseVerdict": "BLOCKED",
-  "publication": "No Pages update; independent approval for source-only WIP checkpoint, not release acceptance.",
+  "publication": "Source-only WIP checkpoint; no Pages update, AAA/UE5 parity or multiplayer claim.",
   "sources": {
     "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
     "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
@@ -172,12 +183,47 @@
     "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
     "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
     "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
+    "assets/wild-grass/Foliage001-leaf-rgba.png": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+    "assets/wild-grass/Foliage006-leaf-rgba.png": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+    "assets/wild-grass/LICENSE.txt": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+    "assets/wild-grass/source/Foliage001/Foliage001.png": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+    "assets/wild-grass/source/Foliage001/metadata.json": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+    "assets/wild-grass/source/Foliage006/Foliage006.png": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+    "assets/wild-grass/source/Foliage006/metadata.json": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+    "assets/wild-grass/source/license/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/wild-grass/source/license/ambientcg-license.html": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+    "assets/wild-grass/wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "assets/wild-grass/wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "assets/wild-grass/wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "assets/wild-grass/wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
     "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
     "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
     "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
     "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
     "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
-    "credits.html": "153148b1c5a6b473ecb56bf630f0e6d4b1194435124806a700a8fc33cd98c70e",
+    "credits.html": "2b3d14655e1fed6117e7f55d88bcc4c1050ad7547a28bc975417fbc040544276",
     "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
     "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
     "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
@@ -185,14 +231,15 @@
     "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
     "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
     "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
     "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
-    "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
-    "qa/browser.mjs": "cca11a007063abc4a817e513d8bb8b30b19e3d6dcd4bd593d238c70f41a0e576",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "qa/browser.mjs": "065726152677ebcfd92c7dd64ddf35d14e28c2c2c5768284bb7ebba4563d91b8",
     "qa/hooks.js": "fa53187e7312b77c83381b8201c102d5711f0a38c127dd5f29969a82a182e695",
-    "qa/source-binding.mjs": "90ee606d4936ea2f5b6e3fe72d0cf125f5e7e6115223341d2ff6fb1c6b128c4d",
+    "qa/source-binding.mjs": "56c0396542f83abda0251e0f584411baa8232806ad2519941a46231cf85877f8",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
-    "river-water.js": "ce9467eaf4ca2674f1d171e019872c69fd87bbec3605f4cca01170da2e32b665",
+    "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
     "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
     "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
     "serve.mjs": "bf00904582bfbdb3ce43d51f7f6ee1b18557215443584d9e29549b50643aca1a",
@@ -201,10 +248,11 @@
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
     "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
-    "vegetation.js": "3d384f11a2dc381a76ffc93e9ba99d64f27d609e968de6df93f205509c449f60",
+    "vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
     "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
     "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
     "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
-    "world.js": "e16654460e06726bc1858b87dcab6ceac2c7b5e4d1c694daace80d8f92927f9c"
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
+    "world.js": "692e65a25de8de60005b001acba48f29ae7e5c1afae22e1e5b877e239ca95ae6"
   }
 }

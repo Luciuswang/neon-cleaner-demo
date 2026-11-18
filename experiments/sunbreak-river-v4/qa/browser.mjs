@@ -70,6 +70,13 @@ try {
  if(!live&&weatherArg)await evaluate(`arenaQA.weather(${Number(weatherArg.slice(10))})`);
  if(phase==='quick'){
   console.log('Ready');if(process.argv.includes('--no-post'))await evaluate("document.getElementById('bPost').click()");await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
+ }else if(phase==='wildbank'){
+  check('after-rain default weather',(await evaluate('arenaQA.mapInfo()')).weather===0);
+  for(const [name,...v]of [['south-ford',0,1.8,22,0,-.34],['north-ford',0,1.8,-17,0,-.34],['wet-to-dry',-4,2.4,20,1.35,-.78],['wild-grass',-5.9,1.05,12,-.78,-.54]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
+  for(const weather of [0,2,0]){
+   await evaluate(`arenaQA.weather(${weather})`);const info=await evaluate('arenaQA.mapInfo()');
+   check(`soil zoning weather ${weather}`,info.map.soil[0].moisture===1&&Math.abs(info.map.soil.at(-1).moisture-(weather===2?.72:0))<.001,info.map.soil);
+  }
  }else if(phase==='afterrain'){
   check('default weather is after-rain daylight',(await evaluate('arenaQA.mapInfo()')).weather===0);
   for(const [name,...v]of [['valley-hero',-7,1.7,24,-.24,-.1],['riverbank',-4.7,1.35,10,-.12,-.32],['valley-wide',0,3.5,25,0,.05],['sun-side',10,1.7,8,-1,-.07],['reference-close',-4.4,1.1,11,-.65,-.55]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
@@ -112,8 +119,18 @@ try {
    let c=await evaluate('arenaQA.cabinState()');check(id+' actual E opens nearest door',c.houses.find(h=>h.id===id).door.open,c);
    check(id+' does not toggle other door',c.houses.filter(h=>h.id!==id).every(h=>h.door.toggles===0));
    await key('KeyW');await delay(600);await key('KeyW',false);
-   s=await evaluate('arenaQA.walkState()');check(id+' player enters supported interior',Math.abs(s.support-.66)<.01&&!s.blocked,s);
-   await key('KeyS');await delay(650);await key('KeyS',false);
+   s=await evaluate('arenaQA.walkState()');
+   const exitSign=id==='west-buffer'?1:-1,doorPlane=await evaluate(`arenaQA.cabinPoint('${id}',-1.08,2.36,2.4)`);
+   check(id+' player enters supported interior',Math.abs(s.support-.66)<.01&&!s.blocked&&(s.position[2]-doorPlane.z)*exitSign<-.25,s);
+   // Retreat using measured position, not a fixed wall-clock hold. Uneven
+   // frames can produce different entry/exit positions. The old failure did
+   // not record the exact pre-close position; its cause remains unproven.
+   const exitTarget=await evaluate(`arenaQA.cabinPoint('${id}',-1.08,2.36,3.8)`);
+   const exitStart=Date.now();let exited;
+   try{await key('KeyS');do{await delay(40);exited=await evaluate('arenaQA.walkState()')}while((exited.position[2]-exitTarget.z)*exitSign<-.10&&Date.now()-exitStart<5000)}finally{await key('KeyS',false)}
+   const exitElapsed=Date.now()-exitStart;await delay(80);
+   const exitState=await evaluate('({walk:arenaQA.walkState(),cabin:arenaQA.cabinState()})'),ew=exitState.walk,advance=(ew.position[2]-exitTarget.z)*exitSign;
+   check(id+' actual retreat returns to interaction range',exitElapsed<5000&&advance>=-.10&&advance<.35&&Math.abs(ew.position[0]-exitTarget.x)<.12&&!ew.blocked&&Math.abs(ew.position[1]-ew.support-1.7)<.03&&exitState.cabin.selected===id,{...exitState,exitElapsed,exitTarget});
    await key('KeyE');await key('KeyE',false);await delay(950);
    c=await evaluate('arenaQA.cabinState()');check(id+' actual E closes door',c.houses.find(h=>h.id===id).door.angle<.02,c);
    await evaluate(`arenaQA.cabinTravel('${id}',-1.08,3.8)`);await key('KeyW');await delay(500);await key('KeyW',false);
@@ -128,7 +145,14 @@ try {
   await evaluate("document.getElementById('bStart').click()",true);await delay(150);
   for(const z of [-23,-4,15,0])for(const side of [-1,1]){
    await evaluate(`arenaQA.travel(${side*9},${z},${side*Math.PI/2})`);
-   await key('KeyW');await delay(4500);await key('KeyW',false);
+   await key('KeyW');
+   const contact=[];const crossingStart=Date.now();
+   while(Date.now()-crossingStart<4500){await delay(120);contact.push(await evaluate('arenaQA.walkState()'))}
+   await key('KeyW',false);
+   // Unmodified deep channel z=0 retains the game's ballistic downhill step;
+   // require no penetration there. New shallow fords must stay within 3cm.
+   check(`player ${z===0?'does not sink':'supported'} during crossing ${z} side ${side}`,contact.length>=12&&contact.every(s=>z===0?s.position[1]-s.support-1.7>=-.03:Math.abs(s.position[1]-s.support-1.7)<.03),contact);
+   if(z!==-4)check(`actual player enters submerged bed ${z} side ${side}`,contact.some(s=>Math.abs(s.position[0])<2&&s.support<-.3),contact);
    const s=await evaluate('arenaQA.walkState()');check(`actual player ${z} side ${side} crosses`,side*s.position[0]<-8,s);
    check(`player grounded ${z} side ${side}`,Math.abs(s.position[1]-s.support-1.7)<.03,s);
    check(`NPC feet track support ${z} side ${side}`,s.enemies.every(e=>Math.abs(e.position[1]-e.support)<.03),s.enemies);

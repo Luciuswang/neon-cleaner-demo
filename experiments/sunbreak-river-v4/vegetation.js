@@ -12,10 +12,10 @@ export const GRASS_VARIANTS=Object.freeze([
  {asset:'grass_bermuda_01',node:'grass_bermuda_01_small_b',height:.18,range:[.15,.22],radiusRatio:.99,label:'bermuda-base',layer:'low'},
  {asset:'grass_bermuda_01',node:'grass_bermuda_01_small_c',height:.22,range:[.18,.27],radiusRatio:.62,label:'bermuda-base',layer:'low'},
  {asset:'grass_bermuda_01',node:'grass_bermuda_01_medium_c',height:.23,range:[.20,.29],radiusRatio:.81,label:'bermuda-base',layer:'low'},
- {asset:'grass_medium_02',node:'grass_medium_02_a',height:.34,range:[.27,.41],radiusRatio:.55,label:'dense-grass',layer:'medium'},
- {asset:'grass_medium_02',node:'grass_medium_02_c',height:.34,range:[.28,.43],radiusRatio:.78,label:'dense-grass',layer:'medium'},
- {asset:'grass_medium_01',node:'grass_medium_01_tall_a_LOD0',height:.48,range:[.43,.55],radiusRatio:.36,label:'seed-grass',layer:'tall'},
- {asset:'grass_medium_01',node:'grass_medium_01_tall_b_LOD0',height:.48,range:[.42,.54],radiusRatio:.35,label:'seed-grass',layer:'tall'}
+ {asset:'wild_leafy_a',node:'wild_leafy_a',height:.34,range:[.18,.41],radiusRatio:.55,label:'wild-leafy-a',layer:'medium'},
+ {asset:'wild_leafy_b',node:'wild_leafy_b',height:.22,range:[.12,.25],radiusRatio:1.35,label:'wild-leafy-b',layer:'medium'},
+ {asset:'wild_upright_a',node:'wild_upright_a',height:.48,range:[.43,.55],radiusRatio:.36,label:'wild-upright-a',layer:'tall'},
+ {asset:'wild_upright_b',node:'wild_upright_b',height:.48,range:[.42,.54],radiusRatio:.35,label:'wild-upright-b',layer:'tall'}
 ].map(v=>Object.freeze({...v,range:Object.freeze(v.range)})));
 export function grassBatches(plan){
  const grass=[...plan.low,...plan.medium,...plan.tall];
@@ -104,7 +104,9 @@ export function vegetationPlan(){
     const px=c.x+u*Math.cos(c.angle)-v*Math.sin(c.angle),pz=c.z+u*Math.sin(c.angle)+v*Math.cos(c.angle);
     if(!rootFree(px,pz))continue;
     const variant=c.seedHeads&&rho<.24&&i%5===0?c.tallVariant:c.community==='rush'&&core?c.mediumVariant:c.baseVariant;
-    const spec=GRASS_VARIANTS[variant],height=spec.range[0]+(spec.range[1]-spec.range[0])*(c.vigor*.55+random()*.30+(core?.15:0));
+    // Preserve the already-reviewed candidate layout/RNG. The bounded posture
+    // pass below only contracts these footprints; it never adds grass roots.
+    const spec=variant===4?{...GRASS_VARIANTS[4],height:.34,range:[.27,.41],radiusRatio:.55}:variant===5?{...GRASS_VARIANTS[5],height:.34,range:[.28,.43],radiusRatio:.78}:GRASS_VARIANTS[variant],height=spec.range[0]+(spec.range[1]-spec.range[0])*(c.vigor*.55+random()*.30+(core?.15:0));
     const stretch=.94+random()*.12,s=height/(spec.height*stretch),radius=spec.radiusRatio*spec.height*s+.03;
     if(!footprintAllowed(px,pz,radius))continue;
     const p=place(px,pz,s);p.stretch=stretch;p.tone=Math.min(1,Math.max(0,patch.tone+(random()-.5)*.09));
@@ -117,6 +119,25 @@ export function vegetationPlan(){
   }
   if(patch.lobes.length)patches.push(patch);
  }
+ // Smooth local fields make coherent low/outward/upright pockets rather than
+ // per-root confetti. Feather the edge using a subset of existing roots only.
+ const originals=[...low,...medium,...tall],clumpMap=new Map(clumps.map(c=>[c.id,c]));low.length=medium.length=tall.length=0;
+ for(const p of originals){
+  const c=clumpMap.get(p.clumpId),dx=p.x-c.x,dz=p.z-c.z,u=dx*Math.cos(c.angle)+dz*Math.sin(c.angle),v=-dx*Math.sin(c.angle)+dz*Math.cos(c.angle),
+   field=Math.sin(u*5.1+c.phase)+.62*Math.cos(v*4.3-c.phase),heightWave=.5+.5*Math.sin(u*7.3+v*4.1+c.phase),oldRadius=p.clearanceRadius;
+  if(p.zone==='satellite'&&p.rho>.87&&field<.15)continue;
+  if(p.variant===4||p.variant===5)p.variant=field<-.38?c.baseVariant:field<.48?5:4;
+  const spec=GRASS_VARIANTS[p.variant],vigor=p.variant===4?.12+.83*heightWave:p.variant===5?.15+.7*heightWave:p.zone==='satellite'?.12+.40*heightWave:.2+.45*heightWave;
+  const desired=p.variant>=6?p.height:spec.range[0]+(spec.range[1]-spec.range[0])*vigor;
+  p.height=Math.min(desired,(oldRadius-.03)/spec.radiusRatio*p.stretch);
+  // A very wide low posture cannot fit every narrow old footprint: retain a
+  // short upright tuft there, rather than expanding into a route or bare gap.
+  if(p.height<spec.range[0]){p.variant=4;const a=GRASS_VARIANTS[4];p.height=Math.max(a.range[0],Math.min(.22,(oldRadius-.03)/a.radiusRatio*p.stretch))}
+  const finalSpec=GRASS_VARIANTS[p.variant];p.s=p.height/(finalSpec.height*p.stretch);p.clearanceRadius=finalSpec.radiusRatio*finalSpec.height*p.s+.03;p.previousClearanceRadius=oldRadius;
+  ({low,medium,tall}[finalSpec.layer]).push(p);
+ }
+ const surviving=new Map();for(const p of [...low,...medium,...tall])surviving.set(p.clumpId,(surviving.get(p.clumpId)||0)+1);
+ for(const c of clumps)c.rootCount=surviving.get(c.id)||0;
  return{near,far,shrubs,low,medium,tall,patches,trunks,clumps,gaps};
 }
 
@@ -124,10 +145,10 @@ export async function buildVegetation(T,world){
  const {GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js');
  const {MeshoptDecoder}=await import('three/addons/libs/meshopt_decoder.module.js');
  const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),time={value:0},plan=vegetationPlan(),meshes=[],counts={},batches=[];
- const names=['island_tree_01','island_tree_01-far','tree_small_02','tree_small_02-far','grass_medium_01','grass_medium_02','grass_bermuda_01'];
- const assets=await Promise.all(names.map(n=>loader.loadAsync('./river/assets/foliage-revision/'+n+'.glb')));
+ const names=['island_tree_01','island_tree_01-far','tree_small_02','tree_small_02-far','grass_bermuda_01','wild_leafy_a','wild_leafy_b','wild_upright_a','wild_upright_b'];
+ const assets=await Promise.all(names.map(n=>loader.loadAsync('./river/assets/'+(n.startsWith('wild_')?'wild-grass/':'foliage-revision/')+n+'.glb')));
  const dummy=new T.Object3D(),color=new T.Color();
- function windMaterial(material,height,amplitude,label){
+ function windMaterial(material,height,amplitude,label,rootShade=false){
   material.onBeforeCompile=s=>{
    s.uniforms.uFoliageTime=time;
    s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nuniform float uFoliageTime;');
@@ -136,8 +157,14 @@ export async function buildVegetation(T,world){
     float foliageBend=pow(clamp(position.y/${height.toFixed(4)},0.,1.),2.);
     transformed.x+=sin(uFoliageTime*1.1+foliagePhase+position.y*.65)*${amplitude.toFixed(4)}*foliageBend;
     transformed.z+=sin(uFoliageTime*.83+foliagePhase)*${(amplitude*.46).toFixed(4)}*foliageBend;`);
+   if(rootShade){
+    s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying float vGrassRootHeight;');
+    s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvGrassRootHeight=position.y*length(instanceMatrix[1].xyz);');
+    s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nvarying float vGrassRootHeight;');
+    s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb*=mix(.55,1.,smoothstep(.012,.13,vGrassRootHeight));');
+   }
   };
-  material.customProgramCacheKey=()=>`foliage-revision-wind-${label}-${height}-${amplitude}`;
+  material.customProgramCacheKey=()=>`foliage-revision-wind-${label}-${height}-${amplitude}-root${rootShade}`;
  }
  function instances(source,placements,height,label,{shadow=false,wind=.015,tree=false}={}){
   if(!placements.length)return;
@@ -151,7 +178,7 @@ export async function buildVegetation(T,world){
    const geometry=node.geometry.clone().applyMatrix4(node.matrixWorld);
    geometry.translate(-center.x,-box.min.y,-center.z);geometry.scale(scale,scale,scale);
    const mat=node.material.clone(),leaf=!tree||/leaves/.test(mat.name);
-   mat.envMapIntensity=leaf?.62:.5;mat.roughness=Math.max(.84,mat.roughness);mat.metalness=0;
+   mat.envMapIntensity=tree?(leaf?.62:.5):.46;mat.roughness=Math.max(.84,mat.roughness);mat.metalness=0;
    // Official packed ARM: AO is RED, roughness GREEN. Keep leaf AO subtle;
    // stacking a dark sRGB tint and strong baked AO made every crown near black.
    if(mat.roughnessMap){mat.aoMap=mat.roughnessMap;mat.aoMapIntensity=leaf?.18:.65}
@@ -159,7 +186,7 @@ export async function buildVegetation(T,world){
    if(leaf){mat.alphaTest=.35;mat.color.multiply(new T.Color().setRGB(.96,1,.94));if(mat.normalScale)mat.normalScale.multiplyScalar(.4)}
    else mat.color.multiply(new T.Color(0x9e9b88));
    if(mat.map)mat.map.anisotropy=8;
-   windMaterial(mat,height,wind,label);
+   windMaterial(mat,height,wind,label,!tree);
    for(let sector=0;sector<4;sector++){
     const ps=sectors[sector];if(!ps.length)continue;
     const inst=new T.InstancedMesh(geometry,mat,ps.length);inst.name=`foliage-${label}-${sector}`;
@@ -195,5 +222,5 @@ export async function buildVegetation(T,world){
   instances(source,batch.placements,batch.height,batch.label,{wind:batch.layer==='low'?.013:batch.layer==='medium'?.022:.028});
  }
  const triangles=batches.reduce((n,b)=>n+b.triangles,0),shadowTriangles=batches.filter(b=>b.shadow).reduce((n,b)=>n+b.triangles,0);
- return{update(t){time.value=t},info(){return{revision:'organic-clumps-2026-11-18',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},treeCollidersNeeded:0,source:'Poly Haven CC0; original tree transforms; compact species-coherent grass cores and irregular satellites; spatial instance culling',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
+ return{update(t){time.value=t},info(){return{revision:'wildbank-mixed-posture-r3-2026-11-18',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},treeCollidersNeeded:0,source:'Poly Haven CC0 trees/low Bermuda; ambientCG CC0 narrow blades; accepted olive palette unchanged; coherent low/outward/upright pockets within original footprints',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
 }
