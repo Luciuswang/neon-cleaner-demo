@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 const root=fileURLToPath(new URL('../',import.meta.url)),repo=resolve(root,'../..'),out=resolve(repo,'.local/sunbreak-river-build');
 const git=args=>execFileSync('git',args,{cwd:repo,encoding:'utf8',maxBuffer:8e6}).trim(),hash=b=>createHash('sha256').update(b).digest('hex');
 const runtime=['index.html','world.js','village.js','ruins.js','fracture-geometry.js','buffer-house.js','buffer-house-logic.js','timber-house.js','house-logic.js','vegetation.js','map-layout.js','terrain-ray.js','weapon.js','actors.js','audio.js','storm-audio.js','tactical-ai.js','boot-ui.js','combat-controls.js','reload-pose.js','credits.html','asset-sources.json','foliage-derivatives.json','foliage-revision.json','fable-production.json','fable-art-revision.json','weapon-provenance.json','soldier-provenance.json'];
-runtime.push('distant-landscape.js','riverbank-detail.js','daylight-assets.json','afterrain-assets.json');
+runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','daylight-assets.json','afterrain-assets.json');
 const sharedRelease=JSON.parse(git(['show','origin/main:sunbreak/public-release.json']));
 const sharedFiles=sharedRelease.files.filter(f=>/^(assets\/|vendor\/|assets-manifest\.json$|weapon-provenance\.json$|soldier-provenance\.json$|credits\.html$)/.test(f.path));
 for(const f of sharedFiles)assert.equal(hash(await readFile(resolve(root,'../sunbreak-storm-v3',f.path))),f.sha256,'Shared dependency changed '+f.path);

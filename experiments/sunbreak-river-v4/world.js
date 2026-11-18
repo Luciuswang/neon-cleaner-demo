@@ -17,6 +17,7 @@ import {buildBufferHouses} from './buffer-house.js';
 import {buildRuins} from './ruins.js';
 import {buildRiverbankDetail} from './riverbank-detail.js';
 import {buildDistantLandscape} from './distant-landscape.js';
+import {buildRiverWater} from './river-water.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
@@ -52,9 +53,10 @@ export async function buildWorld(ctx){
  const hd=hdr.image;let brightest=-1,sunPixel=0;
  for(let i=0;i<hd.data.length;i+=4){const l=hd.data[i]*.2126+hd.data[i+1]*.7152+hd.data[i+2]*.0722;if(l>brightest){brightest=l;sunPixel=i/4}}
  // Rotate the entire panorama in integer texels so sunlight crosses the river
- // from the upper-right of the northbound hero view. Environment/reflections
+ // from behind-left of the northbound hero view, lighting the visible stone
+ // faces instead of backlighting all banks. Environment/reflections
  // receive the same rotated pixels, not an independently faked key direction.
- const originalSunX=sunPixel%hd.width,desiredSunU=.375,skyShift=Math.round(desiredSunU*hd.width-.5-originalSunX),rotated=new Float32Array(hd.data.length);
+ const originalSunX=sunPixel%hd.width,desiredSunU=.86,skyShift=Math.round(desiredSunU*hd.width-.5-originalSunX),rotated=new Float32Array(hd.data.length);
  for(let y=0;y<hd.height;y++)for(let x=0;x<hd.width;x++){const nx=(x+skyShift+hd.width)%hd.width,i=(y*hd.width+x)*4,j=(y*hd.width+nx)*4;rotated[j]=hd.data[i];rotated[j+1]=hd.data[i+1];rotated[j+2]=hd.data[i+2];rotated[j+3]=hd.data[i+3]}
  hd.data=rotated;hdr.needsUpdate=true;
  const u=((originalSunX+skyShift+hd.width)%hd.width+.5)/hd.width,v=1-(Math.floor(sunPixel/hd.width)+.5)/hd.height;
@@ -129,34 +131,10 @@ export async function buildWorld(ctx){
  const ruins=buildRuins({T,world,materials,layout,solids});
  const buffers=buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements});
  const foliage=await buildVegetation(T,world);
- const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0x989e91);bed.material.normalScale.set(.42,.42);gravel.dispose();
+ const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials});
 
- const river=new Reflector(new T.PlaneGeometry(14,160),{textureWidth:768,textureHeight:432,color:0x76928a,clipBias:.004});
- river.name='flowing shallow river';river.rotation.x=-Math.PI/2;river.position.y=MAP.waterY;river.material.transparent=true;river.material.depthWrite=false;
- river.material.uniforms.uTime=windTime;
- river.material.uniforms.uRain=rainStrength;river.material.uniforms.uSun={value:sunDirection};river.material.uniforms.uDay={value:1};
- river.material.vertexShader=river.material.vertexShader.replace('void main()','varying vec3 vRiver;\nvoid main()').replace('gl_Position =','vRiver=(modelMatrix*vec4(position,1.)).xyz;\ngl_Position =');
- river.material.fragmentShader=river.material.fragmentShader.replace('void main()',`uniform float uTime;uniform float uRain;uniform vec3 uSun;uniform float uDay;varying vec3 vRiver;
-  float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-  float rings(vec2 p,float sc){vec2 q=p*sc,id=floor(q),f=fract(q)-.5;float t=fract(uTime*(.7+hash(id)*.8)+hash(id+1.));float d=length(f);return sin((d-t*.65)*70.)*exp(-abs(d-t*.65)*35.)*(1.-t)*smoothstep(.03,.12,t);}
-  void main()`)
- .replace('vec4 base = texture2DProj( tDiffuse, vUv );',`float w=3.4+.8*cos(vRiver.z*.17)+.35*sin(vRiver.z*.47);float ax=abs(vRiver.x);
-  float meander=.32*sin(ax*.9)+.14*sin(ax*2.8);float ford=min(abs(vRiver.z+23.-meander),abs(vRiver.z-15.-meander));
-  float ft=clamp((ford-1.2)/1.8,0.,1.),bt=clamp((ax-w+1.1)/2.9,0.,1.);
-  float bedHeight=-.58*(1.-bt*bt*(3.-2.*bt))*ft*ft*(3.-2.*ft);float depth=-.18-bedHeight;
-  float edge=smoothstep(0.,.10,depth);if(edge<.01)discard;
-  vec4 flowUv=vUv;float ring=(rings(vRiver.xz,1.6)+rings(vRiver.xz+19.,3.3)*.5)*uRain;
-  vec2 wave=vec2(sin(vRiver.x*4.+vRiver.z*2.-uTime*2.6),cos(vRiver.z*6.-uTime*3.2+vRiver.x))*0.00045;
-  flowUv.xy+=(wave+vec2(ring*.00035))*flowUv.w;
-  vec4 base=texture2DProj(tDiffuse,flowUv);`)
- .replace('gl_FragColor = vec4( blendOverlay( base.rgb, color ), 1.0 );',`float fresnel=.18+.68*pow(1.-max(0.,normalize(cameraPosition-vRiver).y),3.);
-  vec3 n=normalize(vec3(wave.x*48.,1.,wave.y*48.));
-  vec3 viewDir=normalize(cameraPosition-vRiver),halfDir=normalize(viewDir+uSun);
-  float glint=pow(max(0.,dot(n,halfDir)),380.)*.22*uDay;
-  gl_FragColor=vec4(mix(vec3(.075,.12,.10),base.rgb,.94)+glint+max(0.,ring)*.035,edge*fresnel);`);
- const reflect=river.onBeforeRender;let reflectedFrame=-1,renderFrame=0;
- river.onBeforeRender=function(renderer,sc,camera){if(sc.overrideMaterial||reflectedFrame===renderFrame)return;reflectedFrame=renderFrame;return reflect.call(this,renderer,sc,camera)};world.add(river);
+ const water=buildRiverWater({T,Reflector,world,time:windTime,rain:rainStrength,sunDirection});
 
  const puddleMaterial=new T.MeshPhysicalMaterial({color:0x303b2c,roughness:.19,metalness:0,transparent:true,opacity:.32,clearcoat:1,clearcoatRoughness:.1,envMapIntensity:.75,depthWrite:false});
  const puddleGeometry=new T.CircleGeometry(1,72),puddles=[];
@@ -189,21 +167,37 @@ export async function buildWorld(ctx){
  }
  const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene}),buildActors({THREE:T,enemies})]);
  const composer=new EffectComposer(rnd);composer.addPass(new RenderPass(scene,cam));
- const ao=new SSAOPass(scene,cam,innerWidth,innerHeight);ao.kernelRadius=1.15;ao.minDistance=.002;ao.maxDistance=.12;composer.addPass(ao);
+ const ao=new SSAOPass(scene,cam,innerWidth,innerHeight);ao.kernelRadius=.55;ao.minDistance=.003;ao.maxDistance=.065;composer.addPass(ao);
+ // Transparent water/bed decals have their own depth-shaped shading. The SSAO
+ // normal override would replace their clipping shader with a solid rectangle,
+ // creating phantom occlusion and burying stones below an invisible plane.
+ const aoCutouts=[];world.traverse(o=>{if(o.isMesh&&[].concat(o.material).some(m=>m?.alphaTest>0))aoCutouts.push(o)});
+ const hideAO=ao.overrideVisibility.bind(ao);
+ // Leaf cards likewise cannot use an opaque normal override. Their authored AO
+ // and alpha-correct directional shadows remain; no invented solid-card SSAO.
+ ao.overrideVisibility=function(){hideAO();water.mesh.visible=false;bed.visible=false;puddles.forEach(p=>p.visible=false);aoCutouts.forEach(p=>p.visible=false)};
+ const renderAOOverride=ao.renderOverride.bind(ao);
+ ao.renderOverride=function(renderer,...args){
+  const auto=renderer.shadowMap.autoUpdate,needs=renderer.shadowMap.needsUpdate;
+  // Hidden cutouts in the normal pass must never overwrite the real leaf
+  // shadow cache; the beauty pass updates it with the proper alpha/wind maps.
+  renderer.shadowMap.autoUpdate=false;renderer.shadowMap.needsUpdate=false;
+  try{return renderAOOverride(renderer,...args)}finally{renderer.shadowMap.autoUpdate=auto;renderer.shadowMap.needsUpdate=needs}
+ };
  const grade=new ShaderPass({uniforms:{tDiffuse:{value:null}},vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'uniform sampler2D tDiffuse;varying vec2 vUv;void main(){vec3 c=texture2D(tDiffuse,vUv).rgb;float l=dot(c,vec3(.2126,.7152,.0722));c=mix(vec3(l),c,1.03);c*=mix(.95,1.,1.-smoothstep(.1,.8,distance(vUv,vec2(.5))));gl_FragColor=vec4(c,1.);}'});composer.addPass(grade);composer.addPass(new OutputPass());composer.addPass(new SMAAPass(innerWidth*rnd.getPixelRatio(),innerHeight*rnd.getPixelRatio()));
  addEventListener('resize',()=>composer.setSize(innerWidth,innerHeight));
  function applyWeather(){
   const wet=weather===2,day=weather===0;
-  sun.position.copy(sunDirection).multiplyScalar(75).add(target.position);sun.color.set(style?0xffd6ac:0xffedda);sun.intensity=day?3.4:wet?2.1:1.8;
-  amb.color.set(0xb5cce6);amb.groundColor.set(0x615b48);amb.intensity=day?.65:.38;
+  sun.position.copy(sunDirection).multiplyScalar(75).add(target.position);sun.color.set(style?0xffdfba:0xfff1df);sun.intensity=day?4.0:wet?2.1:1.8;
+  amb.color.set(0xc6dbf1);amb.groundColor.set(0x928b75);amb.intensity=day?1.6:.38;
   scene.environment=gscene.environment=(day?env:cloudEnv).texture;scene.background=day?hdr:cloudHDR;
   scene.fog=new T.Fog(day?0x9db7ce:0x889996,day?95:65,day?920:230);scene.backgroundIntensity=day?1:.44;
-  rnd.toneMappingExposure=day?1.08:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;river.material.uniforms.uDay.value=day?1:0;mud.roughness=wet?.76:.84;
+  rnd.toneMappingExposure=day?1.18:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;water.setDay(day);mud.roughness=wet?.76:.91;
   flash=0;flashLight.intensity=0;
   distant.setWeather(weather);
   const visited=new Set();world.traverse(o=>{if(o.isPointLight){o.userData.weatherBase??=o.intensity;o.intensity=o.userData.weatherBase*(day?.20:1)}if(o.isMesh)for(const m of [].concat(o.material)){if(!m||visited.has(m))continue;visited.add(m);
    if(m.name==='WindowTrim')m.color.set(0x999d92);
-   if(m.envMapIntensity!==undefined&&!m.name.startsWith('landscape-')){m.userData.baseEnvironment??=m.envMapIntensity;m.envMapIntensity=m.userData.baseEnvironment*(day?.72:1)}
+   if(m.envMapIntensity!==undefined&&!m.name.startsWith('landscape-')){m.userData.baseEnvironment??=m.envMapIntensity;m.envMapIntensity=m.userData.baseEnvironment*(day?1.05:1)}
    if(m.emissiveIntensity>0){m.userData.weatherBase??=m.emissiveIntensity;m.emissiveIntensity=m.userData.weatherBase*(day?.15:1)}
   }});
   document.getElementById('weatherName').textContent=['雨后 · 湿润河谷','阴天 · 山林薄雾','降雨 · 双岸村落'][weather];
@@ -229,9 +223,9 @@ export async function buildWorld(ctx){
    const muted=document.getElementById('bMute').getAttribute('aria-pressed')==='true',volume=Number(document.getElementById('soundVolume').value)/100;
    weatherAudio.update(live&&weather===2,muted,volume);weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
   },
-  render(){renderFrame++;composer.render()},unlockAudio(){weatherAudio.unlock()},
+  render(){water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
-  info(){return{version:'river-v4-afterrain',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'freely wadeable; three raised crossings'},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
+  info(){return{version:'river-v4-reference-water',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'freely wadeable; three raised crossings'},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
   actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa
  };
 }

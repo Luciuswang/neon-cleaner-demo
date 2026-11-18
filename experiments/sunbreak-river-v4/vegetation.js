@@ -1,16 +1,35 @@
 import {vegetationAllowed,landscapeHeight,riverWidth,MAP,crossings} from './map-layout.js';
 
+const outside=(x,z,pad=0)=>x<MAP.minX-pad||x>MAP.maxX+pad||z<MAP.minZ-pad||z>MAP.maxZ+pad;
+const pathDistance=(x,z)=>Math.abs(Math.abs(x)-(10+.32*Math.sin(z*.19)));
+// The existing combat exclusions remain authoritative for every grass root.
+export function grassAllowed(x,z,margin=.4){
+ if(!outside(x,z))return vegetationAllowed(x,z)&&pathDistance(x,z)>1.45+margin&&crossings.every(c=>Math.abs(z-c)>2+margin);
+ return Math.abs(x)>riverWidth(z)+2.5&&outside(x,z,1)&&Math.abs(x)<91&&z>-88&&z<80;
+}
+export const GRASS_VARIANTS=Object.freeze([
+ {asset:'grass_bermuda_01',node:'grass_bermuda_01_small_a',height:.14,range:[.12,.17],radiusRatio:1.32,label:'bermuda-base',layer:'low'},
+ {asset:'grass_bermuda_01',node:'grass_bermuda_01_small_b',height:.18,range:[.15,.22],radiusRatio:.99,label:'bermuda-base',layer:'low'},
+ {asset:'grass_bermuda_01',node:'grass_bermuda_01_small_c',height:.22,range:[.18,.27],radiusRatio:.62,label:'bermuda-base',layer:'low'},
+ {asset:'grass_bermuda_01',node:'grass_bermuda_01_medium_c',height:.23,range:[.20,.29],radiusRatio:.81,label:'bermuda-base',layer:'low'},
+ {asset:'grass_medium_02',node:'grass_medium_02_a',height:.34,range:[.27,.41],radiusRatio:.55,label:'dense-grass',layer:'medium'},
+ {asset:'grass_medium_02',node:'grass_medium_02_c',height:.34,range:[.28,.43],radiusRatio:.78,label:'dense-grass',layer:'medium'},
+ {asset:'grass_medium_01',node:'grass_medium_01_tall_a_LOD0',height:.48,range:[.43,.55],radiusRatio:.36,label:'seed-grass',layer:'tall'},
+ {asset:'grass_medium_01',node:'grass_medium_01_tall_b_LOD0',height:.48,range:[.42,.54],radiusRatio:.35,label:'seed-grass',layer:'tall'}
+].map(v=>Object.freeze({...v,range:Object.freeze(v.range)})));
+export function grassBatches(plan){
+ const grass=[...plan.low,...plan.medium,...plan.tall];
+ return GRASS_VARIANTS.map((spec,variant)=>({...spec,variant,placements:grass.filter(p=>p.variant===variant)}));
+}
+export function inGrassGap(x,z,gaps,padding=0){
+ return gaps.some(g=>Math.sign(x)===g.side&&Math.abs(z-g.z)<g.halfLength+padding&&Math.abs(x)<riverWidth(z)+g.bankDepth+padding);
+}
+
 // Deterministic ecology plan is exported for CPU-only integration checks.
 // Trees/woody understorey stay outside the playable rectangle: no hidden cover.
 export function vegetationPlan(){
  let seed=925221;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
  const near=[[],[]],far=[[],[]],shrubs=[],low=[],medium=[],tall=[];
- const outside=(x,z,pad=0)=>x<MAP.minX-pad||x>MAP.maxX+pad||z<MAP.minZ-pad||z>MAP.maxZ+pad;
- const pathDistance=(x,z)=>Math.abs(Math.abs(x)-(10+.32*Math.sin(z*.19)));
- function allowed(x,z,margin=.4){
-  if(!outside(x,z))return vegetationAllowed(x,z)&&pathDistance(x,z)>1.45+margin&&crossings.every(c=>Math.abs(z-c)>2+margin);
-  return Math.abs(x)>riverWidth(z)+2.5&&outside(x,z,1)&&Math.abs(x)<91&&z>-88&&z<80;
- }
  const place=(x,z,s=1)=>({x,y:landscapeHeight(x,z)-.018,z,r:random()*Math.PI*2,s,stretch:.92+random()*.14,tone:random()});
  // Irregular groves, not a repeated circle. Near/far are spatial bands, not
  // camera LOD swaps; the source leaf dimensions are NEVER inflated by LOD.
@@ -34,52 +53,71 @@ export function vegetationPlan(){
   const x=gx+(random()-.5)*9,z=gz+(random()-.5)*9;
   if(outside(x,z,5)){const p=place(x,z,.85+random()*.35);p.y-=.06;shrubs.push(p)}
  }
- // Patches have dense cores, feathered edges and sparse linking growth. Each
- // individual placement rechecks the current map exclusion, including cabins.
- const patches=[];
- for(let i=0;i<180;i++){
-  const x=random()*168-84,z=random()*158-83;
-  if(!allowed(x,z,.6))continue;
-  if(patches.some(p=>Math.hypot(p.x-x,p.z-z)<3.3))continue;
-  patches.push({x,z,rx:2.5+random()*3.4,rz:1.4+random()*2.8});
+ // Everything above this point retains the exact original tree RNG sequence.
+ // Grass uses continuous candidates, compact lobes and explicit empty bank
+ // intervals. No foreground anchor rows, lattice infill or uniform linking.
+ const patches=[],clumps=[],gaps=[];
+ for(const side of [-1,1])for(let attempt=0;attempt<50&&gaps.filter(g=>g.side===side).length<3;attempt++){
+  const z=MAP.minZ+3+random()*(MAP.maxZ-MAP.minZ-6),halfLength=.8+random()*1.1;
+  if(crossings.some(c=>Math.abs(c-z)<3+halfLength)||gaps.some(g=>g.side===side&&Math.abs(g.z-z)<g.halfLength+halfLength+3))continue;
+  gaps.push({side,z,halfLength,bankDepth:5.3});
  }
- // The playable banks need deliberate, visible roadside/wall-base growth as
- // well as forest-floor coverage. Thin grass only in the background is not a
- // substitute for foreground detail. Narrow centers follow the free strips.
- for(const side of [-1,1])for(const x0 of [6.5,12.6,23,29.7])for(const z0 of [-30,-17,-10,3,10,23]){
-  const x=side*x0,z=z0+(random()-.5)*1.4;
-  if(!allowed(x,z,.1))continue;
-  patches.push({x,z,rx:x0<14?1.35:2.25,rz:2.6+random()*1.4,foreground:true});
+ const occupied=new Map(),cell=.08;
+ function rootFree(x,z){
+  const ix=Math.floor(x/cell),iz=Math.floor(z/cell);
+  for(let dz=-1;dz<=1;dz++)for(let dx=-1;dx<=1;dx++)for(const q of occupied.get(`${ix+dx},${iz+dz}`)||[])if(Math.hypot(x-q.x,z-q.z)<.075)return false;
+  return true;
  }
- for(const patch of patches)for(let i=0;i<(patch.foreground?430:140);i++){
-  const a=random()*6.283,r=Math.sqrt(random()),x=patch.x+Math.cos(a)*patch.rx*r,z=patch.z+Math.sin(a)*patch.rz*r;
-  if(!allowed(x,z,.25)||random()>(.98-.48*r*r))continue;
-  const p=place(x,z,.74+random()*.55),edge=r>.77,choice=random();
-  if(edge||choice<(patch.foreground?.24:.46))low.push(p);
-  else if(choice<.93)medium.push(p);
-  else if(pathDistance(x,z)>3.4&&crossings.every(c=>Math.abs(z-c)>4))tall.push(p);
+ function reserve(p){const k=`${Math.floor(p.x/cell)},${Math.floor(p.z/cell)}`;if(!occupied.has(k))occupied.set(k,[]);occupied.get(k).push(p)}
+ function footprintAllowed(x,z,r){
+  if(!grassAllowed(x,z,.25)||inGrassGap(x,z,gaps,r))return false;
+  for(let i=0;i<32;i++){const a=i*Math.PI/16;if(!grassAllowed(x+Math.cos(a)*r*1.005,z+Math.sin(a)*r*1.005,.25))return false}
+  return true;
  }
- // Root-adjacent and roadside linking tufts, never a continuous lawn/carpet.
- for(let i=0;i<1500;i++){
-  const x=random()*100-50,z=random()*90-48;if(!allowed(x,z,.1))continue;
-  if(random()<.6&&pathDistance(x,z)>3.5&&!outside(x,z))continue;
-  low.push(place(x,z,.62+random()*.42));
+ for(let attempt=0;attempt<420;attempt++){
+  // Prioritize a continuous near-bank envelope identified in the real camera
+  // review. This is random sampling in an area, NOT a list of foreground rows.
+  const featured=attempt<24,region=random(),bank=featured||region<.55,foreground=featured||region<.82,side=random()<.5?-1:1;
+  const z=featured?8+random()*4:foreground?MAP.minZ+2+random()*(MAP.maxZ-MAP.minZ-4):random()*158-83;
+  const x=featured?side*(5.6+random()*1.6):bank?side*(riverWidth(z)+2.1+random()*1.35):foreground?MAP.minX+2+random()*(MAP.maxX-MAP.minX-4):random()*168-84;
+  if(!grassAllowed(x,z,.5)||inGrassGap(x,z,gaps,.4))continue;
+  const reach=featured?.60+random()*.65:.75+Math.pow(random(),1.7)*2.5;
+  if(patches.some(p=>Math.hypot(p.x-x,p.z-z)<p.reach*.65+reach*.65+.6))continue;
+  const derivative=-.136*Math.sin(z*.17)-.1645*Math.sin(z*.47);
+  const angle=bank?Math.atan2(1,side*derivative)+(random()-.5)*.7:random()*Math.PI*2;
+  const patch={id:`grass-patch-${patches.length}`,x,z,reach,angle,bank,foreground,featured,community:random()<(featured?1:foreground?.84:.45)?'rush':'meadow',baseVariant:Math.floor(random()*4),tone:.25+random()*.55,lobes:[]};
+  const lobeCount=2+Math.floor(random()*4);
+  for(let l=0;l<lobeCount;l++){
+   const a=random()*Math.PI*2,r=l===0?0:reach*(.25+random()*.6),across=(bank?.38:.8);
+   const u=Math.cos(a)*r,v=Math.sin(a)*r*across,cx=x+u*Math.cos(angle)-v*Math.sin(angle),cz=z+u*Math.sin(angle)+v*Math.cos(angle);
+   if(!grassAllowed(cx,cz,.25)||inGrassGap(cx,cz,gaps,.4))continue;
+   const sizeClass=random(),radius=sizeClass<.28?(foreground?.40:.28)+random()*.18:sizeClass<.79?(foreground?.58:.48)+random()*.27:.8+random()*.33;
+   if(clumps.some(c=>Math.hypot(cx-c.x,cz-c.z)<Math.min(radius,c.rx)*.8))continue;
+   const c={id:`grass-clump-${clumps.length}`,patchId:patch.id,x:cx,z:cz,angle:angle+(random()-.5)*1.1,rx:radius,rz:radius*(.50+random()*.40),
+    sizeClass:sizeClass<.28?'small':sizeClass<.79?'medium':'large',baseVariant:patch.baseVariant,mediumVariant:patch.baseVariant%2+4,tallVariant:patch.baseVariant%2+6,
+    seedHeads:random()<.28&&pathDistance(cx,cz)>3.7&&crossings.every(z0=>Math.abs(cz-z0)>4.5),community:patch.community,featured,coreRadius:foreground?.64:.52,vigor:(foreground?.55:.25)+random()*(foreground?.40:.7),phase:random()*Math.PI*2};
+   const placements=[],area=Math.PI*c.rx*c.rz,attempts=Math.ceil(area*(foreground?260:150));
+   for(let i=0;i<attempts;i++){
+    const theta=random()*Math.PI*2,core=random()<(foreground?.88:.78),rho=core?Math.sqrt(random())*c.coreRadius:c.coreRadius+.06+Math.sqrt(random())*(1.14-c.coreRadius);
+    // Noncircular lobes and a denser root core, with a few feathered satellites.
+    const edge=1+.16*Math.sin(theta*3+c.phase)+.09*Math.cos(theta*5-c.phase),u=Math.cos(theta)*c.rx*rho*edge,v=Math.sin(theta)*c.rz*rho*edge;
+    const px=c.x+u*Math.cos(c.angle)-v*Math.sin(c.angle),pz=c.z+u*Math.sin(c.angle)+v*Math.cos(c.angle);
+    if(!rootFree(px,pz))continue;
+    const variant=c.seedHeads&&rho<.24&&i%5===0?c.tallVariant:c.community==='rush'&&core?c.mediumVariant:c.baseVariant;
+    const spec=GRASS_VARIANTS[variant],height=spec.range[0]+(spec.range[1]-spec.range[0])*(c.vigor*.55+random()*.30+(core?.15:0));
+    const stretch=.94+random()*.12,s=height/(spec.height*stretch),radius=spec.radiusRatio*spec.height*s+.03;
+    if(!footprintAllowed(px,pz,radius))continue;
+    const p=place(px,pz,s);p.stretch=stretch;p.tone=Math.min(1,Math.max(0,patch.tone+(random()-.5)*.09));
+    Object.assign(p,{variant,height,clearanceRadius:radius,clumpId:c.id,patchId:patch.id,zone:core?'core':'satellite',rho});
+    placements.push(p);reserve(p);
+   }
+   if(!placements.length)continue;
+   c.rootCount=placements.length;clumps.push(c);patch.lobes.push(c.id);
+   for(const p of placements)({low,medium,tall}[GRASS_VARIANTS[p.variant].layer]).push(p);
+  }
+  if(patch.lobes.length)patches.push(patch);
  }
- // Bounded layout-only infill: low leafy tufts close bare gaps on the playable
- // banks and house margins. Appending here preserves every earlier placement,
- // including all trees, shadows and the medium/tall layer. A jittered 27cm
- // lattice gives dense bodies; coherent gaps prevent a uniform lawn read.
- const infill={added:0,banks:0,outerMargins:0,betweenHouses:0,nominalSpacing:.27,baselineLow:low.length};
- for(let gz=MAP.minZ+1.3;gz<MAP.maxZ-1.3;gz+=.27)for(let gx=MAP.minX+1.3;gx<MAP.maxX-1.3;gx+=.27){
-  const x=gx+(random()-.5)*.29,z=gz+(random()-.5)*.29,ax=Math.abs(x);
-  const bank=ax>=5.8&&ax<=8.2,outer=ax>=21.6&&ax<=30.7,between=ax>=12&&ax<21.6&&(Math.abs(z+13)<5.1||Math.abs(z-7)<5.1);
-  if(!(bank||outer||between)||!allowed(x,z,.25))continue;
-  const patchiness=.81+.12*Math.sin(x*.61+Math.sin(z*.29))+.10*Math.cos(z*.43-x*.18);
-  if(random()>Math.min(.98,patchiness+(bank?.10:0)))continue;
-  const p=place(x,z,.91+random()*.22);p.infill=true;low.push(p);infill.added++;
-  if(bank)infill.banks++;else if(outer)infill.outerMargins++;else infill.betweenHouses++;
- }
- return{near,far,shrubs,low,medium,tall,patches,trunks,infill};
+ return{near,far,shrubs,low,medium,tall,patches,trunks,clumps,gaps};
 }
 
 export async function buildVegetation(T,world){
@@ -149,26 +187,13 @@ export async function buildVegetation(T,world){
   instances(assets[species*2+1].scene,plan.far[species],species===0?14:12.8,`forest-${species}`,{tree:true,wind:.025});
  }
  instances(assets[3].scene,plan.shrubs,3.2,'woody-understorey',{tree:true,wind:.018});
- const grass01=assets[4].scene.children,grass02=assets[5].scene.children;
- const lowTypes=grass01.filter(n=>/(tiny_a|small_[ab])_/.test(n.name)),mediumTypes=grass02.filter(n=>/_[ac]$/.test(n.name)),tallTypes=grass01.filter(n=>/tall_[ab]_/.test(n.name));
- if(!lowTypes.length||!mediumTypes.length||!tallTypes.length)throw Error('Foliage variant names changed: refusing silent empty ground cover');
- const tiny=lowTypes.find(n=>/tiny_a_/.test(n.name)),short=lowTypes.filter(n=>/small_/.test(n.name));
- // Thin linking stems are a small accent, not half the entire low layer.
- const stemLow=plan.low.filter((p,k)=>!p.infill&&k%3===0);
- instances(tiny,stemLow.filter((p,k)=>k%10===0),.16,'low-grass',{wind:.013});
- short.forEach((n,i)=>instances(n,stemLow.filter((p,k)=>k%10!==0&&k%2===i),.22,'low-grass',{wind:.013}));
- // Existing CC0 Bermuda has green, short leaf bodies, not seed heads. Keep
- // the exact infill layout, replace only its species. The flatter variants
- // stay lower so their width is ~0.32–0.35m, not giant enlarged grass blades.
- const baseTypes=assets[6].scene.children.filter(n=>/_(small_[abc]|medium_c)$/.test(n.name)).sort((a,b)=>a.name.localeCompare(b.name));
- if(baseTypes.length!==4)throw Error('Bermuda low-layer variants missing');
- // Reassign existing thin-stem placements, not extra density. Leafy low grass
- // carries the green mass; taller seed heads are now an accent instead of noise.
- const infill=[...plan.low.filter((p,k)=>p.infill||k%3!==0),...plan.medium.filter((p,k)=>k%3!==0)],baseHeight={small_a:.14,small_b:.18,small_c:.22,medium_c:.23};
- baseTypes.forEach((n,i)=>instances(n,infill.filter((_,k)=>k%4===i),baseHeight[n.name.replace('grass_bermuda_01_','')],'bermuda-base',{wind:.013}));
- const stemMedium=plan.medium.filter((_,k)=>k%3===0);
- mediumTypes.forEach((n,i)=>instances(n,stemMedium.filter((_,k)=>k%mediumTypes.length===i),.36,'dense-grass',{wind:.022}));
- tallTypes.forEach((n,i)=>instances(n,plan.tall.filter((_,k)=>k%tallTypes.length===i),.66,'seed-grass',{wind:.028}));
+ // Variant identity is assigned per ecological clump, not interleaved modulo
+ // placement index. Layers retain distinct real-world heights of .12–.55m.
+ for(const batch of grassBatches(plan)){
+  const source=assets[names.indexOf(batch.asset)].scene.getObjectByName(batch.node);
+  if(!source)throw Error(`Foliage variant missing: ${batch.node}`);
+  instances(source,batch.placements,batch.height,batch.label,{wind:batch.layer==='low'?.013:batch.layer==='medium'?.022:.028});
+ }
  const triangles=batches.reduce((n,b)=>n+b.triangles,0),shadowTriangles=batches.filter(b=>b.shadow).reduce((n,b)=>n+b.triangles,0);
- return{update(t){time.value=t},info(){return{revision:'layered-foliage-2026-11-18-bermuda-base',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,patches:plan.patches.length,infill:{...plan.infill,asset:'grass_bermuda_01',variants:4,triangles:batches.filter(b=>b.label==='bermuda-base').reduce((n,b)=>n+b.triangles,0),drawCalls:batches.filter(b=>b.label==='bermuda-base').length},treeCollidersNeeded:0,source:'Poly Haven CC0; full near components, verified winding and source-clipped compound alpha; spatial instance culling',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
+ return{update(t){time.value=t},info(){return{revision:'organic-clumps-2026-11-18',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},treeCollidersNeeded:0,source:'Poly Haven CC0; original tree transforms; compact species-coherent grass cores and irregular satellites; spatial instance culling',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
 }

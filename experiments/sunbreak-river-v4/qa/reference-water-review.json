@@ -1,0 +1,48 @@
+{
+  "protocol": "offscreen-cinematic-v1",
+  "task": "sunbreak-river-reference-water-2026-11-18",
+  "engineering": {
+    "reviewer": "Descartes",
+    "verdict": "CONDITIONAL PASS",
+    "scope": "Descartes independently verified final145 runtime bindings,8 current-bound evidence/functional phases and11 CPU suites. APPROVED FOR WIP CHECKPOINT ONLY. All three current-build performance failures retained; art REVISE, continuous motion UNVERIFIED. No new checkpoint blocker, no Pages/AAA approval.",
+    "fixedAuditFindings": [
+      "Water surface now resolves highest warped spatial phase on both axes.",
+      "Reflection disturbance projected using reflected-camera tangent basis.",
+      "Actual exported GLSL depth and bent flow functions tested independently against support and CPU height.",
+      "Normal override excludes clipped/alpha geometry and preserves true sun shadow cache.",
+      "Sampled live-water sidecars include actual camera pose/FOV equality checks."
+    ]
+  },
+  "art": {
+    "reviewer": "Lovelace",
+    "verdict": "REVISE",
+    "AAAVerdict": "REVISE",
+    "confidence": "high",
+    "evidence": [
+      "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/riverbank.png",
+      "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/reference-close.png"
+    ],
+    "previousFiveViewReview": [
+      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/riverbank.png",
+      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/reference-close.png",
+      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/valley-hero.png",
+      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/valley-wide.png",
+      "qa/evidence/afterrain-2026-11-18T09-44-48-314Z/sun-side.png"
+    ],
+    "scope": "Lovelace independently re-opened the two listed09:52 current-build stills after the shadow-cache guard; same REVISE with high confidence for those two. Earlier five-view review retained separately; the other three09:52 views were not re-reviewed. NOT full continuous motion, source-hash or performance acceptance.",
+    "improvements": [
+      "Large white mirror sheet substantially reduced; shallow bed visible and reflections disturbed.",
+      "Daylight/shadow readability improved.",
+      "Gravel continues underwater and compound grass bodies are fuller than early iteration."
+    ],
+    "remaining": [
+      {"severity": "Major", "issue": "Near-shore pale wedge persists; bed contrast is strong and water depth separation insufficient", "next": "Diagnose the actual highlight source, then refine depth-dependent transmission and bed attenuation."},
+      {"severity": "Major", "issue": "Close pebble substrate still reads as planar texture plus scattered stones", "next": "Author one near-bank low-relief sediment and embedded-rock section, not more uniform coverage."},
+      {"severity": "Major", "issue": "Isolated grass islands still repeat; pale seed stems compete with low leafy layer", "next": "More distinct clump masses and foliage layering while retaining mud and route gaps."}
+    ],
+    "conclusion": "WIP progress only. Reference quality not reached even within this slice; no UE5/AAA parity. Village/mountain reconstruction not required by this bounded review."
+  },
+  "temporal": {"verdict": "UNVERIFIED", "note": "Two recordings timed out; six actual timed images cannot establish uninterrupted motion quality."},
+  "releaseVerdict": "BLOCKED",
+  "publication": "No Pages update; independent approval for source-only WIP checkpoint, not release acceptance."
+}

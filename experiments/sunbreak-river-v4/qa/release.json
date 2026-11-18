@@ -1,10 +1,11 @@
 {
-  "schema": "river-afterrain-checkpoint-v1",
+  "schema": "river-reference-water-checkpoint-v1",
   "protocol": "offscreen-cinematic-v1",
-  "task": "sunbreak-river-afterrain-2026-11-18",
-  "date": "2026-11-18T07:42:36.125Z",
+  "captureMethod": "native-headless actual browser WebGL canvas, NOT UE SceneCapture or desktop capture",
+  "task": "sunbreak-river-reference-water-2026-11-18",
+  "date": "2026-11-18T10:02:01.404Z",
   "verdict": "BLOCKED",
-  "scope": "Local playable after-rain river valley WIP; not AAA/Delta Force parity, continuous-motion art acceptance, UE, multiplayer or full competitive balance.",
+  "scope": "Playable visual WIP. Reference art/AAA/UE5 parity unaccepted. No public release, multiplayer or continuous-motion claim.",
   "sources": {
     "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
     "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
@@ -133,11 +134,12 @@
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
     "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
     "map-layout.js": "fe5813a1ec48738621d4095284156b16c30b40a37c5f99ccf6816369931fa5c6",
-    "qa/browser.mjs": "d74525adeeb99b0c3f17f958c8d87a7a2a7a1d2bec8d526835244198cd68970f",
-    "qa/hooks.js": "259f6ea1584c6b49fc1de52f05ebc09c877b2a4ac839e8548109537221f84494",
+    "qa/browser.mjs": "cca11a007063abc4a817e513d8bb8b30b19e3d6dcd4bd593d238c70f41a0e576",
+    "qa/hooks.js": "fa53187e7312b77c83381b8201c102d5711f0a38c127dd5f29969a82a182e695",
     "qa/source-binding.mjs": "90ee606d4936ea2f5b6e3fe72d0cf125f5e7e6115223341d2ff6fb1c6b128c4d",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
-    "riverbank-detail.js": "d52f6bd0f84d1d14f2f64ec452242031d344f8b43781ceb3e2c48c57025d731c",
+    "river-water.js": "ce9467eaf4ca2674f1d171e019872c69fd87bbec3605f4cca01170da2e32b665",
+    "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
     "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
     "serve.mjs": "bf00904582bfbdb3ce43d51f7f6ee1b18557215443584d9e29549b50643aca1a",
     "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
@@ -145,218 +147,226 @@
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
     "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
-    "vegetation.js": "bd862f7cfe54f69787085bb9e3d77b5ace2888db614deefd54d468a075492845",
+    "vegetation.js": "3d384f11a2dc381a76ffc93e9ba99d64f27d609e968de6df93f205509c449f60",
     "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
     "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
     "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
-    "world.js": "f43eb5eb6a67ce562f5b41074b2052c066240625fb033b59eac2e4b62fb585fd"
+    "world.js": "e16654460e06726bc1858b87dcab6ceac2c7b5e4d1c694daace80d8f92927f9c"
   },
+  "functional": true,
   "reports": {
     "afterrain": {
-      "path": "qa/evidence/afterrain-2026-11-18T07-40-01-878Z/afterrain-1.json",
-      "sha256": "de4a4d31857534ca9d4a559dd62dfab4214476fe8d2fc652300acd909b17e4f7",
+      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/afterrain-1.json",
+      "sha256": "9f35143fca9c2aca0e1b469422a00a8dc5d1bb3f19907ec9761b74be31e7b3da",
       "pass": true,
       "checks": 9,
       "sourceMismatches": []
     },
     "map": {
-      "path": "qa/evidence/map-2026-11-18T07-40-26-161Z/map-1.json",
-      "sha256": "210b16461464c92719416e9cd6b155af001d90521f5c3c1b023b34eaff585fbf",
+      "path": "qa/evidence/map-2026-11-18T09-53-12-356Z/map-1.json",
+      "sha256": "27be32bf2b2c3a5ad97bc0b22d1d8d22c5334368f79fd6347bbe35d11281ed7a",
       "pass": true,
       "checks": 2,
       "sourceMismatches": []
     },
     "art": {
-      "path": "qa/evidence/art-2026-11-18T07-40-48-944Z/art-1.json",
-      "sha256": "df436b233e4708647cb4005ea87f09209be14a25e578b03d3512eddc3e33bf68",
+      "path": "qa/evidence/art-2026-11-18T09-53-39-646Z/art-1.json",
+      "sha256": "0a653f043fd6bd936eeb7b68e817f4c8e8e1965288113030d562044fc2d261b1",
       "pass": true,
       "checks": 2,
       "sourceMismatches": []
     },
     "weather": {
-      "path": "qa/evidence/weather-2026-11-18T07-41-17-444Z/weather-1.json",
-      "sha256": "bdb0c89bcce6de8e99065a4d712fc42f2b21af511ac1e2cfc60d2b985d51c487",
+      "path": "qa/evidence/weather-2026-11-18T09-54-11-768Z/weather-1.json",
+      "sha256": "57778bba44b0a8270a76202b957e7afb80e2e1d395d058181b862ae8e87cc345",
       "pass": true,
       "checks": 4,
       "sourceMismatches": []
     },
     "cabins": {
-      "path": "qa/evidence/cabins-2026-11-18T07-37-47-726Z/cabins-1.json",
-      "sha256": "1764634889a7cba9b512ca648940ebdb86eef18e5995d397ce04638e521577df",
+      "path": "qa/evidence/cabins-2026-11-18T09-54-44-074Z/cabins-1.json",
+      "sha256": "55c930f8180034a71f7944e535a55596c5975da1f8e8820ffe151268e858f44f",
       "pass": true,
       "checks": 15,
       "sourceMismatches": []
     },
     "checks": {
-      "path": "qa/evidence/checks-2026-11-18T07-38-14-291Z/checks-1.json",
-      "sha256": "d829b492f73104faa7be1703378f268cffbe94f40eefd7fefe72b3af099ae9e6",
+      "path": "qa/evidence/checks-2026-11-18T09-55-11-504Z/checks-1.json",
+      "sha256": "16851a7b2033f236fcab7be8adec51e138734e5e537e6e4f01dddd253015322c",
       "pass": true,
       "checks": 32,
       "sourceMismatches": []
     },
     "traversal": {
-      "path": "qa/evidence/traversal-2026-11-18T07-38-55-270Z/traversal-1.json",
-      "sha256": "81291b13d45d8c1b143cb138076cce5e6f090ad01d3216d5598489e054ac8246",
+      "path": "qa/evidence/traversal-2026-11-18T09-55-53-920Z/traversal-1.json",
+      "sha256": "1f75919930a413d6c172e16b2750e934c7a5269af409a87f26326efa4cc95a88",
       "pass": true,
       "checks": 40,
       "sourceMismatches": []
+    },
+    "water-samples": {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/water-samples-1.json",
+      "sha256": "0aa7d8e7465cf7a7062e7f899eecb74b7e8e7ea419d88756eb746952319dfb6b",
+      "pass": true,
+      "checks": 2,
+      "sourceMismatches": []
     }
   },
-  "unitReport": "qa/afterrain-units.json",
-  "functional": true,
+  "visuals": [
+    {
+      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/reference-close.png",
+      "sha256": "2df50385b759dea4cb2bf7ccaf33ef45373ff113d42518d85b561cb57cf4a854",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 0.30590000057220457
+    },
+    {
+      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/riverbank.png",
+      "sha256": "1bd0767892b634ed1f13170ff42707bd96d097f0278de669f55ffd67447525d3",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 0.30590000057220457
+    },
+    {
+      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/sun-side.png",
+      "sha256": "c61aa72b78b9642acc0e65573939a0c793f08180a0d3ec7e5437894b9067694f",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 0.30590000057220457
+    },
+    {
+      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/valley-hero.png",
+      "sha256": "a6c925ae149a31ec3742d2ca7a71991c392fa5e5e5bb685755caac862fcd07ac",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 0.30590000057220457
+    },
+    {
+      "path": "qa/evidence/afterrain-2026-11-18T09-52-49-778Z/valley-wide.png",
+      "sha256": "f19916d62bac7fdd9973b549b594c0887fb2eaa7046735d3bdc8b528784e79b4",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 0.30590000057220457
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-0.png",
+      "sha256": "7beeb569763b3b460e8656d66c788b9b252b9794b84f454b6f93d2938031d992",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 1.767400000572205
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-1.png",
+      "sha256": "cbdcc52e6f7d1b546ef384d2a45de328160d49cb116db4a48395a9ad04740437",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 2.9273000011444124
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-2.png",
+      "sha256": "be67e1407542e451fbca27bda2985beb7879b1f4a481de400bb7588d29c4b08f",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 4.101100001335149
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-3.png",
+      "sha256": "6680616edb3e68ab15d3e5339485b070dda3287f16647cb4b115578d3e80cbd1",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 5.513400000572211
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-4.png",
+      "sha256": "039c9fedeb75a5718642830880094bfb7dbb9f65f51a09691a95018a21f57785",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 6.87980000019074
+    },
+    {
+      "path": "qa/evidence/water-samples-2026-11-18T09-49-01-799Z/flow-5.png",
+      "sha256": "d9bda8a2ae37e4b1ac4a2222a2fbc75b802d2251e0b52d8683f362788a9b8400",
+      "width": 1920,
+      "height": 1080,
+      "sourceMismatches": [],
+      "waterTime": 8.315600000381476
+    }
+  ],
+  "unitReport": "qa/reference-water-units.json",
+  "independentReview": "qa/independent-review.json",
   "performance": {
     "verdict": "BLOCKED",
     "storm": [
       {
-        "path": "qa/evidence/benchmark-2026-11-18T07-29-14-401Z/benchmark-1.json",
-        "sha256": "0ca49d300e93a7da2da439cae2491852b3bca7b9d8fc29490f07e5efdc855788",
+        "path": "qa/evidence/benchmark-2026-11-18T09-50-25-458Z/benchmark-1.json",
+        "sha256": "e3f1eee016bc1257a869a6e8bc7110e4b39342ec20cb8501592f2ac41a143b05",
         "pass": false,
         "checks": 2,
-        "sourceMismatches": [
-          "../sunbreak-storm-v3/vendor/three/LICENSE",
-          "../sunbreak-storm-v3/vendor/three/build/three.module.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js",
-          "qa/browser.mjs",
-          "qa/hooks.js",
-          "qa/source-binding.mjs"
-        ],
+        "sourceMismatches": [],
         "weather": 2,
-        "duration": 30014.9,
-        "p95": 18.399999999997817,
+        "duration": 30016.899999999998,
+        "p50": 17.5,
+        "p95": 18.30000000000291,
         "p99": 18.599999999998545,
-        "max": 53,
+        "max": 52.700000000004366,
         "over50": 1,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "shots": 228,
-        "enemyShots": 21
+        "shots": 228
       },
       {
-        "path": "qa/evidence/benchmark-2026-11-18T07-30-11-322Z/benchmark-1.json",
-        "sha256": "9787a2d0a8f2c60cc324bd66964443686359fc6f593ee6fe92baf8001c285643",
+        "path": "qa/evidence/benchmark-2026-11-18T09-51-22-738Z/benchmark-1.json",
+        "sha256": "d2ef4ef566574343a0a64b1a83eac7cb657e127ab8277667f26c87e5f20255ed",
         "pass": false,
         "checks": 2,
-        "sourceMismatches": [
-          "../sunbreak-storm-v3/vendor/three/LICENSE",
-          "../sunbreak-storm-v3/vendor/three/build/three.module.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js",
-          "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js",
-          "qa/browser.mjs",
-          "qa/hooks.js",
-          "qa/source-binding.mjs"
-        ],
+        "sourceMismatches": [],
         "weather": 2,
-        "duration": 30001.600000000002,
-        "p95": 18.400000000001455,
+        "duration": 30011.1,
+        "p50": 17.5,
+        "p95": 18.39999999999418,
         "p99": 18.599999999998545,
-        "max": 247.39999999999418,
-        "over50": 4,
+        "max": 390.6000000000022,
+        "over50": 2,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "shots": 229,
-        "enemyShots": 19
+        "shots": 226
       }
     ],
     "sunny": {
-      "path": "qa/evidence/sunny-benchmark-2026-11-18T07-31-08-369Z/sunny-benchmark-1.json",
-      "sha256": "724b372fda495114cfd67634d962355ed4b66bad1ba492fca3ede9b1990e186b",
+      "path": "qa/evidence/sunny-benchmark-2026-11-18T09-49-27-764Z/sunny-benchmark-1.json",
+      "sha256": "99e8399205f11fb4c6728837e37f639dc1a3265ad2fdf0b64e264e151f89548b",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [
-        "../sunbreak-storm-v3/vendor/three/LICENSE",
-        "../sunbreak-storm-v3/vendor/three/build/three.module.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js",
-        "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs"
-      ],
+      "sourceMismatches": [],
       "weather": 0,
-      "duration": 30000.199999999997,
-      "p95": 18.399999999997817,
+      "duration": 30001.399999999998,
+      "p50": 17.5,
+      "p95": 18.30000000000291,
       "p99": 18.599999999998545,
-      "max": 53.200000000004366,
+      "max": 53.30000000000291,
       "over50": 1,
       "viewport": [
         1920,
         1080
       ],
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "shots": 225,
-      "enemyShots": 20
+      "shots": 229
     },
     "requirements": {
       "width": 1920,
@@ -367,31 +377,30 @@
       "p99MS": 33.3,
       "maxMS": 50,
       "over50": 0,
-      "consecutiveStormSamples": 2
+      "stormSamples": 2
     }
   },
-  "independentReview": "qa/independent-review.json",
+  "temporal": {
+    "verdict": "UNVERIFIED",
+    "sampledFrames": "Six timed live-gameplay native renders; not a complete sequence review",
+    "recordingFailures": [
+      "qa/evidence/water-motion-2026-11-18T09-35-21-053Z/water-motion-failure-1.json",
+      "qa/evidence/water-motion-2026-11-18T09-38-02-368Z/water-motion-failure-1.json"
+    ],
+    "cause": "Unknown; both direct canvas recording and diagnostic copied-canvas recording timed out. No full recording accepted."
+  },
   "changes": [
-    "Default clear after-rain sky; measured and jointly rotated HDR/key direction; sky IBL solar radiance capped16 to separate solar key.",
-    "Three asymmetric mountain layers, open valley, bounded rough ridges and dry matte distant shoulders.",
-    "Official CC0 pebble/rock scans; bounded buried stone clusters and short shore grass replace old faceted stones.",
-    "Partial redistribution of existing grass to leafy low growth; original combat geometry, weapon and actor animation preserved.",
-    "Rain, splashes, rain ripples and thunder gated by weather; puddle rims follow irregular shape."
+    "Removed regular grass infill; deterministic irregular dense clumps, satellites and bare intervals.",
+    "Dimensional gravel/submerged stones, mixed mineral palettes and broken pebble-to-mud deposits; existing step/crossing/cabin clearances retained.",
+    "Analytic downstream multi-wave surface with real centimetric relief, shared depth mask, camera-space rough reflection and depth-dependent absorption.",
+    "HDR and sun jointly rotated to light visible riverbank faces; brighter cool shade; wet bed no longer double-counts broad specular.",
+    "Transparent/clipped surfaces and alpha foliage excluded from opaque SSAO override; authored AO/alpha-correct tree shadows retained."
   ],
-  "retainedRework": [
-    "Baseline art REVISE / storm max53ms failures preserved.",
-    "Initial integration giant cliff/cloth silhouette and pale pebble bed rejected.",
-    "Rotated sunlight revealed excessive bright mountain albedo and glossy distant soil; corrected before freeze.",
-    "07:35 east-cabin run failed when a late pointer-lock event paused the synthetic next travel. Removed duplicate exit request and drained native lifecycle in harness only; failure retained, same thresholds and unmodified gameplay.",
-    "Complete-binding audit added actual legacy vendor/three dependency and regenerated functional evidence; original failed performance samples are never backfilled.",
-    "Earlier evidence remains in qa/evidence; only listed frozen source-bound sets support this checkpoint."
-  ],
+  "preserved": "map-layout/weapon/actor/combat modules and earlier four demos unchanged; no private asset edits",
   "publication": {
     "status": "NOT UPDATED",
     "localPreview": "http://127.0.0.1:5190/river/",
-    "previousPublicURL": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
-    "previousReleaseRecord": "qa/last-published-release-2026-11-17.json",
-    "reason": "Independent art and/or strict performance not accepted"
+    "previousPublicURL": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/"
   },
-  "privateAssets": "Pre-existing unrelated dirty private vault preserved; private transfer explicitly skipped, no UE/private portability claim."
+  "privateAssets": "Unrelated dirty private vault preserved; isolated public-browser checkpoint skips private transfers, not full UE/private portability."
 }

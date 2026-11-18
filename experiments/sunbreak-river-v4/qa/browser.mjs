@@ -72,7 +72,7 @@ try {
   console.log('Ready');if(process.argv.includes('--no-post'))await evaluate("document.getElementById('bPost').click()");await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
  }else if(phase==='afterrain'){
   check('default weather is after-rain daylight',(await evaluate('arenaQA.mapInfo()')).weather===0);
-  for(const [name,...v]of [['valley-hero',-7,1.7,24,-.24,-.1],['riverbank',-4.7,1.35,10,-.12,-.32],['valley-wide',0,3.5,25,0,.05],['sun-side',10,1.7,8,-1,-.07]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
+  for(const [name,...v]of [['valley-hero',-7,1.7,24,-.24,-.1],['riverbank',-4.7,1.35,10,-.12,-.32],['valley-wide',0,3.5,25,0,.05],['sun-side',10,1.7,8,-1,-.07],['reference-close',-4.4,1.1,11,-.65,-.55]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
   for(const weather of [0,2,1,0]){
    await evaluate(`arenaQA.weather(${weather})`);await delay(150);
    const state=await evaluate('arenaQA.mapInfo()');
@@ -226,6 +226,18 @@ try {
    await evaluate('arenaQA.pose(null)');await delay(80);check('reload restores held pose',(await snapshot()).weapon.reload.stage==='held');
   }
   await capture(live?'public-after-reload':'checks-final');
+ }else if(phase==='water-samples'){
+  await evaluate("document.getElementById('bStart').click();arenaQA.waterView()",true);
+  await delay(250);const first=await snapshot(),samples=[];
+  for(let i=0;i<6;i++){await delay(700);const s=await capture('flow-'+i);samples.push({name:'flow-'+i,time:s.water.time,weather:s.weather,camera:s.camera})}
+  check('actual live flow advances without rain or camera travel',samples.every((s,i)=>s.weather===0&&JSON.stringify(s.camera)===JSON.stringify(samples[0].camera)&&(i===0||s.time>samples[i-1].time))&&samples.at(-1).time-first.water.time>4,{samples,scope:'Six timed live-rendered samples only. Not full continuous video review.'});
+ }else if(phase==='water-motion'){
+  console.log('Starting native water recording');
+  await evaluate("document.getElementById('bStart').click()",true);
+  const movie=await evaluate('arenaQA.waterMovie()',true);
+  await writeFile(resolve(output,'water-live.webm'),Buffer.from(movie.data,'base64'));delete movie.data;
+  check('actual live water clock advances over recording',movie.endTime-movie.startTime>9&&movie.durationMS>=10000,movie);
+  await capture('water-end');
  }else if(phase==='movie'){
   await evaluate("document.getElementById('bStart').click()",true);
   const movie=await evaluate("arenaQA.movie()",true);

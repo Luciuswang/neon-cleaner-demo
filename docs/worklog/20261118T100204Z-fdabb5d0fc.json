@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261118T100204Z-fdabb5d0fc",
+  "task_id": "sunbreak-river-reference-water-2026-11-18",
+  "timestamp_utc": "2026-11-18T10:02:04.224195+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall reference-water WIP: irregular compound grass clumps, mixed modeled/submerged stones, warped moving shallow water, brighter aligned daylight and corrected SSAO shadow preservation. Final145runtime bindings and staged identities match; eight current browser phases and11CPU suites PASS, earlier four demos/gameplay preserved. Descartes approves WIP only (engineering CONDITIONAL PASS); Lovelace current still art REVISE. Strict pacing BLOCKED: sunny max53.3ms, storm52.7/390.6ms; recordings timed out, cause unknown, sampled frames only and continuous motion UNVERIFIED. Local preview5190/river; no Pages/AAA/UE5 acceptance. Next: close-bank sediment depth, pale shore reflection, natural leafier clumps and retained hitch diagnosis. Existing dirty private vault preserved; isolated public-browser checkpoint skips private transfer, no UE/private portability claim. See task packet and qa/release.json.",
+  "commit_shas": [
+    "192f5f5d5fa38aefb67f490eac8a1db1c416f85d"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

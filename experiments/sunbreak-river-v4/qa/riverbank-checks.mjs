@@ -4,13 +4,13 @@ import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import * as T from '../../sunbreak-storm-v3/vendor/presentation/build/three.module.js';
 import {MeshoptDecoder} from '../../sunbreak-storm-v3/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js';
-import {MAP,crossings,vegetationAllowed,landscapeHeight,inBuffer,bounds,houses} from '../map-layout.js';
-import {RIVERBANK_LIMITS,riverbankPlan,riverStoneGeometry,populateRiverbankInstances,riverbankMaterialHook,footprintRadius,footprintGround} from '../riverbank-detail.js';
+import {MAP,crossings,vegetationAllowed,landscapeHeight,inBuffer,bounds,houses,spawns,teamSpawns,riverWidth} from '../map-layout.js';
+import {RIVERBANK_LIMITS,riverbankPlan,riverStoneGeometry,populateRiverbankInstances,riverbankMaterialHook,footprintRadius,footprintGround,riverbankPlacementMatrix,riverDepositField,riverDepositPatches,riverSubstrateField,riverBedField} from '../riverbank-detail.js';
 const root=new URL('../',import.meta.url),sha=b=>createHash('sha256').update(b).digest('hex');
 let assertions=0;function check(v,message){assert.ok(v,message);assertions++}
 const a=riverbankPlan(),b=riverbankPlan();assert.deepEqual(a,b);assertions++;
 check(sha(JSON.stringify(a))!==sha(JSON.stringify(riverbankPlan(18112608))),'different seeds must vary placements');
-let maxVertexProtrusion=-Infinity,visibleStoneVertices=0,stoneVertices=0;
+let maxVertexProtrusion=-Infinity,visibleStoneVertices=0,stoneVertices=0,actualSubmergedStones=0,actualExposedStones=0;
 for(const kind of ['micro','cobbles','grass','outcrops']){
  check(a[kind].length===RIVERBANK_LIMITS[kind],kind+' count');
  for(const p of a[kind]){
@@ -23,6 +23,7 @@ for(const kind of ['micro','cobbles','grass','outcrops']){
    check(p.y<footprintGround(p).low,'outcrop embedded');continue;
   }
   for(const c of crossings)check(Math.abs(p.z-c)>=2.7+r,'full crossing footprint clearance');
+  for(const s of [...spawns,...teamSpawns])check(Math.hypot(p.x-s[0],p.z-s[2])>=2+r,'full spawn footprint clearance');
   check(!inBuffer(p.x,p.z,r+1),'cabin routes');
   for(const h of houses)check(!(Math.abs(p.x-h.x)<4.8+r&&Math.abs(p.z-h.z)<5.3+r),'house footprint');
   for(const w of bounds)check(!(p.x>w.min.x-r-.35&&p.x<w.max.x+r+.35&&p.z>w.min.z-r-.35&&p.z<w.max.z+r+.35),'cover wall footprint');
@@ -31,7 +32,11 @@ for(const kind of ['micro','cobbles','grass','outcrops']){
    check(p.height<=.18,'short grounded grass');
    for(const x of [-r,0,r])for(const z of [-r,0,r])check(vegetationAllowed(p.x+x,p.z+z),'grass full footprint vegetationAllowed');
   }else{
-   check(p.y<footprintGround(p).low,'stone root embedded');check(p.protrusion<=RIVERBANK_LIMITS.maxProtrusion,'stone protrusion budget');
+   check(p.y<landscapeHeight(p.x,p.z),'sloped stone center root embedded');check(p.protrusion<=RIVERBANK_LIMITS.maxProtrusion,'stone protrusion budget');
+   check(riverBedField(p.x,p.z)>=.13,'modeled stone bound to shared scanned deposit or underwater substrate');
+   check(p.deposit===-1?riverSubstrateField(p.x,p.z)>=.13:a.patches.some(d=>d.id===p.deposit),'stone deposit/substrate origin recorded');
+   const matrix=riverbankPlacementMatrix(T,p);
+   for(const x of [-.5,0,.5])for(const z of [-.5,0,.5]){const v=new T.Vector3(x,0,z).applyMatrix4(matrix);check(v.y<landscapeHeight(v.x,v.z),'whole sloped bottom footprint embedded')}
   }
  }
 }
@@ -78,11 +83,19 @@ for(const kind of ['micro','cobbles','outcrops'])for(let variant=0;variant<(kind
   check(n.dot(new T.Vector3(x,y-.5,z))>0,'outward stone normal');
  }
  for(const p of a[kind].filter(p=>p.variant===variant)){
-  const c=Math.cos(p.yaw),s=Math.sin(p.yaw);
+  const matrix=riverbankPlacementMatrix(T,p);let top=-Infinity,visible=false;
   for(let i=0;i<pos.count;i++){
-   const x=p.x+c*pos.getX(i)*p.width+s*pos.getZ(i)*p.depth,z=p.z-s*pos.getX(i)*p.width+c*pos.getZ(i)*p.depth,y=p.y+pos.getY(i)*p.height;
+   const {x,y,z}=new T.Vector3().fromBufferAttribute(pos,i).applyMatrix4(matrix);top=Math.max(top,y);
    if(kind==='outcrops')check(x<MAP.minX||x>MAP.maxX||z<MAP.minZ||z>MAP.maxZ,'actual outcrop vertices outside map');
-   else{const height=y-landscapeHeight(x,z);maxVertexProtrusion=Math.max(maxVertexProtrusion,height);stoneVertices++;if(height>0)visibleStoneVertices++;check(height<=.0651,'actual stone vertices never protrude >6.5cm')}
+   else{const height=y-landscapeHeight(x,z);maxVertexProtrusion=Math.max(maxVertexProtrusion,height);stoneVertices++;if(height>0){visibleStoneVertices++;visible=true}check(height<=.0651,'actual stone vertices never protrude >6.5cm')}
+  }
+  if(kind!=='outcrops'){
+   check(visible,'every placed stone has actual above-ground geometry');
+   if(top<MAP.waterY-.018)actualSubmergedStones++;else if(top>MAP.waterY+.015)actualExposedStones++;
+   if(p.submerged)check(top<MAP.waterY-.018,'submerged classification actual geometry');
+   // Also sample triangle interiors: a ground saddle can hide between vertices.
+   const q=new T.Vector3(),v=new T.Vector3();
+   for(let i=0;i<geo.index.count;i+=3){q.set(0,0,0);for(let j=0;j<3;j++)q.add(v.fromBufferAttribute(pos,geo.index.getX(i+j)));q.multiplyScalar(1/3).applyMatrix4(matrix);check(q.y-landscapeHeight(q.x,q.z)<=.0651,'actual triangle center support mismatch <=6.5cm')}
   }
  }
  geo.dispose();
@@ -99,13 +112,44 @@ for(const mesh of group.children){
 }
 check(actualTriangles===batches.reduce((s,b)=>s+b.triangles,0),'reported triangles are actual');
 check(actualTriangles<=200000&&actualDraws<=28,'bounded geometry/draw budget');
-check(instances===3730,'actual instance total');
+check(instances===3592,'actual instance total');
+check(actualSubmergedStones>900&&actualExposedStones>500,'both actual submerged and exposed deposit clusters');
+check(visibleStoneVertices/stoneVertices>.36,'sculpted shoulders visible instead of only flattened caps');
+check(a.grassIslands.length===7,'few shore grass islands instead of even scattering');
+for(const p of a.grass){const island=a.grassIslands[p.island];check(!!island&&Math.hypot((p.x-island.x)/island.rx,(p.z-island.z)/island.rz)<=1.00001,'grass lies in its bounded clump')}
+let fieldSamples=0,fieldEmpty=0,fieldDense=0;const bankBins=[];
+for(const side of [-1,1])for(let z=-33;z<=25;z+=.5){
+ let occupied=0;
+ for(const offset of [.1,.5,.9,1.3,1.7,2.1]){const f=riverDepositField(side*(riverWidth(z)+offset),z);fieldSamples++;if(f<.03)fieldEmpty++;if(f>.65)fieldDense++;if(f>.12)occupied++}
+ bankBins.push(occupied);
+}
+check(fieldEmpty/fieldSamples>.45,'more than 45 percent open bank field prevents continuous gravel berm');
+check(fieldDense/fieldSamples>.06,'dense deposits retained instead of making everything sparse');
+check(bankBins.filter(n=>n===0).length>bankBins.length*.4,'complete lateral mud breaks, not only noisy edges');
+check(riverDepositPatches().some(p=>p.submerged),'explicit inner-channel deposit tongues');
+// New regression: a broken shoreline must not delete nearly all submerged
+// pebble substrate, nor turn it back into an uninterrupted specular sheet.
+let underwaterSamples=0,underwaterCovered=0,underwaterMud=0;
+for(let z=MAP.minZ+1;z<MAP.maxZ-1;z+=.5)for(let x=-5;x<=5;x+=.25){
+ if(landscapeHeight(x,z)>MAP.waterY-.06)continue;
+ const field=riverBedField(x,z);underwaterSamples++;if(field>.6)underwaterCovered++;if(field<.08)underwaterMud++;
+}
+check(underwaterCovered/underwaterSamples>.55,'broad scanned underwater substrate, not isolated ovals');
+check(underwaterMud/underwaterSamples>.05,'actual mud pockets retained between underwater gravel');
+const stones=[...a.micro,...a.cobbles],substrateStones=stones.filter(p=>p.deposit===-1).length;
+check(substrateStones>800,'real geometry linking deposits across underwater substrate');
+check(a.micro.filter(p=>p.width<.045).length>650,'numerous fine modeled gravel, not only same-size cobbles');
+check(a.cobbles.filter(p=>p.width>.28).length>70,'occasional broad embedded stone shoulders');
+const foregroundStones=stones.filter(p=>p.x< -1.6&&p.x> -6&&p.z>6&&p.z<12.3).length;
+check(foregroundStones>150,'reference-close foreground has actual geometry, not only a texture');
 for(const bed of [false,true]){
  const material=new T.MeshStandardMaterial();riverbankMaterialHook(material,{bed});
  const shader={vertexShader:T.ShaderLib.standard.vertexShader,fragmentShader:T.ShaderLib.standard.fragmentShader,uniforms:{}};material.onBeforeCompile(shader);
  check(shader.vertexShader.includes('bankLocal=instanceMatrix*bankLocal'),'wetness uses instanced world position');
  check(shader.fragmentShader.indexOf('float bankWet=')<shader.fragmentShader.indexOf('bankWet*.74'),'wetness in scope before roughness');
  if(bed)check(shader.fragmentShader.includes('float brokenEdge=')&&shader.fragmentShader.includes('diffuseColor.a*=fade'),'broken bank fade');
+ if(bed){check(shader.fragmentShader.includes('bankDepositField(vBankWorld.xz)'),'bed uses placement deposit field');check(shader.fragmentShader.includes('bankSubstrateField(vBankWorld)'),'underwater scanned substrate restored');check(shader.uniforms.uBankDeposits.value.length===riverDepositPatches().length*4,'all CPU deposits bound to GPU');check(!shader.fragmentShader.includes('float bankWidth='),'no continuous width-based berm mask');check(material.envMapIntensity<=.25,'bed reflection does not duplicate water highlight');check(shader.fragmentShader.includes('max(roughnessFactor,.84)')&&shader.fragmentShader.includes(',.72,.98)'),'bed roughness hard minimum .72, dry >=.8')}
+ else{check(shader.vertexShader.includes('bankNormal*objectNormal'),'sculpt/shear normals corrected');for(const role of ['vMapUv','vNormalMapUv','vRoughnessMapUv','vAoMapUv'])check(shader.vertexShader.includes(role+'='+role+'*mineralScale+mineralOffset'),'physical scan crop aligned '+role)}
  check(shader.vertexShader.includes('#include <project_vertex>'),'standard projection preserved');
 }
 const manifest=JSON.parse(await readFile(new URL('afterrain-assets.json',root),'utf8'));let sourceFiles=0,publicFiles=0;
@@ -121,4 +165,4 @@ for(const asset of manifest.assets){
 check(manifest.publicWhitelist.every(p=>p.startsWith('assets/afterrain-detail/')&&!p.includes('/source/')),'no original/API snapshots published');
 check(manifest.dependencies.some(d=>d.sha256===sha(grassBytes)&&d.path.endsWith('/grass_bermuda_01.glb')),'grass provenance binding');
 const previousTriangles=new T.IcosahedronGeometry(1,2).attributes.position.count/3*850;
-console.log(JSON.stringify({verdict:'CPU INVARIANTS PASS — NOT GPU/ART/PERFORMANCE ACCEPTANCE',assertions,counts:Object.fromEntries(['micro','cobbles','grass','outcrops','patches'].map(k=>[k,a[k].length])),actualTriangles,actualDraws,actualShadowTriangles,actualShadowDraws,instances,previous850StoneTriangles:previousTriangles,incrementalTriangles:actualTriangles-previousTriangles,incrementalDraws:actualDraws-1,maxVertexProtrusion,aboveGroundStoneVertexFraction:visibleStoneVertices/stoneVertices,sourceFiles,publicFiles,publicBytes:manifest.totalPublicBytes,placementSHA256:sha(JSON.stringify(a)),limits:'No server/browser/render process run. Shader hooks checked structurally only; native-headless GPU compilation/art/perf and movement QA owned by main.'},null,2));
+console.log(JSON.stringify({verdict:'CPU INVARIANTS PASS — NOT GPU/ART/PERFORMANCE ACCEPTANCE',assertions,counts:Object.fromEntries(['micro','cobbles','grass','outcrops','patches','grassIslands'].map(k=>[k,a[k].length])),actualTriangles,actualDraws,actualShadowTriangles,actualShadowDraws,instances,previous850StoneTriangles:previousTriangles,incrementalTriangles:actualTriangles-previousTriangles,incrementalDraws:actualDraws-1,maxVertexProtrusion,aboveGroundStoneVertexFraction:visibleStoneVertices/stoneVertices,actualSubmergedStones,actualExposedStones,openBankFieldFraction:fieldEmpty/fieldSamples,denseBankFieldFraction:fieldDense/fieldSamples,underwaterGravelCoverage:underwaterCovered/underwaterSamples,underwaterMudPockets:underwaterMud/underwaterSamples,substrateStones,foregroundStones,sourceFiles,publicFiles,publicBytes:manifest.totalPublicBytes,placementSHA256:sha(JSON.stringify(a)),runtimeManifestNote:'afterrain-assets.json runtime block belongs to prior slice; main must refresh source binding/budgets. Asset file hashes unchanged.',limits:'No server/browser/render process run. Shader hooks checked structurally only; native-headless GPU compilation/art/perf and movement QA owned by main.'},null,2));
