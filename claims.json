@@ -14,19 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "sunbreak-river-wildbank-2026-11-18": {
-      "base_commit": "e9c05a860b3e22fadb3ebf1fbee565db9b5eefc2",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-18T19:04:13.862640+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/sunbreak-river-wildbank-2026-11-18.md",
-        "docs/handoff.md"
-      ],
-      "task_id": "sunbreak-river-wildbank-2026-11-18",
-      "updated_at": "2026-11-18T11:04:13.862640+00:00"
     }
   },
   "schema": 1
