@@ -19,6 +19,7 @@
 <p><a href="https://opengameart.org/content/the-free-firearm-sound-library">The Free Firearm Sound Library</a> — Ben Jaszczak、Brian Nelson、Kevin Heras、Matthew Nanney。使用 AR-15/M4 实录，不是 MP5 实录。<br>
 <a href="https://opengameart.org/content/gun-reload-sound-effects">机械音效 — BMacZero / Brian MacIntosh</a>。雨、风、雷声是合成环境声，并非实录。</p>
 <h2>技术与画面说明</h2>
+<p>程序化材质迁移：地面泥土、踩实道路、林下碎屑、石墙、灰泥、木材和旧金属由代码烘焙关联的颜色、粗糙度与法线。噪声烘焙与湿表面方法参考已验收的材料样板，基于 <a href="https://github.com/wquguru/fable52-fps-repro">wquguru/fable52-fps-repro</a>（MIT；<a href="./PROCEDURAL-NOTICE.txt">完整许可</a>）。保持原地图及玩法，页面可切回旧材质对照。河床扫描、植被、天空、NPC 与武器仍沿用原资源；不是全游戏零外部素材。地面积水使用环境高光，河流保留平面反射；本轮由 Codex 整合，没有新增 Fable 调用。</p>
 <p>2026-11-19 地表更新：<a href="https://polyhaven.com/a/dirt">Dirt</a> 与 <a href="https://polyhaven.com/a/forest_ground_04">Forest Ground 04</a>（Poly Haven CC0），使用独立颜色、法线、粗糙度扫描贴图。通行道路、地基原土、闲置碎石落叶地和湿润河岸按实际空间关系混合；来源与校验见 ground-surface-assets.json。断墙灰泥沿用 CC0 扫描，砖芯和砂砾断面为原创程序材质，没有把整面砖墙贴到每块碎片上。</p>
 <p>高度雾采用原创解析高度衰减近似，无新增雾体渲染通道或逐步光线采样。调研参考 <a href="https://oddpotatodev.itch.io/godot-cheap-ground-fog">AtSaturn / OrdinaryCicada — Godot Cheap Ground Fog</a> 的低成本思路；并非其 Godot 插件移植，也不包含交互拖尾、室内遮挡或真实体积光。不宣称未经实测的性能提升。本次地表、AO 和雾效由 Codex 整合，不冒称新的 Fable 生成。</p>
 <p><a href="https://threejs.org/">Three.js r160 核心及已有 presentation 模块</a> / MIT，含 Meshopt 解码器及随附许可。实时 WebGL 光栅化、PBR、阴影贴图、河水平面反射、雨涟漪、SSAO、SMAA 与可关闭的调色。不是 Unreal Engine，没有 Lumen、Nanite 或硬件光追。</p>

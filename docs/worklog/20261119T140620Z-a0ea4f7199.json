@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261119T140620Z-a0ea4f7199",
+  "task_id": "river-procedural-migration-2026-11-19",
+  "timestamp_utc": "2026-11-19T14:06:20.457113+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "River procedural migration completed as bounded local playable checkpoint after explicit user approval. Canonical QA: experiments/sunbreak-river-v4/qa/migration-release.json. Final24capture/16pair visual assertions and24CPU suites PASS; independent targeted source PASS and sampled art CONDITIONAL. New-material functional5/5PASS; legacy2/3, timed bridge traversal FAIL by0.1015m without blocking. All3strict performance samples FAIL (p95 about35.8ms, max71.3/159.3/339.1ms). Seven inherited raw CRLF evidence differences remain FAIL; historical files untouched. Layout/gameplay/old demos preserved. No Pages deployment, new Fable call or AAA/continuous-motion acceptance. Public code/evidence only; unchanged verified private browser snapshot reused, dirty UE vault preserved and private transfer skipped. Next: frame pacing, timed legacy traversal diagnosis and continuous-motion review before release.",
+  "commit_shas": [
+    "84d7e0ac2fc5f3be11bc44980842e3ea2be26c0e"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

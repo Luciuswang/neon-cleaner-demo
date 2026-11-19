@@ -1,0 +1,9 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+Error: FAIL bridge long-edge crossing x0 dir1
+    at check (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:38:107)
+    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:222:50
+
+Node.js v24.14.1

@@ -1,0 +1,4 @@
+[1540:73796:1119/213703.225:ERROR:components\policy\core\common\cloud\cloud_policy_validator.cc:654] [policy_type=google/chrome/machine-level-user] Cached key new signature verification failed
+
+DevTools listening on ws://127.0.0.1:60031/devtools/browser/a46163d8-6ce9-4812-bf5c-92ad9aa294d2
+[1540:73796:1119/213906.575:ERROR:components\policy\core\browser\policy_conversions_client.cc:332] CloudProfileReportingEnabled has an error of type: 被忽略了，因为此政策只能设为云端用户政策。

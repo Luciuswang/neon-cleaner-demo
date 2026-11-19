@@ -7,7 +7,7 @@ import {localAssetSnapshot} from '../local-asset-store.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 export async function runtimeHashes(){
  const names=new Set((await readdir(root)).filter(n=>/\.(js|html|json)$/.test(n)));
- for(const p of ['serve.mjs','local-asset-store.mjs','qa/hooks.js','qa/browser.mjs','qa/source-binding.mjs'])names.add(p);
+ for(const p of ['serve.mjs','local-asset-store.mjs','PROCEDURAL-NOTICE.txt','qa/hooks.js','qa/browser.mjs','qa/source-binding.mjs'])names.add(p);
  const read=async p=>JSON.parse(await readFile(resolve(root,p),'utf8'));
  const foliage=await read('foliage-revision.json');for(const f of foliage.derivatives)names.add(f.file);
  const local=await read('asset-sources.json');for(const a of local.assets.filter(a=>a.kind==='surface'))for(const f of a.files)names.add(f.path.replace('./river/',''));

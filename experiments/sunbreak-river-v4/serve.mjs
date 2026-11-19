@@ -9,6 +9,7 @@ const types={'.html':'text/html; charset=utf-8','.js':'text/javascript','.mjs':'
 http.createServer(async(req,res)=>{
  try{
   const path=decodeURIComponent(new URL(req.url,'http://127.0.0.1:5190').pathname);
+  if(path==='/favicon.ico'){res.writeHead(204,{'Cache-Control':'no-store'});res.end();return}
   if(path==='/'||path==='/river'){res.writeHead(302,{Location:'/river/'});res.end();return}
   if(path.startsWith('/river/local-assets/')){
    if(req.method!=='GET'){res.writeHead(403);res.end();return}

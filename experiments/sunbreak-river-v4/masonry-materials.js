@@ -66,6 +66,7 @@ const NOISE=`
 `;
 export function createMasonryMaterial(T,source,{role='plaster',color=0xc1bfb3}={}){
  const material=cloneSurfaceMaterial(T,source,color),plaster=role==='plaster',course=role==='course',stone=role==='stone';
+ const generated=!!source.userData?.procedural;
  material.name='masonry-'+role;material.roughness=stone?.86:plaster?.88:.94;material.metalness=0;material.envMapIntensity=stone?.48:plaster?.42:.32;
  const normalAmplitude=stone?.72:plaster?.82:.38;
  material.normalScale?.set(normalAmplitude,normalAmplitude);material.aoMapIntensity=.22;
@@ -150,8 +151,17 @@ export function createMasonryMaterial(T,source,{role='plaster',color=0xc1bfb3}={
   s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
    roughnessFactor=clamp(max(roughnessFactor,${stone?'.60':plaster?'.72':'.85'})+masonryDirt*.04,${stone?'.60':plaster?'.72':'.85'},.98);`);
   s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
-   ${plaster?'normal=normalize(mix(normal,nonPerturbedNormal,masonryCoreMix));':''}
-   normal=masonryBump(normal,-vViewPosition,masonryRelief);`);
+   ${plaster&&!generated?'normal=normalize(mix(normal,nonPerturbedNormal,masonryCoreMix));':''}
+   ${generated&&(plaster||stone)?'// Baked mineral normals replace the old unfiltered derivative overlay.':'normal=masonryBump(normal,-vViewPosition,masonryRelief);'}`);
  });
+ if(generated){
+  const key=material.customProgramCacheKey();material.customProgramCacheKey=()=>key+'|generated-height-normal';
+  if(plaster||stone)material.userData.masonry.source='procedural correlated height/albedo/ORM';
+  else{
+   delete material.userData.procedural;
+   material.userData.proceduralAnalytic={kind:'masonry-'+role,source:'original analytic mineral/clay shader',bakedMaps:false};
+   material.userData.masonry.source='original analytic mineral/clay shader (no baked maps)';
+  }
+ }
  return material;
 }

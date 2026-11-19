@@ -3,6 +3,7 @@ window.arenaQA={
  view(x,y,z,yaw,pitch){clearKeys();pres=true;S.state='pause';hideMenu();over.classList.add('hide');pos.set(x,y,z);S.yaw=yaw;S.pitch=pitch;S.reload=0;bob=recoil=0;return this.snapshot()},
  travel(x,z,yaw){this.reset();pres=false;pos.set(x,1.7+visual.floorHeight(x,z),z);S.yaw=yaw;S.pitch=-.08;return this.snapshot()},
  mapInfo(){return visual.info()},
+ migrationFreeze(seconds){return visual.migrationQA.freeze(seconds)},
  polishInfo(){return {...visual.polishInfo(),adapter:shotFeedback.info()}},
  fireViewCapture(){
   clearKeys();pres=false;S.state='play';S.hp=10000;S.mag=30;S.reload=0;S.next=0;hideMenu();

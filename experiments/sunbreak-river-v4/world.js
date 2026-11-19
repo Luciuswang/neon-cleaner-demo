@@ -23,6 +23,8 @@ import {SOIL_MOISTURE_GLSL,soilMoisture} from './ground-moisture.js';
 import {applySurfaceAttributes,installGroundSurface,buildFoundationWeeds,surfaceZones} from './ground-surface.js';
 import {createHeightFog} from './height-fog.js';
 import {buildDownloadedDressing} from './downloaded-dressing.js';
+import {buildProceduralMaterials} from './procedural-materials.js';
+import {installProceduralGround} from './procedural-ground.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
@@ -34,6 +36,8 @@ export async function buildWorld(ctx){
  for(const b of bounds){const box=new T.Box3(new T.Vector3(b.min.x,b.min.y,b.min.z),new T.Vector3(b.max.x,b.max.y,b.max.z));if(b.profileWall)box.topAt=(x,z,r)=>wallTopAt(b.profileWall,x,z,r);colliders.push(box)}
  const world=new T.Group();world.name='Riverfall village';scene.add(world);
  const textureErrors=[],loader=new T.TextureLoader(),materials={};
+ const procedural=new URLSearchParams(location.search).get('materials')!=='legacy';
+ let proceduralPack=null,migrationFrozen=false;
  let seed=519214,time=0,weather=0,style=0,post=true,flashes=true,flash=0,lightningAt=9;
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
  const weatherAudio=createStormAudio(),windTime={value:0},rainStrength={value:0};
@@ -45,12 +49,15 @@ export async function buildWorld(ctx){
   m.normalScale.set(.65,.65);m.envMapIntensity=.7;m.name=name;materials[name]=m;return m;
  }
  const roles={wall_worn_plaster:'plaster',wood_weathered:'wood',roof_terracotta:'roof',tree_bark:'bark'};
- await Promise.all([...shared.assets.filter(a=>roles[a.semantic_role]).map(a=>surface(roles[a.semantic_role],a.files)),
-  ...local.assets.filter(a=>a.kind==='surface').map(a=>surface(({brown_mud_02:'mud',rocky_gravel:'stone',brick_moss_001:'brick'})[a.id],a.files))]);
- materials.metal=new T.MeshStandardMaterial({color:0x4e5149,roughness:.65,metalness:.6});
+ const proceduralNames=new Set(['plaster','wood','mud','stone','brick','dirt','forest_ground_04','metal']);
+ await Promise.all([...shared.assets.filter(a=>roles[a.semantic_role]&&(!procedural||!proceduralNames.has(roles[a.semantic_role]))).map(a=>surface(roles[a.semantic_role],a.files)),
+  ...local.assets.filter(a=>a.kind==='surface'&&!procedural).map(a=>surface(({brown_mud_02:'mud',rocky_gravel:'stone',brick_moss_001:'brick'})[a.id],a.files))]);
+ if(procedural){proceduralPack=await buildProceduralMaterials(T,rnd);Object.assign(materials,proceduralPack.materials)}
+ else materials.metal=new T.MeshStandardMaterial({color:0x4e5149,roughness:.65,metalness:.6});
  materials.roof.color.set(0x5f5445);materials.wood.color.set(0x9b9280);materials.plaster.color.set(0xdbceb0);
  const groundAssets=await fetch('./river/ground-surface-assets.json').then(r=>r.json());
- await Promise.all(groundAssets.assets.map(a=>surface(a.id,a.files.map(f=>({role:f.role,path:'./river/'+f.file})))));
+ if(!procedural)await Promise.all(groundAssets.assets.map(a=>surface(a.id,a.files.map(f=>({role:f.role,path:'./river/'+f.file})))));
+ const legacyTextureURLs=[...shared.assets.filter(a=>['plaster','wood'].includes(roles[a.semantic_role])).flatMap(a=>a.files.map(f=>f.path)),...local.assets.filter(a=>a.kind==='surface').flatMap(a=>a.files.map(f=>f.path)),...groundAssets.assets.flatMap(a=>a.files.map(f=>'./river/'+f.file))].map(p=>new URL(p,document.baseURI).href);
  const [hdr,cloudHDR]=await Promise.all([
   new RGBELoader().setDataType(T.FloatType).loadAsync('./river/assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr'),
   new RGBELoader().loadAsync('./assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr')]);
@@ -84,7 +91,8 @@ export async function buildWorld(ctx){
  rnd.setPixelRatio(Math.min(devicePixelRatio,1.5));rnd.toneMappingExposure=1.08;
 
  const mud=materials.mud.clone();mud.roughness=.94;mud.normalScale.set(1.18,1.18);mud.envMapIntensity=.38;mud.color.set(0xd5c9b4);
- installGroundSurface(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength});
+ if(procedural)installProceduralGround(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength,time:windTime});
+ else installGroundSurface(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength});
  const geo=new T.PlaneGeometry(TERRAIN_GRID.size,TERRAIN_GRID.size,TERRAIN_GRID.segments,TERRAIN_GRID.segments);geo.rotateX(-Math.PI/2);
  const p=geo.attributes.position,uv=geo.attributes.uv;
  for(let i=0;i<p.count;i++){
@@ -123,6 +131,8 @@ export async function buildWorld(ctx){
  const pp=puddleGeometry.attributes.position;for(let i=1;i<pp.count;i++){const a=Math.atan2(pp.getY(i),pp.getX(i)),r=.85+.1*Math.sin(a*5)+.05*Math.sin(a*9+.7);pp.setXY(i,pp.getX(i)*r,pp.getY(i)*r)}puddleGeometry.computeVertexNormals();
  for(const side of [-1,1])for(const z of [-28,-17,-9,3,11,22]){
   const pond=new T.Mesh(puddleGeometry,puddleMaterial);pond.rotation.x=-Math.PI/2;pond.position.set(side*(10+random()*2),.019,z);pond.scale.set(1.1+random(),.42+random()*.6,1);world.add(pond);puddles.push(pond);
+  // Generated basins belong to the actual terrain, not a floating circular decal.
+  if(procedural)pond.visible=false;
  }
  puddleMaterial.onBeforeCompile=s=>{s.uniforms.uTime=windTime;s.uniforms.uRain=rainStrength;s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 wetPos;varying vec2 wetLocal;').replace('#include <begin_vertex>','#include <begin_vertex>\nwetLocal=position.xy;wetPos=(modelMatrix*vec4(position,1.)).xyz;');s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nuniform float uTime;uniform float uRain;varying vec3 wetPos;varying vec2 wetLocal;\n'+SOIL_MOISTURE_GLSL).replace('#include <alphatest_fragment>',`float irregular=sin(wetPos.x*11.+sin(wetPos.z*6.))*sin(wetPos.z*14.)*.035;
   float wetAngle=atan(wetLocal.y,wetLocal.x),wetBoundary=.85+.1*sin(wetAngle*5.)+.05*sin(wetAngle*9.+.7);
@@ -192,7 +202,7 @@ export async function buildWorld(ctx){
   amb.color.set(0xc6dbf1);amb.groundColor.set(0x928b75);amb.intensity=day?1.6:.38;
   scene.environment=gscene.environment=(day?env:cloudEnv).texture;scene.background=day?hdr:cloudHDR;
   scene.fog=new T.Fog(day?0x9db7ce:0x889996,day?95:65,day?920:230);scene.backgroundIntensity=day?1:.44;
-  rnd.toneMappingExposure=day?1.18:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;water.setDay(day);mud.roughness=wet?.76:.91;
+  rnd.toneMappingExposure=day?1.18:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;water.setDay(day);mud.roughness=procedural?1:wet?.76:.91;
   flash=0;flashLight.intensity=0;
   distant.setWeather(weather);
   foliage.setWeather(weather);
@@ -209,15 +219,34 @@ export async function buildWorld(ctx){
  }
  document.getElementById('bPost').onclick=e=>{post=!post;ao.enabled=grade.enabled=post;e.currentTarget.textContent='后期：'+(post?'开':'关');e.currentTarget.setAttribute('aria-pressed',String(post))};
  document.getElementById('bFlash').onclick=e=>{flashes=!flashes;flash=0;flashLight.intensity=0;e.currentTarget.textContent='闪电：'+(flashes?'开启':'关闭');e.currentTarget.setAttribute('aria-pressed',String(flashes))};
+ const comparison=document.createElement('a');comparison.className='btn';comparison.id='materialCompare';
+ const comparisonURL=new URL(location.href);comparisonURL.searchParams.set('materials',procedural?'legacy':'procedural');
+ comparison.href=comparisonURL.href;comparison.textContent=procedural?'材质：程序化 · 切回旧版':'材质：旧版 · 查看程序化';
+ comparison.title='保留同一张地图和玩法；重新加载切换材质';document.getElementById('stormControls').append(comparison);
+ let migrationMaterials=null,migrationAnalytic=null;
+ function migrationInfo(){
+  const visited=new Set(),used=[],analytic=[];
+  // Only report actually attached whitelisted generated materials; scans used
+  // by foliage, river substrate, gun and optional imports are not relabelled.
+  if(!migrationMaterials)world.traverse(o=>{if(!o.isMesh)return;for(const m of [].concat(o.material)){if(!m||visited.has(m))continue;visited.add(m);
+   if(m.userData.proceduralAnalytic)analytic.push({name:m.name,...m.userData.proceduralAnalytic});
+   if(!m.userData.procedural)continue;
+   used.push({name:m.name,procedural:true,definition:m.userData.procedural,maps:Object.fromEntries(['map','normalMap','roughnessMap','metalnessMap','aoMap'].filter(k=>m[k]).map(k=>{const t=m[k];return[k,{name:t.name,source:t.isDataTexture?'generated':'external',size:[t.image?.width,t.image?.height],colorSpace:t.colorSpace,repeat:t.repeat.toArray(),mipmaps:t.generateMipmaps}]}))});
+  }});
+  migrationMaterials??=used;
+  migrationAnalytic??=analytic;
+  return{enabled:procedural,mode:procedural?'procedural':'legacy',frozen:migrationFrozen,time,materials:migrationMaterials,analyticMaterials:migrationAnalytic,legacyTextureURLs,bake:proceduralPack?.info||null,resources:{geometries:rnd.info.memory.geometries,textures:rnd.info.memory.textures,programs:rnd.info.programs?.length},ground:procedural?mud.userData.proceduralGround:null,river:'existing scanned substrate, modeled stones and planar flow preserved',sky:'existing CC0 HDR and matching sun preserved',extraReflectionPasses:0,extraGeometry:0};
+ }
  applyWeather();
  return{
+  migrationQA:{freeze(seconds){if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid migration time');migrationFrozen=true;time=seconds;windTime.value=seconds;foliage.update(seconds);dressing.update(seconds);flash=0;flashLight.intensity=0;lightningAt=seconds+9;return migrationInfo()}},
   waterTime(){return time},
   shot(event){const projected=event.hit&&event.object?.userData.wall?village.projectStoneCoverHit?.({point:event.point,normal:event.normal,wallId:event.object.userData.wall}):null;
    if(projected)event={...event,point:projected.point,normal:projected.normal};weapon.shot(event);feedback.shot(event)},resetFeedback(){weapon.reset();feedback.reset()},
   polishInfo(){return{environment:foliage.info().polish,cover:village.info().stoneCover,combat:feedback.info(),weapon:weapon.info()}},
   floorHeight(x,z){return buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))},ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))},blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),resetHouse:()=>buffers.reset(),
   update(dt,{S,pres,live,player}){
-   const active=!pres&&!['pause','dead','win'].includes(S.state);if(active)time+=dt;
+   const active=!pres&&!['pause','dead','win'].includes(S.state);if(active&&!migrationFrozen)time+=dt;
    windTime.value=time;foliage.update(time);dressing.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
    if(weather===2){for(let i=0;i<rainCount;i++){
     const s=rainSeeds[i],x=s[0]+cam.position.x,z=s[2]+cam.position.z,yy=((s[1]-time*(14+s[3]*7))%21+21)%21;
@@ -225,7 +254,7 @@ export async function buildWorld(ctx){
     rainPositions[k]=x;rainPositions[k+1]=y;rainPositions[k+2]=z;rainPositions[k+3]=x+.08;rainPositions[k+4]=y+.5+s[3]*.35;rainPositions[k+5]=z+.03;
    }rainGeo.attributes.position.needsUpdate=true;
    for(let i=0;i<splashCount;i++){const [x,z,phase,a]=splashSeeds[i],t=(time*1.7+phase)%1,surface=terrainHeight(x,z)<MAP.waterY?MAP.waterY:-20,k=i*3;splashData[k]=x+Math.cos(a)*t*.16;splashData[k+1]=surface+Math.sin(t*Math.PI)*.12;splashData[k+2]=z+Math.sin(a)*t*.16}splashGeo.attributes.position.needsUpdate=true;}
-   if(active&&weather===2&&flashes&&time>lightningAt){flash=.28;lightningAt=time+14+random()*12;weatherAudio.thunder(live)}
+   if(active&&!migrationFrozen&&weather===2&&flashes&&time>lightningAt){flash=.28;lightningAt=time+14+random()*12;weatherAudio.thunder(live)}
    if(active)flash=Math.max(0,flash-dt);flashLight.intensity=flashes?Math.max(0,flash)*8:0;
    const muted=document.getElementById('bMute').getAttribute('aria-pressed')==='true',volume=Number(document.getElementById('soundVolume').value)/100;
    weatherAudio.update(live&&weather===2,muted,volume);weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
@@ -234,7 +263,7 @@ export async function buildWorld(ctx){
   render(){refreshAO();water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
   surfaceQA:{setAO(value){ao.enabled=!!value},setFog(value){haze.setEnabled(value)},info(){return{aoEnabled:ao.enabled,aoSettings,aoMin:ao.minDistance,aoMax:ao.maxDistance,projection:ao.ssaoMaterial.uniforms.cameraProjectionMatrix.value.elements.slice(),cameraProjection:cam.projectionMatrix.elements.slice(),fog:haze.info(),gunFogged:(()=>{let n=0;gscene.traverse(o=>{for(const m of [].concat(o.material||[]))if(m.customProgramCacheKey?.().includes('analytic-height-haze'))n++});return n})(),weeds:foundationWeeds.info(),zones:[[-10,12],[-17,17],[-22,12],[-4,10]].map(([x,z])=>({x,z,...surfaceZones(x,z)}))}}},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
-  info(){return{version:'river-v4-wildbank',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
+  info(){return{version:'river-v4-wildbank',migration:migrationInfo(),textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
   actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa,dressingQA:{...dressing,reviewAsset(id){const v=dressing.reviewAsset(id);aoCutouts.length=0;world.traverse(o=>{if(o.isMesh&&[].concat(o.material).some(m=>m?.alphaTest>0))aoCutouts.push(o)});return v}}
  };
 }

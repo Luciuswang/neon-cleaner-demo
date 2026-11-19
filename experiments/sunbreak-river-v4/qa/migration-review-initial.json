@@ -1,0 +1,19 @@
+{
+  "task": "river-procedural-migration-2026-11-19",
+  "reviewer": "Godel / 01a1f3f2-bd1d-7242-9834-76bd613eeb01",
+  "role": "independent read-only Gatekeeper and QA Director",
+  "evidence": "migration-visual-2026-11-19T13-37-02-605Z-EvIhcL",
+  "sourceManifestSHA256": "3b8ff6716f21dacc18756c793592451c6f36339cba52d2b6f5bc4da7c6ae151b",
+  "visualReportSHA256": "ebd5312b7a5f54eaa8a50a4f429bd4dfba599f21f917c3366314bef147c65b06",
+  "engineering": "REWORK",
+  "sampledArt": "CONDITIONAL PASS for bounded migration only",
+  "reviewed": "Eight final A/B views plus three differing default images; report and all24image/state hashes and dimensions verified by reviewer.",
+  "findings": [
+    {"priority": "P2", "file": "procedural-ground.js", "issue": "Ring derivatives execute inside divergent puddle control flow. Calculate footprint unconditionally. Correctness risk, not observed flicker."},
+    {"priority": "P2", "file": "masonry-materials.js", "issue": "Generated plaster normals flattened on exposure while replacement relief is skipped. Preserve baked relief."},
+    {"priority": "P2", "file": "world.js", "issue": "Inventory omits six terrain samplers and misidentifies mapless core/course shading as baked."}
+  ],
+  "art": "Improved soil clustering and preserved composition/readability. Soft routes, smooth masonry, simple timber and scene repetition remain limitations. No broad art redesign required for accepted migration scope.",
+  "limits": "No performance, continuous motion, whole-game asset-free or AAA approval. Five procedural gameplay phases reported PASS, not independently reviewed. Seven historical raw-byte CRLF discrepancies remain FAIL.",
+  "action": "Root will correct all3 findings and regenerate source-bound evidence; this initial REWORK verdict is retained."
+}

@@ -1,0 +1,970 @@
+{
+  "schema": "river-procedural-migration-checkpoint-v1",
+  "task": "river-procedural-migration-2026-11-19",
+  "date": "2026-11-19T14:04:59.630Z",
+  "profile": "offscreen-cinematic-v1",
+  "baseline": "84d7e0ac2fc5f3be11bc44980842e3ea2be26c0e",
+  "sourceManifestSHA256": "f7725eef59bea61c18b3109e31d39c05169729a322481d669a9f9d7ab3911868",
+  "sources": {
+    "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_diff_2k.jpg": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_nor_gl_2k.png": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_rough_2k.jpg": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+    "../sunbreak-storm-v3/assets/audio/NOTICE.md": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1",
+    "../sunbreak-storm-v3/assets/audio/confirm.wav": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba",
+    "../sunbreak-storm-v3/assets/audio/enemy.wav": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e",
+    "../sunbreak-storm-v3/assets/audio/magin.wav": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c",
+    "../sunbreak-storm-v3/assets/audio/magout.wav": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7",
+    "../sunbreak-storm-v3/assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "../sunbreak-storm-v3/assets/audio/player.wav": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7",
+    "../sunbreak-storm-v3/assets/audio/provenance/firearm-source.html.txt": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868",
+    "../sunbreak-storm-v3/assets/audio/provenance/reload-source.html.txt": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_diff_1k.jpg": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_nor_gl_1k.png": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_rough_1k.jpg": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488",
+    "../sunbreak-storm-v3/assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798",
+    "../sunbreak-storm-v3/assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+    "../sunbreak-storm-v3/assets/mp5/mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_diff_1k.jpg": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_nor_gl_1k.png": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_rough_1k.jpg": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c",
+    "../sunbreak-storm-v3/assets/soldier/soldier_tac.glb": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6",
+    "../sunbreak-storm-v3/vendor/presentation/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SSAOPass.js": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "../sunbreak-storm-v3/vendor/three/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/three/build/three.module.js": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "PROCEDURAL-NOTICE.txt": "5db9925b27c76415d5d0df7fb3b0b838bedeb882cd8fab8f7f249a59e2433c72",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "afterrain-assets.json": "f1962089201af2341b8a306dc8b70c8fe2d36512fdfec8d1915f9edf1426ac65",
+    "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+    "assets/afterrain-detail/dry_riverbed_rock/arm.jpg": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e",
+    "assets/afterrain-detail/dry_riverbed_rock/color.jpg": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524",
+    "assets/afterrain-detail/dry_riverbed_rock/normal.jpg": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d",
+    "assets/afterrain-detail/ganges_river_pebbles/arm.jpg": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c",
+    "assets/afterrain-detail/ganges_river_pebbles/color.jpg": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34",
+    "assets/afterrain-detail/ganges_river_pebbles/normal.jpg": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133",
+    "assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6",
+    "assets/brick_moss_001/color.jpg": "0af91390672fe184959fdc9d915d8ee4006c46011057f03fc0d3675df74cdf79",
+    "assets/brick_moss_001/normal.jpg": "b764511928a767aa8501dc2ae1a6bc5e1f92a43d1ef97ead55f77780f3ee367e",
+    "assets/brick_moss_001/roughness.jpg": "c429062347f60091bdd9bf6db462d466a6b127d1b7268109d55f92a938f686c7",
+    "assets/brown_mud_02/color.jpg": "5c735b1df784ab1990f4e209c55d27fa4e7a19508e40484ed5aa783266783726",
+    "assets/brown_mud_02/normal.jpg": "3d6eec0adba8fd514d5634c56f806ad40206975c3ef17de1e2468b9e3ebcf719",
+    "assets/brown_mud_02/roughness.jpg": "00ef047ecda114930311efd31cbdb371c7a236f211a00f1dfeb6b1b73ac2f674",
+    "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+    "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+    "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+    "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/ground-surfaces/dirt/color.jpg": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+    "assets/ground-surfaces/dirt/normal.jpg": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+    "assets/ground-surfaces/dirt/official-files.json": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7",
+    "assets/ground-surfaces/dirt/roughness.jpg": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+    "assets/ground-surfaces/forest_ground_04/color.jpg": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+    "assets/ground-surfaces/forest_ground_04/normal.jpg": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+    "assets/ground-surfaces/forest_ground_04/official-files.json": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156",
+    "assets/ground-surfaces/forest_ground_04/roughness.jpg": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+    "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
+    "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
+    "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
+    "assets/wild-grass/Foliage001-leaf-rgba.png": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+    "assets/wild-grass/Foliage006-leaf-rgba.png": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+    "assets/wild-grass/LICENSE.txt": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+    "assets/wild-grass/source/Foliage001/Foliage001.png": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+    "assets/wild-grass/source/Foliage001/metadata.json": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+    "assets/wild-grass/source/Foliage006/Foliage006.png": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+    "assets/wild-grass/source/Foliage006/metadata.json": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+    "assets/wild-grass/source/license/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/wild-grass/source/license/ambientcg-license.html": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+    "assets/wild-grass/wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "assets/wild-grass/wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "assets/wild-grass/wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "assets/wild-grass/wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "combat-feedback.js": "dbe1d0b4bc6933bb3e8c0295734bd72633f5eabfcb1a1da18f4a33fa8811601b",
+    "credits.html": "cbccdaf1c5489ae1be4993c622ee57bdfd2d1df1350a404cc47af4ff29eb58f5",
+    "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
+    "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "downloaded-dressing.js": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5",
+    "environment-polish.js": "2d176195d9fadd05e8c7107f52f1182806efca8c49554f892ccec53b8834c046",
+    "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+    "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
+    "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+    "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
+    "ground-surface-assets.json": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9",
+    "ground-surface.js": "354540e7efe4306708fc342f08c46dd16a63e99985ac7a2216c997a8e14e262d",
+    "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "index.html": "6428e9e0da600224dad87cb72d218f76837a0fec465a4623e9787d94e734c314",
+    "local-asset-store.mjs": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "masonry-materials.js": "2369a751d2c28ce168589b5c38c5cbbbb0a042dda6a3d12f46bb5e1ef099a49a",
+    "procedural-ground.js": "5bf1c060a7b5c8939fcf8171442df9c5360e0b773962be78461669a797a70649",
+    "procedural-materials.js": "94d24529e3e22070364fbf95969777d27097bb20d2601d4900ac4c03b1a02f65",
+    "qa/browser.mjs": "50f551358c8f186c52955f45aed1895bcaeb874a8933f1baaaa0f87f84e9b408",
+    "qa/hooks.js": "f438b2094459b7f2e8f3341b73894935b5111f753fd5b23af5901a3c24029b1c",
+    "qa/source-binding.mjs": "3fdaf05293e6616518e54bd533d546701427a9a86a782cc963fcac6b60ec9928",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+    "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+    "serve.mjs": "5b0065f56a0eb2e7556898e5f86954db34227d5b5c0e6f0538c842178b9feb72",
+    "shot-feedback-event.js": "8beec6d099e0d9773b101ad57ffdb980b7e7376b4777993f027d81d6eaf3642b",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "stone-cover.js": "61f6e0b9c39859f691235fe096777236c22d6188d9adec58aca785a063b8078b",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+    "timber-house.js": "31dcb143860c9bd1dba3f4362909fb9c2c7b378a92937bd0e710814a9361031c",
+    "vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "weapon.js": "cffeb71a38a36bb3e0b481ac8ec3faea0049a5b5f42d7f76150326b4d80d3658",
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
+    "world.js": "2f5cde1dd3cefdacffcbba30fa3d0e4c35c11d7378c266f13cd09df31b917056",
+    "local-only/manifest.json": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+    "local-only/castle-wall.glb": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
+    "local-only/cement-rubble.glb": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
+    "local-only/cement-rubble-small.glb": "cc0443b5736b634e1c33beada6a54ef32cca78254beda0254d04d629a2d5ff24",
+    "local-only/grass-clumps-a.glb": "011c18c7c67def787cd208e245df9a8bb7c228b204c1dd8531c47f8604e086e1",
+    "local-only/grass-clumps-b.glb": "06542a8a6544c2a8b5b1e513ce7c5f98364f874319e546c15676200f3c8501f6",
+    "local-only/grass-clumps-c.glb": "5bd13e718d6f8d5ac68b3a70211a1c6ae268d8d38eabc237463cd16f7b456750",
+    "local-only/mossy-wall-a.glb": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754",
+    "local-only/mossy-wall-b.glb": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4",
+    "local-only/tundra-grass-a.glb": "740aec736017a52adec7d81c81823758d72afcb04074efde1a302f4fc4d36e0e",
+    "local-only/tundra-grass-d.glb": "7d4e1f1c6b058241a1261745fc5658ef44ef47379c54967b4fa0d08d981c8e77",
+    "local-only/tundra-grass-h.glb": "9dbea586c5922990240987144fd2f32e316fad5235ce59ff04049c58400f13f6",
+    "local-only/woodland-house.glb": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+    "local-only/served-manifest.json": "89af124953d3706e3224bcd45458132675bc06977f42534fa38c9f71720e1bcf"
+  },
+  "userApproval": "User accepts isolated lab appearance and explicitly authorizes Riverfall migration; not a waiver of technical failures.",
+  "scope": "Eight material families baked; five families attached through standard slots plus path/litter through six terrain samplers. Brick/core/course uses analytic masonry shaders rather than the allocated brick bake. Zoned damp/puddle response. Existing map, collisions, AI, doors, weapon/NPC animations, river flow, lighting, AO and fog retained. Legacy URL retained.",
+  "links": {
+    "procedural": "http://127.0.0.1:5190/river/",
+    "legacy": "http://127.0.0.1:5190/river/?materials=legacy"
+  },
+  "reports": {
+    "visual": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/report.json",
+      "sha256": "0a4796f625cbb24d523eacc9e2a9786fd6c9ee1089d668d7581a9dd12b3f6da0"
+    },
+    "units": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-units-2026-11-19T13-52-21-796Z-lQp5mp/report.json",
+      "sha256": "95491df2487efcc0275744ae24acae29dc9b06dd7cefe078aa6f33b89bfc630d"
+    },
+    "regressions": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-regressions-2026-11-19T13-54-38-393Z/report.json",
+      "sha256": "28820a37e79c1b6488b46f487bf09267b35e60665f1dfde77e4f86dd1c43c179"
+    },
+    "independentReview": {
+      "path": "experiments/sunbreak-river-v4/qa/migration-review.json",
+      "sha256": "ea3d1c39ee86c5752b69c246402682dc57b4cf86326f2dc5fc5661361dfdf816"
+    },
+    "additionalFailure": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T13-59-48-598Z/traversal-failure-1.json",
+      "sha256": "d9e125be5e6f0bfa558f4c3185264ef295f9c406dd43485a2d6849806af6a5a9"
+    }
+  },
+  "gates": {
+    "visualEngineering": {
+      "pass": true,
+      "captures": 24,
+      "pairs": 16,
+      "description": "Native 1080p actual WebGL, source/material/network assertions; not art PASS"
+    },
+    "cpuSuites": {
+      "pass": true,
+      "count": 24
+    },
+    "historicalRawPreservation": {
+      "pass": false,
+      "checked": 1131,
+      "failures": [
+        {
+          "path": "experiments/procedural-material-lab/qa/evidence/performance-2026-11-19T12-51-27-816Z-d39d3f82/browser-stderr.log",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "2adae91ac9a84fb9659ba3da70d36eb6202de9a4",
+          "bytes": 1135,
+          "blob": "4896a1b10dfb5429542219be8be2422b800247bc",
+          "sha256": "65318a72f344b4be608f838594be31bc1725841e64cdbc86560bc2dbfcb164b2",
+          "lineEndingOnly": true
+        },
+        {
+          "path": "experiments/procedural-material-lab/qa/evidence/visual-2026-11-19T12-42-41-894Z-bcabbef8/browser-stderr.log",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "c5ba38ba7faf5474190f686f16fb6e2bfbea93e3",
+          "bytes": 1135,
+          "blob": "8c45a470b17dfe698a233f32369afc673fb37fe7",
+          "sha256": "f02704bf725c7eaa9eae68a462b14d8d8953d2a6388a46e8febfb8844c6f763e",
+          "lineEndingOnly": true
+        },
+        {
+          "path": "experiments/procedural-material-lab/qa/evidence/visual-2026-11-19T12-47-02-002Z-ecf2d4dc/browser-stderr.log",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "a57e949638b67aec00d1e88243daf162bd5ac72c",
+          "bytes": 985,
+          "blob": "b111552420156f61e75cb7391860a035e05c09e7",
+          "sha256": "90263385f3d6c415ef2af1f0f1b897bbad73d1c9326c47057e4a1f7b693eb920",
+          "lineEndingOnly": true
+        },
+        {
+          "path": "experiments/procedural-material-lab/qa/evidence/visual-2026-11-19T12-48-16-514Z-e604ec15/browser-stderr.log",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "d612cfea1cfb8dc7534b7a63fc3dc4b58fddd649",
+          "bytes": 1135,
+          "blob": "1a63622eeec630c4a9ef96482b4bfcb35050a3f0",
+          "sha256": "7c59e2e0037fcde19bbdaddd293fa00fe4ddb542f7e23360e698a691226e63d9",
+          "lineEndingOnly": true
+        },
+        {
+          "path": "experiments/procedural-material-lab/qa/evidence/visual-2026-11-19T12-49-41-659Z-5cc53c21/browser-stderr.log",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "380e68bcea3b8ccb6f810464e04fb3b00e56c939",
+          "bytes": 1135,
+          "blob": "b36cd9edb412a19fa47022ff1cdab0d84579122a",
+          "sha256": "943c123ade23ff17e67aebe34c77466bdc31d33caae6b412627add6385c12e94",
+          "lineEndingOnly": true
+        },
+        {
+          "path": "experiments/sunbreak-arena-v4/qa/evidence/movie-2026-11-17T10-24-17-561Z/decoded/decode.json",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "d657a416fb80445284cb82eb8ee0412a50fab0cf",
+          "bytes": 1185,
+          "blob": "c6881c92235266f1cb16c47889568a8c7903103b",
+          "sha256": "5d5de5ef92ea8440371c43e03b36ea2a43940311b41a1d0035bb6a185c5c9972",
+          "lineEndingOnly": true
+        },
+        {
+          "path": "experiments/sunbreak-arena-v4/qa/evidence/movie-2026-11-17T10-36-22-304Z/decoded/decode.json",
+          "pass": false,
+          "format": "raw-git-blob",
+          "expected": "5be298d30907918516840efd44113ebfde666f98",
+          "bytes": 1574,
+          "blob": "7a2806f26a6b9edd87aa61af71c1d1f995c486fa",
+          "sha256": "d6fb72f6c9aa149444e8de9925ac4f0d743850a9f995d5247c0114565c9342e7",
+          "lineEndingOnly": true
+        }
+      ],
+      "unchangedDuringRun": true,
+      "explanation": "Seven inherited CRLF-only historical evidence differences remain raw-byte FAIL. Old files were not rewritten or waived."
+    },
+    "functional": {
+      "pass": false,
+      "runs": [
+        {
+          "mode": "procedural",
+          "phase": "checks",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T13-54-38-710Z/checks-1.json",
+          "sha256": "2459520349d0db1bb12f2421744de70eb3028afe7978d7729a9fb377e2b1afb1",
+          "checks": 32,
+          "pass": true
+        },
+        {
+          "mode": "procedural",
+          "phase": "cabins",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T13-55-28-820Z/cabins-1.json",
+          "sha256": "e27335607f63f69c18dc22bf2a84e5e714ffff2f33e8ccb1e6848ce1757a5f09",
+          "checks": 17,
+          "pass": true
+        },
+        {
+          "mode": "procedural",
+          "phase": "traversal",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T13-56-05-212Z/traversal-1.json",
+          "sha256": "efc78634ac5d6eb6286260f300e06e9eb27d68ee78cd80e9d642e446d56ec0ea",
+          "checks": 54,
+          "pass": true
+        },
+        {
+          "mode": "procedural",
+          "phase": "weather",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T13-57-20-828Z/weather-1.json",
+          "sha256": "9e12ee2ecac6022b56a52d0b4e9571d0cbb8c0fdde40d31f8616a383dc79cc13",
+          "checks": 4,
+          "pass": true
+        },
+        {
+          "mode": "procedural",
+          "phase": "imported-fallback",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T13-58-00-118Z/imported-fallback-1.json",
+          "sha256": "7881385070d5df16dcb136e9b7d561aff78c8543eb7ef1a8b0e6b1a98cefc6bb",
+          "checks": 2,
+          "pass": true
+        },
+        {
+          "mode": "legacy",
+          "phase": "checks",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T13-58-22-980Z/checks-1.json",
+          "sha256": "f316d2376dd49cd775909df1f3595c81543a6a8b39c77ed3e58b759be3dca40f",
+          "checks": 32,
+          "pass": true
+        },
+        {
+          "mode": "legacy",
+          "phase": "cabins",
+          "exit": 0,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T13-59-13-095Z/cabins-1.json",
+          "sha256": "e2618ab080ba42453f31fe6bb04fadebd2e937eef757f0d2ed939d036291a2c6",
+          "checks": 17,
+          "pass": true
+        },
+        {
+          "mode": "legacy",
+          "phase": "traversal",
+          "exit": 1,
+          "signal": null,
+          "error": null,
+          "sha256": null,
+          "pass": false
+        }
+      ],
+      "proceduralPass": true,
+      "legacyPass": false,
+      "additionalFailure": {
+        "error": "Error: FAIL bridge long-edge crossing x0 dir1\n    at check (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:38:107)\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:222:50",
+        "assertions": [
+          {
+            "name": "bridge long-edge crossing x0 dir1",
+            "pass": false,
+            "details": {
+              "position": [
+                -8.448225943918018e-16,
+                1.12,
+                -1.1014999999999986
+              ],
+              "support": -0.58,
+              "blocked": false,
+              "enemies": [
+                {
+                  "position": [
+                    -21.6504596131921,
+                    0,
+                    -26.674770193403948
+                  ],
+                  "support": 0
+                },
+                {
+                  "position": [
+                    21.90785339731441,
+                    0,
+                    -26.546073301342794
+                  ],
+                  "support": 0
+                },
+                {
+                  "position": [
+                    -10.403206865437356,
+                    0,
+                    -12.751407148918512
+                  ],
+                  "support": 0
+                },
+                {
+                  "position": [
+                    10.37424575853691,
+                    0,
+                    -12.51945055731767
+                  ],
+                  "support": 0
+                },
+                {
+                  "position": [
+                    -22.509630601242698,
+                    0,
+                    20.697303431652045
+                  ],
+                  "support": 0
+                },
+                {
+                  "position": [
+                    23.89655473352924,
+                    0,
+                    18.000005454521755
+                  ],
+                  "support": 0
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "performance": {
+      "pass": false,
+      "thresholds": {
+        "warmupSeconds": 10,
+        "sampleSeconds": 30,
+        "p95": 33.3,
+        "p99": 33.3,
+        "max": 50,
+        "over50": 0
+      },
+      "runs": [
+        {
+          "mode": "procedural",
+          "phase": "sunny-benchmark",
+          "exit": 1,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T14-00-58-929Z/sunny-benchmark-1.json",
+          "sha256": "c84fc6af696c17fef4536f1af483db955802a0f9c33cc2c002f4ba35ae5258ef",
+          "checks": 2,
+          "pass": false,
+          "performance": {
+            "p50": 17.900000000001455,
+            "p95": 35.799999999995634,
+            "p99": 36.400000000001455,
+            "max": 71.30000000000291,
+            "over50": 7,
+            "frames": 1344,
+            "duration": 30006.5,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+          },
+          "strictPass": false
+        },
+        {
+          "mode": "procedural",
+          "phase": "benchmark",
+          "sample": "storm-A",
+          "exit": 1,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T14-02-04-388Z/benchmark-1.json",
+          "sha256": "432080169fdcc92c011f221ef4cf8f7cd56f3d428e66e7291e2e28a6b102c939",
+          "checks": 2,
+          "pass": false,
+          "performance": {
+            "p50": 17.900000000001455,
+            "p95": 35.89999999999418,
+            "p99": 39.299999999995634,
+            "max": 159.3000000000029,
+            "over50": 13,
+            "frames": 1348,
+            "duration": 30008.199999999997,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+          },
+          "strictPass": false
+        },
+        {
+          "mode": "procedural",
+          "phase": "benchmark",
+          "sample": "storm-B",
+          "exit": 1,
+          "signal": null,
+          "error": null,
+          "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T14-03-09-607Z/benchmark-1.json",
+          "sha256": "96da4ed9e7ff99e77000f3ba16bd5759a354c667cd9b3ac9cf881733848c68cb",
+          "checks": 2,
+          "pass": false,
+          "performance": {
+            "p50": 17.900000000001455,
+            "p95": 35.80000000000291,
+            "p99": 36.599999999998545,
+            "max": 339.09999999999854,
+            "over50": 11,
+            "frames": 1323,
+            "duration": 30014.299999999996,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+          },
+          "strictPass": false
+        }
+      ]
+    },
+    "engineering": {
+      "verdict": "PASS",
+      "scope": "Targeted source corrections only; not overall release/performance acceptance",
+      "closed": [
+        "Water derivative footprint now evaluated unconditionally before divergent puddle branch; ring function contains no derivatives",
+        "Generated exposed plaster retains baked normals; legacy flattening and analytic core/course behavior preserved",
+        "Six actual terrain uniform samplers recorded; four analytic mapless masonry roles separately cached and not called baked textures"
+      ],
+      "newP1P2": 0,
+      "assertions": "Source-reviewed strengthened tests reject omitted/external samplers and false baked labels. Reviewer ran no tests or GPU jobs."
+    },
+    "sampledArt": {
+      "verdict": "CONDITIONAL PASS",
+      "scope": "Accepted bounded procedural-material migration, not whole-scene AAA fidelity",
+      "reviewedViews": [
+        "rainy-bank",
+        "plaster-sun",
+        "river-hero",
+        "ground-lane"
+      ],
+      "variants": [
+        "procedural",
+        "legacy"
+      ],
+      "verification": "Reviewer verified report SHA256, corrected source hashes, eight selected image/state hashes; viewed those eight selected images, not all24",
+      "observations": [
+        "No new visual blocker in reviewed samples",
+        "Composition, river readability and dry/wet separation intact",
+        "Soft pale routes, smooth masonry and repetitive construction remain migration-scope limitations"
+      ],
+      "plasterCaveat": "Crop does not isolate a fully exposed fracture patch. Normal preservation confirmed by source review, not dedicated exposed-fracture visual comparison."
+    },
+    "continuousMotion": "UNVERIFIED: representative stills and timing records are not continuous visual review",
+    "fullGameAAA": "NOT ACCEPTED",
+    "publicRelease": "BLOCKED: no Pages deployment in this checkpoint"
+  },
+  "limitations": [
+    "Not an asset-free game: river substrate, HDR, foliage, imported models, guns and NPC resources remain external assets.",
+    "Terrain puddles use environment specular, not planar world reflections; existing river reflection pass is unchanged.",
+    "Coarse stone silhouettes, simple building geometry/wood, sparse repeating vegetation and terrain composition still limit full-scene fidelity.",
+    "No new Fable execution or UE renderer used. No claim of final cinematic or AAA quality.",
+    "All failed and superseded evidence retained; strict test thresholds were not relaxed."
+  ],
+  "portability": {
+    "publicCodeAndEvidence": "Git/LFS delivery must be verified through containing commit on origin; not inferred by this collector",
+    "privateSnapshot": "cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407",
+    "privateResourcesChanged": false,
+    "privateVault": "pre-existing dirty UE vault preserved; private transfer skipped for this public-only change, not full-project portability"
+  },
+  "childReports": [
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T13-54-38-710Z/checks-1.json",
+      "sha256": "2459520349d0db1bb12f2421744de70eb3028afe7978d7729a9fb377e2b1afb1",
+      "phase": "checks",
+      "mode": "procedural",
+      "pass": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T13-55-28-820Z/cabins-1.json",
+      "sha256": "e27335607f63f69c18dc22bf2a84e5e714ffff2f33e8ccb1e6848ce1757a5f09",
+      "phase": "cabins",
+      "mode": "procedural",
+      "pass": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T13-56-05-212Z/traversal-1.json",
+      "sha256": "efc78634ac5d6eb6286260f300e06e9eb27d68ee78cd80e9d642e446d56ec0ea",
+      "phase": "traversal",
+      "mode": "procedural",
+      "pass": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T13-57-20-828Z/weather-1.json",
+      "sha256": "9e12ee2ecac6022b56a52d0b4e9571d0cbb8c0fdde40d31f8616a383dc79cc13",
+      "phase": "weather",
+      "mode": "procedural",
+      "pass": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T13-58-00-118Z/imported-fallback-1.json",
+      "sha256": "7881385070d5df16dcb136e9b7d561aff78c8543eb7ef1a8b0e6b1a98cefc6bb",
+      "phase": "imported-fallback",
+      "mode": "procedural",
+      "pass": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T13-58-22-980Z/checks-1.json",
+      "sha256": "f316d2376dd49cd775909df1f3595c81543a6a8b39c77ed3e58b759be3dca40f",
+      "phase": "checks",
+      "mode": "legacy",
+      "pass": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T13-59-13-095Z/cabins-1.json",
+      "sha256": "e2618ab080ba42453f31fe6bb04fadebd2e937eef757f0d2ed939d036291a2c6",
+      "phase": "cabins",
+      "mode": "legacy",
+      "pass": true
+    },
+    {
+      "phase": "traversal",
+      "mode": "legacy",
+      "missing": true
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T14-00-58-929Z/sunny-benchmark-1.json",
+      "sha256": "c84fc6af696c17fef4536f1af483db955802a0f9c33cc2c002f4ba35ae5258ef",
+      "phase": "sunny-benchmark",
+      "mode": "procedural",
+      "pass": false
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T14-02-04-388Z/benchmark-1.json",
+      "sha256": "432080169fdcc92c011f221ef4cf8f7cd56f3d428e66e7291e2e28a6b102c939",
+      "phase": "benchmark",
+      "mode": "procedural",
+      "pass": false
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T14-03-09-607Z/benchmark-1.json",
+      "sha256": "96da4ed9e7ff99e77000f3ba16bd5759a354c667cd9b3ac9cf881733848c68cb",
+      "phase": "benchmark",
+      "mode": "procedural",
+      "pass": false
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-ground-lane.png",
+      "sha256": "4f26a1d625fb18ce6dc17f0155b31575a6319532e92b1d951d219af0362905d4",
+      "bytes": 4733791
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-ground-lane.json",
+      "sha256": "a9cd33d8c44775d4e13e34143745645b2c4da98c39e7096c762f10df8c51f472",
+      "bytes": 526431
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-grazing-bank.png",
+      "sha256": "151c0a7fa543cefab96c75d8db6330d2ab6dcda580dbf898249b0653c171220f",
+      "bytes": 3824348
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-grazing-bank.json",
+      "sha256": "2b232dfa44a56cb0076f981fb695c14bb65a7fee79c7ffaa0320c6d21c04f618",
+      "bytes": 526451
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-stone-close.png",
+      "sha256": "4b8f2b0b204d18e14a4aaa6a8a408a73982fbef1bfd7b72613670d7d80ab9ff5",
+      "bytes": 4000972
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-stone-close.json",
+      "sha256": "235e45528a4a141f6532934c4c32be154a408ae01be8e1d306654ec3f375c3d8",
+      "bytes": 526466
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-plaster-sun.png",
+      "sha256": "18e64fd8f19420ae7c5994839b959bbf634949ebf4e7f81d89e39a29c6f27cfa",
+      "bytes": 3460487
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-plaster-sun.json",
+      "sha256": "55a400b436a963dedc93b6e7d0b13693650ede95eb893502a9c210721f2fdded",
+      "bytes": 526448
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-timber-close.png",
+      "sha256": "5539faf3b249556c29d97cc3e21735134f0c7d1bd222e4d9263bce946ee2c4f2",
+      "bytes": 3875695
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-timber-close.json",
+      "sha256": "d69a96344fca6b8ece1aea723d05e2d5a282e8f368415789a5177c8bd69c8d12",
+      "bytes": 526282
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-river-hero.png",
+      "sha256": "0f2e8adcb8f6ff9516aa58a78b80c3aef147d11818dd95af7b77fc129cc2c9f8",
+      "bytes": 3754383
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-river-hero.json",
+      "sha256": "7e148c35583d42aac3f70f1f397bb9ae25ab1491f3459e3daeb7857fa9810247",
+      "bytes": 526672
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-river-wide.png",
+      "sha256": "b111e9e4ee49af26d4bbbdc3be7ec332b5565814dc713e7d95708714f42d2996",
+      "bytes": 4799400
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-river-wide.json",
+      "sha256": "4e795b0b615c46f8faf69e5f546708a22198e7887e755390e0b09f1cbe47ec22",
+      "bytes": 526472
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-rainy-bank.png",
+      "sha256": "7f54f82caef70a0507da50f74d752e824b328a7427418e87931245e22c136e68",
+      "bytes": 4012311
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/legacy-rainy-bank.json",
+      "sha256": "6b29895350b717e1081d1cf07dc69eec498e11e7669607449efb521323d39b08",
+      "bytes": 526452
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-ground-lane.png",
+      "sha256": "078a97b5329c6cb2ac42d86b122f033a857dbf6345c5d944b5638f60c071989b",
+      "bytes": 3559169
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-ground-lane.json",
+      "sha256": "aa2406025d07a4b97c39b9ad382bdf46376a19d4c91aa1279d7560cdd1f59d57",
+      "bytes": 625193
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-grazing-bank.png",
+      "sha256": "25b111900c116f6198fb0c3da1bb083a4db3eb16cdbf0611a10e9335fc43f515",
+      "bytes": 3329140
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-grazing-bank.json",
+      "sha256": "789573f1aad93588232f1fb79cf87c13f5162c283bab57099aaa357f38b83e7c",
+      "bytes": 625215
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-stone-close.png",
+      "sha256": "84e394263d0d4fd7a0806c3a0df43f00e88bd478a6934f20e6c78eb9d82e506c",
+      "bytes": 3421396
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-stone-close.json",
+      "sha256": "1a4a80f45d4c4e71abd2e6099be349836de5b262e5632c8833447e8cfdce866c",
+      "bytes": 625230
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-plaster-sun.png",
+      "sha256": "a6a634230d22f24d5f063f1d063e1fd903807fa18402efee46478454e7b18758",
+      "bytes": 1778107
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-plaster-sun.json",
+      "sha256": "14fe9e94498d08c2223bd97c2981253668c099bbd55c29dee5877322ed495e62",
+      "bytes": 625437
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-timber-close.png",
+      "sha256": "69a8527cc40fda10d0375c7a44b2411cb6e29a205b0ac859efeba4afdf4700ef",
+      "bytes": 3257605
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-timber-close.json",
+      "sha256": "c0997abd1fca96d579c61dc34b631b40592ee8c0e43e12c3c06a1afad2cee09c",
+      "bytes": 625049
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-river-hero.png",
+      "sha256": "a129d02addd8d899a6c02da297dcafc01e81e9fd26adb7f1e41b1f8fbfcbcfbe",
+      "bytes": 3470151
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-river-hero.json",
+      "sha256": "6d0a369c96f6b56ce1a705ff316ec2503d8ce8698a26e397788d0b6fccb7860a",
+      "bytes": 625435
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-river-wide.png",
+      "sha256": "d937b666222dc0bffae53f1bd2934cc685e7f45a267312b59161781c955ad73d",
+      "bytes": 4606261
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-river-wide.json",
+      "sha256": "0666b2abcc60f049077fe2ad25b09a96c83d5b0d8ca755c90d7fad7795820f63",
+      "bytes": 625236
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-rainy-bank.png",
+      "sha256": "03a063bac585780a55a0a150a418ba47248d7338d4ad861b47a8ee8ca6748da6",
+      "bytes": 3638773
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/procedural-rainy-bank.json",
+      "sha256": "373641b083e59d95fa1a48a932841219c9d000f7236af3325a004bf1ea22b846",
+      "bytes": 625216
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-ground-lane.png",
+      "sha256": "078a97b5329c6cb2ac42d86b122f033a857dbf6345c5d944b5638f60c071989b",
+      "bytes": 3559169
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-ground-lane.json",
+      "sha256": "91d5470ac8116eafab1a0a8c22fd7f3089c89a7babeecc611b04255f2d06b83c",
+      "bytes": 625195
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-grazing-bank.png",
+      "sha256": "25b111900c116f6198fb0c3da1bb083a4db3eb16cdbf0611a10e9335fc43f515",
+      "bytes": 3329140
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-grazing-bank.json",
+      "sha256": "545702724edc6770eb3fa9c73dbc05b41411e9286859df84573cbbd478dba0b1",
+      "bytes": 625215
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-stone-close.png",
+      "sha256": "5a398aae055e059296e27ac944230804497a765c7613e81493ded51eaa6fa5b5",
+      "bytes": 3421426
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-stone-close.json",
+      "sha256": "b5fbf4ac8dc6c26b03ce6a3ed4871fca8a323503c922aa04a054191ac091bca1",
+      "bytes": 625230
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-plaster-sun.png",
+      "sha256": "1ccf6875c8f2f6d2a9b3673ce094f1d5f352c2ee1fac25e263c40e865216b316",
+      "bytes": 1773844
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-plaster-sun.json",
+      "sha256": "92c83f7d261c2f4236704f064241a48f415c306f692e9c2e7a50304a65a3e714",
+      "bytes": 625429
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-timber-close.png",
+      "sha256": "446c85efd008c4046f31b4c7f34eff64ccdf2235652a97f1c0b30492c207c4a4",
+      "bytes": 3257352
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-timber-close.json",
+      "sha256": "1843a80aa5dd1ae2b9c8bb03b73adddf89520a306711cc0011ec319580513325",
+      "bytes": 625044
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-river-hero.png",
+      "sha256": "ceca5af074b20ffcdedf2096ad157a106d393d93324dd0bf683540a1aaa8adf3",
+      "bytes": 3470152
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-river-hero.json",
+      "sha256": "e01ca16eb1c53019a09c4a2349bbeeaa2a54eff3c0e75ea96b93b12f848cf054",
+      "bytes": 625262
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-river-wide.png",
+      "sha256": "d937b666222dc0bffae53f1bd2934cc685e7f45a267312b59161781c955ad73d",
+      "bytes": 4606261
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-river-wide.json",
+      "sha256": "d13285b05ffd9fc831b3a61aa73a53ba20843dfe991a672e5775759e4f870b1e",
+      "bytes": 625236
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-rainy-bank.png",
+      "sha256": "03a063bac585780a55a0a150a418ba47248d7338d4ad861b47a8ee8ca6748da6",
+      "bytes": 3638773
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/default-rainy-bank.json",
+      "sha256": "8b528be3eb9e8cdf81551048d37a5ffa97b6d70161a72ca7a49c9dbbec143c6a",
+      "bytes": 625216
+    }
+  ],
+  "collector": {
+    "path": "experiments/sunbreak-river-v4/qa/migration-checkpoint.mjs",
+    "sha256": "e4df89be09a6f0e7c1f88dc47b080911487e2aedfb78175c94b284b95b4a7e48"
+  }
+}

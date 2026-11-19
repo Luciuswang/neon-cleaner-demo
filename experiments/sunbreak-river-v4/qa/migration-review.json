@@ -1,0 +1,37 @@
+{
+  "task": "river-procedural-migration-2026-11-19",
+  "profile": "offscreen-cinematic-v1",
+  "reviewer": "Godel / 01a1f3f2-bd1d-7242-9834-76bd613eeb01",
+  "role": "independent read-only Gatekeeper and QA Director",
+  "sourceManifestSHA256": "f7725eef59bea61c18b3109e31d39c05169729a322481d669a9f9d7ab3911868",
+  "visualReportSHA256": "0a4796f625cbb24d523eacc9e2a9786fd6c9ee1089d668d7581a9dd12b3f6da0",
+  "evidence": "qa/evidence/migration-visual-2026-11-19T13-52-11-585Z-vUJROf/report.json",
+  "initialReview": "qa/migration-review-initial.json",
+  "engineering": {
+    "verdict": "PASS",
+    "scope": "Targeted source corrections only; not overall release/performance acceptance",
+    "closed": [
+      "Water derivative footprint now evaluated unconditionally before divergent puddle branch; ring function contains no derivatives",
+      "Generated exposed plaster retains baked normals; legacy flattening and analytic core/course behavior preserved",
+      "Six actual terrain uniform samplers recorded; four analytic mapless masonry roles separately cached and not called baked textures"
+    ],
+    "newP1P2": 0,
+    "assertions": "Source-reviewed strengthened tests reject omitted/external samplers and false baked labels. Reviewer ran no tests or GPU jobs."
+  },
+  "sampledArt": {
+    "verdict": "CONDITIONAL PASS",
+    "scope": "Accepted bounded procedural-material migration, not whole-scene AAA fidelity",
+    "reviewedViews": ["rainy-bank", "plaster-sun", "river-hero", "ground-lane"],
+    "variants": ["procedural", "legacy"],
+    "verification": "Reviewer verified report SHA256, corrected source hashes, eight selected image/state hashes; viewed those eight selected images, not all24",
+    "observations": [
+      "No new visual blocker in reviewed samples",
+      "Composition, river readability and dry/wet separation intact",
+      "Soft pale routes, smooth masonry and repetitive construction remain migration-scope limitations"
+    ],
+    "plasterCaveat": "Crop does not isolate a fully exposed fracture patch. Normal preservation confirmed by source review, not dedicated exposed-fracture visual comparison."
+  },
+  "finalRuntimeGateStatusAtReview": "Fresh functional/performance run still in progress; see completed regression report referenced by migration-release.json",
+  "notCleared": ["Seven historical CRLF-only raw preservation failures", "Prior strict frame-pacing failures", "Continuous subjective motion review", "AAA/cinematic acceptance", "Public Pages deployment"],
+  "rootArtRefinement": "Main-agent liveops-art-precheck review reduced uniformly beaded soil grain and overly pale route albedo before final captures; no human art-director approval inferred."
+}
