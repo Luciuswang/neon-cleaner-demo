@@ -14,21 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "sunbreak-river-downloaded-assets-2026-11-19": {
-      "base_commit": "96cc959e2f6fdd68e4efd0c65acc0c05a2a99c63",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-19T14:21:58.769092+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/sunbreak-river-downloaded-assets-2026-11-19.md",
-        "docs/handoff.md",
-        "docs/worklog",
-        ".gitignore"
-      ],
-      "task_id": "sunbreak-river-downloaded-assets-2026-11-19",
-      "updated_at": "2026-11-19T06:21:58.769092+00:00"
     }
   },
   "schema": 1
