@@ -14,19 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "sunbreak-river-surface-atmosphere-2026-11-19": {
-      "base_commit": "ef60b6816d96580d1463a17073e34af4b73aa72a",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-19T11:47:00.785825+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/sunbreak-river-surface-atmosphere-2026-11-19.md",
-        "docs/handoff.md"
-      ],
-      "task_id": "sunbreak-river-surface-atmosphere-2026-11-19",
-      "updated_at": "2026-11-19T03:47:00.785825+00:00"
     }
   },
   "schema": 1
