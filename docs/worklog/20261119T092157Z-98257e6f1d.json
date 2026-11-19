@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261119T092157Z-98257e6f1d",
+  "task_id": "sunbreak-river-material-combat-polish-2026-11-19",
+  "timestamp_utc": "2026-11-19T09:21:57.274013+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "docs(sync): preserve Riverfall polish handoff and publish checkpoint",
+  "commit_shas": [
+    "3a4ea15be268a0b8d700dc060b62429c435f15ef"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
