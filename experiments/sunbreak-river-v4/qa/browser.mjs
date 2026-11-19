@@ -36,14 +36,14 @@ async function mouse(down=true,button='left'){
 }
 async function snapshot(){return evaluate(live?"window.demoQA.snapshot()":"arenaQA.snapshot()")}
 function check(name,pass,details){results.push({name,pass:!!pass,...details?{details}:{}});if(!pass)throw Error('FAIL '+name)}
-async function capture(name){
+async function capture(name,stored=false){
  console.log('Capturing '+name);
- const length=await evaluate("window.__riverCapture=document.querySelector('#app canvas').toDataURL('image/png').split(',')[1];window.__riverCapture.length");
+ const length=await evaluate(stored?"window.__riverCapture=window.__polishShotImage;window.__riverCapture.length":"window.__riverCapture=document.querySelector('#app canvas').toDataURL('image/png').split(',')[1];window.__riverCapture.length");
  console.log('Encoded '+name+' '+length);
  let data='';for(let i=0;i<length;i+=65536)data+=await evaluate(`window.__riverCapture.slice(${i},${i+65536})`);
  await evaluate('delete window.__riverCapture');
  const bytes=Buffer.from(data,'base64');captureHashes[name]=createHash('sha256').update(bytes).digest('hex');await writeFile(resolve(output,name+'.png'),bytes);
- const state=await snapshot();await writeFile(resolve(output,name+'.json'),JSON.stringify(state,null,2)+'\n');return state;
+ const state=stored?await evaluate('window.__polishShotState'):await snapshot();await writeFile(resolve(output,name+'.json'),JSON.stringify(state,null,2)+'\n');return state;
 }
 try {
  const endpoint=await new Promise((resolve,reject)=>{
@@ -69,7 +69,33 @@ try {
  if(!live)check('licensed weapon and all textures loaded',(await snapshot()).weapon?.loaded&&(await snapshot()).errors.length===0,await snapshot());
  const weatherArg=process.argv.find(a=>a.startsWith('--weather='));
  if(!live&&weatherArg)await evaluate(`arenaQA.weather(${Number(weatherArg.slice(10))})`);
- if(phase==='imported-assets'){
+ if(phase==='polish'){
+  const states={};
+  for(const [name,...v]of [['hero',-7,1.7,24,-.24,-.1],['stone-close',-7.8,1.5,10.5,0,-.20],['plaster-close',-13.0,1.6,-21.0,1.9,-.04],['plaster-sun',-21,1.6,-25,-1.27,-.08],['ground-growth',-22,1.45,24,.06,-.65],['forest-belt',-24,2,-29,1.0,.10],['forest-lateral',-24,2,20,1.6,.10],['sun-gun',-7,1.7,24,-.24,-.1],['turned-gun',-7,1.7,24,2.4,-.08],['sheltered-gun',-17,1.7,-24,0,-.05]]){
+   await evaluate(`arenaQA.view(${v.join(',')})`);await delay(650);states[name]=await capture(name);
+  }
+  const lit=states['sun-gun'].weapon.lighting,shade=states['sheltered-gun'].weapon.lighting,turned=states['turned-gun'].weapon.lighting;
+  check('actual world sun rotates with view and indoor shelter attenuates direct light',lit.sunVisibility>.9&&shade.sunVisibility<.1&&shade.keyIntensity<lit.keyIntensity*.1&&JSON.stringify(lit.environmentRotation)!==JSON.stringify(turned.environmentRotation)&&lit.environmentMatchesWorld,{lit,shade,turned});
+  await evaluate("arenaQA.cabinView('west-buffer',-2.5,2,7.5,0,0)");await delay(600);await capture('timber-close');
+  const info=await evaluate('arenaQA.polishInfo()');check('bounded environmental and combat pools',info.environment.triangles<=100000&&info.environment.drawCalls<=6&&info.environment.distantTrees>100&&info.weapon.lighting.enabled&&info.combat.limits.drawCalls<=3,info);
+  for(const [name,kind,...v]of [['stone-impact','stone',-7.8,1.4,11.7,0,-.16],['earth-impact','earth',-10,1.7,12,0,-.4],['water-impact','water',0,1.7,10,0,-.42],['sky-miss',null,-7,1.7,24,0,1.1],['blocked-barrel','stone',-7.8,1.2,9.1,0,-.1]]){
+   await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);
+   const before=await evaluate('arenaQA.polishInfo()');const shot=await evaluate('arenaQA.fireViewCapture()',true);await capture(name,true);
+   const delta=shot.polish.combat.impacts-before.combat.impacts;
+   const event=shot.polish.adapter.lastShot,impact=shot.polish.combat.lastImpact,blocked=name==='blocked-barrel';
+   const distance=(a,b)=>a&&b?Math.hypot(...a.map((v,i)=>v-b[i])):Infinity;
+   const dot=(a,b)=>a&&b?a.reduce((n,v,i)=>n+v*b[i],0):NaN;
+   const correct=kind?delta===1&&event.hit&&event.kind===kind&&impact.kind===kind&&distance(impact.point,event.point)<.031&&Math.abs(Math.hypot(...impact.normal)-1)<.001&&dot(impact.normal,event.direction)<0:delta===0&&!event.hit;
+   const shellAligned=!event.hit||kind==='water'||distance(event.point,event.interception||event.cameraHit)<.002;
+   check(name+' real accepted shot: material, first-hit position, outward normal and barrel guard',shot.polish.combat.shots===before.combat.shots+1&&correct&&shellAligned&&shot.weapon.flash.visible===!blocked&&(blocked?event.muzzle===null&&!!event.interception:!!event.muzzle),shot.polish);
+   await delay(900);const after=await evaluate('arenaQA.polishInfo()');check(name+' particles and flash expire',after.combat.puffs.active===0&&after.combat.flecks.active===0&&!after.weapon.flash.visible,after.combat);
+  }
+  // Real input-driven ADS pose. State proves aiming, never pixel visibility;
+  // final clear-vs-shot canvas pair requires independent visual assessment.
+  await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1);arenaQA.resume()');await mouse(true,'right');await delay(650);await capture('ads-clear');
+  const adsShot=await evaluate('arenaQA.fireViewCapture()',true);await capture('ads-shot',true);await mouse(false,'right');
+  check('real ADS pose accepts a bounded shot (visual flare readability reviewed separately)',adsShot.weapon.aim>.99&&adsShot.weapon.flash.visible&&adsShot.weapon.flash.triangles<=32,adsShot.polish);
+ }else if(phase==='imported-assets'){
   const info=await evaluate('arenaQA.dressingInfo()');
   check('user scans loaded within declared geometry budgets',info.enabled&&!info.errors.length&&info.triangles<=500000&&info.draws<=60&&info.bytes<=25000000&&info.assets.every(a=>info.counts[a.id]>0),info);
   const frozen=(await snapshot()).buildHashes;

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261119T092127Z-4ae38e1a67",
+  "task_id": "sunbreak-river-material-combat-polish-2026-11-19",
+  "timestamp_utc": "2026-11-19T09:21:27.885905+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "River material/combat polish checkpoint: six bounded stone covers, stronger wall/ground relief, clustered meadow, distant canopy, world-responsive gun lighting and actual-hit feedback. Prior demos and gameplay preserved. CPU21/21 and six native functional phases PASS; engineering CONDITIONAL PASS; sampled art REVISE (surface artifacts, weapon material balance, impact evolution). All three strict performance samples FAIL; AAA/public release BLOCKED, continuous motion UNVERIFIED. Source/evidence staged audit434 PASS; Pages unchanged. Private import snapshot cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407 unchanged and already verified; no new binaries, dirty UE vault preserved, no whole-UE portability claim. Next: controlled material/AO isolation, delayed-hit/motion review and frame-pacing profiling. Task: docs/tasks/sunbreak-river-material-combat-polish-2026-11-19.md; canonical QA: experiments/sunbreak-river-v4/qa/polish-release.json; preview http://127.0.0.1:5190/river/.",
+  "commit_shas": [
+    "d5b2114d07e1496824b6b788757364412e18908e"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

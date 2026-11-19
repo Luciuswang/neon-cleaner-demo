@@ -1,5 +1,6 @@
 import {wallTopAt} from './map-layout.js';
 import {cloneSurfaceMaterial,createMasonryMaterial,MASONRY_PALETTE} from './masonry-materials.js';
+import {buildStoneCover,isStoneCover} from './stone-cover.js';
 export function buildVillage({ T, world, materials, layout, solids }) {
   const G = new T.Group(); G.name = 'village'; world.add(G);
   let seed = 1337;
@@ -70,9 +71,12 @@ export function buildVillage({ T, world, materials, layout, solids }) {
   // collision walls: exact boxes
   for (const w of walls) {
     const k = w.material === 'plaster' || !M[w.material] ? wallTint(hById[w.houseId]) : w.material;
-    add(k,w.w,w.h,w.d,w.x,w.y,w.z,0,0,w.profile?w:null);
+    if(isStoneCover(w))boxes++; // replacement visuals below; exact shot shell retained
+    else add(k,w.w,w.h,w.d,w.x,w.y,w.z,0,0,w.profile?w:null);
     solid(w.w,w.h,w.d,w.x,w.y,w.z,0,{wall:w.id,houseId:w.houseId},w.profile?w:null);
   }
+
+  const stoneCover=buildStoneCover({T,world:G,materials,walls});
 
   const A = Math.atan2(1.7, 3.8), SL = Math.hypot(3.8, 1.7), nx = Math.sin(A), ny = Math.cos(A), tiles=[];
   for (const h of houses) {
@@ -207,6 +211,6 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     m.name = 'village_' + k; m.castShadow = m.receiveShadow = true;
     G.add(m); draws++; tris += b.i.length / 3;
   }
-  const counts = { houses: houses.length, walls: walls.length, boxes, solids: solidCount, tiles:tiles.length, drawCalls: draws+2, triangles: tris+tiles.length*16+96, contribution:'Fable 5.2 structure, reviewed and refined by Codex' };
-  return { update() {}, info() { return counts; } };
+  const counts = { houses: houses.length, walls: walls.length, boxes, solids: solidCount, tiles:tiles.length, drawCalls: draws+2+stoneCover.info().drawCalls, triangles: tris+tiles.length*16+96+stoneCover.info().triangles, stoneCover:stoneCover.info(), contribution:'Fable 5.2 structure, reviewed and refined by Codex' };
+  return { update() {}, info() { return counts; },projectStoneCoverHit:stoneCover.projectHit };
 }

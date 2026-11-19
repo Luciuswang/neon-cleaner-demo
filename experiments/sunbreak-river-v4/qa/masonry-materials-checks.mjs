@@ -2,6 +2,8 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFile} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 import * as T from '../../sunbreak-storm-v3/vendor/presentation/build/three.module.js';
 import {buildVillage} from '../village.js';
 import {buildRuins} from '../ruins.js';
@@ -15,6 +17,20 @@ const baseline={
 const sha=a=>createHash('sha256').update(a).digest('hex');let checks=0;
 function ok(v,label){assert.ok(v,label);checks++}
 function equal(a,b,label){assert.deepEqual(a,b,label);checks++}
+const polish=process.argv.includes('--polish');
+let stoneProof=null;
+if(polish){
+ // Execute, do not waive, the exact six-cover replacement contract. A failing
+ // child aborts this suite; it cannot suppress any original material assertion.
+ const file=new URL('./stone-cover-checks.mjs',import.meta.url),testSHA=sha(await readFile(file));
+ stoneProof=JSON.parse(execFileSync(process.execPath,[fileURLToPath(file),'--stdout-only'],{encoding:'utf8',windowsHide:true,maxBuffer:8e6}));
+ equal(sha(await readFile(file)),testSHA,'stone checks unchanged during execution');
+ equal(stoneProof.inputs['qa/stone-cover-checks.mjs'],testSHA,'stone proof bound to executed checks');
+ equal(stoneProof.nonCoverGeometry,'3721e80f7902909666feb35c04e7734b4675801fa6e742b0bec186691292a7ea','exact original non-cover geometry fingerprint');
+ equal(stoneProof.exactColliderFingerprint,'d59338d8eb067668142a7e3b277ad9c9c44d1fb9fa36581cd73a73d12b21f7bb','exact original collider fingerprint');
+ ok(Number.isInteger(stoneProof.checks)&&stoneProof.checks>0,'stone assertions executed');
+ for(const path of ['village.js','masonry-materials.js','stone-cover.js'])equal(stoneProof.inputs[path],sha(await readFile(new URL('../'+path,import.meta.url))),'stone proof current '+path);
+}
 const slots=['map','normalMap','roughnessMap','aoMap'];
 function sources(){return Object.fromEntries(['plaster','brick','stone','wood','roof','metal'].map((k,i)=>{
  const m=new T.MeshStandardMaterial({color:0x958c78,roughness:.73,metalness:i===5?.5:0});
@@ -39,7 +55,22 @@ const cases={};
 for(const [name,build]of [['village',buildVillage],['ruins',buildRuins]]){
  const world=new T.Group(),solids=[],materials=sources(),before=materialSnapshot(materials),result=build({T,world,solids,materials,layout}),state=fingerprint(world,solids,result);
  equal(materialSnapshot(materials),before,name+' shared materials/textures/hooks must remain untouched');
- for(const field of ['geometry','support','solids','meshes','drawCalls','triangles'])equal(state[field],baseline[name][field],name+' exact baseline '+field);
+ if(polish&&name==='village'){
+  // Only six cover visuals changed. Preserve all non-cover bytes through the
+ // required stone checks above, plus exact support/collider counts here. Counts
+ // are the historical totals plus the verified replacement, never a new limit.
+  for(const field of ['support','solids'])equal(state[field],baseline[name][field],name+' exact baseline '+field);
+  const detail=state.stoneCover;
+  equal(detail,stoneProof.info.stoneCover,'same stone replacement checked independently');
+  equal(detail.covers,6,'only six cover visuals replaced');
+  equal(detail.replacedTriangles,6*12,'only original six box triangles removed');
+  equal(detail.addedTriangles,detail.triangles-detail.replacedTriangles,'exact replacement triangle accounting');
+  equal(world.getObjectByName('village_stone'),undefined,'one original cover-only batch replaced');
+  equal(world.getObjectByName('stone-cover').children.length,detail.drawCalls,'replacement meshes equal verified draws');
+  equal(state.meshes,baseline.village.meshes-1+detail.drawCalls,'exact six-cover mesh delta');
+  equal(state.drawCalls,baseline.village.drawCalls-1+detail.drawCalls,'exact six-cover draw delta');
+  equal(state.triangles,baseline.village.triangles+detail.addedTriangles,'exact six-cover triangle delta');
+ }else for(const field of ['geometry','support','solids','meshes','drawCalls','triangles'])equal(state[field],baseline[name][field],name+' exact baseline '+field);
  ok(state.uv!==baseline[name].uv,name+' UV scale corrected');
  cases[name]={world,solids,result,state};
  world.traverse(o=>{if(!o.isMesh)return;const p=o.geometry.attributes.position,n=o.geometry.attributes.normal,uv=o.geometry.attributes.uv;
@@ -150,6 +181,7 @@ for(const role of ['plaster','course','core','stone','aggregate']){
  ok(Object.hasOwn(withFog.uniforms,'uMasonryClay'),'fog retains masonry uniforms');
 }
 equal(keys.size,5,'role-specific shader cache keys');
-const inputs={};for(const path of ['village.js','ruins.js','masonry-materials.js','qa/masonry-materials-checks.mjs'])inputs[path]=sha(await readFile(new URL('../'+path,import.meta.url)));
+const inputs={};for(const path of ['village.js','ruins.js','masonry-materials.js','qa/masonry-materials-checks.mjs',...(polish?['stone-cover.js','qa/stone-cover-checks.mjs']:[])])inputs[path]=sha(await readFile(new URL('../'+path,import.meta.url)));
+if(polish)for(const [path,hash]of Object.entries(stoneProof.inputs))equal(inputs[path],hash,'stone proof remains bound through all masonry checks '+path);
 const actualVisible={};for(const [name,c]of Object.entries(cases)){let drawCalls=0,triangles=0;c.world.traverse(o=>{if(!o.isMesh||!o.visible||!o.material.visible)return;drawCalls++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3*(o.isInstancedMesh?o.count:1)});actualVisible[name]={drawCalls,triangles}}
-console.log(JSON.stringify({status:'CPU material/geometry checks completed; NOT GPU or art acceptance',checks,baselineOrigin:'pre-edit local module captures, 2026-11-19',village:cases.village.state,ruins:cases.ruins.state,actualVisible,note:'Legacy ruins.info triangles exclude 576 unchanged mound triangles; actualVisible includes them.',supportSamples,maxGap,coreTriangles,courseTriangles,materialAttributeBytes,brokenProfileVertices,coatedFragmentVertices,exposedFragmentVertices,scalarFields:{fieldSamples,binderSamples,claySamples,aggregateSamples,baseClear,baseStained,smallSpalled,smallCoated,note:'Source-derived scalar GLSL evaluated in JS doubles; NOT GPU shader or visual validation.'},incrementalDrawCalls:0,incrementalTriangles:0,sources:inputs,limits:'No browser/GPU, source/publication or visual PASS claim. Root must independently render/review current frozen hashes.'},null,2));
+console.log(JSON.stringify({status:'CPU material/geometry checks completed; NOT GPU or art acceptance',checks,mode:polish?'polish':'historical',replacedContract:polish?{only:'whole-village geometry identity and count consequences of six cover visual replacements',replacement:'executed stone-cover-checks: exact non-cover geometry and all collider bytes; all other original assertions retained',stoneChecks:stoneProof.checks,nonCoverGeometry:stoneProof.nonCoverGeometry,colliders:stoneProof.exactColliderFingerprint}:null,baselineOrigin:'pre-edit local module captures, 2026-11-19',village:cases.village.state,ruins:cases.ruins.state,actualVisible,note:'Legacy ruins.info triangles exclude 576 unchanged mound triangles; actualVisible includes them.',supportSamples,maxGap,coreTriangles,courseTriangles,materialAttributeBytes,brokenProfileVertices,coatedFragmentVertices,exposedFragmentVertices,scalarFields:{fieldSamples,binderSamples,claySamples,aggregateSamples,baseClear,baseStained,smallSpalled,smallCoated,note:'Source-derived scalar GLSL evaluated in JS doubles; NOT GPU shader or visual validation.'},incrementalDrawCalls:cases.village.state.drawCalls-baseline.village.drawCalls,incrementalTriangles:cases.village.state.triangles-baseline.village.triangles,sources:inputs,limits:'No browser/GPU, source/publication or visual PASS claim. Root must independently render/review current frozen hashes.'},null,2));

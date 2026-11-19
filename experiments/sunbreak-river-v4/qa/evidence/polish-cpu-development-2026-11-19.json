@@ -1,0 +1,2090 @@
+{
+  "schema": "river-material-polish-cpu-v1",
+  "date": "2026-11-19T08:47:21.552Z",
+  "pass": false,
+  "unchanged": false,
+  "sources": {
+    "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_diff_2k.jpg": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_nor_gl_2k.png": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_rough_2k.jpg": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+    "../sunbreak-storm-v3/assets/audio/NOTICE.md": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1",
+    "../sunbreak-storm-v3/assets/audio/confirm.wav": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba",
+    "../sunbreak-storm-v3/assets/audio/enemy.wav": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e",
+    "../sunbreak-storm-v3/assets/audio/magin.wav": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c",
+    "../sunbreak-storm-v3/assets/audio/magout.wav": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7",
+    "../sunbreak-storm-v3/assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "../sunbreak-storm-v3/assets/audio/player.wav": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7",
+    "../sunbreak-storm-v3/assets/audio/provenance/firearm-source.html.txt": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868",
+    "../sunbreak-storm-v3/assets/audio/provenance/reload-source.html.txt": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_diff_1k.jpg": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_nor_gl_1k.png": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_rough_1k.jpg": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488",
+    "../sunbreak-storm-v3/assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798",
+    "../sunbreak-storm-v3/assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+    "../sunbreak-storm-v3/assets/mp5/mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_diff_1k.jpg": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_nor_gl_1k.png": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_rough_1k.jpg": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c",
+    "../sunbreak-storm-v3/assets/soldier/soldier_tac.glb": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6",
+    "../sunbreak-storm-v3/vendor/presentation/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SSAOPass.js": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "../sunbreak-storm-v3/vendor/three/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/three/build/three.module.js": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "afterrain-assets.json": "f1962089201af2341b8a306dc8b70c8fe2d36512fdfec8d1915f9edf1426ac65",
+    "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+    "assets/afterrain-detail/dry_riverbed_rock/arm.jpg": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e",
+    "assets/afterrain-detail/dry_riverbed_rock/color.jpg": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524",
+    "assets/afterrain-detail/dry_riverbed_rock/normal.jpg": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d",
+    "assets/afterrain-detail/ganges_river_pebbles/arm.jpg": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c",
+    "assets/afterrain-detail/ganges_river_pebbles/color.jpg": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34",
+    "assets/afterrain-detail/ganges_river_pebbles/normal.jpg": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133",
+    "assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6",
+    "assets/brick_moss_001/color.jpg": "0af91390672fe184959fdc9d915d8ee4006c46011057f03fc0d3675df74cdf79",
+    "assets/brick_moss_001/normal.jpg": "b764511928a767aa8501dc2ae1a6bc5e1f92a43d1ef97ead55f77780f3ee367e",
+    "assets/brick_moss_001/roughness.jpg": "c429062347f60091bdd9bf6db462d466a6b127d1b7268109d55f92a938f686c7",
+    "assets/brown_mud_02/color.jpg": "5c735b1df784ab1990f4e209c55d27fa4e7a19508e40484ed5aa783266783726",
+    "assets/brown_mud_02/normal.jpg": "3d6eec0adba8fd514d5634c56f806ad40206975c3ef17de1e2468b9e3ebcf719",
+    "assets/brown_mud_02/roughness.jpg": "00ef047ecda114930311efd31cbdb371c7a236f211a00f1dfeb6b1b73ac2f674",
+    "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+    "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+    "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+    "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/ground-surfaces/dirt/color.jpg": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+    "assets/ground-surfaces/dirt/normal.jpg": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+    "assets/ground-surfaces/dirt/official-files.json": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7",
+    "assets/ground-surfaces/dirt/roughness.jpg": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+    "assets/ground-surfaces/forest_ground_04/color.jpg": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+    "assets/ground-surfaces/forest_ground_04/normal.jpg": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+    "assets/ground-surfaces/forest_ground_04/official-files.json": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156",
+    "assets/ground-surfaces/forest_ground_04/roughness.jpg": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+    "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
+    "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
+    "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
+    "assets/wild-grass/Foliage001-leaf-rgba.png": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+    "assets/wild-grass/Foliage006-leaf-rgba.png": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+    "assets/wild-grass/LICENSE.txt": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+    "assets/wild-grass/source/Foliage001/Foliage001.png": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+    "assets/wild-grass/source/Foliage001/metadata.json": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+    "assets/wild-grass/source/Foliage006/Foliage006.png": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+    "assets/wild-grass/source/Foliage006/metadata.json": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+    "assets/wild-grass/source/license/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/wild-grass/source/license/ambientcg-license.html": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+    "assets/wild-grass/wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "assets/wild-grass/wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "assets/wild-grass/wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "assets/wild-grass/wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "combat-feedback.js": "dbe1d0b4bc6933bb3e8c0295734bd72633f5eabfcb1a1da18f4a33fa8811601b",
+    "credits.html": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d",
+    "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
+    "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "downloaded-dressing.js": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5",
+    "environment-polish.js": "f9c1e5537d3bb1a987f44d4f264d49d6cb7ccd8f6b1260bb15fa1a6eab6d997d",
+    "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+    "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
+    "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+    "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
+    "ground-surface-assets.json": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9",
+    "ground-surface.js": "208444286c3bb9ddc2e480313a106924d850973ef69c4e5f980f2b438e71a7f1",
+    "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "index.html": "b55e74d3a906fbb44c826511dad14d314d3c15188c82ac9ca123c17735bae1d7",
+    "local-asset-store.mjs": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "masonry-materials.js": "2c990c517db3fc61b78c1c525d3a544d9ca055fc8b6c75dcacfc28fab907180c",
+    "qa/browser.mjs": "4392bdfd097a2a644c0ed11e444b781bd4972adfa5510f1a10d353c05f0504ea",
+    "qa/hooks.js": "ef61026bfdadf4a6df634e9159c973427bd30b35900b34bfb9dcc5cafa59165c",
+    "qa/source-binding.mjs": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+    "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+    "serve.mjs": "1eca6b086895a5fccf4f5485f5e40d484ed353f290eccaf72a3507921dc718a5",
+    "shot-feedback-event.js": "e05de2b844aeafb3c584fa78cb9013184d2634593bbad2b41b5a979e2cb07e5f",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "stone-cover.js": "b898a03c218d33b876753afdffeb73b5905811765902ed12893620c04bcb7629",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+    "timber-house.js": "31dcb143860c9bd1dba3f4362909fb9c2c7b378a92937bd0e710814a9361031c",
+    "vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "weapon.js": "ccdaef0ff39d34a42d361bd3bca7ae7ae1d5e40daff8ea6c97515b00a4fad7bc",
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
+    "world.js": "817aa8bc909047903ec5829dc6d3d7428021d592686e5440fbcc98a67fdf9a4a",
+    "local-only/manifest.json": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+    "local-only/castle-wall.glb": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
+    "local-only/cement-rubble.glb": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
+    "local-only/cement-rubble-small.glb": "cc0443b5736b634e1c33beada6a54ef32cca78254beda0254d04d629a2d5ff24",
+    "local-only/grass-clumps-a.glb": "011c18c7c67def787cd208e245df9a8bb7c228b204c1dd8531c47f8604e086e1",
+    "local-only/grass-clumps-b.glb": "06542a8a6544c2a8b5b1e513ce7c5f98364f874319e546c15676200f3c8501f6",
+    "local-only/grass-clumps-c.glb": "5bd13e718d6f8d5ac68b3a70211a1c6ae268d8d38eabc237463cd16f7b456750",
+    "local-only/mossy-wall-a.glb": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754",
+    "local-only/mossy-wall-b.glb": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4",
+    "local-only/tundra-grass-a.glb": "740aec736017a52adec7d81c81823758d72afcb04074efde1a302f4fc4d36e0e",
+    "local-only/tundra-grass-d.glb": "7d4e1f1c6b058241a1261745fc5658ef44ef47379c54967b4fa0d08d981c8e77",
+    "local-only/tundra-grass-h.glb": "9dbea586c5922990240987144fd2f32e316fad5235ce59ff04049c58400f13f6",
+    "local-only/woodland-house.glb": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+    "local-only/served-manifest.json": "89af124953d3706e3224bcd45458132675bc06977f42534fa38c9f71720e1bcf"
+  },
+  "units": {
+    "map-checks": {
+      "pass": false,
+      "exit": 1,
+      "testSHA256": "8e68eccf98523c707adb36a063054ccf28ac39db1a2be955dcccf0c6faea673b",
+      "result": {
+        "stdout": ""
+      },
+      "error": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r\n+ actual - expected\r\n... Skipped lines\r\n\r\n  \"import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';\\n\" +\r\n    \"import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';\\n\" +\r\n    \"import {createReloadPose} from './reload-pose.js';\\n\" +\r\n    '\\n' +\r\n    '// Rotuma MP5 + credited first-person arms, CC BY 4.0. See weapon-provenance.json\\n' +\r\n    '// and assets/mp5/NOTICE.md. No upstream weapon, recoil or animation code used.\\n' +\r\n    '// The baseline owns its gun parent, muzzle light, aim/fire/reload and all damage.\\n' +\r\n+   'export async function buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids=[]}){\\n' +\r\n-   'export async function buildWeapon({THREE:T,gun,gscene}){\\n' +\r\n    ' const loader=new GLTFLoader();loader.setMeshoptDecoder(MeshoptDecoder);\\n' +\r\n    \" const gltf=await loader.loadAsync('./assets/mp5/mp5a5.glb');\\n\" +\r\n    \" const root=gltf.scene;root.name='sunbreak-licensed-mp5-viewmodel';\\n\" +\r\n    ' root.updateMatrixWorld(true);\\n' +\r\n    \" const muzzle=root.getObjectByName('MuzzleSocket');\\n\" +\r\n...\r\n    '  for(const m of list){\\n' +\r\n+   \"   owned.add(m);m.envMapIntensity=m.name==='arms'?.28:.72;\\n\" +\r\n-   '   owned.add(m);m.envMapIntensity=.28;\\n' +\r\n    '   if(m.normalScale)m.normalScale.set(.85,.85);\\n' +\r\n    \"   if(m.name==='arms'){m.metalness=0;m.roughness=.83}\\n\" +\r\n    '   else{m.roughness=Math.max(.48,m.roughness);m.metalness=Math.min(.9,m.metalness)}\\n' +\r\n    '   for(const v of Object.values(m))if(v?.isTexture){v.anisotropy=8;maps.add(v)}\\n' +\r\n    '  }\\n' +\r\n...\r\n    ' const reloadPose=createReloadPose(T,root,magazine);\\n' +\r\n-   ' const flashMaterial=new T.MeshBasicMaterial({color:0xffd59d,transparent:true,opacity:0,depthWrite:false,blending:T.AdditiveBlending,toneMapped:false});\\n' +\r\n-   ' const flashMesh=new T.Mesh(new T.ConeGeometry(.045,.22,7,1,true),flashMaterial);\\n' +\r\n-   ' flashMesh.rotation.x=-Math.PI/2;flashMesh.position.set(0,.005,-1.94);flashMesh.frustumCulled=false;gun.add(flashMesh);\\n' +\r\n    ' const baselineLight=gun.children.find(o=>o.isPointLight);\\n' +\r\n+   ' const flash=createWeaponFlash(T,gun,baselineLight);\\n' +\r\n+   ' const lighting=createWeaponLighting({T,gscene,cam,scene,sun,amb,solids,materials:[...owned]});\\n' +\r\n    ' let disposed=false,lastAim=0;\\n' +\r\n    ' return{\\n' +\r\n+   '  // Explicit accepted-shot notification. Never infer shots from the light we\\n' +\r\n+   '  // animate, or change ammo/cadence/damage. null muzzle means root blocked VFX.\\n' +\r\n+   '  shot(event={}){if(!disposed)flash.shot(event)},\\n' +\r\n+   '  reset(){flash.reset()},\\n' +\r\n    '  update(dt,state){\\n' +\r\n    '   reloadPose.update(state.reload);\\n' +\r\n    '   if(charging&&chargeHome)charging.position.copy(chargeHome);\\n' +\r\n+   \"   if(state.presentation||['pause','dead','win'].includes(state.state))flash.reset();\\n\" +\r\n+   '   flash.update(dt);lighting.update(dt);lastAim=state.aim;\\n' +\r\n-   '   flashMaterial.opacity=Math.min(.75,(baselineLight?.intensity||0)*.035);\\n' +\r\n-   '   flashMesh.visible=flashMaterial.opacity>.015;lastAim=state.aim;\\n' +\r\n    '  },\\n' +\r\n+   \"  info(){root.updateWorldMatrix(true,true);const actual=gun.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));return{loaded:true,asset:'Rotuma MP5 / gloved first-person arms',license:'CC-BY-4.0',meshes,triangles,skinnedMeshes:skinned,sleeve,textureMaps:maps.size,uniformDisplayScale:displayScale,sourceMuzzle:sourceMuzzle.toArray(),fittedMuzzle:actual.toArray(),muzzleFitError:actual.distanceTo(new T.Vector3(0,.005,-1.85)),aim:lastAim,reload:reloadPose.info(),lighting:lighting.info(),flash:flash.info(),animation:'authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap'}},\\n\" +\r\n+   '  dispose(){if(disposed)return;disposed=true;reloadPose.dispose();lighting.dispose();flash.dispose();fit.removeFromParent();root.traverse(o=>o.geometry?.dispose());for(const m of owned)m.dispose();for(const t of maps)t.dispose()}\\n' +\r\n-   \"  info(){root.updateWorldMatrix(true,true);const actual=gun.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));return{loaded:true,asset:'Rotuma MP5 / gloved first-person arms',license:'CC-BY-4.0',meshes,triangles,skinnedMeshes:skinned,sleeve,textureMaps:maps.size,uniformDisplayScale:displayScale,sourceMuzzle:sourceMuzzle.toArray(),fittedMuzzle:actual.toArray(),muzzleFitError:actual.distanceTo(new T.Vector3(0,.005,-1.85)),aim:lastAim,reload:reloadPose.info(),animation:'authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap'}},\\n\" +\r\n-   '  dispose(){if(disposed)return;disposed=true;reloadPose.dispose();fit.removeFromParent();flashMesh.removeFromParent();root.traverse(o=>o.geometry?.dispose());for(const m of owned)m.dispose();for(const t of maps)t.dispose();flashMesh.geometry.dispose();flashMaterial.dispose()}\\n' +\r\n    ' };\\n' +\r\n    '}\\n' +\r\n    '\\n' +\r\n+   \"export const WEAPON_LIGHTING_REVISION='world-viewmodel-ibl-r160-v1';\\n\" +\r\n+   'export const WEAPON_LIGHTING_LIMITS=Object.freeze({probeInterval:.1,rayCountPerProbe:4,sunRange:100,skyRange:18});\\n' +\r\n+   'const clamp01=x=>Math.max(0,Math.min(1,x));\\n' +\r\n+   'const seconds=dt=>Number.isFinite(dt)?Math.max(0,dt):0;\\n' +\r\n+   '\\n' +\r\n+   '// r160 has no Scene.environmentRotation. Rotate BOTH diffuse irradiance and\\n' +\r\n+   '// specular PMREM lookup directions from the fixed gun world into actual world.\\n' +\r\n+   '// No global ShaderChunk changes; preserve prior hooks and their cache identity.\\n' +\r\n+   'export function installWeaponEnvironment(T,material,rotationUniform){\\n' +\r\n+   ' const previous=material.onBeforeCompile,key=material.customProgramCacheKey;\\n' +\r\n+   ' const isDefault=key?.toString()===T.Material.prototype.customProgramCacheKey.toString();\\n' +\r\n+   ' const oldKey=isDefault?key.call(material):null;\\n' +\r\n+   ' const chunk=T.ShaderChunk.envmap_physical_pars_fragment;\\n' +\r\n+   \" if(!chunk?.includes('textureCubeUV( envMap, worldNormal, 1.0 )')||!chunk.includes('textureCubeUV( envMap, reflectVec, roughness )'))throw Error('Weapon IBL patch needs revalidation for this Three version');\\n\" +\r\n+   \" const rotated='uniform mat3 uWeaponViewToWorld;\\\\n'+chunk\\n\" +\r\n+   \"  .replace('textureCubeUV( envMap, worldNormal, 1.0 )','textureCubeUV( envMap, uWeaponViewToWorld * worldNormal, 1.0 )')\\n\" +\r\n+   \"  .replace('textureCubeUV( envMap, reflectVec, roughness )','textureCubeUV( envMap, uWeaponViewToWorld * reflectVec, roughness )');\\n\" +\r\n+   ' function hook(shader,renderer){\\n' +\r\n+   '  previous?.call(this,shader,renderer);\\n' +\r\n+   \"  if(!shader.fragmentShader.includes('#include <envmap_physical_pars_fragment>'))throw Error('Weapon IBL hook missing after prior material hook');\\n\" +\r\n+   '  shader.uniforms.uWeaponViewToWorld=rotationUniform;\\n' +\r\n+   \"  shader.fragmentShader=shader.fragmentShader.replace('#include <envmap_physical_pars_fragment>',rotated);\\n\" +\r\n-   'function repairLeftSleeve(T,root){\\n' +\r\n-   \" let source;root.traverse(o=>{if(o.isSkinnedMesh&&o.name==='FPArms')source=o});\\n\" +\r\n-   \" if(!source||source.geometry.attributes.position.count!==13137)throw Error('Pinned source arm mesh changed; sleeve repair requires revalidation');\\n\" +\r\n-   \" const bone=name=>{const b=root.getObjectByName(name);if(!b)throw Error('Missing source arm joint: '+name);return b};\\n\" +\r\n-   \" const arm=bone('Arm_L'),upper=bone('UpArm_L'),elbow=bone('Forearm_L'),hand=bone('IK_Hand_Cntrl_L');\\n\" +\r\n-   ' const wp=o=>o.getWorldPosition(new T.Vector3()),wq=o=>o.getWorldQuaternion(new T.Quaternion());\\n' +\r\n-   ' const positions=[],original=[],grip=[],left=[],joints=source.geometry.attributes.skinIndex,weights=source.geometry.attributes.skinWeight,v=new T.Vector3();\\n' +\r\n-   ' source.skeleton.update();\\n' +\r\n-   ' for(let i=0;i<13137;i++){\\n' +\r\n-   '  source.getVertexPosition(i,v);original.push(v.clone());\\n' +\r\n-   '  let contactWeight=0,isLeft=false,tip=false;\\n' +\r\n-   '  for(let k=0;k<4;k++)if(weights.getComponent(i,k)>0){\\n' +\r\n-   '   const name=source.skeleton.bones[joints.getComponent(i,k)].name;\\n' +\r\n-   '   if(/^(Hand_[LR]|Bone_[LR]\\\\d)/.test(name))contactWeight+=weights.getComponent(i,k);\\n' +\r\n-   '   if(/^Bone_[LR](006|007|010|011|014|015|018|019|021|022)$/.test(name))tip=true;\\n' +\r\n-   '   if(/_L|Twist_0\\\\dL/.test(name))isLeft=true;\\n' +\r\n-   '  }\\n' +\r\n-   '  grip.push(contactWeight>.999||tip);left.push(isLeft);\\n' +\r\n    ' }\\n' +\r\n+   \" function cacheKey(){return `${isDefault?oldKey:key?.call(this)??''}|${WEAPON_LIGHTING_REVISION}`}\\n\" +\r\n+   ' material.onBeforeCompile=hook;material.customProgramCacheKey=cacheKey;material.needsUpdate=true;\\n' +\r\n+   ' return()=>{if(material.onBeforeCompile===hook)material.onBeforeCompile=previous;if(material.customProgramCacheKey===cacheKey)material.customProgramCacheKey=key;material.needsUpdate=true};\\n' +\r\n+   '}\\n' +\r\n+   '\\n' +\r\n+   '/** Fixed identity gun camera/scene, as in index.html. World cam can be nested.\\n' +\r\n+   ' * Four finite reverse rays at <=10Hz: sun plus three sky directions. Reverse\\n' +\r\n+   ' * casting sees exterior-facing single-sided roofs without mutating materials.\\n' +\r\n+   ' * This is a shelter approximation, not per-pixel shadows/GI/local lamp copying.\\n' +\r\n+   ' */\\n' +\r\n+   'export function createWeaponLighting({T,gscene,cam,scene,sun,amb,solids=[],materials=[]}){\\n' +\r\n+   ' const enabled=!!(cam&&scene&&sun&&amb),rotation={value:new T.Matrix3()},restorers=[];\\n' +\r\n+   \" if(!enabled)return {update(){},info:()=>({enabled:false,reason:'world camera/lights not supplied'}),dispose(){}};\\n\" +\r\n+   ' const keys=gscene.children.filter(o=>o.isDirectionalLight),hemi=gscene.children.find(o=>o.isHemisphereLight);\\n' +\r\n+   ' const key=keys[0]||new T.DirectionalLight(),fill=hemi||new T.HemisphereLight();\\n' +\r\n+   ' const saved=[...keys,...(hemi?[hemi]:[])].map(o=>({o,intensity:o.intensity,color:o.color.clone(),ground:o.groundColor?.clone(),position:o.position.clone(),target:o.target,castShadow:o.castShadow}));\\n' +\r\n+   ' if(!keys.length)gscene.add(key);if(!hemi)gscene.add(fill);\\n' +\r\n+   \" const target=new T.Object3D();target.name='weapon-world-sun-target';gscene.add(target);key.target=target;key.castShadow=false;\\n\" +\r\n+   ' const envBase=materials.map(m=>m.envMapIntensity??1);\\n' +\r\n+   ' for(const material of new Set(materials))if(material.isMeshStandardMaterial)restorers.push(installWeaponEnvironment(T,material,rotation));\\n' +\r\n+   ' const ray=new T.Raycaster(),hits=[],q=new T.Quaternion(),inverseQ=new T.Quaternion(),rot4=new T.Matrix4();\\n' +\r\n+   ' const eye=new T.Vector3(),dir=new T.Vector3(),lightPosition=new T.Vector3(),toTarget=new T.Vector3(),start=new T.Vector3(),back=new T.Vector3();\\n' +\r\n+   ' const sky=[new T.Vector3(0,1,0),new T.Vector3(.55,.835,0).normalize(),new T.Vector3(-.55,.835,0).normalize()];\\n' +\r\n+   ' const materialAt=h=>Array.isArray(h.object.material)?h.object.material[h.face?.materialIndex??0]:h.object.material;\\n' +\r\n+   ' let countdown=0,visibility=1,skyVisibility=1,wantedSun=1,wantedSky=1,probes=0,rays=0,disposed=false,first=true;\\n' +\r\n+   ' function blocked(direction,distance){\\n' +\r\n+   '  start.copy(eye).addScaledVector(direction,distance);back.copy(direction).negate();ray.set(start,back);ray.near=.02;ray.far=distance-.025;hits.length=0;rays++;\\n' +\r\n+   '  // Existing terrain DDA/cabin finite proxies remain authoritative. No\\n' +\r\n+   '  // manufactured AABB hits and no edits to the shared solids list/materials.\\n' +\r\n+   '  ray.intersectObjects(solids,true,hits);\\n' +\r\n+   '  for(const h of hits){\\n' +\r\n+   '   // Membership in solids, NOT render visibility, is authoritative. Village\\n' +\r\n+   '   // walls/roof/cover deliberately use invisible MeshBasic shot shells. The\\n' +\r\n+   '   // cabin proxy instead returns actual meshes, including transparent glass.\\n' +\r\n+   '   const m=materialAt(h);if(m?.visible!==false&&m?.transparent&&m.opacity<.65)continue;\\n' +\r\n+   '   return true;\\n' +\r\n+   '  }return false;\\n' +\r\n-   ' const wrist=wp(hand),elbowHome=wp(elbow),shoulderHome=wp(upper);\\n' +\r\n-   ' const lengths=[wrist.distanceTo(elbowHome),elbowHome.distanceTo(shoulderHome)];\\n' +\r\n-   ' // Axes derive from actual joint positions. Rigid joint reposing, never\\n' +\r\n-   ' // position-weighted rear translation, bone scaling, or forearm elongation.\\n' +\r\n-   ' function turnArm(pivot,axis,angle,keepForearm=false){\\n' +\r\n-   '  const rotation=new T.Quaternion().setFromAxisAngle(axis.normalize(),angle),q=keepForearm?wq(elbow):null;\\n' +\r\n-   '  const position=wp(arm).sub(pivot).applyQuaternion(rotation).add(pivot),quaternion=rotation.clone().multiply(wq(arm));\\n' +\r\n-   '  arm.position.copy(arm.parent.worldToLocal(position));\\n' +\r\n-   '  arm.quaternion.copy(wq(arm.parent).invert().multiply(quaternion));\\n' +\r\n-   '  root.updateMatrixWorld(true);\\n' +\r\n-   '  if(q){elbow.quaternion.copy(wq(elbow.parent).invert().multiply(q));root.updateMatrixWorld(true)}\\n' +\r\n    ' }\\n' +\r\n+   ' function update(dt){\\n' +\r\n+   '  if(disposed)return;dt=seconds(dt);cam.updateWorldMatrix(true,false);cam.getWorldPosition(eye);cam.getWorldQuaternion(q);inverseQ.copy(q).invert();\\n' +\r\n+   '  rotation.value.setFromMatrix4(rot4.makeRotationFromQuaternion(q));\\n' +\r\n+   '  sun.getWorldPosition(lightPosition);sun.target.getWorldPosition(toTarget);dir.copy(lightPosition).sub(toTarget).normalize();\\n' +\r\n+   '  countdown-=dt;\\n' +\r\n+   '  if(countdown<=0){\\n' +\r\n+   '   countdown=WEAPON_LIGHTING_LIMITS.probeInterval;probes++;\\n' +\r\n+   '   wantedSun=dir.lengthSq()>0&&!blocked(dir,WEAPON_LIGHTING_LIMITS.sunRange)?1:0;\\n' +\r\n+   '   wantedSky=sky.reduce((n,d)=>n+(!blocked(d,WEAPON_LIGHTING_LIMITS.skyRange)?1:0),0)/sky.length;\\n' +\r\n+   '   if(first){visibility=wantedSun;skyVisibility=wantedSky;first=false}\\n' +\r\n+   '  }\\n' +\r\n+   '  const smooth=1-Math.exp(-dt*14);visibility+=(wantedSun-visibility)*smoot'... 13360 more characters\r\n-   ' const wristAxis=elbowHome.clone().sub(wrist).cross(new T.Vector3(0,-1,0)).normalize();\\n' +\r\n-   ' turnArm(wrist,wristAxis.clone(),25*Math.PI/180);\\n' +\r\n-   ' const pivot=wp(elbow),elbowAxis=wp(upper).sub(pivot).cross(new T.Vector3(0,-1,0)).normalize();\\n' +\r\n-   ' turnArm(pivot,elbowAxis.clone(),15*Math.PI/180,true);source.skeleton.update();\\n' +\r\n-   ' let changed=0,gripCount=0,maxGripDelta=0;\\n' +\r\n-   ' for(let i=0;i<13137;i++){\\n' +\r\n-   '  source.getVertexPosition(i,v);\\n' +\r\n-   '  // Pure hand/digit vertices and finger tips preserve exact contact; retain\\n' +\r\n-   '  // authored mixed wrist weights\\n' +\r\n-   '  // instead of hard-pinning their cuff transition into a stretched seam.\\n' +\r\n-   '  if(grip[i]){v.copy(original[i]);gripCount++}\\n' +\r\n-   '  if(v.distanceTo(original[i])>1e-6)changed++;\\n' +\r\n-   '  positions.push(v.x,v.y,v.z);\\n' +\r\n-   ' }\\n' +\r\n-   ' // Complete the missing shoulder garment to its measured joint. Do not\\n' +\r\n-   ' // stretch original cloth to fake a longer forearm. Weld only for discovery;\\n' +\r\n-   ' // the real source positions, UV seams, indices and hand contact are retained.\\n' +\r\n-   ' const old=source.geometry,index=Array.from(old.index.array),weld=new Map(),ids=[],members=[],edges=new Map();\\n' +\r\n-   ' for(let i=0;i<13137;i++){\\n' +\r\n-   \"  const key=original[i].toArray().map(x=>Math.round(x/1e-5)).join(',');\\n\" +\r\n-   '  if(!weld.has(key)){weld.set(key,weld.size);members.push(i)}\\n' +\r\n-   '  ids.push(weld.get(key));\\n' +\r\n-   ' }\\n' +\r\n-   ' for(let i=0;i<index.length;i+=3)for(let k=0;k<3;k++){\\n' +\r\n-   '  const a=ids[index[i+k]],b=ids[index[i+(k+1)%3]];if(a===b)continue;\\n' +\r\n-   \"  const key=a<b?a+':'+b:b+':'+a;\\n\" +\r\n-   '  if(edges.has(key))edges.get(key).count++;else edges.set(key,{a,b,count:1});\\n' +\r\n-   ' }\\n' +\r\n-   ' const boundary=[...edges.values()].filter(e=>e.count===1&&left[members[e.a]]&&left[members[e.b]]);\\n' +\r\n-   \" if(boundary.length!==24)throw Error('Pinned source shoulder opening changed');\\n\" +\r\n-   ' const next=new Map();for(const e of boundary){if(!next.has(e.a))next.set(e.a,[]);if(!next.has(e.b))next.set(e.b,[]);next.get(e.a).push(e.b);next.get(e.b).push(e.a)}\\n' +\r\n-   ' const loop=[boundary[0].a];let prev=-1;\\n' +\r\n-   \" while(loop.length<24){const choices=next.get(loop.at(-1));if(choices?.length!==2)throw Error('Non-manifold sleeve opening');const id=choices.find(id=>id!==prev);prev=loop.at(-1);if(loop.includes(id))throw Error('Incomplete sleeve loop');loop.push(id)}\\n\" +\r\n-   ' const ring=loop.map(id=>members[id]);\\n' +\r\n-   ' const sameDirection=index.some((_,i)=>i%3===0&&[index[i],index[i+1],index[i+2]].some((a,k,tri)=>ids[a]===loop[0]&&ids[tri[(k+1)%3]]===loop[1]));\\n' +\r\n-   ' if(sameDirection)ring.reverse();\\n' +\r\n-   ' const center=new T.Vector3();for(const i of ring)center.add(new T.Vector3().fromArray(positions,i*3));center.divideScalar(24);\\n' +\r\n-   ' const shoulder=source.worldToLocal(wp(upper)),extension=shoulder.clone().sub(center);\\n' +\r\n-   ' const uv=Array.from({length:old.attributes.uv.count},(_,i)=>[old.attributes.uv.getX(i),old.attributes.uv.getY(i)]).flat();\\n' +\r\n-   ' const uv1=Array.from({length:old.attributes.uv1.count},(_,i)=>[old.attributes.uv1.getX(i),old.attributes.uv1.getY(i)]).flat();\\n' +\r\n-   ' const meanUV=new T.Vector2(),meanUV1=new T.Vector2();\\n' +\r\n-   ' for(const i of ring){meanUV.add(new T.Vector2().fromArray(uv,i*2));meanUV1.add(new T.Vector2().fromArray(uv1,i*2))}\\n' +\r\n-   ' meanUV.divideScalar(24);meanUV1.divideScalar(24);\\n' +\r\n-   ' const start=positions.length/3;\\n' +\r\n-   ' for(const i of ring){\\n' +\r\n-   '  v.fromArray(positions,i*3).sub(center).multiplyScalar(.86).add(center).add(extension);\\n' +\r\n-   '  positions.push(v.x,v.y,v.z);\\n' +\r\n-   '  // Use the source fabric island interior for new faces, never a zero-width\\n' +\r\n-   '  // UV strip. Original UV0/UV1 retain their values to Float32 precision.\\n' +\r\n-   '  for(const [data,mean]of [[uv,meanUV],[uv1,meanUV1]])data.push(data[i*2]+(mean.x-data[i*2])*.4,data[i*2+1]+(mean.y-data[i*2+1])*.4);\\n' +\r\n-   ' }\\n' +\r\n-   ' const cap=positions.length/3;positions.push(shoulder.x,shoulder.y,shoulder.z);uv.push(meanUV.x,meanUV.y);uv1.push(meanUV1.x,meanUV1.y);\\n' +\r\n-   ' for(l'... 3103 more characters\r\n\r\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/map-checks.mjs:58:49\r\n    at check (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/map-checks.mjs:8:25)\r\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/map-checks.mjs:58:2 {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: \"import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';\\n\" +\r\n    \"import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';\\n\" +\r\n    \"import {createReloadPose} from './reload-pose.js';\\n\" +\r\n    '\\n' +\r\n    '// Rotuma MP5 + credited first-person arms, CC BY 4.0. See weapon-provenance.json\\n' +\r\n    '// and assets/mp5/NOTICE.md. No upstream weapon, recoil or animation code used.\\n' +\r\n    '// The baseline owns its gun parent, muzzle light, aim/fire/reload and all damage.\\n' +\r\n    'export async function buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids=[]}){\\n' +\r\n    ' const loader=new GLTFLoader();loader.setMeshoptDecoder(MeshoptDecoder);\\n' +\r\n    \" const gltf=await loader.loadAsync('./assets/mp5/mp5a5.glb');\\n\" +\r\n    \" const root=gltf.scene;root.name='sunbreak-licensed-mp5-viewmodel';\\n\" +\r\n    ' root.updateMatrixWorld(true);\\n' +\r\n    \" const muzzle=root.getObjectByName('MuzzleSocket');\\n\" +\r\n    \" if(!muzzle)throw Error('MP5 source has no authored muzzle socket');\\n\" +\r\n    ' const sourceMuzzle=root.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));\\n' +\r\n    ' const sleeve=repairLeftSleeve(T,root);\\n' +\r\n    \" // The baseline's uniform fit and exact authoritative muzzle are unchanged.\\n\" +\r\n    \" const displayScale=1.70,fit=new T.Group();fit.name='mp5-original-muzzle-fit';\\n\" +\r\n    ' root.scale.setScalar(displayScale);\\n' +\r\n    ' fit.position.set(-sourceMuzzle.x*displayScale,.005-sourceMuzzle.y*displayScale,-1.85-sourceMuzzle.z*displayScale);\\n' +\r\n    ' fit.add(root);\\n' +\r\n    ' const owned=new Set(),maps=new Set();let meshes=0,triangles=0,skinned=0;\\n' +\r\n    ' root.traverse(o=>{\\n' +\r\n    '  if(!o.isMesh)return;\\n' +\r\n    '  if(o.morphTargetInfluences?.every(v=>v===0)){o.geometry.morphAttributes={};delete o.morphTargetInfluences;delete o.morphTargetDictionary}\\n' +\r\n    '  meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;\\n' +\r\n    '  if(o.isSkinnedMesh){skinned++;if(!o.skeleton.boneTexture)o.skeleton.computeBoneTexture()}\\n' +\r\n    '  o.frustumCulled=false;o.castShadow=false;o.receiveShadow=false;\\n' +\r\n    '  const list=Array.isArray(o.material)?o.material:[o.material];\\n' +\r\n    '  for(const m of list){\\n' +\r\n    \"   owned.add(m);m.envMapIntensity=m.name==='arms'?.28:.72;\\n\" +\r\n    '   if(m.normalScale)m.normalScale.set(.85,.85);\\n' +\r\n    \"   if(m.name==='arms'){m.metalness=0;m.roughness=.83}\\n\" +\r\n    '   else{m.roughness=Math.max(.48,m.roughness);m.metalness=Math.min(.9,m.metalness)}\\n' +\r\n    '   for(const v of Object.values(m))if(v?.isTexture){v.anisotropy=8;maps.add(v)}\\n' +\r\n    '  }\\n' +\r\n    ' });\\n' +\r\n    ' for(const child of gun.children.slice()){\\n' +\r\n    '  if(child.isLight)continue;\\n' +\r\n    '  const lights=[];child.traverse(o=>{if(o.isLight)lights.push(o)});lights.forEach(l=>gun.attach(l));\\n' +\r\n    '  gun.remove(child);\\n' +\r\n    ' }\\n' +\r\n    ' gun.add(fit);\\n' +\r\n    \" const magazine=root.getObjectByName('Magazine'),charging=root.getObjectByName('ChargingHandle');\\n\" +\r\n    ' const chargeHome=charging?.position.clone();\\n' +\r\n    ' const reloadPose=createReloadPose(T,root,magazine);\\n' +\r\n    ' const baselineLight=gun.children.find(o=>o.isPointLight);\\n' +\r\n    ' const flash=createWeaponFlash(T,gun,baselineLight);\\n' +\r\n    ' const lighting=createWeaponLighting({T,gscene,cam,scene,sun,amb,solids,materials:[...owned]});\\n' +\r\n    ' let disposed=false,lastAim=0;\\n' +\r\n    ' return{\\n' +\r\n    '  // Explicit accepted-shot notification. Never infer shots from the light we\\n' +\r\n    '  // animate, or change ammo/cadence/damage. null muzzle means root blocked VFX.\\n' +\r\n    '  shot(event={}){if(!disposed)flash.shot(event)},\\n' +\r\n    '  reset(){flash.reset()},\\n' +\r\n    '  update(dt,state){\\n' +\r\n    '   reloadPose.update(state.reload);\\n' +\r\n    '   if(charging&&chargeHome)charging.position.copy(chargeHome);\\n' +\r\n    \"   if(state.presentation||['pause','dead','win'].includes(state.state))flash.reset();\\n\" +\r\n    '   flash.update(dt);lighting.update(dt);lastAim=state.aim;\\n' +\r\n    '  },\\n' +\r\n    \"  info(){root.updateWorldMatrix(true,true);const actual=gun.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));return{loaded:true,asset:'Rotuma MP5 / gloved first-person arms',license:'CC-BY-4.0',meshes,triangles,skinnedMeshes:skinned,sleeve,textureMaps:maps.size,uniformDisplayScale:displayScale,sourceMuzzle:sourceMuzzle.toArray(),fittedMuzzle:actual.toArray(),muzzleFitError:actual.distanceTo(new T.Vector3(0,.005,-1.85)),aim:lastAim,reload:reloadPose.info(),lighting:lighting.info(),flash:flash.info(),animation:'authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap'}},\\n\" +\r\n    '  dispose(){if(disposed)return;disposed=true;reloadPose.dispose();lighting.dispose();flash.dispose();fit.removeFromParent();root.traverse(o=>o.geometry?.dispose());for(const m of owned)m.dispose();for(const t of maps)t.dispose()}\\n' +\r\n    ' };\\n' +\r\n    '}\\n' +\r\n    '\\n' +\r\n    \"export const WEAPON_LIGHTING_REVISION='world-viewmodel-ibl-r160-v1';\\n\" +\r\n    'export const WEAPON_LIGHTING_LIMITS=Object.freeze({probeInterval:.1,rayCountPerProbe:4,sunRange:100,skyRange:18});\\n' +\r\n    'const clamp01=x=>Math.max(0,Math.min(1,x));\\n' +\r\n    'const seconds=dt=>Number.isFinite(dt)?Math.max(0,dt):0;\\n' +\r\n    '\\n' +\r\n    '// r160 has no Scene.environmentRotation. Rotate BOTH diffuse irradiance and\\n' +\r\n    '// specular PMREM lookup directions from the fixed gun world into actual world.\\n' +\r\n    '// No global ShaderChunk changes; preserve prior hooks and their cache identity.\\n' +\r\n    'export function installWeaponEnvironment(T,material,rotationUniform){\\n' +\r\n    ' const previous=material.onBeforeCompile,key=material.customProgramCacheKey;\\n' +\r\n    ' const isDefault=key?.toString()===T.Material.prototype.customProgramCacheKey.toString();\\n' +\r\n    ' const oldKey=isDefault?key.call(material):null;\\n' +\r\n    ' const chunk=T.ShaderChunk.envmap_physical_pars_fragment;\\n' +\r\n    \" if(!chunk?.includes('textureCubeUV( envMap, worldNormal, 1.0 )')||!chunk.includes('textureCubeUV( envMap, reflectVec, roughness )'))throw Error('Weapon IBL patch needs revalidation for this Three version');\\n\" +\r\n    \" const rotated='uniform mat3 uWeaponViewToWorld;\\\\n'+chunk\\n\" +\r\n    \"  .replace('textureCubeUV( envMap, worldNormal, 1.0 )','textureCubeUV( envMap, uWeaponViewToWorld * worldNormal, 1.0 )')\\n\" +\r\n    \"  .replace('textureCubeUV( envMap, reflectVec, roughness )','textureCubeUV( envMap, uWeaponViewToWorld * reflectVec, roughness )');\\n\" +\r\n    ' function hook(shader,renderer){\\n' +\r\n    '  previous?.call(this,shader,renderer);\\n' +\r\n    \"  if(!shader.fragmentShader.includes('#include <envmap_physical_pars_fragment>'))throw Error('Weapon IBL hook missing after prior material hook');\\n\" +\r\n    '  shader.uniforms.uWeaponViewToWorld=rotationUniform;\\n' +\r\n    \"  shader.fragmentShader=shader.fragmentShader.replace('#include <envmap_physical_pars_fragment>',rotated);\\n\" +\r\n    ' }\\n' +\r\n    \" function cacheKey(){return `${isDefault?oldKey:key?.call(this)??''}|${WEAPON_LIGHTING_REVISION}`}\\n\" +\r\n    ' material.onBeforeCompile=hook;material.customProgramCacheKey=cacheKey;material.needsUpdate=true;\\n' +\r\n    ' return()=>{if(material.onBeforeCompile===hook)material.onBeforeCompile=previous;if(material.customProgramCacheKey===cacheKey)material.customProgramCacheKey=key;material.needsUpdate=true};\\n' +\r\n    '}\\n' +\r\n    '\\n' +\r\n    '/** Fixed identity gun camera/scene, as in index.html. World cam can be nested.\\n' +\r\n    ' * Four finite reverse rays at <=10Hz: sun plus three sky directions. Reverse\\n' +\r\n    ' * casting sees exterior-facing single-sided roofs without mutating materials.\\n' +\r\n    ' * This is a shelter approximation, not per-pixel shadows/GI/local lamp copying.\\n' +\r\n    ' */\\n' +\r\n    'export function createWeaponLighting({T,gscene,cam,scene,sun,amb,solids=[],materials=[]}){\\n' +\r\n    ' const enabled=!!(cam&&scene&&sun&&amb),rotation={value:new T.Matrix3()},restorers=[];\\n' +\r\n    \" if(!enabled)return {update(){},info:()=>({enabled:false,reason:'world camera/lights not supplied'}),dispose(){}};\\n\" +\r\n    ' const keys=gscene.children.filter(o=>o.isDirectionalLight),hemi=gscene.children.find(o=>o.isHemisphereLight);\\n' +\r\n    ' const key=keys[0]||new T.DirectionalLight(),fill=hemi||new T.HemisphereLight();\\n' +\r\n    ' const saved=[...keys,...(hemi?[hemi]:[])].map(o=>({o,intensity:o.intensity,color:o.color.clone(),ground:o.groundColor?.clone(),position:o.position.clone(),target:o.target,castShadow:o.castShadow}));\\n' +\r\n    ' if(!keys.length)gscene.add(key);if(!hemi)gscene.add(fill);\\n' +\r\n    \" const target=new T.Object3D();target.name='weapon-world-sun-target';gscene.add(target);key.target=target;key.castShadow=false;\\n\" +\r\n    ' const envBase=materials.map(m=>m.envMapIntensity??1);\\n' +\r\n    ' for(const material of new Set(materials))if(material.isMeshStandardMaterial)restorers.push(installWeaponEnvironment(T,material,rotation));\\n' +\r\n    ' const ray=new T.Raycaster(),hits=[],q=new T.Quaternion(),inverseQ=new T.Quaternion(),rot4=new T.Matrix4();\\n' +\r\n    ' const eye=new T.Vector3(),dir=new T.Vector3(),lightPosition=new T.Vector3(),toTarget=new T.Vector3(),start=new T.Vector3(),back=new T.Vector3();\\n' +\r\n    ' const sky=[new T.Vector3(0,1,0),new T.Vector3(.55,.835,0).normalize(),new T.Vector3(-.55,.835,0).normalize()];\\n' +\r\n    ' const materialAt=h=>Array.isArray(h.object.material)?h.object.material[h.face?.materialIndex??0]:h.object.material;\\n' +\r\n    ' let countdown=0,visibility=1,skyVisibility=1,wantedSun=1,wantedSky=1,probes=0,rays=0,disposed=false,first=true;\\n' +\r\n    ' function blocked(direction,distance){\\n' +\r\n    '  start.copy(eye).addScaledVector(direction,distance);back.copy(direction).negate();ray.set(start,back);ray.near=.02;ray.far=distance-.025;hits.length=0;rays++;\\n' +\r\n    '  // Existing terrain DDA/cabin finite proxies remain authoritative. No\\n' +\r\n    '  // manufactured AABB hits and no edits to the shared solids list/materials.\\n' +\r\n    '  ray.intersectObjects(solids,true,hits);\\n' +\r\n    '  for(const h of hits){\\n' +\r\n    '   // Membership in solids, NOT render visibility, is authoritative. Village\\n' +\r\n    '   // walls/roof/cover deliberately use invisible MeshBasic shot shells. The\\n' +\r\n    '   // cabin proxy instead returns actual meshes, including transparent glass.\\n' +\r\n    '   const m=materialAt(h);if(m?.visible!==false&&m?.transparent&&m.opacity<.65)continue;\\n' +\r\n    '   return true;\\n' +\r\n    '  }return false;\\n' +\r\n    ' }\\n' +\r\n    ' function update(dt){\\n' +\r\n    '  if(disposed)return;dt=seconds(dt);cam.updateWorldMatrix(true,false);cam.getWorldPosition(eye);cam.getWorldQuaternion(q);inverseQ.copy(q).invert();\\n' +\r\n    '  rotation.value.setFromMatrix4(rot4.makeRotationFromQuaternion(q));\\n' +\r\n    '  sun.getWorldPosition(lightPosition);sun.target.getWorldPosition(toTarget);dir.copy(lightPosition).sub(toTarget).normalize();\\n' +\r\n    '  countdown-=dt;\\n' +\r\n    '  if(countdown<=0){\\n' +\r\n    '   countdown=WEAPON_LIGHTING_LIMITS.probeInterval;probes++;\\n' +\r\n    '   wantedSun=dir.lengthSq()>0&&!blocked(dir,WEAPON_LIGHTING_LIMITS.sunRange)?1:0;\\n' +\r\n    '   wantedSky=sky.reduce((n,d)=>n+(!blocked(d,WEAPON_LIGHTING_LIMITS.skyRange)?1:0),0)/sky.length;\\n' +\r\n    '   if(first){visibility=wantedSun;skyVisibility=wantedSky;first=false}\\n' +\r\n    '  }\\n' +\r\n    '  const smooth=1-Math.exp(-dt*14);visibility+=(wantedSun-visibility)*smoot'... 13360 more characters,\r\n  expected: \"import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';\\n\" +\r\n    \"import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';\\n\" +\r\n    \"import {createReloadPose} from './reload-pose.js';\\n\" +\r\n    '\\n' +\r\n    '// Rotuma MP5 + credited first-person arms, CC BY 4.0. See weapon-provenance.json\\n' +\r\n    '// and assets/mp5/NOTICE.md. No upstream weapon, recoil or animation code used.\\n' +\r\n    '// The baseline owns its gun parent, muzzle light, aim/fire/reload and all damage.\\n' +\r\n    'export async function buildWeapon({THREE:T,gun,gscene}){\\n' +\r\n    ' const loader=new GLTFLoader();loader.setMeshoptDecoder(MeshoptDecoder);\\n' +\r\n    \" const gltf=await loader.loadAsync('./assets/mp5/mp5a5.glb');\\n\" +\r\n    \" const root=gltf.scene;root.name='sunbreak-licensed-mp5-viewmodel';\\n\" +\r\n    ' root.updateMatrixWorld(true);\\n' +\r\n    \" const muzzle=root.getObjectByName('MuzzleSocket');\\n\" +\r\n    \" if(!muzzle)throw Error('MP5 source has no authored muzzle socket');\\n\" +\r\n    ' const sourceMuzzle=root.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));\\n' +\r\n    ' const sleeve=repairLeftSleeve(T,root);\\n' +\r\n    \" // The baseline's uniform fit and exact authoritative muzzle are unchanged.\\n\" +\r\n    \" const displayScale=1.70,fit=new T.Group();fit.name='mp5-original-muzzle-fit';\\n\" +\r\n    ' root.scale.setScalar(displayScale);\\n' +\r\n    ' fit.position.set(-sourceMuzzle.x*displayScale,.005-sourceMuzzle.y*displayScale,-1.85-sourceMuzzle.z*displayScale);\\n' +\r\n    ' fit.add(root);\\n' +\r\n    ' const owned=new Set(),maps=new Set();let meshes=0,triangles=0,skinned=0;\\n' +\r\n    ' root.traverse(o=>{\\n' +\r\n    '  if(!o.isMesh)return;\\n' +\r\n    '  if(o.morphTargetInfluences?.every(v=>v===0)){o.geometry.morphAttributes={};delete o.morphTargetInfluences;delete o.morphTargetDictionary}\\n' +\r\n    '  meshes++;triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;\\n' +\r\n    '  if(o.isSkinnedMesh){skinned++;if(!o.skeleton.boneTexture)o.skeleton.computeBoneTexture()}\\n' +\r\n    '  o.frustumCulled=false;o.castShadow=false;o.receiveShadow=false;\\n' +\r\n    '  const list=Array.isArray(o.material)?o.material:[o.material];\\n' +\r\n    '  for(const m of list){\\n' +\r\n    '   owned.add(m);m.envMapIntensity=.28;\\n' +\r\n    '   if(m.normalScale)m.normalScale.set(.85,.85);\\n' +\r\n    \"   if(m.name==='arms'){m.metalness=0;m.roughness=.83}\\n\" +\r\n    '   else{m.roughness=Math.max(.48,m.roughness);m.metalness=Math.min(.9,m.metalness)}\\n' +\r\n    '   for(const v of Object.values(m))if(v?.isTexture){v.anisotropy=8;maps.add(v)}\\n' +\r\n    '  }\\n' +\r\n    ' });\\n' +\r\n    ' for(const child of gun.children.slice()){\\n' +\r\n    '  if(child.isLight)continue;\\n' +\r\n    '  const lights=[];child.traverse(o=>{if(o.isLight)lights.push(o)});lights.forEach(l=>gun.attach(l));\\n' +\r\n    '  gun.remove(child);\\n' +\r\n    ' }\\n' +\r\n    ' gun.add(fit);\\n' +\r\n    \" const magazine=root.getObjectByName('Magazine'),charging=root.getObjectByName('ChargingHandle');\\n\" +\r\n    ' const chargeHome=charging?.position.clone();\\n' +\r\n    ' const reloadPose=createReloadPose(T,root,magazine);\\n' +\r\n    ' const flashMaterial=new T.MeshBasicMaterial({color:0xffd59d,transparent:true,opacity:0,depthWrite:false,blending:T.AdditiveBlending,toneMapped:false});\\n' +\r\n    ' const flashMesh=new T.Mesh(new T.ConeGeometry(.045,.22,7,1,true),flashMaterial);\\n' +\r\n    ' flashMesh.rotation.x=-Math.PI/2;flashMesh.position.set(0,.005,-1.94);flashMesh.frustumCulled=false;gun.add(flashMesh);\\n' +\r\n    ' const baselineLight=gun.children.find(o=>o.isPointLight);\\n' +\r\n    ' let disposed=false,lastAim=0;\\n' +\r\n    ' return{\\n' +\r\n    '  update(dt,state){\\n' +\r\n    '   reloadPose.update(state.reload);\\n' +\r\n    '   if(charging&&chargeHome)charging.position.copy(chargeHome);\\n' +\r\n    '   flashMaterial.opacity=Math.min(.75,(baselineLight?.intensity||0)*.035);\\n' +\r\n    '   flashMesh.visible=flashMaterial.opacity>.015;lastAim=state.aim;\\n' +\r\n    '  },\\n' +\r\n    \"  info(){root.updateWorldMatrix(true,true);const actual=gun.worldToLocal(muzzle.getWorldPosition(new T.Vector3()));return{loaded:true,asset:'Rotuma MP5 / gloved first-person arms',license:'CC-BY-4.0',meshes,triangles,skinnedMeshes:skinned,sleeve,textureMaps:maps.size,uniformDisplayScale:displayScale,sourceMuzzle:sourceMuzzle.toArray(),fittedMuzzle:actual.toArray(),muzzleFitError:actual.distanceTo(new T.Vector3(0,.005,-1.85)),aim:lastAim,reload:reloadPose.info(),animation:'authored visible left-hand and magazine reload; fixed-length IK on repaired source arms; right grip retained, no mocap'}},\\n\" +\r\n    '  dispose(){if(disposed)return;disposed=true;reloadPose.dispose();fit.removeFromParent();flashMesh.removeFromParent();root.traverse(o=>o.geometry?.dispose());for(const m of owned)m.dispose();for(const t of maps)t.dispose();flashMesh.geometry.dispose();flashMaterial.dispose()}\\n' +\r\n    ' };\\n' +\r\n    '}\\n' +\r\n    '\\n' +\r\n    'function repairLeftSleeve(T,root){\\n' +\r\n    \" let source;root.traverse(o=>{if(o.isSkinnedMesh&&o.name==='FPArms')source=o});\\n\" +\r\n    \" if(!source||source.geometry.attributes.position.count!==13137)throw Error('Pinned source arm mesh changed; sleeve repair requires revalidation');\\n\" +\r\n    \" const bone=name=>{const b=root.getObjectByName(name);if(!b)throw Error('Missing source arm joint: '+name);return b};\\n\" +\r\n    \" const arm=bone('Arm_L'),upper=bone('UpArm_L'),elbow=bone('Forearm_L'),hand=bone('IK_Hand_Cntrl_L');\\n\" +\r\n    ' const wp=o=>o.getWorldPosition(new T.Vector3()),wq=o=>o.getWorldQuaternion(new T.Quaternion());\\n' +\r\n    ' const positions=[],original=[],grip=[],left=[],joints=source.geometry.attributes.skinIndex,weights=source.geometry.attributes.skinWeight,v=new T.Vector3();\\n' +\r\n    ' source.skeleton.update();\\n' +\r\n    ' for(let i=0;i<13137;i++){\\n' +\r\n    '  source.getVertexPosition(i,v);original.push(v.clone());\\n' +\r\n    '  let contactWeight=0,isLeft=false,tip=false;\\n' +\r\n    '  for(let k=0;k<4;k++)if(weights.getComponent(i,k)>0){\\n' +\r\n    '   const name=source.skeleton.bones[joints.getComponent(i,k)].name;\\n' +\r\n    '   if(/^(Hand_[LR]|Bone_[LR]\\\\d)/.test(name))contactWeight+=weights.getComponent(i,k);\\n' +\r\n    '   if(/^Bone_[LR](006|007|010|011|014|015|018|019|021|022)$/.test(name))tip=true;\\n' +\r\n    '   if(/_L|Twist_0\\\\dL/.test(name))isLeft=true;\\n' +\r\n    '  }\\n' +\r\n    '  grip.push(contactWeight>.999||tip);left.push(isLeft);\\n' +\r\n    ' }\\n' +\r\n    ' const wrist=wp(hand),elbowHome=wp(elbow),shoulderHome=wp(upper);\\n' +\r\n    ' const lengths=[wrist.distanceTo(elbowHome),elbowHome.distanceTo(shoulderHome)];\\n' +\r\n    ' // Axes derive from actual joint positions. Rigid joint reposing, never\\n' +\r\n    ' // position-weighted rear translation, bone scaling, or forearm elongation.\\n' +\r\n    ' function turnArm(pivot,axis,angle,keepForearm=false){\\n' +\r\n    '  const rotation=new T.Quaternion().setFromAxisAngle(axis.normalize(),angle),q=keepForearm?wq(elbow):null;\\n' +\r\n    '  const position=wp(arm).sub(pivot).applyQuaternion(rotation).add(pivot),quaternion=rotation.clone().multiply(wq(arm));\\n' +\r\n    '  arm.position.copy(arm.parent.worldToLocal(position));\\n' +\r\n    '  arm.quaternion.copy(wq(arm.parent).invert().multiply(quaternion));\\n' +\r\n    '  root.updateMatrixWorld(true);\\n' +\r\n    '  if(q){elbow.quaternion.copy(wq(elbow.parent).invert().multiply(q));root.updateMatrixWorld(true)}\\n' +\r\n    ' }\\n' +\r\n    ' const wristAxis=elbowHome.clone().sub(wrist).cross(new T.Vector3(0,-1,0)).normalize();\\n' +\r\n    ' turnArm(wrist,wristAxis.clone(),25*Math.PI/180);\\n' +\r\n    ' const pivot=wp(elbow),elbowAxis=wp(upper).sub(pivot).cross(new T.Vector3(0,-1,0)).normalize();\\n' +\r\n    ' turnArm(pivot,elbowAxis.clone(),15*Math.PI/180,true);source.skeleton.update();\\n' +\r\n    ' let changed=0,gripCount=0,maxGripDelta=0;\\n' +\r\n    ' for(let i=0;i<13137;i++){\\n' +\r\n    '  source.getVertexPosition(i,v);\\n' +\r\n    '  // Pure hand/digit vertices and finger tips preserve exact contact; retain\\n' +\r\n    '  // authored mixed wrist weights\\n' +\r\n    '  // instead of hard-pinning their cuff transition into a stretched seam.\\n' +\r\n    '  if(grip[i]){v.copy(original[i]);gripCount++}\\n' +\r\n    '  if(v.distanceTo(original[i])>1e-6)changed++;\\n' +\r\n    '  positions.push(v.x,v.y,v.z);\\n' +\r\n    ' }\\n' +\r\n    ' // Complete the missing shoulder garment to its measured joint. Do not\\n' +\r\n    ' // stretch original cloth to fake a longer forearm. Weld only for discovery;\\n' +\r\n    ' // the real source positions, UV seams, indices and hand contact are retained.\\n' +\r\n    ' const old=source.geometry,index=Array.from(old.index.array),weld=new Map(),ids=[],members=[],edges=new Map();\\n' +\r\n    ' for(let i=0;i<13137;i++){\\n' +\r\n    \"  const key=original[i].toArray().map(x=>Math.round(x/1e-5)).join(',');\\n\" +\r\n    '  if(!weld.has(key)){weld.set(key,weld.size);members.push(i)}\\n' +\r\n    '  ids.push(weld.get(key));\\n' +\r\n    ' }\\n' +\r\n    ' for(let i=0;i<index.length;i+=3)for(let k=0;k<3;k++){\\n' +\r\n    '  const a=ids[index[i+k]],b=ids[index[i+(k+1)%3]];if(a===b)continue;\\n' +\r\n    \"  const key=a<b?a+':'+b:b+':'+a;\\n\" +\r\n    '  if(edges.has(key))edges.get(key).count++;else edges.set(key,{a,b,count:1});\\n' +\r\n    ' }\\n' +\r\n    ' const boundary=[...edges.values()].filter(e=>e.count===1&&left[members[e.a]]&&left[members[e.b]]);\\n' +\r\n    \" if(boundary.length!==24)throw Error('Pinned source shoulder opening changed');\\n\" +\r\n    ' const next=new Map();for(const e of boundary){if(!next.has(e.a))next.set(e.a,[]);if(!next.has(e.b))next.set(e.b,[]);next.get(e.a).push(e.b);next.get(e.b).push(e.a)}\\n' +\r\n    ' const loop=[boundary[0].a];let prev=-1;\\n' +\r\n    \" while(loop.length<24){const choices=next.get(loop.at(-1));if(choices?.length!==2)throw Error('Non-manifold sleeve opening');const id=choices.find(id=>id!==prev);prev=loop.at(-1);if(loop.includes(id))throw Error('Incomplete sleeve loop');loop.push(id)}\\n\" +\r\n    ' const ring=loop.map(id=>members[id]);\\n' +\r\n    ' const sameDirection=index.some((_,i)=>i%3===0&&[index[i],index[i+1],index[i+2]].some((a,k,tri)=>ids[a]===loop[0]&&ids[tri[(k+1)%3]]===loop[1]));\\n' +\r\n    ' if(sameDirection)ring.reverse();\\n' +\r\n    ' const center=new T.Vector3();for(const i of ring)center.add(new T.Vector3().fromArray(positions,i*3));center.divideScalar(24);\\n' +\r\n    ' const shoulder=source.worldToLocal(wp(upper)),extension=shoulder.clone().sub(center);\\n' +\r\n    ' const uv=Array.from({length:old.attributes.uv.count},(_,i)=>[old.attributes.uv.getX(i),old.attributes.uv.getY(i)]).flat();\\n' +\r\n    ' const uv1=Array.from({length:old.attributes.uv1.count},(_,i)=>[old.attributes.uv1.getX(i),old.attributes.uv1.getY(i)]).flat();\\n' +\r\n    ' const meanUV=new T.Vector2(),meanUV1=new T.Vector2();\\n' +\r\n    ' for(const i of ring){meanUV.add(new T.Vector2().fromArray(uv,i*2));meanUV1.add(new T.Vector2().fromArray(uv1,i*2))}\\n' +\r\n    ' meanUV.divideScalar(24);meanUV1.divideScalar(24);\\n' +\r\n    ' const start=positions.length/3;\\n' +\r\n    ' for(const i of ring){\\n' +\r\n    '  v.fromArray(positions,i*3).sub(center).multiplyScalar(.86).add(center).add(extension);\\n' +\r\n    '  positions.push(v.x,v.y,v.z);\\n' +\r\n    '  // Use the source fabric island interior for new faces, never a zero-width\\n' +\r\n    '  // UV strip. Original UV0/UV1 retain their values to Float32 precision.\\n' +\r\n    '  for(const [data,mean]of [[uv,meanUV],[uv1,meanUV1]])data.push(data[i*2]+(mean.x-data[i*2])*.4,data[i*2+1]+(mean.y-data[i*2+1])*.4);\\n' +\r\n    ' }\\n' +\r\n    ' const cap=positions.length/3;positions.push(shoulder.x,shoulder.y,shoulder.z);uv.push(meanUV.x,meanUV.y);uv1.push(meanUV1.x,meanUV1.y);\\n' +\r\n    ' for(l'... 3103 more characters,\r\n  operator: 'strictEqual',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "classification": "historical-intent-guard",
+      "supersededReason": "Historical blanket weapon.js byte-identity guard intentionally fails for requested viewmodel lighting/flash changes; polish-preservation-checks retains whole gameplay/AI/layout and sleeve/reload checked separately."
+    },
+    "terrain-rays": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "244d43c695e8aafb57ee37156be03be52d63efa6b930b7c4487167ca7f3d2add",
+      "result": {
+        "stdout": "{ pass: true, rays: 175 }\n"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "ai-movement": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "d34c0b34e4922993737ae6f355556864d232019918b48a4d662029a3af7088dd",
+      "result": {
+        "stdout": "{ pass: true, cases: 62, failures: [] }\n"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "village-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "6889a913e4d6fcc9768aa580ee756227c5fcd1dd33b67ccb6f34155e625a638e",
+      "result": {
+        "stdout": "{\n  pass: true,\n  date: '2026-11-19T08:46:57.833Z',\n  wallBoxes: 72,\n  architecture: {\n    houses: 6,\n    walls: 72,\n    boxes: 756,\n    solids: 205,\n    tiles: 2496,\n    drawCalls: 14,\n    triangles: 58741,\n    stoneCover: {\n      revision: 'bounded-polygon-stone-cover-v2',\n      covers: 6,\n      stones: 537,\n      drawCalls: 2,\n      triangles: 8589,\n      replacedTriangles: 72,\n      addedTriangles: 8517,\n      maxRecess: 0.012,\n      outwardProtrusion: 0,\n      opaqueContinuousShell: true,\n      collidersChanged: false,\n      sources: [Array],\n      budgets: [Object],\n      drawCaveat: 'Beauty draws only; shadow/reflection passes are measured by root.'\n    },\n    contribution: 'Fable 5.2 structure, reviewed and refined by Codex'\n  },\n  checks: 'exact wall geometry; six clear passages and solid walls; roof slabs/half-collapse openings; bridge shot occlusion; batching budgets',\n  sources: {\n    'village.js': '330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116',\n    'map-layout.js': '7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6',\n    'qa/village-checks.mjs': '6889a913e4d6fcc9768aa580ee756227c5fcd1dd33b67ccb6f34155e625a638e'\n  }\n}\n"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "fracture-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "960987d82f7fb1edf82657f9785d0d511380d2a0c9241a0e34ff0ce98a0b9e37",
+      "result": {
+        "stdout": "{\n  date: '2026-11-19T08:47:01.513Z',\n  pass: true,\n  samples: 160,\n  triangles: 7014,\n  pileSamples: 1480,\n  supportChecks: 5832,\n  maxSurfaceGap: 0.0000010036829322379592,\n  maxStep: 0.2425210802012636,\n  ruins: {\n    mounds: 8,\n    slabs: 556,\n    chips: 548,\n    triangles: 25026,\n    supportTriangles: 12511,\n    drawCalls: 10,\n    mode: 'static gravity-staged fracture, not dynamic destruction'\n  },\n  sources: {\n    'fracture-geometry.js': '1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9',\n    'ruins.js': '04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53',\n    'map-layout.js': '7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6',\n    'qa/fracture-checks.mjs': '960987d82f7fb1edf82657f9785d0d511380d2a0c9241a0e34ff0ce98a0b9e37'\n  },\n  limits: 'Static geometry and exact support for every fragment and coarse pile. Not dynamic destruction or visual acceptance.'\n}\n"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "buffer-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "ae13e44ef8e878f867dda7b66916a6c1425b57965f779faee717d8d34c13fb61",
+      "result": {
+        "pass": true,
+        "unitPass": true,
+        "integrationPass": true,
+        "checks": 40,
+        "traversals": 16,
+        "rayComparisons": 174,
+        "failures": []
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "landscape-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "09796970ab22085e5eadce5eae34af752721ad134a7de8ecda15dd31b0c5d114",
+      "result": {
+        "suite": "river-distant-landscape-cpu-v2-low-valley",
+        "verdict": "PASS",
+        "checksPassed": 26,
+        "checksTotal": 26,
+        "scope": "CPU only. No browser, GPU, rendered art, continuous motion or frame-performance acceptance.",
+        "sources": {
+          "../distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+          "./landscape-checks.mjs": "09796970ab22085e5eadce5eae34af752721ad134a7de8ecda15dd31b0c5d114",
+          "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+          "../../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+        },
+        "placements": [
+          {
+            "id": "west-foothills",
+            "layer": 0,
+            "axis": "z",
+            "bounds": {
+              "minX": -280,
+              "maxX": -134,
+              "minZ": -240,
+              "maxZ": 250
+            },
+            "segments": [
+              112,
+              48
+            ],
+            "seed": 71,
+            "heightScale": 0.46
+          },
+          {
+            "id": "east-foothills",
+            "layer": 0,
+            "axis": "z",
+            "bounds": {
+              "minX": 134,
+              "maxX": 295,
+              "minZ": -260,
+              "maxZ": 230
+            },
+            "segments": [
+              112,
+              48
+            ],
+            "seed": 163,
+            "heightScale": 0.46
+          },
+          {
+            "id": "west-escarpment",
+            "layer": 1,
+            "axis": "x",
+            "bounds": {
+              "minX": -410,
+              "maxX": -70,
+              "minZ": -435,
+              "maxZ": -215
+            },
+            "segments": [
+              128,
+              64
+            ],
+            "seed": 277,
+            "heightScale": 0.475
+          },
+          {
+            "id": "east-broken-range",
+            "layer": 1,
+            "axis": "x",
+            "bounds": {
+              "minX": 88,
+              "maxX": 420,
+              "minZ": -450,
+              "maxZ": -210
+            },
+            "segments": [
+              128,
+              64
+            ],
+            "seed": 389,
+            "heightScale": 0.475
+          },
+          {
+            "id": "west-distant-range",
+            "layer": 2,
+            "axis": "x",
+            "bounds": {
+              "minX": -340,
+              "maxX": -50,
+              "minZ": -590,
+              "maxZ": -425
+            },
+            "segments": [
+              112,
+              56
+            ],
+            "seed": 503,
+            "heightScale": 0.455
+          },
+          {
+            "id": "east-distant-range",
+            "layer": 2,
+            "axis": "x",
+            "bounds": {
+              "minX": 60,
+              "maxX": 340,
+              "minZ": -590,
+              "maxZ": -430
+            },
+            "segments": [
+              112,
+              56
+            ],
+            "seed": 617,
+            "heightScale": 0.455
+          }
+        ],
+        "totals": {
+          "triangles": 79360,
+          "vertices": 40726,
+          "basePassDrawCalls": 12,
+          "minRadius": 134.00145754804313,
+          "maxRadius": 680.9552114493287,
+          "maxY": 109.79962158203125,
+          "buildMilliseconds": 60.44689999999997,
+          "elapsedMilliseconds": 326.9911
+        },
+        "checks": [
+          {
+            "name": "six patches / three layers / declared geometry and draw budgets",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "triangles": 79360,
+              "drawCalls": 12
+            }
+          },
+          {
+            "name": "fresh deterministic plan; caller mutation does not change source plan",
+            "pass": true
+          },
+          {
+            "name": "plan validator rejects terrain/valley/range/budget/duplicate/NaN corruption",
+            "pass": true,
+            "detail": {
+              "negativeCases": 9
+            }
+          },
+          {
+            "name": "authored patch rectangles outside actual terrain and gameplay/nav/cabin bounds",
+            "pass": true,
+            "detail": {
+              "terrainHalfExtent": 130,
+              "excludedNavigationBoxes": 74
+            }
+          },
+          {
+            "name": "west-foothills: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "west-foothills",
+              "vertices": 5537,
+              "triangles": 10752,
+              "minRadius": 134.00145754804313,
+              "maxRadius": 375.3664875824692,
+              "minY": -9,
+              "maxY": 48.76211929321289,
+              "minProjectedArea": 6.653623580932617
+            }
+          },
+          {
+            "name": "east-foothills: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "east-foothills",
+              "vertices": 5537,
+              "triangles": 10752,
+              "minRadius": 134.01311736169708,
+              "maxRadius": 393.22385482063527,
+              "minY": -9,
+              "maxY": 54.4254150390625,
+              "minProjectedArea": 7.337217330932617
+            }
+          },
+          {
+            "name": "west-escarpment: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "west-escarpment",
+              "vertices": 8385,
+              "triangles": 16384,
+              "minRadius": 226.10838109190027,
+              "maxRadius": 597.7666768899049,
+              "minY": -9,
+              "maxY": 93.82563018798828,
+              "minProjectedArea": 4.5654296875
+            }
+          },
+          {
+            "name": "east-broken-range: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "east-broken-range",
+              "vertices": 8385,
+              "triangles": 16384,
+              "minRadius": 227.69277546729495,
+              "maxRadius": 615.5485358604958,
+              "minY": -9,
+              "maxY": 99.35971069335938,
+              "minProjectedArea": 4.86328125
+            }
+          },
+          {
+            "name": "west-distant-range: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "west-distant-range",
+              "vertices": 6441,
+              "triangles": 12544,
+              "minRadius": 427.93106921559223,
+              "maxRadius": 680.9552114493287,
+              "minY": -9,
+              "maxY": 103.60371398925781,
+              "minProjectedArea": 3.8145180139690638
+            }
+          },
+          {
+            "name": "east-distant-range: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "east-distant-range",
+              "vertices": 6441,
+              "triangles": 12544,
+              "minRadius": 434.1658669218482,
+              "maxRadius": 680.9552114493287,
+              "minY": -9,
+              "maxY": 109.79962158203125,
+              "minProjectedArea": 3.5713958740234375
+            }
+          },
+          {
+            "name": "entire north/south valley remains empty, not a generic cone ring",
+            "pass": true,
+            "detail": {
+              "emptyValleyWidth": 72,
+              "emptySamplerProbes": 4230
+            }
+          },
+          {
+            "name": "full indexed faces cannot bridge the terrain or river opening",
+            "pass": true,
+            "detail": {
+              "trianglesChecked": 79360
+            }
+          },
+          {
+            "name": "grid boundary sinks below ground; no vertical curtains",
+            "pass": true
+          },
+          {
+            "name": "byte-identical regeneration with global random forbidden",
+            "pass": true,
+            "detail": {
+              "attributesCompared": 30
+            }
+          },
+          {
+            "name": "authored low-valley height ranges and unequal crest peaks (not art acceptance)",
+            "pass": true,
+            "detail": [
+              {
+                "id": "west-foothills",
+                "largeCrestPeaks": 4,
+                "maxY": 48.76211929321289,
+                "authoredHeightRange": [
+                  45,
+                  55
+                ],
+                "heightScale": 0.46,
+                "maxElevationFromHeroDegrees": 12.340332966704679
+              },
+              {
+                "id": "east-foothills",
+                "largeCrestPeaks": 3,
+                "maxY": 54.4254150390625,
+                "authoredHeightRange": [
+                  45,
+                  55
+                ],
+                "heightScale": 0.46,
+                "maxElevationFromHeroDegrees": 12.634325223659044
+              },
+              {
+                "id": "west-escarpment",
+                "largeCrestPeaks": 4,
+                "maxY": 93.82563018798828,
+                "authoredHeightRange": [
+                  85,
+                  100
+                ],
+                "heightScale": 0.475,
+                "maxElevationFromHeroDegrees": 11.650022890734999
+              },
+              {
+                "id": "east-broken-range",
+                "largeCrestPeaks": 4,
+                "maxY": 99.35971069335938,
+                "authoredHeightRange": [
+                  85,
+                  100
+                ],
+                "heightScale": 0.475,
+                "maxElevationFromHeroDegrees": 12.80299834315549
+              },
+              {
+                "id": "west-distant-range",
+                "largeCrestPeaks": 4,
+                "maxY": 103.60371398925781,
+                "authoredHeightRange": [
+                  98,
+                  110
+                ],
+                "heightScale": 0.455,
+                "maxElevationFromHeroDegrees": 10.022066330472528
+              },
+              {
+                "id": "east-distant-range",
+                "largeCrestPeaks": 3,
+                "maxY": 109.79962158203125,
+                "authoredHeightRange": [
+                  98,
+                  110
+                ],
+                "heightScale": 0.455,
+                "maxElevationFromHeroDegrees": 10.404108068719362
+              }
+            ]
+          },
+          {
+            "name": "scarp/talus structure has eroded steep faces, not smooth single humps",
+            "pass": true,
+            "detail": [
+              {
+                "id": "west-foothills",
+                "steepVertices": 331,
+                "talusVertices": 2770,
+                "erosionSecondDifferenceSum": 2533.301491155289
+              },
+              {
+                "id": "east-foothills",
+                "steepVertices": 387,
+                "talusVertices": 2700,
+                "erosionSecondDifferenceSum": 2645.0631410023198
+              },
+              {
+                "id": "west-escarpment",
+                "steepVertices": 2138,
+                "talusVertices": 2547,
+                "erosionSecondDifferenceSum": 3276.2510854350403
+              },
+              {
+                "id": "east-broken-range",
+                "steepVertices": 2094,
+                "talusVertices": 2363,
+                "erosionSecondDifferenceSum": 3710.3022525878623
+              },
+              {
+                "id": "west-distant-range",
+                "steepVertices": 3114,
+                "talusVertices": 788,
+                "erosionSecondDifferenceSum": 3296.0902572758496
+              },
+              {
+                "id": "east-distant-range",
+                "steepVertices": 3455,
+                "talusVertices": 731,
+                "erosionSecondDifferenceSum": 3122.875129532069
+              }
+            ]
+          },
+          {
+            "name": "muted mineral gray-green to blue-gray layers; no snow/white summit mask",
+            "pass": true,
+            "detail": [
+              {
+                "layer": 0,
+                "blueMinusRed": -0.05387710357790974
+              },
+              {
+                "layer": 1,
+                "blueMinusRed": 0.052835272998062004
+              },
+              {
+                "layer": 2,
+                "blueMinusRed": 0.15376273845362193
+              }
+            ]
+          },
+          {
+            "name": "geometry validator rejects bad winding/index/sampler/normal/valley data",
+            "pass": true,
+            "detail": {
+              "negativeCases": 7
+            }
+          },
+          {
+            "name": "build API using local Three only; one root attached and no foreign scene changes",
+            "pass": true,
+            "detail": {
+              "buildMilliseconds": 60.44689999999997,
+              "rendered": false
+            }
+          },
+          {
+            "name": "actual Three geometries match pure arrays and stay within budgets",
+            "pass": true,
+            "detail": {
+              "triangles": 79360,
+              "basePassDrawCalls": 12
+            }
+          },
+          {
+            "name": "source material/texture references reused, not changed or duplicated",
+            "pass": true
+          },
+          {
+            "name": "weather controls owned clones only; no custom sun or scene fog/exposure",
+            "pass": true
+          },
+          {
+            "name": "mineral shader reduces decoded map contrast without extra sampling or lighting",
+            "pass": true,
+            "detail": {
+              "shaderSourceChecked": true,
+              "gpuCompiled": false,
+              "materials": [
+                {
+                  "material": "landscape-0-rock",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.2
+                },
+                {
+                  "material": "landscape-0-scrub",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.12
+                },
+                {
+                  "material": "landscape-0-rock",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.2
+                },
+                {
+                  "material": "landscape-0-scrub",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.12
+                },
+                {
+                  "material": "landscape-1-rock",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.15000000000000002
+                },
+                {
+                  "material": "landscape-1-scrub",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.09
+                },
+                {
+                  "material": "landscape-1-rock",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.15000000000000002
+                },
+                {
+                  "material": "landscape-1-scrub",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.09
+                },
+                {
+                  "material": "landscape-2-rock",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.1
+                },
+                {
+                  "material": "landscape-2-scrub",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.06
+                },
+                {
+                  "material": "landscape-2-rock",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.1
+                },
+                {
+                  "material": "landscape-2-scrub",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.06
+                }
+              ]
+            }
+          },
+          {
+            "name": "info is detached metadata, not mutable geometry/material state",
+            "pass": true
+          },
+          {
+            "name": "dispose releases only owned resources and is idempotent",
+            "pass": true
+          },
+          {
+            "name": "missing dependencies fail without partial world mutation",
+            "pass": true
+          }
+        ]
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "riverbank-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "03996376b3b336e7a6b6f9f34dd1ad89d7216d5f756199daaef38c3428eef040",
+      "result": {
+        "verdict": "CPU INVARIANTS PASS — NOT GPU/ART/PERFORMANCE ACCEPTANCE",
+        "assertions": 838043,
+        "counts": {
+          "micro": 2500,
+          "cobbles": 720,
+          "grass": 360,
+          "outcrops": 12,
+          "patches": 36,
+          "grassIslands": 7
+        },
+        "actualTriangles": 199776,
+        "actualDraws": 28,
+        "actualShadowTriangles": 3456,
+        "actualShadowDraws": 4,
+        "instances": 3592,
+        "previous850StoneTriangles": 153000,
+        "incrementalTriangles": 46776,
+        "incrementalDraws": 27,
+        "maxVertexProtrusion": 0.06070320351180558,
+        "aboveGroundStoneVertexFraction": 0.570173871620817,
+        "actualSubmergedStones": 2587,
+        "actualExposedStones": 552,
+        "openBankFieldFraction": 0.7186609686609686,
+        "denseBankFieldFraction": 0.09188034188034189,
+        "underwaterGravelCoverage": 0.7335468841001748,
+        "underwaterMudPockets": 0.1362842166569598,
+        "substrateStones": 1051,
+        "foregroundStones": 190,
+        "sourceFiles": 6,
+        "publicFiles": 6,
+        "publicBytes": 7855743,
+        "placementSHA256": "98c805b6ededc6199ec6a3e45517a0ba221840001b3a4be5dc48fa73fd6a9e80",
+        "runtimeManifestNote": "afterrain-assets.json runtime block belongs to prior slice; main must refresh source binding/budgets. Asset file hashes unchanged.",
+        "limits": "No server/browser/render process run. Shader hooks checked structurally only; native-headless GPU compilation/art/perf and movement QA owned by main."
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "afterrain-assets-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "67336ed4adf342f7b4e9156bcca4d5f7be442a0383b7c22ebb341e80bface3e8",
+      "result": {
+        "stdout": "{\n  pass: true,\n  checked: 13,\n  publicBytes: 12480032,\n  scope: 'Official source integrity, derivatives and current-byte evidence binding; not visual acceptance'\n}\n"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "vegetation-clumps": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "7ab8bb79e22cd7f277925bf8b639a2b3321f3a901d65daeb777b286941df4f72",
+      "result": {
+        "suite": "vegetation-organic-clumps-v1",
+        "verdict": "PASS",
+        "checksPassed": 23,
+        "checksTotal": 23,
+        "scope": "CPU only; no GPU, visual or pacing acceptance. Tests use spatial relationships, authored physical sizes, actual GLB counts and unchanged exclusions, not minimum population targets.",
+        "baseline": {
+          "sourceSHA256": "b289362e5e91e062f39d7dac19c85d58a172165c81c6150728ff6d5c9fc70960",
+          "treeTransformsSHA256": "76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a",
+          "triangles": 30842052,
+          "drawCalls": 112,
+          "placements": 13969,
+          "grassPlacements": 13874
+        },
+        "sources": {
+          "../vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+          "./vegetation-clumps.mjs": "7ab8bb79e22cd7f277925bf8b639a2b3321f3a901d65daeb777b286941df4f72",
+          "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+          "island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+          "island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+          "tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+          "tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+          "grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+          "wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+          "wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+          "wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+          "wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+          "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294"
+        },
+        "summary": {
+          "grassRoots": 11288,
+          "foregroundRoots": 5796,
+          "patches": 104,
+          "clumps": 269,
+          "bareIntervals": 6,
+          "triangles": 30250068,
+          "drawCalls": 112,
+          "placements": 11383,
+          "grassTriangles": 1186320
+        },
+        "checks": [
+          {
+            "name": "original tree/shrub transforms and species/shadow flags byte-identical",
+            "pass": true,
+            "evidence": {
+              "sha256": "76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a",
+              "near": [
+                19,
+                19
+              ],
+              "far": [
+                18,
+                15
+              ],
+              "shrubs": 24
+            }
+          },
+          {
+            "name": "deterministic fresh plans independent of global RNG",
+            "pass": true
+          },
+          {
+            "name": "finite grounded transforms and three distinct plausible height classes",
+            "pass": true,
+            "evidence": {
+              "low": {
+                "count": 7445,
+                "minHeight": 0.1260001326791599,
+                "maxHeight": 0.2584999349220561
+              },
+              "medium": {
+                "count": 3805,
+                "minHeight": 0.12971507552974185,
+                "maxHeight": 0.3984967270466563
+              },
+              "tall": {
+                "count": 38,
+                "minHeight": 0.4682386959469412,
+                "maxHeight": 0.5298349054170307
+              }
+            }
+          },
+          {
+            "name": "all roots preserve original river/path/crossing/cabin/house/rubble exclusions",
+            "pass": true,
+            "evidence": {
+              "rootsChecked": 11288,
+              "foregroundRoots": 5796
+            }
+          },
+          {
+            "name": "rendered leaf radii including wind preserve footprint clearance",
+            "pass": true,
+            "evidence": {
+              "perimeterProbes": 180608
+            }
+          },
+          {
+            "name": "nonzero randomized root separation with overlapping leaf bodies in cores",
+            "pass": true,
+            "evidence": {
+              "min": 0.07500856078239376,
+              "nearestP10": 0.07674755516245094,
+              "nearestMedian": 0.08747294381739076,
+              "nearestP90": 0.13955091937721534,
+              "overlappingLeafFraction": 0.9972537207654146
+            }
+          },
+          {
+            "name": "each root belongs to an actual irregular lobe and a valid species community",
+            "pass": true
+          },
+          {
+            "name": "posture mix contracts old footprints and feathers existing clumps without new infill",
+            "pass": true,
+            "evidence": {
+              "mixedClumps": 151,
+              "lowCoreRoots": 4264,
+              "uprightHeightMedian": 0.3498519136733841,
+              "outwardHeightMedian": 0.1533469561638,
+              "edgeHeightMedian": 0.19138713859576245,
+              "rootCountReduced": true
+            }
+          },
+          {
+            "name": "core density exceeds feathered satellite density by sampled physical area",
+            "pass": true,
+            "evidence": {
+              "core": 8107,
+              "satellite": 3181,
+              "coreDensity": 87.47829416593592,
+              "satelliteDensity": 11.098680230027373,
+              "ratio": 7.881864541809596
+            }
+          },
+          {
+            "name": "small/medium/large clumps and broad size variation; no identical whole tufts",
+            "pass": true,
+            "evidence": {
+              "areaP10": 0.3354917512232651,
+              "areaMedian": 0.8872922834763259,
+              "areaP90": 1.886300928808542,
+              "aspectRange": [
+                1.1112795861165345,
+                1.996148838413751
+              ]
+            }
+          },
+          {
+            "name": "bank patch orientation follows river tangent without mirrored rows",
+            "pass": true,
+            "evidence": {
+              "riverOrientedPatches": 20
+            }
+          },
+          {
+            "name": "reviewed near-bank envelope has substantial compound bodies on both sides",
+            "pass": true,
+            "evidence": [
+              {
+                "side": -1,
+                "bodies": [
+                  {
+                    "clumpId": "grass-clump-2",
+                    "coreTufts": 72,
+                    "width": 1.595978009114786,
+                    "depth": 1.6098951245562336
+                  },
+                  {
+                    "clumpId": "grass-clump-3",
+                    "coreTufts": 20,
+                    "width": 0.877121626216347,
+                    "depth": 1.0075030674553656
+                  }
+                ]
+              },
+              {
+                "side": 1,
+                "bodies": [
+                  {
+                    "clumpId": "grass-clump-0",
+                    "coreTufts": 9,
+                    "width": 0.7890816265374649,
+                    "depth": 1.2310743346149984
+                  },
+                  {
+                    "clumpId": "grass-clump-1",
+                    "coreTufts": 9,
+                    "width": 0.7445758919430183,
+                    "depth": 0.7336749006917689
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "intentional bare intervals are genuine allowed ground, not just forbidden crossings",
+            "pass": true,
+            "evidence": [
+              {
+                "side": -1,
+                "z": 22.066502624191344,
+                "validBareProbes": 156
+              },
+              {
+                "side": -1,
+                "z": -15.269439276307821,
+                "validBareProbes": 143
+              },
+              {
+                "side": -1,
+                "z": 6.655961639247835,
+                "validBareProbes": 91
+              },
+              {
+                "side": 1,
+                "z": -8.92503222823143,
+                "validBareProbes": 181
+              },
+              {
+                "side": 1,
+                "z": -16.63594368286431,
+                "validBareProbes": 156
+              },
+              {
+                "side": 1,
+                "z": -29.92312503233552,
+                "validBareProbes": 130
+              }
+            ]
+          },
+          {
+            "name": "foreground samples contain both dense growth and broad allowed bare gaps",
+            "pass": true,
+            "evidence": {
+              "allowedProbes": 2338,
+              "within30cmOfGrass": 0.1330196749358426,
+              "over1mBare": 0.6864841745081266,
+              "distanceP10": 0.18735329032945103,
+              "distanceP90": 2
+            }
+          },
+          {
+            "name": "local species coherence exceeds random global mix expectation",
+            "pass": true,
+            "evidence": {
+              "sameSpeciesNearestNeighbor": 0.8534658737907163,
+              "independentMixExpectation": 0.17197375297663745,
+              "neighborPairs": 11267
+            }
+          },
+          {
+            "name": "no 27cm phase lock on either axis; synthetic lattice is detected",
+            "pass": true,
+            "evidence": {
+              "x": {
+                "actual": 0.008985074236889662,
+                "randomPhaseControl": 0.024461657847860443,
+                "sixSigmaTolerance": 0.07881104062391008
+              },
+              "z": {
+                "actual": 0.01120145072149335,
+                "randomPhaseControl": 0.012249894966028465,
+                "sixSigmaTolerance": 0.07881104062391008
+              }
+            }
+          },
+          {
+            "name": "source GLB bounds support declared radius and plausible leaf scale",
+            "pass": true
+          },
+          {
+            "name": "CC0 source/license snapshots, derivative hashes and closed public whitelist",
+            "pass": true,
+            "evidence": {
+              "filesVerified": 35,
+              "publicFiles": 5,
+              "sourceAssets": [
+                "https://ambientcg.com/a/Foliage001",
+                "https://ambientcg.com/a/Foliage006"
+              ]
+            }
+          },
+          {
+            "name": "wild tufts have finite nondegenerate curved geometry, correct winding and embedded cutout atlas",
+            "pass": true,
+            "evidence": [
+              {
+                "name": "wild_leafy_a",
+                "blades": 20,
+                "triangles": 240,
+                "maxBladeWidth": 0.007866749358369082,
+                "transparentPixelFraction": 0.8452863693237305,
+                "opaqueLeafFraction": 0.12454509735107422,
+                "opaqueRGBMedian": [
+                  63,
+                  72,
+                  43
+                ]
+              },
+              {
+                "name": "wild_leafy_b",
+                "blades": 26,
+                "triangles": 312,
+                "maxBladeWidth": 0.007424023820100917,
+                "transparentPixelFraction": 0.926426887512207,
+                "opaqueLeafFraction": 0.057930946350097656,
+                "opaqueRGBMedian": [
+                  65,
+                  75,
+                  40
+                ]
+              },
+              {
+                "name": "wild_upright_a",
+                "blades": 16,
+                "triangles": 192,
+                "maxBladeWidth": 0.008972651789883157,
+                "transparentPixelFraction": 0.8452863693237305,
+                "opaqueLeafFraction": 0.12454509735107422,
+                "opaqueRGBMedian": [
+                  63,
+                  72,
+                  43
+                ]
+              },
+              {
+                "name": "wild_upright_b",
+                "blades": 18,
+                "triangles": 216,
+                "maxBladeWidth": 0.008653606387581118,
+                "transparentPixelFraction": 0.926426887512207,
+                "opaqueLeafFraction": 0.057930946350097656,
+                "opaqueRGBMedian": [
+                  65,
+                  75,
+                  40
+                ]
+              }
+            ]
+          },
+          {
+            "name": "two source atlases retain distinct but neighboring authored olive palettes",
+            "pass": true,
+            "evidence": {
+              "sourcePixelMedians": [
+                {
+                  "id": "Foliage001",
+                  "median": [
+                    63,
+                    72,
+                    43
+                  ]
+                },
+                {
+                  "id": "Foliage006",
+                  "median": [
+                    65,
+                    75,
+                    40
+                  ]
+                }
+              ],
+              "scope": "Authoring normalization only, not rendered art acceptance"
+            }
+          },
+          {
+            "name": "root shading is grass-only; unchanged wind deformation also binds shadow materials",
+            "pass": true,
+            "evidence": {
+              "rootHeightMeters": [
+                0.012,
+                0.13
+              ],
+              "minimumAlbedoFactor": 0.55,
+              "treeAndShadowRootShading": false
+            }
+          },
+          {
+            "name": "exact current GLB/sector budget does not exceed pre-edit geometry or object count",
+            "pass": true,
+            "evidence": {
+              "triangles": 30250068,
+              "drawCalls": 112,
+              "placements": 11383,
+              "grassTriangles": 1186320,
+              "grassDrawCalls": 31,
+              "byBatch": [
+                {
+                  "asset": "island_tree_01",
+                  "node": null,
+                  "label": "near-shadow",
+                  "placements": 8,
+                  "triangles": 3030016,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "island_tree_01",
+                  "node": null,
+                  "label": "near",
+                  "placements": 11,
+                  "triangles": 4166272,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "island_tree_01-far",
+                  "node": null,
+                  "label": "far",
+                  "placements": 18,
+                  "triangles": 3800250,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "tree_small_02",
+                  "node": null,
+                  "label": "near-shadow",
+                  "placements": 5,
+                  "triangles": 1864475,
+                  "drawCalls": 9
+                },
+                {
+                  "asset": "tree_small_02",
+                  "node": null,
+                  "label": "near",
+                  "placements": 14,
+                  "triangles": 5220530,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "tree_small_02-far",
+                  "node": null,
+                  "label": "far",
+                  "placements": 15,
+                  "triangles": 4223925,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "tree_small_02-far",
+                  "node": null,
+                  "label": "shrubs",
+                  "placements": 24,
+                  "triangles": 6758280,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_small_a",
+                  "label": "bermuda-base",
+                  "placements": 2039,
+                  "triangles": 24468,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_small_b",
+                  "label": "bermuda-base",
+                  "placements": 1535,
+                  "triangles": 18420,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_small_c",
+                  "label": "bermuda-base",
+                  "placements": 1378,
+                  "triangles": 24804,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_medium_c",
+                  "label": "bermuda-base",
+                  "placements": 2493,
+                  "triangles": 49860,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_leafy_a",
+                  "node": "wild_leafy_a",
+                  "label": "wild-leafy-a",
+                  "placements": 1752,
+                  "triangles": 420480,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_leafy_b",
+                  "node": "wild_leafy_b",
+                  "label": "wild-leafy-b",
+                  "placements": 2053,
+                  "triangles": 640536,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_upright_a",
+                  "node": "wild_upright_a",
+                  "label": "wild-upright-a",
+                  "placements": 19,
+                  "triangles": 3648,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_upright_b",
+                  "node": "wild_upright_b",
+                  "label": "wild-upright-b",
+                  "placements": 19,
+                  "triangles": 4104,
+                  "drawCalls": 3
+                }
+              ]
+            }
+          },
+          {
+            "name": "no old infill flags, no unmapped roots, no global gameplay mutation",
+            "pass": true
+          }
+        ]
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "water-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "c75a4bc70906669d2c8ea41b60054af92c8da5c73ce96b218c1fa28d7be39881",
+      "result": {
+        "pass": true,
+        "checked": 74148,
+        "maxDisplacement": 0.017099999999999997,
+        "flowDirection": "+Z",
+        "scope": "CPU phase/depth/relief and packaging; actual shaders and visible motion require GPU evidence"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "wildbank-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "c6cb1960302d31145522d6aeef2f3acec68448b5596f0c752c51c9870d4a450e",
+      "result": {
+        "pass": true,
+        "checked": 386032,
+        "maxSupportError": 0.024435541462935584,
+        "scope": "actual GLSL wet/dry field and rendered terrain ray support at both dug fords; independent canvas art still required"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "surface-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "965293109a9aed16515200df2a7591d60bfeb332213d430a06500849e00b96cd",
+      "result": {
+        "pass": true,
+        "checks": 33224,
+        "weeds": 543,
+        "materials": 3,
+        "newScanAssets": 2,
+        "limitations": "CPU only, not GPU/art/performance acceptance"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "masonry-materials-checks": {
+      "pass": false,
+      "exit": 1,
+      "testSHA256": "bdee70090d96632dbb6787d89c72a786bc4e6aa197a6306cea24351e13464731",
+      "result": {
+        "stdout": ""
+      },
+      "error": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: village exact baseline geometry\r\n+ actual - expected\r\n\r\n+ '8be21f58792db86988e500ba953e11099d8192057958c7a5db5181a2560f732d'\r\n- '3b5a7c6053611f627bb5c2adccc13928ad531393af383dea330acbf0ad9556db'\r\n\r\n    at equal (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/masonry-materials-checks.mjs:17:34)\r\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/masonry-materials-checks.mjs:42:86\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: '8be21f58792db86988e500ba953e11099d8192057958c7a5db5181a2560f732d',\r\n  expected: '3b5a7c6053611f627bb5c2adccc13928ad531393af383dea330acbf0ad9556db',\r\n  operator: 'deepStrictEqual',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.1\r\n",
+      "classification": "historical-intent-guard",
+      "supersededReason": "Historical material-only whole village geometry guard intentionally fails for six replaced cover meshes; stone-cover-checks proves all noncover geometry and all205 colliders exact plus visible-hit tolerance."
+    },
+    "height-fog-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "f8213c4d6ac9238465dd8a8a54b944f33aa62025dfc9bdeb99fcf79052bfd9ea",
+      "result": {
+        "suite": "height-fog-cpu-v1",
+        "verdict": "PASS",
+        "checksPassed": 20,
+        "checksTotal": 20,
+        "threeRevision": "160",
+        "sources": {
+          "../height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+          "./height-fog-checks.mjs": "f8213c4d6ac9238465dd8a8a54b944f33aa62025dfc9bdeb99fcf79052bfd9ea",
+          "../vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+          "../river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+          "../distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+          "../world.js": "817aa8bc909047903ec5829dc6d3d7428021d592686e5440fbcc98a67fdf9a4a"
+        },
+        "scope": "CPU analytic integration, actual local shader-template/hook composition and transform tests only. No GLSL driver compilation, GPU visual, temporal or performance acceptance.",
+        "checks": [
+          {
+            "name": "coefficient agrees with independent numerical line integration including base crossing",
+            "pass": true,
+            "evidence": {
+              "rays": 147,
+              "largestError": 3.574788820515096e-8
+            }
+          },
+          {
+            "name": "four-metre near clearing, monotone low haze and clearer high elevations",
+            "pass": true,
+            "evidence": [
+              {
+                "weather": 0,
+                "near5": 0.003188835176194301,
+                "low25": 0.06038879197384684,
+                "low80": 0.19932667843953566,
+                "high80": 0.00462541904401935
+              },
+              {
+                "weather": 1,
+                "near5": 0.0043835769219564774,
+                "low25": 0.08318578607008802,
+                "low80": 0.26709775038705125,
+                "high80": 0.013305109691561122
+              },
+              {
+                "weather": 2,
+                "near5": 0.005577076550269471,
+                "low25": 0.10557794963463132,
+                "low80": 0.3296106306835871,
+                "high80": 0.0275788556569987
+              }
+            ]
+          },
+          {
+            "name": "stable horizontal, zero falloff, below-ground and extreme-height integrals",
+            "pass": true
+          },
+          {
+            "name": "actual GLSL scalar math matches CPU reference and disabled branch",
+            "pass": true,
+            "evidence": {
+              "sourceDerivedSamples": 36
+            }
+          },
+          {
+            "name": "reflection intersection is finite for crossing, grazing, plane-endpoint and invalid-side rays",
+            "pass": true,
+            "evidence": {
+              "validCrossings": 6,
+              "emptyOrInvalidSideRays": 9,
+              "nonfiniteInputsRejected": 12
+            }
+          },
+          {
+            "name": "reflected segment agrees with independent integration, including negative plane and zero near-clear",
+            "pass": true,
+            "evidence": {
+              "rays": 21,
+              "largestError": 1.9059389086417688e-7
+            }
+          },
+          {
+            "name": "reflection GLSL source matches CPU on oblique, horizontal, grazing and out-of-plane rays",
+            "pass": true,
+            "evidence": {
+              "sourceDerivedReflectionSamples": 78
+            }
+          },
+          {
+            "name": "split optical path counts real eye-to-water once and never integrates below-water mirrored eye",
+            "pass": true,
+            "evidence": {
+              "realEyeToWater": 0.05851260844696398,
+              "planeToSurface": 0.09536065770568879,
+              "composedOpacity": 0.14261932672228217
+            }
+          },
+          {
+            "name": "real standard/basic/physical templates preserve distance fog, alpha and output order",
+            "pass": true
+          },
+          {
+            "name": "existing hook this/renderer semantics and dynamic custom cache key compose",
+            "pass": true
+          },
+          {
+            "name": "default cache keys preserve original hook identity across both local Three copies",
+            "pass": true
+          },
+          {
+            "name": "duplicate installs/patches are idempotent; hook replacement and double ownership fail loudly",
+            "pass": true
+          },
+          {
+            "name": "normal/depth/distance overrides, custom water, exclusions and gun scene stay untouched",
+            "pass": true
+          },
+          {
+            "name": "actual foliage wind/root hook composes and shadow materials remain byte-identical",
+            "pass": true
+          },
+          {
+            "name": "actual distant mineral hook composes without changing texture shading",
+            "pass": true
+          },
+          {
+            "name": "world position uses deformed local point and full nested instance/batch transforms",
+            "pass": true
+          },
+          {
+            "name": "real skinned vertex motion changes world height and therefore fog",
+            "pass": true
+          },
+          {
+            "name": "custom water consumes shared uniforms and its already-displaced vRiver without touching alpha",
+            "pass": true
+          },
+          {
+            "name": "weather/toggle reuse uniform objects and cache programs; unsupported patches fail atomically",
+            "pass": true
+          },
+          {
+            "name": "reflection mode shares world/water uniforms, survives weather changes, and restores in finally without recompilation",
+            "pass": true,
+            "evidence": {
+              "reflectionCalls": 2,
+              "exceptionRestored": true,
+              "sharedUniforms": 8,
+              "recompilations": 0
+            }
+          }
+        ]
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "downloaded-dressing-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "46ea939ff4110bafc78f291a36d6931af2a40b8696011bbb859b7e203ee9fd13",
+      "result": {
+        "pass": true,
+        "checks": 20,
+        "results": [
+          {
+            "name": "deterministic layout",
+            "pass": true
+          },
+          {
+            "name": "measured instance triangles within fixed cap",
+            "pass": true
+          },
+          {
+            "name": "every converted model is represented in scene",
+            "pass": true
+          },
+          {
+            "name": "dark dry stems are outside playable woodland only",
+            "pass": true
+          },
+          {
+            "name": "source geometry files identified",
+            "pass": true
+          },
+          {
+            "name": "grass circles clear paths, doors, spawns and crossings",
+            "pass": true
+          },
+          {
+            "name": "large solid decorations completely outside playable rectangle",
+            "pass": true
+          },
+          {
+            "name": "micro debris below unchanged 3cm support tolerance, no cover",
+            "pass": true
+          },
+          {
+            "name": "actual transformed micro mesh vertices vs current terrain and ruin support",
+            "pass": true
+          },
+          {
+            "name": "two houses have clear trunks and near-flat grounded footprint envelopes",
+            "pass": true
+          },
+          {
+            "name": "no scan props in collision or support contract",
+            "pass": true
+          },
+          {
+            "name": "exact served manifest hash binds client bytes",
+            "pass": true
+          },
+          {
+            "name": "public package only adds loader source",
+            "pass": true
+          },
+          {
+            "name": "absent optional pack has baseline manifest",
+            "pass": true
+          },
+          {
+            "name": "disabled optional pack baseline",
+            "pass": true
+          },
+          {
+            "name": "reject unsafe name or unsupported kind wall",
+            "pass": true
+          },
+          {
+            "name": "reject unsafe name or unsupported kind unknown",
+            "pass": true
+          },
+          {
+            "name": "external GLB dependency rejected",
+            "pass": true
+          },
+          {
+            "name": "invalid optional manifest returns usable empty layer",
+            "pass": true
+          },
+          {
+            "name": "public host never requests local assets",
+            "pass": true
+          }
+        ],
+        "counts": {
+          "woodland-house": 2,
+          "castle-wall": 2,
+          "mossy-wall-a": 2,
+          "mossy-wall-b": 2,
+          "cement-rubble": 2,
+          "cement-rubble-small": 22,
+          "grass-clumps-a": 5,
+          "grass-clumps-b": 3,
+          "tundra-grass-a": 92,
+          "tundra-grass-d": 167,
+          "tundra-grass-h": 159,
+          "grass-clumps-c": 3
+        },
+        "triangles": 349364,
+        "bytes": 12862004,
+        "micro": {
+          "surfaceSamples": 16874,
+          "maxVisibleGap": 0.019511172997412222,
+          "maxBuried": 0.006
+        },
+        "houseGrounding": [
+          {
+            "id": "woodland-house",
+            "x": -12,
+            "z": -40.5,
+            "lowestBase": -0.06,
+            "minGround": 0,
+            "maxGround": 0.03815823559950389,
+            "nearestTrunk": 11.256677492394132
+          },
+          {
+            "id": "woodland-house",
+            "x": 12,
+            "z": 33,
+            "lowestBase": -0.06,
+            "minGround": 0,
+            "maxGround": 0.07749193667795283,
+            "nearestTrunk": 9.52124123075354
+          }
+        ]
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "environment-polish-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "9ded6d8b7b971e3e0e71cd690727968b9f0af665683c12c5903b57817c406436",
+      "result": {
+        "pass": true,
+        "checks": 93533,
+        "counts": {
+          "grass": 3600,
+          "grit": 1350,
+          "forest": 190,
+          "patches": 171
+        },
+        "maxGap": 0.02131941404394656,
+        "minimumCanopyDistance": 47.97908664652027,
+        "scope": "deterministic spatial and transformed geometry checks; not GPU/visual/performance acceptance"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "shot-feedback-event-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "f8b821d418bcc40e14ed3e27c5d3bcfb1ff403cc9ee167ef5a32eb4e27eba2a5",
+      "result": {
+        "pass": true,
+        "checks": 6,
+        "stats": {
+          "shots": 5,
+          "muzzleBlocked": 1,
+          "intercepted": 1,
+          "misses": 1
+        },
+        "scope": "visual adapter only; unchanged original damage contract tested separately"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "polish-preservation-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "8a82222ba935ba8a318c8c29ae2ffb4dbd529eabcbaf9d215b6667b271cb411c",
+      "result": {
+        "pass": true,
+        "checks": 19,
+        "baseline": "d5b2114d07e1496824b6b788757364412e18908e",
+        "preserved": [
+          "map-layout.js",
+          "tactical-ai.js",
+          "reload-pose.js",
+          "actors.js",
+          "audio.js",
+          "combat-controls.js",
+          "storm-audio.js",
+          "terrain-ray.js",
+          "buffer-house.js",
+          "buffer-house-logic.js",
+          "house-logic.js",
+          "ruins.js",
+          "fracture-geometry.js"
+        ],
+        "indexWithoutVisualHooks": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
+        "scope": "exact prior gameplay/control/damage/ammo/reload/AI contract, all prior demos; weapon display intentionally changed"
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "stone-cover-checks": {
+      "pass": true,
+      "exit": 0,
+      "testSHA256": "637b7233aaa4f8f8ace58bb34c56fed14983d43511994410cc510379110fda5c",
+      "result": {
+        "status": "CPU PASS; GPU/art/performance NOT evaluated",
+        "checks": 209374,
+        "inputs": {
+          "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+          "masonry-materials.js": "2c990c517db3fc61b78c1c525d3a544d9ca055fc8b6c75dcacfc28fab907180c",
+          "stone-cover.js": "b898a03c218d33b876753afdffeb73b5905811765902ed12893620c04bcb7629",
+          "qa/stone-cover-checks.mjs": "637b7233aaa4f8f8ace58bb34c56fed14983d43511994410cc510379110fda5c"
+        },
+        "nonCoverGeometry": "3721e80f7902909666feb35c04e7734b4675801fa6e742b0bec186691292a7ea",
+        "exactColliderFingerprint": "d59338d8eb067668142a7e3b277ad9c9c44d1fb9fa36581cd73a73d12b21f7bb",
+        "info": {
+          "houses": 6,
+          "walls": 72,
+          "boxes": 756,
+          "solids": 205,
+          "tiles": 2496,
+          "drawCalls": 14,
+          "triangles": 58741,
+          "stoneCover": {
+            "revision": "bounded-polygon-stone-cover-v2",
+            "covers": 6,
+            "stones": 537,
+            "drawCalls": 2,
+            "triangles": 8589,
+            "replacedTriangles": 72,
+            "addedTriangles": 8517,
+            "maxRecess": 0.012,
+            "outwardProtrusion": 0,
+            "opaqueContinuousShell": true,
+            "collidersChanged": false,
+            "sources": [
+              "Poly Haven rocky_gravel (CC0-1.0)",
+              "Poly Haven worn_plaster_wall (CC0-1.0); procedural mortar"
+            ],
+            "budgets": {
+              "maxRecess": 0.012,
+              "maxAddedTriangles": 40000,
+              "maxBeautyDraws": 3
+            },
+            "drawCaveat": "Beauty draws only; shadow/reflection passes are measured by root."
+          },
+          "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+        },
+        "actualDraws": 14,
+        "actualTriangles": 58741,
+        "geometryBytes": 1236816,
+        "watertightMortarEdges": 468,
+        "polygonSizes": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "irregularEdges": 2158,
+        "totalEdges": 2759,
+        "faceRays": 7956,
+        "obliqueRays": 23868,
+        "projectedMarks": 7956,
+        "maxNormalGap": 0.012000274658202054,
+        "maxHitGap": 0.02400052547454929,
+        "maxMarkShift": 0.012000274658202414,
+        "limitations": [
+          "CPU shader assembly is not WebGL compilation.",
+          "First-hit tests cover 0/30/60 degrees; at grazing incidence ray-length separation can exceed normal surface recess; projectStoneCoverHit snaps cosmetic marks along the face normal.",
+          "Root owns cosmetic impact integration, GPU captures, draw/shadow/reflection totals and performance."
+        ]
+      },
+      "error": "",
+      "classification": "required"
+    },
+    "combat-feedback-checks": {
+      "pass": false,
+      "exit": 1,
+      "testSHA256": "b8e64b25a809f2d89c16b7d71cd19baa064f8d6d96e394c5285e706fdaa1e97c",
+      "result": {
+        "suite": "combat-feedback-cpu-v1",
+        "verdict": "FAIL",
+        "passed": 16,
+        "total": 17,
+        "threeRevision": "160",
+        "sources": {
+          "weapon.js": "b82cc8f2912114435b5eabc5da8ab27135fe27a0c316a00e9443865f36518be6",
+          "combat-feedback.js": "dbe1d0b4bc6933bb3e8c0295734bd72633f5eabfcb1a1da18f4a33fa8811601b",
+          "qa/combat-feedback-checks.mjs": "b8e64b25a809f2d89c16b7d71cd19baa064f8d6d96e394c5285e706fdaa1e97c",
+          "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+          "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+          "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+          "index.html": "b55e74d3a906fbb44c826511dad14d314d3c15188c82ac9ca123c17735bae1d7",
+          "world.js": "817aa8bc909047903ec5829dc6d3d7428021d592686e5440fbcc98a67fdf9a4a"
+        },
+        "scope": "CPU imports, pinned rig/control code, actual Three math/raycast/material hooks, bounded particle state and shader-source checks. NOT GLSL driver compilation, GPU art/performance, actual controls or continuous animation acceptance.",
+        "checks": [
+          {
+            "name": "module imports and exact sleeve/reload/control invariants remain pinned",
+            "pass": true,
+            "evidence": {
+              "heldSleeve": "exact normalized SHA256 unchanged",
+              "reload": "unchanged",
+              "controls": "105ms cadence / 2.25s reload unchanged"
+            }
+          },
+          {
+            "name": "IBL patch covers both r160 PMREM directions and composes prior hooks/cache keys",
+            "pass": true
+          },
+          {
+            "name": "world light and IBL transforms preserve lighting under nested camera yaw pitch roll",
+            "pass": true,
+            "evidence": {
+              "orientations": 4,
+              "crossThreeCopies": true
+            }
+          },
+          {
+            "name": "weather/color/environment update without shader recompile or unowned world edits",
+            "pass": true
+          },
+          {
+            "name": "authoritative invisible village roof and cover occlude (render invisibility never skips shells)",
+            "pass": true,
+            "evidence": {
+              "invisibleAuthoritativeShell": true,
+              "shelterAndExit": true
+            }
+          },
+          {
+            "name": "single-sided roof, glass and finite probe range distinguish actual blockers",
+            "pass": true
+          },
+          {
+            "name": "probe budget is bounded at normal and stalled frame rates; freeze has no extra ray work",
+            "pass": true,
+            "evidence": {
+              "raysOver10s": 344,
+              "perTick": 4
+            }
+          },
+          {
+            "name": "explicit flash survives first update and several frames; no baseline intensity feedback loop",
+            "pass": false,
+            "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n3.4 !== 8\n\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/combat-feedback-checks.mjs:107:79\n    at check (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/combat-feedback-checks.mjs:22:44)\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/combat-feedback-checks.mjs:105:1"
+          },
+          {
+            "name": "finite normalized hit validation, facing normal and no input mutation",
+            "pass": true
+          },
+          {
+            "name": "real first-hit adapter preserves point and inverse-transpose normals including instances",
+            "pass": true
+          },
+          {
+            "name": "material classification respects explicit event kind and metal wood soil water semantics",
+            "pass": true
+          },
+          {
+            "name": "misses never spawn impacts, invalid hits never manufacture points, muzzle has separate suppression",
+            "pass": true
+          },
+          {
+            "name": "all surface effects start within 3cm of the exact hit, outgoing hemisphere and no decals",
+            "pass": true,
+            "evidence": [
+              {
+                "kind": "stone",
+                "puffs": 9,
+                "flecks": 0
+              },
+              {
+                "kind": "wood",
+                "puffs": 9,
+                "flecks": 0
+              },
+              {
+                "kind": "metal",
+                "puffs": 1,
+                "flecks": 8
+              },
+              {
+                "kind": "earth",
+                "puffs": 9,
+                "flecks": 0
+              },
+              {
+                "kind": "water",
+                "puffs": 9,
+                "flecks": 0
+              },
+              {
+                "kind": "actor",
+                "puffs": 2,
+                "flecks": 0
+              }
+            ]
+          },
+          {
+            "name": "stone wood earth water use normal blending; only metal sparks are additive",
+            "pass": true
+          },
+          {
+            "name": "bounded pools, lifetime expiry, zero-dt actual-event freeze and two single-pass beauty draws",
+            "pass": true,
+            "evidence": {
+              "maxTriangles": 400,
+              "maxDraws": 2,
+              "flashTriangles": 6,
+              "decals": 0,
+              "overflow": "oldest circular slot replaced, never pool growth"
+            }
+          },
+          {
+            "name": "particle flight stays finite, ends at source plane, deterministic replay and no per-shot objects",
+            "pass": true
+          },
+          {
+            "name": "effect shaders retain distance fog and root-independent reflected-camera orientation",
+            "pass": true
+          }
+        ]
+      },
+      "error": "",
+      "classification": "required"
+    }
+  }
+}

@@ -3,6 +3,17 @@ window.arenaQA={
  view(x,y,z,yaw,pitch){clearKeys();pres=true;S.state='pause';hideMenu();over.classList.add('hide');pos.set(x,y,z);S.yaw=yaw;S.pitch=pitch;S.reload=0;bob=recoil=0;return this.snapshot()},
  travel(x,z,yaw){this.reset();pres=false;pos.set(x,1.7+visual.floorHeight(x,z),z);S.yaw=yaw;S.pitch=-.08;return this.snapshot()},
  mapInfo(){return visual.info()},
+ polishInfo(){return {...visual.polishInfo(),adapter:shotFeedback.info()}},
+ fireViewCapture(){
+  clearKeys();pres=false;S.state='play';S.hp=10000;S.mag=30;S.reload=0;S.next=0;hideMenu();
+  // The real accepted fire() path, then the instantaneous initial render. No
+  // injected hit/flash and no fabricated elapsed time. This is a still only.
+  fire();visual.update(0,{S,pres,live:true,player:pos});
+  rnd.autoClear=true;visual.render();rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);
+  window.__polishShotImage=cv.toDataURL('image/png').split(',')[1];
+  window.__polishShotState={...this.snapshot(),polish:this.polishInfo()};
+  return window.__polishShotState;
+ },
  dressingInfo(){return visual.dressingQA.info()},
  assetView(id){const v=visual.dressingQA.reviewAsset(id);gscene.visible=!id;enemies.forEach(e=>{e.g.visible=!id});if(v)this.view(...v.camera);return v},
  surfaceInfo(){return visual.surfaceQA.info()},

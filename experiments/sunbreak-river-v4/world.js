@@ -8,6 +8,7 @@ import {ShaderPass} from 'three/addons/postprocessing/ShaderPass.js';
 import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
 import {SMAAPass} from 'three/addons/postprocessing/SMAAPass.js';
 import {buildWeapon} from './weapon.js';
+import {buildCombatFeedback} from './combat-feedback.js';
 import {buildActors} from './actors.js';
 import {createStormAudio} from './storm-audio.js';
 import {buildVillage} from './village.js';
@@ -82,7 +83,7 @@ export async function buildWorld(ctx){
  const target=new T.Object3D();target.position.set(0,0,-4);scene.add(target);sun.target=target;
  rnd.setPixelRatio(Math.min(devicePixelRatio,1.5));rnd.toneMappingExposure=1.08;
 
- const mud=materials.mud.clone();mud.roughness=.94;mud.normalScale.set(.80,.80);mud.envMapIntensity=.38;mud.color.set(0xd5c9b4);
+ const mud=materials.mud.clone();mud.roughness=.94;mud.normalScale.set(1.18,1.18);mud.envMapIntensity=.38;mud.color.set(0xd5c9b4);
  installGroundSurface(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength});
  const geo=new T.PlaneGeometry(TERRAIN_GRID.size,TERRAIN_GRID.size,TERRAIN_GRID.segments,TERRAIN_GRID.segments);geo.rotateX(-Math.PI/2);
  const p=geo.attributes.position,uv=geo.attributes.uv;
@@ -109,7 +110,7 @@ export async function buildWorld(ctx){
  const village=buildVillage({T,world,materials,layout,solids});
  const ruins=buildRuins({T,world,materials,layout,solids});
  const buffers=buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements});
- const foliage=await buildVegetation(T,world);
+ const foliage=await buildVegetation(T,world,{renderer:rnd,stoneMaterial:materials.stone,sunDirection,environment:env.texture});
  const foundationWeeds=await buildFoundationWeeds(T,world);
  const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials});
@@ -146,7 +147,8 @@ export async function buildWorld(ctx){
   const light=new T.PointLight(0xffb36c,9,8,2);light.position.set(h.x+2,2.35,h.z+1.8);world.add(light);lamps.push(light);
   const shade=new T.Mesh(new T.SphereGeometry(.095,8,6),new T.MeshStandardMaterial({color:0xffbd76,emissive:0xffa347,emissiveIntensity:3}));shade.position.copy(light.position);world.add(shade);
  }
- const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene}),buildActors({THREE:T,enemies})]);
+ const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids}),buildActors({THREE:T,enemies})]);
+ const feedback=buildCombatFeedback({T,world});
  // Install last so terrain, masonry and wind hooks compose rather than replace
  // one another. Gun/HUD are deliberately outside these world/enemy roots.
  const haze=createHeightFog(T);haze.install(world);enemies.forEach(e=>haze.install(e.g));
@@ -172,7 +174,8 @@ export async function buildWorld(ctx){
  const hideAO=ao.overrideVisibility.bind(ao);
  // Leaf cards likewise cannot use an opaque normal override. Their authored AO
  // and alpha-correct directional shadows remain; no invented solid-card SSAO.
- ao.overrideVisibility=function(){hideAO();water.mesh.visible=false;bed.visible=false;puddles.forEach(p=>p.visible=false);aoCutouts.forEach(p=>p.visible=false)};
+ const feedbackMeshes=[];world.getObjectByName('authoritative-combat-feedback')?.traverse(o=>{if(o.isMesh)feedbackMeshes.push(o)});
+ ao.overrideVisibility=function(){hideAO();water.mesh.visible=false;bed.visible=false;puddles.forEach(p=>p.visible=false);aoCutouts.forEach(p=>p.visible=false);feedbackMeshes.forEach(p=>p.visible=false)};
  const renderAOOverride=ao.renderOverride.bind(ao);
  ao.renderOverride=function(renderer,...args){
   const auto=renderer.shadowMap.autoUpdate,needs=renderer.shadowMap.needsUpdate;
@@ -192,6 +195,7 @@ export async function buildWorld(ctx){
   rnd.toneMappingExposure=day?1.18:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;water.setDay(day);mud.roughness=wet?.76:.91;
   flash=0;flashLight.intensity=0;
   distant.setWeather(weather);
+  foliage.setWeather(weather);
   haze.setWeather(weather);
   const visited=new Set();world.traverse(o=>{if(o.isPointLight){o.userData.weatherBase??=o.intensity;o.intensity=o.userData.weatherBase*(day?.20:1)}if(o.isMesh)for(const m of [].concat(o.material)){if(!m||visited.has(m))continue;visited.add(m);
    if(m.name==='WindowTrim')m.color.set(0x999d92);
@@ -200,12 +204,17 @@ export async function buildWorld(ctx){
   }});
   document.getElementById('weatherName').textContent=['雨后 · 湿润河谷','阴天 · 山林薄雾','降雨 · 双岸村落'][weather];
   document.getElementById('styleName').textContent=style?'暖调 · 雨后天光':'自然 · 山谷日照';
-  gscene.children.filter(o=>o.isDirectionalLight).forEach((l,i)=>{l.intensity=i?.8:2.0;l.color.set(i?0xb9d5ce:0xe5e9d6)});
+  // The viewmodel consumes actual world lights in weapon.update, never a
+  // camera-fixed studio rig with an unrelated highlight direction.
  }
  document.getElementById('bPost').onclick=e=>{post=!post;ao.enabled=grade.enabled=post;e.currentTarget.textContent='后期：'+(post?'开':'关');e.currentTarget.setAttribute('aria-pressed',String(post))};
  document.getElementById('bFlash').onclick=e=>{flashes=!flashes;flash=0;flashLight.intensity=0;e.currentTarget.textContent='闪电：'+(flashes?'开启':'关闭');e.currentTarget.setAttribute('aria-pressed',String(flashes))};
  applyWeather();
  return{
+  waterTime(){return time},
+  shot(event){const projected=event.hit&&event.object?.userData.wall?village.projectStoneCoverHit?.({point:event.point,normal:event.normal,wallId:event.object.userData.wall}):null;
+   if(projected)event={...event,point:projected.point,normal:projected.normal};weapon.shot(event);feedback.shot(event)},resetFeedback(){weapon.reset();feedback.reset()},
+  polishInfo(){return{environment:foliage.info().polish,cover:village.info().stoneCover,combat:feedback.info(),weapon:weapon.info()}},
   floorHeight(x,z){return buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))},ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))},blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),resetHouse:()=>buffers.reset(),
   update(dt,{S,pres,live,player}){
    const active=!pres&&!['pause','dead','win'].includes(S.state);if(active)time+=dt;
@@ -220,6 +229,7 @@ export async function buildWorld(ctx){
    if(active)flash=Math.max(0,flash-dt);flashLight.intensity=flashes?Math.max(0,flash)*8:0;
    const muted=document.getElementById('bMute').getAttribute('aria-pressed')==='true',volume=Number(document.getElementById('soundVolume').value)/100;
    weatherAudio.update(live&&weather===2,muted,volume);weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
+   if(active)feedback.update(dt);else feedback.reset();
   },
   render(){refreshAO();water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
   surfaceQA:{setAO(value){ao.enabled=!!value},setFog(value){haze.setEnabled(value)},info(){return{aoEnabled:ao.enabled,aoSettings,aoMin:ao.minDistance,aoMax:ao.maxDistance,projection:ao.ssaoMaterial.uniforms.cameraProjectionMatrix.value.elements.slice(),cameraProjection:cam.projectionMatrix.elements.slice(),fog:haze.info(),gunFogged:(()=>{let n=0;gscene.traverse(o=>{for(const m of [].concat(o.material||[]))if(m.customProgramCacheKey?.().includes('analytic-height-haze'))n++});return n})(),weeds:foundationWeeds.info(),zones:[[-10,12],[-17,17],[-22,12],[-4,10]].map(([x,z])=>({x,z,...surfaceZones(x,z)}))}}},

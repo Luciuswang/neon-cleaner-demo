@@ -288,6 +288,6 @@ const report={schema:'sunbreak-buffer-node-v1',date:new Date().toISOString(),pas
  limitations:['No browser keyboard/pointer-lock verification','No WebGL material/light/continuous animation or performance verdict','Traversal descent snaps to support; actual gravity/browser traversal belongs to main QA'],
  placements:map.bufferPlacements,localNavigationBounds:CABIN_NAVIGATION_LOCAL_BOUNDS,sources,changedSources,
  checks,geometry,traversals,rayComparisons,integrationEvidence};
-await writeFile(new URL('buffer-checks.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+if(!process.argv.includes('--stdout-only'))await writeFile(new URL('buffer-checks.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({pass:report.pass,unitPass:report.unitPass,integrationPass:report.integrationPass,checks:checks.length,traversals:traversals.length,rayComparisons:rayComparisons.length,failures:checks.filter(c=>!c.pass).map(({name,error})=>({name,error}))},null,2));
 if(!report.pass)process.exitCode=1;

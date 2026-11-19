@@ -72,12 +72,21 @@ export function installGroundSurface(T,material,{dirt,forest,rain}){
   `);
   const normalChunk=T.ShaderChunk.normal_fragment_maps.replaceAll('texture2D( normalMap, vNormalMapUv ).xyz * 2.0 - 1.0',
    '(mix(mix(texture2D(normalMap,vNormalMapUv).xyz,texture2D(uDirtNormal,dirtUV).xyz,pathBlend),texture2D(uForestNormal,forestUV).xyz,litterBlend)*2.-1.)');
-  s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',normalChunk+'\nnormal=normalize(mix(nonPerturbedNormal,normal,mix(1.,.68,soilWet)));');
+  s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',normalChunk+`
+   normal=normalize(mix(nonPerturbedNormal,normal,mix(1.,.76,soilWet)));
+   // Centimetre-scale packed-earth lumps add directional grazing highlights.
+   // Derivatives in view space compose with the real OpenGL scan normals;
+   // this is sub-2cm shading relief, never fictitious traversable mounds.
+   float earthRelief=(earthNoise(gp*7.)*.010+earthNoise(gp*21.)*.003)*(1.-pathBlend*.72)*(1.-soilWet*.38);
+   vec3 earthDx=dFdx(-vViewPosition),earthDy=dFdy(-vViewPosition);
+   vec3 earthR1=cross(earthDy,normal),earthR2=cross(normal,earthDx);float earthDet=dot(earthDx,earthR1);
+   normal=normalize(max(abs(earthDet),1e-10)*normal-sign(earthDet)*(dFdx(earthRelief)*earthR1+dFdy(earthRelief)*earthR2));
+  `);
   // Small persistent foundation contact in INDIRECT illumination only. Screen
   // AO handles movable and other contacts; never paint black halos in albedo.
   s.fragmentShader=s.fragmentShader.replace('#include <aomap_fragment>','#include <aomap_fragment>\nreflectedLight.indirectDiffuse*=1.-vSurfaceZones.w;');
  };
- material.customProgramCacheKey=()=> 'river-functional-surface-zones-v1';
+ material.customProgramCacheKey=()=> 'river-functional-surface-zones-relief-v2';
 }
 
 export function foundationWeedPlan(){

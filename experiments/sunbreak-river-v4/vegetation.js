@@ -1,4 +1,5 @@
 import {vegetationAllowed,landscapeHeight,riverWidth,MAP,crossings} from './map-layout.js';
+import {buildEnvironmentPolish} from './environment-polish.js';
 
 const outside=(x,z,pad=0)=>x<MAP.minX-pad||x>MAP.maxX+pad||z<MAP.minZ-pad||z>MAP.maxZ+pad;
 const pathDistance=(x,z)=>Math.abs(Math.abs(x)-(10+.32*Math.sin(z*.19)));
@@ -141,7 +142,7 @@ export function vegetationPlan(){
  return{near,far,shrubs,low,medium,tall,patches,trunks,clumps,gaps};
 }
 
-export async function buildVegetation(T,world){
+export async function buildVegetation(T,world,polishOptions){
  const {GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js');
  const {MeshoptDecoder}=await import('three/addons/libs/meshopt_decoder.module.js');
  const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),time={value:0},plan=vegetationPlan(),meshes=[],counts={},batches=[];
@@ -221,6 +222,7 @@ export async function buildVegetation(T,world){
   if(!source)throw Error(`Foliage variant missing: ${batch.node}`);
   instances(source,batch.placements,batch.height,batch.label,{wind:batch.layer==='low'?.013:batch.layer==='medium'?.022:.028});
  }
+ const polish=polishOptions?buildEnvironmentPolish({T,world,...polishOptions,grassSource:assets[4].scene.getObjectByName('grass_bermuda_01_small_a'),treeSources:[assets[0].scene,assets[2].scene]}):null;
  const triangles=batches.reduce((n,b)=>n+b.triangles,0),shadowTriangles=batches.filter(b=>b.shadow).reduce((n,b)=>n+b.triangles,0);
- return{update(t){time.value=t},info(){return{revision:'wildbank-mixed-posture-r3-2026-11-18',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},treeCollidersNeeded:0,source:'Poly Haven CC0 trees/low Bermuda; ambientCG CC0 narrow blades; accepted olive palette unchanged; coherent low/outward/upright pockets within original footprints',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
+ return{update(t){time.value=t;polish?.update(t)},setWeather(w){polish?.setWeather(w)},info(){return{revision:'wildbank-mixed-posture-r3-plus-meadow-canopy',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,polish:polish?.info(),patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},treeCollidersNeeded:0,source:'Poly Haven CC0 trees/low Bermuda; ambientCG CC0 narrow blades; accepted original near forest and grass clusters plus separately budgeted meadow/mineral/distant canopy layer',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
 }

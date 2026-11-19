@@ -24,4 +24,4 @@ for(let i=0;i<160;i++){
  results.push({i,hit:!!actual.length,distance:actual[0]?.distance});
 }
 const sources={};for(const name of ['map-layout.js','terrain-ray.js','qa/terrain-rays.mjs'])sources[name]=createHash('sha256').update(await readFile(new URL('../'+name,import.meta.url))).digest('hex');
-const report={date:new Date().toISOString(),pass:true,sources,method:'Exact DDA versus stock Three.js triangle raycast on rendered terrain topology',results};await writeFile(new URL('terrain-rays.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log({pass:true,rays:results.length});
+const report={date:new Date().toISOString(),pass:true,sources,method:'Exact DDA versus stock Three.js triangle raycast on rendered terrain topology',results};if(!process.argv.includes('--stdout-only'))await writeFile(new URL('terrain-rays.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log({pass:true,rays:results.length});

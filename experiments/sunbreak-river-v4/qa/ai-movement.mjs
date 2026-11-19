@@ -26,4 +26,4 @@ for(const dt of [1/60,.05]){
  }
 }
 const sources={};for(const name of ['map-layout.js','tactical-ai.js','qa/ai-movement.mjs'])sources[name]=createHash('sha256').update(await readFile(new URL('../'+name,import.meta.url))).digest('hex');
-const report={date:new Date().toISOString(),pass:traversals.every(r=>r.pass),method:'Actual AI update-loop movement along navigation-generated routes; decisions held, not shot approval or human playtesting',sources,traversals};await writeFile(new URL('ai-movement.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log({pass:report.pass,cases:traversals.length,failures:traversals.filter(r=>!r.pass)});assert.ok(report.pass);
+const report={date:new Date().toISOString(),pass:traversals.every(r=>r.pass),method:'Actual AI update-loop movement along navigation-generated routes; decisions held, not shot approval or human playtesting',sources,traversals};if(!process.argv.includes('--stdout-only'))await writeFile(new URL('ai-movement.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log({pass:report.pass,cases:traversals.length,failures:traversals.filter(r=>!r.pass)});assert.ok(report.pass);

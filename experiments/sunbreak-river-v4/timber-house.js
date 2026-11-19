@@ -83,7 +83,7 @@ export function buildTimberHouse({T,world,materials,solids,colliders,cam,getInte
  // The river wrapper reuses this exact semantic assembly without the old map.
  // Baseline collider identity is meaningful only to the original runtime path.
  if(!authoring&&(!originalBounds||Math.abs(originalBounds.min.x-8)>1e-5||Math.abs(originalBounds.max.z+14)>1e-5))throw Error('Timber target baseline identity mismatch');
- const wood=materials.wood.clone();wood.color.set(0xb99b79);wood.roughness=.78;wood.normalScale.set(.5,.5);wood.side=T.DoubleSide;
+ const wood=materials.wood.clone();wood.color.set(0xb99b79);wood.roughness=.72;wood.normalScale.set(1.05,1.05);wood.envMapIntensity=.75;wood.side=T.DoubleSide;
  const woodLight=wood.clone();woodLight.color.set(0xd0b293);
  const woodDark=wood.clone();woodDark.color.set(0x896b4e);
  const cream=materials.plaster.clone();cream.onBeforeCompile=()=>{};cream.color.set(0xd6d4c1);cream.roughness=.86;cream.side=T.DoubleSide;

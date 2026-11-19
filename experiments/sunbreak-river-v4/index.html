@@ -124,6 +124,7 @@ html,body{background:#172229;color:#d5dedc}
 <script type="module">
 import {TACTICAL_SPAWNS,createTacticalAI,enemyHitBounds} from './river/tactical-ai.js';
 import {SHOT_INTERVAL_MS,RELOAD_SECONDS,RELOAD_CUES,reloadProgress,controlTarget,createTrigger} from './river/combat-controls.js';
+import {createShotFeedbackAdapter} from './river/shot-feedback-event.js';
 const E=document.getElementById('err');
 window.onerror=e=>{E.style.display='block';E.textContent='初始化失败 / Error: '+e};
 let THREE;
@@ -384,6 +385,7 @@ document.addEventListener('keydown',()=>{if(sound.snapshot().unlocked)initAudio(
 
 // combat
 const ray=new THREE.Raycaster();const tmp=new THREE.Vector3();
+const shotFeedback=createShotFeedbackAdapter(THREE,solids,()=>visual?.waterTime()||0);
 const tracers=[];
 let tactical=null;
 function fire(){
@@ -403,6 +405,7 @@ function fire(){
   if(p){const d=p.distanceTo(cam.position);if(d<bd){bd=d;best=e}}}
  const end=cam.position.clone().add(dir.multiplyScalar(Math.min(bd,140)));
  tracer(end);
+ visual?.shot(shotFeedback.event({cam,gun,wall,best,end,direction:dir}));
  if(best){best.hp-=Math.random()<.22?60:28;snd('hit');tactical?.hit(best);
   if(best.hp<=0){best.alive=false;best.g.rotation.x=-1.4;best.g.position.y=.35;S.kills++;updHUD();
    if(S.kills>=6){S.state='win';cancelReload();showOver('任务完成','全部 6 名敌对单元已清除。')}}}
@@ -466,6 +469,7 @@ document.getElementById('bPres').onclick=()=>setPres(true);
 document.getElementById('bPresOff').onclick=()=>setPres(false);
 function resetGame(){
  visual?.resetHouse();
+ visual?.resetFeedback();
  cancelReload();S.hp=100;S.mag=30;S.res=90;S.kills=0;S.yaw=-1.35;S.pitch=-.06;S.aim=0;S.aimHold=false;S.next=0;S.reload=0;
  pos.copy(SPAWNPOS);vel.set(0,0,0);vy=0;onGround=true;bob=0;recoil=0;clearKeys();
  enemies.forEach((e,i)=>{e.alive=true;e.hp=100;e.g.rotation.set(0,0,0);e.wg2.rotation.set(0,0,0);e.g.position.set(SPAWN[i][0],0,SPAWN[i][1]);e.cd=1+Math.random()*2;e.ph=Math.random()*6;e.warn=0});

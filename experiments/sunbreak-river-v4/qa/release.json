@@ -1,10 +1,10 @@
 {
-  "schema": "river-downloaded-local-assets-checkpoint-v1",
+  "schema": "river-material-combat-polish-checkpoint-v2",
   "protocol": "offscreen-cinematic-v1",
-  "task": "sunbreak-river-downloaded-assets-2026-11-19",
-  "date": "2026-11-19T07:28:10.154Z",
+  "task": "sunbreak-river-material-combat-polish-2026-11-19",
+  "date": "2026-11-19T09:18:42.617Z",
   "verdict": "BLOCKED",
-  "scope": "Local imported-asset WIP; not AAA/UE5, public release or continuous-motion acceptance.",
+  "scope": "Local WebGL source/evidence WIP only; not Unreal/AAA/public release or continuous-motion acceptance.",
   "sources": {
     "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
     "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
@@ -165,10 +165,12 @@
     "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
     "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
     "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "combat-feedback.js": "dbe1d0b4bc6933bb3e8c0295734bd72633f5eabfcb1a1da18f4a33fa8811601b",
     "credits.html": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d",
     "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
     "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
     "downloaded-dressing.js": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5",
+    "environment-polish.js": "2d176195d9fadd05e8c7107f52f1182806efca8c49554f892ccec53b8834c046",
     "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
     "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
     "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
@@ -176,32 +178,34 @@
     "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
     "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
     "ground-surface-assets.json": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9",
-    "ground-surface.js": "f40e9066a997736f7048be75b84392d00a3f771290b56d387f7f01c8b41a978e",
+    "ground-surface.js": "354540e7efe4306708fc342f08c46dd16a63e99985ac7a2216c997a8e14e262d",
     "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
-    "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
+    "index.html": "6428e9e0da600224dad87cb72d218f76837a0fec465a4623e9787d94e734c314",
     "local-asset-store.mjs": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785",
     "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
-    "masonry-materials.js": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5",
-    "qa/browser.mjs": "36b75b4409b57e2e7fc7714dac2a684decdef3e2ba794cc1d7e4daedd71c2564",
-    "qa/hooks.js": "9197cad1eb320fca9fa8f50250badf4f1ef129e81bc8f37ab0c631bd25340e9a",
+    "masonry-materials.js": "2c990c517db3fc61b78c1c525d3a544d9ca055fc8b6c75dcacfc28fab907180c",
+    "qa/browser.mjs": "50f551358c8f186c52955f45aed1895bcaeb874a8933f1baaaa0f87f84e9b408",
+    "qa/hooks.js": "ef61026bfdadf4a6df634e9159c973427bd30b35900b34bfb9dcc5cafa59165c",
     "qa/source-binding.mjs": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
     "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
     "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
     "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
     "serve.mjs": "1eca6b086895a5fccf4f5485f5e40d484ed353f290eccaf72a3507921dc718a5",
+    "shot-feedback-event.js": "8beec6d099e0d9773b101ad57ffdb980b7e7376b4777993f027d81d6eaf3642b",
     "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "stone-cover.js": "61f6e0b9c39859f691235fe096777236c22d6188d9adec58aca785a063b8078b",
     "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
-    "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
-    "vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
-    "village.js": "49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3",
+    "timber-house.js": "31dcb143860c9bd1dba3f4362909fb9c2c7b378a92937bd0e710814a9361031c",
+    "vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
     "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
-    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "weapon.js": "cffeb71a38a36bb3e0b481ac8ec3faea0049a5b5f42d7f76150326b4d80d3658",
     "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
-    "world.js": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d",
+    "world.js": "ff6fda7190ede858eaa03335520b1432a49b4b27fd457e1fb35b0fb1c61eadc2",
     "local-only/manifest.json": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
     "local-only/castle-wall.glb": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
     "local-only/cement-rubble.glb": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
@@ -217,996 +221,522 @@
     "local-only/woodland-house.glb": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
     "local-only/served-manifest.json": "89af124953d3706e3224bcd45458132675bc06977f42534fa38c9f71720e1bcf"
   },
+  "sourceBindings": {
+    "initialDigest": "b9a487e8ab0dc104c456d0b5032c971fe7e3253d06df8d03f69bb0d43219ea2f",
+    "finalDigest": "b9a487e8ab0dc104c456d0b5032c971fe7e3253d06df8d03f69bb0d43219ea2f",
+    "stable": true,
+    "changedReads": []
+  },
   "functional": true,
-  "reports": {
-    "imported-assets": {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-assets-1.json",
-      "sha256": "1cb5cf2b0dd5af1009ede435d3d434c70d8b3ea96cee6c98a9df92a77f13cdf4",
-      "pass": true,
-      "checks": 3,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true
+  "units": "qa/polish-units.json",
+  "unitsValidation": {
+    "valid": true,
+    "failures": [],
+    "required": 21
+  },
+  "selection": {
+    "reports": {
+      "polish": "qa/evidence/polish-2026-11-19T09-07-08-953Z/polish-1.json",
+      "checks": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-1.json",
+      "cabins": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-1.json",
+      "traversal": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-1.json",
+      "weather": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-1.json",
+      "imported-fallback": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/imported-fallback-1.json"
     },
-    "imported-fallback": {
-      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/imported-fallback-1.json",
-      "sha256": "0ecc2b41fc114f2d0834a84ca94f0e2ba5645f274b269cd1360c58d25aade0f4",
+    "sunnyBenchmark": "qa/evidence/sunny-benchmark-2026-11-19T09-13-49-736Z/sunny-benchmark-1.json",
+    "stormBenchmarks": [
+      "qa/evidence/benchmark-2026-11-19T09-14-55-725Z/benchmark-1.json",
+      "qa/evidence/benchmark-2026-11-19T09-16-09-694Z/benchmark-1.json"
+    ]
+  },
+  "selectionValid": true,
+  "reports": {
+    "polish": {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/polish-1.json",
+      "sha256": "5758e7e0ad29fac88cc72a0a2385ee9414d92b5764562553bfe3e2e328ff9b40",
       "pass": true,
-      "checks": 2,
-      "sourceMismatches": [],
-      "imported": false,
-      "identityValid": true
+      "checks": 14,
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null,
+      "imageMembershipValid": true,
+      "checkContractValid": true,
+      "valid": true
     },
     "checks": {
-      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-1.json",
-      "sha256": "f5bce3739d01514714cb585269455e3a617d06267b77d5efe60868620ffc8519",
+      "path": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-1.json",
+      "sha256": "f319f739ed4f39ffecb2c54bda6e6d5b25a562d2cdb34a84b649567ce9532664",
       "pass": true,
       "checks": 32,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null,
+      "imageMembershipValid": true,
+      "checkContractValid": true,
+      "valid": true
     },
     "cabins": {
-      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-1.json",
-      "sha256": "29310dd3d775ec049790aa3dc14b2c39e22044bb47d7ceae1d3ba8a36ad675e2",
+      "path": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-1.json",
+      "sha256": "09e14977511eefcd27a9c3d26ffbbc203f6872674c9f90f28e89e4afe20672e0",
       "pass": true,
       "checks": 17,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null,
+      "imageMembershipValid": true,
+      "checkContractValid": true,
+      "valid": true
     },
     "traversal": {
-      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-1.json",
-      "sha256": "eb0515ffbb78a566baa5c3f2388e54082cf979f4f5e0a696dda8e9db9f019432",
+      "path": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-1.json",
+      "sha256": "37bfc45901acfccb640338b3f7fa32077ab7b14036ccf2080a1f6226db292be9",
       "pass": true,
       "checks": 54,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null,
+      "imageMembershipValid": true,
+      "checkContractValid": true,
+      "valid": true
     },
     "weather": {
-      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-1.json",
-      "sha256": "6df0415d1eadd8a4d9109be83699b11928c34250dee53672d6a14881bb82907f",
+      "path": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-1.json",
+      "sha256": "961c9cad8109ff3c8bb9bc88e2c229ef2a534b732e3e75238458ed7ab1593e3a",
       "pass": true,
       "checks": 4,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null,
+      "imageMembershipValid": true,
+      "checkContractValid": true,
+      "valid": true
+    },
+    "imported-fallback": {
+      "path": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/imported-fallback-1.json",
+      "sha256": "92dffbd6e0e6995d23f05e5d3f4e863c5db1aac4d3e64ea5ac443219d73d33e1",
+      "pass": true,
+      "checks": 2,
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null,
+      "imageMembershipValid": true,
+      "checkContractValid": true,
+      "valid": true
     },
     "sunny-benchmark": {
-      "path": "qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
-      "sha256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf",
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T09-13-49-736Z/sunny-benchmark-1.json",
+      "sha256": "71e91b6f9a4c161da4cc9529b8fba2cce15abad635932e67d69fefc643463617",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true,
+      "initialSourceMismatches": [],
+      "finalSourceMismatches": [],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null,
       "weather": 0,
-      "duration": 30018.8,
-      "p50": 17.89999999999418,
-      "p95": 35.60000000000582,
-      "p99": 36.400000000001455,
-      "max": 89,
-      "over50": 10,
       "viewport": [
         1920,
         1080
       ],
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true
+      "duration": 30020.800000000003,
+      "p95": 35.799999999995634,
+      "p99": 36.599999999998545,
+      "max": 71.59999999999854,
+      "over50": 10,
+      "timelineValid": true,
+      "workloadValid": true,
+      "valid": true
     },
     "benchmark": [
       {
-        "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
-        "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9",
+        "path": "qa/evidence/benchmark-2026-11-19T09-14-55-725Z/benchmark-1.json",
+        "sha256": "48b8fafda787b62e501ac6f35bd1e40fe75a2642b5164e033accb682fd059c77",
         "pass": false,
         "checks": 2,
-        "sourceMismatches": [],
-        "imported": true,
-        "identityValid": true,
+        "initialSourceMismatches": [],
+        "finalSourceMismatches": [],
+        "localAssetsValid": true,
+        "errors": [],
+        "resultFailures": [
+          "30s actual combat reload native WebGL sample"
+        ],
+        "failure": null,
         "weather": 2,
-        "duration": 30023.699999999997,
-        "p50": 17.80000000000291,
-        "p95": 35.69999999999709,
-        "p99": 36.80000000000291,
-        "max": 71.39999999999418,
-        "over50": 8,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "workloadVerified": true,
-        "timelineVerified": true
+        "duration": 30029,
+        "p95": 35.80000000000291,
+        "p99": 36.5,
+        "max": 338.6999999999971,
+        "over50": 8,
+        "timelineValid": true,
+        "workloadValid": true,
+        "valid": true
       },
       {
-        "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
-        "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725",
+        "path": "qa/evidence/benchmark-2026-11-19T09-16-09-694Z/benchmark-1.json",
+        "sha256": "0adba19283cbdc98102c1484f448fb2f5263d4c93089287777d2b94080a084de",
         "pass": false,
         "checks": 2,
-        "sourceMismatches": [],
-        "imported": true,
-        "identityValid": true,
+        "initialSourceMismatches": [],
+        "finalSourceMismatches": [],
+        "localAssetsValid": true,
+        "errors": [],
+        "resultFailures": [
+          "30s actual combat reload native WebGL sample"
+        ],
+        "failure": null,
         "weather": 2,
-        "duration": 30015.899999999998,
-        "p50": 17.80000000000291,
-        "p95": 35.799999999995634,
-        "p99": 36.799999999995634,
-        "max": 71.30000000000291,
-        "over50": 11,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "workloadVerified": true,
-        "timelineVerified": true
+        "duration": 30034.399999999994,
+        "p95": 35.900000000001455,
+        "p99": 37.30000000000291,
+        "max": 229.3000000000029,
+        "over50": 13,
+        "timelineValid": true,
+        "workloadValid": true,
+        "valid": true
       }
     ]
   },
   "visuals": [
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.png",
-      "sha256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.png",
+      "sha256": "60775d903fc53bef400feeed0dad04ff3f163a6d5165b9f791f26fdd23ece62c",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.json",
+      "stateSHA256": "f62c583290d379732cc380db0dc4c0b6415f632cf3e719e4bf2035125444cfe3",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.json",
-      "stateSHA256": "64fc1f1562655955e275d6ccc536a886bdf2748fb87dbcffa1105d299d8a846a",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.png",
-      "sha256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.png",
+      "sha256": "77c02c6992d8f3535fd0c3086406816f28391944bd82917cb93d90b89ebcc46a",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.json",
+      "stateSHA256": "cd2de43e46a10c5c6b1711c6f98738af7fa01e103b299d3f30d44ee11010bb61",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.json",
-      "stateSHA256": "3661d23f9b28e550ae2f380a4842de1f7c90e934d19f6be35577731f0efe5e0f",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.png",
-      "sha256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.png",
+      "sha256": "2f12fb4c3e149e51943515754a1e3ba932d8bfa9006321aed50a53927a4ce24d",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.json",
+      "stateSHA256": "12b467f74c36eef449d3261ca1fa2834e50e9a19d49cb53df7ba961ec5587bc4",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.json",
-      "stateSHA256": "cc39da66abb50e9bbceda8afc9e8a9616b19900b630536ed53903065c5231f16",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.png",
-      "sha256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.png",
+      "sha256": "5b538ec6c99bd8a9f73f17ca69031bd1cd48679da25eae76d2dd36c7cc7362c9",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.json",
+      "stateSHA256": "d054e0be604129428885bfc12edba8fb7549c0833106f88be4bd437f78830c70",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.json",
-      "stateSHA256": "2a4f3a7b0dd23c70d2c93c0d6861bfd0b9f0b58fa48d56638b35a8f6e3c3c741",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.png",
-      "sha256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.png",
+      "sha256": "6851a6ed01be39b26bce21e67a6931ad857fcb0062dcca7a49f6318be4befa86",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.json",
+      "stateSHA256": "8a57a9a67ec5275bb825286025a3f991a897eb536fd956174bfa2af6d3a5a9f0",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.json",
-      "stateSHA256": "8381c384991ac4bd7e9890ccf0082286db5d0120cfd4ddb18b39a6a416471909",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.png",
-      "sha256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.png",
+      "sha256": "443b4ca26bebe1ddfdc0b1b91cb21d7c4a0a8fea66873607b6c3b65a8faf83f6",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.json",
+      "stateSHA256": "d0e33ef55290559a78614e81629437c7e787db1fc4413f7ab7ae257fac87b436",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.json",
-      "stateSHA256": "298b6e93017d805746e339ef69aa0aa1099662dc666097edfaac685ca893ed15",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.png",
-      "sha256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.png",
+      "sha256": "f10a383b1637cc92f52c86be8d0c6e8155f08fc2de20a17507cc348e7b9aef10",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.json",
+      "stateSHA256": "19664506ddcc22175c177489756ef6382c861bfbd3ce1596d69c2414a8fbb591",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.json",
-      "stateSHA256": "213a90ac98ed583dc0f97b99caf9974b14489be9c7d7a39a8803484fd5bc1ec0",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.png",
-      "sha256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.png",
+      "sha256": "34a89dbfedb439dd01820f32ab879764c33ffe92adfad89f53df1b2d5df02427",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.json",
+      "stateSHA256": "3b1f2c6b1bc7cc97ca1fa2a223c0705161675f8721760d6f83bd88301290eeb9",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.json",
-      "stateSHA256": "5bdad479aab27a90321556174c5fdf2e1d0b686040342987c28b6376e79daacf",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.png",
-      "sha256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.png",
+      "sha256": "b8238c76982f8e0b56c7f640f3a8a7cd1166124cc94ad1eb0f9ccd7e866cc544",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.json",
+      "stateSHA256": "2cbfa9989ff407ca433a1221e09dc0c66d501284cc81a96fc8036dcbc7fe2d45",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.json",
-      "stateSHA256": "a735728f45053d011a31f5b6f5b7c223d35f00b313eee2cecc5f8b3d9701c7bd",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.png",
-      "sha256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.png",
+      "sha256": "834c43e9c8bd4ba2b517cf0ba323fd29dbf1106d8a98c4728f514646ed1480ae",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.json",
+      "stateSHA256": "e4747f412a10a8705c38bc49edeabafee8a9a9f5135d2757ae9eaee3b066f314",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.json",
-      "stateSHA256": "77d89cbf2b5563b529aeee51d83da88c49d1b2a59dd5a92e777aa9b30f4635ae",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.png",
-      "sha256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.png",
+      "sha256": "cb32a96a9ba154d33d653455982f2c899fbf024a013d825b530c4a5d4a206edf",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.json",
+      "stateSHA256": "0a02eb9ea7ac5bfc8fd02df73c36b4d38ea10e6e0e02b21b6e6d6604d670ca7b",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.json",
-      "stateSHA256": "29ce7cf69561772b17a794777e0f2f8ec2cd844343f7cfdc338f5d66fb09d65e",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.png",
-      "sha256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.png",
+      "sha256": "7407df5853db9201c16be0ac0e709ec9a7f1cd6bdeedb224f765b5c675c26ae8",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.json",
+      "stateSHA256": "cc30cfd83afbdd64fe105758a5607508cb5920614e9696d2c223c65c71cf897b",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.json",
-      "stateSHA256": "a6b2fedb5993f52a03ae895808dd1b92fd68868df8a0d54eb08a6304a9e8ac2f",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
-      "sha256": "03372b2a2fc362bb029c5e4b5b116340f9b4d30864effb57d1c0275152a29da0",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.png",
+      "sha256": "27c642ae2f300bdd00bca749cb37fda4ce2f7bd3cb9fff2c0e6695f1d91e7ea4",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.json",
+      "stateSHA256": "c0c268c72be31acebcfae81641efe252a4d9d442092ef79b77a226002658750a",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.json",
-      "stateSHA256": "f89ae0d836a5b4a803725c1ca7db04e372f8ee17644639b31800a6f4d396389c",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
-      "sha256": "ffb0244d38dee23d64237f90f60da191014c58ff485278ec2b64fbebe4bc15dc",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.png",
+      "sha256": "bd61361d1f3eec5a1fa75d1e9b90d70811087a26d6ca4fd727a14936c7111742",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.json",
+      "stateSHA256": "78899092578c33a6b5eb4844e7bb1867be06360b79b01022a0999ccdc9c23037",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.json",
-      "stateSHA256": "c564881f7409aea2716df2511e2c51b74e35edb92f3e394fc83b86316ae7669d",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
-      "sha256": "1aa35afbe4e260e6a116af47d4713e23e2a411962dc8564d159a7310c0070919",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.png",
+      "sha256": "8e79a025ca099455e55aa05619897d4bebc2786f2a5008d6b2d7409bf532bae6",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.json",
+      "stateSHA256": "6e3b20cadd7f1bbe7b126c93caa2384a84eea720db67f3c3faf4bbb640ff8b51",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.json",
-      "stateSHA256": "500c77cac2ca8200d8923bbd7e09a74eb68cd79efdb27749218fc928173dbd7a",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
-      "sha256": "f056a5651d1e1e1e99e182a78bb8e583ee74f3191c1fe2395b1482ee85401cf2",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.png",
+      "sha256": "36631cd2b8737c8ff87614ff72381a740e884c65e3610c00cdbdf5eb10f571c3",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.json",
+      "stateSHA256": "61b34f4c5c50ca937291a8151b174f88178a6f0ce128776f7c3b3aa23c9eb5b4",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.json",
-      "stateSHA256": "87a46c4dcc0114e9da75653cbe5959308fe772b59a3063d10ec1dea33c249f02",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
-      "sha256": "bb1c58023d134d9e33eed48bfa3ee7cb263de3ab06641388d38ae51a22c06df8",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.png",
+      "sha256": "6a26bf5ecb6e9932408e4ef8c038f14aaaf66d27089f9148f1fde06ca2952204",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.json",
+      "stateSHA256": "79b95d430bc00b46991e5c101240529f1d61727a73f266e40d0981f5f26ac95b",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.json",
-      "stateSHA256": "956088f43646becd838c283474bde53d77f251446100ad955a0d094e7061f2cd",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
-      "sha256": "d3c23779cf104e1ce5db98c018256f21155f30cd3e899c4bb36ff6aa086e76da",
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.png",
+      "sha256": "08cf201d4a73f5ab3496d801714c696df41b8b96e481da80e885ef3fdb7f6fca",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.json",
+      "stateSHA256": "f91f4ecc80aaee3fdc7ef401eab0fae839fd5ce93d5e2bf11d2edebb8d8acec5",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.json",
-      "stateSHA256": "87a2bf75ea4c835584d96220478d96e635e1062688adcd665547261ea7253c29",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
-      "sha256": "90fd8a7316d824276d9874cbbe7af5fe37173cd50b76b652d8eb7ddc712db519",
+      "path": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-final.png",
+      "sha256": "eec6368136a2ade06f55b5188c95d41f0ec2ea6925bb6121b0034c8f2231a382",
+      "statePath": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-final.json",
+      "stateSHA256": "93bfc9cb04b688170924088649146ce564ca56d69b260872826b246481e74c05",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.json",
-      "stateSHA256": "996070dfbb06e0b43aeae63cfb2370402eadd0ffe7f3146156dfbd13c6657a0c",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
-      "sha256": "66c9bd2f2471abc0d13645d898dd68b1be5a5226df5dda306ed6c0e43b37de79",
+      "path": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-final.png",
+      "sha256": "f7027debaaec49743a2e09f1ba17d37c06193dfc49530a31a6a2a79e6d4e1eef",
+      "statePath": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-final.json",
+      "stateSHA256": "bbee688e1961956e3d58dc54c619257966cabe1947e9b7ff33117b2be75877c7",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.json",
-      "stateSHA256": "d9346ed7f6243f84387ebd47c6c3a98887c28d2d5e5f94c2dab5e4fd8dbf76e7",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
-      "sha256": "3cd62c1d22b496ffdfbd835d6627619b896c5ef78cf30e9943e1c79d3c3cfc22",
+      "path": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-final.png",
+      "sha256": "433435f498586eb7b8ea392fa7f77e12dc7b83d6909a69d41ac94b34c3471441",
+      "statePath": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-final.json",
+      "stateSHA256": "e0fcb2b0f032d13be767349555789ed1cdd367426e2cf61389f83a61ea82bd4a",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.json",
-      "stateSHA256": "43ba4749f7205ff458d4beb12afde4c80f5b60cb4e8589722cae219c75976c89",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.png",
-      "sha256": "7d9248b7168c9e4da85584128e76e725a89589b4b40da5d84095d0a4f834d742",
+      "path": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-sunny.png",
+      "sha256": "aae311ee3e90dcdbcb47fba1b684ff96aa032146058da0b89ca5dacf7e438679",
+      "statePath": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-sunny.json",
+      "stateSHA256": "1a2bed9b9ba68f34e50a64a2dc1dccd324f6a32a739cc557e17a2f81ecc153c7",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.json",
-      "stateSHA256": "beeb239ac073224fe186f649600b6f2b01941f9ba9464936e53e796296e888f6",
       "sourceMismatches": [],
-      "imported": false,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     },
     {
-      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.png",
-      "sha256": "b2e582f6e7ce772147c9fbdecf5ca6392648e38d36a87c111c0caedc6feeb755",
+      "path": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/fallback-path.png",
+      "sha256": "a3efa27b5935942d2e2edc571454bed6387934c2da4399ec08861f1005bd01a7",
+      "statePath": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/fallback-path.json",
+      "stateSHA256": "38403bdeaba38e6eda9a0cd635b22e3f58fa3b95402be23c5dbd91603cacd0e8",
       "width": 1920,
       "height": 1080,
-      "statePath": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.json",
-      "stateSHA256": "02a4a927fab81ebb2ef0ad914e97a2c24f66d08fa36ecbf1c11e622eaf690dc9",
       "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.png",
-      "sha256": "ac2b4386d0d9b6fc8a0c635f30e41b00228a4e86406fe031b2c64d00cce5dea8",
-      "width": 1920,
-      "height": 1080,
-      "statePath": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.json",
-      "stateSHA256": "324bf605861b2496d3cc579a290a8f6c3a144bbb4540fe29a5495a4fc8cfaeb5",
-      "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.png",
-      "sha256": "aa859e694a9a61cbd40c60ed00e7c0cdae2585c3bbcf151fa86739612cdfaca2",
-      "width": 1920,
-      "height": 1080,
-      "statePath": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.json",
-      "stateSHA256": "185f7025d692fe805ac38c9d47a80ae76f0aee6f81057d18047f9148dbf9cae9",
-      "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
-    },
-    {
-      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.png",
-      "sha256": "75d86b9a9ff75d89e7a646c3d801c6b891f72a56dac265ebeb7f78106fcbc15a",
-      "width": 1920,
-      "height": 1080,
-      "statePath": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.json",
-      "stateSHA256": "6be8768e7ded46474e88ef7554e1ed9e3773c55c49d2078d7a7efc81d8f6355c",
-      "sourceMismatches": [],
-      "imported": true,
-      "consumedCurrent": true
+      "localAssetsValid": true,
+      "stateValid": true,
+      "valid": true
     }
   ],
   "retained": [
     {
-      "path": "qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-assets-1.json",
-      "sha256": "c9d01e127c5f7934ed054b55ae2dfbf1634a114a68b1421295f64a3e8f7e1a32",
-      "pass": false,
-      "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "qa/browser.mjs",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/cement-rubble-small.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "imported": true,
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-assets-1.json",
-      "sha256": "83f1d1c7aec11460ced5083f5fbaead728fb81c14e812e444ec718f5f24368f1",
-      "pass": false,
-      "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "qa/browser.mjs",
-        "local-only/manifest.json",
-        "local-only/cement-rubble-small.glb",
-        "local-only/served-manifest.json"
-      ],
-      "imported": true,
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-assets-1.json",
-      "sha256": "a1d19e768e2a9a08f9fe2e89c803594d470d7f1d0711a31df2a024a595db933f",
+      "path": "qa/evidence/quick-2026-11-19T08-37-47-703Z/quick-1.json",
+      "sha256": "6096590943888305549651edf3bfc91fc66f3300c06df4c15374c10a75025b04",
       "pass": true,
-      "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "qa/browser.mjs"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-assets-1.json",
-      "sha256": "710302283468f4745e1fe4f794f07cb7b40b15f6692898189ac3e80f2418e706",
-      "pass": true,
-      "checks": 3,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-assets-1.json",
-      "sha256": "1861911778dfcc074b493b85391be9a722003a6a8724f9daf3a3763614a7d793",
-      "pass": true,
-      "checks": 3,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/imported-fallback-1.json",
-      "sha256": "63f7d1b3fece2f1da880004aa61d43f87e76a3ffa4599c5a7243dbdd0bd137aa",
-      "pass": true,
-      "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": false,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-1.json",
-      "sha256": "d02672bf69adf2d5406097f46d9a5724208f28b01db9b01e8f1d89586687d097",
-      "pass": false,
-      "checks": 32,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "ruins.js",
-        "serve.mjs",
-        "village.js",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-1.json",
-      "sha256": "ae9a37dde03eb08b72ce5c468385af8ac6520242d6002c1370a2ed0a1882c4a8",
-      "pass": false,
-      "checks": 32,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-1.json",
-      "sha256": "efc00c38c0938335d21f742f98fadf0e6612a8532ea2a5bbf0932cecce84cea2",
-      "pass": false,
-      "checks": 32,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-1.json",
-      "sha256": "c2afb029aee720bf708dd173ab585f19d4007dd0f6031ec6a16f1c0d4eded059",
-      "pass": true,
-      "checks": 32,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-1.json",
-      "sha256": "a7b0ba16166b6963ae3f0c4c1f1e4ab0e7324a280fe858714a56d246067c61ce",
-      "pass": false,
-      "checks": 17,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "ruins.js",
-        "serve.mjs",
-        "village.js",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-1.json",
-      "sha256": "54b850fe26c7740571dd7d0cd8972443eca0b1ea7243c7795970bc22c79b6c28",
-      "pass": false,
-      "checks": 17,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-1.json",
-      "sha256": "9e07e297202cfa525cc3f647c5c77bf0bc0a98f14465a812c808feba491beae5",
-      "pass": false,
-      "checks": 17,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-1.json",
-      "sha256": "e6483780b5a931d265aa1d70bf7faa10bb3bb795e4c6c16f87ce47b2df2c1710",
-      "pass": true,
-      "checks": 17,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-1.json",
-      "sha256": "25da94c9fa2bde83160fa8fa4d8b54bdc076a5c2e68ba35734d22c95d410de35",
-      "pass": false,
-      "checks": 54,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "ruins.js",
-        "serve.mjs",
-        "village.js",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-1.json",
-      "sha256": "e9baf33cb17ae1ce4519ec7bd846f693613f6e56b9d310c3df33a4e07b10ef06",
-      "pass": false,
-      "checks": 54,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-1.json",
-      "sha256": "53790db37a769cfd2705920abba543795a1c3bbee5ef0dc13e2b6bc1cc7a71de",
-      "pass": false,
-      "checks": 54,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-1.json",
-      "sha256": "4744f0f11473c55699289c4ac9dd7152b0322498b108a6fa1a83af1800577f65",
-      "pass": true,
-      "checks": 54,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-1.json",
-      "sha256": "7e70956dd4a8a4b5e4281278d594cb08501cc3f9469cfffaba8268ddccc309ac",
-      "pass": false,
-      "checks": 4,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "masonry-materials.js",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "ruins.js",
-        "serve.mjs",
-        "village.js",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-1.json",
-      "sha256": "33b00f46f272866c85e62a29d2cbfa0c232a1e5b840f5e5bdb939ba10d6a6941",
-      "pass": false,
-      "checks": 4,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-1.json",
-      "sha256": "298c5ce4ac308b00bd23f8ad1f111daab71b9a95f6e376a6b1ff72734f5e6e1e",
-      "pass": true,
-      "checks": 4,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/sunny-benchmark-2026-11-19T04-31-56-241Z/sunny-benchmark-1.json",
-      "sha256": "5232fb0b4cb34ced978db9446169dd8646accd7190bef5456fa5c894a285dcab",
-      "pass": false,
-      "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js",
-        "local-asset-store.mjs",
-        "qa/browser.mjs",
-        "qa/hooks.js",
-        "qa/source-binding.mjs",
-        "serve.mjs",
-        "world.js",
-        "local-only/manifest.json",
-        "local-only/castle-wall.glb",
-        "local-only/cement-rubble.glb",
-        "local-only/cement-rubble-small.glb",
-        "local-only/grass-clumps-a.glb",
-        "local-only/grass-clumps-b.glb",
-        "local-only/grass-clumps-c.glb",
-        "local-only/mossy-wall-a.glb",
-        "local-only/mossy-wall-b.glb",
-        "local-only/tundra-grass-a.glb",
-        "local-only/tundra-grass-d.glb",
-        "local-only/tundra-grass-h.glb",
-        "local-only/woodland-house.glb",
-        "local-only/served-manifest.json"
-      ],
-      "identityValid": false,
-      "weather": 0,
-      "duration": 30016.6,
-      "p50": 16.69999999999709,
-      "p95": 16.799999999995634,
-      "p99": 16.80000000000291,
-      "max": 50,
-      "over50": 0,
-      "viewport": [
-        1920,
-        1080
-      ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
-    },
-    {
-      "path": "qa/evidence/sunny-benchmark-2026-11-19T06-57-00-583Z/sunny-benchmark-1.json",
-      "sha256": "bb506012ab7ff8a563f17a636802042e5f350217a528dd0fd7100c40479e644d",
-      "pass": false,
-      "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
-      ],
-      "imported": true,
-      "identityValid": true,
-      "weather": 0,
-      "duration": 30024.1,
-      "p50": 17.900000000001455,
-      "p95": 35.700000000004366,
-      "p99": 36.5,
-      "max": 71.60000000000582,
-      "over50": 8,
-      "viewport": [
-        1920,
-        1080
-      ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+      "status": "INTERMEDIATE QUICK DIAGNOSTIC ONLY — never final acceptance",
+      "failure": null
     },
     {
       "path": "qa/evidence/benchmark-2026-11-19T04-32-59-668Z/benchmark-1.json",
       "sha256": "ece1b7025f4acd91654c953d42fb360c3a4efa971352cc7b778810bb2dc9748f",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [
+      "initialSourceMismatches": [
+        "combat-feedback.js",
         "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
         "local-asset-store.mjs",
+        "masonry-materials.js",
         "qa/browser.mjs",
         "qa/hooks.js",
         "qa/source-binding.mjs",
         "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
         "world.js",
         "local-only/manifest.json",
         "local-only/castle-wall.glb",
@@ -1223,35 +753,70 @@
         "local-only/woodland-house.glb",
         "local-only/served-manifest.json"
       ],
-      "identityValid": false,
-      "weather": 2,
-      "duration": 30016.300000000003,
-      "p50": 16.69999999999709,
-      "p95": 16.80000000000291,
-      "p99": 16.80000000000291,
-      "max": 66.69999999999709,
-      "over50": 2,
-      "viewport": [
-        1920,
-        1080
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
     },
     {
       "path": "qa/evidence/benchmark-2026-11-19T04-34-12-736Z/benchmark-1.json",
       "sha256": "8ee9eed3ded06adfda315fbb266fc971ecd6a483792fd382e59182d0e97b07f6",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [
+      "initialSourceMismatches": [
+        "combat-feedback.js",
         "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
         "local-asset-store.mjs",
+        "masonry-materials.js",
         "qa/browser.mjs",
         "qa/hooks.js",
         "qa/source-binding.mjs",
         "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
         "world.js",
         "local-only/manifest.json",
         "local-only/castle-wall.glb",
@@ -1268,315 +833,2166 @@
         "local-only/woodland-house.glb",
         "local-only/served-manifest.json"
       ],
-      "identityValid": false,
-      "weather": 2,
-      "duration": 30016.5,
-      "p50": 16.69999999999709,
-      "p95": 16.80000000000291,
-      "p99": 16.89999999999418,
-      "max": 66.70000000000437,
-      "over50": 3,
-      "viewport": [
-        1920,
-        1080
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
     },
     {
       "path": "qa/evidence/benchmark-2026-11-19T06-58-06-607Z/benchmark-1.json",
       "sha256": "8861a16b8bf2c6cc16c50d4624c2585391528879cd50e20dd1ee1a08324dc265",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "imported": true,
-      "identityValid": true,
-      "weather": 2,
-      "duration": 30027.699999999997,
-      "p50": 17.900000000001455,
-      "p95": 35.80000000000291,
-      "p99": 52.200000000004366,
-      "max": 641,
-      "over50": 13,
-      "viewport": [
-        1920,
-        1080
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
     },
     {
       "path": "qa/evidence/benchmark-2026-11-19T06-59-24-397Z/benchmark-1.json",
       "sha256": "584bd5f4bdbffd36a8a6d33baf097c9317b12ae5b80214decb6e9d9ecdb04ac7",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "imported": true,
-      "identityValid": true,
-      "weather": 2,
-      "duration": 30030.699999999997,
-      "p50": 17.900000000001455,
-      "p95": 35.799999999995634,
-      "p99": 36.599999999998545,
-      "max": 71.19999999999709,
-      "over50": 11,
-      "viewport": [
-        1920,
-        1080
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
     },
     {
       "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
       "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true,
-      "weather": 2,
-      "duration": 30023.699999999997,
-      "p50": 17.80000000000291,
-      "p95": 35.69999999999709,
-      "p99": 36.80000000000291,
-      "max": 71.39999999999418,
-      "over50": 8,
-      "viewport": [
-        1920,
-        1080
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "FAILED CURRENT RUN RETAINED"
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
     },
     {
       "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
       "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [],
-      "imported": true,
-      "identityValid": true,
-      "weather": 2,
-      "duration": 30015.899999999998,
-      "p50": 17.80000000000291,
-      "p95": 35.799999999995634,
-      "p99": 36.799999999995634,
-      "max": 71.30000000000291,
-      "over50": 11,
-      "viewport": [
-        1920,
-        1080
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "FAILED CURRENT RUN RETAINED"
-    }
-  ],
-  "diagnostics": [
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-1.json",
+      "sha256": "a7b0ba16166b6963ae3f0c4c1f1e4ab0e7324a280fe858714a56d246067c61ce",
+      "pass": true,
+      "checks": 17,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-1.json",
+      "sha256": "54b850fe26c7740571dd7d0cd8972443eca0b1ea7243c7795970bc22c79b6c28",
+      "pass": true,
+      "checks": 17,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-1.json",
+      "sha256": "9e07e297202cfa525cc3f647c5c77bf0bc0a98f14465a812c808feba491beae5",
+      "pass": true,
+      "checks": 17,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-1.json",
+      "sha256": "e6483780b5a931d265aa1d70bf7faa10bb3bb795e4c6c16f87ce47b2df2c1710",
+      "pass": true,
+      "checks": 17,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-1.json",
+      "sha256": "29310dd3d775ec049790aa3dc14b2c39e22044bb47d7ceae1d3ba8a36ad675e2",
+      "pass": true,
+      "checks": 17,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-1.json",
+      "sha256": "d02672bf69adf2d5406097f46d9a5724208f28b01db9b01e8f1d89586687d097",
+      "pass": true,
+      "checks": 32,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-1.json",
+      "sha256": "ae9a37dde03eb08b72ce5c468385af8ac6520242d6002c1370a2ed0a1882c4a8",
+      "pass": true,
+      "checks": 32,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-1.json",
+      "sha256": "efc00c38c0938335d21f742f98fadf0e6612a8532ea2a5bbf0932cecce84cea2",
+      "pass": true,
+      "checks": 32,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-1.json",
+      "sha256": "c2afb029aee720bf708dd173ab585f19d4007dd0f6031ec6a16f1c0d4eded059",
+      "pass": true,
+      "checks": 32,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-1.json",
+      "sha256": "f5bce3739d01514714cb585269455e3a617d06267b77d5efe60868620ffc8519",
+      "pass": true,
+      "checks": 32,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/imported-fallback-1.json",
+      "sha256": "63f7d1b3fece2f1da880004aa61d43f87e76a3ffa4599c5a7243dbdd0bd137aa",
+      "pass": true,
+      "checks": 2,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/imported-fallback-1.json",
+      "sha256": "0ecc2b41fc114f2d0834a84ca94f0e2ba5645f274b269cd1360c58d25aade0f4",
+      "pass": true,
+      "checks": 2,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/polish-failure-1.json",
+      "sha256": "9d146a7036f2faafcf9496f18b46df1f87c5d459b78ed633c31ef1660289d67a",
+      "pass": false,
+      "checks": 5,
+      "initialSourceMismatches": [
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "qa/browser.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "earth-impact real accepted shot with correct impact/miss"
+      ],
+      "failure": "Error: FAIL earth-impact real accepted shot with correct impact/miss\n    at check (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:38:107)\n    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/browser.mjs:82:4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/polish-1.json",
+      "sha256": "7ceb9e1e4edb3a748e654eafe1d347a11deef8e8ed9b373d96198b73a5694d45",
+      "pass": true,
+      "checks": 13,
+      "initialSourceMismatches": [
+        "qa/browser.mjs",
+        "shot-feedback-event.js",
+        "weapon.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T04-31-56-241Z/sunny-benchmark-1.json",
+      "sha256": "5232fb0b4cb34ced978db9446169dd8646accd7190bef5456fa5c894a285dcab",
+      "pass": true,
+      "checks": 2,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T06-57-00-583Z/sunny-benchmark-1.json",
+      "sha256": "bb506012ab7ff8a563f17a636802042e5f350217a528dd0fd7100c40479e644d",
+      "pass": false,
+      "checks": 2,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
+    },
     {
       "path": "qa/evidence/sunny-benchmark-2026-11-19T07-03-33-456Z/sunny-benchmark-1.json",
       "sha256": "3a16cdd05d8f039ae4c16bea9777784b8af15e1ef29e2cf5fc7cd9a878a50764",
       "pass": false,
       "checks": 2,
-      "sourceMismatches": [
-        "downloaded-dressing.js"
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "imported": false,
-      "identityValid": false,
-      "weather": 0,
-      "duration": 30009.300000000003,
-      "p50": 17.599999999998545,
-      "p95": 18.30000000000291,
-      "p99": 18.599999999998545,
-      "max": 59.5,
-      "over50": 3,
-      "viewport": [
-        1920,
-        1080
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
       ],
-      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "workloadVerified": true,
-      "timelineVerified": true,
-      "status": "DIAGNOSTIC ONLY: layer differs from acceptance target"
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
+      "sha256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf",
+      "pass": false,
+      "checks": 2,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [
+        "30s actual combat reload native WebGL sample"
+      ],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-1.json",
+      "sha256": "25da94c9fa2bde83160fa8fa4d8b54bdc076a5c2e68ba35734d22c95d410de35",
+      "pass": true,
+      "checks": 54,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-1.json",
+      "sha256": "e9baf33cb17ae1ce4519ec7bd846f693613f6e56b9d310c3df33a4e07b10ef06",
+      "pass": true,
+      "checks": 54,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-1.json",
+      "sha256": "53790db37a769cfd2705920abba543795a1c3bbee5ef0dc13e2b6bc1cc7a71de",
+      "pass": true,
+      "checks": 54,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-1.json",
+      "sha256": "4744f0f11473c55699289c4ac9dd7152b0322498b108a6fa1a83af1800577f65",
+      "pass": true,
+      "checks": 54,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-1.json",
+      "sha256": "eb0515ffbb78a566baa5c3f2388e54082cf979f4f5e0a696dda8e9db9f019432",
+      "pass": true,
+      "checks": 54,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-1.json",
+      "sha256": "7e70956dd4a8a4b5e4281278d594cb08501cc3f9469cfffaba8268ddccc309ac",
+      "pass": true,
+      "checks": 4,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-1.json",
+      "sha256": "33b00f46f272866c85e62a29d2cbfa0c232a1e5b840f5e5bdb939ba10d6a6941",
+      "pass": true,
+      "checks": 4,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": false,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-1.json",
+      "sha256": "298c5ce4ac308b00bd23f8ad1f111daab71b9a95f6e376a6b1ff72734f5e6e1e",
+      "pass": true,
+      "checks": 4,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "downloaded-dressing.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-1.json",
+      "sha256": "6df0415d1eadd8a4d9109be83699b11928c34250dee53672d6a14881bb82907f",
+      "pass": true,
+      "checks": 4,
+      "initialSourceMismatches": [
+        "combat-feedback.js",
+        "environment-polish.js",
+        "ground-surface.js",
+        "index.html",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "shot-feedback-event.js",
+        "stone-cover.js",
+        "timber-house.js",
+        "vegetation.js",
+        "village.js",
+        "weapon.js",
+        "world.js"
+      ],
+      "finalSourceMismatches": null,
+      "localAssetsValid": true,
+      "errors": [],
+      "resultFailures": [],
+      "failure": null
     }
   ],
-  "units": "qa/downloaded-units.json",
-  "inventory": "qa/downloaded-asset-inventory.json",
-  "review": "qa/downloaded-review.json",
-  "reviewStatus": "CONDITIONAL PASS - LOCAL WIP ONLY",
-  "reviewBinding": {
-    "sourceValid": true,
-    "evidence": [
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
-        "valid": true
-      },
-      {
-        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
-        "valid": true
-      }
-    ],
-    "coverage": true,
-    "valid": true
-  },
-  "publicPackage": {
-    "path": "qa/downloaded-package.json",
-    "current": true
-  },
+  "allEvidence": [
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T04-32-59-668Z/benchmark-1.json",
+      "sha256": "ece1b7025f4acd91654c953d42fb360c3a4efa971352cc7b778810bb2dc9748f"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T04-34-12-736Z/benchmark-1.json",
+      "sha256": "8ee9eed3ded06adfda315fbb266fc971ecd6a483792fd382e59182d0e97b07f6"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T06-58-06-607Z/benchmark-1.json",
+      "sha256": "8861a16b8bf2c6cc16c50d4624c2585391528879cd50e20dd1ee1a08324dc265"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T06-59-24-397Z/benchmark-1.json",
+      "sha256": "584bd5f4bdbffd36a8a6d33baf097c9317b12ae5b80214decb6e9d9ecdb04ac7"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
+      "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
+      "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T09-14-55-725Z/benchmark-1.json",
+      "sha256": "48b8fafda787b62e501ac6f35bd1e40fe75a2642b5164e033accb682fd059c77"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T09-16-09-694Z/benchmark-1.json",
+      "sha256": "0adba19283cbdc98102c1484f448fb2f5263d4c93089287777d2b94080a084de"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-1.json",
+      "sha256": "a7b0ba16166b6963ae3f0c4c1f1e4ab0e7324a280fe858714a56d246067c61ce"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-final.json",
+      "sha256": "d683f51f35b34bcda220f8a183e86322030dabca40857b2198b99da04486677b"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-final.png",
+      "sha256": "1f20e5231ebe62ecb09ecdf4e8b074ab991d3755ac5eb3d006851013ab771a72"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-1.json",
+      "sha256": "54b850fe26c7740571dd7d0cd8972443eca0b1ea7243c7795970bc22c79b6c28"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-final.json",
+      "sha256": "d91c36ccde3286bd2c89dda5604abb18b8a4d1387f86b1dea95dd1ba3fa5d18e"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-final.png",
+      "sha256": "eb45c6530758c5bd0f91e64953c9a31feae2fa800bf4413d9c9b6b1d1f22dd9d"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-1.json",
+      "sha256": "9e07e297202cfa525cc3f647c5c77bf0bc0a98f14465a812c808feba491beae5"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-final.json",
+      "sha256": "0db85cc223eed334eac4ecb9e39e9d51c91f44da7f5fad711eee638aae04197e"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-final.png",
+      "sha256": "28085dab295b99f735fe4837765423ce1423c1615a4459ecefa1b6e3f3b44081"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-1.json",
+      "sha256": "e6483780b5a931d265aa1d70bf7faa10bb3bb795e4c6c16f87ce47b2df2c1710"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-final.json",
+      "sha256": "8f0c4ebcbf2d9117b7d46421e5ad8bd1a39fffdbdb78abb77b824abb934b4a34"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-final.png",
+      "sha256": "5222d8778764b34bc054dc4edd56cb40a82202d7ffb000c4065655c612c0fe99"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-1.json",
+      "sha256": "29310dd3d775ec049790aa3dc14b2c39e22044bb47d7ceae1d3ba8a36ad675e2"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.json",
+      "sha256": "324bf605861b2496d3cc579a290a8f6c3a144bbb4540fe29a5495a4fc8cfaeb5"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.png",
+      "sha256": "ac2b4386d0d9b6fc8a0c635f30e41b00228a4e86406fe031b2c64d00cce5dea8"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-1.json",
+      "sha256": "09e14977511eefcd27a9c3d26ffbbc203f6872674c9f90f28e89e4afe20672e0"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-final.json",
+      "sha256": "bbee688e1961956e3d58dc54c619257966cabe1947e9b7ff33117b2be75877c7"
+    },
+    {
+      "path": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-final.png",
+      "sha256": "f7027debaaec49743a2e09f1ba17d37c06193dfc49530a31a6a2a79e6d4e1eef"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-1.json",
+      "sha256": "d02672bf69adf2d5406097f46d9a5724208f28b01db9b01e8f1d89586687d097"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-final.json",
+      "sha256": "c8c831a90f11326e523d8e0505bb5212e87acf9c2b85703c51be94d5a68f1d4b"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-final.png",
+      "sha256": "88dd1bec30fbfb8d23756513f9ddd5f1b1cf6150f4d78ce737368883a6224c2a"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-1.json",
+      "sha256": "ae9a37dde03eb08b72ce5c468385af8ac6520242d6002c1370a2ed0a1882c4a8"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-final.json",
+      "sha256": "e00bde7e53d5cf7c1a2b0ceb71d515d979a307d080aad50014254d55562ea163"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-final.png",
+      "sha256": "a430e83cf899b5c479a4a0b82b5a1f9b2d9ae0eb646f5fed7da6c7ce34c5a74a"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-1.json",
+      "sha256": "efc00c38c0938335d21f742f98fadf0e6612a8532ea2a5bbf0932cecce84cea2"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-final.json",
+      "sha256": "16dbc5bd8eb99bd74722cbebf652d5585263e186409f5c8b51bc138b3f392e30"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-final.png",
+      "sha256": "0c0df8be0d3b5e686285d8796046a6f5d6d9874cd592ebac72188ba61bff73c6"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-1.json",
+      "sha256": "c2afb029aee720bf708dd173ab585f19d4007dd0f6031ec6a16f1c0d4eded059"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-final.json",
+      "sha256": "4f8505e1c1c7fd3f96d8c9e9a7c094b19efa21301dcc5088d0f504f5849128a4"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-final.png",
+      "sha256": "efd559170075d7f6c2a15eb73f1b64a5f4a3a84a3100c341560243f817127924"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-1.json",
+      "sha256": "f5bce3739d01514714cb585269455e3a617d06267b77d5efe60868620ffc8519"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.json",
+      "sha256": "02a4a927fab81ebb2ef0ad914e97a2c24f66d08fa36ecbf1c11e622eaf690dc9"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.png",
+      "sha256": "b2e582f6e7ce772147c9fbdecf5ca6392648e38d36a87c111c0caedc6feeb755"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-1.json",
+      "sha256": "f319f739ed4f39ffecb2c54bda6e6d5b25a562d2cdb34a84b649567ce9532664"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-final.json",
+      "sha256": "93bfc9cb04b688170924088649146ce564ca56d69b260872826b246481e74c05"
+    },
+    {
+      "path": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-final.png",
+      "sha256": "eec6368136a2ade06f55b5188c95d41f0ec2ea6925bb6121b0034c8f2231a382"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/fallback-path.json",
+      "sha256": "aad240e4f2dead4f42e1ede3c3eb354353f5891cfa79eb28e8efb9952b4ffe20"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/fallback-path.png",
+      "sha256": "62e35793e86a0c766cfce3cf8d1b83ae36be385aa25707f05bbb51ec4a69b961"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/imported-fallback-1.json",
+      "sha256": "63f7d1b3fece2f1da880004aa61d43f87e76a3ffa4599c5a7243dbdd0bd137aa"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.json",
+      "sha256": "beeb239ac073224fe186f649600b6f2b01941f9ba9464936e53e796296e888f6"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.png",
+      "sha256": "7d9248b7168c9e4da85584128e76e725a89589b4b40da5d84095d0a4f834d742"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/imported-fallback-1.json",
+      "sha256": "0ecc2b41fc114f2d0834a84ca94f0e2ba5645f274b269cd1360c58d25aade0f4"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/fallback-path.json",
+      "sha256": "38403bdeaba38e6eda9a0cd635b22e3f58fa3b95402be23c5dbd91603cacd0e8"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/fallback-path.png",
+      "sha256": "a3efa27b5935942d2e2edc571454bed6387934c2da4399ec08861f1005bd01a7"
+    },
+    {
+      "path": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/imported-fallback-1.json",
+      "sha256": "92dffbd6e0e6995d23f05e5d3f4e863c5db1aac4d3e64ea5ac443219d73d33e1"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/earth-impact.json",
+      "sha256": "be25851e413ac0d7ec4303535e5ee8dcaefc9251858c1ce2e17520e79be5960a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/earth-impact.png",
+      "sha256": "66e1077fea3608a16683e34bd2d914be7b0fb3cb2d860f201252410d69971c35"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/forest-belt.json",
+      "sha256": "9b4fb5564a29df2ada3c59a319bd778b1aecac246eccebb006140d1010da4d42"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/forest-belt.png",
+      "sha256": "d0a04dc01b466fca6fe80f9f0c4c4a1f3678fde5910ef22d6b45bfe14aa9b244"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/ground-growth.json",
+      "sha256": "70c1ce59e55baea9e0e845d492407ae65be5434ed4b57fb24d323caad58a13b8"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/ground-growth.png",
+      "sha256": "72d370e044bf0663a93e791ff5500b076adefedee66f1430d26c9660e6409fe6"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/hero.json",
+      "sha256": "e22c9b139086558a136cd5ad511371ceaddf6feb39fb391a32c009af24112634"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/hero.png",
+      "sha256": "af4c9dd16b8c62063e9f6a631bfbd62c517c0f4ad48a1714d262ddb8209901c6"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/plaster-close.json",
+      "sha256": "1ca1f45213ccb93e0610feae88cd4ccb176ecdf386fe5933ad624a84706ec8e2"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/plaster-close.png",
+      "sha256": "042306aa63f0ac050d2d2d85b746010e74fdc9556817e05fca61bdf1bb52a71b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/polish-failure-1.json",
+      "sha256": "9d146a7036f2faafcf9496f18b46df1f87c5d459b78ed633c31ef1660289d67a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/sheltered-gun.json",
+      "sha256": "9d2e5ce0929e140450413487bc34ff6e33cf69fbedea0fe1eeb29f80e2a6a19f"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/sheltered-gun.png",
+      "sha256": "62fd790e1cdfc30cb75de5e042cf62d2450bc77bca1291c4dbec17ff1fb05e79"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/stone-close.json",
+      "sha256": "0d4029e25a7d19fa679316ceb005ebd303bd38f8fc6fbf11f90ab4b796a6c640"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/stone-close.png",
+      "sha256": "eb134a339326abfaa3af66c6b0f3ada9327d7442ec65ffc50ad5fe5227747d23"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/stone-impact.json",
+      "sha256": "afe58f94847a4d05145affd49b900caaf4ff5b883f444ea0c79e0222968b3d3b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/stone-impact.png",
+      "sha256": "033b5e1757062707eaafd93cb55c71499aa6ccb294ef5b8bfd8d13f47581fb5d"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/sun-gun.json",
+      "sha256": "88438f438147ef75a3e8ef0856e33710e6f0558251ec51cc5e8fbf035c2469f1"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/sun-gun.png",
+      "sha256": "1b6ce470e50479bdd636b1cd1ae6a0e6fe93816994f061def2ca67d9389944ad"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/timber-close.json",
+      "sha256": "0aa3f56bdf1ebf6a9bdbfd4b77ae5a20e24ee8bcce1a00ba2ef7c9634f03d5e4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/timber-close.png",
+      "sha256": "61c6f250afc9afaee01059aee107ceab0de0e52d50b09bc4e4cf050bddd67260"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/turned-gun.json",
+      "sha256": "9170c228cb6c47aa042a53a2cf4ec17603784602190f1aaa141e949f1c1cef82"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-41-29-657Z/turned-gun.png",
+      "sha256": "a97d10d38453777d3a2d6225a536483f4869b200bfea01ed79a4d3cd97359b4d"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/blocked-barrel.json",
+      "sha256": "5037cd0a4057f78688f6f459bd7d8a61acc7d3e323c038224b818597eb3c12a5"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/blocked-barrel.png",
+      "sha256": "1a5c416bcab87845f10358d74ae272042df547c334ca73cba64f40db1f15336f"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/earth-impact.json",
+      "sha256": "dd7bab2fe68f608b2671f811053ef282a657fcb7cca245afe842494a0b31bfa0"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/earth-impact.png",
+      "sha256": "011585cfb78d9f47b7e216443088c91e547d78e44f60be2afa73a5a69936c772"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/forest-belt.json",
+      "sha256": "4fd55b5a4b59af86ee3991f06a806627ea1946edb0b06d8af5728a16b16b0307"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/forest-belt.png",
+      "sha256": "5edf7da91700cce414f13158c748480d42cfa931d332055881d5213c53c751f0"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/forest-lateral.json",
+      "sha256": "f60a23a1938704fbf31842771ba3a340f6a8384bd2e8218e6605133f33b62a3d"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/forest-lateral.png",
+      "sha256": "126615f81868015b1a3b69cda85fd658c263b896b19bf8b08d25d22f3f55261c"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/ground-growth.json",
+      "sha256": "9a36747a967d23928b3cfcd1748093c0b17e9069cc77989e24d7dda3407be017"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/ground-growth.png",
+      "sha256": "2859b46c76693d84a7298d7bf6ebea354c3f87ca4a84ed0bf823d2523eecea8a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/hero.json",
+      "sha256": "ac6817836c5025725df67ae3117a60bbc0b6d8ffb78fa0ad9672c59479d20bc2"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/hero.png",
+      "sha256": "ce372f4e0ff9fac9a9813c8ca3563bd355636b856ebbd2001445fb6612830485"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/plaster-close.json",
+      "sha256": "cc481561102a77e4e246145e81b65c282ecdfd47f95f74fad84f4bad8f329a9a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/plaster-close.png",
+      "sha256": "70bb02a44fb5cf50fcff7aa3abf74f3630497fd6e2df3f8de3fcdd59e1c4cf85"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/polish-1.json",
+      "sha256": "7ceb9e1e4edb3a748e654eafe1d347a11deef8e8ed9b373d96198b73a5694d45"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/sheltered-gun.json",
+      "sha256": "65730d8262e49c97a19ca95dc22b091c524804d2b6331fed11b417b686bd8219"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/sheltered-gun.png",
+      "sha256": "5729c43544e8956b24072ab6ce20deb017e1c527d08d674fe9f551c5e9406ae1"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/sky-miss.json",
+      "sha256": "e407c73f6e6f2f60183dfc2f494d0bc481cb253d1efc531983e90e96c729e8ca"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/sky-miss.png",
+      "sha256": "94bb4ff8481ab2471c1cd198e741cac0d12eddc805529e59cd672f9d6f4ed2f5"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/stone-close.json",
+      "sha256": "b2b572f94f1725bd4e9c6cd705c9f2de984c8227f1b8a2caabebbec510c92809"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/stone-close.png",
+      "sha256": "6359797d7ff1d547ab228987428f52cefcdcce02ced1e053c53a3d0b44f3cbee"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/stone-impact.json",
+      "sha256": "57e7a36ce8f8928bd0c13a92b83fcb7ff99dd8c0aa89179c9447632669caa8a0"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/stone-impact.png",
+      "sha256": "f0d21a69207d4f8f8ce4d2f5b8736e1e5f6f9d11e08ead7e8cbf596f8619ca43"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/sun-gun.json",
+      "sha256": "6d1228911b6315e73ae87295acda284d1460933e555d55d2ded23c04a446ac9b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/sun-gun.png",
+      "sha256": "0afec0024418acf644ccc734ebb4a4b324f1fceb58da32f686ce96deb5181a3e"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/timber-close.json",
+      "sha256": "7e6c5a8de15cd0e388b329806580da1e5e85f8bb2ed52ed0959af904763b1b73"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/timber-close.png",
+      "sha256": "f2989ebf353d9fff02908665aa1f46b048cb823908cbbd3cf6a28ec43fdbf1ad"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/turned-gun.json",
+      "sha256": "aeedc3e8ac50fde1de4db70fce8ded8151f46b11d3a5f3a2d4ebd9f8f1e84291"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/turned-gun.png",
+      "sha256": "af88ee5098a38ef91ee5294df622cced1d54720bbf6e0382e19a4662dd6335a1"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/water-impact.json",
+      "sha256": "b4b6fe26eae5c01f41f0c1e91ecab39dc5961ade6daa4f57baa43ccba557423a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T08-57-10-336Z/water-impact.png",
+      "sha256": "e0d17cceb3db78f5cb4637e327e7a456186a7f81457a060a8ff326b328cad81f"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.json",
+      "sha256": "79b95d430bc00b46991e5c101240529f1d61727a73f266e40d0981f5f26ac95b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.png",
+      "sha256": "6a26bf5ecb6e9932408e4ef8c038f14aaaf66d27089f9148f1fde06ca2952204"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.json",
+      "sha256": "f91f4ecc80aaee3fdc7ef401eab0fae839fd5ce93d5e2bf11d2edebb8d8acec5"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.png",
+      "sha256": "08cf201d4a73f5ab3496d801714c696df41b8b96e481da80e885ef3fdb7f6fca"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.json",
+      "sha256": "61b34f4c5c50ca937291a8151b174f88178a6f0ce128776f7c3b3aa23c9eb5b4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.png",
+      "sha256": "36631cd2b8737c8ff87614ff72381a740e884c65e3610c00cdbdf5eb10f571c3"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.json",
+      "sha256": "c0c268c72be31acebcfae81641efe252a4d9d442092ef79b77a226002658750a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.png",
+      "sha256": "27c642ae2f300bdd00bca749cb37fda4ce2f7bd3cb9fff2c0e6695f1d91e7ea4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.json",
+      "sha256": "d0e33ef55290559a78614e81629437c7e787db1fc4413f7ab7ae257fac87b436"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.png",
+      "sha256": "443b4ca26bebe1ddfdc0b1b91cb21d7c4a0a8fea66873607b6c3b65a8faf83f6"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.json",
+      "sha256": "19664506ddcc22175c177489756ef6382c861bfbd3ce1596d69c2414a8fbb591"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.png",
+      "sha256": "f10a383b1637cc92f52c86be8d0c6e8155f08fc2de20a17507cc348e7b9aef10"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.json",
+      "sha256": "8a57a9a67ec5275bb825286025a3f991a897eb536fd956174bfa2af6d3a5a9f0"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.png",
+      "sha256": "6851a6ed01be39b26bce21e67a6931ad857fcb0062dcca7a49f6318be4befa86"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.json",
+      "sha256": "f62c583290d379732cc380db0dc4c0b6415f632cf3e719e4bf2035125444cfe3"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.png",
+      "sha256": "60775d903fc53bef400feeed0dad04ff3f163a6d5165b9f791f26fdd23ece62c"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.json",
+      "sha256": "12b467f74c36eef449d3261ca1fa2834e50e9a19d49cb53df7ba961ec5587bc4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.png",
+      "sha256": "2f12fb4c3e149e51943515754a1e3ba932d8bfa9006321aed50a53927a4ce24d"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.json",
+      "sha256": "d054e0be604129428885bfc12edba8fb7549c0833106f88be4bd437f78830c70"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.png",
+      "sha256": "5b538ec6c99bd8a9f73f17ca69031bd1cd48679da25eae76d2dd36c7cc7362c9"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/polish-1.json",
+      "sha256": "5758e7e0ad29fac88cc72a0a2385ee9414d92b5764562553bfe3e2e328ff9b40"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.json",
+      "sha256": "e4747f412a10a8705c38bc49edeabafee8a9a9f5135d2757ae9eaee3b066f314"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.png",
+      "sha256": "834c43e9c8bd4ba2b517cf0ba323fd29dbf1106d8a98c4728f514646ed1480ae"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.json",
+      "sha256": "6e3b20cadd7f1bbe7b126c93caa2384a84eea720db67f3c3faf4bbb640ff8b51"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.png",
+      "sha256": "8e79a025ca099455e55aa05619897d4bebc2786f2a5008d6b2d7409bf532bae6"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.json",
+      "sha256": "cd2de43e46a10c5c6b1711c6f98738af7fa01e103b299d3f30d44ee11010bb61"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.png",
+      "sha256": "77c02c6992d8f3535fd0c3086406816f28391944bd82917cb93d90b89ebcc46a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.json",
+      "sha256": "cc30cfd83afbdd64fe105758a5607508cb5920614e9696d2c223c65c71cf897b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.png",
+      "sha256": "7407df5853db9201c16be0ac0e709ec9a7f1cd6bdeedb224f765b5c675c26ae8"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.json",
+      "sha256": "3b1f2c6b1bc7cc97ca1fa2a223c0705161675f8721760d6f83bd88301290eeb9"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.png",
+      "sha256": "34a89dbfedb439dd01820f32ab879764c33ffe92adfad89f53df1b2d5df02427"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.json",
+      "sha256": "0a02eb9ea7ac5bfc8fd02df73c36b4d38ea10e6e0e02b21b6e6d6604d670ca7b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.png",
+      "sha256": "cb32a96a9ba154d33d653455982f2c899fbf024a013d825b530c4a5d4a206edf"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.json",
+      "sha256": "2cbfa9989ff407ca433a1221e09dc0c66d501284cc81a96fc8036dcbc7fe2d45"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.png",
+      "sha256": "b8238c76982f8e0b56c7f640f3a8a7cd1166124cc94ad1eb0f9ccd7e866cc544"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.json",
+      "sha256": "78899092578c33a6b5eb4844e7bb1867be06360b79b01022a0999ccdc9c23037"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.png",
+      "sha256": "bd61361d1f3eec5a1fa75d1e9b90d70811087a26d6ca4fd727a14936c7111742"
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T04-31-56-241Z/sunny-benchmark-1.json",
+      "sha256": "5232fb0b4cb34ced978db9446169dd8646accd7190bef5456fa5c894a285dcab"
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T06-57-00-583Z/sunny-benchmark-1.json",
+      "sha256": "bb506012ab7ff8a563f17a636802042e5f350217a528dd0fd7100c40479e644d"
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T07-03-33-456Z/sunny-benchmark-1.json",
+      "sha256": "3a16cdd05d8f039ae4c16bea9777784b8af15e1ef29e2cf5fc7cd9a878a50764"
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
+      "sha256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf"
+    },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T09-13-49-736Z/sunny-benchmark-1.json",
+      "sha256": "71e91b6f9a4c161da4cc9529b8fba2cce15abad635932e67d69fefc643463617"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-1.json",
+      "sha256": "25da94c9fa2bde83160fa8fa4d8b54bdc076a5c2e68ba35734d22c95d410de35"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-final.json",
+      "sha256": "ba1eec69648f8c3730654394e14e8cc3fbb262074a0d159a71e83c14cc61ee42"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-final.png",
+      "sha256": "d5bb93774878b3eba4bb2a9626c0a769072d7905ea826fbf8d55421a7c517954"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-1.json",
+      "sha256": "e9baf33cb17ae1ce4519ec7bd846f693613f6e56b9d310c3df33a4e07b10ef06"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-final.json",
+      "sha256": "cc14a9bb5129ef627abbcc5eff2a38fbe71ed6cedb7e23c7c4752e1dd8b3b35b"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-final.png",
+      "sha256": "43d715a58d31786c8e6840aea9198adfec03166f7e80b1dff1c0a421b36c2f5e"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-1.json",
+      "sha256": "53790db37a769cfd2705920abba543795a1c3bbee5ef0dc13e2b6bc1cc7a71de"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-final.json",
+      "sha256": "bcee67327d56042f87d0a1b36b2aa4b5f6f28b0e99a669ba6a2fe38d93633b67"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-final.png",
+      "sha256": "1f7809a15ad12621b558236a53f12226f8ff4fa703a3916c7fe0ef3c2ad8ee05"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-1.json",
+      "sha256": "4744f0f11473c55699289c4ac9dd7152b0322498b108a6fa1a83af1800577f65"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-final.json",
+      "sha256": "d7f08158d6b81e80974d89c3f75e6bb46cc4cabaa405bbaaf1f2762b25e68cbe"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-final.png",
+      "sha256": "fa97455aafda6c164537551475cf963fb39ce726ae635b8de35cf109f0545c44"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-1.json",
+      "sha256": "eb0515ffbb78a566baa5c3f2388e54082cf979f4f5e0a696dda8e9db9f019432"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.json",
+      "sha256": "185f7025d692fe805ac38c9d47a80ae76f0aee6f81057d18047f9148dbf9cae9"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.png",
+      "sha256": "aa859e694a9a61cbd40c60ed00e7c0cdae2585c3bbcf151fa86739612cdfaca2"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-1.json",
+      "sha256": "37bfc45901acfccb640338b3f7fa32077ab7b14036ccf2080a1f6226db292be9"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-final.json",
+      "sha256": "e0fcb2b0f032d13be767349555789ed1cdd367426e2cf61389f83a61ea82bd4a"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-final.png",
+      "sha256": "433435f498586eb7b8ea392fa7f77e12dc7b83d6909a69d41ac94b34c3471441"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-1.json",
+      "sha256": "7e70956dd4a8a4b5e4281278d594cb08501cc3f9469cfffaba8268ddccc309ac"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-sunny.json",
+      "sha256": "bd585eee4cea37423b41235cf8dd3b7c2072ed4b2074e79c7c1c7812701648cc"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-sunny.png",
+      "sha256": "0eab11e494f0be8aeab50d374953eb5ffe03fe9376d7cd3bf79218230049f5c1"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-1.json",
+      "sha256": "33b00f46f272866c85e62a29d2cbfa0c232a1e5b840f5e5bdb939ba10d6a6941"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-sunny.json",
+      "sha256": "756cd018dbd0074740ec093857c1ca0d449dfcd15ea87e225c6d7d163dc8ef46"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-sunny.png",
+      "sha256": "ec5ba03a13a31e2782a144a7f8f47438d5463f175081d19e5225fc3a03c2302d"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-1.json",
+      "sha256": "298c5ce4ac308b00bd23f8ad1f111daab71b9a95f6e376a6b1ff72734f5e6e1e"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-sunny.json",
+      "sha256": "a57437a8eff0b1b64c1c13827b74f3fd0a30673b520640c1b502b82edfb37dca"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-sunny.png",
+      "sha256": "0c3a34afe977027b9828dff1aaed0e362218256b4e7d1b5e281eddb0f4764c08"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-1.json",
+      "sha256": "6df0415d1eadd8a4d9109be83699b11928c34250dee53672d6a14881bb82907f"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.json",
+      "sha256": "6be8768e7ded46474e88ef7554e1ed9e3773c55c49d2078d7a7efc81d8f6355c"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.png",
+      "sha256": "75d86b9a9ff75d89e7a646c3d801c6b891f72a56dac265ebeb7f78106fcbc15a"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-1.json",
+      "sha256": "961c9cad8109ff3c8bb9bc88e2c229ef2a534b732e3e75238458ed7ab1593e3a"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-sunny.json",
+      "sha256": "1a2bed9b9ba68f34e50a64a2dc1dccd324f6a32a739cc557e17a2f81ecc153c7"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-sunny.png",
+      "sha256": "aae311ee3e90dcdbcb47fba1b684ff96aa032146058da0b89ca5dacf7e438679"
+    },
+    {
+      "path": "qa/evidence/polish-cpu-development-2026-11-19.json",
+      "sha256": "78a2fa6ead8f17a0f0b4e74ddd62b4bd099f56f55da48ab6f4de4b48f09443bc"
+    },
+    {
+      "path": "qa/evidence/quick-2026-11-19T08-37-47-703Z/quick.png",
+      "sha256": "4feb589371690c9c2ed623e9947d7c86514cd6b9c023622b3625a083913d7c87"
+    },
+    {
+      "path": "qa/evidence/quick-2026-11-19T08-37-47-703Z/quick.json",
+      "sha256": "3783161a416752c6036420c9631c3fa9775d0ece29de58e0731240a54e5c1729"
+    },
+    {
+      "path": "qa/evidence/quick-2026-11-19T08-37-47-703Z/quick-1.json",
+      "sha256": "6096590943888305549651edf3bfc91fc66f3300c06df4c15374c10a75025b04"
+    }
+  ],
   "performance": {
     "verdict": "BLOCKED",
     "samples": [
       {
-        "path": "qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
-        "sha256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf",
+        "path": "qa/evidence/sunny-benchmark-2026-11-19T09-13-49-736Z/sunny-benchmark-1.json",
+        "sha256": "71e91b6f9a4c161da4cc9529b8fba2cce15abad635932e67d69fefc643463617",
         "pass": false,
         "checks": 2,
-        "sourceMismatches": [],
-        "imported": true,
-        "identityValid": true,
+        "initialSourceMismatches": [],
+        "finalSourceMismatches": [],
+        "localAssetsValid": true,
+        "errors": [],
+        "resultFailures": [
+          "30s actual combat reload native WebGL sample"
+        ],
+        "failure": null,
         "weather": 0,
-        "duration": 30018.8,
-        "p50": 17.89999999999418,
-        "p95": 35.60000000000582,
-        "p99": 36.400000000001455,
-        "max": 89,
-        "over50": 10,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "workloadVerified": true,
-        "timelineVerified": true
-      },
-      {
-        "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
-        "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9",
-        "pass": false,
-        "checks": 2,
-        "sourceMismatches": [],
-        "imported": true,
-        "identityValid": true,
-        "weather": 2,
-        "duration": 30023.699999999997,
-        "p50": 17.80000000000291,
-        "p95": 35.69999999999709,
-        "p99": 36.80000000000291,
-        "max": 71.39999999999418,
-        "over50": 8,
-        "viewport": [
-          1920,
-          1080
-        ],
-        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "workloadVerified": true,
-        "timelineVerified": true
-      },
-      {
-        "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
-        "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725",
-        "pass": false,
-        "checks": 2,
-        "sourceMismatches": [],
-        "imported": true,
-        "identityValid": true,
-        "weather": 2,
-        "duration": 30015.899999999998,
-        "p50": 17.80000000000291,
+        "duration": 30020.800000000003,
         "p95": 35.799999999995634,
-        "p99": 36.799999999995634,
-        "max": 71.30000000000291,
-        "over50": 11,
+        "p99": 36.599999999998545,
+        "max": 71.59999999999854,
+        "over50": 10,
+        "timelineValid": true,
+        "workloadValid": true,
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/benchmark-2026-11-19T09-14-55-725Z/benchmark-1.json",
+        "sha256": "48b8fafda787b62e501ac6f35bd1e40fe75a2642b5164e033accb682fd059c77",
+        "pass": false,
+        "checks": 2,
+        "initialSourceMismatches": [],
+        "finalSourceMismatches": [],
+        "localAssetsValid": true,
+        "errors": [],
+        "resultFailures": [
+          "30s actual combat reload native WebGL sample"
+        ],
+        "failure": null,
+        "weather": 2,
         "viewport": [
           1920,
           1080
         ],
         "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "workloadVerified": true,
-        "timelineVerified": true
+        "duration": 30029,
+        "p95": 35.80000000000291,
+        "p99": 36.5,
+        "max": 338.6999999999971,
+        "over50": 8,
+        "timelineValid": true,
+        "workloadValid": true,
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/benchmark-2026-11-19T09-16-09-694Z/benchmark-1.json",
+        "sha256": "0adba19283cbdc98102c1484f448fb2f5263d4c93089287777d2b94080a084de",
+        "pass": false,
+        "checks": 2,
+        "initialSourceMismatches": [],
+        "finalSourceMismatches": [],
+        "localAssetsValid": true,
+        "errors": [],
+        "resultFailures": [
+          "30s actual combat reload native WebGL sample"
+        ],
+        "failure": null,
+        "weather": 2,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "duration": 30034.399999999994,
+        "p95": 35.900000000001455,
+        "p99": 37.30000000000291,
+        "max": 229.3000000000029,
+        "over50": 13,
+        "timelineValid": true,
+        "workloadValid": true,
+        "valid": true
       }
     ],
     "requirements": {
-      "width": 1920,
-      "height": 1080,
-      "durationMS": 30000,
+      "viewport": [
+        1920,
+        1080
+      ],
       "warmupMS": 10000,
+      "durationMS": 30000,
       "p95": 33.3,
       "p99": 33.3,
       "max": 50,
-      "over50": 0
+      "over50": 0,
+      "sunnySamples": 1,
+      "stormSamples": 2
     }
   },
-  "temporal": "UNVERIFIED; still previews do not establish continuous motion quality",
-  "publicRelease": "UNCHANGED; imported Fab-looking GLBs are local only",
-  "privateBackup": {
-    "status": "VERIFIED selected browser derivatives only",
-    "pointer": "qa/downloaded-private-backup.json",
-    "canonicalUEVault": "Pre-existing dirty vault preserved; no whole-project portability claim"
+  "review": {
+    "path": "qa/polish-review.json",
+    "current": true,
+    "coverage": true,
+    "verdict": "REVISE"
   },
-  "developmentFailures": [
-    "Initial grass wind-envelope check failed; increased placement clearance without reducing threshold.",
-    "Initial grouping had house/asset variable shadowing and missing wall/micro instances; corrected, explicit nonzero-count and support tests added.",
-    "Early grass asset-review clones missing SSAO alpha exclusions; QA preview fixed, original captures retained.",
-    "Earlier house placement intersected existing tree trunks; moved to measured clear sites; retained earlier captures."
-  ],
-  "next": "Independent current-build art/engineering review and actual performance evidence; source checkpoint only until license and release gates clear.",
-  "companionHashes": {
-    "qa/audit-downloaded-stage.mjs": "454029a39cbf1df8903c4d8b606294ce0d8973799ee0d8e98afd581c4ae5179d",
-    "qa/downloaded-units.json": "a0f40adbed186927a70fe867de760cf5c0ad9e4b78e09fbd94edd60a3b49e62b",
-    "qa/downloaded-asset-inventory.json": "9320329122f942e0102f6bef61a3bf2d214a09c53659494034cb5dc849d16d8e",
-    "qa/downloaded-review.json": "197cc655ec5f1bc6a33f6f834d175a70d16ece1bd7c1835c1269309ed935052e",
-    "qa/downloaded-package.json": "e247f985e115012d56344da4f5782751affee19f03a4fd3241b2253cc465f5df",
+  "package": {
+    "path": "qa/polish-package.json",
+    "current": true,
+    "errors": [],
+    "files": 93,
+    "bytes": 123786258,
+    "privateManifestSHA256": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b"
+  },
+  "legacy": {
+    "path": "qa/downloaded-release.json",
+    "baseline": "d5b2114d07e1496824b6b788757364412e18908e",
+    "baselineSHA256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8",
+    "sha256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8",
+    "unchanged": true
+  },
+  "companions": {
+    "qa/polish-units.json": "bab86b5833d96867523a84a9efd918f55278db109d651fee48520ffebb917bf2",
+    "qa/polish-review.json": "44035b677d20d1f8adf2dc88714d23419913815f979ec5ea949a8d3bb5bd02cc",
+    "qa/polish-package.json": "1467cb8a542747b6e6f6ed94245de301745d6a101a9a4af334e1f2c426d986b5",
     "qa/downloaded-private-backup.json": "10d4ce8fffabd36cade2946d1a8e79331f2e916bc35e2e7e0e3a13faf800abc4",
-    "qa/checkpoint-imports.mjs": "9dc5fa42de6fb071a7418fc1c88cf9db6eaed6784c065e79dde90162c3f80ab0",
+    "qa/checkpoint-polish.mjs": "52ec8ad365c33c089941c34bef3d78619ed9500bf99e7a16cc9501f668e1ee6d",
+    "qa/audit-polish-stage.mjs": "7b1191bca6fcd41be11a51087a6649bd7993b8880d2c5c0d4b78a7aa6159c8bb",
+    "qa/run-polish-units.mjs": "7e0b9b384f2cc073b8af562d30ccc8a807c5204a18748e8354dfa79cb791a99d",
+    "qa/browser.mjs": "50f551358c8f186c52955f45aed1895bcaeb874a8933f1baaaa0f87f84e9b408",
+    "qa/hooks.js": "ef61026bfdadf4a6df634e9159c973427bd30b35900b34bfb9dcc5cafa59165c",
+    "qa/source-binding.mjs": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84",
+    "tools/package.mjs": "146142f6e72b6d0c1b3cd7172ee109d14d433019aa6405c26dab3b5b11e6bb0b",
+    "qa/map-checks.mjs": "3ebbc929bfbfd5a412ef65fca2a23d2f3ebdf8f1ca6b154f5e819896f3089aa3",
+    "qa/terrain-rays.mjs": "244d43c695e8aafb57ee37156be03be52d63efa6b930b7c4487167ca7f3d2add",
+    "qa/ai-movement.mjs": "d34c0b34e4922993737ae6f355556864d232019918b48a4d662029a3af7088dd",
+    "qa/village-checks.mjs": "6889a913e4d6fcc9768aa580ee756227c5fcd1dd33b67ccb6f34155e625a638e",
+    "qa/fracture-checks.mjs": "960987d82f7fb1edf82657f9785d0d511380d2a0c9241a0e34ff0ce98a0b9e37",
+    "qa/buffer-checks.mjs": "ae13e44ef8e878f867dda7b66916a6c1425b57965f779faee717d8d34c13fb61",
+    "qa/landscape-checks.mjs": "09796970ab22085e5eadce5eae34af752721ad134a7de8ecda15dd31b0c5d114",
+    "qa/riverbank-checks.mjs": "03996376b3b336e7a6b6f9f34dd1ad89d7216d5f756199daaef38c3428eef040",
+    "qa/afterrain-assets-checks.mjs": "67336ed4adf342f7b4e9156bcca4d5f7be442a0383b7c22ebb341e80bface3e8",
+    "qa/vegetation-clumps.mjs": "7ab8bb79e22cd7f277925bf8b639a2b3321f3a901d65daeb777b286941df4f72",
+    "qa/water-checks.mjs": "c75a4bc70906669d2c8ea41b60054af92c8da5c73ce96b218c1fa28d7be39881",
+    "qa/wildbank-checks.mjs": "c6cb1960302d31145522d6aeef2f3acec68448b5596f0c752c51c9870d4a450e",
+    "qa/surface-checks.mjs": "965293109a9aed16515200df2a7591d60bfeb332213d430a06500849e00b96cd",
+    "qa/masonry-materials-checks.mjs": "c914b81eb66ea46172e3566dfab56ed28c68d385c36dcdf2dbf9d0e467e37b8d",
+    "qa/height-fog-checks.mjs": "f8213c4d6ac9238465dd8a8a54b944f33aa62025dfc9bdeb99fcf79052bfd9ea",
     "qa/downloaded-dressing-checks.mjs": "46ea939ff4110bafc78f291a36d6931af2a40b8696011bbb859b7e203ee9fd13",
-    "qa/seal-downloaded-review.mjs": "d3ca7808bc7eca6cbd5fa1ac2b7f6b4c58b7fe5863693d7ee4d7daa6fe802ebc",
-    "qa/downloaded-review-findings.json": "f5d0b224147916def84d7ce3908f3d2eedb8042323ed0a2c82be8d36b2474d31",
-    "tools/package.mjs": "c64ceddc8d14051853e67e55bb561c7546eb1f86a7d1cee701ceda41a4d104e0",
-    "tools/backup-downloaded-assets.py": "5d23002b1ab119cb0d92ed2208e52c383100d98958e2f136882bf8d230a4bf0e",
-    "tools/import-downloaded-assets.py": "f278dc55d4f42439d79bf26db32b40e45c5c188dd6f8aef88f3d92c0bd7490b4",
-    "tools/import-downloaded-house.py": "9bf4a72f9a99b7015d8c59e55fcea6cc8ef07180db0f11931503b138176632df"
-  }
+    "qa/environment-polish-checks.mjs": "04856f1f99835b002d23cdde7be6510a7b1dd76d235077951b411604b546d538",
+    "qa/shot-feedback-event-checks.mjs": "429047c7d7d84e9690d2c951c09211ad8ad22093feb91f0ca741ff57fcf7cf3c",
+    "qa/polish-preservation-checks.mjs": "3c1f1ce329e48a29eebe57f7f3e60075bb690e94bbf023a8317bd2e9bf2002c7",
+    "qa/stone-cover-checks.mjs": "e81201e8259ebbccd26c2b2b102e2a475e8d4a116cccf80a95e95a92d5c3386e",
+    "qa/combat-feedback-checks.mjs": "95c440d1c573b0e990a11f913b5de721672651df1baa3cf8ba1133abb6bab0e9"
+  },
+  "continuousMotion": "UNVERIFIED — stills are not continuous video",
+  "publicRelease": "UNCHANGED",
+  "privateBackup": {
+    "pointer": "qa/downloaded-private-backup.json",
+    "newBinaryChanges": false,
+    "canonicalUEVault": "Unrelated pre-existing dirty state preserved"
+  },
+  "next": "Current evidence/art rework and strict pacing investigation; no public promotion."
 }

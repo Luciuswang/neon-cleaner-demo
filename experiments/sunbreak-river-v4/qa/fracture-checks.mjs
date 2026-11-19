@@ -42,4 +42,4 @@ for(const mound of layout.rubbleMounds)for(let ix=-13;ix<=13;ix++)for(let iz=-13
 }
 const sources={};for(const name of ['fracture-geometry.js','ruins.js','map-layout.js','qa/fracture-checks.mjs'])sources[name]=createHash('sha256').update(await readFile(new URL('../'+name,import.meta.url))).digest('hex');
 const report={date:new Date().toISOString(),pass:true,samples,triangles,pileSamples,supportChecks,maxSurfaceGap:maxDecorativeGap,maxStep,ruins:ruin.info(),sources,limits:'Static geometry and exact support for every fragment and coarse pile. Not dynamic destruction or visual acceptance.'};
-await writeFile(new URL('fracture-checks.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log(report);
+if(!process.argv.includes('--stdout-only'))await writeFile(new URL('fracture-checks.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log(report);

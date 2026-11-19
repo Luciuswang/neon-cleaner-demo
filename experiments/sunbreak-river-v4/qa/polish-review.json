@@ -1,0 +1,203 @@
+{
+  "schema": "river-material-polish-independent-review-v1",
+  "date": "2026-11-19T09:18:37.864Z",
+  "verdict": "REVISE",
+  "sourcesDigest": "b9a487e8ab0dc104c456d0b5032c971fe7e3253d06df8d03f69bb0d43219ea2f",
+  "selection": {
+    "reports": {
+      "polish": "qa/evidence/polish-2026-11-19T09-07-08-953Z/polish-1.json",
+      "checks": "qa/evidence/checks-2026-11-19T09-08-54-920Z/checks-1.json",
+      "cabins": "qa/evidence/cabins-2026-11-19T09-09-55-383Z/cabins-1.json",
+      "traversal": "qa/evidence/traversal-2026-11-19T09-10-39-427Z/traversal-1.json",
+      "weather": "qa/evidence/weather-2026-11-19T09-12-07-236Z/weather-1.json",
+      "imported-fallback": "qa/evidence/imported-fallback-2026-11-19T09-12-49-500Z/imported-fallback-1.json"
+    },
+    "sunnyBenchmark": "qa/evidence/sunny-benchmark-2026-11-19T09-13-49-736Z/sunny-benchmark-1.json",
+    "stormBenchmarks": [
+      "qa/evidence/benchmark-2026-11-19T09-14-55-725Z/benchmark-1.json",
+      "qa/evidence/benchmark-2026-11-19T09-16-09-694Z/benchmark-1.json"
+    ]
+  },
+  "declaredReviewSet": [
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.png",
+    "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.png"
+  ],
+  "evidence": [
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.png",
+      "sha256": "60775d903fc53bef400feeed0dad04ff3f163a6d5165b9f791f26fdd23ece62c",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/hero.json",
+      "stateSHA256": "f62c583290d379732cc380db0dc4c0b6415f632cf3e719e4bf2035125444cfe3"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.png",
+      "sha256": "77c02c6992d8f3535fd0c3086406816f28391944bd82917cb93d90b89ebcc46a",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-close.json",
+      "stateSHA256": "cd2de43e46a10c5c6b1711c6f98738af7fa01e103b299d3f30d44ee11010bb61"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.png",
+      "sha256": "2f12fb4c3e149e51943515754a1e3ba932d8bfa9006321aed50a53927a4ce24d",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-close.json",
+      "stateSHA256": "12b467f74c36eef449d3261ca1fa2834e50e9a19d49cb53df7ba961ec5587bc4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.png",
+      "sha256": "5b538ec6c99bd8a9f73f17ca69031bd1cd48679da25eae76d2dd36c7cc7362c9",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/plaster-sun.json",
+      "stateSHA256": "d054e0be604129428885bfc12edba8fb7549c0833106f88be4bd437f78830c70"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.png",
+      "sha256": "cb32a96a9ba154d33d653455982f2c899fbf024a013d825b530c4a5d4a206edf",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/timber-close.json",
+      "stateSHA256": "0a02eb9ea7ac5bfc8fd02df73c36b4d38ea10e6e0e02b21b6e6d6604d670ca7b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.png",
+      "sha256": "6851a6ed01be39b26bce21e67a6931ad857fcb0062dcca7a49f6318be4befa86",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ground-growth.json",
+      "stateSHA256": "8a57a9a67ec5275bb825286025a3f991a897eb536fd956174bfa2af6d3a5a9f0"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.png",
+      "sha256": "443b4ca26bebe1ddfdc0b1b91cb21d7c4a0a8fea66873607b6c3b65a8faf83f6",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-belt.json",
+      "stateSHA256": "d0e33ef55290559a78614e81629437c7e787db1fc4413f7ab7ae257fac87b436"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.png",
+      "sha256": "f10a383b1637cc92f52c86be8d0c6e8155f08fc2de20a17507cc348e7b9aef10",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/forest-lateral.json",
+      "stateSHA256": "19664506ddcc22175c177489756ef6382c861bfbd3ce1596d69c2414a8fbb591"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.png",
+      "sha256": "34a89dbfedb439dd01820f32ab879764c33ffe92adfad89f53df1b2d5df02427",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sun-gun.json",
+      "stateSHA256": "3b1f2c6b1bc7cc97ca1fa2a223c0705161675f8721760d6f83bd88301290eeb9"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.png",
+      "sha256": "b8238c76982f8e0b56c7f640f3a8a7cd1166124cc94ad1eb0f9ccd7e866cc544",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/turned-gun.json",
+      "stateSHA256": "2cbfa9989ff407ca433a1221e09dc0c66d501284cc81a96fc8036dcbc7fe2d45"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.png",
+      "sha256": "834c43e9c8bd4ba2b517cf0ba323fd29dbf1106d8a98c4728f514646ed1480ae",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sheltered-gun.json",
+      "stateSHA256": "e4747f412a10a8705c38bc49edeabafee8a9a9f5135d2757ae9eaee3b066f314"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.png",
+      "sha256": "7407df5853db9201c16be0ac0e709ec9a7f1cd6bdeedb224f765b5c675c26ae8",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/stone-impact.json",
+      "stateSHA256": "cc30cfd83afbdd64fe105758a5607508cb5920614e9696d2c223c65c71cf897b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.png",
+      "sha256": "27c642ae2f300bdd00bca749cb37fda4ce2f7bd3cb9fff2c0e6695f1d91e7ea4",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/earth-impact.json",
+      "stateSHA256": "c0c268c72be31acebcfae81641efe252a4d9d442092ef79b77a226002658750a"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.png",
+      "sha256": "bd61361d1f3eec5a1fa75d1e9b90d70811087a26d6ca4fd727a14936c7111742",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/water-impact.json",
+      "stateSHA256": "78899092578c33a6b5eb4844e7bb1867be06360b79b01022a0999ccdc9c23037"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.png",
+      "sha256": "8e79a025ca099455e55aa05619897d4bebc2786f2a5008d6b2d7409bf532bae6",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/sky-miss.json",
+      "stateSHA256": "6e3b20cadd7f1bbe7b126c93caa2384a84eea720db67f3c3faf4bbb640ff8b51"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.png",
+      "sha256": "36631cd2b8737c8ff87614ff72381a740e884c65e3610c00cdbdf5eb10f571c3",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/blocked-barrel.json",
+      "stateSHA256": "61b34f4c5c50ca937291a8151b174f88178a6f0ce128776f7c3b3aa23c9eb5b4"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.png",
+      "sha256": "6a26bf5ecb6e9932408e4ef8c038f14aaaf66d27089f9148f1fde06ca2952204",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-clear.json",
+      "stateSHA256": "79b95d430bc00b46991e5c101240529f1d61727a73f266e40d0981f5f26ac95b"
+    },
+    {
+      "path": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.png",
+      "sha256": "08cf201d4a73f5ab3496d801714c696df41b8b96e481da80e885ef3fdb7f6fca",
+      "statePath": "qa/evidence/polish-2026-11-19T09-07-08-953Z/ads-shot.json",
+      "stateSHA256": "f91f4ecc80aaee3fdc7ef401eab0fae839fd5ce93d5e2bf11d2edebb8d8acec5"
+    }
+  ],
+  "engineering": {
+    "reviewer": "Descartes",
+    "agent": "01a1ec9f-f43b-7f62-b965-d3ebe002849a",
+    "verdict": "CONDITIONAL PASS",
+    "scope": "Read-only runtime implementation and bounded geometry review; root separately executed frozen suites and native GPU tests.",
+    "findings": [
+      "Finite water front-to-back1cm search removes unbracketed jumping; exact tangencies or crossings entirely inside one interval can still be missed.",
+      "ADS flare retains source socket, actual depth test, original rig/material map bytes and blocked-barrel suppression;26 triangles/1draw.",
+      "Atlas DPR/target restoration, SSAO particle exclusions and stone projection acceptable.",
+      "84479 net added triangles,10 new/9 net beauty draws. Does not count reflection/shadow amplification."
+    ]
+  },
+  "art": {
+    "reviewer": "Lovelace",
+    "agent": "01a1ec9f-f737-7282-bbc9-6a4fc127aa68",
+    "method": "liveops-art-precheck; all18 actual original-size final PNGs opened; source hashes cross-checked",
+    "verdict": "REVISE",
+    "confidence": "high for sampled stills only",
+    "acceptedSubitems": [
+      "Hipfire and ADS orange side muzzle-flame visibility PASS; central ADS sight remains clear.",
+      "Sunlit plaster shows surface relief; timber board gaps and texture read.",
+      "Smaller neutral ground grit, clear routes; no visible rectangular forest atlas or cropped roots in two reviewed views.",
+      "Gun responds to direction and shelter, but material calibration not accepted."
+    ],
+    "remaining": [
+      {
+        "severity": "Major",
+        "issue": "Stone/plaster close views contain black short lines/stepping; stone still reads as vertical paving slabs.",
+        "next": "Isolate normals/detail noise/AO sampling with controlled A/B before more high-frequency detail."
+      },
+      {
+        "severity": "Major",
+        "issue": "Turned gun stock has broad silver highlight, sheltered arms/gun approach a dark silhouette.",
+        "next": "Calibrate polymer/metal/cloth and indirect shelter fill independently, not global exposure."
+      },
+      {
+        "severity": "Evidence gap",
+        "issue": "Instantaneous earth/water hit frames do not establish distinct evolving impact feedback.",
+        "next": "Review delayed frames or continuous actual-shot footage before changing effect strength."
+      }
+    ],
+    "axes": {
+      "sameness": "Tree/stone repetition still limits realism.",
+      "structure": "Paths and ADS sight maintained; stone mass still too planar.",
+      "stylization": "Near artifacts and hard triangular flame tips remain.",
+      "visualImpact": "Lighting response and muzzle visibility improved.",
+      "detailPriority": "Fix surface noise/material separation before adding more density."
+    }
+  },
+  "continuousMotion": "UNVERIFIED; no complete moving sequence reviewed",
+  "release": "BLOCKED; no Pages deployment; three strict performance samples failed",
+  "scope": "Local source WIP checkpoint, not final user-facing art acceptance and not AAA/UE5 certification"
+}

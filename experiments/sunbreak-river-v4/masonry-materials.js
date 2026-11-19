@@ -2,8 +2,8 @@
 // Scan input: existing Poly Haven worn_plaster_wall (CC0), local manifest
 // suggested tile 1.8m. Core/course grain below is original procedural work;
 // no pavement photograph is wrapped around small broken masonry chips.
-export const MASONRY_REVISION='masonry-exposed-clay-aggregate-v2';
-export const MASONRY_SCALE={plasterTile:1.8,brickLength:.235,courseHeight:.085,mortar:.008,corePatch:.075,aggregateCell:.012};
+export const MASONRY_REVISION='masonry-scanned-relief-v3';
+export const MASONRY_SCALE={plasterTile:1.8,stoneTile:.65,brickLength:.235,courseHeight:.085,mortar:.008,corePatch:.075,aggregateCell:.012};
 export const MASONRY_PALETTE=Object.freeze({clay:0x66564a,mortar:0x79776c,aggregate:0x55594f,course:0x7a6857});
 const MAPS=['map','normalMap','roughnessMap','aoMap','bumpMap','metalnessMap','displacementMap'];
 
@@ -65,15 +65,18 @@ const NOISE=`
  vec3 masonryBump(vec3 n,vec3 viewPos,float h){vec3 dx=dFdx(viewPos),dy=dFdy(viewPos),r1=cross(dy,n),r2=cross(n,dx);float det=dot(dx,r1);vec3 gradient=sign(det)*(dFdx(h)*r1+dFdy(h)*r2);return normalize(max(abs(det),1e-10)*n-gradient);}
 `;
 export function createMasonryMaterial(T,source,{role='plaster',color=0xc1bfb3}={}){
- const material=cloneSurfaceMaterial(T,source,color),plaster=role==='plaster',course=role==='course';
- material.name='masonry-'+role;material.roughness=.94;material.metalness=0;material.envMapIntensity=.32;
- material.normalScale?.set(.38,.38);material.aoMapIntensity=.22;
+ const material=cloneSurfaceMaterial(T,source,color),plaster=role==='plaster',course=role==='course',stone=role==='stone';
+ material.name='masonry-'+role;material.roughness=stone?.86:plaster?.88:.94;material.metalness=0;material.envMapIntensity=stone?.48:plaster?.42:.32;
+ const normalAmplitude=stone?.72:plaster?.82:.38;
+ material.normalScale?.set(normalAmplitude,normalAmplitude);material.aoMapIntensity=.22;
+ material.displacementMap=null;material.metalnessMap=null;
  // Explicit defaults also make a standalone/test plaster mesh safe. Production
  // batches carry the per-surface mask; no geometry groups/draws are introduced.
  material.defaultAttributeValues={...material.defaultAttributeValues,masonryBreak:[0,10],masonryCore:[0]};
- material.userData={...material.userData,masonry:{revision:MASONRY_REVISION,role,metres:true,...MASONRY_SCALE,source:plaster?'existing CC0 worn_plaster_wall':'original procedural mineral/clay'}};
- if(plaster){
-  for(const slot of MAPS)if(material[slot])material[slot].repeat.set(1/MASONRY_SCALE.plasterTile,1/MASONRY_SCALE.plasterTile);
+ material.userData={...material.userData,masonry:{revision:MASONRY_REVISION,role,metres:true,...MASONRY_SCALE,normalAmplitude,source:plaster?'existing CC0 worn_plaster_wall':stone?'existing CC0 rocky_gravel, fine mineral grain':'original procedural mineral/clay'}};
+ if(plaster||stone){
+  const tile=plaster?MASONRY_SCALE.plasterTile:MASONRY_SCALE.stoneTile;
+  for(const slot of MAPS)if(material[slot])material[slot].repeat.set(1/tile,1/tile);
  }else{
   // No whole bricks/pavers/gravel or baked moss lines on raw fracture cores.
   for(const slot of MAPS)material[slot]=null;
@@ -127,9 +130,15 @@ export function createMasonryMaterial(T,source,{role='plaster',color=0xc1bfb3}={
    `:plaster?`
    // Preserve photographed fine plaster; avoid multiplying a dark tint and a
    // high-contrast baked stain into a third, artificially dirty surface.
-   diffuseColor.rgb=mix(diffuseColor.rgb,diffuse,.42)*(.92+.11*masonryMacro);
+   diffuseColor.rgb=mix(diffuseColor.rgb,diffuse,.22)*(.92+.11*masonryMacro);
    diffuseColor.rgb*=mix(vec3(.94,.93,.90),vec3(1.),masonryWeather);
    diffuseColor.rgb=mix(diffuseColor.rgb,masonryRaw,masonryCoreMix);
+   `:stone?`
+   // map_fragment already decodes sRGB albedo. Keep the scanned mineral body;
+   // no pow/gamma conversion, baked specular, or metallic fake highlights.
+   float masonryStoneLuma=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));
+   diffuseColor.rgb=mix(vec3(masonryStoneLuma),diffuseColor.rgb,.38);
+   diffuseColor.rgb=mix(diffuseColor.rgb,diffuse,.08)*(.91+.13*masonryWeather);
    `:`
    diffuseColor.rgb=${role==='core'?'masonryRaw':`mix(diffuse*(.70+.25*masonryMacro+.16*masonryFracture),masonryRaw,${role==='aggregate'?'.42':'.18'})`};
    `}
@@ -139,7 +148,7 @@ export function createMasonryMaterial(T,source,{role='plaster',color=0xc1bfb3}={
    masonryRelief+=masonryCoreMix*((masonryFracture-.5)*.0024-masonryBinderMask*.0016+masonryAggregateMask*.0013);
   `);
   s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
-   roughnessFactor=clamp(max(roughnessFactor,.85)+masonryDirt*.04,.85,.98);`);
+   roughnessFactor=clamp(max(roughnessFactor,${stone?'.60':plaster?'.72':'.85'})+masonryDirt*.04,${stone?'.60':plaster?'.72':'.85'},.98);`);
   s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
    ${plaster?'normal=normalize(mix(normal,nonPerturbedNormal,masonryCoreMix));':''}
    normal=masonryBump(normal,-vViewPosition,masonryRelief);`);
