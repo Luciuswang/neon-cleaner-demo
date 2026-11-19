@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261119T130017Z-cd7a4539ee",
+  "task_id": "procedural-material-lab-2026-11-19",
+  "timestamp_utc": "2026-11-19T13:00:17.656351+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Procedural material lab on port5191: pinned MIT reference, code-generated materials, wetness/ripples/light presets and offline A/B. Original demos unchanged. Reference-level sampled art PASS; engineering demonstration CONDITIONAL PASS. Strict pixel repeat and realtime hitch gates FAIL; continuous motion UNVERIFIED, Riverfall migration BLOCKED. Task remains REWORK; next isolate hitches and 28 one-level pixel differences. Canonical record: experiments/procedural-material-lab/qa/release.json. Public-code/generated-evidence checkpoint only; private UE vault preserved and not certified.",
+  "commit_shas": [
+    "fc32d74dcdeeeb601fb1a072b6e91e87b3a50fd7"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

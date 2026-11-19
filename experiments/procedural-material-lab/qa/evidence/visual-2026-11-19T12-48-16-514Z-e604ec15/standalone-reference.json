@@ -1,0 +1,22 @@
+{
+  "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "cameraGoal": {
+    "t": {
+      "x": -0.3,
+      "y": 1.15,
+      "z": 0.9
+    },
+    "th": 0.52,
+    "ph": 1.37,
+    "r": 11.8
+  },
+  "instrumentation": {
+    "fixedRAFCallbackMS": 1250,
+    "standaloneSourceUnchanged": true
+  },
+  "note": "Original page exposes camera goal only; exact camera/pixel equivalence to lab is NOT_ASSERTED."
+}

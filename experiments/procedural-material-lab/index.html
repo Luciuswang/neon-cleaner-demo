@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>雨港 · Procedural Material Lab</title>
+<link rel="icon" href="data:,">
+<style>
+:root{color-scheme:dark;font-family:Inter,"Microsoft YaHei",system-ui,sans-serif;color:#e3e9ee;background:#080d12;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0;overflow:hidden}canvas{display:block;width:100vw;height:100vh;touch-action:none;cursor:grab}canvas:active{cursor:grabbing}
+button,input,select{font:inherit}button,select{cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid #f0c393;outline-offset:3px}
+#mast{position:fixed;top:28px;left:32px;pointer-events:none;text-shadow:0 2px 16px #000}#mast small{font-size:10px;letter-spacing:.24em;color:#bdced3}#mast h1{font-size:28px;letter-spacing:.16em;margin:7px 0 5px;font-weight:500}#mast p{font-size:11px;color:#9bacb7;margin:0;letter-spacing:.05em}
+#inspector{position:fixed;right:24px;top:24px;width:260px;background:#0c141cce;border:1px solid #afc9db24;backdrop-filter:blur(18px);padding:20px;border-radius:8px;box-shadow:0 8px 50px #0003}
+.eyebrow{color:#dda76f;letter-spacing:.18em;font-size:10px}.segmented{display:flex;margin:13px 0 16px;gap:4px}.segmented button{border:1px solid #ffffff18;background:#ffffff04;color:#aabac5;flex:1;font-size:11px;padding:9px 4px;border-radius:3px}.segmented button.on{background:#d7b086;color:#10171a;border-color:#d7b086}
+label{display:block;font-size:11px;color:#b6c4ce;margin:13px 0 6px}label output{float:right;color:#e5c199;font-variant-numeric:tabular-nums}input[type=range]{width:100%;accent-color:#d7b086;height:16px;cursor:pointer}select{width:100%;background:#17222d;color:#d5dfe7;border:1px solid #35424b;padding:8px;border-radius:3px;font-size:11px}
+#control-row{display:flex;gap:6px;margin:17px 0 14px}#control-row button{flex:1;background:transparent;border:1px solid #53606b;color:#ccd7df;border-radius:3px;font-size:11px;padding:7px}#status{border-top:1px solid #ffffff14;padding-top:12px;font-size:10px;line-height:1.8;color:#8d9eaa;min-height:49px}#proof{font-size:10px;margin:10px 0 0;line-height:1.65;color:#778b98}#proof a{color:#aebfc9;text-underline-offset:3px}
+#caption{position:fixed;bottom:105px;left:32px;pointer-events:none;text-shadow:0 2px 14px #000;max-width:min(500px,65vw)}#caption .num{font-size:10px;letter-spacing:.18em;color:#cca77c}#cname{font-size:24px;font-weight:500;margin:9px 0 8px;letter-spacing:.04em}#cdesc{font-size:11px;line-height:1.7;color:#aebdc6;max-width:450px;margin:0}
+#bar{position:fixed;bottom:32px;left:32px;right:32px;display:flex;gap:6px;flex-wrap:wrap}#bar button{padding:10px 13px;background:#101b23b8;backdrop-filter:blur(12px);color:#b5c3ce;border:1px solid #ffffff20;font-size:11px;border-radius:4px}#bar button.on{background:#d7b086;color:#15202a;border-color:#d7b086}#bar i{font-style:normal;margin-right:8px;font-size:9px;opacity:.55}#hint{position:fixed;bottom:9px;left:32px;font-size:9px;letter-spacing:.06em;color:#788b99}
+#load{position:fixed;inset:0;background:#080d12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:10;transition:opacity .7s}#load b{letter-spacing:.3em;font-size:13px;color:#d7b086;font-weight:500}#load span{font-size:11px;color:#8399a9}#load>div{width:260px;height:2px;background:#26343d}#load u{display:block;height:2px;background:#d7b086;width:0;transition:width .2s}
+body.clean #mast,body.clean #inspector,body.clean #caption,body.clean #bar,body.clean #hint{display:none}
+@media(max-width:800px){#inspector{width:210px;right:12px;top:12px;padding:12px}#mast{left:18px;top:18px}#mast h1{font-size:21px}#mast p{max-width:140px;line-height:1.7}#caption{left:18px;bottom:128px;max-width:53vw}#cdesc{font-size:10px}#bar{left:18px;right:18px;bottom:28px;gap:4px}#bar button{font-size:10px;padding:7px}#hint{left:18px}#proof{display:none}}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+<div id="load"><b>RAIN HARBOR / MATERIAL LAB</b><div><u id="lbar"></u></div><span id="ltxt">正在由代码生成材质…</span></div>
+<header id="mast"><small>STUDY 01 / PROCEDURAL SURFACES</small><h1>雨港</h1><p>零外部美术资产 · 可复现材质实验</p></header>
+<aside id="inspector" aria-label="材质控制">
+ <div class="eyebrow">MATERIAL LAB / 材质实验</div>
+ <div class="segmented"><button id="derived" class="on" aria-pressed="true">动态实验版</button><button id="baseline" aria-pressed="false">原作者基线</button></div>
+ <label for="wetness">地面湿度 <output id="wetValue">88%</output></label><input id="wetness" type="range" min="0" max="1" step="0.01" value="0.88">
+ <label for="ripples">水面扰动 <output id="rippleValue">45%</output></label><input id="ripples" type="range" min="0" max="1" step="0.01" value="0.45">
+ <label for="lighting">光照条件</label><select id="lighting"><option value="harbor">雨夜码头 · 冷暖对照</option><option value="overcast">阴天软光 · 材质检查</option><option value="raking">低角度侧光 · 凹凸检查</option></select>
+ <label for="channel">材质分解</label><select id="channel"><option value="0">最终画面 / Beauty</option><option value="1">基础色 / Albedo</option><option value="2">粗糙度 / Roughness</option><option value="3">表面法线 / World normal</option><option value="4">金属度 / Metalness</option></select>
+ <div id="control-row"><button id="orbit">开启环绕</button><button id="freeze">暂停水面</button><button id="reset">重置</button></div>
+ <div id="status" aria-live="polite">生成材质中</div>
+ <p id="proof">基于 wquguru 的 MIT 材质样板扩展。<br><a href="reference.html" target="_blank" rel="noopener">打开未改动视觉基线 ↗</a> · <a href="NOTICE.txt" target="_blank" rel="noopener">来源与许可</a><br>本页是材质验证，不是 3A 游戏完成声明。</p>
+</aside>
+<section id="caption"><div class="num">INSPECT / <span id="viewNumber">00</span></div><h2 id="cname"></h2><p id="cdesc"></p></section>
+<nav id="bar" aria-label="材质视角"></nav>
+<div id="hint">拖动旋转 · 滚轮缩放 · 右键平移　/　0–6 切换材质　空格 环绕　H 隐藏界面　B 基线对照</div>
+<script type="module" src="./lab.mjs"></script>
+</body>
+</html>

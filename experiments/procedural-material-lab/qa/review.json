@@ -1,0 +1,55 @@
+{
+  "task": "procedural-material-lab-2026-11-19",
+  "scope": "browser-material-study",
+  "quality_profile": "offscreen-cinematic-v1",
+  "reviewer": "Sagan / independent read-only Gatekeeper and QA Director",
+  "reviewerId": "01a1f3c9-7c97-7f92-b423-fcdc3cf7b62d",
+  "harnessProducer": "McClintock / disjoint QA-only writer",
+  "harnessProducerId": "01a1f3cd-3c82-7ea3-9d50-12bc7addbace",
+  "skill": "liveops-art-precheck and its full review checklist",
+  "sourceSHA256": "9a3293f8f08c1def0b8a9f379025a84e38da85c53708874fad4531a6b19df0f3",
+  "verdicts": {
+    "plan": "PASS",
+    "sampledReferenceLevelArt": "PASS",
+    "engineeringDemonstration": "CONDITIONAL PASS",
+    "strictDeterminism": "FAIL",
+    "strictPerformance": "FAIL",
+    "continuousMotion": "UNVERIFIED",
+    "productionMigration": "BLOCKED",
+    "aaaGameplayAcceptance": "NOT_GRANTED"
+  },
+  "confidence": "high for reviewed static frames only",
+  "currentBuildBinding": {
+    "sourceFilesMatched": 11,
+    "reviewedViews": 14,
+    "unchangedPNGs": 10,
+    "changedPNGsReopened": 4,
+    "finding": "Four changed views show only one-level channel differences; no visible regression. Both final runs bind to current source."
+  },
+  "sourceFindingsClosed": [
+    "Deterministic-input PMREM rebuild and disposal on relevant settings changes",
+    "Atomic input validation and queue recovery",
+    "Positive native renderer classification, unknown is not native",
+    "Actual raking light transform and restoration",
+    "Capture-time field, nonnegative frame delta, pending slider cancellation",
+    "Original-author attribution and pinned local MIT sources"
+  ],
+  "axes": {
+    "structure": "Corrugation, container frame, tire volume and pallet construction are coherent; no obvious proportion regression.",
+    "stylization": "Industrial PBR read holds; zinc/wood/tread patterns reveal procedural exaggeration, not cartoon drift.",
+    "impact": "Container lettering and puddle reflection lead; harbor lighting is the strongest beauty treatment.",
+    "detailPriority": "Foreground is more resolved than the background; zinc patterns and brass scratches can compete with lettering.",
+    "sameness": "Closely repeats original scene layout, silhouettes, rust and palette intentionally; variants do not establish a new art identity."
+  },
+  "productionIssues": [
+    {"severity":"Major","issue":"Repetitive distant box walls","action":"Before production reuse, differentiate silhouettes and add readable corner hardware, doors and depth breaks."},
+    {"severity":"Major","issue":"Overscale/high-contrast zinc cells and bright brass details","action":"Reduce crystal scale/contrast and subordinate highlights to plate lettering."},
+    {"severity":"Minor","issue":"Uniform bright tire treads and strong wood grain bands","action":"Vary wear/roughness and subordinate grain contrast to board construction."},
+    {"severity":"Minor","issue":"Clipped galvanized highlights in the diagnostic raking-light setup","action":"Tune the diagnostic lighting before reusing it as a beauty preset."}
+  ],
+  "strictFailureEvidence": {
+    "derivedStateCycle": "28 of 2073600 pixels differ by one 8-bit channel step; strict equality remains failed. Reference state cycles match exactly.",
+    "performance": "Independent recomputation: p50/p95/p99 17.6/18.3/18.5ms; maximum166.3ms; 2 of1689 intervals above50ms. Programs27/geometries230/textures40 stable does not waive hitches."
+  },
+  "limits": "Sampled static review only, not continuous viewing of all95 images or game/cinematic acceptance. No Riverfall migration clearance. Underlying scene is original author's work. No reviewer edits or Git actions."
+}

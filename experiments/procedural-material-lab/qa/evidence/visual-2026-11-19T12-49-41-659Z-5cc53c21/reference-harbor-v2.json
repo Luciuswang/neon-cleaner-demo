@@ -1,0 +1,122 @@
+{
+  "scope": "browser-material-study",
+  "settings": {
+    "mode": "reference",
+    "wetness": 1,
+    "ripples": 1,
+    "lighting": "harbor",
+    "channel": 0,
+    "paused": true,
+    "auto": false,
+    "exposure": 0.82,
+    "waterClock": 0.27589999999999965,
+    "lastRenderedTime": 1.25
+  },
+  "camera": {
+    "position": [
+      0.6115896427162577,
+      1.6253911276714335,
+      4.497012890500222
+    ],
+    "target": [
+      -0.3,
+      1.3,
+      0
+    ],
+    "quaternion": [
+      -0.03521396492286978,
+      0.09977087604604615,
+      0.003533181623364697,
+      0.9943808453480143
+    ],
+    "view": 2,
+    "fov": 38
+  },
+  "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "nativeGPU": true,
+  "rendererClassification": "verified-native",
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "stats": {
+    "frame": 25092,
+    "calls": 367,
+    "triangles": 183802,
+    "points": 0,
+    "lines": 0,
+    "memory": {
+      "geometries": 230,
+      "textures": 40
+    },
+    "programs": 27
+  },
+  "environment": {
+    "revision": 12,
+    "preset": "harbor",
+    "ownedTargets": 1,
+    "lights": [
+      {
+        "type": "SpotLight",
+        "intensity": 620,
+        "position": [
+          -3.2,
+          6.45,
+          4.7
+        ],
+        "color": [
+          1,
+          0.55,
+          0.23
+        ]
+      },
+      {
+        "type": "SpotLight",
+        "intensity": 1350,
+        "position": [
+          15,
+          10,
+          -4.5
+        ],
+        "color": [
+          0.6,
+          0.8,
+          1
+        ]
+      },
+      {
+        "type": "SpotLight",
+        "intensity": 1500,
+        "position": [
+          4,
+          17,
+          -24
+        ],
+        "color": [
+          1,
+          0.52,
+          0.2
+        ]
+      },
+      {
+        "type": "HemisphereLight",
+        "intensity": 0.85,
+        "position": [
+          0,
+          1,
+          0
+        ],
+        "color": [
+          0.16,
+          0.3,
+          0.62
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "base": "wquguru MIT material study",
+    "externalArtAssets": 0,
+    "engine": "187"
+  }
+}

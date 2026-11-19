@@ -1,0 +1,8 @@
+# Preserve raw source/evidence hashes across Windows and other workstations.
+* -text
+# Raw Windows browser logs intentionally retain CRLF and hashed source bytes.
+qa/evidence/**/*.log -whitespace
+# Never reformat pinned upstream sources to satisfy local style checks.
+vendor/** -whitespace
+# Lossless native-canvas QA is large; keep immutable proof out of normal Git packs.
+qa/evidence/**/*.png filter=lfs diff=lfs merge=lfs -text

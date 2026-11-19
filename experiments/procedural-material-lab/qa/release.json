@@ -1,0 +1,63 @@
+{
+  "task": "procedural-material-lab-2026-11-19",
+  "scope": "browser-material-study",
+  "quality_profile": "offscreen-cinematic-v1",
+  "ueEvidence": false,
+  "state": "REWORK",
+  "preview": "http://127.0.0.1:5191/",
+  "sourceSHA256": "9a3293f8f08c1def0b8a9f379025a84e38da85c53708874fad4531a6b19df0f3",
+  "visualReport": "evidence/visual-2026-11-19T12-49-41-659Z-5cc53c21/result.json",
+  "performanceReport": "evidence/performance-2026-11-19T12-51-27-816Z-d39d3f82/result.json",
+  "independentReview": "review.json",
+  "acceptance": {
+    "functionalControls": "PASS",
+    "zeroExternalArtRequests": "PASS",
+    "pinnedOfflineReference": "PASS",
+    "sourceAndArtifactIntegrity": "PASS",
+    "staticReferenceArt": "PASS (14 sampled views, current-build bound)",
+    "engineeringDemonstration": "CONDITIONAL PASS",
+    "strictDerivedPixelRepeat": "FAIL",
+    "strictRealtimePerformance": "FAIL",
+    "continuousMotion": "UNVERIFIED",
+    "riverfallMigration": "BLOCKED",
+    "aaaGameAcceptance": "NOT_GRANTED"
+  },
+  "pixelRepeat": {
+    "pixels": 2073600,
+    "changedPixels": 28,
+    "maximumChannelDifferenceOutOf255": 1,
+    "meanAbsoluteChannelDifference": 0.000004501028806584362,
+    "referenceModeCyclesExact": true,
+    "thresholdRelaxed": false
+  },
+  "performance": {
+    "nativeGPU": "NVIDIA GeForce RTX 5070 via ANGLE D3D11",
+    "resolution": [1920, 1080],
+    "warmupMS": 10000,
+    "sampleMS": 30011.2,
+    "samples": 1689,
+    "p50MS": 17.6,
+    "p95MS": 18.3,
+    "p99MS": 18.5,
+    "maximumMS": 166.3,
+    "framesAbove50MS": 2,
+    "thresholdRelaxed": false,
+    "exportsOrPollingDuringMeasurement": false
+  },
+  "preservedRuns": [
+    "evidence/visual-2026-11-19T12-42-41-894Z-bcabbef8",
+    "evidence/visual-2026-11-19T12-47-02-002Z-ecf2d4dc",
+    "evidence/visual-2026-11-19T12-48-16-514Z-e604ec15",
+    "evidence/visual-2026-11-19T12-49-41-659Z-5cc53c21",
+    "evidence/performance-2026-11-19T12-51-27-816Z-d39d3f82"
+  ],
+  "productionLimitations": [
+    "Distant container wall silhouettes remain repetitive and low-detail.",
+    "Zinc crystal scale, wood grain and tire-edge wear remain visibly procedural.",
+    "Raking diagnostic light can clip bright galvanized highlights.",
+    "Sampled motion frames do not constitute continuous visual review.",
+    "No game integration or public Pages deployment occurred."
+  ],
+  "nextAction": "Profile the two frame-time hitches in a separate instrumented run, isolate the 28-pixel state-cycle discrepancy, then rerun unchanged gates before any Riverfall migration.",
+  "portability": "Public code, MIT sources and generated QA evidence only. Existing UE/private-vault dirty state is preserved; SkipPrivateAssets checkpoint does not certify whole-project UE portability."
+}

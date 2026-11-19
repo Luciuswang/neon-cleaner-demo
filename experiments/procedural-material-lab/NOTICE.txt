@@ -1,0 +1,25 @@
+RAIN HARBOR / PROCEDURAL MATERIAL LAB
+
+The scene, procedural texture generators and original renderer are derived from:
+https://github.com/wquguru/fable52-fps-repro/tree/a7e1df3ce32eb2bb05e23ae457fe5fe2bffab961/demos/02-materials
+Copyright (c) 2026 wquguru. MIT license: vendor/WQUGURU-LICENSE.txt.
+The author identifies this as an independent reproduction, not Saltline source.
+
+vendor/materials-upstream.html preserves upstream source bytes. reference.html
+only redirects the Three.js module import to the pinned local module. The
+reference page is the author's work, not newly generated art by this project.
+
+Derived experiment additions: UI and same-camera comparison, controllable wetness,
+derivative-filtered animated puddle normals, synchronized lighting/environment
+presets, material diagnostics, reproducible native-headless evidence harness.
+These changes were implemented in this coding session, not a verified Fable run.
+
+Three.js 0.187.0: vendor/three.module.js and vendor/three.core.js.
+Copyright Three.js authors. MIT license: vendor/THREE-LICENSE.txt.
+
+No image textures, HDRs, font files or models are loaded at runtime. Maps are
+generated from noise, height fields and Canvas text on this computer. No assets
+from the separately supplied Saltline HTML are redistributed here.
+
+This isolated browser material study does not replace any existing game demo.
+Reference-level visual fidelity and AAA game acceptance are separate judgements.

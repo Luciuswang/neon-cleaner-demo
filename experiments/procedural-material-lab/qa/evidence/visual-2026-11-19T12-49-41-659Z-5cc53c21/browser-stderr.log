@@ -1,0 +1,9 @@
+[61748:84232:1119/204942.134:ERROR:components\policy\core\common\cloud\cloud_policy_validator.cc:654] [policy_type=google/chrome/machine-level-user] Cached key new signature verification failed
+
+DevTools listening on ws://127.0.0.1:52637/devtools/browser/e67336ad-a05e-4616-8f9c-09ad9bce5a80
+[61748:84232:1119/204952.563:ERROR:components\policy\core\browser\policy_conversions_client.cc:332] CloudProfileReportingEnabled has an error of type: 被忽略了，因为此政策只能设为云端用户政策。
+[61748:62232:1119/204953.086:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[61748:62232:1119/204953.092:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[61748:62232:1119/204953.205:ERROR:google_apis\gcm\engine\mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret
+[61748:62232:1119/204953.205:ERROR:google_apis\gcm\engine\mcs_client.cc:704] Failed to log in to GCM, resetting connection.
+Created TensorFlow Lite XNNPACK delegate for CPU.

@@ -1,0 +1,21 @@
+{
+  "upstream": {
+    "repository": "https://github.com/wquguru/fable52-fps-repro",
+    "revision": "a7e1df3ce32eb2bb05e23ae457fe5fe2bffab961",
+    "path": "demos/02-materials/index.html",
+    "local": "materials-upstream.html",
+    "sha256": "b4e99f82d7816b7786ba1e91ac2e7b9df3a98ec65e870db4163648a8a0753a20",
+    "license": "WQUGURU-LICENSE.txt",
+    "licenseSHA256": "9dbd0363c585a2d1ed344835eee7879d4356addf7ae9016c7970f568d5e4f296"
+  },
+  "three": {
+    "version": "0.187.0",
+    "source": "https://cdn.jsdelivr.net/npm/three@0.187.0/build/",
+    "files": {
+      "three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+      "three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578"
+    },
+    "license": "THREE-LICENSE.txt",
+    "licenseSHA256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+  }
+}
