@@ -1,0 +1,1923 @@
+{
+  "sources": {
+    "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_diff_2k.jpg": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_nor_gl_2k.png": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_rough_2k.jpg": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+    "../sunbreak-storm-v3/assets/audio/NOTICE.md": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1",
+    "../sunbreak-storm-v3/assets/audio/confirm.wav": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba",
+    "../sunbreak-storm-v3/assets/audio/enemy.wav": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e",
+    "../sunbreak-storm-v3/assets/audio/magin.wav": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c",
+    "../sunbreak-storm-v3/assets/audio/magout.wav": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7",
+    "../sunbreak-storm-v3/assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "../sunbreak-storm-v3/assets/audio/player.wav": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7",
+    "../sunbreak-storm-v3/assets/audio/provenance/firearm-source.html.txt": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868",
+    "../sunbreak-storm-v3/assets/audio/provenance/reload-source.html.txt": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_diff_1k.jpg": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_nor_gl_1k.png": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_rough_1k.jpg": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488",
+    "../sunbreak-storm-v3/assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798",
+    "../sunbreak-storm-v3/assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+    "../sunbreak-storm-v3/assets/mp5/mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_diff_1k.jpg": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_nor_gl_1k.png": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_rough_1k.jpg": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c",
+    "../sunbreak-storm-v3/assets/soldier/soldier_tac.glb": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6",
+    "../sunbreak-storm-v3/vendor/presentation/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SSAOPass.js": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "../sunbreak-storm-v3/vendor/three/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/three/build/three.module.js": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "afterrain-assets.json": "f1962089201af2341b8a306dc8b70c8fe2d36512fdfec8d1915f9edf1426ac65",
+    "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+    "assets/afterrain-detail/dry_riverbed_rock/arm.jpg": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e",
+    "assets/afterrain-detail/dry_riverbed_rock/color.jpg": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524",
+    "assets/afterrain-detail/dry_riverbed_rock/normal.jpg": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d",
+    "assets/afterrain-detail/ganges_river_pebbles/arm.jpg": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c",
+    "assets/afterrain-detail/ganges_river_pebbles/color.jpg": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34",
+    "assets/afterrain-detail/ganges_river_pebbles/normal.jpg": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133",
+    "assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6",
+    "assets/brick_moss_001/color.jpg": "0af91390672fe184959fdc9d915d8ee4006c46011057f03fc0d3675df74cdf79",
+    "assets/brick_moss_001/normal.jpg": "b764511928a767aa8501dc2ae1a6bc5e1f92a43d1ef97ead55f77780f3ee367e",
+    "assets/brick_moss_001/roughness.jpg": "c429062347f60091bdd9bf6db462d466a6b127d1b7268109d55f92a938f686c7",
+    "assets/brown_mud_02/color.jpg": "5c735b1df784ab1990f4e209c55d27fa4e7a19508e40484ed5aa783266783726",
+    "assets/brown_mud_02/normal.jpg": "3d6eec0adba8fd514d5634c56f806ad40206975c3ef17de1e2468b9e3ebcf719",
+    "assets/brown_mud_02/roughness.jpg": "00ef047ecda114930311efd31cbdb371c7a236f211a00f1dfeb6b1b73ac2f674",
+    "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+    "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+    "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+    "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/ground-surfaces/dirt/color.jpg": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+    "assets/ground-surfaces/dirt/normal.jpg": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+    "assets/ground-surfaces/dirt/official-files.json": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7",
+    "assets/ground-surfaces/dirt/roughness.jpg": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+    "assets/ground-surfaces/forest_ground_04/color.jpg": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+    "assets/ground-surfaces/forest_ground_04/normal.jpg": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+    "assets/ground-surfaces/forest_ground_04/official-files.json": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156",
+    "assets/ground-surfaces/forest_ground_04/roughness.jpg": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+    "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
+    "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
+    "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
+    "assets/wild-grass/Foliage001-leaf-rgba.png": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+    "assets/wild-grass/Foliage006-leaf-rgba.png": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+    "assets/wild-grass/LICENSE.txt": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+    "assets/wild-grass/source/Foliage001/Foliage001.png": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+    "assets/wild-grass/source/Foliage001/metadata.json": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+    "assets/wild-grass/source/Foliage006/Foliage006.png": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+    "assets/wild-grass/source/Foliage006/metadata.json": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+    "assets/wild-grass/source/license/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/wild-grass/source/license/ambientcg-license.html": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+    "assets/wild-grass/wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "assets/wild-grass/wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "assets/wild-grass/wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "assets/wild-grass/wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "credits.html": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d",
+    "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
+    "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "downloaded-dressing.js": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5",
+    "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+    "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
+    "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+    "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
+    "ground-surface-assets.json": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9",
+    "ground-surface.js": "f40e9066a997736f7048be75b84392d00a3f771290b56d387f7f01c8b41a978e",
+    "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
+    "local-asset-store.mjs": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "masonry-materials.js": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5",
+    "qa/browser.mjs": "36b75b4409b57e2e7fc7714dac2a684decdef3e2ba794cc1d7e4daedd71c2564",
+    "qa/hooks.js": "9197cad1eb320fca9fa8f50250badf4f1ef129e81bc8f37ab0c631bd25340e9a",
+    "qa/source-binding.mjs": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+    "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+    "serve.mjs": "1eca6b086895a5fccf4f5485f5e40d484ed353f290eccaf72a3507921dc718a5",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+    "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
+    "vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
+    "village.js": "49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
+    "world.js": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d",
+    "local-only/manifest.json": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+    "local-only/castle-wall.glb": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
+    "local-only/cement-rubble.glb": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
+    "local-only/cement-rubble-small.glb": "cc0443b5736b634e1c33beada6a54ef32cca78254beda0254d04d629a2d5ff24",
+    "local-only/grass-clumps-a.glb": "011c18c7c67def787cd208e245df9a8bb7c228b204c1dd8531c47f8604e086e1",
+    "local-only/grass-clumps-b.glb": "06542a8a6544c2a8b5b1e513ce7c5f98364f874319e546c15676200f3c8501f6",
+    "local-only/grass-clumps-c.glb": "5bd13e718d6f8d5ac68b3a70211a1c6ae268d8d38eabc237463cd16f7b456750",
+    "local-only/mossy-wall-a.glb": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754",
+    "local-only/mossy-wall-b.glb": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4",
+    "local-only/tundra-grass-a.glb": "740aec736017a52adec7d81c81823758d72afcb04074efde1a302f4fc4d36e0e",
+    "local-only/tundra-grass-d.glb": "7d4e1f1c6b058241a1261745fc5658ef44ef47379c54967b4fa0d08d981c8e77",
+    "local-only/tundra-grass-h.glb": "9dbea586c5922990240987144fd2f32e316fad5235ce59ff04049c58400f13f6",
+    "local-only/woodland-house.glb": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+    "local-only/served-manifest.json": "89af124953d3706e3224bcd45458132675bc06977f42534fa38c9f71720e1bcf"
+  },
+  "units": {
+    "map-checks": {
+      "pass": true,
+      "testSHA256": "5026a3f074ae31030f9cc83adb2753890989d35829219f46ceb4551a1e75279e",
+      "result": {
+        "date": "2026-11-19T07:27:53.625Z",
+        "pass": true,
+        "checks": [
+          {
+            "name": "original six building walls and river cover retain mirrored geometry",
+            "pass": true
+          },
+          {
+            "name": "spawns clear of all enemy obstacles, grounded on both banks",
+            "pass": true
+          },
+          {
+            "name": "two cabin transforms are diagonally symmetric about river center",
+            "pass": true
+          },
+          {
+            "name": "riverbed symmetrical, submerged fords, dry bridge and slope bounded",
+            "pass": true
+          },
+          {
+            "name": "continuous wall-free wade and crossing corridors both ways",
+            "pass": true
+          },
+          {
+            "name": "doors windows and roof clearance match architecture contract",
+            "pass": true
+          },
+          {
+            "name": "start connector retained before smoothing on both banks",
+            "pass": true
+          },
+          {
+            "name": "house doorway graph edges retain valid route",
+            "pass": true
+          },
+          {
+            "name": "swept clearance rejects short corner clipping",
+            "pass": true
+          },
+          {
+            "name": "all thin river cover walls offer AI cover pairs",
+            "pass": true
+          },
+          {
+            "name": "both-bank spawn-to-crossing routes remain reachable with cabin obstacles",
+            "pass": true
+          },
+          {
+            "name": "AI routes connect both banks and all spawn exits",
+            "pass": true
+          },
+          {
+            "name": "unchanged reused code weapon.js",
+            "pass": true
+          },
+          {
+            "name": "unchanged reused code reload-pose.js",
+            "pass": true
+          },
+          {
+            "name": "unchanged reused code actors.js",
+            "pass": true
+          },
+          {
+            "name": "unchanged reused code audio.js",
+            "pass": true
+          },
+          {
+            "name": "unchanged reused code combat-controls.js",
+            "pass": true
+          },
+          {
+            "name": "unchanged reused code storm-audio.js",
+            "pass": true
+          },
+          {
+            "name": "all four previous demos have no worktree changes",
+            "pass": true
+          }
+        ],
+        "lengths": [
+          {
+            "crossing": -23,
+            "distances": [
+              56.9088051269578,
+              51.475639315325694
+            ],
+            "difference": 5.433165811632108
+          },
+          {
+            "crossing": -4,
+            "distances": [
+              39.102188308938665,
+              34.23562687215586
+            ],
+            "difference": 4.866561436782803
+          },
+          {
+            "crossing": 15,
+            "distances": [
+              24.252840835665797,
+              24.252840835665797
+            ],
+            "difference": 0
+          }
+        ],
+        "reused": {
+          "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
+          "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+          "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+          "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+          "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+          "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
+        },
+        "sources": {
+          "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+          "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+          "qa/map-checks.mjs": "5026a3f074ae31030f9cc83adb2753890989d35829219f46ceb4551a1e75279e"
+        },
+        "limits": "Diagonal cabin pair is rotationally matched. Existing building/crossing centers preserved. Full map no longer exact X-mirror; route differences measured, NOT certified multiplayer balance or actual-browser traversal proof."
+      }
+    },
+    "terrain-rays": {
+      "pass": true,
+      "testSHA256": "8d67f54324e3688886c412cc48eb84b6577a71b6426e27ef816b1229e7d68631",
+      "result": {
+        "stdout": "{ pass: true, rays: 175 }\n"
+      }
+    },
+    "ai-movement": {
+      "pass": true,
+      "testSHA256": "bea010eb3784252494bf3e6947597fe3ee960b36569ff9b52af0934056859e7e",
+      "result": {
+        "stdout": "{ pass: true, cases: 62, failures: [] }\n"
+      }
+    },
+    "village-checks": {
+      "pass": true,
+      "testSHA256": "7f1af45b33a6f52ebac8366de8dcdc790f873a76852c373bdd3dfa6981ec46cd",
+      "result": {
+        "stdout": "{\n  pass: true,\n  date: '2026-11-19T07:27:56.801Z',\n  wallBoxes: 72,\n  architecture: {\n    houses: 6,\n    walls: 72,\n    boxes: 756,\n    solids: 205,\n    tiles: 2496,\n    drawCalls: 13,\n    triangles: 50224,\n    contribution: 'Fable 5.2 structure, reviewed and refined by Codex'\n  },\n  checks: 'exact wall geometry; six clear passages and solid walls; roof slabs/half-collapse openings; bridge shot occlusion; batching budgets',\n  sources: {\n    'village.js': '49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3',\n    'map-layout.js': '7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6',\n    'qa/village-checks.mjs': '7f1af45b33a6f52ebac8366de8dcdc790f873a76852c373bdd3dfa6981ec46cd'\n  }\n}\n"
+      }
+    },
+    "fracture-checks": {
+      "pass": true,
+      "testSHA256": "eb2a933f0dd9c35cb813232f5c322efddbec7db250680e147d08304602757bd4",
+      "result": {
+        "stdout": "{\n  date: '2026-11-19T07:28:00.195Z',\n  pass: true,\n  samples: 160,\n  triangles: 7014,\n  pileSamples: 1480,\n  supportChecks: 5832,\n  maxSurfaceGap: 0.0000010036829322379592,\n  maxStep: 0.2425210802012636,\n  ruins: {\n    mounds: 8,\n    slabs: 556,\n    chips: 548,\n    triangles: 25026,\n    supportTriangles: 12511,\n    drawCalls: 10,\n    mode: 'static gravity-staged fracture, not dynamic destruction'\n  },\n  sources: {\n    'fracture-geometry.js': '1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9',\n    'ruins.js': '04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53',\n    'map-layout.js': '7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6',\n    'qa/fracture-checks.mjs': 'eb2a933f0dd9c35cb813232f5c322efddbec7db250680e147d08304602757bd4'\n  },\n  limits: 'Static geometry and exact support for every fragment and coarse pile. Not dynamic destruction or visual acceptance.'\n}\n"
+      }
+    },
+    "buffer-checks": {
+      "pass": true,
+      "testSHA256": "06bb2700be8242da806367220748757ec61ad0e6a9e148673aa8b0218ad01389",
+      "result": {
+        "pass": true,
+        "unitPass": true,
+        "integrationPass": true,
+        "checks": 40,
+        "traversals": 16,
+        "rayComparisons": 174,
+        "failures": []
+      }
+    },
+    "landscape-checks": {
+      "pass": true,
+      "testSHA256": "09796970ab22085e5eadce5eae34af752721ad134a7de8ecda15dd31b0c5d114",
+      "result": {
+        "suite": "river-distant-landscape-cpu-v2-low-valley",
+        "verdict": "PASS",
+        "checksPassed": 26,
+        "checksTotal": 26,
+        "scope": "CPU only. No browser, GPU, rendered art, continuous motion or frame-performance acceptance.",
+        "sources": {
+          "../distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+          "./landscape-checks.mjs": "09796970ab22085e5eadce5eae34af752721ad134a7de8ecda15dd31b0c5d114",
+          "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+          "../../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+        },
+        "placements": [
+          {
+            "id": "west-foothills",
+            "layer": 0,
+            "axis": "z",
+            "bounds": {
+              "minX": -280,
+              "maxX": -134,
+              "minZ": -240,
+              "maxZ": 250
+            },
+            "segments": [
+              112,
+              48
+            ],
+            "seed": 71,
+            "heightScale": 0.46
+          },
+          {
+            "id": "east-foothills",
+            "layer": 0,
+            "axis": "z",
+            "bounds": {
+              "minX": 134,
+              "maxX": 295,
+              "minZ": -260,
+              "maxZ": 230
+            },
+            "segments": [
+              112,
+              48
+            ],
+            "seed": 163,
+            "heightScale": 0.46
+          },
+          {
+            "id": "west-escarpment",
+            "layer": 1,
+            "axis": "x",
+            "bounds": {
+              "minX": -410,
+              "maxX": -70,
+              "minZ": -435,
+              "maxZ": -215
+            },
+            "segments": [
+              128,
+              64
+            ],
+            "seed": 277,
+            "heightScale": 0.475
+          },
+          {
+            "id": "east-broken-range",
+            "layer": 1,
+            "axis": "x",
+            "bounds": {
+              "minX": 88,
+              "maxX": 420,
+              "minZ": -450,
+              "maxZ": -210
+            },
+            "segments": [
+              128,
+              64
+            ],
+            "seed": 389,
+            "heightScale": 0.475
+          },
+          {
+            "id": "west-distant-range",
+            "layer": 2,
+            "axis": "x",
+            "bounds": {
+              "minX": -340,
+              "maxX": -50,
+              "minZ": -590,
+              "maxZ": -425
+            },
+            "segments": [
+              112,
+              56
+            ],
+            "seed": 503,
+            "heightScale": 0.455
+          },
+          {
+            "id": "east-distant-range",
+            "layer": 2,
+            "axis": "x",
+            "bounds": {
+              "minX": 60,
+              "maxX": 340,
+              "minZ": -590,
+              "maxZ": -430
+            },
+            "segments": [
+              112,
+              56
+            ],
+            "seed": 617,
+            "heightScale": 0.455
+          }
+        ],
+        "totals": {
+          "triangles": 79360,
+          "vertices": 40726,
+          "basePassDrawCalls": 12,
+          "minRadius": 134.00145754804313,
+          "maxRadius": 680.9552114493287,
+          "maxY": 109.79962158203125,
+          "buildMilliseconds": 59.55830000000003,
+          "elapsedMilliseconds": 330.0679
+        },
+        "checks": [
+          {
+            "name": "six patches / three layers / declared geometry and draw budgets",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "triangles": 79360,
+              "drawCalls": 12
+            }
+          },
+          {
+            "name": "fresh deterministic plan; caller mutation does not change source plan",
+            "pass": true
+          },
+          {
+            "name": "plan validator rejects terrain/valley/range/budget/duplicate/NaN corruption",
+            "pass": true,
+            "detail": {
+              "negativeCases": 9
+            }
+          },
+          {
+            "name": "authored patch rectangles outside actual terrain and gameplay/nav/cabin bounds",
+            "pass": true,
+            "detail": {
+              "terrainHalfExtent": 130,
+              "excludedNavigationBoxes": 74
+            }
+          },
+          {
+            "name": "west-foothills: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "west-foothills",
+              "vertices": 5537,
+              "triangles": 10752,
+              "minRadius": 134.00145754804313,
+              "maxRadius": 375.3664875824692,
+              "minY": -9,
+              "maxY": 48.76211929321289,
+              "minProjectedArea": 6.653623580932617
+            }
+          },
+          {
+            "name": "east-foothills: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "east-foothills",
+              "vertices": 5537,
+              "triangles": 10752,
+              "minRadius": 134.01311736169708,
+              "maxRadius": 393.22385482063527,
+              "minY": -9,
+              "maxY": 54.4254150390625,
+              "minProjectedArea": 7.337217330932617
+            }
+          },
+          {
+            "name": "west-escarpment: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "west-escarpment",
+              "vertices": 8385,
+              "triangles": 16384,
+              "minRadius": 226.10838109190027,
+              "maxRadius": 597.7666768899049,
+              "minY": -9,
+              "maxY": 93.82563018798828,
+              "minProjectedArea": 4.5654296875
+            }
+          },
+          {
+            "name": "east-broken-range: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "east-broken-range",
+              "vertices": 8385,
+              "triangles": 16384,
+              "minRadius": 227.69277546729495,
+              "maxRadius": 615.5485358604958,
+              "minY": -9,
+              "maxY": 99.35971069335938,
+              "minProjectedArea": 4.86328125
+            }
+          },
+          {
+            "name": "west-distant-range: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "west-distant-range",
+              "vertices": 6441,
+              "triangles": 12544,
+              "minRadius": 427.93106921559223,
+              "maxRadius": 680.9552114493287,
+              "minY": -9,
+              "maxY": 103.60371398925781,
+              "minProjectedArea": 3.8145180139690638
+            }
+          },
+          {
+            "name": "east-distant-range: all vertices/normals/indices/winding/faces/groups/range",
+            "pass": true,
+            "detail": {
+              "ok": true,
+              "errors": [],
+              "id": "east-distant-range",
+              "vertices": 6441,
+              "triangles": 12544,
+              "minRadius": 434.1658669218482,
+              "maxRadius": 680.9552114493287,
+              "minY": -9,
+              "maxY": 109.79962158203125,
+              "minProjectedArea": 3.5713958740234375
+            }
+          },
+          {
+            "name": "entire north/south valley remains empty, not a generic cone ring",
+            "pass": true,
+            "detail": {
+              "emptyValleyWidth": 72,
+              "emptySamplerProbes": 4230
+            }
+          },
+          {
+            "name": "full indexed faces cannot bridge the terrain or river opening",
+            "pass": true,
+            "detail": {
+              "trianglesChecked": 79360
+            }
+          },
+          {
+            "name": "grid boundary sinks below ground; no vertical curtains",
+            "pass": true
+          },
+          {
+            "name": "byte-identical regeneration with global random forbidden",
+            "pass": true,
+            "detail": {
+              "attributesCompared": 30
+            }
+          },
+          {
+            "name": "authored low-valley height ranges and unequal crest peaks (not art acceptance)",
+            "pass": true,
+            "detail": [
+              {
+                "id": "west-foothills",
+                "largeCrestPeaks": 4,
+                "maxY": 48.76211929321289,
+                "authoredHeightRange": [
+                  45,
+                  55
+                ],
+                "heightScale": 0.46,
+                "maxElevationFromHeroDegrees": 12.340332966704679
+              },
+              {
+                "id": "east-foothills",
+                "largeCrestPeaks": 3,
+                "maxY": 54.4254150390625,
+                "authoredHeightRange": [
+                  45,
+                  55
+                ],
+                "heightScale": 0.46,
+                "maxElevationFromHeroDegrees": 12.634325223659044
+              },
+              {
+                "id": "west-escarpment",
+                "largeCrestPeaks": 4,
+                "maxY": 93.82563018798828,
+                "authoredHeightRange": [
+                  85,
+                  100
+                ],
+                "heightScale": 0.475,
+                "maxElevationFromHeroDegrees": 11.650022890734999
+              },
+              {
+                "id": "east-broken-range",
+                "largeCrestPeaks": 4,
+                "maxY": 99.35971069335938,
+                "authoredHeightRange": [
+                  85,
+                  100
+                ],
+                "heightScale": 0.475,
+                "maxElevationFromHeroDegrees": 12.80299834315549
+              },
+              {
+                "id": "west-distant-range",
+                "largeCrestPeaks": 4,
+                "maxY": 103.60371398925781,
+                "authoredHeightRange": [
+                  98,
+                  110
+                ],
+                "heightScale": 0.455,
+                "maxElevationFromHeroDegrees": 10.022066330472528
+              },
+              {
+                "id": "east-distant-range",
+                "largeCrestPeaks": 3,
+                "maxY": 109.79962158203125,
+                "authoredHeightRange": [
+                  98,
+                  110
+                ],
+                "heightScale": 0.455,
+                "maxElevationFromHeroDegrees": 10.404108068719362
+              }
+            ]
+          },
+          {
+            "name": "scarp/talus structure has eroded steep faces, not smooth single humps",
+            "pass": true,
+            "detail": [
+              {
+                "id": "west-foothills",
+                "steepVertices": 331,
+                "talusVertices": 2770,
+                "erosionSecondDifferenceSum": 2533.301491155289
+              },
+              {
+                "id": "east-foothills",
+                "steepVertices": 387,
+                "talusVertices": 2700,
+                "erosionSecondDifferenceSum": 2645.0631410023198
+              },
+              {
+                "id": "west-escarpment",
+                "steepVertices": 2138,
+                "talusVertices": 2547,
+                "erosionSecondDifferenceSum": 3276.2510854350403
+              },
+              {
+                "id": "east-broken-range",
+                "steepVertices": 2094,
+                "talusVertices": 2363,
+                "erosionSecondDifferenceSum": 3710.3022525878623
+              },
+              {
+                "id": "west-distant-range",
+                "steepVertices": 3114,
+                "talusVertices": 788,
+                "erosionSecondDifferenceSum": 3296.0902572758496
+              },
+              {
+                "id": "east-distant-range",
+                "steepVertices": 3455,
+                "talusVertices": 731,
+                "erosionSecondDifferenceSum": 3122.875129532069
+              }
+            ]
+          },
+          {
+            "name": "muted mineral gray-green to blue-gray layers; no snow/white summit mask",
+            "pass": true,
+            "detail": [
+              {
+                "layer": 0,
+                "blueMinusRed": -0.05387710357790974
+              },
+              {
+                "layer": 1,
+                "blueMinusRed": 0.052835272998062004
+              },
+              {
+                "layer": 2,
+                "blueMinusRed": 0.15376273845362193
+              }
+            ]
+          },
+          {
+            "name": "geometry validator rejects bad winding/index/sampler/normal/valley data",
+            "pass": true,
+            "detail": {
+              "negativeCases": 7
+            }
+          },
+          {
+            "name": "build API using local Three only; one root attached and no foreign scene changes",
+            "pass": true,
+            "detail": {
+              "buildMilliseconds": 59.55830000000003,
+              "rendered": false
+            }
+          },
+          {
+            "name": "actual Three geometries match pure arrays and stay within budgets",
+            "pass": true,
+            "detail": {
+              "triangles": 79360,
+              "basePassDrawCalls": 12
+            }
+          },
+          {
+            "name": "source material/texture references reused, not changed or duplicated",
+            "pass": true
+          },
+          {
+            "name": "weather controls owned clones only; no custom sun or scene fog/exposure",
+            "pass": true
+          },
+          {
+            "name": "mineral shader reduces decoded map contrast without extra sampling or lighting",
+            "pass": true,
+            "detail": {
+              "shaderSourceChecked": true,
+              "gpuCompiled": false,
+              "materials": [
+                {
+                  "material": "landscape-0-rock",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.2
+                },
+                {
+                  "material": "landscape-0-scrub",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.12
+                },
+                {
+                  "material": "landscape-0-rock",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.2
+                },
+                {
+                  "material": "landscape-0-scrub",
+                  "contrast": 0.24,
+                  "grayInputOutputRange": [
+                    0.3952,
+                    0.6352
+                  ],
+                  "normalScale": 0.12
+                },
+                {
+                  "material": "landscape-1-rock",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.15000000000000002
+                },
+                {
+                  "material": "landscape-1-scrub",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.09
+                },
+                {
+                  "material": "landscape-1-rock",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.15000000000000002
+                },
+                {
+                  "material": "landscape-1-scrub",
+                  "contrast": 0.18,
+                  "grayInputOutputRange": [
+                    0.42640000000000006,
+                    0.6064
+                  ],
+                  "normalScale": 0.09
+                },
+                {
+                  "material": "landscape-2-rock",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.1
+                },
+                {
+                  "material": "landscape-2-scrub",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.06
+                },
+                {
+                  "material": "landscape-2-rock",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.1
+                },
+                {
+                  "material": "landscape-2-scrub",
+                  "contrast": 0.12,
+                  "grayInputOutputRange": [
+                    0.4576,
+                    0.5776
+                  ],
+                  "normalScale": 0.06
+                }
+              ]
+            }
+          },
+          {
+            "name": "info is detached metadata, not mutable geometry/material state",
+            "pass": true
+          },
+          {
+            "name": "dispose releases only owned resources and is idempotent",
+            "pass": true
+          },
+          {
+            "name": "missing dependencies fail without partial world mutation",
+            "pass": true
+          }
+        ]
+      }
+    },
+    "riverbank-checks": {
+      "pass": true,
+      "testSHA256": "03996376b3b336e7a6b6f9f34dd1ad89d7216d5f756199daaef38c3428eef040",
+      "result": {
+        "verdict": "CPU INVARIANTS PASS — NOT GPU/ART/PERFORMANCE ACCEPTANCE",
+        "assertions": 838043,
+        "counts": {
+          "micro": 2500,
+          "cobbles": 720,
+          "grass": 360,
+          "outcrops": 12,
+          "patches": 36,
+          "grassIslands": 7
+        },
+        "actualTriangles": 199776,
+        "actualDraws": 28,
+        "actualShadowTriangles": 3456,
+        "actualShadowDraws": 4,
+        "instances": 3592,
+        "previous850StoneTriangles": 153000,
+        "incrementalTriangles": 46776,
+        "incrementalDraws": 27,
+        "maxVertexProtrusion": 0.06070320351180558,
+        "aboveGroundStoneVertexFraction": 0.570173871620817,
+        "actualSubmergedStones": 2587,
+        "actualExposedStones": 552,
+        "openBankFieldFraction": 0.7186609686609686,
+        "denseBankFieldFraction": 0.09188034188034189,
+        "underwaterGravelCoverage": 0.7335468841001748,
+        "underwaterMudPockets": 0.1362842166569598,
+        "substrateStones": 1051,
+        "foregroundStones": 190,
+        "sourceFiles": 6,
+        "publicFiles": 6,
+        "publicBytes": 7855743,
+        "placementSHA256": "98c805b6ededc6199ec6a3e45517a0ba221840001b3a4be5dc48fa73fd6a9e80",
+        "runtimeManifestNote": "afterrain-assets.json runtime block belongs to prior slice; main must refresh source binding/budgets. Asset file hashes unchanged.",
+        "limits": "No server/browser/render process run. Shader hooks checked structurally only; native-headless GPU compilation/art/perf and movement QA owned by main."
+      }
+    },
+    "afterrain-assets-checks": {
+      "pass": true,
+      "testSHA256": "67336ed4adf342f7b4e9156bcca4d5f7be442a0383b7c22ebb341e80bface3e8",
+      "result": {
+        "stdout": "{\n  pass: true,\n  checked: 13,\n  publicBytes: 12480032,\n  scope: 'Official source integrity, derivatives and current-byte evidence binding; not visual acceptance'\n}\n"
+      }
+    },
+    "vegetation-clumps": {
+      "pass": true,
+      "testSHA256": "7ab8bb79e22cd7f277925bf8b639a2b3321f3a901d65daeb777b286941df4f72",
+      "result": {
+        "suite": "vegetation-organic-clumps-v1",
+        "verdict": "PASS",
+        "checksPassed": 23,
+        "checksTotal": 23,
+        "scope": "CPU only; no GPU, visual or pacing acceptance. Tests use spatial relationships, authored physical sizes, actual GLB counts and unchanged exclusions, not minimum population targets.",
+        "baseline": {
+          "sourceSHA256": "b289362e5e91e062f39d7dac19c85d58a172165c81c6150728ff6d5c9fc70960",
+          "treeTransformsSHA256": "76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a",
+          "triangles": 30842052,
+          "drawCalls": 112,
+          "placements": 13969,
+          "grassPlacements": 13874
+        },
+        "sources": {
+          "../vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
+          "./vegetation-clumps.mjs": "7ab8bb79e22cd7f277925bf8b639a2b3321f3a901d65daeb777b286941df4f72",
+          "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+          "island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+          "island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+          "tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+          "tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+          "grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+          "wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+          "wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+          "wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+          "wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+          "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294"
+        },
+        "summary": {
+          "grassRoots": 11288,
+          "foregroundRoots": 5796,
+          "patches": 104,
+          "clumps": 269,
+          "bareIntervals": 6,
+          "triangles": 30250068,
+          "drawCalls": 112,
+          "placements": 11383,
+          "grassTriangles": 1186320
+        },
+        "checks": [
+          {
+            "name": "original tree/shrub transforms and species/shadow flags byte-identical",
+            "pass": true,
+            "evidence": {
+              "sha256": "76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a",
+              "near": [
+                19,
+                19
+              ],
+              "far": [
+                18,
+                15
+              ],
+              "shrubs": 24
+            }
+          },
+          {
+            "name": "deterministic fresh plans independent of global RNG",
+            "pass": true
+          },
+          {
+            "name": "finite grounded transforms and three distinct plausible height classes",
+            "pass": true,
+            "evidence": {
+              "low": {
+                "count": 7445,
+                "minHeight": 0.1260001326791599,
+                "maxHeight": 0.2584999349220561
+              },
+              "medium": {
+                "count": 3805,
+                "minHeight": 0.12971507552974185,
+                "maxHeight": 0.3984967270466563
+              },
+              "tall": {
+                "count": 38,
+                "minHeight": 0.4682386959469412,
+                "maxHeight": 0.5298349054170307
+              }
+            }
+          },
+          {
+            "name": "all roots preserve original river/path/crossing/cabin/house/rubble exclusions",
+            "pass": true,
+            "evidence": {
+              "rootsChecked": 11288,
+              "foregroundRoots": 5796
+            }
+          },
+          {
+            "name": "rendered leaf radii including wind preserve footprint clearance",
+            "pass": true,
+            "evidence": {
+              "perimeterProbes": 180608
+            }
+          },
+          {
+            "name": "nonzero randomized root separation with overlapping leaf bodies in cores",
+            "pass": true,
+            "evidence": {
+              "min": 0.07500856078239376,
+              "nearestP10": 0.07674755516245094,
+              "nearestMedian": 0.08747294381739076,
+              "nearestP90": 0.13955091937721534,
+              "overlappingLeafFraction": 0.9972537207654146
+            }
+          },
+          {
+            "name": "each root belongs to an actual irregular lobe and a valid species community",
+            "pass": true
+          },
+          {
+            "name": "posture mix contracts old footprints and feathers existing clumps without new infill",
+            "pass": true,
+            "evidence": {
+              "mixedClumps": 151,
+              "lowCoreRoots": 4264,
+              "uprightHeightMedian": 0.3498519136733841,
+              "outwardHeightMedian": 0.1533469561638,
+              "edgeHeightMedian": 0.19138713859576245,
+              "rootCountReduced": true
+            }
+          },
+          {
+            "name": "core density exceeds feathered satellite density by sampled physical area",
+            "pass": true,
+            "evidence": {
+              "core": 8107,
+              "satellite": 3181,
+              "coreDensity": 87.47829416593592,
+              "satelliteDensity": 11.098680230027373,
+              "ratio": 7.881864541809596
+            }
+          },
+          {
+            "name": "small/medium/large clumps and broad size variation; no identical whole tufts",
+            "pass": true,
+            "evidence": {
+              "areaP10": 0.3354917512232651,
+              "areaMedian": 0.8872922834763259,
+              "areaP90": 1.886300928808542,
+              "aspectRange": [
+                1.1112795861165345,
+                1.996148838413751
+              ]
+            }
+          },
+          {
+            "name": "bank patch orientation follows river tangent without mirrored rows",
+            "pass": true,
+            "evidence": {
+              "riverOrientedPatches": 20
+            }
+          },
+          {
+            "name": "reviewed near-bank envelope has substantial compound bodies on both sides",
+            "pass": true,
+            "evidence": [
+              {
+                "side": -1,
+                "bodies": [
+                  {
+                    "clumpId": "grass-clump-2",
+                    "coreTufts": 72,
+                    "width": 1.595978009114786,
+                    "depth": 1.6098951245562336
+                  },
+                  {
+                    "clumpId": "grass-clump-3",
+                    "coreTufts": 20,
+                    "width": 0.877121626216347,
+                    "depth": 1.0075030674553656
+                  }
+                ]
+              },
+              {
+                "side": 1,
+                "bodies": [
+                  {
+                    "clumpId": "grass-clump-0",
+                    "coreTufts": 9,
+                    "width": 0.7890816265374649,
+                    "depth": 1.2310743346149984
+                  },
+                  {
+                    "clumpId": "grass-clump-1",
+                    "coreTufts": 9,
+                    "width": 0.7445758919430183,
+                    "depth": 0.7336749006917689
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "intentional bare intervals are genuine allowed ground, not just forbidden crossings",
+            "pass": true,
+            "evidence": [
+              {
+                "side": -1,
+                "z": 22.066502624191344,
+                "validBareProbes": 156
+              },
+              {
+                "side": -1,
+                "z": -15.269439276307821,
+                "validBareProbes": 143
+              },
+              {
+                "side": -1,
+                "z": 6.655961639247835,
+                "validBareProbes": 91
+              },
+              {
+                "side": 1,
+                "z": -8.92503222823143,
+                "validBareProbes": 181
+              },
+              {
+                "side": 1,
+                "z": -16.63594368286431,
+                "validBareProbes": 156
+              },
+              {
+                "side": 1,
+                "z": -29.92312503233552,
+                "validBareProbes": 130
+              }
+            ]
+          },
+          {
+            "name": "foreground samples contain both dense growth and broad allowed bare gaps",
+            "pass": true,
+            "evidence": {
+              "allowedProbes": 2338,
+              "within30cmOfGrass": 0.1330196749358426,
+              "over1mBare": 0.6864841745081266,
+              "distanceP10": 0.18735329032945103,
+              "distanceP90": 2
+            }
+          },
+          {
+            "name": "local species coherence exceeds random global mix expectation",
+            "pass": true,
+            "evidence": {
+              "sameSpeciesNearestNeighbor": 0.8534658737907163,
+              "independentMixExpectation": 0.17197375297663745,
+              "neighborPairs": 11267
+            }
+          },
+          {
+            "name": "no 27cm phase lock on either axis; synthetic lattice is detected",
+            "pass": true,
+            "evidence": {
+              "x": {
+                "actual": 0.008985074236889662,
+                "randomPhaseControl": 0.024461657847860443,
+                "sixSigmaTolerance": 0.07881104062391008
+              },
+              "z": {
+                "actual": 0.01120145072149335,
+                "randomPhaseControl": 0.012249894966028465,
+                "sixSigmaTolerance": 0.07881104062391008
+              }
+            }
+          },
+          {
+            "name": "source GLB bounds support declared radius and plausible leaf scale",
+            "pass": true
+          },
+          {
+            "name": "CC0 source/license snapshots, derivative hashes and closed public whitelist",
+            "pass": true,
+            "evidence": {
+              "filesVerified": 35,
+              "publicFiles": 5,
+              "sourceAssets": [
+                "https://ambientcg.com/a/Foliage001",
+                "https://ambientcg.com/a/Foliage006"
+              ]
+            }
+          },
+          {
+            "name": "wild tufts have finite nondegenerate curved geometry, correct winding and embedded cutout atlas",
+            "pass": true,
+            "evidence": [
+              {
+                "name": "wild_leafy_a",
+                "blades": 20,
+                "triangles": 240,
+                "maxBladeWidth": 0.007866749358369082,
+                "transparentPixelFraction": 0.8452863693237305,
+                "opaqueLeafFraction": 0.12454509735107422,
+                "opaqueRGBMedian": [
+                  63,
+                  72,
+                  43
+                ]
+              },
+              {
+                "name": "wild_leafy_b",
+                "blades": 26,
+                "triangles": 312,
+                "maxBladeWidth": 0.007424023820100917,
+                "transparentPixelFraction": 0.926426887512207,
+                "opaqueLeafFraction": 0.057930946350097656,
+                "opaqueRGBMedian": [
+                  65,
+                  75,
+                  40
+                ]
+              },
+              {
+                "name": "wild_upright_a",
+                "blades": 16,
+                "triangles": 192,
+                "maxBladeWidth": 0.008972651789883157,
+                "transparentPixelFraction": 0.8452863693237305,
+                "opaqueLeafFraction": 0.12454509735107422,
+                "opaqueRGBMedian": [
+                  63,
+                  72,
+                  43
+                ]
+              },
+              {
+                "name": "wild_upright_b",
+                "blades": 18,
+                "triangles": 216,
+                "maxBladeWidth": 0.008653606387581118,
+                "transparentPixelFraction": 0.926426887512207,
+                "opaqueLeafFraction": 0.057930946350097656,
+                "opaqueRGBMedian": [
+                  65,
+                  75,
+                  40
+                ]
+              }
+            ]
+          },
+          {
+            "name": "two source atlases retain distinct but neighboring authored olive palettes",
+            "pass": true,
+            "evidence": {
+              "sourcePixelMedians": [
+                {
+                  "id": "Foliage001",
+                  "median": [
+                    63,
+                    72,
+                    43
+                  ]
+                },
+                {
+                  "id": "Foliage006",
+                  "median": [
+                    65,
+                    75,
+                    40
+                  ]
+                }
+              ],
+              "scope": "Authoring normalization only, not rendered art acceptance"
+            }
+          },
+          {
+            "name": "root shading is grass-only; unchanged wind deformation also binds shadow materials",
+            "pass": true,
+            "evidence": {
+              "rootHeightMeters": [
+                0.012,
+                0.13
+              ],
+              "minimumAlbedoFactor": 0.55,
+              "treeAndShadowRootShading": false
+            }
+          },
+          {
+            "name": "exact current GLB/sector budget does not exceed pre-edit geometry or object count",
+            "pass": true,
+            "evidence": {
+              "triangles": 30250068,
+              "drawCalls": 112,
+              "placements": 11383,
+              "grassTriangles": 1186320,
+              "grassDrawCalls": 31,
+              "byBatch": [
+                {
+                  "asset": "island_tree_01",
+                  "node": null,
+                  "label": "near-shadow",
+                  "placements": 8,
+                  "triangles": 3030016,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "island_tree_01",
+                  "node": null,
+                  "label": "near",
+                  "placements": 11,
+                  "triangles": 4166272,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "island_tree_01-far",
+                  "node": null,
+                  "label": "far",
+                  "placements": 18,
+                  "triangles": 3800250,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "tree_small_02",
+                  "node": null,
+                  "label": "near-shadow",
+                  "placements": 5,
+                  "triangles": 1864475,
+                  "drawCalls": 9
+                },
+                {
+                  "asset": "tree_small_02",
+                  "node": null,
+                  "label": "near",
+                  "placements": 14,
+                  "triangles": 5220530,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "tree_small_02-far",
+                  "node": null,
+                  "label": "far",
+                  "placements": 15,
+                  "triangles": 4223925,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "tree_small_02-far",
+                  "node": null,
+                  "label": "shrubs",
+                  "placements": 24,
+                  "triangles": 6758280,
+                  "drawCalls": 12
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_small_a",
+                  "label": "bermuda-base",
+                  "placements": 2039,
+                  "triangles": 24468,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_small_b",
+                  "label": "bermuda-base",
+                  "placements": 1535,
+                  "triangles": 18420,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_small_c",
+                  "label": "bermuda-base",
+                  "placements": 1378,
+                  "triangles": 24804,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "grass_bermuda_01",
+                  "node": "grass_bermuda_01_medium_c",
+                  "label": "bermuda-base",
+                  "placements": 2493,
+                  "triangles": 49860,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_leafy_a",
+                  "node": "wild_leafy_a",
+                  "label": "wild-leafy-a",
+                  "placements": 1752,
+                  "triangles": 420480,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_leafy_b",
+                  "node": "wild_leafy_b",
+                  "label": "wild-leafy-b",
+                  "placements": 2053,
+                  "triangles": 640536,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_upright_a",
+                  "node": "wild_upright_a",
+                  "label": "wild-upright-a",
+                  "placements": 19,
+                  "triangles": 3648,
+                  "drawCalls": 4
+                },
+                {
+                  "asset": "wild_upright_b",
+                  "node": "wild_upright_b",
+                  "label": "wild-upright-b",
+                  "placements": 19,
+                  "triangles": 4104,
+                  "drawCalls": 3
+                }
+              ]
+            }
+          },
+          {
+            "name": "no old infill flags, no unmapped roots, no global gameplay mutation",
+            "pass": true
+          }
+        ]
+      }
+    },
+    "water-checks": {
+      "pass": true,
+      "testSHA256": "c75a4bc70906669d2c8ea41b60054af92c8da5c73ce96b218c1fa28d7be39881",
+      "result": {
+        "pass": true,
+        "checked": 74148,
+        "maxDisplacement": 0.017099999999999997,
+        "flowDirection": "+Z",
+        "scope": "CPU phase/depth/relief and packaging; actual shaders and visible motion require GPU evidence"
+      }
+    },
+    "wildbank-checks": {
+      "pass": true,
+      "testSHA256": "c6cb1960302d31145522d6aeef2f3acec68448b5596f0c752c51c9870d4a450e",
+      "result": {
+        "pass": true,
+        "checked": 386032,
+        "maxSupportError": 0.024435541462935584,
+        "scope": "actual GLSL wet/dry field and rendered terrain ray support at both dug fords; independent canvas art still required"
+      }
+    },
+    "surface-checks": {
+      "pass": true,
+      "testSHA256": "965293109a9aed16515200df2a7591d60bfeb332213d430a06500849e00b96cd",
+      "result": {
+        "pass": true,
+        "checks": 33224,
+        "weeds": 543,
+        "materials": 3,
+        "newScanAssets": 2,
+        "limitations": "CPU only, not GPU/art/performance acceptance"
+      }
+    },
+    "masonry-materials-checks": {
+      "pass": true,
+      "testSHA256": "bdee70090d96632dbb6787d89c72a786bc4e6aa197a6306cea24351e13464731",
+      "result": {
+        "status": "CPU material/geometry checks completed; NOT GPU or art acceptance",
+        "checks": 69850,
+        "baselineOrigin": "pre-edit local module captures, 2026-11-19",
+        "village": {
+          "geometry": "3b5a7c6053611f627bb5c2adccc13928ad531393af383dea330acbf0ad9556db",
+          "uv": "2086906f17d7073a65a4cd8c22c2fd7a82849b2b37564543b48a41680e4a24a2",
+          "support": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "solids": 205,
+          "meshes": 218,
+          "houses": 6,
+          "walls": 72,
+          "boxes": 756,
+          "tiles": 2496,
+          "drawCalls": 13,
+          "triangles": 50224,
+          "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+        },
+        "ruins": {
+          "geometry": "db2dab4d3ec94d84e23e67872dc0bf2c8d1618a372a8cc35c065492c5eb9abf0",
+          "uv": "12ae3126c1f336ce277fd40351ebc758cd81efe8edd84aeb638343de707600e2",
+          "support": "1febad319e60b36bbb99f5467f392d4ff4f63b7f14da82dcc8c3dfefa7f91459",
+          "solids": 10,
+          "meshes": 10,
+          "mounds": 8,
+          "slabs": 556,
+          "chips": 548,
+          "triangles": 25026,
+          "supportTriangles": 12511,
+          "drawCalls": 10,
+          "mode": "static gravity-staged fracture, not dynamic destruction"
+        },
+        "actualVisible": {
+          "village": {
+            "drawCalls": 13,
+            "triangles": 50224
+          },
+          "ruins": {
+            "drawCalls": 10,
+            "triangles": 25602
+          }
+        },
+        "note": "Legacy ruins.info triangles exclude 576 unchanged mound triangles; actualVisible includes them.",
+        "supportSamples": 5832,
+        "maxGap": 0.0000010036829322379592,
+        "coreTriangles": 2456,
+        "courseTriangles": 328,
+        "materialAttributeBytes": 75040,
+        "brokenProfileVertices": 1280,
+        "coatedFragmentVertices": 116,
+        "exposedFragmentVertices": 3856,
+        "scalarFields": {
+          "fieldSamples": 8192,
+          "binderSamples": 2286,
+          "claySamples": 4704,
+          "aggregateSamples": 1575,
+          "baseClear": 1653,
+          "baseStained": 5154,
+          "smallSpalled": 5909,
+          "smallCoated": 1316,
+          "note": "Source-derived scalar GLSL evaluated in JS doubles; NOT GPU shader or visual validation."
+        },
+        "incrementalDrawCalls": 0,
+        "incrementalTriangles": 0,
+        "sources": {
+          "village.js": "49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3",
+          "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+          "masonry-materials.js": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5",
+          "qa/masonry-materials-checks.mjs": "bdee70090d96632dbb6787d89c72a786bc4e6aa197a6306cea24351e13464731"
+        },
+        "limits": "No browser/GPU, source/publication or visual PASS claim. Root must independently render/review current frozen hashes."
+      }
+    },
+    "height-fog-checks": {
+      "pass": true,
+      "testSHA256": "f8213c4d6ac9238465dd8a8a54b944f33aa62025dfc9bdeb99fcf79052bfd9ea",
+      "result": {
+        "suite": "height-fog-cpu-v1",
+        "verdict": "PASS",
+        "checksPassed": 20,
+        "checksTotal": 20,
+        "threeRevision": "160",
+        "sources": {
+          "../height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+          "./height-fog-checks.mjs": "f8213c4d6ac9238465dd8a8a54b944f33aa62025dfc9bdeb99fcf79052bfd9ea",
+          "../vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
+          "../river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+          "../distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+          "../world.js": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d"
+        },
+        "scope": "CPU analytic integration, actual local shader-template/hook composition and transform tests only. No GLSL driver compilation, GPU visual, temporal or performance acceptance.",
+        "checks": [
+          {
+            "name": "coefficient agrees with independent numerical line integration including base crossing",
+            "pass": true,
+            "evidence": {
+              "rays": 147,
+              "largestError": 3.574788820515096e-8
+            }
+          },
+          {
+            "name": "four-metre near clearing, monotone low haze and clearer high elevations",
+            "pass": true,
+            "evidence": [
+              {
+                "weather": 0,
+                "near5": 0.003188835176194301,
+                "low25": 0.06038879197384684,
+                "low80": 0.19932667843953566,
+                "high80": 0.00462541904401935
+              },
+              {
+                "weather": 1,
+                "near5": 0.0043835769219564774,
+                "low25": 0.08318578607008802,
+                "low80": 0.26709775038705125,
+                "high80": 0.013305109691561122
+              },
+              {
+                "weather": 2,
+                "near5": 0.005577076550269471,
+                "low25": 0.10557794963463132,
+                "low80": 0.3296106306835871,
+                "high80": 0.0275788556569987
+              }
+            ]
+          },
+          {
+            "name": "stable horizontal, zero falloff, below-ground and extreme-height integrals",
+            "pass": true
+          },
+          {
+            "name": "actual GLSL scalar math matches CPU reference and disabled branch",
+            "pass": true,
+            "evidence": {
+              "sourceDerivedSamples": 36
+            }
+          },
+          {
+            "name": "reflection intersection is finite for crossing, grazing, plane-endpoint and invalid-side rays",
+            "pass": true,
+            "evidence": {
+              "validCrossings": 6,
+              "emptyOrInvalidSideRays": 9,
+              "nonfiniteInputsRejected": 12
+            }
+          },
+          {
+            "name": "reflected segment agrees with independent integration, including negative plane and zero near-clear",
+            "pass": true,
+            "evidence": {
+              "rays": 21,
+              "largestError": 1.9059389086417688e-7
+            }
+          },
+          {
+            "name": "reflection GLSL source matches CPU on oblique, horizontal, grazing and out-of-plane rays",
+            "pass": true,
+            "evidence": {
+              "sourceDerivedReflectionSamples": 78
+            }
+          },
+          {
+            "name": "split optical path counts real eye-to-water once and never integrates below-water mirrored eye",
+            "pass": true,
+            "evidence": {
+              "realEyeToWater": 0.05851260844696398,
+              "planeToSurface": 0.09536065770568879,
+              "composedOpacity": 0.14261932672228217
+            }
+          },
+          {
+            "name": "real standard/basic/physical templates preserve distance fog, alpha and output order",
+            "pass": true
+          },
+          {
+            "name": "existing hook this/renderer semantics and dynamic custom cache key compose",
+            "pass": true
+          },
+          {
+            "name": "default cache keys preserve original hook identity across both local Three copies",
+            "pass": true
+          },
+          {
+            "name": "duplicate installs/patches are idempotent; hook replacement and double ownership fail loudly",
+            "pass": true
+          },
+          {
+            "name": "normal/depth/distance overrides, custom water, exclusions and gun scene stay untouched",
+            "pass": true
+          },
+          {
+            "name": "actual foliage wind/root hook composes and shadow materials remain byte-identical",
+            "pass": true
+          },
+          {
+            "name": "actual distant mineral hook composes without changing texture shading",
+            "pass": true
+          },
+          {
+            "name": "world position uses deformed local point and full nested instance/batch transforms",
+            "pass": true
+          },
+          {
+            "name": "real skinned vertex motion changes world height and therefore fog",
+            "pass": true
+          },
+          {
+            "name": "custom water consumes shared uniforms and its already-displaced vRiver without touching alpha",
+            "pass": true
+          },
+          {
+            "name": "weather/toggle reuse uniform objects and cache programs; unsupported patches fail atomically",
+            "pass": true
+          },
+          {
+            "name": "reflection mode shares world/water uniforms, survives weather changes, and restores in finally without recompilation",
+            "pass": true,
+            "evidence": {
+              "reflectionCalls": 2,
+              "exceptionRestored": true,
+              "sharedUniforms": 8,
+              "recompilations": 0
+            }
+          }
+        ]
+      }
+    },
+    "downloaded-dressing-checks": {
+      "pass": true,
+      "testSHA256": "46ea939ff4110bafc78f291a36d6931af2a40b8696011bbb859b7e203ee9fd13",
+      "result": {
+        "pass": true,
+        "checks": 20,
+        "results": [
+          {
+            "name": "deterministic layout",
+            "pass": true
+          },
+          {
+            "name": "measured instance triangles within fixed cap",
+            "pass": true
+          },
+          {
+            "name": "every converted model is represented in scene",
+            "pass": true
+          },
+          {
+            "name": "dark dry stems are outside playable woodland only",
+            "pass": true
+          },
+          {
+            "name": "source geometry files identified",
+            "pass": true
+          },
+          {
+            "name": "grass circles clear paths, doors, spawns and crossings",
+            "pass": true
+          },
+          {
+            "name": "large solid decorations completely outside playable rectangle",
+            "pass": true
+          },
+          {
+            "name": "micro debris below unchanged 3cm support tolerance, no cover",
+            "pass": true
+          },
+          {
+            "name": "actual transformed micro mesh vertices vs current terrain and ruin support",
+            "pass": true
+          },
+          {
+            "name": "two houses have clear trunks and near-flat grounded footprint envelopes",
+            "pass": true
+          },
+          {
+            "name": "no scan props in collision or support contract",
+            "pass": true
+          },
+          {
+            "name": "exact served manifest hash binds client bytes",
+            "pass": true
+          },
+          {
+            "name": "public package only adds loader source",
+            "pass": true
+          },
+          {
+            "name": "absent optional pack has baseline manifest",
+            "pass": true
+          },
+          {
+            "name": "disabled optional pack baseline",
+            "pass": true
+          },
+          {
+            "name": "reject unsafe name or unsupported kind wall",
+            "pass": true
+          },
+          {
+            "name": "reject unsafe name or unsupported kind unknown",
+            "pass": true
+          },
+          {
+            "name": "external GLB dependency rejected",
+            "pass": true
+          },
+          {
+            "name": "invalid optional manifest returns usable empty layer",
+            "pass": true
+          },
+          {
+            "name": "public host never requests local assets",
+            "pass": true
+          }
+        ],
+        "counts": {
+          "woodland-house": 2,
+          "castle-wall": 2,
+          "mossy-wall-a": 2,
+          "mossy-wall-b": 2,
+          "cement-rubble": 2,
+          "cement-rubble-small": 22,
+          "grass-clumps-a": 5,
+          "grass-clumps-b": 3,
+          "tundra-grass-a": 92,
+          "tundra-grass-d": 167,
+          "tundra-grass-h": 159,
+          "grass-clumps-c": 3
+        },
+        "triangles": 349364,
+        "bytes": 12862004,
+        "micro": {
+          "surfaceSamples": 16874,
+          "maxVisibleGap": 0.019511172997412222,
+          "maxBuried": 0.006
+        },
+        "houseGrounding": [
+          {
+            "id": "woodland-house",
+            "x": -12,
+            "z": -40.5,
+            "lowestBase": -0.06,
+            "minGround": 0,
+            "maxGround": 0.03815823559950389,
+            "nearestTrunk": 11.256677492394132
+          },
+          {
+            "id": "woodland-house",
+            "x": 12,
+            "z": 33,
+            "lowestBase": -0.06,
+            "minGround": 0,
+            "maxGround": 0.07749193667795283,
+            "nearestTrunk": 9.52124123075354
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261119T072913Z-01700293b9",
+  "task_id": "sunbreak-river-downloaded-assets-2026-11-19",
+  "timestamp_utc": "2026-11-19T07:29:13.458844+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall downloaded-asset checkpoint (sunbreak-river-downloaded-assets-2026-11-19): 12 local-only GLBs, 2 peripheral houses, 6 wall fragments, 24 rubble patches and 429 grass clumps. Original downloads, old demos and gameplay unchanged. All 16 CPU suites and six current WebGL functional phases PASS; limited independent art/engineering CONDITIONAL PASS. Three strict performance samples FAIL; AAA/public release BLOCKED, continuous motion UNVERIFIED. Canonical QA and complete staged runtime/evidence audit are bound to current bytes. Imported GLBs+manifest privately backed up and fresh-cache LFS verified at cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407; restore preflight tested. Existing dirty canonical UE vault untouched; not whole-project portability. No public deployment or unverified model binaries in public Git. Next: profile layer draw/reflection cost, refine grass/debris transitions, confirm licenses and obtain continuous-motion evidence. See task packet and experiments/sunbreak-river-v4/qa/downloaded-release.json.",
+  "commit_shas": [
+    "96cc959e2f6fdd68e4efd0c65acc0c05a2a99c63"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

@@ -69,7 +69,17 @@ try {
  if(!live)check('licensed weapon and all textures loaded',(await snapshot()).weapon?.loaded&&(await snapshot()).errors.length===0,await snapshot());
  const weatherArg=process.argv.find(a=>a.startsWith('--weather='));
  if(!live&&weatherArg)await evaluate(`arenaQA.weather(${Number(weatherArg.slice(10))})`);
- if(phase==='quick'){
+ if(phase==='imported-assets'){
+  const info=await evaluate('arenaQA.dressingInfo()');
+  check('user scans loaded within declared geometry budgets',info.enabled&&!info.errors.length&&info.triangles<=500000&&info.draws<=60&&info.bytes<=25000000&&info.assets.every(a=>info.counts[a.id]>0),info);
+  const frozen=(await snapshot()).buildHashes;
+  check('actual consumed local bytes match frozen HTML identity',Object.keys(info.consumedHashes).length===info.assets.length+2&&Object.entries(info.consumedHashes).every(([k,v])=>frozen[k]===v),info.consumedHashes);
+  for(const a of info.assets){await evaluate(`arenaQA.assetView(${JSON.stringify(a.id)})`);await delay(350);await capture('asset-'+a.id)}
+  await evaluate('arenaQA.assetView(null)');
+  for(const [name,...v]of [['imported-path',-10,2,24,0,-.23],['imported-ruin',-12,1.7,22,.9,-.15],['imported-grass',-22.7,1.4,22.5,-.45,-.35],['imported-chips',-22.3,1.2,20,-.73,-.7],['imported-boundary',-26,2,25,.7,-.08],['imported-settlement',18,2,-8,-.8,-.05],['imported-house-north',-7,1.7,-30,.46,-.02],['imported-house-south',7,1.7,22,-2.71,-.02],['imported-wide',-10,11,32,.15,-.32]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
+ }else if(phase==='imported-fallback'){
+  const info=await evaluate('arenaQA.dressingInfo()');check('explicit fallback uses original map with no imported asset instances',!info.enabled&&info.status==='baseline',info);await capture('fallback-path');
+ }else if(phase==='quick'){
   console.log('Ready');if(process.argv.includes('--no-post'))await evaluate("document.getElementById('bPost').click()");await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
  }else if(phase==='surface-preview'){
   for(const [name,...v]of [['path',-10,2,24,0,-.23],['foundation',-21,1.3,22,-.9,-.35],['ruin',-12,1.7,22,.9,-.15]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}

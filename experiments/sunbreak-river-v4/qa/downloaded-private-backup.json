@@ -1,0 +1,14 @@
+{
+  "schema": "river-private-import-backup-v1",
+  "status": "VERIFIED",
+  "remote": "https://github.com/Luciuswang/neon-cleaner-private-assets.git",
+  "branch": "work/sunbreak-river-downloaded-assets-2026-11-19/c962db33",
+  "commit": "cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407",
+  "snapshot": "imports/6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+  "manifestSHA256": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+  "files": 12,
+  "bytes": 12862004,
+  "remoteLFSFreshCacheVerified": true,
+  "sourceLicense": "UNVERIFIED - same-owner private backup only",
+  "scope": "Selected browser derivatives only. Existing dirty UE private vault and canonical private-assets-lock untouched."
+}

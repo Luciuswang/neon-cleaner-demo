@@ -1,0 +1,96 @@
+{
+  "schema": "river-downloaded-independent-review-v1",
+  "status": "CONDITIONAL PASS - LOCAL WIP ONLY",
+  "art": {
+    "reviewer": "Lovelace / 01a1ec9f-f737-7282-bbc9-6a4fc127aa68",
+    "received": true,
+    "verdict": "CONDITIONAL PASS",
+    "confidence": "high for visible static issues",
+    "scope": "Nine original-size current map PNGs; no continuous-motion or performance review, no full geometry certification.",
+    "findings": [
+      "Near dark fragmented grass was substantially reduced; revised low grasses fit the soil and neighbouring vegetation better.",
+      "Earth tint reduces conspicuous pale rubble discs. No obvious floating scan skirt in the reviewed views.",
+      "North and south house views show no obvious trunk-through-wall or roof intersection; visible roads and structural hierarchy did not regress.",
+      "Minor: some yellow-green leaves still read as sparse lines and isolated clumps. Prioritize low-plant transitions, not additional instance counts.",
+      "Minor: a few micro-rubble pieces still have similar rounded flat outlines. Locally obscure/bury edges while preserving traversability."
+    ],
+    "fiveAxes": {
+      "sameness": "isolated clumps and rounded fragments remain repetitive",
+      "proportionStructure": "no newly obvious visible anomaly",
+      "stylization": "material coherence improved; overall realism target not reached",
+      "visualImpact": "new detail no longer draws excessive contrast",
+      "detailPriority": "prioritize grounding/distribution over quantity"
+    },
+    "globalAAA": "REVISE",
+    "continuousMotion": "UNVERIFIED"
+  },
+  "engineering": {
+    "reviewer": "Descartes / 01a1ec9f-f43b-7f62-b965-d3ebe002849a",
+    "verdict": "CONDITIONAL PASS - SOURCE WIP",
+    "priorVerified": "V2 loading identity, 349364 triangles/39 base draws, 429 grass instances, all 11 dark clumps outside play; local WIP suitable, release blocked.",
+    "collectorReview": "PASS: exact active-asset identity, required captures/check counts, declared review coverage, complete package-byte freshness and strict benchmark workload/weather/viewport/timeline checks. Off diagnostic cannot replace acceptance.",
+    "conditions": "Final current evidence plus companion/collector/builder identities must be pinned. Private upload acknowledgement is not remote-content verification. Final .lfsconfig endpoint guard request addressed by explicit per-command approved endpoint pins; source fix not independently rerun by reviewer."
+  },
+  "release": "BLOCKED: performance, continuous motion, global art target and licensing remain independent gates",
+  "declaredReviewSet": [
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png"
+  ],
+  "sourcesSHA256": "64435de66b35d6ddc04c5f60a08cb99b725f619067f28d0ce126cb5059d07d5e",
+  "evidence": [
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+      "sha256": "1aa35afbe4e260e6a116af47d4713e23e2a411962dc8564d159a7310c0070919",
+      "stateSHA256": "500c77cac2ca8200d8923bbd7e09a74eb68cd79efdb27749218fc928173dbd7a"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+      "sha256": "ffb0244d38dee23d64237f90f60da191014c58ff485278ec2b64fbebe4bc15dc",
+      "stateSHA256": "c564881f7409aea2716df2511e2c51b74e35edb92f3e394fc83b86316ae7669d"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+      "sha256": "d3c23779cf104e1ce5db98c018256f21155f30cd3e899c4bb36ff6aa086e76da",
+      "stateSHA256": "87a2bf75ea4c835584d96220478d96e635e1062688adcd665547261ea7253c29"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+      "sha256": "90fd8a7316d824276d9874cbbe7af5fe37173cd50b76b652d8eb7ddc712db519",
+      "stateSHA256": "996070dfbb06e0b43aeae63cfb2370402eadd0ffe7f3146156dfbd13c6657a0c"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+      "sha256": "03372b2a2fc362bb029c5e4b5b116340f9b4d30864effb57d1c0275152a29da0",
+      "stateSHA256": "f89ae0d836a5b4a803725c1ca7db04e372f8ee17644639b31800a6f4d396389c"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+      "sha256": "66c9bd2f2471abc0d13645d898dd68b1be5a5226df5dda306ed6c0e43b37de79",
+      "stateSHA256": "d9346ed7f6243f84387ebd47c6c3a98887c28d2d5e5f94c2dab5e4fd8dbf76e7"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+      "sha256": "f056a5651d1e1e1e99e182a78bb8e583ee74f3191c1fe2395b1482ee85401cf2",
+      "stateSHA256": "87a46c4dcc0114e9da75653cbe5959308fe772b59a3063d10ec1dea33c249f02"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+      "sha256": "bb1c58023d134d9e33eed48bfa3ee7cb263de3ab06641388d38ae51a22c06df8",
+      "stateSHA256": "956088f43646becd838c283474bde53d77f251446100ad955a0d094e7061f2cd"
+    },
+    {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
+      "sha256": "3cd62c1d22b496ffdfbd835d6627619b896c5ef78cf30e9943e1c79d3c3cfc22",
+      "stateSHA256": "43ba4749f7205ff458d4beb12afde4c80f5b60cb4e8589722cae219c75976c89"
+    }
+  ],
+  "bindingBy": "root integrator after independent visual review; reviewer did not independently hash files",
+  "sealedAt": "2026-11-19T07:22:07.311Z"
+}

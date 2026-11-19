@@ -1,11 +1,10 @@
 {
-  "schema": "river-surface-atmosphere-checkpoint-v1",
+  "schema": "river-downloaded-local-assets-checkpoint-v1",
   "protocol": "offscreen-cinematic-v1",
-  "captureMethod": "native-headless actual browser WebGL canvas, NOT Unreal or desktop capture",
-  "task": "sunbreak-river-surface-atmosphere-2026-11-19",
-  "date": "2026-11-19T04:42:46.881Z",
+  "task": "sunbreak-river-downloaded-assets-2026-11-19",
+  "date": "2026-11-19T07:28:10.154Z",
   "verdict": "BLOCKED",
-  "scope": "Targeted playable visual WIP. Source checkpoint only; no AAA/UE5 parity, Pages release or continuous-motion acceptance.",
+  "scope": "Local imported-asset WIP; not AAA/UE5, public release or continuous-motion acceptance.",
   "sources": {
     "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
     "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
@@ -169,6 +168,7 @@
     "credits.html": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d",
     "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
     "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "downloaded-dressing.js": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5",
     "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
     "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
     "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
@@ -180,16 +180,17 @@
     "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
     "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
+    "local-asset-store.mjs": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785",
     "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
     "masonry-materials.js": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5",
-    "qa/browser.mjs": "40098a31a3569a1bd4563c9ad5bac840e15457fd26de4f8dda10be46d94dba9a",
-    "qa/hooks.js": "15d35d93dfad3c8da9ab2662173e371f739d4d08b30483f8ee3c3fb6ef986183",
-    "qa/source-binding.mjs": "1067d555f9b96111e47a12d8620ecc2a4fb06eca8a644e4913e6c27abce9ec22",
+    "qa/browser.mjs": "36b75b4409b57e2e7fc7714dac2a684decdef3e2ba794cc1d7e4daedd71c2564",
+    "qa/hooks.js": "9197cad1eb320fca9fa8f50250badf4f1ef129e81bc8f37ab0c631bd25340e9a",
+    "qa/source-binding.mjs": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
     "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
     "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
     "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
-    "serve.mjs": "bf00904582bfbdb3ce43d51f7f6ee1b18557215443584d9e29549b50643aca1a",
+    "serve.mjs": "1eca6b086895a5fccf4f5485f5e40d484ed353f290eccaf72a3507921dc718a5",
     "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
     "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
@@ -200,762 +201,958 @@
     "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
     "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
     "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
-    "world.js": "310f5b6c2fa30b8bd8cc66ed0e987af90f6ee5436a7a7db09f919a396f5c97a9"
+    "world.js": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d",
+    "local-only/manifest.json": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+    "local-only/castle-wall.glb": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
+    "local-only/cement-rubble.glb": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
+    "local-only/cement-rubble-small.glb": "cc0443b5736b634e1c33beada6a54ef32cca78254beda0254d04d629a2d5ff24",
+    "local-only/grass-clumps-a.glb": "011c18c7c67def787cd208e245df9a8bb7c228b204c1dd8531c47f8604e086e1",
+    "local-only/grass-clumps-b.glb": "06542a8a6544c2a8b5b1e513ce7c5f98364f874319e546c15676200f3c8501f6",
+    "local-only/grass-clumps-c.glb": "5bd13e718d6f8d5ac68b3a70211a1c6ae268d8d38eabc237463cd16f7b456750",
+    "local-only/mossy-wall-a.glb": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754",
+    "local-only/mossy-wall-b.glb": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4",
+    "local-only/tundra-grass-a.glb": "740aec736017a52adec7d81c81823758d72afcb04074efde1a302f4fc4d36e0e",
+    "local-only/tundra-grass-d.glb": "7d4e1f1c6b058241a1261745fc5658ef44ef47379c54967b4fa0d08d981c8e77",
+    "local-only/tundra-grass-h.glb": "9dbea586c5922990240987144fd2f32e316fad5235ce59ff04049c58400f13f6",
+    "local-only/woodland-house.glb": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+    "local-only/served-manifest.json": "89af124953d3706e3224bcd45458132675bc06977f42534fa38c9f71720e1bcf"
   },
   "functional": true,
-  "visualIntegrity": true,
-  "pixelIntegrity": true,
-  "reviewCurrent": true,
   "reports": {
-    "surface": {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/surface-1.json",
-      "sha256": "95fb54e1bf6a9c65d563c54c4cd54012750d58e3ad6b1309c3f3cc609e891a49",
+    "imported-assets": {
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-assets-1.json",
+      "sha256": "1cb5cf2b0dd5af1009ede435d3d434c70d8b3ea96cee6c98a9df92a77f13cdf4",
       "pass": true,
-      "checks": 12,
-      "sourceMismatches": []
+      "checks": 3,
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true
     },
-    "wildbank": {
-      "path": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/wildbank-1.json",
-      "sha256": "19a45acf8756816a2ed780db04a38f50b0bdf3bb6f73143a7e0c60f8e52d96f7",
-      "pass": true,
-      "checks": 5,
-      "sourceMismatches": []
-    },
-    "afterrain": {
-      "path": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/afterrain-1.json",
-      "sha256": "ca59124ce2e0fbdb992c863e0b0343d809db3f2320bf01d093e2cb785da5dcfe",
-      "pass": true,
-      "checks": 9,
-      "sourceMismatches": []
-    },
-    "map": {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/map-1.json",
-      "sha256": "bbc83ae39eb1123913b84ca176b01b3bc843c991719bcf4c416139a05dd64f7d",
+    "imported-fallback": {
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/imported-fallback-1.json",
+      "sha256": "0ecc2b41fc114f2d0834a84ca94f0e2ba5645f274b269cd1360c58d25aade0f4",
       "pass": true,
       "checks": 2,
-      "sourceMismatches": []
-    },
-    "art": {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/art-1.json",
-      "sha256": "ba080e1df13930087ccd843a9020326925671f883fc84222ed3d985ff4459807",
-      "pass": true,
-      "checks": 2,
-      "sourceMismatches": []
-    },
-    "weather": {
-      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-1.json",
-      "sha256": "33b00f46f272866c85e62a29d2cbfa0c232a1e5b840f5e5bdb939ba10d6a6941",
-      "pass": true,
-      "checks": 4,
-      "sourceMismatches": []
-    },
-    "cabins": {
-      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-1.json",
-      "sha256": "9e07e297202cfa525cc3f647c5c77bf0bc0a98f14465a812c808feba491beae5",
-      "pass": true,
-      "checks": 17,
-      "sourceMismatches": []
+      "sourceMismatches": [],
+      "imported": false,
+      "identityValid": true
     },
     "checks": {
-      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-1.json",
-      "sha256": "efc00c38c0938335d21f742f98fadf0e6612a8532ea2a5bbf0932cecce84cea2",
+      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-1.json",
+      "sha256": "f5bce3739d01514714cb585269455e3a617d06267b77d5efe60868620ffc8519",
       "pass": true,
       "checks": 32,
-      "sourceMismatches": []
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true
+    },
+    "cabins": {
+      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-1.json",
+      "sha256": "29310dd3d775ec049790aa3dc14b2c39e22044bb47d7ceae1d3ba8a36ad675e2",
+      "pass": true,
+      "checks": 17,
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true
     },
     "traversal": {
-      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-1.json",
-      "sha256": "53790db37a769cfd2705920abba543795a1c3bbee5ef0dc13e2b6bc1cc7a71de",
+      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-1.json",
+      "sha256": "eb0515ffbb78a566baa5c3f2388e54082cf979f4f5e0a696dda8e9db9f019432",
       "pass": true,
       "checks": 54,
-      "sourceMismatches": []
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true
     },
-    "water-samples": {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/water-samples-1.json",
-      "sha256": "d5d43799821e55bf4a4e0ad84db1a74026f0073fd8e74b2627ef81b360cc116d",
+    "weather": {
+      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-1.json",
+      "sha256": "6df0415d1eadd8a4d9109be83699b11928c34250dee53672d6a14881bb82907f",
       "pass": true,
+      "checks": 4,
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true
+    },
+    "sunny-benchmark": {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
+      "sha256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf",
+      "pass": false,
       "checks": 2,
-      "sourceMismatches": []
-    }
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true,
+      "weather": 0,
+      "duration": 30018.8,
+      "p50": 17.89999999999418,
+      "p95": 35.60000000000582,
+      "p99": 36.400000000001455,
+      "max": 89,
+      "over50": 10,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true
+    },
+    "benchmark": [
+      {
+        "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
+        "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "imported": true,
+        "identityValid": true,
+        "weather": 2,
+        "duration": 30023.699999999997,
+        "p50": 17.80000000000291,
+        "p95": 35.69999999999709,
+        "p99": 36.80000000000291,
+        "max": 71.39999999999418,
+        "over50": 8,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "workloadVerified": true,
+        "timelineVerified": true
+      },
+      {
+        "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
+        "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "imported": true,
+        "identityValid": true,
+        "weather": 2,
+        "duration": 30015.899999999998,
+        "p50": 17.80000000000291,
+        "p95": 35.799999999995634,
+        "p99": 36.799999999995634,
+        "max": 71.30000000000291,
+        "over50": 11,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "workloadVerified": true,
+        "timelineVerified": true
+      }
+    ]
   },
   "visuals": [
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high-off.png",
-      "sha256": "be5f1d9d7c33590e5d88b1289e4bf6264f424c9d63bae6466dfe118d9450ad51",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high-off.json",
-      "stateSHA256": "ae7eb84f1018c076f5a8c33863a448711eeb0cab4a5232b28bacea4ab9b62be0",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.png",
+      "sha256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.json",
+      "stateSHA256": "64fc1f1562655955e275d6ccc536a886bdf2748fb87dbcffa1105d299d8a846a",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high.png",
-      "sha256": "28adcdae595dba3a392cf9a367eed72cfc70984ffda03b1ea70b3fc9bf8be557",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high.json",
-      "stateSHA256": "fe7b80949c0677dff95b35239a8fe11785956c7741e79c418bfb4f915256792b",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.png",
+      "sha256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.json",
+      "stateSHA256": "3661d23f9b28e550ae2f380a4842de1f7c90e934d19f6be35577731f0efe5e0f",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low-off.png",
-      "sha256": "1fc92aa19e76a5e294a3ba034872093c04d657d24b9e1c91e05ddc2fb80ddbc6",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low-off.json",
-      "stateSHA256": "0ce7e581d1a13fd16f5cf0452de083b56af88d92371a87ce3751fb1b7914e56a",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.png",
+      "sha256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.json",
+      "stateSHA256": "cc39da66abb50e9bbceda8afc9e8a9616b19900b630536ed53903065c5231f16",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low.png",
-      "sha256": "f154a258491101e055ff090c43f8c00a0186ffa748f3b6bac47f3d8c15b37966",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low.json",
-      "stateSHA256": "f0d2d21d6cd687ae08e7f5609c668f601f640a4d1c32043d1201b301c24b13ec",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.png",
+      "sha256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.json",
+      "stateSHA256": "2a4f3a7b0dd23c70d2c93c0d6861bfd0b9f0b58fa48d56638b35a8f6e3c3c741",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/foundation.png",
-      "sha256": "c838fb45659884afbc90cd9280377c106d134afa23531e58772da4e72e279bc5",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/foundation.json",
-      "stateSHA256": "efedcb248a079da25a3380a2f22b44fd1cd68d535d1301f50c456c8cdc98d1ba",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.png",
+      "sha256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.json",
+      "stateSHA256": "8381c384991ac4bd7e9890ccf0082286db5d0120cfd4ddb18b39a6a416471909",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/path.png",
-      "sha256": "cde7fa2f304bf7aa2ee8838771b79c305bacae67109c7b91f10dc7418dea3074",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/path.json",
-      "stateSHA256": "ad99ad837f88ea76b572ca2ca4c52dd5a77121df0b9a27ffb36d8badd74624bd",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.png",
+      "sha256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.json",
+      "stateSHA256": "298b6e93017d805746e339ef69aa0aa1099662dc666097edfaac685ca893ed15",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-contact.png",
-      "sha256": "e0c1a0685512ac275fada74306443654d66097d6f77f8908d6b920103a30897c",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-contact.json",
-      "stateSHA256": "7426a692f4951e6f54a7d81cea4778435b3f4fec279c376929be63190688a526",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.png",
+      "sha256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.json",
+      "stateSHA256": "213a90ac98ed583dc0f97b99caf9974b14489be9c7d7a39a8803484fd5bc1ec0",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-no-ao.png",
-      "sha256": "7893624d6ee11ab3e98889c74b33f5d38d4dd922a49d28af07854db5f721ea4c",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-no-ao.json",
-      "stateSHA256": "5bef0a129037e3e33f03d0a5203a630a2fee6533a389ba40b478ee40e64a636d",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.png",
+      "sha256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.json",
+      "stateSHA256": "5bdad479aab27a90321556174c5fdf2e1d0b686040342987c28b6376e79daacf",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/ruin.png",
-      "sha256": "85a533d547e6db7f70181b81897ccc36451c244f2cc89b515f873d21a7137b2a",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/ruin.json",
-      "stateSHA256": "22c0cb765148a2e26d807dff6af9818ea794541767157277564db4b39841de0a",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.png",
+      "sha256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.json",
+      "stateSHA256": "a735728f45053d011a31f5b6f5b7c223d35f00b313eee2cecc5f8b3d9701c7bd",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/surface-close.png",
-      "sha256": "6ed0a39983cffa882a3881064d704f688c23d703ad06682878c0d8570219fe37",
-      "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/surface-close.json",
-      "stateSHA256": "b817c9f03bd3beed2a9cfe3072f22744f2e2e270940eae44941ba9750fcb1ad7",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.png",
+      "sha256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.json",
+      "stateSHA256": "77d89cbf2b5563b529aeee51d83da88c49d1b2a59dd5a92e777aa9b30f4635ae",
       "sourceMismatches": [],
-      "waterTime": 0.3351000003814697
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/north-ford.png",
-      "sha256": "b883c8c1921d162479df2f5af20c4ad750be2aa4bf5222d5659cf8b6205437c5",
-      "statePath": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/north-ford.json",
-      "stateSHA256": "ef1e285e1435c9917904f2af6c959be8085138f724f0508afe58e5b66fc18894",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.png",
+      "sha256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.json",
+      "stateSHA256": "29ce7cf69561772b17a794777e0f2f8ec2cd844343f7cfdc338f5d66fb09d65e",
       "sourceMismatches": [],
-      "waterTime": 0.34850000000000003
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/south-ford.png",
-      "sha256": "38445f1ad94081d9562e78e2400e1bec0e9b57b76ec9eb775b0fdbff16bebc21",
-      "statePath": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/south-ford.json",
-      "stateSHA256": "56c25f80e692271c6a494f19825f91201570dc66b122be956ae341821934d670",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.png",
+      "sha256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.json",
+      "stateSHA256": "a6b2fedb5993f52a03ae895808dd1b92fd68868df8a0d54eb08a6304a9e8ac2f",
       "sourceMismatches": [],
-      "waterTime": 0.34850000000000003
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/wet-to-dry.png",
-      "sha256": "b7f892248bc63a9acc3efc74c5f66f49275cf8a3814267f6f424028e6b116ab2",
-      "statePath": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/wet-to-dry.json",
-      "stateSHA256": "6e0f013b757783095ef2a4971437ced5c5d0bd9c04e8e58a7e5b5a2feaee6874",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+      "sha256": "03372b2a2fc362bb029c5e4b5b116340f9b4d30864effb57d1c0275152a29da0",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.json",
+      "stateSHA256": "f89ae0d836a5b4a803725c1ca7db04e372f8ee17644639b31800a6f4d396389c",
       "sourceMismatches": [],
-      "waterTime": 0.34850000000000003
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/wild-grass.png",
-      "sha256": "9a11c6c26661c4236fa2a83edd22867e0b27eeaaa16772bc9abd966297dcd0e2",
-      "statePath": "qa/evidence/wildbank-2026-11-19T04-24-58-779Z/wild-grass.json",
-      "stateSHA256": "05bab2dac01d198555d867158828d9c63e656e15aa4c3701822cfe193802fad3",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+      "sha256": "ffb0244d38dee23d64237f90f60da191014c58ff485278ec2b64fbebe4bc15dc",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.json",
+      "stateSHA256": "c564881f7409aea2716df2511e2c51b74e35edb92f3e394fc83b86316ae7669d",
       "sourceMismatches": [],
-      "waterTime": 0.34850000000000003
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/reference-close.png",
-      "sha256": "c8f7cde40bcd9a779a828655b155acb4cfdae386d27886b48d04dffec247c4b3",
-      "statePath": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/reference-close.json",
-      "stateSHA256": "d40e1b61f2d2c7207b53dfeb699ebb769eeb2c4ef1e84c78c0457ce0e772d98d",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+      "sha256": "1aa35afbe4e260e6a116af47d4713e23e2a411962dc8564d159a7310c0070919",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.json",
+      "stateSHA256": "500c77cac2ca8200d8923bbd7e09a74eb68cd79efdb27749218fc928173dbd7a",
       "sourceMismatches": [],
-      "waterTime": 0.3530000000000001
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/riverbank.png",
-      "sha256": "2fb4457a6ad0279a54317c9b6a07c93ee0494db72c96637150de99e0e5ffa252",
-      "statePath": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/riverbank.json",
-      "stateSHA256": "f738266c635e98c430ae5ea9015a9b8d772eb47d6ec1a4e1aea3930f19c7418a",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+      "sha256": "f056a5651d1e1e1e99e182a78bb8e583ee74f3191c1fe2395b1482ee85401cf2",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.json",
+      "stateSHA256": "87a46c4dcc0114e9da75653cbe5959308fe772b59a3063d10ec1dea33c249f02",
       "sourceMismatches": [],
-      "waterTime": 0.3530000000000001
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/sun-side.png",
-      "sha256": "f1748c1dcaa070aefb32ed1655bb2b2356a486ca1a2859a8c66753082ec106e5",
-      "statePath": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/sun-side.json",
-      "stateSHA256": "613f9e0790415a26825ef831cc8d38593e7edcdd3d83c7cdf74e2107c18af800",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+      "sha256": "bb1c58023d134d9e33eed48bfa3ee7cb263de3ab06641388d38ae51a22c06df8",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.json",
+      "stateSHA256": "956088f43646becd838c283474bde53d77f251446100ad955a0d094e7061f2cd",
       "sourceMismatches": [],
-      "waterTime": 0.3530000000000001
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/valley-hero.png",
-      "sha256": "9e2152567579e12879c0f95ef79c1f3074fdc79ee89791aa15546da17ecccd67",
-      "statePath": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/valley-hero.json",
-      "stateSHA256": "6600bb6b60977cf06cd2c0cf0f7421d1e1abeb68ad5668cc93c1eba2c6068e85",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+      "sha256": "d3c23779cf104e1ce5db98c018256f21155f30cd3e899c4bb36ff6aa086e76da",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.json",
+      "stateSHA256": "87a2bf75ea4c835584d96220478d96e635e1062688adcd665547261ea7253c29",
       "sourceMismatches": [],
-      "waterTime": 0.3530000000000001
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/valley-wide.png",
-      "sha256": "3294dbe052321dc49fac04ada33367a98985c009f5ad42501e2e23528b5c4dd8",
-      "statePath": "qa/evidence/afterrain-2026-11-19T04-25-26-361Z/valley-wide.json",
-      "stateSHA256": "35c698eac0b523e174c98eea368b2904c8a4bbd8938022836b4bd83d1d07b91e",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+      "sha256": "90fd8a7316d824276d9874cbbe7af5fe37173cd50b76b652d8eb7ddc712db519",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.json",
+      "stateSHA256": "996070dfbb06e0b43aeae63cfb2370402eadd0ffe7f3146156dfbd13c6657a0c",
       "sourceMismatches": [],
-      "waterTime": 0.3530000000000001
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/bridge.png",
-      "sha256": "f8c28dffd8bc8f1d132de8b94f6abd746e8c2940156a7d2484c1562672b7a592",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/bridge.json",
-      "stateSHA256": "33849da9a04801b0c4679c8c8d2f25cfe87bde8a2a344ba9e22fff14fa8dc8f9",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+      "sha256": "66c9bd2f2471abc0d13645d898dd68b1be5a5226df5dda306ed6c0e43b37de79",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.json",
+      "stateSHA256": "d9346ed7f6243f84387ebd47c6c3a98887c28d2d5e5f94c2dab5e4fd8dbf76e7",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/east-village.png",
-      "sha256": "eaa4db5317a6c327301c959ec623f457d19b0847419bc0f566fa83cee86f115e",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/east-village.json",
-      "stateSHA256": "c57f0055ad64fba746b4daf28aedf6557ec9bcb19ea33edcf2a3f9d4f9aac09e",
+      "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
+      "sha256": "3cd62c1d22b496ffdfbd835d6627619b896c5ef78cf30e9943e1c79d3c3cfc22",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.json",
+      "stateSHA256": "43ba4749f7205ff458d4beb12afde4c80f5b60cb4e8589722cae219c75976c89",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/layout.png",
-      "sha256": "680c88b38873b54bb205792e0be2e3628ebb88c4ccb0593b4b771f9122533c4d",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/layout.json",
-      "stateSHA256": "aa3005a269ee48d04a224e651ac008a36fe1ed31046dbe5b4b6ece57a47bd013",
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.png",
+      "sha256": "7d9248b7168c9e4da85584128e76e725a89589b4b40da5d84095d0a4f834d742",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.json",
+      "stateSHA256": "beeb239ac073224fe186f649600b6f2b01941f9ba9464936e53e796296e888f6",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
+      "imported": false,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/river-ford.png",
-      "sha256": "d37367fce83baf8244ade2a101264420c57eea997427d20724e476f3486a1593",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/river-ford.json",
-      "stateSHA256": "a7747235ff84859edaf1f22a395d47fccadbe447d179d48c80b2b4a94a4861a4",
+      "path": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.png",
+      "sha256": "b2e582f6e7ce772147c9fbdecf5ca6392648e38d36a87c111c0caedc6feeb755",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.json",
+      "stateSHA256": "02a4a927fab81ebb2ef0ad914e97a2c24f66d08fa36ecbf1c11e622eaf690dc9",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/river-hero.png",
-      "sha256": "005d54405319a1d1c412b329cdcc5fbce042191883ad933d3e077b285d6db170",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/river-hero.json",
-      "stateSHA256": "fa12d28411277767ab139632eb65faca08a21da237d76afd3e518c55573ae230",
+      "path": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.png",
+      "sha256": "ac2b4386d0d9b6fc8a0c635f30e41b00228a4e86406fe031b2c64d00cce5dea8",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.json",
+      "stateSHA256": "324bf605861b2496d3cc579a290a8f6c3a144bbb4540fe29a5495a4fc8cfaeb5",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/ruin.png",
-      "sha256": "71bf242f172db36b3f23bdb2c79d90172e0f324c8ce25917a8716cac258fb272",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/ruin.json",
-      "stateSHA256": "628471453dd3288dee9b59f68d58ba09774d9a36f8b9f97ed335379d7f9157e1",
+      "path": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.png",
+      "sha256": "aa859e694a9a61cbd40c60ed00e7c0cdae2585c3bbcf151fa86739612cdfaca2",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.json",
+      "stateSHA256": "185f7025d692fe805ac38c9d47a80ae76f0aee6f81057d18047f9148dbf9cae9",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
+      "imported": true,
+      "consumedCurrent": true
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/west-village.png",
-      "sha256": "037e23406eb25ecf5382ab088926a58351ec1ad00233772de886d1b5fb99b0a2",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/west-village.json",
-      "stateSHA256": "05f44b810e368c8954cfe205693ba386ea35b4d0c2b36b1a0bb3ec8edfb91e8c",
+      "path": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.png",
+      "sha256": "75d86b9a9ff75d89e7a646c3d801c6b891f72a56dac265ebeb7f78106fcbc15a",
       "width": 1920,
       "height": 1080,
+      "statePath": "qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.json",
+      "stateSHA256": "6be8768e7ded46474e88ef7554e1ed9e3773c55c49d2078d7a7efc81d8f6355c",
       "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
-    },
-    {
-      "path": "qa/evidence/map-2026-11-19T04-25-54-979Z/wet-mud.png",
-      "sha256": "4c2eefe325793538054acedf17bc5bb332af194b3b982321b9dcbfde1229c38e",
-      "statePath": "qa/evidence/map-2026-11-19T04-25-54-979Z/wet-mud.json",
-      "stateSHA256": "347563c3459a35ea0ec492038e2f839511b85baa5f117c40f769a4325234eec9",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.3301999998092651
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/east-buffer-front.png",
-      "sha256": "9d49a782c6e58ef430d00dd116ea9e84f1cefc5f786f9e5f455e580679955b2b",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/east-buffer-front.json",
-      "stateSHA256": "517ab1ff46f04c772f7174d116619e510d77f0a9e682ef067f983d4ed06eaa6c",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/east-buffer-interior.png",
-      "sha256": "22d84731f468a3110b743c7f84b2d6198ee9abfd0c4182b6514ba16cd15c2260",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/east-buffer-interior.json",
-      "stateSHA256": "fc44acc8f5f6f922dbfef5148ad3b642f91c7bd502e7eaa7214c69b05ab06e66",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/east-buffer-side.png",
-      "sha256": "c6e081a5951e2bcbf9f29c30e1a7d3619c74d9de0f49de3d2f99d6feb535abc5",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/east-buffer-side.json",
-      "stateSHA256": "2dbcd95975d07f8b29bd9a1842f493d26481d86a65a439e2cee1f4840b3b8089",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/ground-weather0.png",
-      "sha256": "a8f41b046b416e9d1858e1ebb4472e898ac1efdb17ee7321a19ee6c4ccac82a4",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/ground-weather0.json",
-      "stateSHA256": "6000c49db4c84a9a7a2211dcd7aabff223b1c4ad432fab6daae677956ea4d5b7",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/ground-weather2.png",
-      "sha256": "d12a44301f46e52a99e4dab2e1a9f52b483b01764f5c72327903f168811dd3cf",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/ground-weather2.json",
-      "stateSHA256": "91817bf2f0be8b4042f197534f8132fa1d3d99681ddb0096367aceb1d4e3f2b7",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-break-weather0.png",
-      "sha256": "9452ee3c65bf9842b9b7f075fcf1fe0a4f7279f1acdaadee310a7eb9cbc717a8",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-break-weather0.json",
-      "stateSHA256": "ed35e0dd316aa0428cbbdef917c71072b5755ced555477632ca83d52e074de6e",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-break-weather2.png",
-      "sha256": "e553bdd1e667f6c898f637e3bd0a8002396d13786178443a334d386050a4e709",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-break-weather2.json",
-      "stateSHA256": "7e4a10c5e4374bf7b85f694f6c3463e0afc316c3483bbc814fc672438da164b1",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-inside-weather0.png",
-      "sha256": "b65be5e39da6561cf0510e7dc4b36975dde2f46fd683a797cd38e92c121e2ef2",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-inside-weather0.json",
-      "stateSHA256": "524c5f4e6a5edb2305d18f9c753b9babfca5d8e54630698e45fbf036dde86a50",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-inside-weather2.png",
-      "sha256": "55060efbad52bbda6a9f1c5c13942e2bfcf9f0379e0031209931e6d4422c766d",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/ruin-inside-weather2.json",
-      "stateSHA256": "a2bc33ad2e3ae5a6feb2ec2bbea8b52e9729b5fb69f31d007c68b079b5695ee5",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/tree-root-weather0.png",
-      "sha256": "335618e5b7954991b4cf4472b6600b7eb012ab35d234bf75a7ccfc7014ec0af9",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/tree-root-weather0.json",
-      "stateSHA256": "84020b1d68cf732c3fdc548fd05c3a339641a0f9acfc53bcb3eb900c2098391a",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/tree-root-weather2.png",
-      "sha256": "3813c519a9f69ac9431afd560fa1cdb8b5228221bbda935af10a1ef1f6b167fc",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/tree-root-weather2.json",
-      "stateSHA256": "21fa41f6f794e25bfbeb83b1c672cec360ae1b51f2c49a4899859f1ce654db5c",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/west-buffer-front.png",
-      "sha256": "31f5b34058c233da0114f24a686cbeb860e3a0fa507a67526155fbc26256d526",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/west-buffer-front.json",
-      "stateSHA256": "67f0781e0d3f21c519b173d444556985a6c9a95a0439317f343afa4be1bd4a62",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/west-buffer-interior.png",
-      "sha256": "6751fc41fb12582e74e5f6fa3baf3284cd146f89f6237d429216147a9107fe55",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/west-buffer-interior.json",
-      "stateSHA256": "6efac7effc06633d03c4ec90a075e84a2d0e9f8c91c3c371b732b3ecd7687aa0",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/art-2026-11-19T04-26-25-646Z/west-buffer-side.png",
-      "sha256": "d9e0befe64386c69bbf485c4cf3125adcfbf96486450d6758860219f158d4d30",
-      "statePath": "qa/evidence/art-2026-11-19T04-26-25-646Z/west-buffer-side.json",
-      "stateSHA256": "649ef3ef8b2a0472e3d45b03119e2f19d5b0e41f1f051d3802efaf3c271aa8b7",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 0.2946000003814698
-    },
-    {
-      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-sunny.png",
-      "sha256": "ec5ba03a13a31e2782a144a7f8f47438d5463f175081d19e5225fc3a03c2302d",
-      "statePath": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-sunny.json",
-      "stateSHA256": "756cd018dbd0074740ec093857c1ca0d449dfcd15ea87e225c6d7d163dc8ef46",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 13.85239999866483
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-final.png",
-      "sha256": "28085dab295b99f735fe4837765423ce1423c1615a4459ecefa1b6e3f3b44081",
-      "statePath": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-final.json",
-      "stateSHA256": "0db85cc223eed334eac4ecb9e39e9d51c91f44da7f5fad711eee638aae04197e",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 8.555799998283344
-    },
-    {
-      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-final.png",
-      "sha256": "0c0df8be0d3b5e686285d8796046a6f5d6d9874cd592ebac72188ba61bff73c6",
-      "statePath": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-final.json",
-      "stateSHA256": "16dbc5bd8eb99bd74722cbebf652d5585263e186409f5c8b51bc138b3f392e30",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 20.72440000057225
-    },
-    {
-      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-final.png",
-      "sha256": "1f7809a15ad12621b558236a53f12226f8ff4fa703a3916c7fe0ef3c2ad8ee05",
-      "statePath": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-final.json",
-      "stateSHA256": "bcee67327d56042f87d0a1b36b2aa4b5f6f28b0e99a669ba6a2fe38d93633b67",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 50.238799999236896
-    },
-    {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-0.png",
-      "sha256": "02fe53c2c9044935638d7dbd3c21b42d7fdd72920eb94f97d9e58a37af88dac5",
-      "statePath": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-0.json",
-      "stateSHA256": "80d9bf1aa476f15b03bf7b4d678e2c0d6e10c1f4cd01688864c5d759a204b14b",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 2.3919000005722064
-    },
-    {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-1.png",
-      "sha256": "d7b9addeaa47aa1dec34613d11513f7e270d20a189d8c9f3964fe73441fd623a",
-      "statePath": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-1.json",
-      "stateSHA256": "68f687d2e63ad4fa5adff51564f68e4f589642fd4d7fff6b721e21b27c92fb87",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 3.8180999994277993
-    },
-    {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-2.png",
-      "sha256": "37797954e53cef93b8a6519ec8c5df808372244015975fa353f8ec911fba5abe",
-      "statePath": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-2.json",
-      "stateSHA256": "850dafbd7df69d96f93d8d34d54b74fb215f666ee5153801e9d985b1e222a5c4",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 5.419999999999993
-    },
-    {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-3.png",
-      "sha256": "da4eefef0dec08067bf057b91c9fc2002f0d94f6486c153014de770f2eae79f8",
-      "statePath": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-3.json",
-      "stateSHA256": "ff1222b9009faecf2fb1905d850d8c89fdd32db9467ddda4154c30ae8c785fda",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 6.942600000381454
-    },
-    {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-4.png",
-      "sha256": "b68e4bb38e2a513df6734c0483d90f6a0dcd74bafc06d114197042c5e3d1f8de",
-      "statePath": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-4.json",
-      "stateSHA256": "4df925e7aab3b301259394947c4b28e0533fcddb170de74d02a2a3926c95a805",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 8.472599999427775
-    },
-    {
-      "path": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-5.png",
-      "sha256": "e255051f8e98ee84f62c306b80b5ebb075ab9cba0e4187377fb8a1aabdd80e0c",
-      "statePath": "qa/evidence/water-samples-2026-11-19T04-27-04-070Z/flow-5.json",
-      "stateSHA256": "6ecd19cc8966457a7a652b06255419a859699f7e261cab6470057a3beecf5a73",
-      "width": 1920,
-      "height": 1080,
-      "sourceMismatches": [],
-      "waterTime": 10.012699998855576
+      "imported": true,
+      "consumedCurrent": true
     }
   ],
-  "developmentEvidence": [
+  "retained": [
     {
-      "path": "qa/surface-units-first-2026-11-19.json",
-      "sha256": "53b22cd607c4357b9e264aee194133cbeca2922fc9ac97ee64a4268ad90182a5",
-      "status": "FAIL RETAINED: legacy ground-shader inline token assertion invalid after module extraction; replaced by emitted-shader behavior checks, all terrain/support thresholds unchanged"
+      "path": "qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-assets-1.json",
+      "sha256": "c9d01e127c5f7934ed054b55ae2dfbf1634a114a68b1421295f64a3e8f7e1a32",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/cement-rubble-small.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "imported": true,
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/afterrain-2026-11-19T04-13-48-561Z/afterrain-1.json",
-      "sha256": "9674a662dda68a8da4233dd3a66ad9cdedf44066e6f29a9191f38440f49a33d2",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-assets-1.json",
+      "sha256": "83f1d1c7aec11460ced5083f5fbaead728fb81c14e812e444ec718f5f24368f1",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "qa/browser.mjs",
+        "local-only/manifest.json",
+        "local-only/cement-rubble-small.glb",
+        "local-only/served-manifest.json"
+      ],
+      "imported": true,
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/art-2026-11-19T04-14-43-012Z/art-1.json",
-      "sha256": "3ed3cb12540a9058b67f7f6f07e472f3d112ca0bd30c9c6532a3f8e1e2f7bc17",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-assets-1.json",
+      "sha256": "a1d19e768e2a9a08f9fe2e89c803594d470d7f1d0711a31df2a024a595db933f",
+      "pass": true,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "qa/browser.mjs"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/benchmark-2026-11-19T04-32-59-668Z/benchmark-1.json",
-      "sha256": "ece1b7025f4acd91654c953d42fb360c3a4efa971352cc7b778810bb2dc9748f",
-      "status": "FAIL RETAINED"
+      "path": "qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-assets-1.json",
+      "sha256": "710302283468f4745e1fe4f794f07cb7b40b15f6692898189ac3e80f2418e706",
+      "pass": true,
+      "checks": 3,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/benchmark-2026-11-19T04-34-12-736Z/benchmark-1.json",
-      "sha256": "8ee9eed3ded06adfda315fbb266fc971ecd6a483792fd382e59182d0e97b07f6",
-      "status": "FAIL RETAINED"
+      "path": "qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-assets-1.json",
+      "sha256": "1861911778dfcc074b493b85391be9a722003a6a8724f9daf3a3763614a7d793",
+      "pass": true,
+      "checks": 3,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-1.json",
-      "sha256": "a7b0ba16166b6963ae3f0c4c1f1e4ab0e7324a280fe858714a56d246067c61ce",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
-    },
-    {
-      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-1.json",
-      "sha256": "54b850fe26c7740571dd7d0cd8972443eca0b1ea7243c7795970bc22c79b6c28",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/imported-fallback-1.json",
+      "sha256": "63f7d1b3fece2f1da880004aa61d43f87e76a3ffa4599c5a7243dbdd0bd137aa",
+      "pass": true,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": false,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
       "path": "qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-1.json",
       "sha256": "d02672bf69adf2d5406097f46d9a5724208f28b01db9b01e8f1d89586687d097",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "pass": false,
+      "checks": 32,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "village.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
       "path": "qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-1.json",
       "sha256": "ae9a37dde03eb08b72ce5c468385af8ac6520242d6002c1370a2ed0a1882c4a8",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "pass": false,
+      "checks": 32,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/map-2026-11-19T04-14-13-250Z/map-1.json",
-      "sha256": "80aeb6735253034513a2564b992b11fb87fbd489e98782c497d323bbd13d9c34",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-1.json",
+      "sha256": "efc00c38c0938335d21f742f98fadf0e6612a8532ea2a5bbf0932cecce84cea2",
+      "pass": false,
+      "checks": 32,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-04-03-326Z/surface-failure-1.json",
-      "sha256": "04a90664135b860579dda7fcc2baeba91f8cc2193969561b7f6a6bf5b1becac1",
-      "status": "FAIL RETAINED"
+      "path": "qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-1.json",
+      "sha256": "c2afb029aee720bf708dd173ab585f19d4007dd0f6031ec6a16f1c0d4eded059",
+      "pass": true,
+      "checks": 32,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-05-05-416Z/surface-failure-1.json",
-      "sha256": "e89cd32f52448a196a8f071628a2bc2e2c80b19a8e5c9f5e0c9c585e1abe2123",
-      "status": "FAIL RETAINED"
+      "path": "qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-1.json",
+      "sha256": "a7b0ba16166b6963ae3f0c4c1f1e4ab0e7324a280fe858714a56d246067c61ce",
+      "pass": false,
+      "checks": 17,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "village.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-07-48-183Z/surface-1.json",
-      "sha256": "6ee14d096a08dd7bc94914a83e9ce1a85909d5d64d7b514f29459fd6b4d3dbfb",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-1.json",
+      "sha256": "54b850fe26c7740571dd7d0cd8972443eca0b1ea7243c7795970bc22c79b6c28",
+      "pass": false,
+      "checks": 17,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-19-40-701Z/surface-1.json",
-      "sha256": "bd4b14b2dd8d5348d6cd7a7a75f58027251a7dd634b183b7d2f533e2fe87b4b2",
-      "status": "FAIL RETAINED"
+      "path": "qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-1.json",
+      "sha256": "9e07e297202cfa525cc3f647c5c77bf0bc0a98f14465a812c808feba491beae5",
+      "pass": false,
+      "checks": 17,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/surface-2026-11-19T04-20-43-177Z/surface-1.json",
-      "sha256": "b55cbd8c8efc29d1c8934b546561b00b0648c7410cf50ba461909295c5e2e42e",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
-    },
-    {
-      "path": "qa/evidence/surface-preview-2026-11-19T03-56-11-471Z/surface-preview-1.json",
-      "sha256": "58e48230aaf77e2b3e80ff15426ae3cb8dc760e9dc7b4da22a8927a207e7fd5f",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-1.json",
+      "sha256": "e6483780b5a931d265aa1d70bf7faa10bb3bb795e4c6c16f87ce47b2df2c1710",
+      "pass": true,
+      "checks": 17,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
       "path": "qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-1.json",
       "sha256": "25da94c9fa2bde83160fa8fa4d8b54bdc076a5c2e68ba35734d22c95d410de35",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "pass": false,
+      "checks": 54,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "village.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
       "path": "qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-1.json",
       "sha256": "e9baf33cb17ae1ce4519ec7bd846f693613f6e56b9d310c3df33a4e07b10ef06",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "pass": false,
+      "checks": 54,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/water-samples-2026-11-19T04-15-20-354Z/water-samples-1.json",
-      "sha256": "2984e9479636e4980dae985efecf174ccf16016fe70f59dd8a6d1f453219beae",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "path": "qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-1.json",
+      "sha256": "53790db37a769cfd2705920abba543795a1c3bbee5ef0dc13e2b6bc1cc7a71de",
+      "pass": false,
+      "checks": 54,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-1.json",
+      "sha256": "4744f0f11473c55699289c4ac9dd7152b0322498b108a6fa1a83af1800577f65",
+      "pass": true,
+      "checks": 54,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
       "path": "qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-1.json",
       "sha256": "7e70956dd4a8a4b5e4281278d594cb08501cc3f9469cfffaba8268ddccc309ac",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
+      "pass": false,
+      "checks": 4,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "masonry-materials.js",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "ruins.js",
+        "serve.mjs",
+        "village.js",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
     {
-      "path": "qa/evidence/wildbank-2026-11-19T04-13-25-298Z/wildbank-1.json",
-      "sha256": "61f9bd471f4cfa7a6e942678173e9b0e654e33c9c68885ae774312fb4260145a",
-      "status": "INTERMEDIATE / SUPERSEDED; not final acceptance"
-    }
-  ],
-  "unitReport": "qa/surface-units.json",
-  "pixelReport": "qa/surface-pixels.json",
-  "independentReview": "qa/independent-review.json",
-  "performance": {
-    "verdict": "BLOCKED",
-    "storm": [
-      {
-        "path": "qa/evidence/benchmark-2026-11-19T04-32-59-668Z/benchmark-1.json",
-        "sha256": "ece1b7025f4acd91654c953d42fb360c3a4efa971352cc7b778810bb2dc9748f",
-        "pass": false,
-        "checks": 2,
-        "sourceMismatches": [],
-        "weather": 2,
-        "duration": 30016.300000000003,
-        "p50": 16.69999999999709,
-        "p95": 16.80000000000291,
-        "p99": 16.80000000000291,
-        "max": 66.69999999999709,
-        "over50": 2,
-        "viewport": [
-          1920,
-          1080
-        ],
-        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "shots": 213,
-        "enemyShots": 27,
-        "warmupFrames": 590,
-        "retainedTimelineVerified": true
-      },
-      {
-        "path": "qa/evidence/benchmark-2026-11-19T04-34-12-736Z/benchmark-1.json",
-        "sha256": "8ee9eed3ded06adfda315fbb266fc971ecd6a483792fd382e59182d0e97b07f6",
-        "pass": false,
-        "checks": 2,
-        "sourceMismatches": [],
-        "weather": 2,
-        "duration": 30016.5,
-        "p50": 16.69999999999709,
-        "p95": 16.80000000000291,
-        "p99": 16.89999999999418,
-        "max": 66.70000000000437,
-        "over50": 3,
-        "viewport": [
-          1920,
-          1080
-        ],
-        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-        "shots": 213,
-        "enemyShots": 25,
-        "warmupFrames": 585,
-        "retainedTimelineVerified": true
-      }
-    ],
-    "sunny": {
+      "path": "qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-1.json",
+      "sha256": "33b00f46f272866c85e62a29d2cbfa0c232a1e5b840f5e5bdb939ba10d6a6941",
+      "pass": false,
+      "checks": 4,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-1.json",
+      "sha256": "298c5ce4ac308b00bd23f8ad1f111daab71b9a95f6e376a6b1ff72734f5e6e1e",
+      "pass": true,
+      "checks": 4,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
       "path": "qa/evidence/sunny-benchmark-2026-11-19T04-31-56-241Z/sunny-benchmark-1.json",
       "sha256": "5232fb0b4cb34ced978db9446169dd8646accd7190bef5456fa5c894a285dcab",
-      "pass": true,
+      "pass": false,
       "checks": 2,
-      "sourceMismatches": [],
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
       "weather": 0,
       "duration": 30016.6,
       "p50": 16.69999999999709,
@@ -968,53 +1165,418 @@
         1080
       ],
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
-      "shots": 213,
-      "enemyShots": 25,
-      "warmupFrames": 588,
-      "retainedTimelineVerified": true
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
     },
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T06-57-00-583Z/sunny-benchmark-1.json",
+      "sha256": "bb506012ab7ff8a563f17a636802042e5f350217a528dd0fd7100c40479e644d",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "weather": 0,
+      "duration": 30024.1,
+      "p50": 17.900000000001455,
+      "p95": 35.700000000004366,
+      "p99": 36.5,
+      "max": 71.60000000000582,
+      "over50": 8,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T04-32-59-668Z/benchmark-1.json",
+      "sha256": "ece1b7025f4acd91654c953d42fb360c3a4efa971352cc7b778810bb2dc9748f",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "weather": 2,
+      "duration": 30016.300000000003,
+      "p50": 16.69999999999709,
+      "p95": 16.80000000000291,
+      "p99": 16.80000000000291,
+      "max": 66.69999999999709,
+      "over50": 2,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T04-34-12-736Z/benchmark-1.json",
+      "sha256": "8ee9eed3ded06adfda315fbb266fc971ecd6a483792fd382e59182d0e97b07f6",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js",
+        "local-asset-store.mjs",
+        "qa/browser.mjs",
+        "qa/hooks.js",
+        "qa/source-binding.mjs",
+        "serve.mjs",
+        "world.js",
+        "local-only/manifest.json",
+        "local-only/castle-wall.glb",
+        "local-only/cement-rubble.glb",
+        "local-only/cement-rubble-small.glb",
+        "local-only/grass-clumps-a.glb",
+        "local-only/grass-clumps-b.glb",
+        "local-only/grass-clumps-c.glb",
+        "local-only/mossy-wall-a.glb",
+        "local-only/mossy-wall-b.glb",
+        "local-only/tundra-grass-a.glb",
+        "local-only/tundra-grass-d.glb",
+        "local-only/tundra-grass-h.glb",
+        "local-only/woodland-house.glb",
+        "local-only/served-manifest.json"
+      ],
+      "identityValid": false,
+      "weather": 2,
+      "duration": 30016.5,
+      "p50": 16.69999999999709,
+      "p95": 16.80000000000291,
+      "p99": 16.89999999999418,
+      "max": 66.70000000000437,
+      "over50": 3,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T06-58-06-607Z/benchmark-1.json",
+      "sha256": "8861a16b8bf2c6cc16c50d4624c2585391528879cd50e20dd1ee1a08324dc265",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "weather": 2,
+      "duration": 30027.699999999997,
+      "p50": 17.900000000001455,
+      "p95": 35.80000000000291,
+      "p99": 52.200000000004366,
+      "max": 641,
+      "over50": 13,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T06-59-24-397Z/benchmark-1.json",
+      "sha256": "584bd5f4bdbffd36a8a6d33baf097c9317b12ae5b80214decb6e9d9ecdb04ac7",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": true,
+      "identityValid": true,
+      "weather": 2,
+      "duration": 30030.699999999997,
+      "p50": 17.900000000001455,
+      "p95": 35.799999999995634,
+      "p99": 36.599999999998545,
+      "max": 71.19999999999709,
+      "over50": 11,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "INTERMEDIATE / SOURCE SUPERSEDED"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
+      "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true,
+      "weather": 2,
+      "duration": 30023.699999999997,
+      "p50": 17.80000000000291,
+      "p95": 35.69999999999709,
+      "p99": 36.80000000000291,
+      "max": 71.39999999999418,
+      "over50": 8,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "FAILED CURRENT RUN RETAINED"
+    },
+    {
+      "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
+      "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [],
+      "imported": true,
+      "identityValid": true,
+      "weather": 2,
+      "duration": 30015.899999999998,
+      "p50": 17.80000000000291,
+      "p95": 35.799999999995634,
+      "p99": 36.799999999995634,
+      "max": 71.30000000000291,
+      "over50": 11,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "FAILED CURRENT RUN RETAINED"
+    }
+  ],
+  "diagnostics": [
+    {
+      "path": "qa/evidence/sunny-benchmark-2026-11-19T07-03-33-456Z/sunny-benchmark-1.json",
+      "sha256": "3a16cdd05d8f039ae4c16bea9777784b8af15e1ef29e2cf5fc7cd9a878a50764",
+      "pass": false,
+      "checks": 2,
+      "sourceMismatches": [
+        "downloaded-dressing.js"
+      ],
+      "imported": false,
+      "identityValid": false,
+      "weather": 0,
+      "duration": 30009.300000000003,
+      "p50": 17.599999999998545,
+      "p95": 18.30000000000291,
+      "p99": 18.599999999998545,
+      "max": 59.5,
+      "over50": 3,
+      "viewport": [
+        1920,
+        1080
+      ],
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "workloadVerified": true,
+      "timelineVerified": true,
+      "status": "DIAGNOSTIC ONLY: layer differs from acceptance target"
+    }
+  ],
+  "units": "qa/downloaded-units.json",
+  "inventory": "qa/downloaded-asset-inventory.json",
+  "review": "qa/downloaded-review.json",
+  "reviewStatus": "CONDITIONAL PASS - LOCAL WIP ONLY",
+  "reviewBinding": {
+    "sourceValid": true,
+    "evidence": [
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+        "valid": true
+      },
+      {
+        "path": "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
+        "valid": true
+      }
+    ],
+    "coverage": true,
+    "valid": true
+  },
+  "publicPackage": {
+    "path": "qa/downloaded-package.json",
+    "current": true
+  },
+  "performance": {
+    "verdict": "BLOCKED",
+    "samples": [
+      {
+        "path": "qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
+        "sha256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "imported": true,
+        "identityValid": true,
+        "weather": 0,
+        "duration": 30018.8,
+        "p50": 17.89999999999418,
+        "p95": 35.60000000000582,
+        "p99": 36.400000000001455,
+        "max": 89,
+        "over50": 10,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "workloadVerified": true,
+        "timelineVerified": true
+      },
+      {
+        "path": "qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
+        "sha256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "imported": true,
+        "identityValid": true,
+        "weather": 2,
+        "duration": 30023.699999999997,
+        "p50": 17.80000000000291,
+        "p95": 35.69999999999709,
+        "p99": 36.80000000000291,
+        "max": 71.39999999999418,
+        "over50": 8,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "workloadVerified": true,
+        "timelineVerified": true
+      },
+      {
+        "path": "qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
+        "sha256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725",
+        "pass": false,
+        "checks": 2,
+        "sourceMismatches": [],
+        "imported": true,
+        "identityValid": true,
+        "weather": 2,
+        "duration": 30015.899999999998,
+        "p50": 17.80000000000291,
+        "p95": 35.799999999995634,
+        "p99": 36.799999999995634,
+        "max": 71.30000000000291,
+        "over50": 11,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "workloadVerified": true,
+        "timelineVerified": true
+      }
+    ],
     "requirements": {
       "width": 1920,
       "height": 1080,
       "durationMS": 30000,
       "warmupMS": 10000,
-      "p95MS": 33.3,
-      "p99MS": 33.3,
-      "maxMS": 50,
-      "over50": 0,
-      "stormSamples": 2
+      "p95": 33.3,
+      "p99": 33.3,
+      "max": 50,
+      "over50": 0
     }
   },
-  "temporal": {
-    "verdict": "UNVERIFIED",
-    "note": "Six live-rendered water samples do not establish uninterrupted motion review. Prior recording failures and earlier performance failures remain in previous-wildbank-release-2026-11-19.json."
+  "temporal": "UNVERIFIED; still previews do not establish continuous motion quality",
+  "publicRelease": "UNCHANGED; imported Fab-looking GLBs are local only",
+  "privateBackup": {
+    "status": "VERIFIED selected browser derivatives only",
+    "pointer": "qa/downloaded-private-backup.json",
+    "canonicalUEVault": "Pre-existing dirty vault preserved; no whole-project portability claim"
   },
-  "changes": [
-    "Three PBR soil layers zoned by village traffic/foundation/river geography; low side-wall weeds.",
-    "Material-only masonry course/core separation with unchanged geometry, transforms and collision.",
-    "Corrected normalized SSAO depth thresholds and current ADS projection.",
-    "Original height-dependent haze on world/foliage/NPC/water; gun/HUD excluded."
+  "developmentFailures": [
+    "Initial grass wind-envelope check failed; increased placement clearance without reducing threshold.",
+    "Initial grouping had house/asset variable shadowing and missing wall/micro instances; corrected, explicit nonzero-count and support tests added.",
+    "Early grass asset-review clones missing SSAO alpha exclusions; QA preview fixed, original captures retained.",
+    "Earlier house placement intersected existing tree trunks; moved to measured clear sites; retained earlier captures."
   ],
-  "research": {
-    "primary": "https://oddpotatodev.itch.io/godot-cheap-ground-fog",
-    "briefing": "2026-11-18 section5",
-    "authorRelease": "2026-11-14",
-    "reporting": "2026-11-17",
-    "relationship": "Low-cost inspiration; no Godot plugin/code port, no measured speedup or true volumetric-lighting claim."
-  },
-  "preserved": "weapon/actor/combat, all terrain/support/layout geometry and previous demos; no private asset edits",
-  "publication": {
-    "status": "NOT UPDATED",
-    "localPreview": "http://127.0.0.1:5190/river/",
-    "previousPublicURL": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/"
-  },
-  "privateAssets": "Unrelated dirty private vault preserved; isolated public-browser checkpoint skips private transfers, not full UE/private portability.",
+  "next": "Independent current-build art/engineering review and actual performance evidence; source checkpoint only until license and release gates clear.",
   "companionHashes": {
-    "qa/surface-units.json": "ddeea89e9190cf1e1e32d9d6e005e1031476deecabc61412a4804e02ac93e35e",
-    "qa/surface-pixels.json": "16cd29312e3b1268b967c7603d528d5426061c961d86cbbe31b54ad12eebdaed",
-    "qa/independent-review.json": "7f731d11b5f76c564d0748d7108cd312d756b3ff7df890f85ecd176756f08221",
-    "qa/surface-review.json": "7f731d11b5f76c564d0748d7108cd312d756b3ff7df890f85ecd176756f08221",
-    "qa/checkpoint-surface.mjs": "4dabf8b45382edbbfe9968b853c7b456206ae652bb099bed331cb2106d8efb0a",
-    "qa/staged-surface-audit.mjs": "fb205bfe85555af1de4fd3ec08e5e73139b44c64a9b57b734e348a170685063f"
+    "qa/audit-downloaded-stage.mjs": "454029a39cbf1df8903c4d8b606294ce0d8973799ee0d8e98afd581c4ae5179d",
+    "qa/downloaded-units.json": "a0f40adbed186927a70fe867de760cf5c0ad9e4b78e09fbd94edd60a3b49e62b",
+    "qa/downloaded-asset-inventory.json": "9320329122f942e0102f6bef61a3bf2d214a09c53659494034cb5dc849d16d8e",
+    "qa/downloaded-review.json": "197cc655ec5f1bc6a33f6f834d175a70d16ece1bd7c1835c1269309ed935052e",
+    "qa/downloaded-package.json": "e247f985e115012d56344da4f5782751affee19f03a4fd3241b2253cc465f5df",
+    "qa/downloaded-private-backup.json": "10d4ce8fffabd36cade2946d1a8e79331f2e916bc35e2e7e0e3a13faf800abc4",
+    "qa/checkpoint-imports.mjs": "9dc5fa42de6fb071a7418fc1c88cf9db6eaed6784c065e79dde90162c3f80ab0",
+    "qa/downloaded-dressing-checks.mjs": "46ea939ff4110bafc78f291a36d6931af2a40b8696011bbb859b7e203ee9fd13",
+    "qa/seal-downloaded-review.mjs": "d3ca7808bc7eca6cbd5fa1ac2b7f6b4c58b7fe5863693d7ee4d7daa6fe802ebc",
+    "qa/downloaded-review-findings.json": "f5d0b224147916def84d7ce3908f3d2eedb8042323ed0a2c82be8d36b2474d31",
+    "tools/package.mjs": "c64ceddc8d14051853e67e55bb561c7546eb1f86a7d1cee701ceda41a4d104e0",
+    "tools/backup-downloaded-assets.py": "5d23002b1ab119cb0d92ed2208e52c383100d98958e2f136882bf8d230a4bf0e",
+    "tools/import-downloaded-assets.py": "f278dc55d4f42439d79bf26db32b40e45c5c188dd6f8aef88f3d92c0bd7490b4",
+    "tools/import-downloaded-house.py": "9bf4a72f9a99b7015d8c59e55fcea6cc8ef07180db0f11931503b138176632df"
   }
 }

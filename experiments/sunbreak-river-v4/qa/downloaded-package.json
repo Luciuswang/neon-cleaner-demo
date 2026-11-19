@@ -1,0 +1,468 @@
+{
+  "schema": "river-public-package-exclusion-v1",
+  "pass": true,
+  "builderSHA256": "c64ceddc8d14051853e67e55bb561c7546eb1f86a7d1cee701ceda41a4d104e0",
+  "releaseSHA256": "ef7d79d98d1a6bb61f55c50a73cf3588ae8220e0a1f4d8b8385119bb79e9f786",
+  "files": 89,
+  "bytes": 123729019,
+  "sharedDependenciesVerified": 103,
+  "privateGLBsChecked": 12,
+  "privateManifestSHA256": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+  "privateBinariesIncluded": false,
+  "publiclyDeployed": false,
+  "packageFiles": [
+    {
+      "path": "index.html",
+      "bytes": 42080,
+      "sha256": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2"
+    },
+    {
+      "path": "world.js",
+      "bytes": 23590,
+      "sha256": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d"
+    },
+    {
+      "path": "village.js",
+      "bytes": 11864,
+      "sha256": "49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3"
+    },
+    {
+      "path": "ruins.js",
+      "bytes": 5998,
+      "sha256": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53"
+    },
+    {
+      "path": "fracture-geometry.js",
+      "bytes": 5584,
+      "sha256": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9"
+    },
+    {
+      "path": "buffer-house.js",
+      "bytes": 11278,
+      "sha256": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e"
+    },
+    {
+      "path": "buffer-house-logic.js",
+      "bytes": 5067,
+      "sha256": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c"
+    },
+    {
+      "path": "timber-house.js",
+      "bytes": 23737,
+      "sha256": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb"
+    },
+    {
+      "path": "house-logic.js",
+      "bytes": 3106,
+      "sha256": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496"
+    },
+    {
+      "path": "vegetation.js",
+      "bytes": 18146,
+      "sha256": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6"
+    },
+    {
+      "path": "map-layout.js",
+      "bytes": 7304,
+      "sha256": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6"
+    },
+    {
+      "path": "terrain-ray.js",
+      "bytes": 2599,
+      "sha256": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2"
+    },
+    {
+      "path": "weapon.js",
+      "bytes": 13103,
+      "sha256": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2"
+    },
+    {
+      "path": "actors.js",
+      "bytes": 14612,
+      "sha256": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c"
+    },
+    {
+      "path": "audio.js",
+      "bytes": 7080,
+      "sha256": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d"
+    },
+    {
+      "path": "storm-audio.js",
+      "bytes": 2974,
+      "sha256": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
+    },
+    {
+      "path": "tactical-ai.js",
+      "bytes": 13657,
+      "sha256": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de"
+    },
+    {
+      "path": "boot-ui.js",
+      "bytes": 811,
+      "sha256": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf"
+    },
+    {
+      "path": "combat-controls.js",
+      "bytes": 850,
+      "sha256": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8"
+    },
+    {
+      "path": "reload-pose.js",
+      "bytes": 8250,
+      "sha256": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546"
+    },
+    {
+      "path": "credits.html",
+      "bytes": 7151,
+      "sha256": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d"
+    },
+    {
+      "path": "asset-sources.json",
+      "bytes": 14407,
+      "sha256": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d"
+    },
+    {
+      "path": "foliage-derivatives.json",
+      "bytes": 678,
+      "sha256": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303"
+    },
+    {
+      "path": "foliage-revision.json",
+      "bytes": 66648,
+      "sha256": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89"
+    },
+    {
+      "path": "fable-production.json",
+      "bytes": 1182,
+      "sha256": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2"
+    },
+    {
+      "path": "fable-art-revision.json",
+      "bytes": 853,
+      "sha256": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08"
+    },
+    {
+      "path": "weapon-provenance.json",
+      "bytes": 4574,
+      "sha256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c"
+    },
+    {
+      "path": "soldier-provenance.json",
+      "bytes": 1201,
+      "sha256": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19"
+    },
+    {
+      "path": "distant-landscape.js",
+      "bytes": 16930,
+      "sha256": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b"
+    },
+    {
+      "path": "riverbank-detail.js",
+      "bytes": 20167,
+      "sha256": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f"
+    },
+    {
+      "path": "river-water.js",
+      "bytes": 6990,
+      "sha256": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96"
+    },
+    {
+      "path": "ground-moisture.js",
+      "bytes": 910,
+      "sha256": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c"
+    },
+    {
+      "path": "daylight-assets.json",
+      "bytes": 629,
+      "sha256": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2"
+    },
+    {
+      "path": "afterrain-assets.json",
+      "bytes": 14081,
+      "sha256": "f1962089201af2341b8a306dc8b70c8fe2d36512fdfec8d1915f9edf1426ac65"
+    },
+    {
+      "path": "wild-grass-assets.json",
+      "bytes": 14887,
+      "sha256": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294"
+    },
+    {
+      "path": "ground-surface.js",
+      "bytes": 8826,
+      "sha256": "f40e9066a997736f7048be75b84392d00a3f771290b56d387f7f01c8b41a978e"
+    },
+    {
+      "path": "ground-surface-assets.json",
+      "bytes": 5959,
+      "sha256": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9"
+    },
+    {
+      "path": "height-fog.js",
+      "bytes": 13530,
+      "sha256": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc"
+    },
+    {
+      "path": "masonry-materials.js",
+      "bytes": 9993,
+      "sha256": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5"
+    },
+    {
+      "path": "downloaded-dressing.js",
+      "bytes": 13153,
+      "sha256": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5"
+    },
+    {
+      "path": "assets/afterrain-detail/dry_riverbed_rock/arm.jpg",
+      "bytes": 249322,
+      "sha256": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e"
+    },
+    {
+      "path": "assets/afterrain-detail/dry_riverbed_rock/color.jpg",
+      "bytes": 1656205,
+      "sha256": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524"
+    },
+    {
+      "path": "assets/afterrain-detail/dry_riverbed_rock/normal.jpg",
+      "bytes": 1987056,
+      "sha256": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d"
+    },
+    {
+      "path": "assets/afterrain-detail/ganges_river_pebbles/arm.jpg",
+      "bytes": 253971,
+      "sha256": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c"
+    },
+    {
+      "path": "assets/afterrain-detail/ganges_river_pebbles/color.jpg",
+      "bytes": 1102985,
+      "sha256": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34"
+    },
+    {
+      "path": "assets/afterrain-detail/ganges_river_pebbles/normal.jpg",
+      "bytes": 2606204,
+      "sha256": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133"
+    },
+    {
+      "path": "assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr",
+      "bytes": 4624289,
+      "sha256": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6"
+    },
+    {
+      "path": "assets/brick_moss_001/color.jpg",
+      "bytes": 925175,
+      "sha256": "0af91390672fe184959fdc9d915d8ee4006c46011057f03fc0d3675df74cdf79"
+    },
+    {
+      "path": "assets/brick_moss_001/normal.jpg",
+      "bytes": 1073754,
+      "sha256": "b764511928a767aa8501dc2ae1a6bc5e1f92a43d1ef97ead55f77780f3ee367e"
+    },
+    {
+      "path": "assets/brick_moss_001/roughness.jpg",
+      "bytes": 603797,
+      "sha256": "c429062347f60091bdd9bf6db462d466a6b127d1b7268109d55f92a938f686c7"
+    },
+    {
+      "path": "assets/brown_mud_02/color.jpg",
+      "bytes": 2163682,
+      "sha256": "5c735b1df784ab1990f4e209c55d27fa4e7a19508e40484ed5aa783266783726"
+    },
+    {
+      "path": "assets/brown_mud_02/normal.jpg",
+      "bytes": 4234657,
+      "sha256": "3d6eec0adba8fd514d5634c56f806ad40206975c3ef17de1e2468b9e3ebcf719"
+    },
+    {
+      "path": "assets/brown_mud_02/roughness.jpg",
+      "bytes": 1662813,
+      "sha256": "00ef047ecda114930311efd31cbdb371c7a236f211a00f1dfeb6b1b73ac2f674"
+    },
+    {
+      "path": "assets/fern_02/alpha.png",
+      "bytes": 114589,
+      "sha256": "ea3c64284c7ebdeedf484d2d816eae92825ec526140c3bb83859ddc7a64001f9"
+    },
+    {
+      "path": "assets/fern_02/fern_02.bin",
+      "bytes": 176176,
+      "sha256": "fe1abb762bcbbc7ad9e86925c8080437a62add257d9280e9142fdc85c226e64c"
+    },
+    {
+      "path": "assets/fern_02/fern_02.gltf",
+      "bytes": 6899,
+      "sha256": "33974295ee19670af4877705fc7d91f33f42d6302f0d44a625e072271223031f"
+    },
+    {
+      "path": "assets/fern_02/textures/fern_02_arm_1k.jpg",
+      "bytes": 280359,
+      "sha256": "ebfb5d76ce9cbdaec20bcd22dce9b755f0b1b8650ef29ca13555e3e6961025d7"
+    },
+    {
+      "path": "assets/fern_02/textures/fern_02_diff_1k.jpg",
+      "bytes": 315705,
+      "sha256": "a828a6e7b4c01c826911e2eac4b3afc7457dab7b3b392a31c681ed88b7d50029"
+    },
+    {
+      "path": "assets/fern_02/textures/fern_02_nor_gl_1k.jpg",
+      "bytes": 367222,
+      "sha256": "45bce132c6e96a0864bc89ab5da51361ab3f4afa83a6669ae499ab5ca811f621"
+    },
+    {
+      "path": "assets/foliage-revision/grass_bermuda_01.glb",
+      "bytes": 791068,
+      "sha256": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561"
+    },
+    {
+      "path": "assets/foliage-revision/grass_medium_01.glb",
+      "bytes": 2260016,
+      "sha256": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e"
+    },
+    {
+      "path": "assets/foliage-revision/grass_medium_02.glb",
+      "bytes": 699608,
+      "sha256": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b"
+    },
+    {
+      "path": "assets/foliage-revision/island_tree_01-far.glb",
+      "bytes": 9435328,
+      "sha256": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80"
+    },
+    {
+      "path": "assets/foliage-revision/island_tree_01.glb",
+      "bytes": 13662380,
+      "sha256": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed"
+    },
+    {
+      "path": "assets/foliage-revision/tree_small_02-far.glb",
+      "bytes": 12473112,
+      "sha256": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412"
+    },
+    {
+      "path": "assets/foliage-revision/tree_small_02.glb",
+      "bytes": 14762632,
+      "sha256": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4"
+    },
+    {
+      "path": "assets/grass_bermuda_01/alpha.png",
+      "bytes": 59564,
+      "sha256": "e58b3052aad2f107cdd763e437f80ed8fb5a31bcc43b44023f7f767cb3d9888e"
+    },
+    {
+      "path": "assets/grass_bermuda_01/grass_bermuda_01.bin",
+      "bytes": 32260,
+      "sha256": "b98be48b43afb9d57f6c722d918a49996635064b829b16dc14ef4a48c0f04dae"
+    },
+    {
+      "path": "assets/grass_bermuda_01/grass_bermuda_01.gltf",
+      "bytes": 32912,
+      "sha256": "a1e5bb7fcf33721dc4844d7acacab80759fccec659f1ea643f8701afc542e207"
+    },
+    {
+      "path": "assets/grass_bermuda_01/textures/grass_bermuda_01_arm_1k.jpg",
+      "bytes": 500088,
+      "sha256": "38190d342fe951c33ff8c37dd2e3de37aca4cc7633e91be8b0d1c1f71057a641"
+    },
+    {
+      "path": "assets/grass_bermuda_01/textures/grass_bermuda_01_diff_1k.jpg",
+      "bytes": 175425,
+      "sha256": "ef202eeb8f8fb3312446009acecc87e5679a7d612e4dee859d8a849e00af5fcb"
+    },
+    {
+      "path": "assets/grass_bermuda_01/textures/grass_bermuda_01_nor_gl_1k.jpg",
+      "bytes": 709845,
+      "sha256": "4475b37d6e4d217ce03547216f62d1ef6e65cafda2355fd0cb2aeb6d919b9338"
+    },
+    {
+      "path": "assets/ground-surfaces/dirt/color.jpg",
+      "bytes": 730425,
+      "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3"
+    },
+    {
+      "path": "assets/ground-surfaces/dirt/normal.jpg",
+      "bytes": 1202783,
+      "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce"
+    },
+    {
+      "path": "assets/ground-surfaces/dirt/roughness.jpg",
+      "bytes": 253549,
+      "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704"
+    },
+    {
+      "path": "assets/ground-surfaces/forest_ground_04/color.jpg",
+      "bytes": 1113899,
+      "sha256": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c"
+    },
+    {
+      "path": "assets/ground-surfaces/forest_ground_04/normal.jpg",
+      "bytes": 1326812,
+      "sha256": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151"
+    },
+    {
+      "path": "assets/ground-surfaces/forest_ground_04/roughness.jpg",
+      "bytes": 627507,
+      "sha256": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed"
+    },
+    {
+      "path": "assets/island_tree_02/alpha.png",
+      "bytes": 57438,
+      "sha256": "f4341f147988dbe6b58d9ca841a8f0e4bcff25bc40d05f9877da82006d489c39"
+    },
+    {
+      "path": "assets/island_tree_02/tree-far.glb",
+      "bytes": 8716404,
+      "sha256": "0676ac6236bcae6f8816e1153762cf6524082de255777ac9a033ef969afd0f3f"
+    },
+    {
+      "path": "assets/island_tree_02/tree-lod.glb",
+      "bytes": 14612568,
+      "sha256": "f560fdcb7f75b2b392082e8f2600664248de9d5c0e775f802430562d68db1bfe"
+    },
+    {
+      "path": "assets/rocky_gravel/color.jpg",
+      "bytes": 4832644,
+      "sha256": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697"
+    },
+    {
+      "path": "assets/rocky_gravel/normal.jpg",
+      "bytes": 5922074,
+      "sha256": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3"
+    },
+    {
+      "path": "assets/rocky_gravel/roughness.jpg",
+      "bytes": 2007455,
+      "sha256": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d"
+    },
+    {
+      "path": "assets/wild-grass/LICENSE.txt",
+      "bytes": 484,
+      "sha256": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d"
+    },
+    {
+      "path": "assets/wild-grass/wild_leafy_a.glb",
+      "bytes": 513588,
+      "sha256": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa"
+    },
+    {
+      "path": "assets/wild-grass/wild_leafy_b.glb",
+      "bytes": 433388,
+      "sha256": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b"
+    },
+    {
+      "path": "assets/wild-grass/wild_upright_a.glb",
+      "bytes": 509388,
+      "sha256": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239"
+    },
+    {
+      "path": "assets/wild-grass/wild_upright_b.glb",
+      "bytes": 425076,
+      "sha256": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf"
+    }
+  ],
+  "checks": [
+    "fresh output directory",
+    "all emitted file bytes match source",
+    "no imported model filename or content hash",
+    "no local metadata manifest",
+    "exact recursive output whitelist",
+    "shared public dependency hashes unchanged"
+  ]
+}

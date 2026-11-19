@@ -1,0 +1,3069 @@
+{
+  "schema": "river-downloaded-staged-audit-v1",
+  "pass": true,
+  "task": "sunbreak-river-downloaded-assets-2026-11-19",
+  "auditorSHA256": "454029a39cbf1df8903c4d8b606294ce0d8973799ee0d8e98afd581c4ae5179d",
+  "runtimeSourceDigest": "64435de66b35d6ddc04c5f60a08cb99b725f619067f28d0ce126cb5059d07d5e",
+  "canonicalSHA256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8",
+  "boundFiles": [
+    {
+      "path": "experiments/sunbreak-storm-v3/assets-manifest.json",
+      "indexBlob": "8770092215361c3a0f9f56ad2e391a4aeca86f94",
+      "workingSHA256": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr",
+      "indexBlob": "9d80a98423b96965ce390e7d2d70fb7dab0592b5",
+      "workingSHA256": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/asphalt_02/asphalt_02_diff_2k.jpg",
+      "indexBlob": "1c999e8944617c8b197afa920202cd29eaa590d7",
+      "workingSHA256": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/asphalt_02/asphalt_02_nor_gl_2k.png",
+      "indexBlob": "78bd9add3033784ff90b03dad8f336798a9cdcee",
+      "workingSHA256": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/asphalt_02/asphalt_02_rough_2k.jpg",
+      "indexBlob": "f2d11ca35352dc043a88030a73b4191931f432ba",
+      "workingSHA256": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/NOTICE.md",
+      "indexBlob": "1234432409cc8f7586737b57eb9d4144b586bc17",
+      "workingSHA256": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/confirm.wav",
+      "indexBlob": "23c839a77d0b26b492e78238ffe0a4e97e8f2b9e",
+      "workingSHA256": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/enemy.wav",
+      "indexBlob": "41ff4c5dffba6028c403e664fc8a0fbc9b60fee1",
+      "workingSHA256": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/magin.wav",
+      "indexBlob": "6b8aa4b7004240a509c8aafc3089c2d7ee1e27a6",
+      "workingSHA256": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/magout.wav",
+      "indexBlob": "42bbdb880654c2bd39b5a7d7e14900054f172737",
+      "workingSHA256": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/manifest.json",
+      "indexBlob": "78d9c99b1305cc272718fd7b1c57ecf813a538a7",
+      "workingSHA256": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/player.wav",
+      "indexBlob": "f26914fcaa1688e5dc881a3eee263aec73d02133",
+      "workingSHA256": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/provenance/firearm-source.html.txt",
+      "indexBlob": "0fd62d5c41caa66088482a8032e3fd2987907e48",
+      "workingSHA256": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/audio/provenance/reload-source.html.txt",
+      "indexBlob": "d1e786179bbc61cf9315c224848ac06f46c76a29",
+      "workingSHA256": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_diff_1k.jpg",
+      "indexBlob": "972b853de21b1fda01ed099dc887f15668b7bb23",
+      "workingSHA256": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_nor_gl_1k.png",
+      "indexBlob": "0c8bc96fb185b8bd2ef646214c177276baebeb0f",
+      "workingSHA256": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_rough_1k.jpg",
+      "indexBlob": "2cfa601d94f9270c60a54d1e5c056de8914adc51",
+      "workingSHA256": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg",
+      "indexBlob": "bac8688bdc278cce2aadda797a3fddb1ee0b3b8f",
+      "workingSHA256": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png",
+      "indexBlob": "eed3d708f5c08a2a12a3209b17d018714b7e5688",
+      "workingSHA256": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg",
+      "indexBlob": "44028a7701ed4bea2e4a40f24a1fc5735a89c734",
+      "workingSHA256": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr",
+      "indexBlob": "cb2eb465340d23241c795a1bea963a38ad76bd04",
+      "workingSHA256": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr",
+      "indexBlob": "0bf55952031eb11b2bdb3dff849d1359a5c3b429",
+      "workingSHA256": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/mp5/mp5a5.glb",
+      "indexBlob": "99aa440b50470d13801d13ac331391b11af903c8",
+      "workingSHA256": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/roof_tiles/roof_tiles_diff_1k.jpg",
+      "indexBlob": "aa061a061613c46c9b570cfac5cf84f8d0413d7c",
+      "workingSHA256": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/roof_tiles/roof_tiles_nor_gl_1k.png",
+      "indexBlob": "cf5945e17663c615ab2195ec6cae765de5479b32",
+      "workingSHA256": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/roof_tiles/roof_tiles_rough_1k.jpg",
+      "indexBlob": "5fc052b6136da8f9f2b5b3655c25629626c7918b",
+      "workingSHA256": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/soldier/soldier_tac.glb",
+      "indexBlob": "9965cb1eb98eccc648bebf613500d6a3a1d7de63",
+      "workingSHA256": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg",
+      "indexBlob": "7100e67bbb3b0a5290a3338b92386ced7d652457",
+      "workingSHA256": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png",
+      "indexBlob": "333d17f05c730047a04eccb88e3b1c765d1c6c98",
+      "workingSHA256": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg",
+      "indexBlob": "6e070f53a7dd8c233a10846feceba0e44370a224",
+      "workingSHA256": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg",
+      "indexBlob": "a91fc983d222c9b7999eb69e9631466f0364ae4d",
+      "workingSHA256": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png",
+      "indexBlob": "eccdc5749473dd97dd52c53a65ca170ddf2caaea",
+      "workingSHA256": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg",
+      "indexBlob": "7a3950284454500d8825d8044a7bfeec0ae67c67",
+      "workingSHA256": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/LICENSE",
+      "indexBlob": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+      "workingSHA256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/build/three.module.js",
+      "indexBlob": "3928e8acf593b8038eff84fc68386f9f761d485f",
+      "workingSHA256": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/exporters/GLTFExporter.js",
+      "indexBlob": "a9eb9ff00fb37cf2e581ca5d54d2ab8152be9cb9",
+      "workingSHA256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "indexBlob": "8baa16822365c47ba55695ee439b4981e89d1c65",
+      "workingSHA256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+      "indexBlob": "d0933a9401f74ce5ef680344a4ae6c27ce293ebc",
+      "workingSHA256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/GLTFLoader.js",
+      "indexBlob": "440ecb714846d41bcce840bec05eb9dcb5513793",
+      "workingSHA256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/RGBELoader.js",
+      "indexBlob": "f2ac6e15f25aeccf9ed07a9b3ffd6f115745e912",
+      "workingSHA256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/math/SimplexNoise.js",
+      "indexBlob": "8ba26942ce9051346e875de367eab2ae4e5de324",
+      "workingSHA256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/objects/Reflector.js",
+      "indexBlob": "a175403048733a85775aee0b385ce0a712ea5219",
+      "workingSHA256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/EffectComposer.js",
+      "indexBlob": "110eabc8e6025e01cce12da0c99269a4c457d656",
+      "workingSHA256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/MaskPass.js",
+      "indexBlob": "b30811c8d4ca86d4adaa1e8b9050e7d776e138d3",
+      "workingSHA256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/OutputPass.js",
+      "indexBlob": "56746e894330c1f27b21681ce48382808c164dfd",
+      "workingSHA256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/Pass.js",
+      "indexBlob": "a81582d13de21a6b13216959396daf0d6f8dc294",
+      "workingSHA256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/RenderPass.js",
+      "indexBlob": "a6c3804ec67b900e9809c7f4decc32908e117d89",
+      "workingSHA256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SMAAPass.js",
+      "indexBlob": "2f816a19b86ef0d326e51eb0316fa9c2d1ff281b",
+      "workingSHA256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SSAOPass.js",
+      "indexBlob": "5883dd4260d9e82ff96ad4e20e5a53a6579a523e",
+      "workingSHA256": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/ShaderPass.js",
+      "indexBlob": "597016c9935e254a186ec810288ee8772dc2718a",
+      "workingSHA256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "indexBlob": "a53754288d989066a3d25cff2bc3d057af822bfc",
+      "workingSHA256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/CopyShader.js",
+      "indexBlob": "8c3f2cd443cd4c96edc9c2c04dc760f374d954c9",
+      "workingSHA256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "indexBlob": "9f6445bb3b621cb42813ef9bfd891419d7ea7d3e",
+      "workingSHA256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/OutputShader.js",
+      "indexBlob": "e654d853a8d7f16117f3f5e52b2a2d2cec7edfc2",
+      "workingSHA256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SMAAShader.js",
+      "indexBlob": "dba11e0294c2244a48ef74b6e5b009138a2edb6d",
+      "workingSHA256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SSAOShader.js",
+      "indexBlob": "24cda66f5d620054cb4738c07fd7de7f02aed816",
+      "workingSHA256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js",
+      "indexBlob": "087878da3e5f593f586ea421da522fc0a8244c85",
+      "workingSHA256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/SkeletonUtils.js",
+      "indexBlob": "f14195ca5ec048c6347c9a28705656cd638511b9",
+      "workingSHA256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/TextureUtils.js",
+      "indexBlob": "5954a246158fdc5af0adc321ae518e0e99de9bc5",
+      "workingSHA256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/LICENSE",
+      "indexBlob": "d07e209686512b9ac93d7df5481a4a6f622093e7",
+      "workingSHA256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/build/three.module.js",
+      "indexBlob": "0bcc7a286da2c115853ceec9deea19923e10ddc1",
+      "workingSHA256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js",
+      "indexBlob": "a9eb9ff00fb37cf2e581ca5d54d2ab8152be9cb9",
+      "workingSHA256": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js",
+      "indexBlob": "8baa16822365c47ba55695ee439b4981e89d1c65",
+      "workingSHA256": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js",
+      "indexBlob": "d0933a9401f74ce5ef680344a4ae6c27ce293ebc",
+      "workingSHA256": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js",
+      "indexBlob": "440ecb714846d41bcce840bec05eb9dcb5513793",
+      "workingSHA256": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js",
+      "indexBlob": "f2ac6e15f25aeccf9ed07a9b3ffd6f115745e912",
+      "workingSHA256": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js",
+      "indexBlob": "8ba26942ce9051346e875de367eab2ae4e5de324",
+      "workingSHA256": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js",
+      "indexBlob": "a175403048733a85775aee0b385ce0a712ea5219",
+      "workingSHA256": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js",
+      "indexBlob": "110eabc8e6025e01cce12da0c99269a4c457d656",
+      "workingSHA256": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js",
+      "indexBlob": "b30811c8d4ca86d4adaa1e8b9050e7d776e138d3",
+      "workingSHA256": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js",
+      "indexBlob": "56746e894330c1f27b21681ce48382808c164dfd",
+      "workingSHA256": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js",
+      "indexBlob": "a81582d13de21a6b13216959396daf0d6f8dc294",
+      "workingSHA256": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js",
+      "indexBlob": "a6c3804ec67b900e9809c7f4decc32908e117d89",
+      "workingSHA256": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js",
+      "indexBlob": "2f816a19b86ef0d326e51eb0316fa9c2d1ff281b",
+      "workingSHA256": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js",
+      "indexBlob": "f011e1aac340a8062c20dcbed2706fe84d371791",
+      "workingSHA256": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js",
+      "indexBlob": "597016c9935e254a186ec810288ee8772dc2718a",
+      "workingSHA256": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js",
+      "indexBlob": "a53754288d989066a3d25cff2bc3d057af822bfc",
+      "workingSHA256": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js",
+      "indexBlob": "8c3f2cd443cd4c96edc9c2c04dc760f374d954c9",
+      "workingSHA256": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js",
+      "indexBlob": "9f6445bb3b621cb42813ef9bfd891419d7ea7d3e",
+      "workingSHA256": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js",
+      "indexBlob": "e654d853a8d7f16117f3f5e52b2a2d2cec7edfc2",
+      "workingSHA256": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js",
+      "indexBlob": "dba11e0294c2244a48ef74b6e5b009138a2edb6d",
+      "workingSHA256": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js",
+      "indexBlob": "24cda66f5d620054cb4738c07fd7de7f02aed816",
+      "workingSHA256": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "indexBlob": "087878da3e5f593f586ea421da522fc0a8244c85",
+      "workingSHA256": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js",
+      "indexBlob": "f14195ca5ec048c6347c9a28705656cd638511b9",
+      "workingSHA256": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b"
+    },
+    {
+      "path": "experiments/sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js",
+      "indexBlob": "5954a246158fdc5af0adc321ae518e0e99de9bc5",
+      "workingSHA256": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/actors.js",
+      "indexBlob": "285ffeda2d5dea8a85a9b1585dfcf290accb2502",
+      "workingSHA256": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/afterrain-assets.json",
+      "indexBlob": "783306026fae5740cd5ff7f224d8f88658f225f5",
+      "workingSHA256": "f1962089201af2341b8a306dc8b70c8fe2d36512fdfec8d1915f9edf1426ac65"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/asset-sources.json",
+      "indexBlob": "28dfd97159f895489781efc60d00b1e7850ddac4",
+      "workingSHA256": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-detail/dry_riverbed_rock/arm.jpg",
+      "indexBlob": "2ce2972e188ba1be93b7284a79bf0c552b2215ff",
+      "workingSHA256": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-detail/dry_riverbed_rock/color.jpg",
+      "indexBlob": "f44ba9ba438b6ba7686586d89460390e12a8b9c6",
+      "workingSHA256": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-detail/dry_riverbed_rock/normal.jpg",
+      "indexBlob": "60b52788b51baed612ff24061172ac1568c8fb51",
+      "workingSHA256": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-detail/ganges_river_pebbles/arm.jpg",
+      "indexBlob": "4ad1897cc2b9d735dfd05fcd4cee47ccdce868e2",
+      "workingSHA256": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-detail/ganges_river_pebbles/color.jpg",
+      "indexBlob": "ac8002981e001901e9a94c387f205a85cd16d4f6",
+      "workingSHA256": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-detail/ganges_river_pebbles/normal.jpg",
+      "indexBlob": "5643ab67d211c2dc81b8b7e6aebb5af20b3d232b",
+      "workingSHA256": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr",
+      "indexBlob": "c5c0112c1555d1783ba852c41f3be0557e015e8f",
+      "workingSHA256": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/brick_moss_001/color.jpg",
+      "indexBlob": "e50a819e9c6b5e02b805325a25185d44aed29391",
+      "workingSHA256": "0af91390672fe184959fdc9d915d8ee4006c46011057f03fc0d3675df74cdf79"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/brick_moss_001/normal.jpg",
+      "indexBlob": "9ddb5a92317582f605f4ef40d78cc2e31c73e731",
+      "workingSHA256": "b764511928a767aa8501dc2ae1a6bc5e1f92a43d1ef97ead55f77780f3ee367e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/brick_moss_001/roughness.jpg",
+      "indexBlob": "6d08f843c883a559431332bfba97e5f6c7799a7f",
+      "workingSHA256": "c429062347f60091bdd9bf6db462d466a6b127d1b7268109d55f92a938f686c7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/brown_mud_02/color.jpg",
+      "indexBlob": "13498d20452e91b2a4c6ee6e1826ab5fdd0202f8",
+      "workingSHA256": "5c735b1df784ab1990f4e209c55d27fa4e7a19508e40484ed5aa783266783726"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/brown_mud_02/normal.jpg",
+      "indexBlob": "b0409d58dbea3b72ec1e33384c8df8bf40099165",
+      "workingSHA256": "3d6eec0adba8fd514d5634c56f806ad40206975c3ef17de1e2468b9e3ebcf719"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/brown_mud_02/roughness.jpg",
+      "indexBlob": "949f52f9ea5bca74c61ec2b525eb7aa037d1be24",
+      "workingSHA256": "00ef047ecda114930311efd31cbdb371c7a236f211a00f1dfeb6b1b73ac2f674"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/grass_bermuda_01.glb",
+      "indexBlob": "c84ddfdc14a777a0231c6cb8d4b9cece601da708",
+      "workingSHA256": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/grass_medium_01.glb",
+      "indexBlob": "f93d316e980611eb0292d88e610f26aa2796fe43",
+      "workingSHA256": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/grass_medium_02.glb",
+      "indexBlob": "e8cd49f4bef65139ab2e068516a240c11013f77e",
+      "workingSHA256": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/island_tree_01-far.glb",
+      "indexBlob": "e8691ecc21adb606fd9c06d6d8d71b763fa56b2f",
+      "workingSHA256": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/island_tree_01.glb",
+      "indexBlob": "7fd58946a10ed2546bd93ee41da2517cf238f327",
+      "workingSHA256": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/tree_small_02-far.glb",
+      "indexBlob": "c0b6dd41cae32c1036524aef9f99f60df20168e5",
+      "workingSHA256": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/foliage-revision/tree_small_02.glb",
+      "indexBlob": "bff06b0afc4383fdd51341cdc7418ae27e239bae",
+      "workingSHA256": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/dirt/color.jpg",
+      "indexBlob": "81083c716d4945f6a5fdca15defa103202ce2b0b",
+      "workingSHA256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/dirt/normal.jpg",
+      "indexBlob": "661915b2b91cbc1f463697b24c9d02626b744036",
+      "workingSHA256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/dirt/official-files.json",
+      "indexBlob": "49634ffa62345791c5960e3b4edae4050dee933a",
+      "workingSHA256": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/dirt/roughness.jpg",
+      "indexBlob": "b7c74b3e75f9ffbc6f6fe13827dbbcc1d6604f5f",
+      "workingSHA256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/forest_ground_04/color.jpg",
+      "indexBlob": "eb58fbc9865eb16876e41e4912350fe90aed1fbb",
+      "workingSHA256": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/forest_ground_04/normal.jpg",
+      "indexBlob": "440bd7b41d02aa6c64d2ba93b0f64fac0083062e",
+      "workingSHA256": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/forest_ground_04/official-files.json",
+      "indexBlob": "95e453d76d872cacca3104234d6fc4c726e48389",
+      "workingSHA256": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/ground-surfaces/forest_ground_04/roughness.jpg",
+      "indexBlob": "2fafd4a80c3df879bc21edb1185097278c47d5e0",
+      "workingSHA256": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/rocky_gravel/color.jpg",
+      "indexBlob": "856fa352662a15c29447de434bdcbb819734a252",
+      "workingSHA256": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/rocky_gravel/normal.jpg",
+      "indexBlob": "9796d5f9da33ae781cdf34e3e17333e5c69e8e77",
+      "workingSHA256": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/rocky_gravel/roughness.jpg",
+      "indexBlob": "7299f2835137476b040892d012c6e748c9f8687d",
+      "workingSHA256": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/Foliage001-leaf-rgba.png",
+      "indexBlob": "56726ed6453bb5a5daa58d6be1d3091dbfc40c4c",
+      "workingSHA256": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/Foliage006-leaf-rgba.png",
+      "indexBlob": "89e751afc28bc08a39c0d5ded42595d9f295e439",
+      "workingSHA256": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/LICENSE.txt",
+      "indexBlob": "d58a0a9c6a1c407d55f474d1e927c08e469deaf4",
+      "workingSHA256": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001.png",
+      "indexBlob": "b9f7a888f76419e6e3890f4c110136ed70ff66fa",
+      "workingSHA256": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend",
+      "indexBlob": "ef42c07ecb9597fb033c5cebdce940fb44c935d4",
+      "workingSHA256": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx",
+      "indexBlob": "28b26595835e86287201da954316a8b88704cedd",
+      "workingSHA256": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres",
+      "indexBlob": "6df439a86b764b762ae1b4e4c84e01464801f439",
+      "workingSHA256": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc",
+      "indexBlob": "d8520ae1ee4ddfbdee27f7ee0a0cca7c12765313",
+      "workingSHA256": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip",
+      "indexBlob": "f103204dc1a2f94ae757e668aa5289603023dc32",
+      "workingSHA256": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg",
+      "indexBlob": "b4eeb5c198d3fffe884d290ed5b690ac715eab5d",
+      "workingSHA256": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg",
+      "indexBlob": "69ec1ca298e46a2fb0551eb2e77f994560326764",
+      "workingSHA256": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg",
+      "indexBlob": "44afa1c8643a65e8b949d99e1ea624af57edd72f",
+      "workingSHA256": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg",
+      "indexBlob": "d67fd63522c5e0c0c7abefeb2e63fff9f853ed51",
+      "workingSHA256": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg",
+      "indexBlob": "fa983e04de062d4b9fad0364d9b6b6d4a602f152",
+      "workingSHA256": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg",
+      "indexBlob": "89a52a590d2acaade5e94ab1db988d92b9fe8ea6",
+      "workingSHA256": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage001/metadata.json",
+      "indexBlob": "0575e5b4307bdc84df4a54a9c616119a365e345a",
+      "workingSHA256": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006.png",
+      "indexBlob": "b7b021756baaf4eff4488e4ba1c4f2063f586dbb",
+      "workingSHA256": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend",
+      "indexBlob": "836148f73d4625089924713f3cd9da8f8557ef3e",
+      "workingSHA256": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx",
+      "indexBlob": "f3731cee203d277e815a21b732f2c443abd0b977",
+      "workingSHA256": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres",
+      "indexBlob": "4d3eae0384ace1db6e5a6c4f76bfa9a18f6ec7cd",
+      "workingSHA256": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc",
+      "indexBlob": "5e92925bb56183691b4cf863c8ed7f6534f0d65a",
+      "workingSHA256": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip",
+      "indexBlob": "2481271a4dacac2d6f1bd70d1a86556989e7232b",
+      "workingSHA256": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg",
+      "indexBlob": "5ccf2e6ec858e09a109e90e4301d6e7f0c279ddd",
+      "workingSHA256": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg",
+      "indexBlob": "b057464f47032d01f3dfe7fe7e1bf25588329aa5",
+      "workingSHA256": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg",
+      "indexBlob": "ad768dbb2668c0666d862cfd548cee690d8a21ce",
+      "workingSHA256": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg",
+      "indexBlob": "1f8c9f2767cbbbdcb8edeba20b9f375035d58176",
+      "workingSHA256": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg",
+      "indexBlob": "b3a3f07b92c3fd30f08ee39e62fd22a4d6bf067c",
+      "workingSHA256": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg",
+      "indexBlob": "91087a4efc4f0c96ee2a3d8f87978bd81a5e352b",
+      "workingSHA256": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/Foliage006/metadata.json",
+      "indexBlob": "a873c59ea60f3fa3766d8dd4dd053ab07921a0a3",
+      "workingSHA256": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/license/CC0-1.0.txt",
+      "indexBlob": "0e259d42c996742e9e3cba14c677129b2c1b6311",
+      "workingSHA256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/source/license/ambientcg-license.html",
+      "indexBlob": "bd9f7de6f54cf0f38e392010831047edc29b2a37",
+      "workingSHA256": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/wild_leafy_a.glb",
+      "indexBlob": "a0396f6df88bd903b654efdec0e453e653840ec5",
+      "workingSHA256": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/wild_leafy_b.glb",
+      "indexBlob": "389c24e9b63858685a837d299f806ee06415f9c5",
+      "workingSHA256": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/wild_upright_a.glb",
+      "indexBlob": "452f554afe50194b1dda8b0358b42437715781f6",
+      "workingSHA256": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/assets/wild-grass/wild_upright_b.glb",
+      "indexBlob": "a67df02bdae83b40bd6951b82f18c5774d1c6dc8",
+      "workingSHA256": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/audio.js",
+      "indexBlob": "3fd5b725a53055c9dc76742821c858a7b7fbbdad",
+      "workingSHA256": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/boot-ui.js",
+      "indexBlob": "5a31f8e57f36aea6b2009ce0372cb7d012e59eb6",
+      "workingSHA256": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/buffer-house-logic.js",
+      "indexBlob": "646e1b65fb8f8f259b45c3539f98c1fe17f6e01e",
+      "workingSHA256": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/buffer-house.js",
+      "indexBlob": "0e3b254f1c14c812d0057d5aae0515b985e84a08",
+      "workingSHA256": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/combat-controls.js",
+      "indexBlob": "6f443c9ba818a50ff93ea7229b2170139e4ec6d2",
+      "workingSHA256": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/credits.html",
+      "indexBlob": "77b344387142dcdde50de242cb4a9b61688bca43",
+      "workingSHA256": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/daylight-assets.json",
+      "indexBlob": "3de67012cd2798a2ba9af24910b2c2f9c49803d2",
+      "workingSHA256": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/distant-landscape.js",
+      "indexBlob": "ea6767c7695ad4cadfeff2c23e7b1ce2d4e805d4",
+      "workingSHA256": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/downloaded-dressing.js",
+      "indexBlob": "2728a9889f25815f2c36583c3054fee766544bd1",
+      "workingSHA256": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/fable-art-revision.json",
+      "indexBlob": "c7f73ebcbfba75419e78f01547d80435cd7bca9d",
+      "workingSHA256": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/fable-production.json",
+      "indexBlob": "c1e96d68089ae6645f26386b010e46bedb0adee2",
+      "workingSHA256": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/foliage-derivatives.json",
+      "indexBlob": "51beeb21e657583520f7d2802b5de4d837817344",
+      "workingSHA256": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/foliage-revision.json",
+      "indexBlob": "447eef1859b2ee9cd63affee4912ccdaf22e8e72",
+      "workingSHA256": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/fracture-geometry.js",
+      "indexBlob": "5862e057809b0cf4f295c13d51ad4d10b9bc5b3e",
+      "workingSHA256": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/ground-moisture.js",
+      "indexBlob": "81f2f8958483af28267874d4614d8f0044972dc5",
+      "workingSHA256": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/ground-surface-assets.json",
+      "indexBlob": "e834e42c81d13bf40d8d4c39299b22754e1434d0",
+      "workingSHA256": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/ground-surface.js",
+      "indexBlob": "3df2de6e9dd375402ecf925e555d53c4e8705617",
+      "workingSHA256": "f40e9066a997736f7048be75b84392d00a3f771290b56d387f7f01c8b41a978e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/height-fog.js",
+      "indexBlob": "4b09ecd0a982dc6dfe904089efb2b400a744e988",
+      "workingSHA256": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/house-logic.js",
+      "indexBlob": "699b098f25f5045f6dcb32da50d74b6c28e8455c",
+      "workingSHA256": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/index.html",
+      "indexBlob": "5d6d4f43c325555a8e38862ee23c405c9ae17894",
+      "workingSHA256": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/local-asset-store.mjs",
+      "indexBlob": "bc2791c0b58ac5bbcec2c88fbd73d2bc9d339dd1",
+      "workingSHA256": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/map-layout.js",
+      "indexBlob": "f26e457c335cd34c0f2cbe6ecb910fc72a3cd32d",
+      "workingSHA256": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/masonry-materials.js",
+      "indexBlob": "156b45454a928f2692dbf332fa2a8a93e3384373",
+      "workingSHA256": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/browser.mjs",
+      "indexBlob": "b8eeeddecb2ded704977dc95f716eb90c255218b",
+      "workingSHA256": "36b75b4409b57e2e7fc7714dac2a684decdef3e2ba794cc1d7e4daedd71c2564"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/hooks.js",
+      "indexBlob": "bf58bf1632efda91ad5cbaa660f029c927029192",
+      "workingSHA256": "9197cad1eb320fca9fa8f50250badf4f1ef129e81bc8f37ab0c631bd25340e9a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/source-binding.mjs",
+      "indexBlob": "d8eb598653c4af65a3a5d3d71765c80ca2aa57b4",
+      "workingSHA256": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/reload-pose.js",
+      "indexBlob": "47ff81b39ea061c03a636065e450007c95fafdfa",
+      "workingSHA256": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/river-water.js",
+      "indexBlob": "73d352eb75b6084ebae4f4d8e1cae2fa68cb88e7",
+      "workingSHA256": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/riverbank-detail.js",
+      "indexBlob": "0ff6efb3df19a16efa2b1215acd3f4d7050a3734",
+      "workingSHA256": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/ruins.js",
+      "indexBlob": "65428cb2bc386d17b27b97f95bf5e95d47879c04",
+      "workingSHA256": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/serve.mjs",
+      "indexBlob": "9f9a9a56ca431eec977161da428d9ae8f55df302",
+      "workingSHA256": "1eca6b086895a5fccf4f5485f5e40d484ed353f290eccaf72a3507921dc718a5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/soldier-provenance.json",
+      "indexBlob": "ee4d61781672d2563f67b32407fb300e9b76e8ef",
+      "workingSHA256": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/storm-audio.js",
+      "indexBlob": "809e996482a66c23b46f14f7aec18bebbb98472f",
+      "workingSHA256": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tactical-ai.js",
+      "indexBlob": "d387dc8fc95d6041fddc16aa8207320d0a920f8e",
+      "workingSHA256": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/terrain-ray.js",
+      "indexBlob": "949b658f91e5e39d602f522b22f3e8754784fb41",
+      "workingSHA256": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/timber-house.js",
+      "indexBlob": "ba22bdb46576bf8986614c0e3134efcbe376ae27",
+      "workingSHA256": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/vegetation.js",
+      "indexBlob": "b7714e41813090d3fb2fe00cafdeb8c322d9a323",
+      "workingSHA256": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/village.js",
+      "indexBlob": "2fa8215517410f2bbda9c5b5f978e91ca6044c74",
+      "workingSHA256": "49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/weapon-provenance.json",
+      "indexBlob": "d048b1210eb658da7360d249a2255ce44fdf1b57",
+      "workingSHA256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/weapon.js",
+      "indexBlob": "4428b113f202c4f75b0bd8d45c7a89f7f4e8ed58",
+      "workingSHA256": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/wild-grass-assets.json",
+      "indexBlob": "d234e0b8d1fbe7376f2c158cd970516608028e98",
+      "workingSHA256": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/world.js",
+      "indexBlob": "a8082ec09bffdd82e2b010b0c3aad2be1992e861",
+      "workingSHA256": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.png",
+      "indexBlob": "45072990c104fd46bff30afcacf6ef4a47b418c9",
+      "workingSHA256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.json",
+      "indexBlob": "3d96cdf8560729b7f70e4e3c3dbc40e6d04a401f",
+      "workingSHA256": "64fc1f1562655955e275d6ccc536a886bdf2748fb87dbcffa1105d299d8a846a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.png",
+      "indexBlob": "e433979cb80702855f1041fcc0aa8b2402599651",
+      "workingSHA256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.json",
+      "indexBlob": "765c8b570524374f18e65127a3a8d3b9adff02c5",
+      "workingSHA256": "3661d23f9b28e550ae2f380a4842de1f7c90e934d19f6be35577731f0efe5e0f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.png",
+      "indexBlob": "567e4e8b59dfc9cde72c992eb7bfae0e8bcfd010",
+      "workingSHA256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.json",
+      "indexBlob": "beb83957858993361b52209e3c738525525e3fb9",
+      "workingSHA256": "cc39da66abb50e9bbceda8afc9e8a9616b19900b630536ed53903065c5231f16"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.png",
+      "indexBlob": "24ce31e666fb69f2dae42bf33d11b2f1ee2a988b",
+      "workingSHA256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.json",
+      "indexBlob": "ef76307989a7ac00118db85c0e04f95997f1820a",
+      "workingSHA256": "2a4f3a7b0dd23c70d2c93c0d6861bfd0b9f0b58fa48d56638b35a8f6e3c3c741"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.png",
+      "indexBlob": "307a66227f35c77d038d1df9929a51621b6c10b0",
+      "workingSHA256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.json",
+      "indexBlob": "ad5636e85426bae7ffcf7cbc49cfb9f466b32144",
+      "workingSHA256": "8381c384991ac4bd7e9890ccf0082286db5d0120cfd4ddb18b39a6a416471909"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.png",
+      "indexBlob": "b21c4f34d147c9b8d766f4d262a6560f495c0b67",
+      "workingSHA256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.json",
+      "indexBlob": "47bb2d532cc6c1b0304ac7ef509f59c2611fce70",
+      "workingSHA256": "298b6e93017d805746e339ef69aa0aa1099662dc666097edfaac685ca893ed15"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.png",
+      "indexBlob": "18b49501de2e006498a697bf3d80c073297fe9bd",
+      "workingSHA256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.json",
+      "indexBlob": "cb113addca86b69ef2b19ed217c5db9d5be2dbc8",
+      "workingSHA256": "213a90ac98ed583dc0f97b99caf9974b14489be9c7d7a39a8803484fd5bc1ec0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.png",
+      "indexBlob": "627b9722f6b5bab2a88ff52f7ac383ad5e118fab",
+      "workingSHA256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.json",
+      "indexBlob": "ea874700e6cd95f4f9a73a4da83db7ea0a69a421",
+      "workingSHA256": "5bdad479aab27a90321556174c5fdf2e1d0b686040342987c28b6376e79daacf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.png",
+      "indexBlob": "758b2e58b35044e8a02bbe5eae04abc7cc980241",
+      "workingSHA256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.json",
+      "indexBlob": "794f6b8b9c3e8a62b1295c1c80305a86c7be8cae",
+      "workingSHA256": "a735728f45053d011a31f5b6f5b7c223d35f00b313eee2cecc5f8b3d9701c7bd"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.png",
+      "indexBlob": "911d171fe9748e5a55813271604b41fa27e0284c",
+      "workingSHA256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.json",
+      "indexBlob": "5c92e11f3cc2a312fa27a725806e8824fae30211",
+      "workingSHA256": "77d89cbf2b5563b529aeee51d83da88c49d1b2a59dd5a92e777aa9b30f4635ae"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.png",
+      "indexBlob": "dce08bcc1e03942ae6bacb1152509d9fb0e6ef9f",
+      "workingSHA256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.json",
+      "indexBlob": "6b7a6ae34a62b1efcca08f46dbdcf7b891b7c48d",
+      "workingSHA256": "29ce7cf69561772b17a794777e0f2f8ec2cd844343f7cfdc338f5d66fb09d65e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.png",
+      "indexBlob": "ce32cd8a3f868800669c409e9f4a159f417435e7",
+      "workingSHA256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.json",
+      "indexBlob": "885ffeb2652a9f12db6dce4f9e426612ed3e98db",
+      "workingSHA256": "a6b2fedb5993f52a03ae895808dd1b92fd68868df8a0d54eb08a6304a9e8ac2f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+      "indexBlob": "71058f4852b10298e9a2791f9d87a52794cc3959",
+      "workingSHA256": "03372b2a2fc362bb029c5e4b5b116340f9b4d30864effb57d1c0275152a29da0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.json",
+      "indexBlob": "6e9a7ec2ed14f6b9905ea7efdf04486aa36e3308",
+      "workingSHA256": "f89ae0d836a5b4a803725c1ca7db04e372f8ee17644639b31800a6f4d396389c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+      "indexBlob": "37888b1f329bbf50715ec57889b67b72e62ea4f1",
+      "workingSHA256": "ffb0244d38dee23d64237f90f60da191014c58ff485278ec2b64fbebe4bc15dc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.json",
+      "indexBlob": "867c9c33caf7e642890fef05793d6c044f9f2e71",
+      "workingSHA256": "c564881f7409aea2716df2511e2c51b74e35edb92f3e394fc83b86316ae7669d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+      "indexBlob": "519e23edb66b5c625e7c2bb5b3805b3f8aec18f3",
+      "workingSHA256": "1aa35afbe4e260e6a116af47d4713e23e2a411962dc8564d159a7310c0070919"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.json",
+      "indexBlob": "cf88039c608126720672fec0bf349a787b76761d",
+      "workingSHA256": "500c77cac2ca8200d8923bbd7e09a74eb68cd79efdb27749218fc928173dbd7a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+      "indexBlob": "6a9e97a0e7c41b6f29b57c7f20dde485232af543",
+      "workingSHA256": "f056a5651d1e1e1e99e182a78bb8e583ee74f3191c1fe2395b1482ee85401cf2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.json",
+      "indexBlob": "fd5c517045fb3492362369cfe1b42000827bee7f",
+      "workingSHA256": "87a46c4dcc0114e9da75653cbe5959308fe772b59a3063d10ec1dea33c249f02"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+      "indexBlob": "9dc574883470196ca361cbfc0258308076035ad3",
+      "workingSHA256": "bb1c58023d134d9e33eed48bfa3ee7cb263de3ab06641388d38ae51a22c06df8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.json",
+      "indexBlob": "d87b8f96d506dfd84a0d4971f394fbc43d2362a4",
+      "workingSHA256": "956088f43646becd838c283474bde53d77f251446100ad955a0d094e7061f2cd"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+      "indexBlob": "09fe12b727c8694d1bf9bc2a0128500e38491b1b",
+      "workingSHA256": "d3c23779cf104e1ce5db98c018256f21155f30cd3e899c4bb36ff6aa086e76da"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.json",
+      "indexBlob": "8a3c2c4709b41ce01fb48217ec8355910f06c89e",
+      "workingSHA256": "87a2bf75ea4c835584d96220478d96e635e1062688adcd665547261ea7253c29"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+      "indexBlob": "e07545e957220ee6bfc8c9a06d24b0f3b06b6fe8",
+      "workingSHA256": "90fd8a7316d824276d9874cbbe7af5fe37173cd50b76b652d8eb7ddc712db519"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.json",
+      "indexBlob": "a16a71e90e796a21cd8b143a41b1b246ef0cee6c",
+      "workingSHA256": "996070dfbb06e0b43aeae63cfb2370402eadd0ffe7f3146156dfbd13c6657a0c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+      "indexBlob": "dc618c9c19f23245e332b1b78e32610cc51eb2f8",
+      "workingSHA256": "66c9bd2f2471abc0d13645d898dd68b1be5a5226df5dda306ed6c0e43b37de79"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.json",
+      "indexBlob": "c3e9a624e13f27f885c62750b32307727e27544d",
+      "workingSHA256": "d9346ed7f6243f84387ebd47c6c3a98887c28d2d5e5f94c2dab5e4fd8dbf76e7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
+      "indexBlob": "0e9991cd05770003e7b1e9c60c11214b40448baa",
+      "workingSHA256": "3cd62c1d22b496ffdfbd835d6627619b896c5ef78cf30e9943e1c79d3c3cfc22"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.json",
+      "indexBlob": "f71e01020f318cf3d728c4824bb91ece1d2206f0",
+      "workingSHA256": "43ba4749f7205ff458d4beb12afde4c80f5b60cb4e8589722cae219c75976c89"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.png",
+      "indexBlob": "c5060757ee236f9af1d7b2981fb0f705347f2712",
+      "workingSHA256": "7d9248b7168c9e4da85584128e76e725a89589b4b40da5d84095d0a4f834d742"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.json",
+      "indexBlob": "c2129ce6df252b19584712c1fca1d7a130e75595",
+      "workingSHA256": "beeb239ac073224fe186f649600b6f2b01941f9ba9464936e53e796296e888f6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.png",
+      "indexBlob": "21dee405947181d47239e17b4cd7653e9709c097",
+      "workingSHA256": "b2e582f6e7ce772147c9fbdecf5ca6392648e38d36a87c111c0caedc6feeb755"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.json",
+      "indexBlob": "f66d1ea398306502478b2541c7eb968f972e3372",
+      "workingSHA256": "02a4a927fab81ebb2ef0ad914e97a2c24f66d08fa36ecbf1c11e622eaf690dc9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.png",
+      "indexBlob": "9bbc4caa91e1a19855a37ed0080fdada4dcf64ab",
+      "workingSHA256": "ac2b4386d0d9b6fc8a0c635f30e41b00228a4e86406fe031b2c64d00cce5dea8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.json",
+      "indexBlob": "1a8464e4c461a0c589619ff795665b0d788a8ed9",
+      "workingSHA256": "324bf605861b2496d3cc579a290a8f6c3a144bbb4540fe29a5495a4fc8cfaeb5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.png",
+      "indexBlob": "6c178c8433fc6b4a3ad411fc0e808c8a6dc10023",
+      "workingSHA256": "aa859e694a9a61cbd40c60ed00e7c0cdae2585c3bbcf151fa86739612cdfaca2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.json",
+      "indexBlob": "2c5ea59620028e1e3f9f06f5e09ec2f6dcd04a5c",
+      "workingSHA256": "185f7025d692fe805ac38c9d47a80ae76f0aee6f81057d18047f9148dbf9cae9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.png",
+      "indexBlob": "c5ee3740233aa93c7d19069e9d1f430b2bb4605b",
+      "workingSHA256": "75d86b9a9ff75d89e7a646c3d801c6b891f72a56dac265ebeb7f78106fcbc15a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.json",
+      "indexBlob": "e85b08619578d36dda0cdcb216f199a95132d782",
+      "workingSHA256": "6be8768e7ded46474e88ef7554e1ed9e3773c55c49d2078d7a7efc81d8f6355c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-assets-1.json",
+      "indexBlob": "6e2d67a34f654cbfa0df14cb8bc0b4265ef09bf1",
+      "workingSHA256": "1cb5cf2b0dd5af1009ede435d3d434c70d8b3ea96cee6c98a9df92a77f13cdf4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/imported-fallback-1.json",
+      "indexBlob": "81713ba7945113c45fabca5906e19c91c0610357",
+      "workingSHA256": "0ecc2b41fc114f2d0834a84ca94f0e2ba5645f274b269cd1360c58d25aade0f4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-1.json",
+      "indexBlob": "615374757a6fcc474726213f1e672db9b2a456f8",
+      "workingSHA256": "f5bce3739d01514714cb585269455e3a617d06267b77d5efe60868620ffc8519"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-1.json",
+      "indexBlob": "c4bb00547922ae5826debb1607626076f23e5a33",
+      "workingSHA256": "29310dd3d775ec049790aa3dc14b2c39e22044bb47d7ceae1d3ba8a36ad675e2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-1.json",
+      "indexBlob": "b03ecd3401b5582b9d6c6fd0943128087d5600a6",
+      "workingSHA256": "eb0515ffbb78a566baa5c3f2388e54082cf979f4f5e0a696dda8e9db9f019432"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-1.json",
+      "indexBlob": "f08836d991d7a5d2290e60df8748f2becb16a677",
+      "workingSHA256": "6df0415d1eadd8a4d9109be83699b11928c34250dee53672d6a14881bb82907f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
+      "indexBlob": "de0a7cfd2be8428e22c670d093dc0735fc88cf17",
+      "workingSHA256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
+      "indexBlob": "d41f2fb704dd6657ca3b46380778aa0db656545f",
+      "workingSHA256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
+      "indexBlob": "5a279d794927f1d14847616371cb2e327b05f6a2",
+      "workingSHA256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-assets-1.json",
+      "indexBlob": "17bc79358d4c8cea24fbf95075142fd2d73f31de",
+      "workingSHA256": "c9d01e127c5f7934ed054b55ae2dfbf1634a114a68b1421295f64a3e8f7e1a32"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-assets-1.json",
+      "indexBlob": "78f7d468e242e7d45e08a1be7cd61b7e14b2788d",
+      "workingSHA256": "83f1d1c7aec11460ced5083f5fbaead728fb81c14e812e444ec718f5f24368f1"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-assets-1.json",
+      "indexBlob": "c9257d37fa636852eeee077834d8ebd7425587d8",
+      "workingSHA256": "a1d19e768e2a9a08f9fe2e89c803594d470d7f1d0711a31df2a024a595db933f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-assets-1.json",
+      "indexBlob": "9ac1324f61fee60774c4be78324ebe3973fcd353",
+      "workingSHA256": "710302283468f4745e1fe4f794f07cb7b40b15f6692898189ac3e80f2418e706"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-assets-1.json",
+      "indexBlob": "c632f6ef6193d02048af34c9fd89f141b8ea90e8",
+      "workingSHA256": "1861911778dfcc074b493b85391be9a722003a6a8724f9daf3a3763614a7d793"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/imported-fallback-1.json",
+      "indexBlob": "68505693e8ffa456e61c873c285e922ad845bb96",
+      "workingSHA256": "63f7d1b3fece2f1da880004aa61d43f87e76a3ffa4599c5a7243dbdd0bd137aa"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T04-09-54-432Z/checks-1.json",
+      "indexBlob": "70f7835dd832e60655d217f21c7dc4a5ea734505",
+      "workingSHA256": "d02672bf69adf2d5406097f46d9a5724208f28b01db9b01e8f1d89586687d097"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T04-21-51-233Z/checks-1.json",
+      "indexBlob": "62fcf4ccab1c31524e2b258370e7c8a1bdbd950e",
+      "workingSHA256": "ae9a37dde03eb08b72ce5c468385af8ac6520242d6002c1370a2ed0a1882c4a8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T04-28-48-022Z/checks-1.json",
+      "indexBlob": "0e1de98b66839444e42538a6688cbc67fd6df28a",
+      "workingSHA256": "efc00c38c0938335d21f742f98fadf0e6612a8532ea2a5bbf0932cecce84cea2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-1.json",
+      "indexBlob": "665c5dc7d91f932cf76a21c5b50d2f9a043a8687",
+      "workingSHA256": "c2afb029aee720bf708dd173ab585f19d4007dd0f6031ec6a16f1c0d4eded059"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T04-11-12-978Z/cabins-1.json",
+      "indexBlob": "a757ef7000052e18dac31427da76570f3d13755f",
+      "workingSHA256": "a7b0ba16166b6963ae3f0c4c1f1e4ab0e7324a280fe858714a56d246067c61ce"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T04-22-37-440Z/cabins-1.json",
+      "indexBlob": "edd4060425755e4bb377a4730f7b3117eaf467e0",
+      "workingSHA256": "54b850fe26c7740571dd7d0cd8972443eca0b1ea7243c7795970bc22c79b6c28"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T04-29-34-300Z/cabins-1.json",
+      "indexBlob": "a1032c79b67a0d495841c891b6771ffb2337115d",
+      "workingSHA256": "9e07e297202cfa525cc3f647c5c77bf0bc0a98f14465a812c808feba491beae5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-1.json",
+      "indexBlob": "4b59ac5eadb140abfe13dcc5aedeb70ce0296e58",
+      "workingSHA256": "e6483780b5a931d265aa1d70bf7faa10bb3bb795e4c6c16f87ce47b2df2c1710"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T04-11-42-435Z/traversal-1.json",
+      "indexBlob": "488639cf32fab8a121c9a3dc7bae2c6797e60d00",
+      "workingSHA256": "25da94c9fa2bde83160fa8fa4d8b54bdc076a5c2e68ba35734d22c95d410de35"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T04-23-08-783Z/traversal-1.json",
+      "indexBlob": "506861f9b26a2aba5bc4494f1bd5357fdb197960",
+      "workingSHA256": "e9baf33cb17ae1ce4519ec7bd846f693613f6e56b9d310c3df33a4e07b10ef06"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T04-30-08-193Z/traversal-1.json",
+      "indexBlob": "f164f2387db4f056f53a3f874424b405267498ea",
+      "workingSHA256": "53790db37a769cfd2705920abba543795a1c3bbee5ef0dc13e2b6bc1cc7a71de"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-1.json",
+      "indexBlob": "9d8be5cab635d45eed0aa8e61e98ff7c2fe759bf",
+      "workingSHA256": "4744f0f11473c55699289c4ac9dd7152b0322498b108a6fa1a83af1800577f65"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T04-12-52-319Z/weather-1.json",
+      "indexBlob": "d3159b5a7326736fd7a95363371744ba29f80110",
+      "workingSHA256": "7e70956dd4a8a4b5e4281278d594cb08501cc3f9469cfffaba8268ddccc309ac"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T04-24-21-158Z/weather-1.json",
+      "indexBlob": "f8b67d7733270fce46521afd3bc5dfd884ef79c1",
+      "workingSHA256": "33b00f46f272866c85e62a29d2cbfa0c232a1e5b840f5e5bdb939ba10d6a6941"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-1.json",
+      "indexBlob": "31ef46b6a5ffbc9375afd74a009057c8ee340a63",
+      "workingSHA256": "298c5ce4ac308b00bd23f8ad1f111daab71b9a95f6e376a6b1ff72734f5e6e1e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T04-31-56-241Z/sunny-benchmark-1.json",
+      "indexBlob": "daac957f8a684349d57bd0ef69dbe1176c18a680",
+      "workingSHA256": "5232fb0b4cb34ced978db9446169dd8646accd7190bef5456fa5c894a285dcab"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T06-57-00-583Z/sunny-benchmark-1.json",
+      "indexBlob": "7f0ea3f9a138a052987bdca3a45a26011ce9e523",
+      "workingSHA256": "bb506012ab7ff8a563f17a636802042e5f350217a528dd0fd7100c40479e644d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T04-32-59-668Z/benchmark-1.json",
+      "indexBlob": "4123b0e9e336503caaa536f1259aae6fbc7f5808",
+      "workingSHA256": "ece1b7025f4acd91654c953d42fb360c3a4efa971352cc7b778810bb2dc9748f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T04-34-12-736Z/benchmark-1.json",
+      "indexBlob": "d0c91982f9035bee0c25aa6c24ceba38f8f72834",
+      "workingSHA256": "8ee9eed3ded06adfda315fbb266fc971ecd6a483792fd382e59182d0e97b07f6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T06-58-06-607Z/benchmark-1.json",
+      "indexBlob": "a7c83b2770aa16aba584f1078d7c788bc13151d0",
+      "workingSHA256": "8861a16b8bf2c6cc16c50d4624c2585391528879cd50e20dd1ee1a08324dc265"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T06-59-24-397Z/benchmark-1.json",
+      "indexBlob": "ebaa70b2da5e73c98047f9f174331da5ca6ddf69",
+      "workingSHA256": "584bd5f4bdbffd36a8a6d33baf097c9317b12ae5b80214decb6e9d9ecdb04ac7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T07-03-33-456Z/sunny-benchmark-1.json",
+      "indexBlob": "d7d1e78e0be407a69dadc28f8455aaa771ba0549",
+      "workingSHA256": "3a16cdd05d8f039ae4c16bea9777784b8af15e1ef29e2cf5fc7cd9a878a50764"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/audit-downloaded-stage.mjs",
+      "indexBlob": "c465889a7fa221c03047a90e4c5c636759feb35b",
+      "workingSHA256": "454029a39cbf1df8903c4d8b606294ce0d8973799ee0d8e98afd581c4ae5179d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-units.json",
+      "indexBlob": "f8a6cb5a5b7ae0a91a783d9828756d0fe388644e",
+      "workingSHA256": "a0f40adbed186927a70fe867de760cf5c0ad9e4b78e09fbd94edd60a3b49e62b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-asset-inventory.json",
+      "indexBlob": "9aa01a010298a028e31e300d60b7714c595cdca4",
+      "workingSHA256": "9320329122f942e0102f6bef61a3bf2d214a09c53659494034cb5dc849d16d8e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-review.json",
+      "indexBlob": "8b03fef1e2b7417692c4b755d3a0cf8ca82baed5",
+      "workingSHA256": "197cc655ec5f1bc6a33f6f834d175a70d16ece1bd7c1835c1269309ed935052e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-package.json",
+      "indexBlob": "dc56e5dd81c44bfc45c1041c68426ba38bea7390",
+      "workingSHA256": "e247f985e115012d56344da4f5782751affee19f03a4fd3241b2253cc465f5df"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-private-backup.json",
+      "indexBlob": "8ca058b28fb714b2c2c999c11d3b37a32b4a1ae7",
+      "workingSHA256": "10d4ce8fffabd36cade2946d1a8e79331f2e916bc35e2e7e0e3a13faf800abc4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/checkpoint-imports.mjs",
+      "indexBlob": "60cd6b6002e47c84c69afd2db81ef394da7f936d",
+      "workingSHA256": "9dc5fa42de6fb071a7418fc1c88cf9db6eaed6784c065e79dde90162c3f80ab0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-dressing-checks.mjs",
+      "indexBlob": "c8e278e96b343342f7cb105ec652f4fe043166c1",
+      "workingSHA256": "46ea939ff4110bafc78f291a36d6931af2a40b8696011bbb859b7e203ee9fd13"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/seal-downloaded-review.mjs",
+      "indexBlob": "40df9e1a3d2004927473575b1a95ccf62d9f832d",
+      "workingSHA256": "d3ca7808bc7eca6cbd5fa1ac2b7f6b4c58b7fe5863693d7ee4d7daa6fe802ebc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-review-findings.json",
+      "indexBlob": "016dc42229caed8039478ab89203d73fd4caf5b4",
+      "workingSHA256": "f5d0b224147916def84d7ce3908f3d2eedb8042323ed0a2c82be8d36b2474d31"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/package.mjs",
+      "indexBlob": "2283d965327b9cf0c876b22ad2f4dadb64b577c9",
+      "workingSHA256": "c64ceddc8d14051853e67e55bb561c7546eb1f86a7d1cee701ceda41a4d104e0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/backup-downloaded-assets.py",
+      "indexBlob": "d1d9115ebf98366fcdc55e2da15df37755dd184b",
+      "workingSHA256": "5d23002b1ab119cb0d92ed2208e52c383100d98958e2f136882bf8d230a4bf0e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/import-downloaded-assets.py",
+      "indexBlob": "5e5015a283eb3fbaa1980ccc1ec88cac1feb9cfa",
+      "workingSHA256": "f278dc55d4f42439d79bf26db32b40e45c5c188dd6f8aef88f3d92c0bd7490b4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/import-downloaded-house.py",
+      "indexBlob": "9a20fe9c254cb87f3b737a034091560c07a5f4a4",
+      "workingSHA256": "9bf4a72f9a99b7015d8c59e55fcea6cc8ef07180db0f11931503b138176632df"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/release.json",
+      "indexBlob": "e4dfbf5747ea374162361be408f0da60f7dcbc7f",
+      "workingSHA256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-release.json",
+      "indexBlob": "e4dfbf5747ea374162361be408f0da60f7dcbc7f",
+      "workingSHA256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitignore",
+      "indexBlob": "c966058a9f8886a0783728fe040b1049af87cba0",
+      "workingSHA256": "163aaf4777c5ce3fb3b248dd9bc968b76f74e3cccc092aa76d5ae87a5a406501"
+    },
+    {
+      "path": "docs/tasks/sunbreak-river-downloaded-assets-2026-11-19.md",
+      "indexBlob": "59a297def9897b285902a3b6bfd8cf1d2af89ecb",
+      "workingSHA256": "1ae088dba34248128b23f4b7f9dfab4aad897093439d5079678b364960c67b10"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/downloaded-dressing.js",
+      "indexBlob": "2728a9889f25815f2c36583c3054fee766544bd1",
+      "workingSHA256": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/local-asset-store.mjs",
+      "indexBlob": "bc2791c0b58ac5bbcec2c88fbd73d2bc9d339dd1",
+      "workingSHA256": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/ai-movement.json",
+      "indexBlob": "03b94b58fd54eee874cf67f92670a186cfe85f45",
+      "workingSHA256": "694ad31a78c41cfd3011b10d2b3fb10707f49e9193cbc6a11edd9e3e36d691f0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/audit-downloaded-stage.mjs",
+      "indexBlob": "c465889a7fa221c03047a90e4c5c636759feb35b",
+      "workingSHA256": "454029a39cbf1df8903c4d8b606294ce0d8973799ee0d8e98afd581c4ae5179d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/browser.mjs",
+      "indexBlob": "b8eeeddecb2ded704977dc95f716eb90c255218b",
+      "workingSHA256": "36b75b4409b57e2e7fc7714dac2a684decdef3e2ba794cc1d7e4daedd71c2564"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/buffer-checks.json",
+      "indexBlob": "7a561578ad3734c6f2b3468b5883045dc1b879b4",
+      "workingSHA256": "3c689ba73c4986e16bd9ffbacbdff0ef8eb624d05128b290cab1cb898e9ebb0c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/checkpoint-imports.mjs",
+      "indexBlob": "60cd6b6002e47c84c69afd2db81ef394da7f936d",
+      "workingSHA256": "9dc5fa42de6fb071a7418fc1c88cf9db6eaed6784c065e79dde90162c3f80ab0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-asset-inventory.json",
+      "indexBlob": "9aa01a010298a028e31e300d60b7714c595cdca4",
+      "workingSHA256": "9320329122f942e0102f6bef61a3bf2d214a09c53659494034cb5dc849d16d8e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-dressing-checks.mjs",
+      "indexBlob": "c8e278e96b343342f7cb105ec652f4fe043166c1",
+      "workingSHA256": "46ea939ff4110bafc78f291a36d6931af2a40b8696011bbb859b7e203ee9fd13"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-package.json",
+      "indexBlob": "dc56e5dd81c44bfc45c1041c68426ba38bea7390",
+      "workingSHA256": "e247f985e115012d56344da4f5782751affee19f03a4fd3241b2253cc465f5df"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-private-backup.json",
+      "indexBlob": "8ca058b28fb714b2c2c999c11d3b37a32b4a1ae7",
+      "workingSHA256": "10d4ce8fffabd36cade2946d1a8e79331f2e916bc35e2e7e0e3a13faf800abc4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-release.json",
+      "indexBlob": "e4dfbf5747ea374162361be408f0da60f7dcbc7f",
+      "workingSHA256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-review-findings.json",
+      "indexBlob": "016dc42229caed8039478ab89203d73fd4caf5b4",
+      "workingSHA256": "f5d0b224147916def84d7ce3908f3d2eedb8042323ed0a2c82be8d36b2474d31"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-review.json",
+      "indexBlob": "8b03fef1e2b7417692c4b755d3a0cf8ca82baed5",
+      "workingSHA256": "197cc655ec5f1bc6a33f6f834d175a70d16ece1bd7c1835c1269309ed935052e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/downloaded-units.json",
+      "indexBlob": "f8a6cb5a5b7ae0a91a783d9828756d0fe388644e",
+      "workingSHA256": "a0f40adbed186927a70fe867de760cf5c0ad9e4b78e09fbd94edd60a3b49e62b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T06-58-06-607Z/benchmark-1.json",
+      "indexBlob": "a7c83b2770aa16aba584f1078d7c788bc13151d0",
+      "workingSHA256": "8861a16b8bf2c6cc16c50d4624c2585391528879cd50e20dd1ee1a08324dc265"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T06-59-24-397Z/benchmark-1.json",
+      "indexBlob": "ebaa70b2da5e73c98047f9f174331da5ca6ddf69",
+      "workingSHA256": "584bd5f4bdbffd36a8a6d33baf097c9317b12ae5b80214decb6e9d9ecdb04ac7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T07-18-55-315Z/benchmark-1.json",
+      "indexBlob": "d41f2fb704dd6657ca3b46380778aa0db656545f",
+      "workingSHA256": "42ad3b25773b103b5ed06dff6c6ff177f666cd1bae0fd17be1381e62f4cbbad9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-19T07-19-59-452Z/benchmark-1.json",
+      "indexBlob": "5a279d794927f1d14847616371cb2e327b05f6a2",
+      "workingSHA256": "274b7cb76be994a63762e7b2cef8c54fd4c5b3fe972ca88884a28efb05cf1725"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-1.json",
+      "indexBlob": "4b59ac5eadb140abfe13dcc5aedeb70ce0296e58",
+      "workingSHA256": "e6483780b5a931d265aa1d70bf7faa10bb3bb795e4c6c16f87ce47b2df2c1710"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-final.json",
+      "indexBlob": "830f317deab6af0cff2c040ca0c8c1ae70811999",
+      "workingSHA256": "8f0c4ebcbf2d9117b7d46421e5ad8bd1a39fffdbdb78abb77b824abb934b4a34"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T06-54-01-322Z/cabins-final.png",
+      "indexBlob": "f60b2c937e0c4d942514cb03f43eae7055c54aaf",
+      "workingSHA256": "5222d8778764b34bc054dc4edd56cb40a82202d7ffb000c4065655c612c0fe99"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-1.json",
+      "indexBlob": "c4bb00547922ae5826debb1607626076f23e5a33",
+      "workingSHA256": "29310dd3d775ec049790aa3dc14b2c39e22044bb47d7ceae1d3ba8a36ad675e2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.json",
+      "indexBlob": "1a8464e4c461a0c589619ff795665b0d788a8ed9",
+      "workingSHA256": "324bf605861b2496d3cc579a290a8f6c3a144bbb4540fe29a5495a4fc8cfaeb5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-19T07-11-37-364Z/cabins-final.png",
+      "indexBlob": "9bbc4caa91e1a19855a37ed0080fdada4dcf64ab",
+      "workingSHA256": "ac2b4386d0d9b6fc8a0c635f30e41b00228a4e86406fe031b2c64d00cce5dea8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-1.json",
+      "indexBlob": "665c5dc7d91f932cf76a21c5b50d2f9a043a8687",
+      "workingSHA256": "c2afb029aee720bf708dd173ab585f19d4007dd0f6031ec6a16f1c0d4eded059"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-final.json",
+      "indexBlob": "5f1b63c913e39ee890bc7d7249f972d97e297249",
+      "workingSHA256": "4f8505e1c1c7fd3f96d8c9e9a7c094b19efa21301dcc5088d0f504f5849128a4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T06-53-11-054Z/checks-final.png",
+      "indexBlob": "bb510115e8f07d70cb617c34ed287652b65124cd",
+      "workingSHA256": "efd559170075d7f6c2a15eb73f1b64a5f4a3a84a3100c341560243f817127924"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-1.json",
+      "indexBlob": "615374757a6fcc474726213f1e672db9b2a456f8",
+      "workingSHA256": "f5bce3739d01514714cb585269455e3a617d06267b77d5efe60868620ffc8519"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.json",
+      "indexBlob": "f66d1ea398306502478b2541c7eb968f972e3372",
+      "workingSHA256": "02a4a927fab81ebb2ef0ad914e97a2c24f66d08fa36ecbf1c11e622eaf690dc9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-19T07-10-46-270Z/checks-final.png",
+      "indexBlob": "21dee405947181d47239e17b4cd7653e9709c097",
+      "workingSHA256": "b2e582f6e7ce772147c9fbdecf5ca6392648e38d36a87c111c0caedc6feeb755"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-castle-wall.json",
+      "indexBlob": "dce4d233b552445a1ad7bea04961eb18add4f517",
+      "workingSHA256": "d857fefbeaaab7e163d0fe8744e3b3e8490b7b097601a573a9fbdf0b772b07de"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-castle-wall.png",
+      "indexBlob": "ef6f7ac0a0ce53817a4a0ba88470af5ae00585a2",
+      "workingSHA256": "35f0b4c32c98fd2676483c2e120960515450b2f7176bc5ede4d21d87a9d6dac0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-cement-rubble.json",
+      "indexBlob": "c16e1596a19e63a41c3fecbae4076d5413a0a1bb",
+      "workingSHA256": "dc467af26f050076a730b1d896fa728fdff154f993592fe893f949a177dadde8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-cement-rubble.png",
+      "indexBlob": "23f0a4e358151b528fe5985e8098bf56dfa73762",
+      "workingSHA256": "6e4b64073e86b59e219e2745c643058571c0ce6a5815dc84f5ed970ba9644f55"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-grass-clumps-a.json",
+      "indexBlob": "521f0125ae3c7e297ab83c2f754879d0b9779575",
+      "workingSHA256": "ff286319f44291dcd0f2c147a3cc6feaeb043d1ad60196adcc0266da854646f7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-grass-clumps-a.png",
+      "indexBlob": "57e11693c696aad31ea5af73a0469c173d9e4e04",
+      "workingSHA256": "b229deecaef2060866aac968d232c19ba27a33a2da7ca7d408b83479545f91f8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-grass-clumps-b.json",
+      "indexBlob": "3edf96d57e6a36de24ccaa33bb1d9bd303f797c6",
+      "workingSHA256": "b3e3fe6d907e90ee76e8280b7b1245f5245f1559d1a6b3734804153a51654783"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-grass-clumps-b.png",
+      "indexBlob": "94ae9c2a3f6f541a5ddb975427133bcd98c9dc75",
+      "workingSHA256": "5973cd107f67181649028879bc2d3b41a287db91378a954b7ed751014738c68a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-grass-clumps-c.json",
+      "indexBlob": "b10a9389290ec44ded4a414cea721e3c5ad497fe",
+      "workingSHA256": "ece5095d70739284c56c5adf2b209d89b135b57eaee5160cbe1f7bf958ad177e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-grass-clumps-c.png",
+      "indexBlob": "8f1b606a7fdcad31276bf5d66dd0f9e496fa8607",
+      "workingSHA256": "00f26b20186cab0d180dff8d75be77eb335652288cf63df6df56edba795d84b6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-mossy-wall-a.json",
+      "indexBlob": "197f4b4063ff2ea70ac498a776d93189b17632b6",
+      "workingSHA256": "371228320733712df75115e05ee50cb754406168b597e0096f8504bf21ca6ab4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-mossy-wall-a.png",
+      "indexBlob": "6d32ad6e3364611009a6d7bcde588f9b86ea9cb9",
+      "workingSHA256": "714ca9d900eaea0dc18d809e1bfb5d6b45da9373a6ee8a9bace4ceaffc1a5e4d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-mossy-wall-b.json",
+      "indexBlob": "12c28ec1f655835384e86a296ab6d9c11d812fe7",
+      "workingSHA256": "ce0e618e6e29036d08d90492876eeb8ac066626471c6ba9efd780ead28b9db0e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-mossy-wall-b.png",
+      "indexBlob": "f3ad227acd384f8052f8252e92bf8d126f279e31",
+      "workingSHA256": "bf125b6002b6a739b8c37ff9ff92b506528e9efc852d058804213026923a435a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-tundra-grass-a.json",
+      "indexBlob": "c2513bf0f1fbb4d428f49c4014058d9a48f2cabe",
+      "workingSHA256": "e398bf6f6e806b3e4b91c4deeea95a477f3a1c7112c60521a6d4dd6963beb0b6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-tundra-grass-a.png",
+      "indexBlob": "be830a697d290843e1339973b6efdb933b45740c",
+      "workingSHA256": "6431dd42edf8d132d2dda0d69c641dc1a7943868fb32056f48fd9b989ba7c010"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-tundra-grass-d.json",
+      "indexBlob": "0c3edebafe1e98bf523ab490c1b94d5456a0e35d",
+      "workingSHA256": "3d044ddffdaaf7d29abdff9c60f859b9647b907ec48c34f8b1de704b81864105"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-tundra-grass-d.png",
+      "indexBlob": "fcdadb9fff31132fa6ffb2891ee7d8d610bdd518",
+      "workingSHA256": "04b0de699d832a6b2c768d84952355585a17530c43bb50274dcf3938535a73a2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-tundra-grass-h.json",
+      "indexBlob": "62e53204f2c7b9e15683aa3f2c38fe2b16d5cdba",
+      "workingSHA256": "9483479dfbb1292d859ff1bce7f52f438d6ecb51410462f3fa865a5d706c074e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/asset-tundra-grass-h.png",
+      "indexBlob": "797b0138fd632404f0257cfcebc6479f39c6fc6d",
+      "workingSHA256": "d7d4237efbb0015370dc3ad32010f61ee17684ecff5e017a7b91aca91c9b216a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-assets-1.json",
+      "indexBlob": "17bc79358d4c8cea24fbf95075142fd2d73f31de",
+      "workingSHA256": "c9d01e127c5f7934ed054b55ae2dfbf1634a114a68b1421295f64a3e8f7e1a32"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-boundary.json",
+      "indexBlob": "18978b65f29a76a346b5ef35449f8085f8fa8505",
+      "workingSHA256": "67a8c6622a7170b1b22821c52a6a7860e2d5737bcd35e6c42c56efb46dbce750"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-boundary.png",
+      "indexBlob": "c35988cf6b0ae66e0bcdeb5910e36039f3670671",
+      "workingSHA256": "9e57e4cd85fa8ab51a8094dc90e490612e19bd4016c1c37414a80c516b7412fc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-grass.json",
+      "indexBlob": "af4c38beb0ac354dd544cf2d68d25a3c38c61dab",
+      "workingSHA256": "59531443e748e8ad690efa0008b5753ed3a30cfa37a533b64d96df5ebb918693"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-grass.png",
+      "indexBlob": "69babc3af039f9c2d4ed2643a843254ba1e2856f",
+      "workingSHA256": "068a4ad1546aa89a314e1c01fa9b76c5ee6c0fe6fcfabb3459db694ca73ecddd"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-path.json",
+      "indexBlob": "ec38090f52450ef86339763d516ff03689cd8981",
+      "workingSHA256": "ce992bed54d34999ade6bfe6e014b6e589ddf646d1410b6cc8ff1fba4265ece9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-path.png",
+      "indexBlob": "b6ad23c50abe69576164aef9aa6a12353534bda8",
+      "workingSHA256": "7f9d519722103b4e876b1ff98a04c9db322be2504eb5422a3d25da1a3c9fa9f2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-ruin.json",
+      "indexBlob": "b0ffce674c484b5cd9ea3a3dfeed0a6f1652b5ac",
+      "workingSHA256": "6d144c342e968f4bc2f4bb74d5bc2dbcac1116f4c36efd782abd7683924237b7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-ruin.png",
+      "indexBlob": "ad881121da132e90d48ac2137d29af7933982130",
+      "workingSHA256": "efe893424ed7d877c0ad5b70f8ab458fe46c3bb4618e751d3eb20a1c9bde1b83"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-settlement.json",
+      "indexBlob": "7e208ca835f9b4d1fab0cf3ec26eb2a79c26ceaf",
+      "workingSHA256": "52fce1249f68adf5db9281b4b893194031e622a74501dd456aeea806959ad55e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-settlement.png",
+      "indexBlob": "f546f1f757d2ed32a9ae164b6cfd2b0378514ef2",
+      "workingSHA256": "59b44b1720a1c32cd6be5cf897c7ec7327ec8d56dc85b73861921f966a2fa1f6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-wide.json",
+      "indexBlob": "80faac0c451ad8774a20773e3760ce318bbc4997",
+      "workingSHA256": "4b8aaf8582609e217b02d89a59c5406210d183dfb377583a2b46920a8232ecd8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-31-51-335Z/imported-wide.png",
+      "indexBlob": "9b67f31b07506792decd72e9d97e5f3378d11f91",
+      "workingSHA256": "ef26def4c4d463e309da43c1b8bd61926d27bdf46a109da0324d53a96330bfa5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-castle-wall.json",
+      "indexBlob": "cb48dcac2ff787f14fce751cbfb0c830461d3bd8",
+      "workingSHA256": "f0ee3612d1b4e12213559fef2159316a2ec8895f55d527f9ef75481abc9125a1"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-castle-wall.png",
+      "indexBlob": "45072990c104fd46bff30afcacf6ef4a47b418c9",
+      "workingSHA256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-cement-rubble.json",
+      "indexBlob": "eb1ec1ffe3fa42f4c81bf150a1458235b7a01b07",
+      "workingSHA256": "2d71cf1181afa4c756aa9239eeea3d6a2aa925f9da269cbae36384f55c0a0718"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-cement-rubble.png",
+      "indexBlob": "567e4e8b59dfc9cde72c992eb7bfae0e8bcfd010",
+      "workingSHA256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-grass-clumps-a.json",
+      "indexBlob": "57a3a86ea6228ddcf5ed11c36efae3fc11e957ce",
+      "workingSHA256": "198030d44c2c53b834588223a7beace4890da011006c9855811607d723dd96ca"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-grass-clumps-a.png",
+      "indexBlob": "24ce31e666fb69f2dae42bf33d11b2f1ee2a988b",
+      "workingSHA256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-grass-clumps-b.json",
+      "indexBlob": "f854ae15792d772f74d09dc067b3f8b702966909",
+      "workingSHA256": "8f83b282def081eadddffa69654e7526e39cdbdcb40e43e40e531e81342ee6e7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-grass-clumps-b.png",
+      "indexBlob": "307a66227f35c77d038d1df9929a51621b6c10b0",
+      "workingSHA256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-grass-clumps-c.json",
+      "indexBlob": "f8063902e243d800dae5678ad01d71785c7ae18e",
+      "workingSHA256": "d8f4dbbf8f647219fcbed485bea3ecbec335b973999efd7766fca07399eebd8d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-grass-clumps-c.png",
+      "indexBlob": "b21c4f34d147c9b8d766f4d262a6560f495c0b67",
+      "workingSHA256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-mossy-wall-a.json",
+      "indexBlob": "00734c70b783204ee3b1308421b135366629fed7",
+      "workingSHA256": "d0b3eebfca3259d3ddaa2aaec8932f7f8199664ee9e3a18327ea164089b0b1d0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-mossy-wall-a.png",
+      "indexBlob": "18b49501de2e006498a697bf3d80c073297fe9bd",
+      "workingSHA256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-mossy-wall-b.json",
+      "indexBlob": "57b5b07fa5f6ac76fce71ae371b47d9bc5b9ad99",
+      "workingSHA256": "38394f62c70af0ed97f2dc4459f11542cc3905ecf79b17934a3c4d213edfdc43"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-mossy-wall-b.png",
+      "indexBlob": "627b9722f6b5bab2a88ff52f7ac383ad5e118fab",
+      "workingSHA256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-tundra-grass-a.json",
+      "indexBlob": "58c2a7e9035b096778fe085d430881e7d31280a2",
+      "workingSHA256": "5abfb4745d29e282afedcf340904a40d388ae651f4115ee0a153e1d18a74a88a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-tundra-grass-a.png",
+      "indexBlob": "758b2e58b35044e8a02bbe5eae04abc7cc980241",
+      "workingSHA256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-tundra-grass-d.json",
+      "indexBlob": "441ddc5fdc8b278d54f74ec9780de085d5f8a938",
+      "workingSHA256": "d522c041812e0145c02fcbf64438b4746a8a87b9d10d2a169118bbf313431940"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-tundra-grass-d.png",
+      "indexBlob": "911d171fe9748e5a55813271604b41fa27e0284c",
+      "workingSHA256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-tundra-grass-h.json",
+      "indexBlob": "13d6e2f46821b37e618fd45e0053e5cadf063727",
+      "workingSHA256": "48499d3fef5891e7bfab19472de513a62c89f4369cc2fd4e687c6150200dfcd0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-tundra-grass-h.png",
+      "indexBlob": "dce08bcc1e03942ae6bacb1152509d9fb0e6ef9f",
+      "workingSHA256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-woodland-house.json",
+      "indexBlob": "57f20d84af6b3deeeca134d1ed6dfa6d27b75484",
+      "workingSHA256": "be1138d4e71581deba301289066bc395053e2eae0b68371563033940bb02fc9b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/asset-woodland-house.png",
+      "indexBlob": "ce32cd8a3f868800669c409e9f4a159f417435e7",
+      "workingSHA256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-assets-1.json",
+      "indexBlob": "78f7d468e242e7d45e08a1be7cd61b7e14b2788d",
+      "workingSHA256": "83f1d1c7aec11460ced5083f5fbaead728fb81c14e812e444ec718f5f24368f1"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-boundary.json",
+      "indexBlob": "13c408991ad18506a4e35dace70afffa5fe9d577",
+      "workingSHA256": "6c9508359f6ce6ba138263440b0443dc98761d9fd3c22725108f52f31b8af32a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-boundary.png",
+      "indexBlob": "f1e853210428176eb8fce3f9601e81e5a3471fd8",
+      "workingSHA256": "a67ee6b97e8d390311345e0aa1ba01f90b9500455746445087a865286d3a8438"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-grass.json",
+      "indexBlob": "6e26bee72009e5ff4a635ec06379c710ec520057",
+      "workingSHA256": "94fdf65c826a6037087aab0363c0087fe504ecc151108866e108166aece8fbd1"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-grass.png",
+      "indexBlob": "3be3245927944c65f2a0b492d89d69958ee4583b",
+      "workingSHA256": "421618a1571e615031bc84b61a27058a51b3512221f10519794eb9414659abda"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-path.json",
+      "indexBlob": "09b0f3de76c33f0f341655e3ca2d0e896c95cf51",
+      "workingSHA256": "6bfd4d5e9e04f03512f34f9c74e4fb587e1443c99514c0709bf12fd0417bc9eb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-path.png",
+      "indexBlob": "f997ddb1b784e78b7de6556a05e87d700e7a1385",
+      "workingSHA256": "43da064108d57d09aee4c181183df6a42a13fe668327c5ada135af0d04a3e17e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-ruin.json",
+      "indexBlob": "a40b00d80b89a2acabc606f15bd057241c0df274",
+      "workingSHA256": "2b9f76697c7c309a4f4935ba6e1adce16353254b41c76b88dda90a2324253290"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-ruin.png",
+      "indexBlob": "4ce8993f3cb9a7a654a27d58ed78a50929093dbc",
+      "workingSHA256": "5d03a696441bdaebd927c4396ba1042a10cf522c47c8ecd20f35dd0aa8c3e59a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-settlement.json",
+      "indexBlob": "93e9e9f6fc4b18f6b246822361c81d1d6028645e",
+      "workingSHA256": "999d2f01f8c60e718d220acba565d71a8d155afa36b9d9517e0875dd35087a91"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-settlement.png",
+      "indexBlob": "87a60d59ec95e7fbef64ab4bfd0fddd82c151b50",
+      "workingSHA256": "9c33f34bc563a5d6fd5fc92b1f9176e0e7e29476685a9808ed78afabb56de210"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-wide.json",
+      "indexBlob": "fa2b55037b86d3787d94e7e797e920f089b2e38c",
+      "workingSHA256": "448742fa1757b3030b921c12626610770f4bf64c5443c56d81f6fc779570a3f9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-37-39-633Z/imported-wide.png",
+      "indexBlob": "f9213bf3a3c321426ddad74f831786e276573270",
+      "workingSHA256": "b76aa41055dffe7118fdb6cda784c8c3d9dfa60344536985673341a54bae0a72"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-castle-wall.json",
+      "indexBlob": "3b7b0c9c4903632dd7f34bb826aaa7f1cf5e606c",
+      "workingSHA256": "426741cc9f2046868ce5d0caf5fce412eaeca52e945334398d8ddb256d5a3a98"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-castle-wall.png",
+      "indexBlob": "45072990c104fd46bff30afcacf6ef4a47b418c9",
+      "workingSHA256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-cement-rubble-small.json",
+      "indexBlob": "d3e4336c96f2ed8a90da57687b268825c8f55241",
+      "workingSHA256": "12ee81d35112a4909b2463d700ff680eec1d39f9ffc26ce844d9d18774d2e48d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-cement-rubble-small.png",
+      "indexBlob": "e433979cb80702855f1041fcc0aa8b2402599651",
+      "workingSHA256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-cement-rubble.json",
+      "indexBlob": "2f77c9ac5796019005bc44ccdaaf834723792dcd",
+      "workingSHA256": "492fd8feb2ebf7ac3a7ce59dba6bf3510c94c6f72ad725f244770253c221381f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-cement-rubble.png",
+      "indexBlob": "567e4e8b59dfc9cde72c992eb7bfae0e8bcfd010",
+      "workingSHA256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-grass-clumps-a.json",
+      "indexBlob": "f618ac64845d63c61320db27c22eb7b68182a8e5",
+      "workingSHA256": "d023a6a86d45268e22e73f8b211ae8c59a6e00d7e80b29223f6cad1ed611aa41"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-grass-clumps-a.png",
+      "indexBlob": "24ce31e666fb69f2dae42bf33d11b2f1ee2a988b",
+      "workingSHA256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-grass-clumps-b.json",
+      "indexBlob": "e70486ccdfa11df2a19c1c1e75ddd9338647f371",
+      "workingSHA256": "68c4aa59ce63241c4cfc344f0a559a3d88b9c47f429a0d70842cad7e62145777"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-grass-clumps-b.png",
+      "indexBlob": "307a66227f35c77d038d1df9929a51621b6c10b0",
+      "workingSHA256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-grass-clumps-c.json",
+      "indexBlob": "e4e2be3186f5fa953e0e74d862b16a83739d241a",
+      "workingSHA256": "092916a3938d6e1a4df3baa204a620ef672748a45cf40634bf66cd75165dc3d8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-grass-clumps-c.png",
+      "indexBlob": "b21c4f34d147c9b8d766f4d262a6560f495c0b67",
+      "workingSHA256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-mossy-wall-a.json",
+      "indexBlob": "c7d383bbd9c394010e44fa9c93a41ed50f42ded2",
+      "workingSHA256": "e1eab9f2b086cac4d6f44b3be7f910b56671908920af9c7cd7d950a4a985b08c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-mossy-wall-a.png",
+      "indexBlob": "18b49501de2e006498a697bf3d80c073297fe9bd",
+      "workingSHA256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-mossy-wall-b.json",
+      "indexBlob": "184ae361c0773e35356517d6a933e1f49a8133c3",
+      "workingSHA256": "a425ed97e6fdf9b724af03acbaa69f3576f8a6f547673144744e40b27cdfd158"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-mossy-wall-b.png",
+      "indexBlob": "627b9722f6b5bab2a88ff52f7ac383ad5e118fab",
+      "workingSHA256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-tundra-grass-a.json",
+      "indexBlob": "4347f1c03b45936ae9822ad7eced5c352602c733",
+      "workingSHA256": "cd990df09d60d38091f01ee59d5e261f314323185625a5c598b1b25679c97aa6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-tundra-grass-a.png",
+      "indexBlob": "758b2e58b35044e8a02bbe5eae04abc7cc980241",
+      "workingSHA256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-tundra-grass-d.json",
+      "indexBlob": "5b4ddbec0cb3cefed8ca175a33a9bd69231e5a68",
+      "workingSHA256": "b4e7896fce041d59f3c969fb27279fb189bd1a44157a3415e7c92e4bd50374a4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-tundra-grass-d.png",
+      "indexBlob": "911d171fe9748e5a55813271604b41fa27e0284c",
+      "workingSHA256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-tundra-grass-h.json",
+      "indexBlob": "9ad5b4bcc4e0a6e90c61a737e5ff2759b9b16d6f",
+      "workingSHA256": "a19419653d3aad1e6acba825dcf290ff8bd7bad1e72b8104219145f663be1eee"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-tundra-grass-h.png",
+      "indexBlob": "dce08bcc1e03942ae6bacb1152509d9fb0e6ef9f",
+      "workingSHA256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-woodland-house.json",
+      "indexBlob": "3c7b5105f52ece4a33dda2c2c629ecc9c32b8998",
+      "workingSHA256": "99363ebd19635acd191665a2297ae6f8bb2bb1a3c4ecc71fe8abdc82ff44fb8d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/asset-woodland-house.png",
+      "indexBlob": "ce32cd8a3f868800669c409e9f4a159f417435e7",
+      "workingSHA256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-assets-1.json",
+      "indexBlob": "c9257d37fa636852eeee077834d8ebd7425587d8",
+      "workingSHA256": "a1d19e768e2a9a08f9fe2e89c803594d470d7f1d0711a31df2a024a595db933f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-boundary.json",
+      "indexBlob": "736b0354fc6e6b44b8a090f94f8ce265a9c44980",
+      "workingSHA256": "5fc5bcfb0d6b21b7507e440b480c750a9523991361ae787de270247cb3a5bd69"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-boundary.png",
+      "indexBlob": "6eb1b566ee99e8a5f9fa56ba68c6b5b0856b49c5",
+      "workingSHA256": "95338c1530dcbed57dca831734e2dfcc201f92c5f5f0c69e5229dfb8dbe75265"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-chips.json",
+      "indexBlob": "7279c8400a9600031c0258ba6799de779dfda68b",
+      "workingSHA256": "db3b08dd293ac824c2452f61624b4b31082f4211d5c3f912ab66b05e413f12b9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-chips.png",
+      "indexBlob": "b6e189d3bded426abc488468561d201f107846d1",
+      "workingSHA256": "7943bbf9bd9c037f9627cefc0b06d951589e3896cecd0186234f07922f1d9c63"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-grass.json",
+      "indexBlob": "5e68b648f726820677941fbc00c1d47ba7f5f76f",
+      "workingSHA256": "2e23ecebb77aa9e7d503b8d0d260685d3fb1a0b74dd09546ed23243312b1a477"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-grass.png",
+      "indexBlob": "be15558846d3ae9f8db8aa4edfeb405349515aad",
+      "workingSHA256": "92091debae25c12042894521c684f48ff7af678fbbfdb1dde60972fc48de91cc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-house-north.json",
+      "indexBlob": "c06580a2f2a77e0f84897ab45e553509e3e7c458",
+      "workingSHA256": "9704823c72873f7964ec4632a171f1793611a527e9762f8373ec4aa85a62ddab"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-house-north.png",
+      "indexBlob": "d4f366d6efbdb3d2e15886b161db6acce3d54308",
+      "workingSHA256": "feb4ee5ad16e8c62340a8adb9d07491bca9cc76434f62f6f8c8fd1492f18ce16"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-house-south.json",
+      "indexBlob": "5c08fd78117066e5d5b9ba42cac83938bfb5d09d",
+      "workingSHA256": "444e86676dbadcd8b16913ed9ce576b6f6b715cb161eecce7aff986edd8fa601"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-house-south.png",
+      "indexBlob": "e7147482cdda9d155b62b10464cbb179a51d9378",
+      "workingSHA256": "c818f7c1fb29f76fc1a7bf079ba1e560f57cb54e2944953264ac62c870446c89"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-path.json",
+      "indexBlob": "c62966c091d073eb81336ad7b8b76524c70b87af",
+      "workingSHA256": "0c144518636cc498fce9556c4c99ed32cda706f25d298c3faacc0abf7d11a10e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-path.png",
+      "indexBlob": "b9d3855343222f7f4ffed3995e12f1d4916fac6f",
+      "workingSHA256": "94febf9b05bff2689479c92cd78cfa6befd26cd60b028365bf8a367e7bde1915"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-ruin.json",
+      "indexBlob": "8007b1ce8da7d9a621a1d08805232a5cce9f2e5d",
+      "workingSHA256": "93d536cb1f3335efef6ae693d25e664641fce4e95f41d53d66d3f54ab9cdc0e2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-ruin.png",
+      "indexBlob": "5cd2555f616a5a87c2d653e74de1e33d12c89d0a",
+      "workingSHA256": "8d13e083af3524524effd227a5504536cb73eae08b284fb613e0b7ed3cc6d84f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-settlement.json",
+      "indexBlob": "d4e31c30804566ef85440e29a43dde9965d6e023",
+      "workingSHA256": "a1794a9f5c074af799fd86acb6f6ba1502fe9e44c72bf033cca20e4114cf74db"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-settlement.png",
+      "indexBlob": "0cf2bb5dd911215aadebd97df77c7503cb41a8c5",
+      "workingSHA256": "4b51aac82f70922db17f7f924ad1d0fc650f261e46db8a3331c39a6f27037272"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-wide.json",
+      "indexBlob": "fef6d84fb9cb0c3e5f974ee2d99890dac9f2a714",
+      "workingSHA256": "0ec4981f9d96c68931acbfaa4f834ed6bd6fe1a4709abd78feb4fd0daf818524"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-43-38-974Z/imported-wide.png",
+      "indexBlob": "c71230e0c1e546c93f2ce374ec327118e22385a1",
+      "workingSHA256": "86721a16d173a48e3a3fd89066d5a88f4fafea09469e9d1a06ae844efe402d0f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-castle-wall.json",
+      "indexBlob": "01f4f418f69e74985245ae8ecf59876940cecebc",
+      "workingSHA256": "3c42bcd7760dac368d4b692aa5663ba381e15ae677d6934368cb064b856b32bd"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-castle-wall.png",
+      "indexBlob": "45072990c104fd46bff30afcacf6ef4a47b418c9",
+      "workingSHA256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-cement-rubble-small.json",
+      "indexBlob": "4b593ade8f3afc6bb127ca85818bc4c12625a26e",
+      "workingSHA256": "f3b9a6ff0af70aa7a71341963979308f3624013f67dd24ac2b60715cd5497658"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-cement-rubble-small.png",
+      "indexBlob": "e433979cb80702855f1041fcc0aa8b2402599651",
+      "workingSHA256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-cement-rubble.json",
+      "indexBlob": "527b3fb848cdb1c0ed04fe5a5881e1bf48df3784",
+      "workingSHA256": "861deb63b2eaefce5aaeb6b610ef1e9f4554d6f330e049b0060f33a0c676b453"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-cement-rubble.png",
+      "indexBlob": "567e4e8b59dfc9cde72c992eb7bfae0e8bcfd010",
+      "workingSHA256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-grass-clumps-a.json",
+      "indexBlob": "e839a84d020cb5c549ff5bac41e90c30bde7b287",
+      "workingSHA256": "a2730e3f46772ae45695d52b2a60490866c8780c37f0aacfc37d2c3f4078318b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-grass-clumps-a.png",
+      "indexBlob": "24ce31e666fb69f2dae42bf33d11b2f1ee2a988b",
+      "workingSHA256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-grass-clumps-b.json",
+      "indexBlob": "2ccfbf6324fcb5d8ef76d987700c16a4795dc3dd",
+      "workingSHA256": "a8dbd622d207e1cdf64f593a4b20af1d2bdbd6ee5c18052820cad796aa488b07"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-grass-clumps-b.png",
+      "indexBlob": "307a66227f35c77d038d1df9929a51621b6c10b0",
+      "workingSHA256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-grass-clumps-c.json",
+      "indexBlob": "572e1683c5bba65ae81cfefd19a90572f3647f2e",
+      "workingSHA256": "6b5b7697230f0f44437c7b3462fd24d66b6f0e5ff65a1851f4ae29766277c571"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-grass-clumps-c.png",
+      "indexBlob": "b21c4f34d147c9b8d766f4d262a6560f495c0b67",
+      "workingSHA256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-mossy-wall-a.json",
+      "indexBlob": "67ae0eb810eb84cd2ffb5f8af58049661023ad1c",
+      "workingSHA256": "1390c5cecbd09aa4d110cd28dea4a087e98ecfa00718ffbeceffb583a724cc09"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-mossy-wall-a.png",
+      "indexBlob": "18b49501de2e006498a697bf3d80c073297fe9bd",
+      "workingSHA256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-mossy-wall-b.json",
+      "indexBlob": "f0f9e8155b506475c4018a339d525d900137d1ed",
+      "workingSHA256": "d652062d55acafe49871388696fd113b7de6135f8f58aae4cf00d18df12e76b3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-mossy-wall-b.png",
+      "indexBlob": "627b9722f6b5bab2a88ff52f7ac383ad5e118fab",
+      "workingSHA256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-tundra-grass-a.json",
+      "indexBlob": "ce21f51477514818da98fb0cdebdb85a28a1d202",
+      "workingSHA256": "c676c2f7ff27495af3e77cefd8e67e4c2b1cc3c67f558d6fa8bcb37d0f1cfb47"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-tundra-grass-a.png",
+      "indexBlob": "758b2e58b35044e8a02bbe5eae04abc7cc980241",
+      "workingSHA256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-tundra-grass-d.json",
+      "indexBlob": "82ae0b3f2d541561d6e1427c007997d40101dc9d",
+      "workingSHA256": "297e999f9a329d06124f21f0377fd81fc44f12403c7f6ac7b61be6fb01d25f29"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-tundra-grass-d.png",
+      "indexBlob": "911d171fe9748e5a55813271604b41fa27e0284c",
+      "workingSHA256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-tundra-grass-h.json",
+      "indexBlob": "247296c1e07a55b9acfabaabaf46e71a86a19106",
+      "workingSHA256": "b1dd3a9a0713740a3b203e128ee10667cfe23ccf8751a12ffdebd0d34ca8afdf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-tundra-grass-h.png",
+      "indexBlob": "dce08bcc1e03942ae6bacb1152509d9fb0e6ef9f",
+      "workingSHA256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-woodland-house.json",
+      "indexBlob": "805319e142651bad00fba499912b8de9790df6d1",
+      "workingSHA256": "5d7fdcd7ab4753ac30b36e398521445461482e578bea896d364c3419a5b1a78a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/asset-woodland-house.png",
+      "indexBlob": "81cbf9a7854688413fb9a7152ec6fcb5f3f6deae",
+      "workingSHA256": "aa12ef25a98d7d95799c42ca98f91a1225bd3e8e864d380cf501bb4bb09136ae"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-assets-1.json",
+      "indexBlob": "9ac1324f61fee60774c4be78324ebe3973fcd353",
+      "workingSHA256": "710302283468f4745e1fe4f794f07cb7b40b15f6692898189ac3e80f2418e706"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-boundary.json",
+      "indexBlob": "81f2e3d1f82d065119f305f163b958c0f1daff2d",
+      "workingSHA256": "d27daa0de8ae392fbca36370c94cf67f4af7afbeca0039b6d5ccf1598d55bb38"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-boundary.png",
+      "indexBlob": "9f213d0d8b0bd31919f3d244e7c8345b4aaa57d7",
+      "workingSHA256": "50553473a359f3ba1f93958caf9833480d8e0a672817c9189dcf1afd159f38af"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-chips.json",
+      "indexBlob": "d4deddad6fbf00eb37b2404420a110273b7d47a3",
+      "workingSHA256": "21b2f321b7f4a19900ffe27afc08724ac2236100e86f5d64be43d64647add8ee"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-chips.png",
+      "indexBlob": "a9d04b3f2e66532a665bfe724e96eb1c6933dbdf",
+      "workingSHA256": "632a14512692c89764bb75f8416b55c3df43c962446438d36dd6b0a6b722b383"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-grass.json",
+      "indexBlob": "edcf1ab724f07bdc67e78bc2222ebf09f3905e48",
+      "workingSHA256": "56c31771073644da79463da16be97700a2a73c5a94a3591e47c989025c223160"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-grass.png",
+      "indexBlob": "68be6ca23b56edcc51f67cdea06cf06e8147013f",
+      "workingSHA256": "5cbbe1e0b5bf8df5eb6eeaa73f9236f5bcf414f8f2eb4a458b9927d78569e9d5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-house-north.json",
+      "indexBlob": "ee32af772d2fc0b38775ef203f1ed2b0a6c20294",
+      "workingSHA256": "4c4f21f2213477833edab0ba1266a42462929c874b76aa3ddf7a2a8894474d95"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-house-north.png",
+      "indexBlob": "686d2faf0edecb4d4328878724f0960aab00fb89",
+      "workingSHA256": "e22a858885e3802f98480bb5e5543668d0afe622bcfe79cb73994bbd24aa0727"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-house-south.json",
+      "indexBlob": "0b5e40273338a6fdd0f13b02fbaf3ee0e7b3660b",
+      "workingSHA256": "f0eb2ee75df7119e4a0f21eeac8a32ab3dfdeeca1e132943f8ff72a0e22e1f66"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-house-south.png",
+      "indexBlob": "11c97a5c57ebb8f7a27e2522d90353823ae6e757",
+      "workingSHA256": "6211ac6b28eb8352d7c81dcb73eec4722402780bdacd4e662ca6a11acaad5243"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-path.json",
+      "indexBlob": "6d60ef812c0047c692c9e27de149b4472e0ba945",
+      "workingSHA256": "a6b29e51d2d2a363a0cd6c8cf6945a27f34ee6e204af28257754157f5f1e9104"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-path.png",
+      "indexBlob": "86dbdb95304ce5331573f57100fa3992f3aa6fd6",
+      "workingSHA256": "3999dd89e91b53e74965af897b532dc4f6eef9694a0cec2eaa631a619afbfcb6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-ruin.json",
+      "indexBlob": "1dc5f052b00083f4abf34cb4fe0d9caff4d71e00",
+      "workingSHA256": "42e332c03ef9c3b02e967c359d20f86a732f7de1b923997210502c1f1c161142"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-ruin.png",
+      "indexBlob": "ea2a359f106847e8137f1c05d4dae620bb1a1c28",
+      "workingSHA256": "bd8cc5046728f7dd0e25fed146e76573c4b164cf58acde34c33107572872c4d5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-settlement.json",
+      "indexBlob": "24fc5ba9aabd1bb18a84993e5dad39388929e375",
+      "workingSHA256": "144abafa1d33e0869ab033fbff0cccddd3511144227fd60c2e98c9d489a75478"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-settlement.png",
+      "indexBlob": "6537c5aee6df0c545c60b5c857a70ddbe028ea75",
+      "workingSHA256": "e396be89a96420dc3e5c472daaa33f75ea315d799f58e80e33bc83e9625dfc1f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-wide.json",
+      "indexBlob": "1007715924fed87fec4dd18a6debdad469426e59",
+      "workingSHA256": "38c607cc9cf2146e7a55925471bfb576e7d5df66a23043d28c7fa951092b1e97"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-50-28-579Z/imported-wide.png",
+      "indexBlob": "a123cb9e3f461ff206826b15ea7bd905ade3ced2",
+      "workingSHA256": "ffa3b934d550ea6aa44a1ce820bc32aa4ecff3a7cc08eacb25176ba7b86e7cb6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-castle-wall.json",
+      "indexBlob": "ea966df804b4eb033d08816947abdb97b8713747",
+      "workingSHA256": "4403377b50640c2f165d0315a1957e44bc652d4dc7478a41e35cbe0ca075ef8e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-castle-wall.png",
+      "indexBlob": "45072990c104fd46bff30afcacf6ef4a47b418c9",
+      "workingSHA256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-cement-rubble-small.json",
+      "indexBlob": "fd7577c61f7582e686f9b2f81000c9202d5805bf",
+      "workingSHA256": "a90680cce802dba2406f6d2838b7c47957d868b069706d2a35e87ef50ce95b84"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-cement-rubble-small.png",
+      "indexBlob": "e433979cb80702855f1041fcc0aa8b2402599651",
+      "workingSHA256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-cement-rubble.json",
+      "indexBlob": "08bd25ddc3fcf9af7485bcf9abe32286d36bbac1",
+      "workingSHA256": "807778f455e28d34be616034f9568ac40ae362c08ba61b52f8d9ae27c57eb15c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-cement-rubble.png",
+      "indexBlob": "567e4e8b59dfc9cde72c992eb7bfae0e8bcfd010",
+      "workingSHA256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-grass-clumps-a.json",
+      "indexBlob": "8f12bcb9496e71ebfd24a0a94d7273869a2bd33c",
+      "workingSHA256": "a0e75a59690ac7af021eea47ea8ea4f3ac6df1d1e196f7f3993e5791c13d8f2e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-grass-clumps-a.png",
+      "indexBlob": "24ce31e666fb69f2dae42bf33d11b2f1ee2a988b",
+      "workingSHA256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-grass-clumps-b.json",
+      "indexBlob": "417bf58256c8e50cb34483cf00be087aa6ec271f",
+      "workingSHA256": "d9190a159fe19f6caeddad01060e8caf20236eb74786ada027d2a82bd6b7a0a5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-grass-clumps-b.png",
+      "indexBlob": "307a66227f35c77d038d1df9929a51621b6c10b0",
+      "workingSHA256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-grass-clumps-c.json",
+      "indexBlob": "b9e711c7263c5ae3c9c5a04a60d2731b7bec69aa",
+      "workingSHA256": "19c960483d905886abd1f462ce67b9aebaf691a8807c6d6e70577ce7ed4bbfc0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-grass-clumps-c.png",
+      "indexBlob": "b21c4f34d147c9b8d766f4d262a6560f495c0b67",
+      "workingSHA256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-mossy-wall-a.json",
+      "indexBlob": "bf04256efb043a050cdb4fda1d5b37e9341c5921",
+      "workingSHA256": "8b6f88d32aeccfe02ffa49c796b16cf26ab72ba3854401d23e98c741a0bdf1ae"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-mossy-wall-a.png",
+      "indexBlob": "18b49501de2e006498a697bf3d80c073297fe9bd",
+      "workingSHA256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-mossy-wall-b.json",
+      "indexBlob": "b0d869ce61ea89d806bcda5eb3bbf4746e844058",
+      "workingSHA256": "171acc879641bf0f414f9b4033f5f09036fde1115cc30a4ca5bb77718bc4bf61"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-mossy-wall-b.png",
+      "indexBlob": "627b9722f6b5bab2a88ff52f7ac383ad5e118fab",
+      "workingSHA256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-tundra-grass-a.json",
+      "indexBlob": "877c2e28f7de161adcfc84026faea2b4c6024024",
+      "workingSHA256": "0d87fa2b7551cfa55f871ce4e262004366f58cca959bed64e3e16b927df39d35"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-tundra-grass-a.png",
+      "indexBlob": "758b2e58b35044e8a02bbe5eae04abc7cc980241",
+      "workingSHA256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-tundra-grass-d.json",
+      "indexBlob": "1d493f90db6044ecbf4d33187582b939b0b93f19",
+      "workingSHA256": "cd2adc136a2421ed9fc3feea80aeab5e8ad3022c4c615bcc27747c106e740661"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-tundra-grass-d.png",
+      "indexBlob": "911d171fe9748e5a55813271604b41fa27e0284c",
+      "workingSHA256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-tundra-grass-h.json",
+      "indexBlob": "743d344c59aa4fa128c3d015f199ca3cbd0799fe",
+      "workingSHA256": "74166f8410bada02e4042a70ea64d13ecda205d8bacbfcd1959e725775d4dcc9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-tundra-grass-h.png",
+      "indexBlob": "dce08bcc1e03942ae6bacb1152509d9fb0e6ef9f",
+      "workingSHA256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-woodland-house.json",
+      "indexBlob": "003d961f9ca47f911ddab4db97855a0eb47c7651",
+      "workingSHA256": "97aa7d5886612a42b294609a3fe4f3e5f68dc800223284351e919c3985837b26"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/asset-woodland-house.png",
+      "indexBlob": "ce32cd8a3f868800669c409e9f4a159f417435e7",
+      "workingSHA256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-assets-1.json",
+      "indexBlob": "c632f6ef6193d02048af34c9fd89f141b8ea90e8",
+      "workingSHA256": "1861911778dfcc074b493b85391be9a722003a6a8724f9daf3a3763614a7d793"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-boundary.json",
+      "indexBlob": "55c6ca54cee0fb372b319daf2cbd959508bc998b",
+      "workingSHA256": "685862da6c90e64fd65f578f48d93f117d1814d6e76cf2d9859ec266d244f842"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-boundary.png",
+      "indexBlob": "a8985b7a9395f7a66c84c5047d26b60469d4ffe1",
+      "workingSHA256": "b4e34991d2fa09059bf5ad0c654b376b2788ab8a36f8bbd3ef029a8ffbc86073"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-chips.json",
+      "indexBlob": "717ac97876419c7a1a36b974c2ab6240f9048cea",
+      "workingSHA256": "e3423195a052b5c0221575a3104e5979a7f79785165626486957455a20e7da7c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-chips.png",
+      "indexBlob": "e900d8b723a86c271406bec147693426b2b3edc2",
+      "workingSHA256": "eb5f15674a61e95fd15b6fd393470011de3356fd31a45da581d624586582dceb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-grass.json",
+      "indexBlob": "0ef24e110029a24fdcf29ebbd123fdf3efe584d6",
+      "workingSHA256": "ad9fa714f8c8a971267f05f54cbfa31484e7079a12a2f2c0a035b7a28d734b9b"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-grass.png",
+      "indexBlob": "326d6c7e243dfebf7fd9622795f8e88b172bf126",
+      "workingSHA256": "87f71a3443c377476b02928eca03308017b43991e9d5a510ffbd1ced2bc49fda"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-house-north.json",
+      "indexBlob": "109ce53ffcee147a3d02f6019070e4a86f56e74b",
+      "workingSHA256": "313b724b08ec371043744916335412d20c8dc4ae2920d8e8742c2923af7ac8ca"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-house-north.png",
+      "indexBlob": "80e6aec7958912c2bc0d7686f6f346d3765d8d10",
+      "workingSHA256": "8e3adbefe2d985554aef601b2565bacc14a8342289717dbb707526ea9b1deff7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-house-south.json",
+      "indexBlob": "7a965936a3f05aed357e45481195feef3b49bc6b",
+      "workingSHA256": "bb3fb23c86badb19f13cec26934f4fb9418fccfc12a2df6269275272f5613950"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-house-south.png",
+      "indexBlob": "19616705808f60747069a3b1328b337699b851a8",
+      "workingSHA256": "9545d6c6693c84e3a416a2fb568db40649f281d5ed96351ba8ebed82e035cb57"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-path.json",
+      "indexBlob": "714a51948762ef8e28e11b83879fff21e78c7204",
+      "workingSHA256": "03a846935ab6666fc2b242ef1a3943247b97c67fe73fda98b9b5bbe440a40dd0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-path.png",
+      "indexBlob": "daa7ccf2d71cc87caaf3a0306d288993383617e0",
+      "workingSHA256": "1cb8a1fd51a323b53be1532bfe5f308f070704b4a00e07b48879041bc7924e57"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-ruin.json",
+      "indexBlob": "380994bf6b6c47002217651509c2d302b2c37c30",
+      "workingSHA256": "069e7d70b7244f408debef8df68a0f6273fac47801c2067d70003199a5051985"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-ruin.png",
+      "indexBlob": "cac1b7758d0795affc0f1733fbbbf845dd724a75",
+      "workingSHA256": "22fc4f9b8f53f23caffe92c35baecdd1867586e54ee0680c0ed9a7b86da66434"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-settlement.json",
+      "indexBlob": "f00e41fbca9245dc3e0afdf1104ce55fe8523d66",
+      "workingSHA256": "d16ee0d8f829adddb7b45c0485cf79171f40d714752a8197e3e7a103668947d6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-settlement.png",
+      "indexBlob": "bfc7fff2cddc7d4ad5a00e5532d24aa2cd60a269",
+      "workingSHA256": "c2f6dc33d983b4d9cc34e81070bfac7185252c44a7db25230f054a71e82f2b10"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-wide.json",
+      "indexBlob": "13a62b4b9ab1744c6a91df41ce1deaa6e250dc64",
+      "workingSHA256": "bb068478ff0a34ed4cce0a2791cc450b8734d9a7a8ce281d6e12bf57fe38a59c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T06-52-25-439Z/imported-wide.png",
+      "indexBlob": "29ae66099d68a2e6edc523a1559555f184ddc915",
+      "workingSHA256": "c2a943cf62c3507548200247f36511ff0fb93f34d6e6df75532951b59b2936b6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.json",
+      "indexBlob": "3d96cdf8560729b7f70e4e3c3dbc40e6d04a401f",
+      "workingSHA256": "64fc1f1562655955e275d6ccc536a886bdf2748fb87dbcffa1105d299d8a846a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-castle-wall.png",
+      "indexBlob": "45072990c104fd46bff30afcacf6ef4a47b418c9",
+      "workingSHA256": "aec5561e94566af56e1190f08d041a20c674b64b06fdd16c5baab48dabccf873"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.json",
+      "indexBlob": "765c8b570524374f18e65127a3a8d3b9adff02c5",
+      "workingSHA256": "3661d23f9b28e550ae2f380a4842de1f7c90e934d19f6be35577731f0efe5e0f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble-small.png",
+      "indexBlob": "e433979cb80702855f1041fcc0aa8b2402599651",
+      "workingSHA256": "23891349d033309744460b234f6c6e08e266ecfd34f0a4f38deb8e8d62a3d818"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.json",
+      "indexBlob": "beb83957858993361b52209e3c738525525e3fb9",
+      "workingSHA256": "cc39da66abb50e9bbceda8afc9e8a9616b19900b630536ed53903065c5231f16"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-cement-rubble.png",
+      "indexBlob": "567e4e8b59dfc9cde72c992eb7bfae0e8bcfd010",
+      "workingSHA256": "49a486b117c093a6b260d96532d98ef8f162d5d2355d08001dde524867cf6785"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.json",
+      "indexBlob": "ef76307989a7ac00118db85c0e04f95997f1820a",
+      "workingSHA256": "2a4f3a7b0dd23c70d2c93c0d6861bfd0b9f0b58fa48d56638b35a8f6e3c3c741"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-a.png",
+      "indexBlob": "24ce31e666fb69f2dae42bf33d11b2f1ee2a988b",
+      "workingSHA256": "f2d97ae2c01cd712bfe08665465e94cf11987d4cf5c77661ef2766914a880e17"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.json",
+      "indexBlob": "ad5636e85426bae7ffcf7cbc49cfb9f466b32144",
+      "workingSHA256": "8381c384991ac4bd7e9890ccf0082286db5d0120cfd4ddb18b39a6a416471909"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-b.png",
+      "indexBlob": "307a66227f35c77d038d1df9929a51621b6c10b0",
+      "workingSHA256": "c0cb5ca84a9f7a7dadf5864a67410aaf68ff8df2728e1f3da71262c125958385"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.json",
+      "indexBlob": "47bb2d532cc6c1b0304ac7ef509f59c2611fce70",
+      "workingSHA256": "298b6e93017d805746e339ef69aa0aa1099662dc666097edfaac685ca893ed15"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-grass-clumps-c.png",
+      "indexBlob": "b21c4f34d147c9b8d766f4d262a6560f495c0b67",
+      "workingSHA256": "678c0187fd5400cd5ebb5ca2d569f37334d5c3fed3d8a7bb4266a8b368ffb8d9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.json",
+      "indexBlob": "cb113addca86b69ef2b19ed217c5db9d5be2dbc8",
+      "workingSHA256": "213a90ac98ed583dc0f97b99caf9974b14489be9c7d7a39a8803484fd5bc1ec0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-a.png",
+      "indexBlob": "18b49501de2e006498a697bf3d80c073297fe9bd",
+      "workingSHA256": "ccb5dd7cc6c75939b76d438ffe85f6cd4e79b02f545511541b1f50823f2b5fd3"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.json",
+      "indexBlob": "ea874700e6cd95f4f9a73a4da83db7ea0a69a421",
+      "workingSHA256": "5bdad479aab27a90321556174c5fdf2e1d0b686040342987c28b6376e79daacf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-mossy-wall-b.png",
+      "indexBlob": "627b9722f6b5bab2a88ff52f7ac383ad5e118fab",
+      "workingSHA256": "89310c2dcb73fd0727bad86b48bde998db3deacf77a4531a81d9cb4c41b5eb20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.json",
+      "indexBlob": "794f6b8b9c3e8a62b1295c1c80305a86c7be8cae",
+      "workingSHA256": "a735728f45053d011a31f5b6f5b7c223d35f00b313eee2cecc5f8b3d9701c7bd"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-a.png",
+      "indexBlob": "758b2e58b35044e8a02bbe5eae04abc7cc980241",
+      "workingSHA256": "e315f195aff6213e01de848573d223ab343c5de2474e4a653b4052f0a677430a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.json",
+      "indexBlob": "5c92e11f3cc2a312fa27a725806e8824fae30211",
+      "workingSHA256": "77d89cbf2b5563b529aeee51d83da88c49d1b2a59dd5a92e777aa9b30f4635ae"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-d.png",
+      "indexBlob": "911d171fe9748e5a55813271604b41fa27e0284c",
+      "workingSHA256": "086276cdd5cb33bed2c7384a08bde72c9bfb174e7198260ab52b59f5a5a0bf45"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.json",
+      "indexBlob": "6b7a6ae34a62b1efcca08f46dbdcf7b891b7c48d",
+      "workingSHA256": "29ce7cf69561772b17a794777e0f2f8ec2cd844343f7cfdc338f5d66fb09d65e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-tundra-grass-h.png",
+      "indexBlob": "dce08bcc1e03942ae6bacb1152509d9fb0e6ef9f",
+      "workingSHA256": "6ba1e9a5ce201ac93ea5a2ab8c6fc8bc0c42dac3d0bef45d15edfb167af046cb"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.json",
+      "indexBlob": "885ffeb2652a9f12db6dce4f9e426612ed3e98db",
+      "workingSHA256": "a6b2fedb5993f52a03ae895808dd1b92fd68868df8a0d54eb08a6304a9e8ac2f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/asset-woodland-house.png",
+      "indexBlob": "ce32cd8a3f868800669c409e9f4a159f417435e7",
+      "workingSHA256": "38b633ff5398316d64d27a68e2017ee9856c0789d5f80ace4a0b4c28ee54bd21"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-assets-1.json",
+      "indexBlob": "6e2d67a34f654cbfa0df14cb8bc0b4265ef09bf1",
+      "workingSHA256": "1cb5cf2b0dd5af1009ede435d3d434c70d8b3ea96cee6c98a9df92a77f13cdf4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.json",
+      "indexBlob": "6e9a7ec2ed14f6b9905ea7efdf04486aa36e3308",
+      "workingSHA256": "f89ae0d836a5b4a803725c1ca7db04e372f8ee17644639b31800a6f4d396389c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+      "indexBlob": "71058f4852b10298e9a2791f9d87a52794cc3959",
+      "workingSHA256": "03372b2a2fc362bb029c5e4b5b116340f9b4d30864effb57d1c0275152a29da0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.json",
+      "indexBlob": "867c9c33caf7e642890fef05793d6c044f9f2e71",
+      "workingSHA256": "c564881f7409aea2716df2511e2c51b74e35edb92f3e394fc83b86316ae7669d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+      "indexBlob": "37888b1f329bbf50715ec57889b67b72e62ea4f1",
+      "workingSHA256": "ffb0244d38dee23d64237f90f60da191014c58ff485278ec2b64fbebe4bc15dc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.json",
+      "indexBlob": "cf88039c608126720672fec0bf349a787b76761d",
+      "workingSHA256": "500c77cac2ca8200d8923bbd7e09a74eb68cd79efdb27749218fc928173dbd7a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+      "indexBlob": "519e23edb66b5c625e7c2bb5b3805b3f8aec18f3",
+      "workingSHA256": "1aa35afbe4e260e6a116af47d4713e23e2a411962dc8564d159a7310c0070919"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.json",
+      "indexBlob": "fd5c517045fb3492362369cfe1b42000827bee7f",
+      "workingSHA256": "87a46c4dcc0114e9da75653cbe5959308fe772b59a3063d10ec1dea33c249f02"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+      "indexBlob": "6a9e97a0e7c41b6f29b57c7f20dde485232af543",
+      "workingSHA256": "f056a5651d1e1e1e99e182a78bb8e583ee74f3191c1fe2395b1482ee85401cf2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.json",
+      "indexBlob": "d87b8f96d506dfd84a0d4971f394fbc43d2362a4",
+      "workingSHA256": "956088f43646becd838c283474bde53d77f251446100ad955a0d094e7061f2cd"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+      "indexBlob": "9dc574883470196ca361cbfc0258308076035ad3",
+      "workingSHA256": "bb1c58023d134d9e33eed48bfa3ee7cb263de3ab06641388d38ae51a22c06df8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.json",
+      "indexBlob": "8a3c2c4709b41ce01fb48217ec8355910f06c89e",
+      "workingSHA256": "87a2bf75ea4c835584d96220478d96e635e1062688adcd665547261ea7253c29"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+      "indexBlob": "09fe12b727c8694d1bf9bc2a0128500e38491b1b",
+      "workingSHA256": "d3c23779cf104e1ce5db98c018256f21155f30cd3e899c4bb36ff6aa086e76da"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.json",
+      "indexBlob": "a16a71e90e796a21cd8b143a41b1b246ef0cee6c",
+      "workingSHA256": "996070dfbb06e0b43aeae63cfb2370402eadd0ffe7f3146156dfbd13c6657a0c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+      "indexBlob": "e07545e957220ee6bfc8c9a06d24b0f3b06b6fe8",
+      "workingSHA256": "90fd8a7316d824276d9874cbbe7af5fe37173cd50b76b652d8eb7ddc712db519"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.json",
+      "indexBlob": "c3e9a624e13f27f885c62750b32307727e27544d",
+      "workingSHA256": "d9346ed7f6243f84387ebd47c6c3a98887c28d2d5e5f94c2dab5e4fd8dbf76e7"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+      "indexBlob": "dc618c9c19f23245e332b1b78e32610cc51eb2f8",
+      "workingSHA256": "66c9bd2f2471abc0d13645d898dd68b1be5a5226df5dda306ed6c0e43b37de79"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.json",
+      "indexBlob": "f71e01020f318cf3d728c4824bb91ece1d2206f0",
+      "workingSHA256": "43ba4749f7205ff458d4beb12afde4c80f5b60cb4e8589722cae219c75976c89"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png",
+      "indexBlob": "0e9991cd05770003e7b1e9c60c11214b40448baa",
+      "workingSHA256": "3cd62c1d22b496ffdfbd835d6627619b896c5ef78cf30e9943e1c79d3c3cfc22"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/fallback-path.json",
+      "indexBlob": "d8ae193bdfa723918d2c0c7b804acc3a914cf720",
+      "workingSHA256": "aad240e4f2dead4f42e1ede3c3eb354353f5891cfa79eb28e8efb9952b4ffe20"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/fallback-path.png",
+      "indexBlob": "ae6cc7299b78eef8866f24b47ae726670bb19393",
+      "workingSHA256": "62e35793e86a0c766cfce3cf8d1b83ae36be385aa25707f05bbb51ec4a69b961"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-00-39-297Z/imported-fallback-1.json",
+      "indexBlob": "68505693e8ffa456e61c873c285e922ad845bb96",
+      "workingSHA256": "63f7d1b3fece2f1da880004aa61d43f87e76a3ffa4599c5a7243dbdd0bd137aa"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.json",
+      "indexBlob": "c2129ce6df252b19584712c1fca1d7a130e75595",
+      "workingSHA256": "beeb239ac073224fe186f649600b6f2b01941f9ba9464936e53e796296e888f6"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/fallback-path.png",
+      "indexBlob": "c5060757ee236f9af1d7b2981fb0f705347f2712",
+      "workingSHA256": "7d9248b7168c9e4da85584128e76e725a89589b4b40da5d84095d0a4f834d742"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-19T07-21-03-538Z/imported-fallback-1.json",
+      "indexBlob": "81713ba7945113c45fabca5906e19c91c0610357",
+      "workingSHA256": "0ecc2b41fc114f2d0834a84ca94f0e2ba5645f274b269cd1360c58d25aade0f4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T06-57-00-583Z/sunny-benchmark-1.json",
+      "indexBlob": "7f0ea3f9a138a052987bdca3a45a26011ce9e523",
+      "workingSHA256": "bb506012ab7ff8a563f17a636802042e5f350217a528dd0fd7100c40479e644d"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T07-03-33-456Z/sunny-benchmark-1.json",
+      "indexBlob": "d7d1e78e0be407a69dadc28f8455aaa771ba0549",
+      "workingSHA256": "3a16cdd05d8f039ae4c16bea9777784b8af15e1ef29e2cf5fc7cd9a878a50764"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-19T07-17-51-360Z/sunny-benchmark-1.json",
+      "indexBlob": "de0a7cfd2be8428e22c670d093dc0735fc88cf17",
+      "workingSHA256": "7056982151d91a8b6ab4ecdb135e97f198c5a399e625e3ae82f9bba1404e25cf"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-1.json",
+      "indexBlob": "9d8be5cab635d45eed0aa8e61e98ff7c2fe759bf",
+      "workingSHA256": "4744f0f11473c55699289c4ac9dd7152b0322498b108a6fa1a83af1800577f65"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-final.json",
+      "indexBlob": "36265dda689d68878d8753552f2596aa272b46e4",
+      "workingSHA256": "d7f08158d6b81e80974d89c3f75e6bb46cc4cabaa405bbaaf1f2762b25e68cbe"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T06-54-45-357Z/traversal-final.png",
+      "indexBlob": "ae326b783ee77d31a551e1cebf2a310f103d39d0",
+      "workingSHA256": "fa97455aafda6c164537551475cf963fb39ce726ae635b8de35cf109f0545c44"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-1.json",
+      "indexBlob": "b03ecd3401b5582b9d6c6fd0943128087d5600a6",
+      "workingSHA256": "eb0515ffbb78a566baa5c3f2388e54082cf979f4f5e0a696dda8e9db9f019432"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.json",
+      "indexBlob": "2c5ea59620028e1e3f9f06f5e09ec2f6dcd04a5c",
+      "workingSHA256": "185f7025d692fe805ac38c9d47a80ae76f0aee6f81057d18047f9148dbf9cae9"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-19T07-12-12-105Z/traversal-final.png",
+      "indexBlob": "6c178c8433fc6b4a3ad411fc0e808c8a6dc10023",
+      "workingSHA256": "aa859e694a9a61cbd40c60ed00e7c0cdae2585c3bbcf151fa86739612cdfaca2"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-1.json",
+      "indexBlob": "31ef46b6a5ffbc9375afd74a009057c8ee340a63",
+      "workingSHA256": "298c5ce4ac308b00bd23f8ad1f111daab71b9a95f6e376a6b1ff72734f5e6e1e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-sunny.json",
+      "indexBlob": "2dc3c761ff15b8b6eae433d708588e840ff67196",
+      "workingSHA256": "a57437a8eff0b1b64c1c13827b74f3fd0a30673b520640c1b502b82edfb37dca"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T06-56-11-953Z/weather-sunny.png",
+      "indexBlob": "eae99d79f97e6c0704abf288a654ad0ff3193b09",
+      "workingSHA256": "0c3a34afe977027b9828dff1aaed0e362218256b4e7d1b5e281eddb0f4764c08"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-1.json",
+      "indexBlob": "f08836d991d7a5d2290e60df8748f2becb16a677",
+      "workingSHA256": "6df0415d1eadd8a4d9109be83699b11928c34250dee53672d6a14881bb82907f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.json",
+      "indexBlob": "e85b08619578d36dda0cdcb216f199a95132d782",
+      "workingSHA256": "6be8768e7ded46474e88ef7554e1ed9e3773c55c49d2078d7a7efc81d8f6355c"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-19T07-13-28-029Z/weather-sunny.png",
+      "indexBlob": "c5ee3740233aa93c7d19069e9d1f430b2bb4605b",
+      "workingSHA256": "75d86b9a9ff75d89e7a646c3d801c6b891f72a56dac265ebeb7f78106fcbc15a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/fracture-checks.json",
+      "indexBlob": "58965dc97b36f202c9e62e893c0d260690755e97",
+      "workingSHA256": "7570ba4915cbccb1c42836981d63e7419e121f7f85a2ef817f0d2a64256a6559"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/hooks.js",
+      "indexBlob": "bf58bf1632efda91ad5cbaa660f029c927029192",
+      "workingSHA256": "9197cad1eb320fca9fa8f50250badf4f1ef129e81bc8f37ab0c631bd25340e9a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/map-checks.json",
+      "indexBlob": "5f153bd58186445dddcce97d51915f1106c61cc2",
+      "workingSHA256": "d7a0c9573f93325ebb962546f956598e9f4526afde9ed847746f14d9ad5d54f4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/previous-surface-independent-review.json",
+      "indexBlob": "91c0f15a9c817638c82e7210e7b24ec76ccc7a45",
+      "workingSHA256": "7f731d11b5f76c564d0748d7108cd312d756b3ff7df890f85ecd176756f08221"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/previous-surface-release.json",
+      "indexBlob": "e2fffb2e00341794154b910453482b9e2f175b96",
+      "workingSHA256": "ff66e25289a43dcdfae2991b886b7dee6280efe7c9932b941a0154a7251b30db"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/release.json",
+      "indexBlob": "e4dfbf5747ea374162361be408f0da60f7dcbc7f",
+      "workingSHA256": "f871365d9b6ed35566a313d242b4bebf4c5b8b0ff235984bce1680fe15fcfad8"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/seal-downloaded-review.mjs",
+      "indexBlob": "40df9e1a3d2004927473575b1a95ccf62d9f832d",
+      "workingSHA256": "d3ca7808bc7eca6cbd5fa1ac2b7f6b4c58b7fe5863693d7ee4d7daa6fe802ebc"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/source-binding.mjs",
+      "indexBlob": "d8eb598653c4af65a3a5d3d71765c80ca2aa57b4",
+      "workingSHA256": "9c073211f0453665aaa593aacd017fd54a3a829f594bf1df06ea9bb201b4eb84"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/terrain-rays.json",
+      "indexBlob": "1834e4d64060ca6f67e717a87524422b0a09a123",
+      "workingSHA256": "039e53fd6807f565d9584d5a8cc19a3479397f9c6e4bde7338bd9bdfbcea722f"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/village-checks.json",
+      "indexBlob": "3f3d6966ce1ddf676be7fac77d78ac1d75f06556",
+      "workingSHA256": "831b15fad2887ce1f9b108124860077aa1d92b24b7d28a8a9f7a61818e9bbd5a"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/serve.mjs",
+      "indexBlob": "9f9a9a56ca431eec977161da428d9ae8f55df302",
+      "workingSHA256": "1eca6b086895a5fccf4f5485f5e40d484ed353f290eccaf72a3507921dc718a5"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/backup-downloaded-assets.py",
+      "indexBlob": "d1d9115ebf98366fcdc55e2da15df37755dd184b",
+      "workingSHA256": "5d23002b1ab119cb0d92ed2208e52c383100d98958e2f136882bf8d230a4bf0e"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/import-downloaded-assets.py",
+      "indexBlob": "5e5015a283eb3fbaa1980ccc1ec88cac1feb9cfa",
+      "workingSHA256": "f278dc55d4f42439d79bf26db32b40e45c5c188dd6f8aef88f3d92c0bd7490b4"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/import-downloaded-house.py",
+      "indexBlob": "9a20fe9c254cb87f3b737a034091560c07a5f4a4",
+      "workingSHA256": "9bf4a72f9a99b7015d8c59e55fcea6cc8ef07180db0f11931503b138176632df"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/tools/package.mjs",
+      "indexBlob": "2283d965327b9cf0c876b22ad2f4dadb64b577c9",
+      "workingSHA256": "c64ceddc8d14051853e67e55bb561c7546eb1f86a7d1cee701ceda41a4d104e0"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/world.js",
+      "indexBlob": "a8082ec09bffdd82e2b010b0c3aad2be1992e861",
+      "workingSHA256": "95f5fa4534e074cdaa554c9c2d1359600143823fe33d590f90ed2b7b9cbe585d"
+    }
+  ],
+  "release": "BLOCKED",
+  "scope": "Every bound public runtime/evidence path compared with index, not only staged changes. Local-only hashes validated through runtimeHashes/private pointer, never staged. Finish appends authorized handoff/worklog; this audit does not claim remote upload."
+}

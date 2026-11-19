@@ -1,0 +1,46 @@
+{
+  "schema": "river-downloaded-independent-review-v1",
+  "status": "CONDITIONAL PASS - LOCAL WIP ONLY",
+  "art": {
+    "reviewer": "Lovelace / 01a1ec9f-f737-7282-bbc9-6a4fc127aa68",
+    "received": true,
+    "verdict": "CONDITIONAL PASS",
+    "confidence": "high for visible static issues",
+    "scope": "Nine original-size current map PNGs; no continuous-motion or performance review, no full geometry certification.",
+    "findings": [
+      "Near dark fragmented grass was substantially reduced; revised low grasses fit the soil and neighbouring vegetation better.",
+      "Earth tint reduces conspicuous pale rubble discs. No obvious floating scan skirt in the reviewed views.",
+      "North and south house views show no obvious trunk-through-wall or roof intersection; visible roads and structural hierarchy did not regress.",
+      "Minor: some yellow-green leaves still read as sparse lines and isolated clumps. Prioritize low-plant transitions, not additional instance counts.",
+      "Minor: a few micro-rubble pieces still have similar rounded flat outlines. Locally obscure/bury edges while preserving traversability."
+    ],
+    "fiveAxes": {
+      "sameness": "isolated clumps and rounded fragments remain repetitive",
+      "proportionStructure": "no newly obvious visible anomaly",
+      "stylization": "material coherence improved; overall realism target not reached",
+      "visualImpact": "new detail no longer draws excessive contrast",
+      "detailPriority": "prioritize grounding/distribution over quantity"
+    },
+    "globalAAA": "REVISE",
+    "continuousMotion": "UNVERIFIED"
+  },
+  "engineering": {
+    "reviewer": "Descartes / 01a1ec9f-f43b-7f62-b965-d3ebe002849a",
+    "verdict": "CONDITIONAL PASS - SOURCE WIP",
+    "priorVerified": "V2 loading identity, 349364 triangles/39 base draws, 429 grass instances, all 11 dark clumps outside play; local WIP suitable, release blocked.",
+    "collectorReview": "PASS: exact active-asset identity, required captures/check counts, declared review coverage, complete package-byte freshness and strict benchmark workload/weather/viewport/timeline checks. Off diagnostic cannot replace acceptance.",
+    "conditions": "Final current evidence plus companion/collector/builder identities must be pinned. Private upload acknowledgement is not remote-content verification. Final .lfsconfig endpoint guard request addressed by explicit per-command approved endpoint pins; source fix not independently rerun by reviewer."
+  },
+  "release": "BLOCKED: performance, continuous motion, global art target and licensing remain independent gates",
+  "declaredReviewSet": [
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-grass.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-chips.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-path.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-ruin.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-boundary.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-settlement.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-north.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-house-south.png",
+    "qa/evidence/imported-assets-2026-11-19T07-07-39-075Z/imported-wide.png"
+  ]
+}

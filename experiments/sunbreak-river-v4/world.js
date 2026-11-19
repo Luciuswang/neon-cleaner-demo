@@ -21,6 +21,7 @@ import {buildRiverWater} from './river-water.js';
 import {SOIL_MOISTURE_GLSL,soilMoisture} from './ground-moisture.js';
 import {applySurfaceAttributes,installGroundSurface,buildFoundationWeeds,surfaceZones} from './ground-surface.js';
 import {createHeightFog} from './height-fog.js';
+import {buildDownloadedDressing} from './downloaded-dressing.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
@@ -112,6 +113,7 @@ export async function buildWorld(ctx){
  const foundationWeeds=await buildFoundationWeeds(T,world);
  const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials});
+ const dressing=await buildDownloadedDressing(T,world);
 
  const water=buildRiverWater({T,Reflector,world,time:windTime,rain:rainStrength,sunDirection});
 
@@ -207,7 +209,7 @@ export async function buildWorld(ctx){
   floorHeight(x,z){return buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))},ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))},blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),resetHouse:()=>buffers.reset(),
   update(dt,{S,pres,live,player}){
    const active=!pres&&!['pause','dead','win'].includes(S.state);if(active)time+=dt;
-   windTime.value=time;foliage.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
+   windTime.value=time;foliage.update(time);dressing.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
    if(weather===2){for(let i=0;i<rainCount;i++){
     const s=rainSeeds[i],x=s[0]+cam.position.x,z=s[2]+cam.position.z,yy=((s[1]-time*(14+s[3]*7))%21+21)%21;
     const floor=terrainHeight(x,z),roof=roofHeight(x,z),y=(floor+yy<roof&&Number.isFinite(roof))||buffers.underRoof(x,floor+yy,z)||buffers.underRoof(x+.08,floor+yy+.5+s[3]*.35,z+.03)?-20:floor+yy,k=i*6;
@@ -223,6 +225,6 @@ export async function buildWorld(ctx){
   surfaceQA:{setAO(value){ao.enabled=!!value},setFog(value){haze.setEnabled(value)},info(){return{aoEnabled:ao.enabled,aoSettings,aoMin:ao.minDistance,aoMax:ao.maxDistance,projection:ao.ssaoMaterial.uniforms.cameraProjectionMatrix.value.elements.slice(),cameraProjection:cam.projectionMatrix.elements.slice(),fog:haze.info(),gunFogged:(()=>{let n=0;gscene.traverse(o=>{for(const m of [].concat(o.material||[]))if(m.customProgramCacheKey?.().includes('analytic-height-haze'))n++});return n})(),weeds:foundationWeeds.info(),zones:[[-10,12],[-17,17],[-22,12],[-4,10]].map(([x,z])=>({x,z,...surfaceZones(x,z)}))}}},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
   info(){return{version:'river-v4-wildbank',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
-  actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa
+  actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa,dressingQA:{...dressing,reviewAsset(id){const v=dressing.reviewAsset(id);aoCutouts.length=0;world.traverse(o=>{if(o.isMesh&&[].concat(o.material).some(m=>m?.alphaTest>0))aoCutouts.push(o)});return v}}
  };
 }

@@ -19,6 +19,8 @@ ue/**/.vsconfig
 
 # Third-party Epic/Fab Marketplace assets are restored from the user's Epic library.
 ue/NeonCleanerUE/Content/ParagonPhase/
+# User-downloaded Fab cabin source: local entitlement, never public source.
+ue/NeonCleanerUE/Content/Modular_Rural_Cabin/
 
 # User-provided Kelly source character and all derived rigs/animations stay local.
 source/kelly-UE/

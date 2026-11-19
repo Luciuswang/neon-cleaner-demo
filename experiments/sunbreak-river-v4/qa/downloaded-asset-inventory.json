@@ -1,0 +1,498 @@
+{
+  "schema": "local-import-inventory-v1",
+  "manifestSHA256": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+  "bytes": 12862004,
+  "assets": [
+    {
+      "id": "castle-wall",
+      "file": "castle-wall.glb",
+      "sha256": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
+      "bytes": 1392680,
+      "dimensions": [
+        1.720387,
+        0.440976,
+        0.904021
+      ],
+      "triangles": 1996,
+      "kind": "wall",
+      "source": {
+        "archive": "mossy_castle_wall_structure_sdxbd_low.zip",
+        "archiveSha256": "19c5f0870cb2fd2e1cabbd4c261aca0c049ea493135d923f5b1a1bb49ac6aebd",
+        "mesh": "Mossy_Castle_Wall_Structure_sdxbd_Low.fbx",
+        "maps": {
+          "BaseColor": "Mossy_Castle_Wall_Structure_sdxbd_Low_1K_BaseColor.jpg",
+          "Normal": "Mossy_Castle_Wall_Structure_sdxbd_Low_1K_Normal.jpg",
+          "Roughness": "Mossy_Castle_Wall_Structure_sdxbd_Low_1K_Roughness.jpg",
+          "AO": "Mossy_Castle_Wall_Structure_sdxbd_Low_1K_AO.jpg"
+        },
+        "assetId": "sdxbd",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 1024,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 1996,
+        "finalTriangles": 1996,
+        "dimensions": [
+          1.7203875184059143,
+          0.44097638316452503,
+          0.9040212035179138
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "cement-rubble",
+      "file": "cement-rubble.glb",
+      "sha256": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
+      "bytes": 1346492,
+      "dimensions": [
+        1.31,
+        0.177325,
+        0.937924
+      ],
+      "triangles": 4500,
+      "kind": "rubble",
+      "source": {
+        "archive": "cement_rubble_rkcty_mid.zip",
+        "archiveSha256": "797dd02e49344d5e8f5457af9cc25f48620d6d4e5fa3e2d0119e5406e4f02b6a",
+        "mesh": "Cement_Rubble_rkCty_Mid.fbx",
+        "maps": {
+          "BaseColor": "Cement_Rubble_rkCty_Mid_2K_BaseColor.jpg",
+          "Normal": "Cement_Rubble_rkCty_Mid_2K_Normal.jpg",
+          "Roughness": "Cement_Rubble_rkCty_Mid_2K_Roughness.jpg",
+          "AO": "Cement_Rubble_rkCty_Mid_2K_AO.jpg"
+        },
+        "assetId": "rkCty",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 1024,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 15476,
+        "finalTriangles": 4500,
+        "dimensions": [
+          1.3100000619888306,
+          0.17732516676187515,
+          0.9379242062568665
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "cement-rubble-small",
+      "file": "cement-rubble-small.glb",
+      "sha256": "cc0443b5736b634e1c33beada6a54ef32cca78254beda0254d04d629a2d5ff24",
+      "bytes": 348644,
+      "dimensions": [
+        1.319045,
+        0.172872,
+        0.93813
+      ],
+      "triangles": 650,
+      "kind": "rubble",
+      "source": {
+        "archive": "cement_rubble_rkcty_mid.zip",
+        "archiveSha256": "797dd02e49344d5e8f5457af9cc25f48620d6d4e5fa3e2d0119e5406e4f02b6a",
+        "mesh": "Cement_Rubble_rkCty_Mid.fbx",
+        "maps": {
+          "BaseColor": "Cement_Rubble_rkCty_Mid_2K_BaseColor.jpg",
+          "Normal": "Cement_Rubble_rkCty_Mid_2K_Normal.jpg",
+          "Roughness": "Cement_Rubble_rkCty_Mid_2K_Roughness.jpg",
+          "AO": "Cement_Rubble_rkCty_Mid_2K_AO.jpg"
+        },
+        "assetId": "rkCty",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "UNVERIFIED DirectX/OpenGL; green channel unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 15476,
+        "finalTriangles": 650,
+        "dimensions": [
+          1.319044589996338,
+          0.1728724166750908,
+          0.9381303489208221
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "grass-clumps-a",
+      "file": "grass-clumps-a.glb",
+      "sha256": "011c18c7c67def787cd208e245df9a8bb7c228b204c1dd8531c47f8604e086e1",
+      "bytes": 450580,
+      "dimensions": [
+        0.691554,
+        0.263272,
+        0.649013
+      ],
+      "triangles": 1830,
+      "kind": "grass",
+      "source": {
+        "archive": "grass_clumps_rbdoo_low.zip",
+        "archiveSha256": "7b0ae17715c1000555821f60dbac799c373b967bdde8701fc628f3e02d6ec755",
+        "mesh": "Grass_Clumps_rbdoo_Low_rbdoo_VarA_LOD1.fbx",
+        "maps": {
+          "BaseColor": "Grass_Clumps_rbdoo_Low_1K_BaseColor.jpg",
+          "Normal": "Grass_Clumps_rbdoo_Low_1K_Normal.jpg",
+          "Roughness": "Grass_Clumps_rbdoo_Low_1K_Roughness.jpg",
+          "Opacity": "Grass_Clumps_rbdoo_Low_1K_Opacity.jpg"
+        },
+        "assetId": "rbdoo",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 1830,
+        "finalTriangles": 1830,
+        "dimensions": [
+          0.6915543675422668,
+          0.2632720172405243,
+          0.6490131616592407
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "grass-clumps-b",
+      "file": "grass-clumps-b.glb",
+      "sha256": "06542a8a6544c2a8b5b1e513ce7c5f98364f874319e546c15676200f3c8501f6",
+      "bytes": 348172,
+      "dimensions": [
+        0.610939,
+        0.212633,
+        0.576551
+      ],
+      "triangles": 476,
+      "kind": "grass",
+      "source": {
+        "archive": "grass_clumps_rbdoo_low.zip",
+        "archiveSha256": "7b0ae17715c1000555821f60dbac799c373b967bdde8701fc628f3e02d6ec755",
+        "mesh": "Grass_Clumps_rbdoo_Low_rbdoo_VarB_LOD0.fbx",
+        "maps": {
+          "BaseColor": "Grass_Clumps_rbdoo_Low_1K_BaseColor.jpg",
+          "Normal": "Grass_Clumps_rbdoo_Low_1K_Normal.jpg",
+          "Roughness": "Grass_Clumps_rbdoo_Low_1K_Roughness.jpg",
+          "Opacity": "Grass_Clumps_rbdoo_Low_1K_Opacity.jpg"
+        },
+        "assetId": "rbdoo",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 476,
+        "finalTriangles": 476,
+        "dimensions": [
+          0.6109393239021301,
+          0.2126327883452177,
+          0.5765514373779297
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "grass-clumps-c",
+      "file": "grass-clumps-c.glb",
+      "sha256": "5bd13e718d6f8d5ac68b3a70211a1c6ae268d8d38eabc237463cd16f7b456750",
+      "bytes": 352060,
+      "dimensions": [
+        0.603791,
+        0.263254,
+        0.751544
+      ],
+      "triangles": 548,
+      "kind": "grass",
+      "source": {
+        "archive": "grass_clumps_rbdoo_low.zip",
+        "archiveSha256": "7b0ae17715c1000555821f60dbac799c373b967bdde8701fc628f3e02d6ec755",
+        "mesh": "Grass_Clumps_rbdoo_Low_rbdoo_VarC_LOD0.fbx",
+        "maps": {
+          "BaseColor": "Grass_Clumps_rbdoo_Low_1K_BaseColor.jpg",
+          "Normal": "Grass_Clumps_rbdoo_Low_1K_Normal.jpg",
+          "Roughness": "Grass_Clumps_rbdoo_Low_1K_Roughness.jpg",
+          "Opacity": "Grass_Clumps_rbdoo_Low_1K_Opacity.jpg"
+        },
+        "assetId": "rbdoo",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 548,
+        "finalTriangles": 548,
+        "dimensions": [
+          0.603791281580925,
+          0.2632542308419943,
+          0.7515434920787811
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "mossy-wall-a",
+      "file": "mossy-wall-a.glb",
+      "sha256": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754",
+      "bytes": 1390708,
+      "dimensions": [
+        3.467583,
+        0.990702,
+        0.639089
+      ],
+      "triangles": 4467,
+      "kind": "wall",
+      "source": {
+        "archive": "mossy_stone_wall_uh1rbecfa_low.zip",
+        "archiveSha256": "6b0bb02d2a2da8d4abb8b867eca278b1c456c966f27c939006714a25989ae4be",
+        "mesh": "Mossy_Stone_Wall_uh1rbecfa_Low.fbx",
+        "maps": {
+          "BaseColor": "Mossy_Stone_Wall_uh1rbecfa_Low_1K_BaseColor.jpg",
+          "Normal": "Mossy_Stone_Wall_uh1rbecfa_Low_1K_Normal.jpg",
+          "Roughness": "Mossy_Stone_Wall_uh1rbecfa_Low_1K_Roughness.jpg",
+          "AO": "Mossy_Stone_Wall_uh1rbecfa_Low_1K_AO.jpg"
+        },
+        "assetId": "uh1rbecfa",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 1024,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 4467,
+        "finalTriangles": 4467,
+        "dimensions": [
+          3.4675832986831665,
+          0.9907017052173615,
+          0.6390886604785919
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "mossy-wall-b",
+      "file": "mossy-wall-b.glb",
+      "sha256": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4",
+      "bytes": 1313628,
+      "dimensions": [
+        3.105222,
+        0.868294,
+        0.525105
+      ],
+      "triangles": 4537,
+      "kind": "wall",
+      "source": {
+        "archive": "mossy_stone_wall_ukhgdfyga_low.zip",
+        "archiveSha256": "9541f25b055b0e9afb81045771b88530a8c3003b448345dd0d38484237791489",
+        "mesh": "Mossy_Stone_Wall_ukhgdfyga_Low.fbx",
+        "maps": {
+          "BaseColor": "Mossy_Stone_Wall_ukhgdfyga_Low_1K_BaseColor.jpg",
+          "Normal": "Mossy_Stone_Wall_ukhgdfyga_Low_1K_Normal.jpg",
+          "Roughness": "Mossy_Stone_Wall_ukhgdfyga_Low_1K_Roughness.jpg",
+          "AO": "Mossy_Stone_Wall_ukhgdfyga_Low_1K_AO.jpg"
+        },
+        "assetId": "ukhgdfyga",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 1024,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 4537,
+        "finalTriangles": 4537,
+        "dimensions": [
+          3.105221748352051,
+          0.8682944579049945,
+          0.5251053273677826
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "tundra-grass-a",
+      "file": "tundra-grass-a.glb",
+      "sha256": "740aec736017a52adec7d81c81823758d72afcb04074efde1a302f4fc4d36e0e",
+      "bytes": 731712,
+      "dimensions": [
+        0.349332,
+        0.315802,
+        0.378902
+      ],
+      "triangles": 364,
+      "kind": "grass",
+      "source": {
+        "archive": "tundra_grass_wk2oaeyqx_low.zip",
+        "archiveSha256": "e5b9baa2741e74ccafeca2968a1d43eb1ca53b48e61232862350dd31c0904287",
+        "mesh": "Tundra_Grass_wk2oaeyqx_Low_wk2oaeyqx_VarA_LOD2.fbx",
+        "maps": {
+          "BaseColor": "Tundra_Grass_wk2oaeyqx_Low_1K_BaseColor.jpg",
+          "Normal": "Tundra_Grass_wk2oaeyqx_Low_1K_Normal.jpg",
+          "Roughness": "Tundra_Grass_wk2oaeyqx_Low_1K_Roughness.jpg",
+          "AO": "Tundra_Grass_wk2oaeyqx_Low_1K_AO.jpg",
+          "Opacity": "Tundra_Grass_wk2oaeyqx_Low_1K_Opacity.jpg"
+        },
+        "assetId": "wk2oaeyqx",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 364,
+        "finalTriangles": 364,
+        "dimensions": [
+          0.34933243691921234,
+          0.3158023734577,
+          0.3789017051458359
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "tundra-grass-d",
+      "file": "tundra-grass-d.glb",
+      "sha256": "7d4e1f1c6b058241a1261745fc5658ef44ef47379c54967b4fa0d08d981c8e77",
+      "bytes": 747416,
+      "dimensions": [
+        0.95296,
+        0.221293,
+        0.78265
+      ],
+      "triangles": 549,
+      "kind": "grass",
+      "source": {
+        "archive": "tundra_grass_wk2oaeyqx_low.zip",
+        "archiveSha256": "e5b9baa2741e74ccafeca2968a1d43eb1ca53b48e61232862350dd31c0904287",
+        "mesh": "Tundra_Grass_wk2oaeyqx_Low_wk2oaeyqx_VarD_LOD2.fbx",
+        "maps": {
+          "BaseColor": "Tundra_Grass_wk2oaeyqx_Low_1K_BaseColor.jpg",
+          "Normal": "Tundra_Grass_wk2oaeyqx_Low_1K_Normal.jpg",
+          "Roughness": "Tundra_Grass_wk2oaeyqx_Low_1K_Roughness.jpg",
+          "AO": "Tundra_Grass_wk2oaeyqx_Low_1K_AO.jpg",
+          "Opacity": "Tundra_Grass_wk2oaeyqx_Low_1K_Opacity.jpg"
+        },
+        "assetId": "wk2oaeyqx",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 549,
+        "finalTriangles": 549,
+        "dimensions": [
+          0.9529602229595184,
+          0.22129265079274774,
+          0.7826494872570038
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "tundra-grass-h",
+      "file": "tundra-grass-h.glb",
+      "sha256": "9dbea586c5922990240987144fd2f32e316fad5235ce59ff04049c58400f13f6",
+      "bytes": 762192,
+      "dimensions": [
+        0.9789,
+        0.231143,
+        0.77328
+      ],
+      "triangles": 771,
+      "kind": "grass",
+      "source": {
+        "archive": "tundra_grass_wk2oaeyqx_low.zip",
+        "archiveSha256": "e5b9baa2741e74ccafeca2968a1d43eb1ca53b48e61232862350dd31c0904287",
+        "mesh": "Tundra_Grass_wk2oaeyqx_Low_wk2oaeyqx_VarH_LOD2.fbx",
+        "maps": {
+          "BaseColor": "Tundra_Grass_wk2oaeyqx_Low_1K_BaseColor.jpg",
+          "Normal": "Tundra_Grass_wk2oaeyqx_Low_1K_Normal.jpg",
+          "Roughness": "Tundra_Grass_wk2oaeyqx_Low_1K_Roughness.jpg",
+          "AO": "Tundra_Grass_wk2oaeyqx_Low_1K_AO.jpg",
+          "Opacity": "Tundra_Grass_wk2oaeyqx_Low_1K_Opacity.jpg"
+        },
+        "assetId": "wk2oaeyqx",
+        "converter": "downloaded-scans-local-v1",
+        "blender": "5.3.0",
+        "textureSize": 512,
+        "normalY": 1,
+        "normalConvention": "source unchanged",
+        "origin": "baked glTF metres; centre XZ, ground minY=0",
+        "importedTriangles": 771,
+        "finalTriangles": 771,
+        "dimensions": [
+          0.9789003729820251,
+          0.23114310763776302,
+          0.7732800841331482
+        ]
+      },
+      "license": "UNVERIFIED - local only"
+    },
+    {
+      "id": "woodland-house",
+      "file": "woodland-house.glb",
+      "bytes": 3677720,
+      "sha256": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+      "dimensions": [
+        8.402656,
+        9.199592,
+        12.685049
+      ],
+      "triangles": 22041,
+      "kind": "house",
+      "source": {
+        "path": "wooden_house_house_in_the_woods_project.glb",
+        "bytes": 69389080,
+        "sha256": "624e2af5ef001bcf835ab49a464655e585c5682745ba8f2103562ba467b29ddb",
+        "asset": {
+          "generator": "fab-model-conversion",
+          "version": "2.0"
+        },
+        "provenance": "NTFS download metadata: Fab referrer and Epic download host; exact product listing unknown",
+        "copyright": null,
+        "license": "UNKNOWN / NOT EMBEDDED",
+        "redistributionApproved": false,
+        "assetId": "woodland-house",
+        "receipt": "receipt.json",
+        "receiptSha256": "cd08738925191eef0d55814f530ef81d2855d5ca7b22125e1b3b39b9a7ec5a76",
+        "derivativeSha256": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+        "origin": "peer geometry preserved; runtime centres XZ/minY",
+        "runtimeOrigin": {
+          "centreXZ": [
+            -0.06592035293579102,
+            -0.45207953453063965
+          ],
+          "minY": -0.017689228057861328
+        },
+        "normalConvention": "Preserved peer PBR; DirectX/OpenGL not independently established"
+      },
+      "license": "UNVERIFIED - local only"
+    }
+  ],
+  "publicRedistribution": false,
+  "excluded": [
+    {
+      "id": "tree_goat_willow_01_usd",
+      "reason": "USD contains constant-colour materials and no supplied PBR texture maps; no fake replacement materials created."
+    },
+    {
+      "id": "base_mesh",
+      "sha256": "8767f58475863abd4ba5c32b100d7c92d998a1b5d39a0ff6ebb108f4e57eb717",
+      "bytes": 105978740,
+      "triangles": 79060,
+      "reason": "Rigged humanoid/armour/hair/weapons, not an environment asset; 27 skins/131 joints, no animation and likely broken rest binding. Existing NPCs preserved."
+    },
+    {
+      "id": "Modular_Rural_Cabin",
+      "reason": "UE Marketplace binaries, preserved/excluded from public Git; not directly usable in Three/WebGL."
+    }
+  ],
+  "restoration": "Selected derivatives: run tools/backup-downloaded-assets.py restore using authorized access to the existing private repository. Public pointer: qa/downloaded-private-backup.json. Originals remain in user Downloads; no complete UE portability claim."
+}
