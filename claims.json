@@ -14,6 +14,20 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "procedural-material-lab-2026-11-19": {
+      "base_commit": "fc32d74dcdeeeb601fb1a072b6e91e87b3a50fd7",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-19T20:27:37.224559+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/procedural-material-lab",
+        "docs/tasks/procedural-material-lab-2026-11-19.md",
+        "docs/handoff.md",
+        "docs/sprint-2026-08-24.md"
+      ],
+      "task_id": "procedural-material-lab-2026-11-19",
+      "updated_at": "2026-11-19T12:27:37.224559+00:00"
     }
   },
   "schema": 1
