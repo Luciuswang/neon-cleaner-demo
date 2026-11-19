@@ -14,6 +14,21 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "sunbreak-river-material-combat-polish-2026-11-19": {
+      "base_commit": "d5b2114d07e1496824b6b788757364412e18908e",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-19T16:30:48.730413+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/sunbreak-river-v4",
+        "docs/tasks/sunbreak-river-material-combat-polish-2026-11-19.md",
+        "docs/handoff.md",
+        "docs/worklog",
+        "docs/sprint-2026-08-24.md"
+      ],
+      "task_id": "sunbreak-river-material-combat-polish-2026-11-19",
+      "updated_at": "2026-11-19T08:30:48.730413+00:00"
     }
   },
   "schema": 1
