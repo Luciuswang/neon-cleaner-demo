@@ -19,6 +19,8 @@
 <p><a href="https://opengameart.org/content/the-free-firearm-sound-library">The Free Firearm Sound Library</a> — Ben Jaszczak、Brian Nelson、Kevin Heras、Matthew Nanney。使用 AR-15/M4 实录，不是 MP5 实录。<br>
 <a href="https://opengameart.org/content/gun-reload-sound-effects">机械音效 — BMacZero / Brian MacIntosh</a>。雨、风、雷声是合成环境声，并非实录。</p>
 <h2>技术与画面说明</h2>
+<p>2026-11-19 地表更新：<a href="https://polyhaven.com/a/dirt">Dirt</a> 与 <a href="https://polyhaven.com/a/forest_ground_04">Forest Ground 04</a>（Poly Haven CC0），使用独立颜色、法线、粗糙度扫描贴图。通行道路、地基原土、闲置碎石落叶地和湿润河岸按实际空间关系混合；来源与校验见 ground-surface-assets.json。断墙灰泥沿用 CC0 扫描，砖芯和砂砾断面为原创程序材质，没有把整面砖墙贴到每块碎片上。</p>
+<p>高度雾采用原创解析高度衰减近似，无新增雾体渲染通道或逐步光线采样。调研参考 <a href="https://oddpotatodev.itch.io/godot-cheap-ground-fog">AtSaturn / OrdinaryCicada — Godot Cheap Ground Fog</a> 的低成本思路；并非其 Godot 插件移植，也不包含交互拖尾、室内遮挡或真实体积光。不宣称未经实测的性能提升。本次地表、AO 和雾效由 Codex 整合，不冒称新的 Fable 生成。</p>
 <p><a href="https://threejs.org/">Three.js r160 核心及已有 presentation 模块</a> / MIT，含 Meshopt 解码器及随附许可。实时 WebGL 光栅化、PBR、阴影贴图、河水平面反射、雨涟漪、SSAO、SMAA 与可关闭的调色。不是 Unreal Engine，没有 Lumen、Nanite 或硬件光追。</p>
 <p>六栋双岸村落保留完整、半坍塌和废墟三种状态，另加两栋河岸斜对称木屋：E 开关门、台阶、可进入室内和暖光。碎墙使用有厚度的破碎几何、倒塌墙片与共享行走高度的碎屑堆；这是静态破坏美术，不是实时物理拆房。中间木桥、两处浅滩和可涉水河床保留。新增木屋为绕河道中心旋转180度匹配，并非全图左右镜像；两队原有出发路线不完全等长，不能视为已验证竞技平衡。</p>
 <p>沿用第四版的 NPC、美术动画、105ms 连射间隔及 2.25 秒换弹；仍是单人六敌人实验，不是 4v4 联机或 3A 成品。本轮再次实际调用 claude-fable-5-2，生成破碎墙片几何；木屋、材质、植被、布局、光照、整合和测试由 Codex 完成，详见 fable-art-revision.json。分享封面沿用早期 AI 宣传图，不是当前地图截图或质量证据。</p>

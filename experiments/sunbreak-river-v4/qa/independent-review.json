@@ -1,77 +1,154 @@
 {
   "protocol": "offscreen-cinematic-v1",
-  "task": "sunbreak-river-wildbank-2026-11-18",
+  "task": "sunbreak-river-surface-atmosphere-2026-11-19",
   "engineering": {
     "reviewer": "Descartes",
     "verdict": "CONDITIONAL PASS",
-    "scope": "Source-only WIP checkpoint approved by independent engineering review. All9 functional phases/182 runtime bindings and12 CPU suites/test hashes, terrain agreement, asset provenance/preparation and package bytes verified. Expanded staged-byte audit must pass before upload; upload acknowledgement remains separate. No release acceptance.",
-    "releaseBlockers": [
-      "Three prescribed strict performance failures retained: sunny max1173.1ms with3 frames>50ms; storms52.6ms/1 and53.6ms/4. Cause unknown; no retry-until-pass.",
-      "Art PASS is limited to the four final target stills/three annotated corrections; overall AAA remains REVISE.",
-      "Continuous motion UNVERIFIED. No Pages publication."
-    ],
-    "fixedAuditFindings": [
-      "Rendered/support3.805cm error corrected with aligned0.5m grid; dense5cm probes and reviewer regressions retain original3cm limit, max2.4436cm.",
-      "Riverbed overlay uses same grid/diagonals; double-ray probes establish8mm separation instead of intersecting triangles.",
-      "Modified fords have120ms intermediate support samples, not just endpoints; these are sampled, NOT per-frame continuous review.",
-      "Unchanged deep-channel ballistic descent keeps no-penetration/grounded endpoint tests; original overly broad contact failure retained.",
-      "Cabin tests now require actual door-plane entry and measured key-driven return to porch with timeout/position/support/selection checks. Exact original failed close cause remains unproven."
-    ]
+    "scope": "Final independent engineering review permits source-only WIP checkpoint, conditional on staged-byte audit and preserving first failed unit archive. 15CPU suites,10current functional phases,51images and194runtime bindings valid. Package88files/123715521bytes verified;103shared file hashes match. Sunny PASS, storms FAIL at66.7ms with2/3hitches retained. Upload acknowledgement separate. No release, AAA or continuous-motion acceptance."
   },
   "art": {
     "reviewer": "Lovelace",
     "verdict": "PASS",
-    "scope": "ONLY the three annotated static-visual corrections: naturalized mixed grass, two connected shallow fords and wet-to-dry ground. Not whole-map/AAA or release acceptance.",
     "AAAVerdict": "REVISE",
-    "confidence": "high",
-    "evidence": [
-      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wild-grass.png",
-      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/wet-to-dry.png",
-      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/south-ford.png",
-      "qa/evidence/wildbank-2026-11-18T11-48-27-135Z/north-ford.png"
-    ],
-    "priorNineViewReview": [
-      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/wild-grass.png",
-      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/wet-to-dry.png",
-      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/south-ford.png",
-      "qa/evidence/wildbank-2026-11-18T11-36-18-482Z/north-ford.png",
-      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/riverbank.png",
-      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/reference-close.png",
-      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/valley-hero.png",
-      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/valley-wide.png",
-      "qa/evidence/afterrain-2026-11-18T11-36-40-189Z/sun-side.png"
-    ],
-    "improvements": [
-      "Tall upright and low outward leaves now mix with open cores and shorter sparser edges; pale stems, fluorescent tones and mismatched cyan/lime islands have not returned.",
-      "Both river sections visibly connected without exposed earth dams; central bridge preserved.",
-      "Wet reflective margin grades to matte outer soil, not uniform wet film."
-    ],
+    "confidence": "medium-high",
+    "scope": "ONLY five requested static corrections; all ten final04:28 original-resolution images independently opened. Includes masonry, not a narrowed exclusion. No full-map, source/hash, HUD, motion or release acceptance.",
+    "evidenceDirectory": "qa/evidence/surface-2026-11-19T04-28-11-889Z/",
+    "criteria": {
+      "paths": "PASS",
+      "foundationAndWeeds": "PASS visible areas only",
+      "masonry": "PASS: regular circles gone; brown-grey core, mortar and plaster distinct; fragments correspond to source wall",
+      "AO": "PASS static A/B only; restrained contact, no wide dark halos",
+      "heightFog": "PASS static view only; near clear, far softened, gun not visibly fogged; HUD not shown"
+    },
     "remaining": [
       {
         "severity": "Minor",
         "scope": "this correction",
-        "issue": "Some flat leaves and repeated fan silhouettes remain noticeable up close."
+        "issue": "Very close aggregate relief slightly strong; top-edge spall bands repeat. Nonblocking future polish."
+      },
+      {
+        "severity": "Minor",
+        "scope": "this correction",
+        "issue": "Paths remain slightly clean and uniform in width."
       },
       {
         "severity": "Major",
-        "scope": "whole-map reference quality",
-        "issue": "Pale shore wedge and shallow/deep reflection-transmission relationships remain unfinished."
-      },
-      {
-        "severity": "Major",
-        "scope": "whole-map reference quality",
-        "issue": "Sediment still has planar texture character; embedded rocks/relief, village and mountains remain below reference fidelity."
+        "scope": "whole-map AAA",
+        "issue": "Smooth mountains, simplified vegetation/village layers, unfinished waterbank reflection/sediment detail remain below reference fidelity."
       }
     ],
-    "captureLimit": "Lovelace independently reopened all four listed11:48 current-bound target stills and confirmed scoped static PASS. The11:36 nine-view review is listed separately; final11:48 afterrain views were NOT independently reopened. No continuous-motion, source/license or performance acceptance by visual review."
+    "evidence": [
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/path.png",
+        "sha256": "cde7fa2f304bf7aa2ee8838771b79c305bacae67109c7b91f10dc7418dea3074",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/path.json",
+        "stateSHA256": "ad99ad837f88ea76b572ca2ca4c52dd5a77121df0b9a27ffb36d8badd74624bd"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/surface-close.png",
+        "sha256": "6ed0a39983cffa882a3881064d704f688c23d703ad06682878c0d8570219fe37",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/surface-close.json",
+        "stateSHA256": "b817c9f03bd3beed2a9cfe3072f22744f2e2e270940eae44941ba9750fcb1ad7"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/foundation.png",
+        "sha256": "c838fb45659884afbc90cd9280377c106d134afa23531e58772da4e72e279bc5",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/foundation.json",
+        "stateSHA256": "efedcb248a079da25a3380a2f22b44fd1cd68d535d1301f50c456c8cdc98d1ba"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/ruin.png",
+        "sha256": "85a533d547e6db7f70181b81897ccc36451c244f2cc89b515f873d21a7137b2a",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/ruin.json",
+        "stateSHA256": "22c0cb765148a2e26d807dff6af9818ea794541767157277564db4b39841de0a"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-contact.png",
+        "sha256": "e0c1a0685512ac275fada74306443654d66097d6f77f8908d6b920103a30897c",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-contact.json",
+        "stateSHA256": "7426a692f4951e6f54a7d81cea4778435b3f4fec279c376929be63190688a526"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-no-ao.png",
+        "sha256": "7893624d6ee11ab3e98889c74b33f5d38d4dd922a49d28af07854db5f721ea4c",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/rubble-no-ao.json",
+        "stateSHA256": "5bef0a129037e3e33f03d0a5203a630a2fee6533a389ba40b478ee40e64a636d"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low.png",
+        "sha256": "f154a258491101e055ff090c43f8c00a0186ffa748f3b6bac47f3d8c15b37966",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low.json",
+        "stateSHA256": "f0d2d21d6cd687ae08e7f5609c668f601f640a4d1c32043d1201b301c24b13ec"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low-off.png",
+        "sha256": "1fc92aa19e76a5e294a3ba034872093c04d657d24b9e1c91e05ddc2fb80ddbc6",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-low-off.json",
+        "stateSHA256": "0ce7e581d1a13fd16f5cf0452de083b56af88d92371a87ce3751fb1b7914e56a"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high.png",
+        "sha256": "28adcdae595dba3a392cf9a367eed72cfc70984ffda03b1ea70b3fc9bf8be557",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high.json",
+        "stateSHA256": "fe7b80949c0677dff95b35239a8fe11785956c7741e79c418bfb4f915256792b"
+      },
+      {
+        "path": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high-off.png",
+        "sha256": "be5f1d9d7c33590e5d88b1289e4bf6264f424c9d63bae6466dfe118d9450ad51",
+        "statePath": "qa/evidence/surface-2026-11-19T04-28-11-889Z/fog-high-off.json",
+        "stateSHA256": "ae7eb84f1018c076f5a8c33863a448711eeb0cab4a5232b28bacea4ab9b62be0"
+      }
+    ]
   },
+  "reworkHistory": [
+    {
+      "stage": "first visual review",
+      "reviewer": "Lovelace",
+      "evidenceDirectory": "qa/evidence/surface-2026-11-19T04-07-48-183Z/",
+      "verdict": "REVISE",
+      "finding": "Paths, foundations, AO and haze passed only static scope; homogeneous pale masonry core and fragments were Major and reworked. This historical verdict is not retroactively promoted."
+    },
+    {
+      "stage": "second material visual review",
+      "reviewer": "Lovelace",
+      "evidenceDirectory": "qa/evidence/surface-2026-11-19T04-20-43-177Z/",
+      "verdict": "REVISE",
+      "finding": "Coarse regular grey aggregate circles looked like decorative terrazzo; repeated across core/plaster/chips, high orange-grey contrast. Root replaced cellular dots with fine irregular multiscale noise, reduced feature spacing46mm to12mm and muted palette. Geometry unchanged. New full-resolution review required."
+    },
+    {
+      "stage": "masonry rework GPU compile",
+      "evidence": "qa/evidence/surface-2026-11-19T04-19-40-701Z/surface-1.json",
+      "verdict": "FAIL RETAINED",
+      "finding": "GLSL reserved identifier patch in new masonrySoil function. Root renamed it soilPatch; CPU scalar tests alone did not detect driver compilation error; new native render required."
+    },
+    {
+      "stage": "source audit",
+      "reviewer": "Descartes",
+      "findings": [
+        "Normal blending originally patched object-space branch only; corrected all occurrences and asserted active tangent branch.",
+        "Litter perturbation leaked8.31% at protected bank; corrected mask-gated noise, full foundation exclusion and emitted-expression boundary tests.",
+        "Elevated lintel created fake foundation contact; ground-proximity filter plus doorway regression added."
+      ],
+      "verdict": "Source corrections verified; final tests pending."
+    },
+    {
+      "stage": "harness",
+      "findings": [
+        "First AO-off preview lacked settling time and produced identical PNGs; retained as intermediate only.",
+        "Surface04:04 failed out-of-scope cv reference; corrected canvas lookup.",
+        "Surface04:05 native2D copy/pixel comparison timed out; retained, exact cause unknown. Replaced with proven PNG capture plus offline decode.",
+        "First offline opaque-gun ROI crossed visible trigger gap in high view; full-resolution inspection justified smaller solid receiver ROI; both fog pairs then had0 pixel delta in opaque region.",
+        "Initial ADS assertion compared equal matrices without proving FOV changed while presentation was active. Corrected to exit presentation and require actual right mouse FOV/projection change; final rerun required."
+      ]
+    }
+  ],
   "temporal": {
     "verdict": "UNVERIFIED",
-    "note": "Six timed live-rendered frames are not uninterrupted motion review; prior recording failures retained."
+    "note": "Representative stills and six timed samples are not continuous-motion review."
   },
   "releaseVerdict": "BLOCKED",
-  "publication": "Source-only WIP checkpoint; no Pages update, AAA/UE5 parity or multiplayer claim.",
-  "sources": {
+  "publication": "Source-only WIP; Pages unchanged. No UE5 parity, AAA acceptance or performance speedup claim.",
+  "reviewedSources": {
     "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
     "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
     "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_diff_2k.jpg": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
@@ -180,6 +257,14 @@
     "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
     "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
     "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/ground-surfaces/dirt/color.jpg": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+    "assets/ground-surfaces/dirt/normal.jpg": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+    "assets/ground-surfaces/dirt/official-files.json": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7",
+    "assets/ground-surfaces/dirt/roughness.jpg": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+    "assets/ground-surfaces/forest_ground_04/color.jpg": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+    "assets/ground-surfaces/forest_ground_04/normal.jpg": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+    "assets/ground-surfaces/forest_ground_04/official-files.json": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156",
+    "assets/ground-surfaces/forest_ground_04/roughness.jpg": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
     "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
     "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
     "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
@@ -223,7 +308,7 @@
     "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
     "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
     "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
-    "credits.html": "2b3d14655e1fed6117e7f55d88bcc4c1050ad7547a28bc975417fbc040544276",
+    "credits.html": "a224e46c332bfef63bdc43c687553d61aca17bc096f42a61ccbf76fea5940e6d",
     "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
     "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
     "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
@@ -232,16 +317,20 @@
     "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
     "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
     "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
+    "ground-surface-assets.json": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9",
+    "ground-surface.js": "f40e9066a997736f7048be75b84392d00a3f771290b56d387f7f01c8b41a978e",
+    "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
     "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
     "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
-    "qa/browser.mjs": "065726152677ebcfd92c7dd64ddf35d14e28c2c2c5768284bb7ebba4563d91b8",
-    "qa/hooks.js": "fa53187e7312b77c83381b8201c102d5711f0a38c127dd5f29969a82a182e695",
-    "qa/source-binding.mjs": "56c0396542f83abda0251e0f584411baa8232806ad2519941a46231cf85877f8",
+    "masonry-materials.js": "bad0e596d1cc187f1016a4eedaf7495ba98624f311617c052c32b310b4de04d5",
+    "qa/browser.mjs": "40098a31a3569a1bd4563c9ad5bac840e15457fd26de4f8dda10be46d94dba9a",
+    "qa/hooks.js": "15d35d93dfad3c8da9ab2662173e371f739d4d08b30483f8ee3c3fb6ef986183",
+    "qa/source-binding.mjs": "1067d555f9b96111e47a12d8620ecc2a4fb06eca8a644e4913e6c27abce9ec22",
     "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
     "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
     "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
-    "ruins.js": "0cf986fd459c8d3bce440819e5f9cd3d69064d4fd492ba028c84472cb60e8ac9",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
     "serve.mjs": "bf00904582bfbdb3ce43d51f7f6ee1b18557215443584d9e29549b50643aca1a",
     "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
     "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
@@ -249,10 +338,11 @@
     "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
     "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
     "vegetation.js": "0d75f587ad73497dcdce28dd91096e7b2efd5fda83f205d0e8bf406170553fe6",
-    "village.js": "8760436a76e60842a89eababa334c6169f209f9686df3e5cc12440a01975d1a5",
+    "village.js": "49a60c211a1376c6f29babe81659f5414e0742bd0490378b0e4b58c7a31bf7b3",
     "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
     "weapon.js": "c23ef76cd77d7cf83e115c32f5eef03d6a69bcf3c617e927b32e1d409bbb5fa2",
     "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
-    "world.js": "692e65a25de8de60005b001acba48f29ae7e5c1afae22e1e5b877e239ca95ae6"
-  }
+    "world.js": "310f5b6c2fa30b8bd8cc66ed0e987af90f6ee5436a7a7db09f919a396f5c97a9"
+  },
+  "reviewBindingMethod": "Integrator recorded exact SHA256 PNG/sidecar identity and the source map carried by the ten final 04:28 images after Lovelace explicitly reopened those images and returned scoped PASS. Reviewer did not independently attest source hashes. Not relabeled from prior candidate."
 }

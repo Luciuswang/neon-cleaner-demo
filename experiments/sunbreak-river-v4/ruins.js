@@ -1,17 +1,15 @@
 import {fracturedSlab} from './fracture-geometry.js';
 import {rubbleHeight} from './map-layout.js';
+import {createMasonryMaterial,MASONRY_PALETTE} from './masonry-materials.js';
 
 // Static collapsed masonry. Piles and every exposed fragment share exact walk
 // support; a meter-cell index avoids scanning the whole debris field each frame.
 export function buildRuins({T,world,materials,layout,solids}){
  const group=new T.Group();group.name='structurally-grounded-collapse';world.add(group);
- const face=materials.plaster.clone(),edge=materials.brick.clone(),stone=materials.stone.clone();
- face.color.set(0xb1a48e);face.normalScale.set(.5,.5);face.roughness=.89;
- face.onBeforeCompile=s=>{s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>','#include <map_fragment>\ndiffuseColor.rgb=mix(diffuseColor.rgb,diffuse*vec3(.69,.68,.62),.35);')};
- face.customProgramCacheKey=()=> 'ruin-plaster-metres-v2';
- edge.color.set(0x8d7762);edge.normalScale.set(.7,.7);edge.roughness=.94;
- stone.color.set(0x9e9180);stone.roughness=.92;stone.normalScale.set(.65,.65);
- const buckets=[{p:[],n:[],uv:[]},{p:[],n:[],uv:[]}],supportTriangles=[],supportCells=new Map();let slabs=0,chips=0,seed=4107;
+ const face=createMasonryMaterial(T,materials.plaster,{color:0xb9b5aa});
+ const edge=createMasonryMaterial(T,materials.brick,{role:'core',color:MASONRY_PALETTE.clay});
+ const stone=createMasonryMaterial(T,materials.stone,{role:'aggregate',color:0x80796b});
+ const buckets=[{p:[],n:[],uv:[],break:[]},{p:[],n:[],uv:[],break:[]}],supportTriangles=[],supportCells=new Map();let slabs=0,chips=0,seed=4107;
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
  const matrix=new T.Matrix4(),rotation=new T.Quaternion(),euler=new T.Euler();
  function fragment(w,h,d,x,z,rx,ry,rz,kind=0,walkable=false){
@@ -29,7 +27,12 @@ export function buildRuins({T,world,materials,layout,solids}){
    const denominator=(b.z-c.z)*(a.x-c.x)+(c.x-b.x)*(a.z-c.z);if(Math.abs(denominator)<1e-10)continue;
    supportTriangles.push({a,b,c,denominator,minX:Math.min(a.x,b.x,c.x),maxX:Math.max(a.x,b.x,c.x),minZ:Math.min(a.z,b.z,c.z),maxZ:Math.max(a.z,b.z,c.z)});
   }
-  for(const part of g.groups){const material=kind===1?1:part.materialIndex,b=buckets[material],uvScale=material?1:2.4;for(let i=part.start;i<part.start+part.count;i++){b.p.push(p.getX(i),p.getY(i),p.getZ(i));b.n.push(g.attributes.normal.getX(i),g.attributes.normal.getY(i),g.attributes.normal.getZ(i));b.uv.push(g.attributes.uv.getX(i)*uvScale,g.attributes.uv.getY(i)*uvScale)}}
+  for(const part of g.groups){const material=kind===1?1:part.materialIndex,b=buckets[material];for(let i=part.start;i<part.start+part.count;i++){
+   b.p.push(p.getX(i),p.getY(i),p.getZ(i));b.n.push(g.attributes.normal.getX(i),g.attributes.normal.getY(i),g.attributes.normal.getZ(i));b.uv.push(g.attributes.uv.getX(i),g.attributes.uv.getY(i));
+   // Cap fans already have separate centre/rim vertices. Preserve every one;
+   // encode missing coating and a thin broken perimeter as material data only.
+   b.break.push(walkable?.12:.68,i%3===0?Math.min(w,h)*.36:0);
+  }}
   g.dispose();slabs++;
  }
  for(const m of layout.rubbleMounds){
@@ -61,7 +64,7 @@ export function buildRuins({T,world,materials,layout,solids}){
  for(const t of supportTriangles)for(let gx=Math.floor(t.minX);gx<=Math.floor(t.maxX);gx++)for(let gz=Math.floor(t.minZ);gz<=Math.floor(t.maxZ);gz++){
   const key=gx+','+gz;if(!supportCells.has(key))supportCells.set(key,[]);supportCells.get(key).push(t);
  }
- buckets.forEach((b,i)=>{const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(b.p,3));g.setAttribute('normal',new T.Float32BufferAttribute(b.n,3));g.setAttribute('uv',new T.Float32BufferAttribute(b.uv,2));g.computeBoundingSphere();const mesh=new T.Mesh(g,i?edge:face);mesh.name=i?'broken-brick-edges':'fallen-plaster-faces';mesh.castShadow=mesh.receiveShadow=true;group.add(mesh);solids.push(mesh);triangles+=b.p.length/9});
+ buckets.forEach((b,i)=>{const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(b.p,3));g.setAttribute('normal',new T.Float32BufferAttribute(b.n,3));g.setAttribute('uv',new T.Float32BufferAttribute(b.uv,2));if(!i)g.setAttribute('masonryBreak',new T.Float32BufferAttribute(b.break,2));g.computeBoundingSphere();const mesh=new T.Mesh(g,i?edge:face);mesh.name=i?'broken-brick-edges':'fallen-plaster-faces';mesh.castShadow=mesh.receiveShadow=true;group.add(mesh);solids.push(mesh);triangles+=b.p.length/9});
  return {
   floorHeight(x,z){let height=-Infinity;for(const t of supportCells.get(Math.floor(x)+','+Math.floor(z))||[]){
    if(x<t.minX||x>t.maxX||z<t.minZ||z>t.maxZ)continue;

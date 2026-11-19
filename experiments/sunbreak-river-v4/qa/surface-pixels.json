@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "testSHA256": "7f46c600de7cfd730531f357e2e9654556d000717ae22bb220419839d64b8bc1",
+  "method": "Pillow offline PNG decode; numeric difference is not art acceptance",
+  "pairs": [
+    {
+      "first": "rubble-contact",
+      "second": "rubble-no-ao",
+      "meanAbsoluteRGB": [
+        1.8050959683641976,
+        1.7218287037037037,
+        1.5754673032407407
+      ],
+      "changedBounds": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "opaqueGunMaxDelta": 0,
+      "sha256": {
+        "rubble-contact": "e0c1a0685512ac275fada74306443654d66097d6f77f8908d6b920103a30897c",
+        "rubble-no-ao": "7893624d6ee11ab3e98889c74b33f5d38d4dd922a49d28af07854db5f721ea4c"
+      }
+    },
+    {
+      "first": "fog-low",
+      "second": "fog-low-off",
+      "meanAbsoluteRGB": [
+        3.639899691358025,
+        5.0659529320987655,
+        6.76974537037037
+      ],
+      "changedBounds": [
+        0,
+        216,
+        1920,
+        1071
+      ],
+      "opaqueGunMaxDelta": 0,
+      "sha256": {
+        "fog-low": "f154a258491101e055ff090c43f8c00a0186ffa748f3b6bac47f3d8c15b37966",
+        "fog-low-off": "1fc92aa19e76a5e294a3ba034872093c04d657d24b9e1c91e05ddc2fb80ddbc6"
+      }
+    },
+    {
+      "first": "fog-high",
+      "second": "fog-high-off",
+      "meanAbsoluteRGB": [
+        4.439606963734568,
+        6.960883005401235,
+        10.077587770061728
+      ],
+      "changedBounds": [
+        0,
+        149,
+        1920,
+        1080
+      ],
+      "opaqueGunMaxDelta": 0,
+      "sha256": {
+        "fog-high": "28adcdae595dba3a392cf9a367eed72cfc70984ffda03b1ea70b3fc9bf8be557",
+        "fog-high-off": "be5f1d9d7c33590e5d88b1289e4bf6264f424c9d63bae6466dfe118d9450ad51"
+      }
+    }
+  ],
+  "pass": true
+}

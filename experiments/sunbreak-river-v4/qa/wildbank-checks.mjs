@@ -4,6 +4,7 @@ import * as T from '../../sunbreak-storm-v3/vendor/three/build/three.module.js';
 import {groundHeight,landscapeHeight,terrainHeight,riverWidth,MAP,TERRAIN_GRID} from '../map-layout.js';
 import {soilMoisture,SOIL_MOISTURE_GLSL} from '../ground-moisture.js';
 import {installTerrainRaycast} from '../terrain-ray.js';
+import {installGroundSurface} from '../ground-surface.js';
 let checked=0,maxSupportError=0;
 function check(v,m){assert.ok(v,m);checked++}
 const body=SOIL_MOISTURE_GLSL.match(/float soilMoisture\(vec2 p,float rain\)\{([\s\S]*?)\n \}/)[1].replace(/\bfloat\b/g,'let');
@@ -42,6 +43,14 @@ for(const z0 of [-23,15])for(let dz=-3.5;dz<=3.5;dz+=.23)for(let x=-5;x<=5;x+=.2
  ray.set(new T.Vector3(x,2,z0+dz),down);const baseHit=ray.intersectObject(mesh)[0],bedHit=ray.intersectObject(bed)[0];
  check(Math.abs(bedHit.point.y-baseHit.point.y-.008)<1e-6,'bed remains 8mm above ground throughout slopes, no intersecting patch seams');
 }
-check(world.includes('SOIL_MOISTURE_GLSL')&&world.includes('vec3 drySoil=')&&world.includes('roughnessFactor=mix(max(roughnessFactor,.89)'),'real ground shader uses color and roughness moisture zoning');
+// Ground shading was extracted into a three-material module. Test the actual
+// emitted shader instead of requiring the old inline variable/token spelling.
+const surface=new T.MeshStandardMaterial(),layer={map:new T.Texture(),normalMap:new T.Texture(),roughnessMap:new T.Texture()},compiled={uniforms:{},vertexShader:T.ShaderLib.standard.vertexShader,fragmentShader:T.ShaderLib.standard.fragmentShader};
+installGroundSurface(T,surface,{dirt:layer,forest:layer,rain:{value:0}});surface.onBeforeCompile(compiled);
+check(world.includes('installGroundSurface(T,mud,')&&compiled.fragmentShader.includes(SOIL_MOISTURE_GLSL)&&compiled.fragmentShader.includes('soilMoisture(gp,soilRain)'),'actual attached ground shader uses existing geographic moisture field');
+check(compiled.fragmentShader.includes('surface*=mix(vec3(1.42,1.34,1.20),vec3(.66,.70,.67),soilWet)'),'geographic wetness darkens all three albedo layers');
+const roughExpression=compiled.fragmentShader.match(/roughnessFactor=(mix\(max\(roughnessFactor,[^;]+);/)[1];
+const roughShader=new Function('roughnessFactor','earthNoise','gp','soilWet','max','mix','return '+roughExpression),mix=(a,b,t)=>a+(b-a)*t;
+for(const base of [0,.3,.7,1])for(const noise of [0,.5,1]){const dry=roughShader(base,()=>noise,1,0,Math.max,mix),wet=roughShader(base,()=>noise,1,1,Math.max,mix);check(dry>wet&&dry<=1&&wet>=0,'actual emitted wet/dry roughness remains bounded with wetter ground smoother');}
 check(!world.includes('float wetPocket='),'removed blanket scattered wet-film shader');
 console.log(JSON.stringify({pass:true,checked,maxSupportError,scope:'actual GLSL wet/dry field and rendered terrain ray support at both dug fords; independent canvas art still required'}));

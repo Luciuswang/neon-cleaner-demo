@@ -1,6 +1,6 @@
 {
   "schema": "sunbreak-buffer-node-v1",
-  "date": "2026-11-18T11:59:11.529Z",
+  "date": "2026-11-19T04:42:36.836Z",
   "pass": true,
   "unitPass": true,
   "integrationPass": true,
@@ -42,7 +42,7 @@
     "timber-house.js": "42881d9eeea675d2e7881fc9351f93d9727c093b96a14f4fa95cb310d68996cb",
     "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
     "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
-    "world.js": "692e65a25de8de60005b001acba48f29ae7e5c1afae22e1e5b877e239ca95ae6",
+    "world.js": "310f5b6c2fa30b8bd8cc66ed0e987af90f6ee5436a7a7db09f919a396f5c97a9",
     "index.html": "169e6d1cbffaf4e2e89c925259db84ff03eef923231338cc6eb8e90b344a44b2",
     "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
     "qa/buffer-checks.mjs": "06bb2700be8242da806367220748757ec61ad0e6a9e148673aa8b0218ad01389",

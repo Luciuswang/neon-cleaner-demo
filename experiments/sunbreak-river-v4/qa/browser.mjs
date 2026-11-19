@@ -6,6 +6,7 @@ import {resolve,dirname,basename} from 'node:path';
 import {tmpdir} from 'node:os';
 import {fileURLToPath} from 'node:url';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 const game=fileURLToPath(new URL('../',import.meta.url));
 const phase=process.argv.find(a=>a.startsWith('--phase='))?.slice(8)||'inspect';
 const live=phase==='public';
@@ -13,7 +14,7 @@ const output=resolve(game,'qa/evidence',phase+'-'+new Date().toISOString().repla
 const chrome=['C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'].find(existsSync);
 assert.ok(chrome);
 const profile=await mkdtemp(resolve(tmpdir(),'sunbreak-auto-'));
-let browser,socket,session,sequence=0;const pending=new Map(),errors=[],results=[],trace=[];let traceDone=false;
+let browser,socket,session,sequence=0;const pending=new Map(),errors=[],results=[],trace=[],captureHashes={};let traceDone=false;
 const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 function send(method,params={},sessionId=session){
  const id=++sequence;return new Promise((resolve,reject)=>{
@@ -41,7 +42,7 @@ async function capture(name){
  console.log('Encoded '+name+' '+length);
  let data='';for(let i=0;i<length;i+=65536)data+=await evaluate(`window.__riverCapture.slice(${i},${i+65536})`);
  await evaluate('delete window.__riverCapture');
- await writeFile(resolve(output,name+'.png'),Buffer.from(data,'base64'));
+ const bytes=Buffer.from(data,'base64');captureHashes[name]=createHash('sha256').update(bytes).digest('hex');await writeFile(resolve(output,name+'.png'),bytes);
  const state=await snapshot();await writeFile(resolve(output,name+'.json'),JSON.stringify(state,null,2)+'\n');return state;
 }
 try {
@@ -70,6 +71,28 @@ try {
  if(!live&&weatherArg)await evaluate(`arenaQA.weather(${Number(weatherArg.slice(10))})`);
  if(phase==='quick'){
   console.log('Ready');if(process.argv.includes('--no-post'))await evaluate("document.getElementById('bPost').click()");await evaluate('arenaQA.view(-7,1.7,24,-.24,-.1)');console.log('View set');await delay(300);await capture('quick');console.log('Captured');
+ }else if(phase==='surface-preview'){
+  for(const [name,...v]of [['path',-10,2,24,0,-.23],['foundation',-21,1.3,22,-.9,-.35],['ruin',-12,1.7,22,.9,-.15]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}
+  await evaluate('arenaQA.setAO(false)');await delay(400);await capture('ruin-no-ao');
+ }else if(phase==='surface'){
+  const info=await evaluate('arenaQA.surfaceInfo()');
+  check('three-material zones, low weeds, physical AO and fog enabled',info.weeds.instances>0&&info.aoEnabled&&info.fog.enabled&&info.fog.materials>10&&info.fog.explicitPatches===1&&info.gunFogged===0,info);
+  for(const [name,...v]of [['path',-10,2,24,0,-.23],['surface-close',-10,2.3,12,.65,-.9],['foundation',-21,1.3,22,-.9,-.35],['ruin',-12,1.7,22,.9,-.15],['rubble-contact',-14,1.2,21.5,1.2,-.55]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(500);await capture(name)}
+  const on=await snapshot();await evaluate('arenaQA.setAO(false)');await delay(500);const off=await capture('rubble-no-ao');
+  check('AO A/B fixed camera and actual toggle',JSON.stringify(on.camera)===JSON.stringify(off.camera)&&!off.surface.aoEnabled);
+  check('AO produces distinct rendered PNG (offline pixel and art review separate)',captureHashes['rubble-contact']!==captureHashes['rubble-no-ao'],captureHashes);
+  await evaluate('arenaQA.setAO(true)');
+  for(const [name,y,pitch]of [['fog-low',1.7,-.08],['fog-high',14,-.22]]){
+   await evaluate(`arenaQA.view(-7,${y},24,-.24,${pitch});arenaQA.setFog(true)`);await delay(500);const a=await capture(name);
+   await evaluate('arenaQA.setFog(false)');await delay(500);const b=await capture(name+'-off');
+   check(name+' fixed camera, gun excluded and fog toggle',JSON.stringify(a.camera)===JSON.stringify(b.camera)&&a.surface.fog.enabled&&!b.surface.fog.enabled&&b.surface.gunFogged===0);
+   check(name+' produces distinct rendered PNG',captureHashes[name]!==captureHashes[name+'-off'],captureHashes);
+  }
+  await evaluate('arenaQA.setFog(true)');
+  for(const w of [2,1,0]){await evaluate(`arenaQA.weather(${w})`);await delay(300);const s=await evaluate('arenaQA.surfaceInfo()');check('fog weather '+w,s.fog.weather===w&&s.fog.enabled,s.fog)}
+  await evaluate('arenaQA.setPresentation(false)');await evaluate("document.getElementById('bStart').click();arenaQA.reset();arenaQA.resume()",true);await delay(200);
+  const neutral=await snapshot();await mouse(true,'right');await delay(600);
+  const aimed=await snapshot(),ads=aimed.surface;check('actual right mouse narrows FOV and AO projection follows ADS',aimed.camera.fov<neutral.camera.fov-5&&ads.projection[0]>neutral.surface.projection[0]*1.1&&JSON.stringify(ads.projection)===JSON.stringify(ads.cameraProjection),{neutralFOV:neutral.camera.fov,aimedFOV:aimed.camera.fov,neutralProjection0:neutral.surface.projection[0],...ads});await mouse(false,'right');
  }else if(phase==='wildbank'){
   check('after-rain default weather',(await evaluate('arenaQA.mapInfo()')).weather===0);
   for(const [name,...v]of [['south-ford',0,1.8,22,0,-.34],['north-ford',0,1.8,-17,0,-.34],['wet-to-dry',-4,2.4,20,1.35,-.78],['wild-grass',-5.9,1.05,12,-.78,-.54]]){await evaluate(`arenaQA.view(${v.join(',')})`);await delay(400);await capture(name)}

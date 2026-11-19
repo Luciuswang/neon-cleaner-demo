@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261119T044431Z-0496e86d01",
+  "task_id": "sunbreak-river-surface-atmosphere-2026-11-19",
+  "timestamp_utc": "2026-11-19T04:44:31.662607+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "River surface-atmosphere 2026-11-19: three PBR terrain zones and low foundation weeds; material-only exposed masonry; physical SSAO depth/projection fix; original analytic height haze with reflection clipping. Scoped independent art PASS, engineering CONDITIONAL PASS for source-only WIP. 15 CPU suites and 10 current native browser phases pass, 51 images/194 runtime bindings; staged audit352 PASS. Sunny strict sample PASS; storms retained FAIL max66.7ms with2/3 hitches. AAA REVISE, motion UNVERIFIED, release BLOCKED; Pages unchanged. Next: investigate storm hitches and continuous motion; optional close aggregate/path polish. Unrelated dirty private vault preserved; private transfer skipped, no full UE portability claim. Task and current QA: docs/tasks/sunbreak-river-surface-atmosphere-2026-11-19.md and experiments/sunbreak-river-v4/qa/release.json.",
+  "commit_shas": [
+    "ef60b6816d96580d1463a17073e34af4b73aa72a"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

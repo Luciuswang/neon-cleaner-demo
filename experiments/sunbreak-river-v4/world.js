@@ -19,6 +19,8 @@ import {buildRiverbankDetail} from './riverbank-detail.js';
 import {buildDistantLandscape} from './distant-landscape.js';
 import {buildRiverWater} from './river-water.js';
 import {SOIL_MOISTURE_GLSL,soilMoisture} from './ground-moisture.js';
+import {applySurfaceAttributes,installGroundSurface,buildFoundationWeeds,surfaceZones} from './ground-surface.js';
+import {createHeightFog} from './height-fog.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
@@ -45,6 +47,8 @@ export async function buildWorld(ctx){
   ...local.assets.filter(a=>a.kind==='surface').map(a=>surface(({brown_mud_02:'mud',rocky_gravel:'stone',brick_moss_001:'brick'})[a.id],a.files))]);
  materials.metal=new T.MeshStandardMaterial({color:0x4e5149,roughness:.65,metalness:.6});
  materials.roof.color.set(0x5f5445);materials.wood.color.set(0x9b9280);materials.plaster.color.set(0xdbceb0);
+ const groundAssets=await fetch('./river/ground-surface-assets.json').then(r=>r.json());
+ await Promise.all(groundAssets.assets.map(a=>surface(a.id,a.files.map(f=>({role:f.role,path:'./river/'+f.file})))));
  const [hdr,cloudHDR]=await Promise.all([
   new RGBELoader().setDataType(T.FloatType).loadAsync('./river/assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr'),
   new RGBELoader().loadAsync('./assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr')]);
@@ -78,44 +82,7 @@ export async function buildWorld(ctx){
  rnd.setPixelRatio(Math.min(devicePixelRatio,1.5));rnd.toneMappingExposure=1.08;
 
  const mud=materials.mud.clone();mud.roughness=.94;mud.normalScale.set(.80,.80);mud.envMapIntensity=.38;mud.color.set(0xd5c9b4);
- mud.onBeforeCompile=s=>{
-  s.uniforms.gravelMap={value:materials.stone.map};
-  s.uniforms.soilRain=rainStrength;
-  s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vGroundWorld;').replace('#include <begin_vertex>','#include <begin_vertex>\nvGroundWorld=(modelMatrix*vec4(position,1.)).xyz;');
-  s.fragmentShader=s.fragmentShader.replace('#include <common>',`#include <common>
-   varying vec3 vGroundWorld;uniform sampler2D gravelMap;uniform float soilRain;
-   ${SOIL_MOISTURE_GLSL}
-   float earthHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-   float earthNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(earthHash(i),earthHash(i+vec2(1,0)),f.x),mix(earthHash(i+vec2(0,1)),earthHash(i+1.),f.x),f.y);}
-   float pathAt(vec2 p){float bank=1.-smoothstep(1.4,2.7,abs(abs(p.x)-11.2-sin(p.y*.15)*.6));float cross=1.-smoothstep(.9,2.2,min(min(abs(p.y+23.),abs(p.y+4.)),abs(p.y-15.)));return max(bank,cross);}
-  `);
-  s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
-   vec2 gp=vGroundWorld.xz;float macro=earthNoise(gp*.13)*.65+earthNoise(gp*.47)*.35;
-   float road=pathAt(gp);float aggregate=smoothstep(.30,.75,earthNoise(gp*.92))*road*.46;
-   vec3 gravel=texture2D(gravelMap,gp/2.1).rgb*vec3(.70,.65,.54);
-   diffuseColor.rgb=mix(diffuseColor.rgb,gravel,aggregate);
-   diffuseColor.rgb*=mix(vec3(.66,.70,.62),vec3(1.09,1.03,.92),macro);
-   float axis=abs(gp.x)-11.2-sin(gp.y*.15)*.6;
-   float rut=(1.-smoothstep(.10,.23,abs(abs(axis)-.64)))*road;
-   float tread=pow(.5+.5*cos(gp.y*31.+axis*9.),5.);
-   diffuseColor.rgb*=1.-rut*(.09+tread*.09);
-   float soilLuma=dot(diffuseColor.rgb,vec3(.2126,.7152,.0722));
-   diffuseColor.rgb=mix(vec3(soilLuma)*vec3(.95,1.,.89),diffuseColor.rgb,.72);
-   float forestFloor=smoothstep(34.,49.,max(abs(gp.x),abs(gp.y+4.)));
-   diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*vec3(.63,.83,.47),forestFloor*(.54+macro*.3));
-   float soilWet=soilMoisture(gp,soilRain);
-   // Dry mineral fines are lighter and matte; saturated bank mud is darker.
-   // Keep scanned structure and broad dry areas rather than a uniform grade.
-   vec3 drySoil=diffuseColor.rgb*vec3(1.48,1.40,1.25);
-   vec3 wetSoil=diffuseColor.rgb*vec3(.66,.70,.67);
-   diffuseColor.rgb=mix(drySoil,wetSoil,soilWet);
-  `);
-  s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>',`#include <roughnessmap_fragment>
-   float pore=earthNoise(vGroundWorld.xz*2.3);
-   roughnessFactor=mix(max(roughnessFactor,.89),.34+pore*.14,soilWet);`);
-  s.fragmentShader=s.fragmentShader.replace('#include <normal_fragment_maps>',`#include <normal_fragment_maps>
-   normal=normalize(mix(nonPerturbedNormal,normal,mix(1.,.68,soilWet)));`);
- };mud.customProgramCacheKey=()=> 'river-wet-bank-dry-village-v3';
+ installGroundSurface(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength});
  const geo=new T.PlaneGeometry(TERRAIN_GRID.size,TERRAIN_GRID.size,TERRAIN_GRID.segments,TERRAIN_GRID.segments);geo.rotateX(-Math.PI/2);
  const p=geo.attributes.position,uv=geo.attributes.uv;
  for(let i=0;i<p.count;i++){
@@ -123,6 +90,7 @@ export async function buildWorld(ctx){
   let y=landscapeHeight(x,z);
   p.setY(i,y);uv.setXY(i,x/3,z/3);
  }geo.computeVertexNormals();
+ applySurfaceAttributes(T,geo);
  const terrain=new T.Mesh(geo,mud);terrain.receiveShadow=true;installTerrainRaycast(T,terrain,TERRAIN_GRID.size,TERRAIN_GRID.segments);world.add(terrain);solids.push(terrain);
  // A separate measured riverbed follows the same height contract, with gravel.
  // Same 0.5m cells/diagonals as the ground underneath. Finer mismatched
@@ -141,6 +109,7 @@ export async function buildWorld(ctx){
  const ruins=buildRuins({T,world,materials,layout,solids});
  const buffers=buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements});
  const foliage=await buildVegetation(T,world);
+ const foundationWeeds=await buildFoundationWeeds(T,world);
  const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials});
 
@@ -176,8 +145,24 @@ export async function buildWorld(ctx){
   const shade=new T.Mesh(new T.SphereGeometry(.095,8,6),new T.MeshStandardMaterial({color:0xffbd76,emissive:0xffa347,emissiveIntensity:3}));shade.position.copy(light.position);world.add(shade);
  }
  const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene}),buildActors({THREE:T,enemies})]);
+ // Install last so terrain, masonry and wind hooks compose rather than replace
+ // one another. Gun/HUD are deliberately outside these world/enemy roots.
+ const haze=createHeightFog(T);haze.install(world);enemies.forEach(e=>haze.install(e.g));
+ haze.shaderPatch(water.mesh.material,{worldPosition:'vRiver'});
+ const reflectedRender=water.mesh.onBeforeRender;
+ water.mesh.onBeforeRender=function(...args){
+  haze.setReflection(true,MAP.waterY);
+  try{return reflectedRender.apply(this,args)}finally{haze.setReflection(false,MAP.waterY)}
+ };
  const composer=new EffectComposer(rnd);composer.addPass(new RenderPass(scene,cam));
- const ao=new SSAOPass(scene,cam,innerWidth,innerHeight);ao.kernelRadius=.55;ao.minDistance=.003;ao.maxDistance=.065;composer.addPass(ao);
+ const ao=new SSAOPass(scene,cam,innerWidth,innerHeight);ao.kernelRadius=.9;
+ // SSAO delta is normalized linear camera depth; values are NOT world metres.
+ // Old .003 meant ~3m, rejecting contacts inside a .55m sample hemisphere.
+ const aoSettings={radius:.9,minMetres:.02,maxMetres:1.4};
+ const refreshAO=()=>{const span=cam.far-cam.near;ao.minDistance=aoSettings.minMetres/span;ao.maxDistance=aoSettings.maxMetres/span;
+  ao.ssaoMaterial.uniforms.cameraProjectionMatrix.value.copy(cam.projectionMatrix);ao.ssaoMaterial.uniforms.cameraInverseProjectionMatrix.value.copy(cam.projectionMatrixInverse);
+  ao.ssaoMaterial.uniforms.cameraNear.value=cam.near;ao.ssaoMaterial.uniforms.cameraFar.value=cam.far;};
+ refreshAO();composer.addPass(ao);
  // Transparent water/bed decals have their own depth-shaped shading. The SSAO
  // normal override would replace their clipping shader with a solid rectangle,
  // creating phantom occlusion and burying stones below an invisible plane.
@@ -205,6 +190,7 @@ export async function buildWorld(ctx){
   rnd.toneMappingExposure=day?1.18:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;water.setDay(day);mud.roughness=wet?.76:.91;
   flash=0;flashLight.intensity=0;
   distant.setWeather(weather);
+  haze.setWeather(weather);
   const visited=new Set();world.traverse(o=>{if(o.isPointLight){o.userData.weatherBase??=o.intensity;o.intensity=o.userData.weatherBase*(day?.20:1)}if(o.isMesh)for(const m of [].concat(o.material)){if(!m||visited.has(m))continue;visited.add(m);
    if(m.name==='WindowTrim')m.color.set(0x999d92);
    if(m.envMapIntensity!==undefined&&!m.name.startsWith('landscape-')){m.userData.baseEnvironment??=m.envMapIntensity;m.envMapIntensity=m.userData.baseEnvironment*(day?1.05:1)}
@@ -233,7 +219,8 @@ export async function buildWorld(ctx){
    const muted=document.getElementById('bMute').getAttribute('aria-pressed')==='true',volume=Number(document.getElementById('soundVolume').value)/100;
    weatherAudio.update(live&&weather===2,muted,volume);weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
   },
-  render(){water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
+  render(){refreshAO();water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
+  surfaceQA:{setAO(value){ao.enabled=!!value},setFog(value){haze.setEnabled(value)},info(){return{aoEnabled:ao.enabled,aoSettings,aoMin:ao.minDistance,aoMax:ao.maxDistance,projection:ao.ssaoMaterial.uniforms.cameraProjectionMatrix.value.elements.slice(),cameraProjection:cam.projectionMatrix.elements.slice(),fog:haze.info(),gunFogged:(()=>{let n=0;gscene.traverse(o=>{for(const m of [].concat(o.material||[]))if(m.customProgramCacheKey?.().includes('analytic-height-haze'))n++});return n})(),weeds:foundationWeeds.info(),zones:[[-10,12],[-17,17],[-22,12],[-4,10]].map(([x,z])=>({x,z,...surfaceZones(x,z)}))}}},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
   info(){return{version:'river-v4-wildbank',textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
   actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa

@@ -1,32 +1,16 @@
 import {wallTopAt} from './map-layout.js';
+import {cloneSurfaceMaterial,createMasonryMaterial,MASONRY_PALETTE} from './masonry-materials.js';
 export function buildVillage({ T, world, materials, layout, solids }) {
   const G = new T.Group(); G.name = 'village'; world.add(G);
   let seed = 1337;
   const R = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const tint = (k, c) => { const m = (materials[k] || materials.plaster).clone(); m.color.set(c); return m; };
+  const tint = (k, c) => cloneSurfaceMaterial(T,materials[k]||materials.plaster,c);
   const M = {
-    ochre: tint('plaster', 0xb3a17b), ivory: tint('plaster', 0xc2c0ac), plaster: materials.plaster,
-    brick: materials.brick, stone: materials.stone, metal: materials.metal,
+    ochre:createMasonryMaterial(T,materials.plaster,{color:0xbab5a5}),ivory:createMasonryMaterial(T,materials.plaster,{color:0xc1c2b9}),plaster:createMasonryMaterial(T,materials.plaster),
+    brick:createMasonryMaterial(T,materials.brick,{role:'course',color:MASONRY_PALETTE.course}),stone:createMasonryMaterial(T,materials.stone,{role:'stone',color:0x9b9e92}),metal:tint('metal',materials.metal.color),
     wood: tint('wood', 0x5b3e27), woodA: tint('wood', 0x8d8473), woodB: tint('wood', 0x6f6352),
     shutter: tint('wood', 0x3f5f52), roof: tint('roof', 0x4b3b36), tile: tint('roof', 0x3a2c29)
   };
-  for (const k in M) {
-    const m = M[k]; if (!m) continue;
-    for (const t of ['map', 'normalMap', 'roughnessMap', 'aoMap']) {
-      if (m[t]) { m[t].wrapS = m[t].wrapT = T.RepeatWrapping; m[t].needsUpdate = true; }
-    }
-  }
-  // Preserve photographed microdetail but remove oversized high-contrast stains.
-  for(const key of ['ochre','ivory','plaster','stone']){
-    const mat=M[key];mat.normalScale.set(.48,.48);mat.roughness=.88;
-    mat.onBeforeCompile=s=>{
-      s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 facadePos;').replace('#include <begin_vertex>','#include <begin_vertex>\nfacadePos=(modelMatrix*vec4(position,1.)).xyz;');
-      s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 facadePos;').replace('#include <map_fragment>',`#include <map_fragment>
-        diffuseColor.rgb=mix(diffuseColor.rgb,diffuse*vec3(.69,.68,.62),.35);
-        diffuseColor.rgb*=mix(vec3(.57,.63,.52),vec3(1.),smoothstep(0.,1.0,facadePos.y));`);
-    };mat.customProgramCacheKey=()=> 'village-soft-surface-'+key;
-  }
-  M.stone.color.set(0x8a9280);
   const B = {};
   let boxes = 0, solidCount = 0;
   // batched visual box, UVs in meters
@@ -38,17 +22,26 @@ export function buildVillage({ T, world, materials, layout, solids }) {
   const add = (k, w, h, d, x, y, z, rz = 0, ry = 0, profile=null) => {
     if (!M[k]) k = 'plaster';
     const g = wallGeometry(w,h,d,profile), uv = g.attributes.uv,p=g.attributes.position,n=g.attributes.normal;
+    const breakDistance=[];
     for (let i = 0; i < uv.count; i++) {
       uv.setXY(i,Math.abs(n.getX(i))>.7?p.getZ(i)+d/2:p.getX(i)+w/2,Math.abs(n.getY(i))>.7?p.getZ(i)+d/2:p.getY(i)+h/2);
-      if(['ochre','ivory','plaster'].includes(k))uv.setXY(i,uv.getX(i)*2.4,uv.getY(i)*2.4);
+      // Distance from the exact unchanged fracture profile, not a horizontal
+      // painted stripe. Interpolates across the existing side subdivisions.
+      breakDistance.push(profile?Math.max(0,wallTopAt(profile,profile.x+p.getX(i),profile.z+p.getZ(i))-profile.y-p.getY(i)):10);
     }
     if (ry) g.rotateY(ry);
     if (rz) g.rotateZ(rz);
     g.translate(x, y, z);
     const P = g.attributes.position.array, N = g.attributes.normal.array, U = uv.array, I = g.index.array;
-    const append=(key,indices)=>{const b=B[key]||(B[key]={p:[],n:[],u:[],i:[],c:0});
+    const append=(key,indices,core=0)=>{const b=B[key]||(B[key]={p:[],n:[],u:[],i:[],core:[],break:[],c:0});
       for(let i=0;i<P.length;i++){b.p.push(P[i]);b.n.push(N[i])}
       for(let i=0;i<U.length;i++)b.u.push(U[i]);
+      for(let i=0;i<p.count;i++){
+        b.core.push(core);
+        // Audit guard for standalone small plaster boxes: keep their original
+        // batch/indices, but shade the body as exposed core, never six white faces.
+        b.break.push(!profile&&Math.max(w,h,d)<.65?1:0,breakDistance[i]);
+      }
       for(const index of indices)b.i.push(index+b.c);b.c+=p.count;
     };
     if(profile){
@@ -56,8 +49,8 @@ export function buildVillage({ T, world, materials, layout, solids }) {
       // wall plaster over the freshly broken thickness.
       const top=g.groups.find(part=>part.materialIndex===2),rest=[];
       for(let i=0;i<I.length;i++)if(i<top.start||i>=top.start+top.count)rest.push(I[i]);
-      append(k,rest);append('brick',I.slice(top.start,top.start+top.count));
-    }else append(k,I);
+      append(k,rest);append('brick',I.slice(top.start,top.start+top.count),1);
+    }else append(k,I,k==='brick'&&Math.max(w,h,d)<.65?1:0);
     boxes++;g.dispose();
   };
   // invisible per-box collider (no draw call) for shot occlusion
@@ -187,7 +180,7 @@ export function buildVillage({ T, world, materials, layout, solids }) {
   for (const cz2 of [-5.14, -2.86]) add('woodB', 12, .08, .1, 0, .04, cz2);
   solid(12,.12,2.4,0,-.06,-4,0,{bridge:true});
   // Out-of-play village water tank: readable orientation landmark, no cover.
-  const tankMat=materials.metal.clone();tankMat.color.set(0x7b8174);tankMat.roughness=.8;
+  const tankMat=cloneSurfaceMaterial(T,materials.metal,0x7b8174);tankMat.roughness=.8;
   const tank=new T.Mesh(new T.CylinderGeometry(1.55,1.55,2.5,24),tankMat);tank.position.set(-5,9.1,-39);tank.castShadow=tank.receiveShadow=true;G.add(tank);
   for(const dx of [-1.1,1.1])for(const dz of [-1.1,1.1])add('woodA',.22,7.9,.22,-5+dx,3.95,-39+dz);
   for(const y of [2,4,6])for(const dz of [-1.1,1.1])add('woodB',3.0,.12,.12,-5,y,-39+dz,.65);
@@ -206,6 +199,8 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     g.setAttribute('position', new T.Float32BufferAttribute(b.p, 3));
     g.setAttribute('normal', new T.Float32BufferAttribute(b.n, 3));
     g.setAttribute('uv', new T.Float32BufferAttribute(b.u, 2));
+    if(k==='brick')g.setAttribute('masonryCore',new T.Float32BufferAttribute(b.core,1));
+    if(M[k].userData.masonry?.role==='plaster')g.setAttribute('masonryBreak',new T.Float32BufferAttribute(b.break,2));
     g.setIndex(b.i);
     g.computeBoundingSphere(); g.computeBoundingBox();
     const m = new T.Mesh(g, M[k]);
