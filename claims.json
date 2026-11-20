@@ -18,7 +18,7 @@
     "river-stone-cover-reference-2026-11-20": {
       "base_commit": "f53de8504c71aa550f5af8b6431df180eef53c7e",
       "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-20T16:52:42.566513+00:00",
+      "expires_at": "2026-11-20T17:06:15.769436+00:00",
       "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
       "scopes": [
         "experiments/sunbreak-river-v4/stone-cover.js",
@@ -27,6 +27,8 @@
         "experiments/sunbreak-river-v4/downloaded-dressing.js",
         "experiments/sunbreak-river-v4/world.js",
         "experiments/sunbreak-river-v4/village.js",
+        "experiments/sunbreak-river-v4/tools/package.mjs",
+        "experiments/sunbreak-river-v4/qa/fieldstone-package-2026-11-20.json",
         "experiments/sunbreak-river-v4/qa/scan-cover-checks.mjs",
         "experiments/sunbreak-river-v4/qa/fieldstone-reference.mjs",
         "experiments/sunbreak-river-v4/qa/fieldstone-review-2026-11-20.json",
@@ -38,7 +40,7 @@
         "docs/sprint-2026-08-24.md"
       ],
       "task_id": "river-stone-cover-reference-2026-11-20",
-      "updated_at": "2026-11-20T08:52:42.566513+00:00"
+      "updated_at": "2026-11-20T09:06:15.769436+00:00"
     }
   },
   "schema": 1
