@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "event_id": "20261120T051001Z-719aa83f2a",
+  "task_id": "river-afterrain-light-understory-2026-11-20",
+  "timestamp_utc": "2026-11-20T05:10:01.752572+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "bounded-look-complete-release-blocked",
+  "summary": "After-rain Riverfall look implemented: aligned warm sun, retained puddles/selective reflections, irregular green understory. Independent source and sampled-art PASS on14native1080p stills.27CPU suites and8functional phases PASS. Final three old-look historical RGB comparisons exact. Old demos/layout/gameplay preserved; no Pages deployment or Fable call. Runtime894ec9dfb0dc9cecd8470e270390f5fc5dd922ce98d0d48b85cce839a559be07.",
+  "commit_shas": [
+    "8647a8fcdfaf9fcd199e4b0495628b894fd64aef"
+  ],
+  "evidence": [
+    "experiments/sunbreak-river-v4/qa/afterrain-release.json",
+    "experiments/sunbreak-river-v4/qa/afterrain-review.json"
+  ],
+  "blockers": [
+    "Strict sunny/stormA/stormB frame pacing FAIL: p95all35.9ms, max71.8/71.3/88.3ms, over50ms10/8/12; thresholds unchanged.",
+    "Continuous-motion review UNVERIFIED; historical failures retained; not AAA/UE5 acceptance.",
+    "Pre-existing dirty canonical UE private vault preserved; verified unchanged browser snapshotcc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407 reused. Public-code/evidence checkpoint only."
+  ],
+  "next_action": "Diagnose strict frame pacing without combat/layout changes, then independently review continuous motion/reflection stability. Finish verifies public Git/LFS push; private asset transfer deliberately skipped for this isolated unchanged-resource slice.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

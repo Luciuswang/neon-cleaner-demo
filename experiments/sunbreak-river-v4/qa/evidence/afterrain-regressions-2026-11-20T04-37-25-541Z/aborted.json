@@ -1,0 +1,6 @@
+{
+  "status": "ABORTED_FOR_ART_REWORK",
+  "reason": "Independent final sampled art still identified pale puddle-rim outlines. The root stopped its own regression process tree before final acceptance and applied a bounded material correction.",
+  "evidencePolicy": "Completed child reports and progress.json retained. This incomplete schedule is not a final functional or performance verdict. Final corrected source requires a new prespecified complete schedule.",
+  "initialRuntimeSHA256": "06c7e0cd2898994dae9ed5d99cae3606ff088f9b85b6dbe4e6ffe22bda5d367d"
+}

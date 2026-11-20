@@ -1,0 +1,84 @@
+{
+  "schema": "river-afterrain-look-v1",
+  "quality_profile": "offscreen-cinematic-v1",
+  "task": "river-afterrain-light-understory-2026-11-20",
+  "baseline": "8647a8fcdfaf9fcd199e4b0495628b894fd64aef",
+  "date": "2026-11-20T04:21:02.951Z",
+  "options": {
+    "phase": "visual",
+    "url": "http://127.0.0.1:5190/river/",
+    "views": [
+      "ground-lane",
+      "puddle-sun",
+      "forest-hillside"
+    ],
+    "variants": [
+      "current"
+    ],
+    "explicitSelection": true
+  },
+  "pass": false,
+  "checksPass": false,
+  "verdict": "FAIL",
+  "capture_method": "native-headless-webgl-canvas",
+  "time": 3,
+  "limitations": {
+    "art": "UNREVIEWED: independent full-resolution art review required",
+    "temporal": "NOT RUN: sampled stills cannot establish continuous quality",
+    "performance": "NOT RUN: root schedules unchanged strict sun/storm benchmarks",
+    "gameplay": "NOT RUN: source preservation does not replace functional regressions",
+    "previous": "Metadata and protected source invariants only; exact historical lighting fidelity needs independent baseline review",
+    "UE": "Browser evidence only; this profile label does not establish UE/AI-video acceptance"
+  },
+  "error": "Error: ENOENT: no such file or directory, open 'E:\\codex_project\\neon-cleaner-demo\\experiments\\sunbreak-river-v4\\qa\\afterrain-look-checks.mjs'\n    at async open (node:internal/fs/promises:640:25)\n    at async readFile (node:internal/fs/promises:1283:14)\n    at async sourceSnapshot (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/afterrain-look.mjs:235:23)\n    at async main (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/afterrain-look.mjs:402:26)\n    at async file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/afterrain-look.mjs:425:79",
+  "integrityError": "Error: ENOENT: no such file or directory, open 'E:\\codex_project\\neon-cleaner-demo\\experiments\\sunbreak-river-v4\\qa\\afterrain-look-checks.mjs'\n    at async open (node:internal/fs/promises:640:25)\n    at async readFile (node:internal/fs/promises:1283:14)\n    at async sourceSnapshot (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/afterrain-look.mjs:235:23)\n    at async main (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/afterrain-look.mjs:409:27)\n    at async file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/afterrain-look.mjs:425:79",
+  "coverage": {
+    "full": false,
+    "explicitSelection": true,
+    "missing": [
+      "previous/ground-lane",
+      "current/ground-lane",
+      "pair/ground-lane",
+      "previous/puddle-sun",
+      "current/puddle-sun",
+      "pair/puddle-sun",
+      "previous/forest-hillside",
+      "current/forest-hillside",
+      "pair/forest-hillside",
+      "previous/cabin-edge",
+      "current/cabin-edge",
+      "pair/cabin-edge",
+      "previous/river-hero",
+      "current/river-hero",
+      "pair/river-hero",
+      "previous/river-wide",
+      "current/river-wide",
+      "pair/river-wide",
+      "previous/storm-ground-lane",
+      "current/storm-ground-lane",
+      "pair/storm-ground-lane"
+    ],
+    "selectedViews": [
+      "ground-lane",
+      "puddle-sun",
+      "forest-hillside"
+    ],
+    "selectedVariants": [
+      "current"
+    ],
+    "requiredViews": [
+      "ground-lane",
+      "puddle-sun",
+      "forest-hillside",
+      "cabin-edge",
+      "river-hero",
+      "river-wide",
+      "storm-ground-lane"
+    ],
+    "requiredVariants": [
+      "previous",
+      "current"
+    ]
+  },
+  "sourceManifestSHA256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+}

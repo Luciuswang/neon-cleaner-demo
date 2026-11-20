@@ -1,0 +1,48 @@
+{
+  "schema": "river-afterrain-independent-review-v1",
+  "task": "river-afterrain-light-understory-2026-11-20",
+  "date": "2026-11-20",
+  "profile": "offscreen-cinematic-v1",
+  "reviewer": "Chandrasekhar",
+  "reviewerId": "01a1f727-eb3f-74d2-9369-abf70fd83e99",
+  "recordedBy": "root integrator from the independent review response; reviewer was read-only",
+  "runtimeSHA256": "894ec9dfb0dc9cecd8470e270390f5fc5dd922ce98d0d48b85cce839a559be07",
+  "source": "PASS",
+  "sampledArt": "PASS",
+  "evidenceIntegrity": "PASS",
+  "release": "BLOCKED",
+  "scope": "bounded after-rain lighting, puddles and green understory; not whole-game or AAA acceptance",
+  "visualDirectory": "qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC",
+  "visualReportSHA256": "231a239afde78cc00c959f4c17b7e92f9a4819a01ac28d6773cd8403721a1ad2",
+  "reviewed": {
+    "variants": ["previous", "current"],
+    "views": ["ground-lane", "puddle-sun", "forest-hillside", "cabin-edge", "river-hero", "river-wide", "storm-ground-lane"],
+    "images": 14,
+    "pairs": 7,
+    "capture": "native-headless actual 1920x1080 WebGL canvas; no desktop screenshots",
+    "imageAndStateHashesVerified": true
+  },
+  "findings": [
+    "No unresolved source blockers in lighting, y=0 puddle projection, reflection isolation, understory integration or previous-look bypass.",
+    "Stronger warm directional light, recognizable irregular pool reflections and broad green understory satisfy the scoped look objectives.",
+    "The rim correction holds. Remaining thin pale edges are Minor; no further runtime change requested.",
+    "Final CPU/regression source manifests match visual capture. Source/history unchanged and14/14captures plus7/7pairs pass.",
+    "Compatibility checks pass; that explicitly selected two-image run correctly remains PARTIAL."
+  ],
+  "functional": {"cpuSuites": "27/27 PASS", "browserPhases": "8/8 PASS"},
+  "performance": {
+    "verdict": "FAIL",
+    "thresholdsUnchanged": true,
+    "sunny": {"p95": 35.9, "p99": 36.8, "max": 71.8, "over50": 10},
+    "stormA": {"p95": 35.9, "p99": 36.7, "max": 71.3, "over50": 8},
+    "stormB": {"p95": 35.9, "p99": 39.3, "max": 88.3, "over50": 12}
+  },
+  "limitations": [
+    "Stills do not establish continuous-motion quality; continuous subjective review remains UNVERIFIED.",
+    "Selective planar reflections with canopy impostors are an approximation, not full-scene ray tracing.",
+    "Universal previous-look pixel identity is not established.",
+    "Historical performance, legacy traversal and seven newline-evidence failures are not retroactively cleared.",
+    "Browser WebGL demo, not UE5 output or AAA release acceptance."
+  ],
+  "reviewActivity": "read-only, no GPU jobs, evidence writes or test reruns"
+}

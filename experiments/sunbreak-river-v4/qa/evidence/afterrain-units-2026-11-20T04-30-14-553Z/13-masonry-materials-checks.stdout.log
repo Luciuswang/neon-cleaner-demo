@@ -1,0 +1,105 @@
+{
+  "status": "CPU material/geometry checks completed; NOT GPU or art acceptance",
+  "checks": 69868,
+  "mode": "polish",
+  "replacedContract": {
+    "only": "whole-village geometry identity and count consequences of six cover visual replacements",
+    "replacement": "executed stone-cover-checks: exact non-cover geometry and all collider bytes; all other original assertions retained",
+    "stoneChecks": 310189,
+    "nonCoverGeometry": "3721e80f7902909666feb35c04e7734b4675801fa6e742b0bec186691292a7ea",
+    "colliders": "d59338d8eb067668142a7e3b277ad9c9c44d1fb9fa36581cd73a73d12b21f7bb"
+  },
+  "baselineOrigin": "pre-edit local module captures, 2026-11-19",
+  "village": {
+    "geometry": "35ff9c2b3b73025bf67bb58a0eee744d04df50b87bba2d296b2099b1dce0a28a",
+    "uv": "1d82cb738fb2baadbebf296415a5f943e7cb97ae983908bf5e1e738a9bcba481",
+    "support": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "solids": 205,
+    "meshes": 219,
+    "houses": 6,
+    "walls": 72,
+    "boxes": 756,
+    "tiles": 2496,
+    "drawCalls": 14,
+    "triangles": 63697,
+    "stoneCover": {
+      "revision": "bounded-uneven-stone-cover-v3",
+      "covers": 6,
+      "stones": 536,
+      "drawCalls": 2,
+      "triangles": 13545,
+      "replacedTriangles": 72,
+      "addedTriangles": 13473,
+      "maxRecess": 0.012,
+      "outwardProtrusion": 0,
+      "opaqueContinuousShell": true,
+      "collidersChanged": false,
+      "sources": [
+        "Poly Haven rocky_gravel (CC0-1.0)",
+        "Poly Haven worn_plaster_wall (CC0-1.0); procedural mortar"
+      ],
+      "budgets": {
+        "maxRecess": 0.012,
+        "maxAddedTriangles": 40000,
+        "maxBeautyDraws": 3
+      },
+      "drawCaveat": "Beauty draws only; shadow/reflection passes are measured by root."
+    },
+    "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+  },
+  "ruins": {
+    "geometry": "db2dab4d3ec94d84e23e67872dc0bf2c8d1618a372a8cc35c065492c5eb9abf0",
+    "uv": "12ae3126c1f336ce277fd40351ebc758cd81efe8edd84aeb638343de707600e2",
+    "support": "1febad319e60b36bbb99f5467f392d4ff4f63b7f14da82dcc8c3dfefa7f91459",
+    "solids": 10,
+    "meshes": 10,
+    "mounds": 8,
+    "slabs": 556,
+    "chips": 548,
+    "triangles": 25026,
+    "supportTriangles": 12511,
+    "drawCalls": 10,
+    "mode": "static gravity-staged fracture, not dynamic destruction"
+  },
+  "actualVisible": {
+    "village": {
+      "drawCalls": 14,
+      "triangles": 63697
+    },
+    "ruins": {
+      "drawCalls": 10,
+      "triangles": 25602
+    }
+  },
+  "note": "Legacy ruins.info triangles exclude 576 unchanged mound triangles; actualVisible includes them.",
+  "supportSamples": 5832,
+  "maxGap": 0.0000010036829322379592,
+  "coreTriangles": 2456,
+  "courseTriangles": 304,
+  "materialAttributeBytes": 74848,
+  "brokenProfileVertices": 1280,
+  "coatedFragmentVertices": 116,
+  "exposedFragmentVertices": 3856,
+  "scalarFields": {
+    "fieldSamples": 8192,
+    "binderSamples": 2286,
+    "claySamples": 4704,
+    "aggregateSamples": 1575,
+    "baseClear": 1653,
+    "baseStained": 5154,
+    "smallSpalled": 5909,
+    "smallCoated": 1316,
+    "note": "Source-derived scalar GLSL evaluated in JS doubles; NOT GPU shader or visual validation."
+  },
+  "incrementalDrawCalls": 1,
+  "incrementalTriangles": 13473,
+  "sources": {
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+    "masonry-materials.js": "2369a751d2c28ce168589b5c38c5cbbbb0a042dda6a3d12f46bb5e1ef099a49a",
+    "qa/masonry-materials-checks.mjs": "c914b81eb66ea46172e3566dfab56ed28c68d385c36dcdf2dbf9d0e467e37b8d",
+    "stone-cover.js": "61f6e0b9c39859f691235fe096777236c22d6188d9adec58aca785a063b8078b",
+    "qa/stone-cover-checks.mjs": "e81201e8259ebbccd26c2b2b102e2a475e8d4a116cccf80a95e95a92d5c3386e"
+  },
+  "limits": "No browser/GPU, source/publication or visual PASS claim. Root must independently render/review current frozen hashes."
+}

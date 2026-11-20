@@ -1,0 +1,3926 @@
+{
+  "schema": "sunbreak-buffer-node-v1",
+  "date": "2026-11-20T04:30:23.110Z",
+  "pass": true,
+  "unitPass": true,
+  "integrationPass": true,
+  "method": "Actual Three.js cabin assembly, rays and source-space controller; stubbed DOM input; previous-height horizontal movement followed by floor support. Small integration expressions evaluated from hashed world source.",
+  "limitations": [
+    "No browser keyboard/pointer-lock verification",
+    "No WebGL material/light/continuous animation or performance verdict",
+    "Traversal descent snaps to support; actual gravity/browser traversal belongs to main QA"
+  ],
+  "placements": [
+    {
+      "id": "west-buffer",
+      "x": -26,
+      "z": 9,
+      "yaw": 0
+    },
+    {
+      "id": "east-buffer",
+      "x": 26,
+      "z": -17,
+      "yaw": 3.141592653589793
+    }
+  ],
+  "localNavigationBounds": {
+    "min": {
+      "x": -4.45,
+      "y": 0,
+      "z": -4.45
+    },
+    "max": {
+      "x": 4.45,
+      "y": 7.1,
+      "z": 5.67
+    }
+  },
+  "sources": {
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "timber-house.js": "31dcb143860c9bd1dba3f4362909fb9c2c7b378a92937bd0e710814a9361031c",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "world.js": "171d5ea0b2820f881029bdcce45737b4a3ef9f1be6fcfbf3bf4c16a65cd2abf8",
+    "index.html": "6428e9e0da600224dad87cb72d218f76837a0fec465a4623e9787d94e734c314",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "qa/buffer-checks.mjs": "ae13e44ef8e878f867dda7b66916a6c1425b57965f779faee717d8d34c13fb61",
+    "../sunbreak-storm-v3/timber-house.js": "3337cf84d6a91ce7454c78ea6efcb2077da074c01d6c67e0be1d9636b71b8bb6",
+    "../sunbreak-storm-v3/house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb"
+  },
+  "changedSources": [],
+  "checks": [
+    {
+      "name": "placement contract and old shot-proxy preservation",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "copied house logic is unchanged from original normalized source",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "source-coordinate roundtrip supports pi and arbitrary yaw/elevation",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "outside floor returns null and never adds the absent artist step",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "rayBroadphase false preserves the exact-root fallback without a proxy",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: finite floor support matches room, porch and all four stairs",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: static batching retains UV attributes and articulated parts",
+      "scope": "unit",
+      "pass": true,
+      "evidence": {
+        "id": "west-buffer",
+        "navigationBounds": {
+          "id": "west-buffer",
+          "min": {
+            "x": -30.45,
+            "y": 0,
+            "z": 4.55
+          },
+          "max": {
+            "x": -21.55,
+            "y": 7.1,
+            "z": 14.67
+          }
+        },
+        "geometryBounds": {
+          "min": [
+            -30.37388902902603,
+            -0.014999994076788425,
+            4.563502995878704
+          ],
+          "max": [
+            -21.62611097097397,
+            7.09499979019165,
+            14.612640380859375
+          ]
+        },
+        "lights": 4,
+        "instances": 2,
+        "glass": 8,
+        "meshes": 38,
+        "triangles": 56300,
+        "batching": {
+          "originalStaticMeshes": 790,
+          "staticBatches": 9
+        }
+      }
+    },
+    {
+      "name": "west-buffer: room is player-enterable but whole buffer/stair footprint blocks enemies",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: closed door blocks movement and actual geometry rays",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: open door passage clears movement and actual rays; walls/glazing remain cover",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: roof/porch coverage and upward ceiling collision transform correctly",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: one nearest prompt, real event-state pause/focus/repeat/distance/LOS guards",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: door swing occupancy veto and mid-motion obstruction",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: paused/presentation/hidden frames do not advance doors; reset closes both",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: both-direction stair/door traversal with previous-height horizontal collision",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: childless finite proxy preserves all exact hits closed/part-open/open",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: exact near/far boundary distances and preserved existing accumulator",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: cached bounds follow changed translation/yaw/nonuniform scale",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "west-buffer: short rejected rays perform zero tile-instance tests after warmup",
+      "scope": "unit",
+      "pass": true,
+      "evidence": [
+        {
+          "y": 1.7,
+          "near": 0,
+          "far": 2,
+          "baselineInstanceTests": 723,
+          "proxyInstanceTests": 0
+        },
+        {
+          "y": 3,
+          "near": 0,
+          "far": 2,
+          "baselineInstanceTests": 750,
+          "proxyInstanceTests": 0
+        }
+      ]
+    },
+    {
+      "name": "east-buffer: finite floor support matches room, porch and all four stairs",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: static batching retains UV attributes and articulated parts",
+      "scope": "unit",
+      "pass": true,
+      "evidence": {
+        "id": "east-buffer",
+        "navigationBounds": {
+          "id": "east-buffer",
+          "min": {
+            "x": 21.55,
+            "y": 0,
+            "z": -22.67
+          },
+          "max": {
+            "x": 30.45,
+            "y": 7.1,
+            "z": -12.55
+          }
+        },
+        "geometryBounds": {
+          "min": [
+            21.62611097097397,
+            -0.014999994076788425,
+            -22.612640380859375
+          ],
+          "max": [
+            30.37388902902603,
+            7.09499979019165,
+            -12.563502995878704
+          ]
+        },
+        "lights": 4,
+        "instances": 2,
+        "glass": 8,
+        "meshes": 38,
+        "triangles": 56300,
+        "batching": {
+          "originalStaticMeshes": 790,
+          "staticBatches": 9
+        }
+      }
+    },
+    {
+      "name": "east-buffer: room is player-enterable but whole buffer/stair footprint blocks enemies",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: closed door blocks movement and actual geometry rays",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: open door passage clears movement and actual rays; walls/glazing remain cover",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: roof/porch coverage and upward ceiling collision transform correctly",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: one nearest prompt, real event-state pause/focus/repeat/distance/LOS guards",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: door swing occupancy veto and mid-motion obstruction",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: paused/presentation/hidden frames do not advance doors; reset closes both",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: both-direction stair/door traversal with previous-height horizontal collision",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: childless finite proxy preserves all exact hits closed/part-open/open",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: exact near/far boundary distances and preserved existing accumulator",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: cached bounds follow changed translation/yaw/nonuniform scale",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "east-buffer: short rejected rays perform zero tile-instance tests after warmup",
+      "scope": "unit",
+      "pass": true,
+      "evidence": [
+        {
+          "y": 1.7,
+          "near": 0,
+          "far": 2,
+          "baselineInstanceTests": 723,
+          "proxyInstanceTests": 0
+        },
+        {
+          "y": 3,
+          "near": 0,
+          "far": 2,
+          "baselineInstanceTests": 750,
+          "proxyInstanceTests": 0
+        }
+      ]
+    },
+    {
+      "name": "world floor integration preserves negative riverbed outside cabins",
+      "scope": "integration",
+      "pass": true,
+      "evidence": [
+        {
+          "x": 0,
+          "z": 0,
+          "y": -0.58
+        },
+        {
+          "x": 0,
+          "z": 8,
+          "y": -0.58
+        },
+        {
+          "x": 0,
+          "z": -10,
+          "y": -0.58
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "y": -0.58
+        }
+      ]
+    },
+    {
+      "name": "map navigation rectangles exactly match transformed cabin enemy footprints",
+      "scope": "integration",
+      "pass": true
+    },
+    {
+      "name": "placements remain clear of map covers and all spawn positions",
+      "scope": "integration",
+      "pass": true
+    },
+    {
+      "name": "world forwards current state, door updates, collision and reset",
+      "scope": "integration",
+      "pass": true
+    },
+    {
+      "name": "actual world rain expression hides fully covered porch rain segments",
+      "scope": "integration",
+      "pass": true
+    },
+    {
+      "name": "reset/disposal clears shared prompt and owned input listeners",
+      "scope": "unit",
+      "pass": true
+    },
+    {
+      "name": "source files remained unchanged throughout run",
+      "scope": "source-binding",
+      "pass": true
+    }
+  ],
+  "geometry": [
+    {
+      "id": "west-buffer",
+      "navigationBounds": {
+        "id": "west-buffer",
+        "min": {
+          "x": -30.45,
+          "y": 0,
+          "z": 4.55
+        },
+        "max": {
+          "x": -21.55,
+          "y": 7.1,
+          "z": 14.67
+        }
+      },
+      "geometryBounds": {
+        "min": [
+          -30.37388902902603,
+          -0.014999994076788425,
+          4.563502995878704
+        ],
+        "max": [
+          -21.62611097097397,
+          7.09499979019165,
+          14.612640380859375
+        ]
+      },
+      "lights": 4,
+      "instances": 2,
+      "glass": 8,
+      "meshes": 38,
+      "triangles": 56300,
+      "batching": {
+        "originalStaticMeshes": 790,
+        "staticBatches": 9
+      }
+    },
+    {
+      "id": "east-buffer",
+      "navigationBounds": {
+        "id": "east-buffer",
+        "min": {
+          "x": 21.55,
+          "y": 0,
+          "z": -22.67
+        },
+        "max": {
+          "x": 30.45,
+          "y": 7.1,
+          "z": -12.55
+        }
+      },
+      "geometryBounds": {
+        "min": [
+          21.62611097097397,
+          -0.014999994076788425,
+          -22.612640380859375
+        ],
+        "max": [
+          30.37388902902603,
+          7.09499979019165,
+          -12.563502995878704
+        ]
+      },
+      "lights": 4,
+      "instances": 2,
+      "glass": 8,
+      "meshes": 38,
+      "triangles": 56300,
+      "batching": {
+        "originalStaticMeshes": 790,
+        "staticBatches": 9
+      }
+    }
+  ],
+  "traversals": [
+    {
+      "id": "west-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 4.2,
+      "direction": -1,
+      "steps": 82,
+      "end": {
+        "x": -27.08,
+        "y": 2.36,
+        "z": 9.5
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 4.2,
+      "direction": 1,
+      "steps": 82,
+      "end": {
+        "x": -27.08,
+        "y": 1.7,
+        "z": 15.2
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 7.4,
+      "direction": -1,
+      "steps": 47,
+      "end": {
+        "x": -27.08,
+        "y": 2.36,
+        "z": 9.5
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 7.4,
+      "direction": 1,
+      "steps": 47,
+      "end": {
+        "x": -27.08,
+        "y": 1.7,
+        "z": 15.2
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.05,
+      "speed": 4.2,
+      "direction": -1,
+      "steps": 28,
+      "end": {
+        "x": -27.08,
+        "y": 2.36,
+        "z": 9.5
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.05,
+      "speed": 4.2,
+      "direction": 1,
+      "steps": 28,
+      "end": {
+        "x": -27.08,
+        "y": 1.7,
+        "z": 15.2
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.05,
+      "speed": 7.4,
+      "direction": -1,
+      "steps": 16,
+      "end": {
+        "x": -27.08,
+        "y": 2.36,
+        "z": 9.5
+      },
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "dt": 0.05,
+      "speed": 7.4,
+      "direction": 1,
+      "steps": 16,
+      "end": {
+        "x": -27.08,
+        "y": 1.7,
+        "z": 15.2
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 4.2,
+      "direction": -1,
+      "steps": 82,
+      "end": {
+        "x": 27.08,
+        "y": 2.36,
+        "z": -17.5
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 4.2,
+      "direction": 1,
+      "steps": 82,
+      "end": {
+        "x": 27.08,
+        "y": 1.7,
+        "z": -23.2
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 7.4,
+      "direction": -1,
+      "steps": 47,
+      "end": {
+        "x": 27.08,
+        "y": 2.36,
+        "z": -17.5
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.016666666666666666,
+      "speed": 7.4,
+      "direction": 1,
+      "steps": 47,
+      "end": {
+        "x": 27.08,
+        "y": 1.7,
+        "z": -23.2
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.05,
+      "speed": 4.2,
+      "direction": -1,
+      "steps": 28,
+      "end": {
+        "x": 27.08,
+        "y": 2.36,
+        "z": -17.5
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.05,
+      "speed": 4.2,
+      "direction": 1,
+      "steps": 28,
+      "end": {
+        "x": 27.08,
+        "y": 1.7,
+        "z": -23.2
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.05,
+      "speed": 7.4,
+      "direction": -1,
+      "steps": 16,
+      "end": {
+        "x": 27.08,
+        "y": 2.36,
+        "z": -17.5
+      },
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "dt": 0.05,
+      "speed": 7.4,
+      "direction": 1,
+      "steps": 16,
+      "end": {
+        "x": 27.08,
+        "y": 1.7,
+        "z": -23.2
+      },
+      "pass": true
+    }
+  ],
+  "rayComparisons": [
+    {
+      "id": "west-buffer",
+      "name": "door-0/door-outside",
+      "origin": [
+        -27.08,
+        2,
+        12.5
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/door-inside",
+      "origin": [
+        -27.08,
+        2,
+        9.5
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/side-wall",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/back-wall",
+      "origin": [
+        -28,
+        2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/roof-down",
+      "origin": [
+        -26,
+        9,
+        8.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/ceiling-up-inside",
+      "origin": [
+        -26,
+        2,
+        8.2
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/glass",
+      "origin": [
+        -25.36,
+        2.85,
+        13
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/inside-to-wall",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 5,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/short-outside",
+      "origin": [
+        -16,
+        1.7,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/short-inside",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/away-from-house",
+      "origin": [
+        -16,
+        2,
+        9
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/near-clips-first-wall",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/near-after-house",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/inside-with-near",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/side-graze-inside",
+      "origin": [
+        -21.890000999999998,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/side-graze-exact",
+      "origin": [
+        -21.89,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/side-graze-outside",
+      "origin": [
+        -21.889999,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/roof-edge-graze",
+      "origin": [
+        -21.675001,
+        9,
+        8.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/below-zero-stair-rail",
+      "origin": [
+        -27.91,
+        0.02,
+        14.5
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.05,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0/unbounded-ray",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/door-outside",
+      "origin": [
+        -27.08,
+        2,
+        12.5
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/door-inside",
+      "origin": [
+        -27.08,
+        2,
+        9.5
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/side-wall",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/back-wall",
+      "origin": [
+        -28,
+        2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/roof-down",
+      "origin": [
+        -26,
+        9,
+        8.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/ceiling-up-inside",
+      "origin": [
+        -26,
+        2,
+        8.2
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/glass",
+      "origin": [
+        -25.36,
+        2.85,
+        13
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/inside-to-wall",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 5,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/short-outside",
+      "origin": [
+        -16,
+        1.7,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/short-inside",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/away-from-house",
+      "origin": [
+        -16,
+        2,
+        9
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/near-clips-first-wall",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/near-after-house",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/inside-with-near",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/side-graze-inside",
+      "origin": [
+        -21.890000999999998,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/side-graze-exact",
+      "origin": [
+        -21.89,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/side-graze-outside",
+      "origin": [
+        -21.889999,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/roof-edge-graze",
+      "origin": [
+        -21.675001,
+        9,
+        8.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/below-zero-stair-rail",
+      "origin": [
+        -27.91,
+        0.02,
+        14.5
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.05,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-0.5/unbounded-ray",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/door-outside",
+      "origin": [
+        -27.08,
+        2,
+        12.5
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/door-inside",
+      "origin": [
+        -27.08,
+        2,
+        9.5
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/side-wall",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/back-wall",
+      "origin": [
+        -28,
+        2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/roof-down",
+      "origin": [
+        -26,
+        9,
+        8.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/ceiling-up-inside",
+      "origin": [
+        -26,
+        2,
+        8.2
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/glass",
+      "origin": [
+        -25.36,
+        2.85,
+        13
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/inside-to-wall",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 5,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/short-outside",
+      "origin": [
+        -16,
+        1.7,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/short-inside",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/away-from-house",
+      "origin": [
+        -16,
+        2,
+        9
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/near-clips-first-wall",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/near-after-house",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/inside-with-near",
+      "origin": [
+        -26,
+        2,
+        9
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/side-graze-inside",
+      "origin": [
+        -21.890000999999998,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/side-graze-exact",
+      "origin": [
+        -21.89,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/side-graze-outside",
+      "origin": [
+        -21.889999,
+        1.2,
+        3
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/roof-edge-graze",
+      "origin": [
+        -21.675001,
+        9,
+        8.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/below-zero-stair-rail",
+      "origin": [
+        -27.91,
+        0.02,
+        14.5
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.05,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "door-1/unbounded-ray",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "open-passage-not-AABB-cover",
+      "origin": [
+        -27.08,
+        2,
+        12.5
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "far-boundary--1e-7",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 1.8943490615822125,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "near-boundary--1e-7",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 1.8943490615822125,
+      "far": 12,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "far-boundary-0",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 1.8943491615822126,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "near-boundary-0",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 1.8943491615822126,
+      "far": 12,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "far-boundary-1e-7",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 1.8943492615822126,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "near-boundary-1e-7",
+      "origin": [
+        -20,
+        2,
+        8
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 1.8943492615822126,
+      "far": 12,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/door-outside",
+      "origin": [
+        -22.816076826840316,
+        2.4,
+        11.058113880409824
+      ],
+      "direction": [
+        -0.36161543196496204,
+        0,
+        -0.9323273456060344
+      ],
+      "near": 0,
+      "far": 3.3000000000000003,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/door-inside",
+      "origin": [
+        -24.00940775232469,
+        2.4,
+        7.98143363990991
+      ],
+      "direction": [
+        0.36161543196496204,
+        0,
+        0.9323273456060344
+      ],
+      "near": 0,
+      "far": 3.3000000000000003,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/side-wall",
+      "origin": [
+        -16.685020086798012,
+        2.4,
+        3.3708088096856357
+      ],
+      "direction": [
+        -0.9323273456060344,
+        0,
+        0.361615431964962
+      ],
+      "near": 0,
+      "far": 7.199999999999999,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/back-wall",
+      "origin": [
+        -27.624247480423232,
+        2.4,
+        1.7145165557160817
+      ],
+      "direction": [
+        0.3616154319649624,
+        0,
+        0.9323273456060344
+      ],
+      "near": 0,
+      "far": 4.4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/roof-down",
+      "origin": [
+        -23.318221580129165,
+        8.35,
+        6.17955193586669
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 5.1,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/ceiling-up-inside",
+      "origin": [
+        -23.318221580129165,
+        2.4,
+        6.17955193586669
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 5.1,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/glass",
+      "origin": [
+        -20.692864697928734,
+        3.1224999999999996,
+        10.82451966891746
+      ],
+      "direction": [
+        -0.3616154319649616,
+        0,
+        -0.9323273456060345
+      ],
+      "near": 0,
+      "far": 4.3999999999999995,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/inside-to-wall",
+      "origin": [
+        -23,
+        2.4,
+        7
+      ],
+      "direction": [
+        -0.9323273456060345,
+        0,
+        0.361615431964962
+      ],
+      "near": 0,
+      "far": 6.000000000000002,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/short-outside",
+      "origin": [
+        -11.812071852727588,
+        2.1449999999999996,
+        2.6606148164204564
+      ],
+      "direction": [
+        -0.9323273456060345,
+        0,
+        0.361615431964962
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/short-inside",
+      "origin": [
+        -23,
+        2.4,
+        7
+      ],
+      "direction": [
+        0.9323273456060347,
+        0,
+        -0.36161543196496143
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/away-from-house",
+      "origin": [
+        -11.812071852727588,
+        2.4,
+        2.6606148164204564
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.361615431964962
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/near-clips-first-wall",
+      "origin": [
+        -16.685020086798012,
+        2.4,
+        3.3708088096856357
+      ],
+      "direction": [
+        -0.9323273456060344,
+        0,
+        0.36161543196496204
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/near-after-house",
+      "origin": [
+        -16.685020086798012,
+        2.4,
+        3.3708088096856357
+      ],
+      "direction": [
+        -0.9323273456060344,
+        0,
+        0.36161543196496204
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/inside-with-near",
+      "origin": [
+        -23,
+        2.4,
+        7
+      ],
+      "direction": [
+        -0.9323273456060345,
+        0,
+        0.361615431964962
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/side-graze-inside",
+      "origin": [
+        -20.7884245012326,
+        1.72,
+        -0.9368473575125016
+      ],
+      "direction": [
+        0.36161543196496193,
+        0,
+        0.9323273456060344
+      ],
+      "near": 0,
+      "far": 12.100000000000001,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/side-graze-exact",
+      "origin": [
+        -20.788423382439788,
+        1.72,
+        -0.9368477914510196
+      ],
+      "direction": [
+        0.36161543196496193,
+        0,
+        0.9323273456060344
+      ],
+      "near": 0,
+      "far": 12.100000000000001,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/side-graze-outside",
+      "origin": [
+        -20.78842226364697,
+        1.72,
+        -0.9368482253895376
+      ],
+      "direction": [
+        0.36161543196496204,
+        0,
+        0.9323273456060345
+      ],
+      "near": 0,
+      "far": 12.099999999999998,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/roof-edge-graze",
+      "origin": [
+        -18.479443775226663,
+        8.35,
+        4.302768277907055
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 5.1,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/below-zero-stair-rail",
+      "origin": [
+        -22.94912091274101,
+        0.717,
+        13.469403010980201
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.04249999999999998,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "west-buffer",
+      "name": "transformed/unbounded-ray",
+      "origin": [
+        -16.685020086798012,
+        2.4,
+        3.3708088096856357
+      ],
+      "direction": [
+        -0.9323273456060344,
+        0,
+        0.361615431964962
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/door-outside",
+      "origin": [
+        27.080000000000002,
+        2,
+        -20.5
+      ],
+      "direction": [
+        -1.1842378929335002e-15,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/door-inside",
+      "origin": [
+        27.08,
+        2,
+        -17.5
+      ],
+      "direction": [
+        1.1842378929335002e-15,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/side-wall",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/back-wall",
+      "origin": [
+        28,
+        2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/roof-down",
+      "origin": [
+        26,
+        9,
+        -16.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/ceiling-up-inside",
+      "origin": [
+        26,
+        2,
+        -16.2
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/glass",
+      "origin": [
+        25.36,
+        2.85,
+        -21
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/inside-to-wall",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 5,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/short-outside",
+      "origin": [
+        16,
+        1.7,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/short-inside",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/away-from-house",
+      "origin": [
+        16,
+        2,
+        -17
+      ],
+      "direction": [
+        -1,
+        0,
+        -3.552713678800501e-16
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/near-clips-first-wall",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/near-after-house",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/inside-with-near",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/side-graze-inside",
+      "origin": [
+        21.890000999999998,
+        1.2,
+        -11
+      ],
+      "direction": [
+        3.2297397080004555e-16,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/side-graze-exact",
+      "origin": [
+        21.89,
+        1.2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/side-graze-outside",
+      "origin": [
+        21.889999,
+        1.2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/roof-edge-graze",
+      "origin": [
+        21.675001,
+        9,
+        -16.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/below-zero-stair-rail",
+      "origin": [
+        27.91,
+        0.02,
+        -22.5
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.05,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0/unbounded-ray",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/door-outside",
+      "origin": [
+        27.080000000000002,
+        2,
+        -20.5
+      ],
+      "direction": [
+        -1.1842378929335002e-15,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/door-inside",
+      "origin": [
+        27.08,
+        2,
+        -17.5
+      ],
+      "direction": [
+        1.1842378929335002e-15,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/side-wall",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/back-wall",
+      "origin": [
+        28,
+        2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/roof-down",
+      "origin": [
+        26,
+        9,
+        -16.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/ceiling-up-inside",
+      "origin": [
+        26,
+        2,
+        -16.2
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/glass",
+      "origin": [
+        25.36,
+        2.85,
+        -21
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/inside-to-wall",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 5,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/short-outside",
+      "origin": [
+        16,
+        1.7,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/short-inside",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/away-from-house",
+      "origin": [
+        16,
+        2,
+        -17
+      ],
+      "direction": [
+        -1,
+        0,
+        -3.552713678800501e-16
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/near-clips-first-wall",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/near-after-house",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/inside-with-near",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/side-graze-inside",
+      "origin": [
+        21.890000999999998,
+        1.2,
+        -11
+      ],
+      "direction": [
+        3.2297397080004555e-16,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/side-graze-exact",
+      "origin": [
+        21.89,
+        1.2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/side-graze-outside",
+      "origin": [
+        21.889999,
+        1.2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/roof-edge-graze",
+      "origin": [
+        21.675001,
+        9,
+        -16.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/below-zero-stair-rail",
+      "origin": [
+        27.91,
+        0.02,
+        -22.5
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.05,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-0.5/unbounded-ray",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/door-outside",
+      "origin": [
+        27.080000000000002,
+        2,
+        -20.5
+      ],
+      "direction": [
+        -1.1842378929335002e-15,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/door-inside",
+      "origin": [
+        27.08,
+        2,
+        -17.5
+      ],
+      "direction": [
+        1.1842378929335002e-15,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/side-wall",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/back-wall",
+      "origin": [
+        28,
+        2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/roof-down",
+      "origin": [
+        26,
+        9,
+        -16.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/ceiling-up-inside",
+      "origin": [
+        26,
+        2,
+        -16.2
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/glass",
+      "origin": [
+        25.36,
+        2.85,
+        -21
+      ],
+      "direction": [
+        0,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/inside-to-wall",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 5,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/short-outside",
+      "origin": [
+        16,
+        1.7,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/short-inside",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/away-from-house",
+      "origin": [
+        16,
+        2,
+        -17
+      ],
+      "direction": [
+        -1,
+        0,
+        -3.552713678800501e-16
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/near-clips-first-wall",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/near-after-house",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/inside-with-near",
+      "origin": [
+        26,
+        2,
+        -17
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/side-graze-inside",
+      "origin": [
+        21.890000999999998,
+        1.2,
+        -11
+      ],
+      "direction": [
+        3.2297397080004555e-16,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/side-graze-exact",
+      "origin": [
+        21.89,
+        1.2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/side-graze-outside",
+      "origin": [
+        21.889999,
+        1.2,
+        -11
+      ],
+      "direction": [
+        0,
+        0,
+        -1
+      ],
+      "near": 0,
+      "far": 11,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/roof-edge-graze",
+      "origin": [
+        21.675001,
+        9,
+        -16.2
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 6,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/below-zero-stair-rail",
+      "origin": [
+        27.91,
+        0.02,
+        -22.5
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.05,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "door-1/unbounded-ray",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "open-passage-not-AABB-cover",
+      "origin": [
+        27.080000000000002,
+        2,
+        -20.5
+      ],
+      "direction": [
+        -1.1842378929335002e-15,
+        0,
+        1
+      ],
+      "near": 0,
+      "far": 3,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "far-boundary--1e-7",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 1.8943490615822125,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "near-boundary--1e-7",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 1.8943490615822125,
+      "far": 12,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "far-boundary-0",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 1.8943491615822126,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "near-boundary-0",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 1.8943491615822126,
+      "far": 12,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "far-boundary-1e-7",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 0,
+      "far": 1.8943492615822126,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "near-boundary-1e-7",
+      "origin": [
+        20,
+        2,
+        -16
+      ],
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "near": 1.8943492615822126,
+      "far": 12,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/door-outside",
+      "origin": [
+        28.816076826840316,
+        2.4,
+        -23.058113880409824
+      ],
+      "direction": [
+        0.361615431964962,
+        0,
+        0.9323273456060345
+      ],
+      "near": 0,
+      "far": 3.300000000000001,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/door-inside",
+      "origin": [
+        30.00940775232469,
+        2.4,
+        -19.98143363990991
+      ],
+      "direction": [
+        -0.361615431964962,
+        0,
+        -0.9323273456060345
+      ],
+      "near": 0,
+      "far": 3.300000000000001,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/side-wall",
+      "origin": [
+        22.68502008679801,
+        2.4,
+        -15.370808809685636
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.36161543196496176
+      ],
+      "near": 0,
+      "far": 7.200000000000003,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/back-wall",
+      "origin": [
+        33.624247480423236,
+        2.4,
+        -13.71451655571608
+      ],
+      "direction": [
+        -0.36161543196496293,
+        0,
+        -0.9323273456060341
+      ],
+      "near": 0,
+      "far": 4.400000000000003,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/roof-down",
+      "origin": [
+        29.318221580129165,
+        8.35,
+        -18.17955193586669
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 5.1,
+      "hits": 7,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/ceiling-up-inside",
+      "origin": [
+        29.318221580129165,
+        2.4,
+        -18.17955193586669
+      ],
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "near": 0,
+      "far": 5.1,
+      "hits": 6,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/glass",
+      "origin": [
+        26.692864697928734,
+        3.1224999999999996,
+        -22.82451966891746
+      ],
+      "direction": [
+        0.36161543196496154,
+        0,
+        0.9323273456060347
+      ],
+      "near": 0,
+      "far": 4.4,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/inside-to-wall",
+      "origin": [
+        29,
+        2.4,
+        -19
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.361615431964962
+      ],
+      "near": 0,
+      "far": 6.000000000000002,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/short-outside",
+      "origin": [
+        17.812071852727584,
+        2.1449999999999996,
+        -14.660614816420455
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.361615431964962
+      ],
+      "near": 0,
+      "far": 2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/short-inside",
+      "origin": [
+        29,
+        2.4,
+        -19
+      ],
+      "direction": [
+        -0.9323273456060343,
+        0,
+        0.36161543196496204
+      ],
+      "near": 0,
+      "far": 0.2,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/away-from-house",
+      "origin": [
+        17.812071852727584,
+        2.4,
+        -14.660614816420455
+      ],
+      "direction": [
+        -0.9323273456060345,
+        0,
+        0.36161543196496193
+      ],
+      "near": 0,
+      "far": 140,
+      "hits": 0,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/near-clips-first-wall",
+      "origin": [
+        22.68502008679801,
+        2.4,
+        -15.370808809685636
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.361615431964962
+      ],
+      "near": 2.4,
+      "far": 12,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/near-after-house",
+      "origin": [
+        22.68502008679801,
+        2.4,
+        -15.370808809685636
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.361615431964962
+      ],
+      "near": 12,
+      "far": 13,
+      "hits": 2,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/inside-with-near",
+      "origin": [
+        29,
+        2.4,
+        -19
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.361615431964962
+      ],
+      "near": 0.5,
+      "far": 10,
+      "hits": 4,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/side-graze-inside",
+      "origin": [
+        26.7884245012326,
+        1.72,
+        -11.063152642487498
+      ],
+      "direction": [
+        -0.36161543196496193,
+        0,
+        -0.9323273456060344
+      ],
+      "near": 0,
+      "far": 12.100000000000001,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/side-graze-exact",
+      "origin": [
+        26.788423382439788,
+        1.72,
+        -11.06315220854898
+      ],
+      "direction": [
+        -0.36161543196496215,
+        0,
+        -0.9323273456060344
+      ],
+      "near": 0,
+      "far": 12.100000000000003,
+      "hits": 10,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/side-graze-outside",
+      "origin": [
+        26.78842226364697,
+        1.72,
+        -11.06315177461046
+      ],
+      "direction": [
+        -0.36161543196496193,
+        0,
+        -0.9323273456060344
+      ],
+      "near": 0,
+      "far": 12.100000000000001,
+      "hits": 8,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/roof-edge-graze",
+      "origin": [
+        24.479443775226663,
+        8.35,
+        -16.302768277907056
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 5.1,
+      "hits": 5,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/below-zero-stair-rail",
+      "origin": [
+        28.949120912741012,
+        0.717,
+        -25.4694030109802
+      ],
+      "direction": [
+        0,
+        -1,
+        0
+      ],
+      "near": 0,
+      "far": 0.04249999999999998,
+      "hits": 1,
+      "pass": true
+    },
+    {
+      "id": "east-buffer",
+      "name": "transformed/unbounded-ray",
+      "origin": [
+        22.68502008679801,
+        2.4,
+        -15.370808809685636
+      ],
+      "direction": [
+        0.9323273456060345,
+        0,
+        -0.36161543196496176
+      ],
+      "near": 0,
+      "far": "Infinity",
+      "hits": 8,
+      "pass": true
+    }
+  ],
+  "integrationEvidence": [
+    {
+      "kind": "negative-river-floor",
+      "expression": "buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))",
+      "ruinsFloorStub": "-Infinity (no ruin support; real ruins verified separately by main)",
+      "probes": [
+        {
+          "x": 0,
+          "z": 0,
+          "y": -0.58
+        },
+        {
+          "x": 0,
+          "z": 8,
+          "y": -0.58
+        },
+        {
+          "x": 0,
+          "z": -10,
+          "y": -0.58
+        },
+        {
+          "x": 1,
+          "z": 0,
+          "y": -0.58
+        }
+      ]
+    },
+    {
+      "kind": "navigation-bounds",
+      "pairs": [
+        {
+          "id": "west-buffer",
+          "map": {
+            "id": "west-buffer",
+            "min": {
+              "x": -30.45,
+              "y": 0,
+              "z": 4.55
+            },
+            "max": {
+              "x": -21.55,
+              "y": 7.1,
+              "z": 14.67
+            }
+          },
+          "runtime": {
+            "id": "west-buffer",
+            "min": {
+              "x": -30.45,
+              "y": 0,
+              "z": 4.55
+            },
+            "max": {
+              "x": -21.55,
+              "y": 7.1,
+              "z": 14.67
+            }
+          }
+        },
+        {
+          "id": "east-buffer",
+          "map": {
+            "id": "east-buffer",
+            "min": {
+              "x": 21.55,
+              "y": 0,
+              "z": -22.67
+            },
+            "max": {
+              "x": 30.45,
+              "y": 7.1,
+              "z": -12.55
+            }
+          },
+          "runtime": {
+            "id": "east-buffer",
+            "min": {
+              "x": 21.55,
+              "y": 0,
+              "z": -22.67
+            },
+            "max": {
+              "x": 30.45,
+              "y": 7.1,
+              "z": -12.55
+            }
+          }
+        }
+      ]
+    },
+    {
+      "kind": "porch-rain-source-expression",
+      "expression": "(floor+yy<roof&&Number.isFinite(roof))||buffers.underRoof(x,floor+yy,z)||buffers.underRoof(x+.08,floor+yy+.5+s[3]*.35,z+.03)?-20:floor+yy",
+      "probes": [
+        {
+          "id": "west-buffer",
+          "lower": {
+            "x": -27.08,
+            "y": 3.1,
+            "z": 12.9
+          },
+          "lowerCovered": true,
+          "upperCovered": true,
+          "renderY": -20
+        },
+        {
+          "id": "east-buffer",
+          "lower": {
+            "x": 27.08,
+            "y": 3.1,
+            "z": -20.9
+          },
+          "lowerCovered": true,
+          "upperCovered": true,
+          "renderY": -20
+        }
+      ]
+    }
+  ]
+}

@@ -25,6 +25,10 @@ import {createHeightFog} from './height-fog.js';
 import {buildDownloadedDressing} from './downloaded-dressing.js';
 import {buildProceduralMaterials} from './procedural-materials.js';
 import {installProceduralGround} from './procedural-ground.js';
+import {lowerSkySun,AFTERRAIN_LIGHT} from './afterrain-light.js';
+import {installLegacyForestTint} from './afterrain-ground.js';
+import {buildPuddleReflection} from './puddle-reflection.js';
+import {applyForestAttributes,buildForestFloor} from './forest-floor.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
 
 export async function buildWorld(ctx){
@@ -37,6 +41,8 @@ export async function buildWorld(ctx){
  const world=new T.Group();world.name='Riverfall village';scene.add(world);
  const textureErrors=[],loader=new T.TextureLoader(),materials={};
  const procedural=new URLSearchParams(location.search).get('materials')!=='legacy';
+ const afterRain=new URLSearchParams(location.search).get('look')!=='previous';
+ const puddleBinding={uniforms:{}};
  let proceduralPack=null,migrationFrozen=false;
  let seed=519214,time=0,weather=0,style=0,post=true,flashes=true,flash=0,lightningAt=9;
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
@@ -70,10 +76,11 @@ export async function buildWorld(ctx){
  // from behind-left of the northbound hero view, lighting the visible stone
  // faces instead of backlighting all banks. Environment/reflections
  // receive the same rotated pixels, not an independently faked key direction.
- const originalSunX=sunPixel%hd.width,desiredSunU=.86,skyShift=Math.round(desiredSunU*hd.width-.5-originalSunX),rotated=new Float32Array(hd.data.length);
+ const originalSunX=sunPixel%hd.width,desiredSunU=afterRain?.36:.86,skyShift=Math.round(desiredSunU*hd.width-.5-originalSunX),rotated=new Float32Array(hd.data.length);
  for(let y=0;y<hd.height;y++)for(let x=0;x<hd.width;x++){const nx=(x+skyShift+hd.width)%hd.width,i=(y*hd.width+x)*4,j=(y*hd.width+nx)*4;rotated[j]=hd.data[i];rotated[j+1]=hd.data[i+1];rotated[j+2]=hd.data[i+2];rotated[j+3]=hd.data[i+3]}
  hd.data=rotated;hdr.needsUpdate=true;
- const u=((originalSunX+skyShift+hd.width)%hd.width+.5)/hd.width,v=1-(Math.floor(sunPixel/hd.width)+.5)/hd.height;
+ if(afterRain){const lowered=lowerSkySun(hd,Math.floor(sunPixel/hd.width)*hd.width+(originalSunX+skyShift+hd.width)%hd.width);hd.data=lowered.data;sunPixel=lowered.sunPixel}
+ const u=afterRain?(sunPixel%hd.width+.5)/hd.width:((originalSunX+skyShift+hd.width)%hd.width+.5)/hd.width,v=1-(Math.floor(sunPixel/hd.width)+.5)/hd.height;
  const phi=(u-.5)*Math.PI*2,latitude=(v-.5)*Math.PI;
  const sunDirection=new T.Vector3(Math.cos(latitude)*Math.cos(phi),Math.sin(latitude),Math.cos(latitude)*Math.sin(phi));
  // The scan's solar disc peaks at >111,000 while ordinary sky is ~0.17–3.
@@ -91,8 +98,9 @@ export async function buildWorld(ctx){
  rnd.setPixelRatio(Math.min(devicePixelRatio,1.5));rnd.toneMappingExposure=1.08;
 
  const mud=materials.mud.clone();mud.roughness=.94;mud.normalScale.set(1.18,1.18);mud.envMapIntensity=.38;mud.color.set(0xd5c9b4);
- if(procedural)installProceduralGround(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength,time:windTime});
+ if(procedural)installProceduralGround(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength,time:windTime,afterRain:afterRain?puddleBinding:null});
  else installGroundSurface(T,mud,{dirt:materials.dirt,forest:materials.forest_ground_04,rain:rainStrength});
+ if(afterRain&&!procedural)installLegacyForestTint(mud);
  const geo=new T.PlaneGeometry(TERRAIN_GRID.size,TERRAIN_GRID.size,TERRAIN_GRID.segments,TERRAIN_GRID.segments);geo.rotateX(-Math.PI/2);
  const p=geo.attributes.position,uv=geo.attributes.uv;
  for(let i=0;i<p.count;i++){
@@ -101,6 +109,7 @@ export async function buildWorld(ctx){
   p.setY(i,y);uv.setXY(i,x/3,z/3);
  }geo.computeVertexNormals();
  applySurfaceAttributes(T,geo);
+ if(afterRain)applyForestAttributes(T,geo);
  const terrain=new T.Mesh(geo,mud);terrain.receiveShadow=true;installTerrainRaycast(T,terrain,TERRAIN_GRID.size,TERRAIN_GRID.segments);world.add(terrain);solids.push(terrain);
  // A separate measured riverbed follows the same height contract, with gravel.
  // Same 0.5m cells/diagonals as the ground underneath. Finer mismatched
@@ -123,6 +132,7 @@ export async function buildWorld(ctx){
  const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials});
  const dressing=await buildDownloadedDressing(T,world);
+ const forestFloor=afterRain?buildForestFloor(T,world):null;
 
  const water=buildRiverWater({T,Reflector,world,time:windTime,rain:rainStrength,sunDirection});
 
@@ -162,6 +172,8 @@ export async function buildWorld(ctx){
  // Install last so terrain, masonry and wind hooks compose rather than replace
  // one another. Gun/HUD are deliberately outside these world/enemy roots.
  const haze=createHeightFog(T);haze.install(world);enemies.forEach(e=>haze.install(e.g));
+ const puddleReflection=afterRain&&procedural?buildPuddleReflection({T,Reflector,world,scene,terrain,water,cam,haze}):null;
+ if(puddleReflection)Object.assign(puddleBinding.uniforms,puddleReflection.uniforms);
  haze.shaderPatch(water.mesh.material,{worldPosition:'vRiver'});
  const reflectedRender=water.mesh.onBeforeRender;
  water.mesh.onBeforeRender=function(...args){
@@ -198,18 +210,19 @@ export async function buildWorld(ctx){
  addEventListener('resize',()=>composer.setSize(innerWidth,innerHeight));
  function applyWeather(){
   const wet=weather===2,day=weather===0;
-  sun.position.copy(sunDirection).multiplyScalar(75).add(target.position);sun.color.set(style?0xffdfba:0xfff1df);sun.intensity=day?4.0:wet?2.1:1.8;
-  amb.color.set(0xc6dbf1);amb.groundColor.set(0x928b75);amb.intensity=day?1.6:.38;
+  sun.position.copy(sunDirection).multiplyScalar(75).add(target.position);sun.color.set(afterRain&&day?AFTERRAIN_LIGHT.key:style?0xffdfba:0xfff1df);sun.intensity=day?(afterRain?AFTERRAIN_LIGHT.sun:4.0):wet?2.1:1.8;
+  amb.color.set(afterRain&&day?AFTERRAIN_LIGHT.skyFill:0xc6dbf1);amb.groundColor.set(afterRain&&day?AFTERRAIN_LIGHT.groundFill:0x928b75);amb.intensity=day?(afterRain?AFTERRAIN_LIGHT.ambient:1.6):.38;
   scene.environment=gscene.environment=(day?env:cloudEnv).texture;scene.background=day?hdr:cloudHDR;
   scene.fog=new T.Fog(day?0x9db7ce:0x889996,day?95:65,day?920:230);scene.backgroundIntensity=day?1:.44;
   rnd.toneMappingExposure=day?1.18:style?.95:.90;rain.visible=splashes.visible=wet;rainStrength.value=wet?1:0;water.setDay(day);mud.roughness=procedural?1:wet?.76:.91;
+  if(afterRain&&day){rnd.toneMappingExposure=AFTERRAIN_LIGHT.exposure;scene.backgroundIntensity=AFTERRAIN_LIGHT.sky}
   flash=0;flashLight.intensity=0;
   distant.setWeather(weather);
   foliage.setWeather(weather);
   haze.setWeather(weather);
   const visited=new Set();world.traverse(o=>{if(o.isPointLight){o.userData.weatherBase??=o.intensity;o.intensity=o.userData.weatherBase*(day?.20:1)}if(o.isMesh)for(const m of [].concat(o.material)){if(!m||visited.has(m))continue;visited.add(m);
    if(m.name==='WindowTrim')m.color.set(0x999d92);
-   if(m.envMapIntensity!==undefined&&!m.name.startsWith('landscape-')){m.userData.baseEnvironment??=m.envMapIntensity;m.envMapIntensity=m.userData.baseEnvironment*(day?1.05:1)}
+   if(m.envMapIntensity!==undefined&&!m.name.startsWith('landscape-')){m.userData.baseEnvironment??=m.envMapIntensity;m.envMapIntensity=m.userData.baseEnvironment*(day?(afterRain?.72:1.05):1)}
    if(m.emissiveIntensity>0){m.userData.weatherBase??=m.emissiveIntensity;m.emissiveIntensity=m.userData.weatherBase*(day?.15:1)}
   }});
   document.getElementById('weatherName').textContent=['雨后 · 湿润河谷','阴天 · 山林薄雾','降雨 · 双岸村落'][weather];
@@ -223,6 +236,9 @@ export async function buildWorld(ctx){
  const comparisonURL=new URL(location.href);comparisonURL.searchParams.set('materials',procedural?'legacy':'procedural');
  comparison.href=comparisonURL.href;comparison.textContent=procedural?'材质：程序化 · 切回旧版':'材质：旧版 · 查看程序化';
  comparison.title='保留同一张地图和玩法；重新加载切换材质';document.getElementById('stormControls').append(comparison);
+ const lookCompare=document.createElement('a');lookCompare.className='btn';lookCompare.id='lookCompare';
+ const lookURL=new URL(location.href);if(afterRain)lookURL.searchParams.set('look','previous');else lookURL.searchParams.delete('look');
+ lookCompare.href=lookURL.href;lookCompare.textContent=afterRain?'雨后光感 · 对比修改前':'修改前 · 查看雨后新版';document.getElementById('stormControls').append(lookCompare);
  let migrationMaterials=null,migrationAnalytic=null;
  function migrationInfo(){
   const visited=new Set(),used=[],analytic=[];
@@ -235,11 +251,11 @@ export async function buildWorld(ctx){
   }});
   migrationMaterials??=used;
   migrationAnalytic??=analytic;
-  return{enabled:procedural,mode:procedural?'procedural':'legacy',frozen:migrationFrozen,time,materials:migrationMaterials,analyticMaterials:migrationAnalytic,legacyTextureURLs,bake:proceduralPack?.info||null,resources:{geometries:rnd.info.memory.geometries,textures:rnd.info.memory.textures,programs:rnd.info.programs?.length},ground:procedural?mud.userData.proceduralGround:null,river:'existing scanned substrate, modeled stones and planar flow preserved',sky:'existing CC0 HDR and matching sun preserved',extraReflectionPasses:0,extraGeometry:0};
+  return{enabled:procedural,mode:procedural?'procedural':'legacy',frozen:migrationFrozen,time,materials:migrationMaterials,analyticMaterials:migrationAnalytic,legacyTextureURLs,bake:proceduralPack?.info||null,resources:{geometries:rnd.info.memory.geometries,textures:rnd.info.memory.textures,programs:rnd.info.programs?.length},ground:procedural?mud.userData.proceduralGround:null,river:'existing scanned substrate, modeled stones and planar flow preserved',sky:afterRain?'CC0 sky remapped in memory with measured matching 26-degree sun':'existing CC0 HDR and matching sun preserved',extraReflectionPasses:puddleReflection?1:0,extraGeometry:(forestFloor?.info().triangles||0)+(puddleReflection?.info().proxyTriangles||0)};
  }
  applyWeather();
  return{
-  migrationQA:{freeze(seconds){if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid migration time');migrationFrozen=true;time=seconds;windTime.value=seconds;foliage.update(seconds);dressing.update(seconds);flash=0;flashLight.intensity=0;lightningAt=seconds+9;return migrationInfo()}},
+  migrationQA:{freeze(seconds){if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid migration time');migrationFrozen=true;time=seconds;windTime.value=seconds;foliage.update(seconds);dressing.update(seconds);forestFloor?.update(seconds);flash=0;flashLight.intensity=0;lightningAt=seconds+9;return migrationInfo()}},
   waterTime(){return time},
   shot(event){const projected=event.hit&&event.object?.userData.wall?village.projectStoneCoverHit?.({point:event.point,normal:event.normal,wallId:event.object.userData.wall}):null;
    if(projected)event={...event,point:projected.point,normal:projected.normal};weapon.shot(event);feedback.shot(event)},resetFeedback(){weapon.reset();feedback.reset()},
@@ -247,7 +263,7 @@ export async function buildWorld(ctx){
   floorHeight(x,z){return buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))},ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))},blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),resetHouse:()=>buffers.reset(),
   update(dt,{S,pres,live,player}){
    const active=!pres&&!['pause','dead','win'].includes(S.state);if(active&&!migrationFrozen)time+=dt;
-   windTime.value=time;foliage.update(time);dressing.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
+   windTime.value=time;foliage.update(time);dressing.update(time);forestFloor?.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
    if(weather===2){for(let i=0;i<rainCount;i++){
     const s=rainSeeds[i],x=s[0]+cam.position.x,z=s[2]+cam.position.z,yy=((s[1]-time*(14+s[3]*7))%21+21)%21;
     const floor=terrainHeight(x,z),roof=roofHeight(x,z),y=(floor+yy<roof&&Number.isFinite(roof))||buffers.underRoof(x,floor+yy,z)||buffers.underRoof(x+.08,floor+yy+.5+s[3]*.35,z+.03)?-20:floor+yy,k=i*6;
@@ -260,10 +276,10 @@ export async function buildWorld(ctx){
    weatherAudio.update(live&&weather===2,muted,volume);weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
    if(active)feedback.update(dt);else feedback.reset();
   },
-  render(){refreshAO();water.beginFrame();composer.render()},unlockAudio(){weatherAudio.unlock()},
+  render(){refreshAO();water.beginFrame();puddleReflection?.render(rnd);composer.render()},unlockAudio(){weatherAudio.unlock()},
   surfaceQA:{setAO(value){ao.enabled=!!value},setFog(value){haze.setEnabled(value)},info(){return{aoEnabled:ao.enabled,aoSettings,aoMin:ao.minDistance,aoMax:ao.maxDistance,projection:ao.ssaoMaterial.uniforms.cameraProjectionMatrix.value.elements.slice(),cameraProjection:cam.projectionMatrix.elements.slice(),fog:haze.info(),gunFogged:(()=>{let n=0;gscene.traverse(o=>{for(const m of [].concat(o.material||[]))if(m.customProgramCacheKey?.().includes('analytic-height-haze'))n++});return n})(),weeds:foundationWeeds.info(),zones:[[-10,12],[-17,17],[-22,12],[-4,10]].map(([x,z])=>({x,z,...surfaceZones(x,z)}))}}},
   setStyle(i){style=i;applyWeather()},setWeather(i){weather=(i+3)%3;applyWeather()},cycleWeather(){weather=(weather+1)%3;applyWeather()},
-  info(){return{version:'river-v4-wildbank',migration:migrationInfo(),textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
+  info(){return{version:'river-v4-wildbank',afterrain:{enabled:afterRain,look:afterRain?'afterrain':'previous',forest:forestFloor?.info()||null,puddles:puddleReflection?.info()||null,light:afterRain?AFTERRAIN_LIGHT:null},migration:migrationInfo(),textureErrors,weapon:weapon.info(),actors:actors.info(),village:village.info(),buffers:buffers.info(),ruins:ruins.info(),foliage:foliage.info(),bankDetail:bankDetail.info(),distant:distant.info(),water:water.info(),map:{houses:layout.houses.length,buffers:bufferPlacements.length,walls:bounds.length,crossings:layout.crossings,water:'continuous channel; two shallow submerged fords and one dry bridge',soil:[2,5,8,12].map(x=>({x,z:10,moisture:soilMoisture(x,10,rainStrength.value)}))},weather,lighting:{sunDirection:sunDirection.toArray(),latitudeDegrees:latitude*180/Math.PI,sky:weather===0?'kloofendal_43d_clear_puresky':'kloofendal_overcast_puresky',sunIntensity:sun.intensity,ambientIntensity:amb.intensity,exposure:rnd.toneMappingExposure,rainVisible:rain.visible,splashVisible:splashes.visible,rainRippleStrength:rainStrength.value,flashIntensity:flashLight.intensity},time,triangles:rnd.info.render.triangles,drawCalls:rnd.info.render.calls,source:'browser WebGL',audio:weatherAudio.info()}},
   actorQA:()=>actors.poseStats?.(),stormQA:{},houseQA:buffers.qa,dressingQA:{...dressing,reviewAsset(id){const v=dressing.reviewAsset(id);aoCutouts.length=0;world.traverse(o=>{if(o.isMesh&&[].concat(o.material).some(m=>m?.alphaTest>0))aoCutouts.push(o)});return v}}
  };
 }

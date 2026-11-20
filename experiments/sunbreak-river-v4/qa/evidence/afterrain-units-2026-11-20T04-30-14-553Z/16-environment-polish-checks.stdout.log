@@ -1,0 +1,1 @@
+{"pass":true,"checks":93625,"counts":{"grass":3600,"grit":1350,"forest":190,"patches":171},"maxGap":0.02131941404394656,"minimumCanopyDistance":47.97908664652027,"scope":"deterministic spatial/geometry and atlas camera/DPR/state contracts; not GPU/visual/performance acceptance"}

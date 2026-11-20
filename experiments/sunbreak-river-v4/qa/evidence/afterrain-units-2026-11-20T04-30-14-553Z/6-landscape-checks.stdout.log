@@ -1,0 +1,573 @@
+{
+  "suite": "river-distant-landscape-cpu-v2-low-valley",
+  "verdict": "PASS",
+  "checksPassed": 26,
+  "checksTotal": 26,
+  "scope": "CPU only. No browser, GPU, rendered art, continuous motion or frame-performance acceptance.",
+  "sources": {
+    "../distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "./landscape-checks.mjs": "09796970ab22085e5eadce5eae34af752721ad134a7de8ecda15dd31b0c5d114",
+    "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "../../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+  },
+  "placements": [
+    {
+      "id": "west-foothills",
+      "layer": 0,
+      "axis": "z",
+      "bounds": {
+        "minX": -280,
+        "maxX": -134,
+        "minZ": -240,
+        "maxZ": 250
+      },
+      "segments": [
+        112,
+        48
+      ],
+      "seed": 71,
+      "heightScale": 0.46
+    },
+    {
+      "id": "east-foothills",
+      "layer": 0,
+      "axis": "z",
+      "bounds": {
+        "minX": 134,
+        "maxX": 295,
+        "minZ": -260,
+        "maxZ": 230
+      },
+      "segments": [
+        112,
+        48
+      ],
+      "seed": 163,
+      "heightScale": 0.46
+    },
+    {
+      "id": "west-escarpment",
+      "layer": 1,
+      "axis": "x",
+      "bounds": {
+        "minX": -410,
+        "maxX": -70,
+        "minZ": -435,
+        "maxZ": -215
+      },
+      "segments": [
+        128,
+        64
+      ],
+      "seed": 277,
+      "heightScale": 0.475
+    },
+    {
+      "id": "east-broken-range",
+      "layer": 1,
+      "axis": "x",
+      "bounds": {
+        "minX": 88,
+        "maxX": 420,
+        "minZ": -450,
+        "maxZ": -210
+      },
+      "segments": [
+        128,
+        64
+      ],
+      "seed": 389,
+      "heightScale": 0.475
+    },
+    {
+      "id": "west-distant-range",
+      "layer": 2,
+      "axis": "x",
+      "bounds": {
+        "minX": -340,
+        "maxX": -50,
+        "minZ": -590,
+        "maxZ": -425
+      },
+      "segments": [
+        112,
+        56
+      ],
+      "seed": 503,
+      "heightScale": 0.455
+    },
+    {
+      "id": "east-distant-range",
+      "layer": 2,
+      "axis": "x",
+      "bounds": {
+        "minX": 60,
+        "maxX": 340,
+        "minZ": -590,
+        "maxZ": -430
+      },
+      "segments": [
+        112,
+        56
+      ],
+      "seed": 617,
+      "heightScale": 0.455
+    }
+  ],
+  "totals": {
+    "triangles": 79360,
+    "vertices": 40726,
+    "basePassDrawCalls": 12,
+    "minRadius": 134.00145754804313,
+    "maxRadius": 680.9552114493287,
+    "maxY": 109.79962158203125,
+    "buildMilliseconds": 70.70260000000002,
+    "elapsedMilliseconds": 378.9735
+  },
+  "checks": [
+    {
+      "name": "six patches / three layers / declared geometry and draw budgets",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "triangles": 79360,
+        "drawCalls": 12
+      }
+    },
+    {
+      "name": "fresh deterministic plan; caller mutation does not change source plan",
+      "pass": true
+    },
+    {
+      "name": "plan validator rejects terrain/valley/range/budget/duplicate/NaN corruption",
+      "pass": true,
+      "detail": {
+        "negativeCases": 9
+      }
+    },
+    {
+      "name": "authored patch rectangles outside actual terrain and gameplay/nav/cabin bounds",
+      "pass": true,
+      "detail": {
+        "terrainHalfExtent": 130,
+        "excludedNavigationBoxes": 74
+      }
+    },
+    {
+      "name": "west-foothills: all vertices/normals/indices/winding/faces/groups/range",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "id": "west-foothills",
+        "vertices": 5537,
+        "triangles": 10752,
+        "minRadius": 134.00145754804313,
+        "maxRadius": 375.3664875824692,
+        "minY": -9,
+        "maxY": 48.76211929321289,
+        "minProjectedArea": 6.653623580932617
+      }
+    },
+    {
+      "name": "east-foothills: all vertices/normals/indices/winding/faces/groups/range",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "id": "east-foothills",
+        "vertices": 5537,
+        "triangles": 10752,
+        "minRadius": 134.01311736169708,
+        "maxRadius": 393.22385482063527,
+        "minY": -9,
+        "maxY": 54.4254150390625,
+        "minProjectedArea": 7.337217330932617
+      }
+    },
+    {
+      "name": "west-escarpment: all vertices/normals/indices/winding/faces/groups/range",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "id": "west-escarpment",
+        "vertices": 8385,
+        "triangles": 16384,
+        "minRadius": 226.10838109190027,
+        "maxRadius": 597.7666768899049,
+        "minY": -9,
+        "maxY": 93.82563018798828,
+        "minProjectedArea": 4.5654296875
+      }
+    },
+    {
+      "name": "east-broken-range: all vertices/normals/indices/winding/faces/groups/range",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "id": "east-broken-range",
+        "vertices": 8385,
+        "triangles": 16384,
+        "minRadius": 227.69277546729495,
+        "maxRadius": 615.5485358604958,
+        "minY": -9,
+        "maxY": 99.35971069335938,
+        "minProjectedArea": 4.86328125
+      }
+    },
+    {
+      "name": "west-distant-range: all vertices/normals/indices/winding/faces/groups/range",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "id": "west-distant-range",
+        "vertices": 6441,
+        "triangles": 12544,
+        "minRadius": 427.93106921559223,
+        "maxRadius": 680.9552114493287,
+        "minY": -9,
+        "maxY": 103.60371398925781,
+        "minProjectedArea": 3.8145180139690638
+      }
+    },
+    {
+      "name": "east-distant-range: all vertices/normals/indices/winding/faces/groups/range",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "id": "east-distant-range",
+        "vertices": 6441,
+        "triangles": 12544,
+        "minRadius": 434.1658669218482,
+        "maxRadius": 680.9552114493287,
+        "minY": -9,
+        "maxY": 109.79962158203125,
+        "minProjectedArea": 3.5713958740234375
+      }
+    },
+    {
+      "name": "entire north/south valley remains empty, not a generic cone ring",
+      "pass": true,
+      "detail": {
+        "emptyValleyWidth": 72,
+        "emptySamplerProbes": 4230
+      }
+    },
+    {
+      "name": "full indexed faces cannot bridge the terrain or river opening",
+      "pass": true,
+      "detail": {
+        "trianglesChecked": 79360
+      }
+    },
+    {
+      "name": "grid boundary sinks below ground; no vertical curtains",
+      "pass": true
+    },
+    {
+      "name": "byte-identical regeneration with global random forbidden",
+      "pass": true,
+      "detail": {
+        "attributesCompared": 30
+      }
+    },
+    {
+      "name": "authored low-valley height ranges and unequal crest peaks (not art acceptance)",
+      "pass": true,
+      "detail": [
+        {
+          "id": "west-foothills",
+          "largeCrestPeaks": 4,
+          "maxY": 48.76211929321289,
+          "authoredHeightRange": [
+            45,
+            55
+          ],
+          "heightScale": 0.46,
+          "maxElevationFromHeroDegrees": 12.340332966704679
+        },
+        {
+          "id": "east-foothills",
+          "largeCrestPeaks": 3,
+          "maxY": 54.4254150390625,
+          "authoredHeightRange": [
+            45,
+            55
+          ],
+          "heightScale": 0.46,
+          "maxElevationFromHeroDegrees": 12.634325223659044
+        },
+        {
+          "id": "west-escarpment",
+          "largeCrestPeaks": 4,
+          "maxY": 93.82563018798828,
+          "authoredHeightRange": [
+            85,
+            100
+          ],
+          "heightScale": 0.475,
+          "maxElevationFromHeroDegrees": 11.650022890734999
+        },
+        {
+          "id": "east-broken-range",
+          "largeCrestPeaks": 4,
+          "maxY": 99.35971069335938,
+          "authoredHeightRange": [
+            85,
+            100
+          ],
+          "heightScale": 0.475,
+          "maxElevationFromHeroDegrees": 12.80299834315549
+        },
+        {
+          "id": "west-distant-range",
+          "largeCrestPeaks": 4,
+          "maxY": 103.60371398925781,
+          "authoredHeightRange": [
+            98,
+            110
+          ],
+          "heightScale": 0.455,
+          "maxElevationFromHeroDegrees": 10.022066330472528
+        },
+        {
+          "id": "east-distant-range",
+          "largeCrestPeaks": 3,
+          "maxY": 109.79962158203125,
+          "authoredHeightRange": [
+            98,
+            110
+          ],
+          "heightScale": 0.455,
+          "maxElevationFromHeroDegrees": 10.404108068719362
+        }
+      ]
+    },
+    {
+      "name": "scarp/talus structure has eroded steep faces, not smooth single humps",
+      "pass": true,
+      "detail": [
+        {
+          "id": "west-foothills",
+          "steepVertices": 331,
+          "talusVertices": 2770,
+          "erosionSecondDifferenceSum": 2533.301491155289
+        },
+        {
+          "id": "east-foothills",
+          "steepVertices": 387,
+          "talusVertices": 2700,
+          "erosionSecondDifferenceSum": 2645.0631410023198
+        },
+        {
+          "id": "west-escarpment",
+          "steepVertices": 2138,
+          "talusVertices": 2547,
+          "erosionSecondDifferenceSum": 3276.2510854350403
+        },
+        {
+          "id": "east-broken-range",
+          "steepVertices": 2094,
+          "talusVertices": 2363,
+          "erosionSecondDifferenceSum": 3710.3022525878623
+        },
+        {
+          "id": "west-distant-range",
+          "steepVertices": 3114,
+          "talusVertices": 788,
+          "erosionSecondDifferenceSum": 3296.0902572758496
+        },
+        {
+          "id": "east-distant-range",
+          "steepVertices": 3455,
+          "talusVertices": 731,
+          "erosionSecondDifferenceSum": 3122.875129532069
+        }
+      ]
+    },
+    {
+      "name": "muted mineral gray-green to blue-gray layers; no snow/white summit mask",
+      "pass": true,
+      "detail": [
+        {
+          "layer": 0,
+          "blueMinusRed": -0.05387710357790974
+        },
+        {
+          "layer": 1,
+          "blueMinusRed": 0.052835272998062004
+        },
+        {
+          "layer": 2,
+          "blueMinusRed": 0.15376273845362193
+        }
+      ]
+    },
+    {
+      "name": "geometry validator rejects bad winding/index/sampler/normal/valley data",
+      "pass": true,
+      "detail": {
+        "negativeCases": 7
+      }
+    },
+    {
+      "name": "build API using local Three only; one root attached and no foreign scene changes",
+      "pass": true,
+      "detail": {
+        "buildMilliseconds": 70.70260000000002,
+        "rendered": false
+      }
+    },
+    {
+      "name": "actual Three geometries match pure arrays and stay within budgets",
+      "pass": true,
+      "detail": {
+        "triangles": 79360,
+        "basePassDrawCalls": 12
+      }
+    },
+    {
+      "name": "source material/texture references reused, not changed or duplicated",
+      "pass": true
+    },
+    {
+      "name": "weather controls owned clones only; no custom sun or scene fog/exposure",
+      "pass": true
+    },
+    {
+      "name": "mineral shader reduces decoded map contrast without extra sampling or lighting",
+      "pass": true,
+      "detail": {
+        "shaderSourceChecked": true,
+        "gpuCompiled": false,
+        "materials": [
+          {
+            "material": "landscape-0-rock",
+            "contrast": 0.24,
+            "grayInputOutputRange": [
+              0.3952,
+              0.6352
+            ],
+            "normalScale": 0.2
+          },
+          {
+            "material": "landscape-0-scrub",
+            "contrast": 0.24,
+            "grayInputOutputRange": [
+              0.3952,
+              0.6352
+            ],
+            "normalScale": 0.12
+          },
+          {
+            "material": "landscape-0-rock",
+            "contrast": 0.24,
+            "grayInputOutputRange": [
+              0.3952,
+              0.6352
+            ],
+            "normalScale": 0.2
+          },
+          {
+            "material": "landscape-0-scrub",
+            "contrast": 0.24,
+            "grayInputOutputRange": [
+              0.3952,
+              0.6352
+            ],
+            "normalScale": 0.12
+          },
+          {
+            "material": "landscape-1-rock",
+            "contrast": 0.18,
+            "grayInputOutputRange": [
+              0.42640000000000006,
+              0.6064
+            ],
+            "normalScale": 0.15000000000000002
+          },
+          {
+            "material": "landscape-1-scrub",
+            "contrast": 0.18,
+            "grayInputOutputRange": [
+              0.42640000000000006,
+              0.6064
+            ],
+            "normalScale": 0.09
+          },
+          {
+            "material": "landscape-1-rock",
+            "contrast": 0.18,
+            "grayInputOutputRange": [
+              0.42640000000000006,
+              0.6064
+            ],
+            "normalScale": 0.15000000000000002
+          },
+          {
+            "material": "landscape-1-scrub",
+            "contrast": 0.18,
+            "grayInputOutputRange": [
+              0.42640000000000006,
+              0.6064
+            ],
+            "normalScale": 0.09
+          },
+          {
+            "material": "landscape-2-rock",
+            "contrast": 0.12,
+            "grayInputOutputRange": [
+              0.4576,
+              0.5776
+            ],
+            "normalScale": 0.1
+          },
+          {
+            "material": "landscape-2-scrub",
+            "contrast": 0.12,
+            "grayInputOutputRange": [
+              0.4576,
+              0.5776
+            ],
+            "normalScale": 0.06
+          },
+          {
+            "material": "landscape-2-rock",
+            "contrast": 0.12,
+            "grayInputOutputRange": [
+              0.4576,
+              0.5776
+            ],
+            "normalScale": 0.1
+          },
+          {
+            "material": "landscape-2-scrub",
+            "contrast": 0.12,
+            "grayInputOutputRange": [
+              0.4576,
+              0.5776
+            ],
+            "normalScale": 0.06
+          }
+        ]
+      }
+    },
+    {
+      "name": "info is detached metadata, not mutable geometry/material state",
+      "pass": true
+    },
+    {
+      "name": "dispose releases only owned resources and is idempotent",
+      "pass": true
+    },
+    {
+      "name": "missing dependencies fail without partial world mutation",
+      "pass": true
+    }
+  ]
+}

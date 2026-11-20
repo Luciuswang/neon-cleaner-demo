@@ -1,0 +1,74 @@
+{
+  "status": "CPU PASS; GPU/art/performance NOT evaluated",
+  "checks": 310189,
+  "inputs": {
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "masonry-materials.js": "2369a751d2c28ce168589b5c38c5cbbbb0a042dda6a3d12f46bb5e1ef099a49a",
+    "stone-cover.js": "61f6e0b9c39859f691235fe096777236c22d6188d9adec58aca785a063b8078b",
+    "qa/stone-cover-checks.mjs": "e81201e8259ebbccd26c2b2b102e2a475e8d4a116cccf80a95e95a92d5c3386e"
+  },
+  "nonCoverGeometry": "3721e80f7902909666feb35c04e7734b4675801fa6e742b0bec186691292a7ea",
+  "exactColliderFingerprint": "d59338d8eb067668142a7e3b277ad9c9c44d1fb9fa36581cd73a73d12b21f7bb",
+  "info": {
+    "houses": 6,
+    "walls": 72,
+    "boxes": 756,
+    "solids": 205,
+    "tiles": 2496,
+    "drawCalls": 14,
+    "triangles": 63697,
+    "stoneCover": {
+      "revision": "bounded-uneven-stone-cover-v3",
+      "covers": 6,
+      "stones": 536,
+      "drawCalls": 2,
+      "triangles": 13545,
+      "replacedTriangles": 72,
+      "addedTriangles": 13473,
+      "maxRecess": 0.012,
+      "outwardProtrusion": 0,
+      "opaqueContinuousShell": true,
+      "collidersChanged": false,
+      "sources": [
+        "Poly Haven rocky_gravel (CC0-1.0)",
+        "Poly Haven worn_plaster_wall (CC0-1.0); procedural mortar"
+      ],
+      "budgets": {
+        "maxRecess": 0.012,
+        "maxAddedTriangles": 40000,
+        "maxBeautyDraws": 3
+      },
+      "drawCaveat": "Beauty draws only; shadow/reflection passes are measured by root."
+    },
+    "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+  },
+  "actualDraws": 14,
+  "actualTriangles": 63697,
+  "geometryBytes": 2268072,
+  "watertightMortarEdges": 468,
+  "polygonSizes": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "irregularEdges": 3635,
+  "totalEdges": 4411,
+  "faceRays": 7956,
+  "obliqueRays": 23868,
+  "projectedMarks": 7956,
+  "maxNormalGap": 0.012000274658202054,
+  "maxHitGap": 0.02400052547454929,
+  "maxMarkShift": 0.012000274658202414,
+  "limitations": [
+    "CPU shader assembly is not WebGL compilation.",
+    "First-hit tests cover 0/30/60 degrees; at grazing incidence ray-length separation can exceed normal surface recess; projectStoneCoverHit snaps cosmetic marks along the face normal.",
+    "Root owns cosmetic impact integration, GPU captures, draw/shadow/reflection totals and performance."
+  ]
+}

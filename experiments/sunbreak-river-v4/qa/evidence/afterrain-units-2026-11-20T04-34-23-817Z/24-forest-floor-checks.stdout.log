@@ -1,0 +1,119 @@
+{
+  "schema": "river-forest-floor-cpu-v1",
+  "pass": true,
+  "sources": {
+    "./forest-floor-checks.mjs": "f61135e0b2ae53bac5b75b8f5e51a8ecfaddd2e0d6f4f10dd99851e67f4eb388",
+    "../forest-floor.js": "ec3053a342fd30679c11c9fd456e54067057bbcebc297832e5e14142977d7d3c",
+    "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "../vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "../../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe"
+  },
+  "checks": [
+    {
+      "name": "fresh deterministic ecology plan, isolated RNG and no shared layout mutation",
+      "pass": true,
+      "detail": {
+        "seed": 1190165025,
+        "positionHash": "66af3e714e4856ae92b7f85c34cedd2b34a9dd0d9c0921646c48b2b6c1f597a9"
+      }
+    },
+    {
+      "name": "bounded scalar, broad green carpet and uninterrupted near-grove/hill coverage",
+      "pass": true,
+      "detail": {
+        "samples": 13692,
+        "coveredFraction": 1,
+        "meanCover": 0.8593797694616386,
+        "extent": 130
+      }
+    },
+    {
+      "name": "actual existing near/far trunks have green ground, with river/routes exempted",
+      "pass": true,
+      "detail": {
+        "actualTrunks": 71,
+        "eligible": 60,
+        "covered": 60
+      }
+    },
+    {
+      "name": "village combat, every foundation/door/porch, crossings and river remain bare",
+      "pass": true
+    },
+    {
+      "name": "dense bounded population, multi-height growth and irregular off-grid clusters",
+      "pass": true,
+      "detail": {
+        "tufts": 5600,
+        "clusters": 248,
+        "layers": [
+          2989,
+          2053,
+          558
+        ],
+        "quadrants": [
+          1357,
+          1486,
+          1406,
+          1351
+        ],
+        "far": 792,
+        "edge": 97,
+        "slopes": 4064,
+        "occupied8mCells": 282
+      }
+    },
+    {
+      "name": "actual terrain attribute changes no positions, normals, UVs, indices or bounds",
+      "pass": true,
+      "detail": {
+        "vertices": 17161
+      }
+    },
+    {
+      "name": "actual tapered geometry budgets, root contact, slope conformance and whole-blade clearance",
+      "pass": true,
+      "detail": {
+        "triangles": 168000,
+        "drawCalls": 8,
+        "vertices": 280000,
+        "roots": 112000,
+        "maxHeight": 0.40666635830958575,
+        "shadowTriangles": 0
+      }
+    },
+    {
+      "name": "physical lighting, shadow receive, branch-safe wind/root shade and uniform-only updates",
+      "pass": true
+    },
+    {
+      "name": "rebuilding produces byte-identical blade positions, normals, colours, wind attributes and indices",
+      "pass": true
+    }
+  ],
+  "info": {
+    "revision": "river-forest-floor-v1",
+    "seed": 1190165025,
+    "tufts": 5600,
+    "clusters": 248,
+    "blades": 56000,
+    "layers": [
+      2989,
+      2053,
+      558
+    ],
+    "triangles": 168000,
+    "drawCalls": 8,
+    "shadowCalls": 0,
+    "shadowTriangles": 0,
+    "terrainHalfExtent": 130,
+    "source": "code-generated tapered blades; no external textures/assets",
+    "groundCover": "forestCover attribute on unchanged terrain, blended by caller",
+    "limits": {
+      "triangles": 180000,
+      "drawCalls": 8
+    },
+    "validation": "CPU geometry/placement only; visual, wind motion and frame pacing require root integration QA"
+  },
+  "scope": "CPU coverage/placement/geometry/shader-source only; no GPU compilation, visual, continuous wind or frame-pacing acceptance"
+}

@@ -2,6 +2,7 @@
 // Lab utilities: Copyright (c) 2026 wquguru, MIT; see PROCEDURAL-NOTICE.txt.
 // Valley zoning and r160 integration are original. No geometry/displacement.
 import {SOIL_MOISTURE_GLSL} from './ground-moisture.js';
+import {enhanceAfterRainGround} from './afterrain-ground.js';
 
 export const PROCEDURAL_GROUND_REVISION='river-procedural-surface-v1';
 export const FILTERED_WATER_GLSL=`
@@ -22,7 +23,7 @@ export const FILTERED_WATER_GLSL=`
  }
 `;
 
-export function installProceduralGround(T,material,{dirt,forest,rain,time}){
+export function installProceduralGround(T,material,{dirt,forest,rain,time,afterRain=null}){
  material.color.set(0xffffff);material.roughness=1;material.metalness=0;
  material.normalScale.set(1,1);material.envMapIntensity=.75;
  // Geometry UVs stay byte-identical (x/3,z/3). Correct only this material's
@@ -99,6 +100,7 @@ export function installProceduralGround(T,material,{dirt,forest,rain,time}){
   s.fragmentShader=s.fragmentShader.replace('#include <aomap_fragment>',`#include <aomap_fragment>
    float poreAO=mix(mix(texture2D(roughnessMap,vRoughnessMapUv).r,texture2D(uDirtRough,dirtUV).r,pathBlend),texture2D(uForestRough,forestUV).r,litterBlend);
    reflectedLight.indirectDiffuse*=mix(.80,1.,poreAO)*(1.-vSurfaceZones.w);`);
+  if(afterRain)enhanceAfterRainGround(T,material,s,afterRain);
  };
- material.customProgramCacheKey=()=>PROCEDURAL_GROUND_REVISION;
+ material.customProgramCacheKey=()=>PROCEDURAL_GROUND_REVISION+(afterRain?'-afterrain-v1':'');
 }

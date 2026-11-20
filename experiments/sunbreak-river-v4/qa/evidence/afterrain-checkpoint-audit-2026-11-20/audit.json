@@ -1,0 +1,10 @@
+{
+  "task": "river-afterrain-light-understory-2026-11-20",
+  "status": "first-manifest superseded; not acceptance evidence",
+  "reason": "Post-staging scope inspection found a name collision: qa/afterrain-review.json belonged to the2026-11-18 task. The new review was moved to a dated new file, the historical report restored byte-for-byte from baseline, and collector binding corrected before commit.",
+  "firstManifest": "first-manifest.json",
+  "canonicalReview": "qa/afterrain-look-review-2026-11-20.json",
+  "canonicalManifest": "qa/afterrain-release.json",
+  "runtimeChanged": false,
+  "finalVisualCollector": "completed before this collision and restore; runtime and original history are unchanged"
+}

@@ -11,3 +11,9 @@ qa/evidence/*-2026-11-19T14-*/*.png filter=lfs diff=lfs merge=lfs -text
 # Native Chrome stderr is immutable evidence; preserve its CRLF bytes.
 qa/evidence/migration-visual-2026-11-19T*/browser-stderr.log -whitespace
 qa/evidence/migration-regressions-2026-11-19T13-54-38-393Z/7-legacy-traversal.stderr.log -whitespace
+# Only this new look's evidence; previous release artifacts keep their attributes.
+qa/evidence/afterrain-look-*/*.png filter=lfs diff=lfs merge=lfs -text
+qa/evidence/*-2026-11-20T*/*.png filter=lfs diff=lfs merge=lfs -text
+qa/evidence/afterrain-look-*/browser-stderr.log -whitespace
+# Preserve raw failed-process diagnostics in this checkpoint without recoding.
+qa/evidence/afterrain-regressions-2026-11-20T*/*.stderr.log -whitespace

@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-20T04:30:22.253Z",
+  "pass": true,
+  "samples": 160,
+  "triangles": 7014,
+  "pileSamples": 1480,
+  "supportChecks": 5832,
+  "maxSurfaceGap": 0.0000010036829322379592,
+  "maxStep": 0.2425210802012636,
+  "ruins": {
+    "mounds": 8,
+    "slabs": 556,
+    "chips": 548,
+    "triangles": 25026,
+    "supportTriangles": 12511,
+    "drawCalls": 10,
+    "mode": "static gravity-staged fracture, not dynamic destruction"
+  },
+  "sources": {
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "qa/fracture-checks.mjs": "960987d82f7fb1edf82657f9785d0d511380d2a0c9241a0e34ff0ce98a0b9e37"
+  },
+  "limits": "Static geometry and exact support for every fragment and coarse pile. Not dynamic destruction or visual acceptance."
+}

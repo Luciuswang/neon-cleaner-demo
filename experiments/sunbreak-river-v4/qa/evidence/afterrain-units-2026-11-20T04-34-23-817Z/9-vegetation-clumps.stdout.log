@@ -1,0 +1,517 @@
+{
+  "suite": "vegetation-organic-clumps-v1",
+  "verdict": "PASS",
+  "checksPassed": 23,
+  "checksTotal": 23,
+  "scope": "CPU only; no GPU, visual or pacing acceptance. Tests use spatial relationships, authored physical sizes, actual GLB counts and unchanged exclusions, not minimum population targets.",
+  "baseline": {
+    "sourceSHA256": "b289362e5e91e062f39d7dac19c85d58a172165c81c6150728ff6d5c9fc70960",
+    "treeTransformsSHA256": "76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a",
+    "triangles": 30842052,
+    "drawCalls": 112,
+    "placements": 13969,
+    "grassPlacements": 13874
+  },
+  "sources": {
+    "../vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "./vegetation-clumps.mjs": "7ab8bb79e22cd7f277925bf8b639a2b3321f3a901d65daeb777b286941df4f72",
+    "../map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+    "wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294"
+  },
+  "summary": {
+    "grassRoots": 11288,
+    "foregroundRoots": 5796,
+    "patches": 104,
+    "clumps": 269,
+    "bareIntervals": 6,
+    "triangles": 30250068,
+    "drawCalls": 112,
+    "placements": 11383,
+    "grassTriangles": 1186320
+  },
+  "checks": [
+    {
+      "name": "original tree/shrub transforms and species/shadow flags byte-identical",
+      "pass": true,
+      "evidence": {
+        "sha256": "76ae613c0406d8854f2407e61828d29d5d9f93a9b91d8fe1d4ce9f7303f6562a",
+        "near": [
+          19,
+          19
+        ],
+        "far": [
+          18,
+          15
+        ],
+        "shrubs": 24
+      }
+    },
+    {
+      "name": "deterministic fresh plans independent of global RNG",
+      "pass": true
+    },
+    {
+      "name": "finite grounded transforms and three distinct plausible height classes",
+      "pass": true,
+      "evidence": {
+        "low": {
+          "count": 7445,
+          "minHeight": 0.1260001326791599,
+          "maxHeight": 0.2584999349220561
+        },
+        "medium": {
+          "count": 3805,
+          "minHeight": 0.12971507552974185,
+          "maxHeight": 0.3984967270466563
+        },
+        "tall": {
+          "count": 38,
+          "minHeight": 0.4682386959469412,
+          "maxHeight": 0.5298349054170307
+        }
+      }
+    },
+    {
+      "name": "all roots preserve original river/path/crossing/cabin/house/rubble exclusions",
+      "pass": true,
+      "evidence": {
+        "rootsChecked": 11288,
+        "foregroundRoots": 5796
+      }
+    },
+    {
+      "name": "rendered leaf radii including wind preserve footprint clearance",
+      "pass": true,
+      "evidence": {
+        "perimeterProbes": 180608
+      }
+    },
+    {
+      "name": "nonzero randomized root separation with overlapping leaf bodies in cores",
+      "pass": true,
+      "evidence": {
+        "min": 0.07500856078239376,
+        "nearestP10": 0.07674755516245094,
+        "nearestMedian": 0.08747294381739076,
+        "nearestP90": 0.13955091937721534,
+        "overlappingLeafFraction": 0.9972537207654146
+      }
+    },
+    {
+      "name": "each root belongs to an actual irregular lobe and a valid species community",
+      "pass": true
+    },
+    {
+      "name": "posture mix contracts old footprints and feathers existing clumps without new infill",
+      "pass": true,
+      "evidence": {
+        "mixedClumps": 151,
+        "lowCoreRoots": 4264,
+        "uprightHeightMedian": 0.3498519136733841,
+        "outwardHeightMedian": 0.1533469561638,
+        "edgeHeightMedian": 0.19138713859576245,
+        "rootCountReduced": true
+      }
+    },
+    {
+      "name": "core density exceeds feathered satellite density by sampled physical area",
+      "pass": true,
+      "evidence": {
+        "core": 8107,
+        "satellite": 3181,
+        "coreDensity": 87.47829416593592,
+        "satelliteDensity": 11.098680230027373,
+        "ratio": 7.881864541809596
+      }
+    },
+    {
+      "name": "small/medium/large clumps and broad size variation; no identical whole tufts",
+      "pass": true,
+      "evidence": {
+        "areaP10": 0.3354917512232651,
+        "areaMedian": 0.8872922834763259,
+        "areaP90": 1.886300928808542,
+        "aspectRange": [
+          1.1112795861165345,
+          1.996148838413751
+        ]
+      }
+    },
+    {
+      "name": "bank patch orientation follows river tangent without mirrored rows",
+      "pass": true,
+      "evidence": {
+        "riverOrientedPatches": 20
+      }
+    },
+    {
+      "name": "reviewed near-bank envelope has substantial compound bodies on both sides",
+      "pass": true,
+      "evidence": [
+        {
+          "side": -1,
+          "bodies": [
+            {
+              "clumpId": "grass-clump-2",
+              "coreTufts": 72,
+              "width": 1.595978009114786,
+              "depth": 1.6098951245562336
+            },
+            {
+              "clumpId": "grass-clump-3",
+              "coreTufts": 20,
+              "width": 0.877121626216347,
+              "depth": 1.0075030674553656
+            }
+          ]
+        },
+        {
+          "side": 1,
+          "bodies": [
+            {
+              "clumpId": "grass-clump-0",
+              "coreTufts": 9,
+              "width": 0.7890816265374649,
+              "depth": 1.2310743346149984
+            },
+            {
+              "clumpId": "grass-clump-1",
+              "coreTufts": 9,
+              "width": 0.7445758919430183,
+              "depth": 0.7336749006917689
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "intentional bare intervals are genuine allowed ground, not just forbidden crossings",
+      "pass": true,
+      "evidence": [
+        {
+          "side": -1,
+          "z": 22.066502624191344,
+          "validBareProbes": 156
+        },
+        {
+          "side": -1,
+          "z": -15.269439276307821,
+          "validBareProbes": 143
+        },
+        {
+          "side": -1,
+          "z": 6.655961639247835,
+          "validBareProbes": 91
+        },
+        {
+          "side": 1,
+          "z": -8.92503222823143,
+          "validBareProbes": 181
+        },
+        {
+          "side": 1,
+          "z": -16.63594368286431,
+          "validBareProbes": 156
+        },
+        {
+          "side": 1,
+          "z": -29.92312503233552,
+          "validBareProbes": 130
+        }
+      ]
+    },
+    {
+      "name": "foreground samples contain both dense growth and broad allowed bare gaps",
+      "pass": true,
+      "evidence": {
+        "allowedProbes": 2338,
+        "within30cmOfGrass": 0.1330196749358426,
+        "over1mBare": 0.6864841745081266,
+        "distanceP10": 0.18735329032945103,
+        "distanceP90": 2
+      }
+    },
+    {
+      "name": "local species coherence exceeds random global mix expectation",
+      "pass": true,
+      "evidence": {
+        "sameSpeciesNearestNeighbor": 0.8534658737907163,
+        "independentMixExpectation": 0.17197375297663745,
+        "neighborPairs": 11267
+      }
+    },
+    {
+      "name": "no 27cm phase lock on either axis; synthetic lattice is detected",
+      "pass": true,
+      "evidence": {
+        "x": {
+          "actual": 0.008985074236889662,
+          "randomPhaseControl": 0.024461657847860443,
+          "sixSigmaTolerance": 0.07881104062391008
+        },
+        "z": {
+          "actual": 0.01120145072149335,
+          "randomPhaseControl": 0.012249894966028465,
+          "sixSigmaTolerance": 0.07881104062391008
+        }
+      }
+    },
+    {
+      "name": "source GLB bounds support declared radius and plausible leaf scale",
+      "pass": true
+    },
+    {
+      "name": "CC0 source/license snapshots, derivative hashes and closed public whitelist",
+      "pass": true,
+      "evidence": {
+        "filesVerified": 35,
+        "publicFiles": 5,
+        "sourceAssets": [
+          "https://ambientcg.com/a/Foliage001",
+          "https://ambientcg.com/a/Foliage006"
+        ]
+      }
+    },
+    {
+      "name": "wild tufts have finite nondegenerate curved geometry, correct winding and embedded cutout atlas",
+      "pass": true,
+      "evidence": [
+        {
+          "name": "wild_leafy_a",
+          "blades": 20,
+          "triangles": 240,
+          "maxBladeWidth": 0.007866749358369082,
+          "transparentPixelFraction": 0.8452863693237305,
+          "opaqueLeafFraction": 0.12454509735107422,
+          "opaqueRGBMedian": [
+            63,
+            72,
+            43
+          ]
+        },
+        {
+          "name": "wild_leafy_b",
+          "blades": 26,
+          "triangles": 312,
+          "maxBladeWidth": 0.007424023820100917,
+          "transparentPixelFraction": 0.926426887512207,
+          "opaqueLeafFraction": 0.057930946350097656,
+          "opaqueRGBMedian": [
+            65,
+            75,
+            40
+          ]
+        },
+        {
+          "name": "wild_upright_a",
+          "blades": 16,
+          "triangles": 192,
+          "maxBladeWidth": 0.008972651789883157,
+          "transparentPixelFraction": 0.8452863693237305,
+          "opaqueLeafFraction": 0.12454509735107422,
+          "opaqueRGBMedian": [
+            63,
+            72,
+            43
+          ]
+        },
+        {
+          "name": "wild_upright_b",
+          "blades": 18,
+          "triangles": 216,
+          "maxBladeWidth": 0.008653606387581118,
+          "transparentPixelFraction": 0.926426887512207,
+          "opaqueLeafFraction": 0.057930946350097656,
+          "opaqueRGBMedian": [
+            65,
+            75,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "name": "two source atlases retain distinct but neighboring authored olive palettes",
+      "pass": true,
+      "evidence": {
+        "sourcePixelMedians": [
+          {
+            "id": "Foliage001",
+            "median": [
+              63,
+              72,
+              43
+            ]
+          },
+          {
+            "id": "Foliage006",
+            "median": [
+              65,
+              75,
+              40
+            ]
+          }
+        ],
+        "scope": "Authoring normalization only, not rendered art acceptance"
+      }
+    },
+    {
+      "name": "root shading is grass-only; unchanged wind deformation also binds shadow materials",
+      "pass": true,
+      "evidence": {
+        "rootHeightMeters": [
+          0.012,
+          0.13
+        ],
+        "minimumAlbedoFactor": 0.55,
+        "treeAndShadowRootShading": false
+      }
+    },
+    {
+      "name": "exact current GLB/sector budget does not exceed pre-edit geometry or object count",
+      "pass": true,
+      "evidence": {
+        "triangles": 30250068,
+        "drawCalls": 112,
+        "placements": 11383,
+        "grassTriangles": 1186320,
+        "grassDrawCalls": 31,
+        "byBatch": [
+          {
+            "asset": "island_tree_01",
+            "node": null,
+            "label": "near-shadow",
+            "placements": 8,
+            "triangles": 3030016,
+            "drawCalls": 12
+          },
+          {
+            "asset": "island_tree_01",
+            "node": null,
+            "label": "near",
+            "placements": 11,
+            "triangles": 4166272,
+            "drawCalls": 12
+          },
+          {
+            "asset": "island_tree_01-far",
+            "node": null,
+            "label": "far",
+            "placements": 18,
+            "triangles": 3800250,
+            "drawCalls": 12
+          },
+          {
+            "asset": "tree_small_02",
+            "node": null,
+            "label": "near-shadow",
+            "placements": 5,
+            "triangles": 1864475,
+            "drawCalls": 9
+          },
+          {
+            "asset": "tree_small_02",
+            "node": null,
+            "label": "near",
+            "placements": 14,
+            "triangles": 5220530,
+            "drawCalls": 12
+          },
+          {
+            "asset": "tree_small_02-far",
+            "node": null,
+            "label": "far",
+            "placements": 15,
+            "triangles": 4223925,
+            "drawCalls": 12
+          },
+          {
+            "asset": "tree_small_02-far",
+            "node": null,
+            "label": "shrubs",
+            "placements": 24,
+            "triangles": 6758280,
+            "drawCalls": 12
+          },
+          {
+            "asset": "grass_bermuda_01",
+            "node": "grass_bermuda_01_small_a",
+            "label": "bermuda-base",
+            "placements": 2039,
+            "triangles": 24468,
+            "drawCalls": 4
+          },
+          {
+            "asset": "grass_bermuda_01",
+            "node": "grass_bermuda_01_small_b",
+            "label": "bermuda-base",
+            "placements": 1535,
+            "triangles": 18420,
+            "drawCalls": 4
+          },
+          {
+            "asset": "grass_bermuda_01",
+            "node": "grass_bermuda_01_small_c",
+            "label": "bermuda-base",
+            "placements": 1378,
+            "triangles": 24804,
+            "drawCalls": 4
+          },
+          {
+            "asset": "grass_bermuda_01",
+            "node": "grass_bermuda_01_medium_c",
+            "label": "bermuda-base",
+            "placements": 2493,
+            "triangles": 49860,
+            "drawCalls": 4
+          },
+          {
+            "asset": "wild_leafy_a",
+            "node": "wild_leafy_a",
+            "label": "wild-leafy-a",
+            "placements": 1752,
+            "triangles": 420480,
+            "drawCalls": 4
+          },
+          {
+            "asset": "wild_leafy_b",
+            "node": "wild_leafy_b",
+            "label": "wild-leafy-b",
+            "placements": 2053,
+            "triangles": 640536,
+            "drawCalls": 4
+          },
+          {
+            "asset": "wild_upright_a",
+            "node": "wild_upright_a",
+            "label": "wild-upright-a",
+            "placements": 19,
+            "triangles": 3648,
+            "drawCalls": 4
+          },
+          {
+            "asset": "wild_upright_b",
+            "node": "wild_upright_b",
+            "label": "wild-upright-b",
+            "placements": 19,
+            "triangles": 4104,
+            "drawCalls": 3
+          }
+        ]
+      }
+    },
+    {
+      "name": "no old infill flags, no unmapped roots, no global gameplay mutation",
+      "pass": true
+    }
+  ]
+}

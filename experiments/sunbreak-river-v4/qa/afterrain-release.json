@@ -1,0 +1,1389 @@
+{
+  "schema": "river-afterrain-checkpoint-v1",
+  "task": "river-afterrain-light-understory-2026-11-20",
+  "profile": "offscreen-cinematic-v1",
+  "date": "2026-11-20T05:11:36.090Z",
+  "baseline": "8647a8fcdfaf9fcd199e4b0495628b894fd64aef",
+  "runtimeSHA256": "894ec9dfb0dc9cecd8470e270390f5fc5dd922ce98d0d48b85cce839a559be07",
+  "sources": {
+    "../sunbreak-storm-v3/assets-manifest.json": "54a4c65719ab7a69635cbeb53829f5ec58b63959c6d2b08af6a585edc3e9b9e7",
+    "../sunbreak-storm-v3/assets/approaching_storm/approaching_storm_2k.hdr": "bfa680c11375e328b1692c766dd459f8168a85cb08abfaee187749a89b641370",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_diff_2k.jpg": "28f5ba8690553f192c0e5e1a5ff40f34765b4b93f4cc7059b1a3e9c795b6c28c",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_nor_gl_2k.png": "f96c0a1664e556d233b3f76e8f70ab08af5b1c342786efb99b72b8854563440e",
+    "../sunbreak-storm-v3/assets/asphalt_02/asphalt_02_rough_2k.jpg": "b9a516b61b7040a9245ac206642d5f767ad9589a0169c4a1668221429e8a998c",
+    "../sunbreak-storm-v3/assets/audio/NOTICE.md": "400b3aa6cfef44a6af43eef6f35c5294a2f93e42ab234d04271880f2b57c69d1",
+    "../sunbreak-storm-v3/assets/audio/confirm.wav": "88aaddd6e30d26a7ec388e29cac493418ea20320856d492f132e59dcc967eaba",
+    "../sunbreak-storm-v3/assets/audio/enemy.wav": "3db5bc68ce25c8e1f574696d9cce7845641986a4b90fb61825039b1471b6ba3e",
+    "../sunbreak-storm-v3/assets/audio/magin.wav": "2351cb7ea86d1dfac85e99721f132200c8f25a247830b76678e4efa300e5e33c",
+    "../sunbreak-storm-v3/assets/audio/magout.wav": "a46bb54a81a5b5750d0e6336493e04392c3dfd1b553c82684618e1bce1038cc7",
+    "../sunbreak-storm-v3/assets/audio/manifest.json": "a68ed816350196bc05587a9965380baef287661b48a9360c2cdd7b5cbad9562c",
+    "../sunbreak-storm-v3/assets/audio/player.wav": "d533f073c268efbd92d03d74243ce5eb02c8dbf69838762076a02b7611c51ff7",
+    "../sunbreak-storm-v3/assets/audio/provenance/firearm-source.html.txt": "1f5abcbefd0486133133191e1ca0729e2705ba4391ffaa02e33c7c33eaefe868",
+    "../sunbreak-storm-v3/assets/audio/provenance/reload-source.html.txt": "598af75d54a8c86eff27e4fdf597cff91da873938b1b7821957183e64d7b53a1",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_diff_1k.jpg": "4213441aebcb72b9911f5a860e9ce74a61a8f6ce3b9c23d1f204173e7e7f6066",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_nor_gl_1k.png": "1d35617ca492eef42b85d877ef99a3a78389920858e37ffadf8f874fa3f18983",
+    "../sunbreak-storm-v3/assets/bark_brown_01/bark_brown_01_rough_1k.jpg": "4e7f62508cf77faebfeee15ffb571ff02c45c18d5174aa19fcb8b98506359c5c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_diff_1k.jpg": "6e40c0fc908f4d66431836f5abe203f3a4eb064e88824378a91a46a26e2f464c",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_1k.png": "156fd005f3e675fc25e8afb73d65252a3534d78485ad4cc9c2377ae1a0ff1fbe",
+    "../sunbreak-storm-v3/assets/concrete_floor_worn_001/concrete_floor_worn_001_rough_1k.jpg": "069efe4ca018e0ef61fd8cc9964395ba8272284ae239da68d7f87988e2e9f488",
+    "../sunbreak-storm-v3/assets/kloofendal_48d_partly_cloudy_puresky/kloofendal_48d_partly_cloudy_puresky_1k.hdr": "fd94c84997b8a3c353b62c2125a9b44e19509956986a126e472684432a02d798",
+    "../sunbreak-storm-v3/assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr": "312b1b04b7f10057a4f1418abc59d1166c8933cc93fc72051502edaf8d6b2fcd",
+    "../sunbreak-storm-v3/assets/mp5/mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_diff_1k.jpg": "1b30c1f0a9d3f761afb1354d95b36990fc670fac5f811889af8cb2ab682c8e66",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_nor_gl_1k.png": "ee711bb54bf50ecd5a56aee35a279c20a1b66b6064f1884d7de064affaae403c",
+    "../sunbreak-storm-v3/assets/roof_tiles/roof_tiles_rough_1k.jpg": "b4e832d544fb663728128fe178919d1c9be4d937236d8e8d3f7669a8b896e86c",
+    "../sunbreak-storm-v3/assets/soldier/soldier_tac.glb": "fe02bc307077d7a5a74069d085893988d93751495871c84082256e60bf9bfc9e",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_diff_1k.jpg": "94833feda44e025a9139f7b5723ea84e4f0258d3b54939a79e1013c133085e29",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_nor_gl_1k.png": "17e74f7e4742f6b7f385b1ca57637fd448247bb1dcfcee3dbd58f4de8d32b1b2",
+    "../sunbreak-storm-v3/assets/weathered_brown_planks/weathered_brown_planks_rough_1k.jpg": "b80c45969d8299ca5f21de969f0269138a5e3e78e51fc911af809683d99c5bc9",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_diff_1k.jpg": "f769bee35504ff713e89e89d2b64c1eb3c373dd184973ac8706310f19fd63efe",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_nor_gl_1k.png": "2f8dc1726f6c2a32cd8270e9135fb3bd6fa6606801cb76a39dfe419eef96ab76",
+    "../sunbreak-storm-v3/assets/worn_plaster_wall/worn_plaster_wall_rough_1k.jpg": "383584ed24edd4dd6e6a675fd822ec04152684ba15f4b0eda1f0dbe31979a7c6",
+    "../sunbreak-storm-v3/vendor/presentation/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/presentation/build/three.module.js": "6beafa504a78647395277433a915cdf6ddc864ec979e4f13ecfe34cb151054fe",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/SSAOPass.js": "5acd66aed551ee8f737f4b03acca8b9e44a5f43f15989e0295785175839e09ea",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/presentation/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "../sunbreak-storm-v3/vendor/three/LICENSE": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "../sunbreak-storm-v3/vendor/three/build/three.module.js": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/exporters/GLTFExporter.js": "f8a6eb87719e68c925fdf445014b5ead49cf779ae14e69c6cc1cb1dd4eae514d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/geometries/RoundedBoxGeometry.js": "d20aeaf7077c459a8d952d215738d7b44fba028440bb862d84b622a34f0c80bb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/libs/meshopt_decoder.module.js": "01f48524f4bac6141eaba07e94cc36e7ee56f311796fa6117c159842941b0468",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/GLTFLoader.js": "d073b438e6a07e1359741dd5d6c76c953420cc0d4fd84eb1bdde94315540e6a3",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/loaders/RGBELoader.js": "f0e87d0008d9484d31358b32befd1bf80e4301f77573cc9a7cf7d871cc3f64b4",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/math/SimplexNoise.js": "9b8d541b77b0ddc79afaa6a1de8941452c191b8b9006f04e7b8fc422e2b263f7",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/objects/Reflector.js": "012ecf98f5fc9bd262871e33d79392a25c04c2573ed68852eb3b8d2d39f9808b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/EffectComposer.js": "d234e578618fa816955ebdc059c049c577e203e650e33cf22bde3f232c29e669",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/MaskPass.js": "328cf7db0da5d9be83ffe39d54b01d5ac1fddf108cc98182ddbb056f5c8b537f",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/OutputPass.js": "13817fc7a87f662d29d2c5e00f44d3a4588c9afac4a372de0cacb0e44e368ffd",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/Pass.js": "b3c6128340eaa37e40a6a2f1b738e894c855239417d50959759b34a2b5e89f92",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/RenderPass.js": "1c90c085312871c4bcdccfcf519499c6276dd503363fcf7cb7f703add45cf4a2",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SMAAPass.js": "f3508e3e17f40c1358921b5c7eb3ab60460d97b06fdadf6b0d40b52d3842c44a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/SSAOPass.js": "22ef811aeda777d2ba71d8f70cd332aa843782b9ffc559e6ba0dbfffa003061d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/ShaderPass.js": "3b28a1ee27e0eb96c0eab137a1f442ccf127a926904eced2d51e125ec44af781",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js": "8f09315c0cec117a0ca2494d3e3586035b3c4323d6dcb037537cc51b04c3cdba",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/CopyShader.js": "4e3346db194db56a596cd074e9bdb39fb5eb52040c333e0d29dc4eb1324d3b1d",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/LuminosityHighPassShader.js": "3d841cc594a0c1767d1b0185720b32761a0133c5f1b70b56658e28f2fb9b7900",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/OutputShader.js": "53a52e430c27bc36ceaab8ae90a2b4af7b02672d7ee4b29d6ba3c28e09c92c2a",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SMAAShader.js": "3c7e942a25cb09dd431e395e6e91904715a834b2a6e62ec0b9b77c2f8655c369",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/shaders/SSAOShader.js": "bd5cda34d6b52941c1121b77947664848af10dc68febd453dfdc56c59e58ba06",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/BufferGeometryUtils.js": "9be041e96308775d00e2695cc607645b9a9b64fd7c0e759dd8f7c00a8d92becb",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/SkeletonUtils.js": "83748c5072a5ce96e9d68d8efda908a1f1a06c0b5fd2618edc3e54a361a8fd5b",
+    "../sunbreak-storm-v3/vendor/three/examples/jsm/utils/TextureUtils.js": "1b84a7fde8745dd614f62b6ca8108b592144278c07891a0cbe8cdf8e15796efa",
+    "PROCEDURAL-NOTICE.txt": "5db9925b27c76415d5d0df7fb3b0b838bedeb882cd8fab8f7f249a59e2433c72",
+    "actors.js": "fa259194ad644ad713e238f828e9f44d6fb2e63400c86f4a64033de31e3dd05c",
+    "afterrain-assets.json": "f1962089201af2341b8a306dc8b70c8fe2d36512fdfec8d1915f9edf1426ac65",
+    "afterrain-ground.js": "47777489d6c897a793e3a136d6175bd9991479c4c2e3e5a2b568b705ec7fbb7b",
+    "afterrain-light.js": "29c7407d3363931ceab4f4f9afbdd77ae481e941bd6f54b709ea5cac6ffb5f54",
+    "asset-sources.json": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+    "assets/afterrain-detail/dry_riverbed_rock/arm.jpg": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e",
+    "assets/afterrain-detail/dry_riverbed_rock/color.jpg": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524",
+    "assets/afterrain-detail/dry_riverbed_rock/normal.jpg": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d",
+    "assets/afterrain-detail/ganges_river_pebbles/arm.jpg": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c",
+    "assets/afterrain-detail/ganges_river_pebbles/color.jpg": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34",
+    "assets/afterrain-detail/ganges_river_pebbles/normal.jpg": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133",
+    "assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6",
+    "assets/brick_moss_001/color.jpg": "0af91390672fe184959fdc9d915d8ee4006c46011057f03fc0d3675df74cdf79",
+    "assets/brick_moss_001/normal.jpg": "b764511928a767aa8501dc2ae1a6bc5e1f92a43d1ef97ead55f77780f3ee367e",
+    "assets/brick_moss_001/roughness.jpg": "c429062347f60091bdd9bf6db462d466a6b127d1b7268109d55f92a938f686c7",
+    "assets/brown_mud_02/color.jpg": "5c735b1df784ab1990f4e209c55d27fa4e7a19508e40484ed5aa783266783726",
+    "assets/brown_mud_02/normal.jpg": "3d6eec0adba8fd514d5634c56f806ad40206975c3ef17de1e2468b9e3ebcf719",
+    "assets/brown_mud_02/roughness.jpg": "00ef047ecda114930311efd31cbdb371c7a236f211a00f1dfeb6b1b73ac2f674",
+    "assets/foliage-revision/grass_bermuda_01.glb": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+    "assets/foliage-revision/grass_medium_01.glb": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+    "assets/foliage-revision/grass_medium_02.glb": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+    "assets/foliage-revision/island_tree_01-far.glb": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+    "assets/foliage-revision/island_tree_01.glb": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+    "assets/foliage-revision/tree_small_02-far.glb": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+    "assets/foliage-revision/tree_small_02.glb": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+    "assets/ground-surfaces/dirt/color.jpg": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+    "assets/ground-surfaces/dirt/normal.jpg": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+    "assets/ground-surfaces/dirt/official-files.json": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7",
+    "assets/ground-surfaces/dirt/roughness.jpg": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+    "assets/ground-surfaces/forest_ground_04/color.jpg": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+    "assets/ground-surfaces/forest_ground_04/normal.jpg": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+    "assets/ground-surfaces/forest_ground_04/official-files.json": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156",
+    "assets/ground-surfaces/forest_ground_04/roughness.jpg": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+    "assets/rocky_gravel/color.jpg": "641b0a87d3c793c1670f6e6c68f4799e8c5045268b5c42632b8a4b6dddef4697",
+    "assets/rocky_gravel/normal.jpg": "12769e23229fa996ac5b8173410304cbe6f536baf69969def7c2d0ee1d8fc2a3",
+    "assets/rocky_gravel/roughness.jpg": "47d06ece401731cf1cf7b72f636bc3ffc6d36b5728841cc22c04e876e236617d",
+    "assets/wild-grass/Foliage001-leaf-rgba.png": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+    "assets/wild-grass/Foliage006-leaf-rgba.png": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+    "assets/wild-grass/LICENSE.txt": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+    "assets/wild-grass/source/Foliage001/Foliage001.png": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+    "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+    "assets/wild-grass/source/Foliage001/metadata.json": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+    "assets/wild-grass/source/Foliage006/Foliage006.png": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+    "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+    "assets/wild-grass/source/Foliage006/metadata.json": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+    "assets/wild-grass/source/license/CC0-1.0.txt": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+    "assets/wild-grass/source/license/ambientcg-license.html": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+    "assets/wild-grass/wild_leafy_a.glb": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+    "assets/wild-grass/wild_leafy_b.glb": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+    "assets/wild-grass/wild_upright_a.glb": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+    "assets/wild-grass/wild_upright_b.glb": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+    "audio.js": "39c1efda38ee8b6df538c103da50ca2ecc0dd3250c6b38f719ca366ebeb7a77d",
+    "boot-ui.js": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf",
+    "buffer-house-logic.js": "9a87d2ad67aae842829f62fb2140ce92fecc5d54b4ee0feb709bf0668c34272c",
+    "buffer-house.js": "cc8bde58367f12ba3093d23743570cd87f2cedf53e279dad3ecca40776b9f86e",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "combat-feedback.js": "dbe1d0b4bc6933bb3e8c0295734bd72633f5eabfcb1a1da18f4a33fa8811601b",
+    "credits.html": "cbccdaf1c5489ae1be4993c622ee57bdfd2d1df1350a404cc47af4ff29eb58f5",
+    "daylight-assets.json": "8b1e59434319824cb3f3e5630c5e752449ce93726c99376e6d62d7bfa51fa8b2",
+    "distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "downloaded-dressing.js": "b98420678ef534862b9a5f5d549da27406e3eea82150c80590df23637c12cdf5",
+    "environment-polish.js": "2d176195d9fadd05e8c7107f52f1182806efca8c49554f892ccec53b8834c046",
+    "fable-art-revision.json": "ff497102b442e9d69cd8765ab5092d9c1fcf1d524991546295b5e12d4bb70f08",
+    "fable-production.json": "b1323656f281a854df1c7e2eb06594dce25999f5c25af6eb411949b7bc94c6f2",
+    "foliage-derivatives.json": "823f3cdc36f1202fd74a6e1bb3cdd52dccb95a31d6160a6ef9b524fea6619303",
+    "foliage-revision.json": "a7f19ce8573c6662e8dce8a6f1b26e0768c18c1e46a22d6ad05eca75c9f3aa89",
+    "forest-floor.js": "ec3053a342fd30679c11c9fd456e54067057bbcebc297832e5e14142977d7d3c",
+    "fracture-geometry.js": "1638bf8d01e8b3d66ecf3d589048888237b2edc3d4e0a13aec7fd64e7f212ce9",
+    "ground-moisture.js": "c94826fa4356f0be4e21ba90469e1fa6ed7b690d92bd457dca86090282e2165c",
+    "ground-surface-assets.json": "cbaefe902c66320261752edc8874361e157d41bd9ba1ca761549552fe3cfc7c9",
+    "ground-surface.js": "354540e7efe4306708fc342f08c46dd16a63e99985ac7a2216c997a8e14e262d",
+    "height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+    "house-logic.js": "71d029503bade52d9a79b2667d91c696512e75431c3e9ff087a8c39077824496",
+    "index.html": "6428e9e0da600224dad87cb72d218f76837a0fec465a4623e9787d94e734c314",
+    "local-asset-store.mjs": "34017c142d56a64d549f17c223386b93de068489fd18deb9a00c5e4910d97785",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "masonry-materials.js": "2369a751d2c28ce168589b5c38c5cbbbb0a042dda6a3d12f46bb5e1ef099a49a",
+    "procedural-ground.js": "916894869b1b8f576d61c1dc340b90a81ed49a9360b20fa0938f313dc55bc959",
+    "procedural-materials.js": "94d24529e3e22070364fbf95969777d27097bb20d2601d4900ac4c03b1a02f65",
+    "puddle-reflection.js": "019834203712e51fe24165e6f12cc0737309290f942b0885e306e61d3387357c",
+    "qa/browser.mjs": "50f551358c8f186c52955f45aed1895bcaeb874a8933f1baaaa0f87f84e9b408",
+    "qa/hooks.js": "f438b2094459b7f2e8f3341b73894935b5111f753fd5b23af5901a3c24029b1c",
+    "qa/source-binding.mjs": "3fdaf05293e6616518e54bd533d546701427a9a86a782cc963fcac6b60ec9928",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+    "riverbank-detail.js": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f",
+    "ruins.js": "04f38f41a408d4198235cc0bfb96306fc9ef53cca4fe78911266f67d4091be53",
+    "serve.mjs": "5b0065f56a0eb2e7556898e5f86954db34227d5b5c0e6f0538c842178b9feb72",
+    "shot-feedback-event.js": "8beec6d099e0d9773b101ad57ffdb980b7e7376b4777993f027d81d6eaf3642b",
+    "soldier-provenance.json": "47b90db49e807c462ce37ff4523b7baff84840737222bb66062cff1a01368e19",
+    "stone-cover.js": "61f6e0b9c39859f691235fe096777236c22d6188d9adec58aca785a063b8078b",
+    "storm-audio.js": "86077438d667b882d0f8d32e303bdb9ceaeb9f3803c4ef05fe336722d19ad709",
+    "tactical-ai.js": "51e762de48c0e84e6f5cbe851a57a1dc3eff1b338e8c740ac46ccf480a5948de",
+    "terrain-ray.js": "c190c089245c56fa6ee49519d8d18b8c0c73ec3e3500c7956e1b96e3803f55d2",
+    "timber-house.js": "31dcb143860c9bd1dba3f4362909fb9c2c7b378a92937bd0e710814a9361031c",
+    "vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "weapon-provenance.json": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c",
+    "weapon.js": "cffeb71a38a36bb3e0b481ac8ec3faea0049a5b5f42d7f76150326b4d80d3658",
+    "wild-grass-assets.json": "e79e58618376cff5d21ff6e0d541f9f9d2c647da78146f8902a43af115e64294",
+    "world.js": "171d5ea0b2820f881029bdcce45737b4a3ef9f1be6fcfbf3bf4c16a65cd2abf8",
+    "local-only/manifest.json": "6e1ab6457bd22c2ae6ab890f247ce3b664c09b0149a5948e4ef3ddc4814a149b",
+    "local-only/castle-wall.glb": "4cc4d2171a94ace4665495b41f30ff5c36185020578ba05c5ae75315d8c53b6c",
+    "local-only/cement-rubble.glb": "9cc39900f29104f0c7fb1dfabe84538dffbfd00835c1684d3d8d5963f7a4065c",
+    "local-only/cement-rubble-small.glb": "cc0443b5736b634e1c33beada6a54ef32cca78254beda0254d04d629a2d5ff24",
+    "local-only/grass-clumps-a.glb": "011c18c7c67def787cd208e245df9a8bb7c228b204c1dd8531c47f8604e086e1",
+    "local-only/grass-clumps-b.glb": "06542a8a6544c2a8b5b1e513ce7c5f98364f874319e546c15676200f3c8501f6",
+    "local-only/grass-clumps-c.glb": "5bd13e718d6f8d5ac68b3a70211a1c6ae268d8d38eabc237463cd16f7b456750",
+    "local-only/mossy-wall-a.glb": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754",
+    "local-only/mossy-wall-b.glb": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4",
+    "local-only/tundra-grass-a.glb": "740aec736017a52adec7d81c81823758d72afcb04074efde1a302f4fc4d36e0e",
+    "local-only/tundra-grass-d.glb": "7d4e1f1c6b058241a1261745fc5658ef44ef47379c54967b4fa0d08d981c8e77",
+    "local-only/tundra-grass-h.glb": "9dbea586c5922990240987144fd2f32e316fad5235ce59ff04049c58400f13f6",
+    "local-only/woodland-house.glb": "8fb993356d84d8b6d38d929f00b9939996b51ffab993a671d6b5fb995eff8815",
+    "local-only/served-manifest.json": "89af124953d3706e3224bcd45458132675bc06977f42534fa38c9f71720e1bcf"
+  },
+  "bindings": {
+    "visual": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/report.json",
+      "sha256": "231a239afde78cc00c959f4c17b7e92f9a4819a01ac28d6773cd8403721a1ad2"
+    },
+    "compat": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/report.json",
+      "sha256": "c5cde11ea6b0b427efc60dab7746f86bf1fdeeab64982eba2c0bac8d72b9099f"
+    },
+    "units": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/report.json",
+      "sha256": "156598a80afe3fe24cde4606d66a954f12b7cf44d1cddf692c0b4744d0542e8e"
+    },
+    "regressions": {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/report.json",
+      "sha256": "b907aa85208ef06db3d331e8105294e9ac300cefa5b69cf9e3d6cffa8815d41d"
+    },
+    "review": {
+      "path": "experiments/sunbreak-river-v4/qa/afterrain-look-review-2026-11-20.json",
+      "sha256": "3cf8143c39ddc9ff6fc82493b3e0b87c5008006860591cd6e03d503572996a91"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/browser-stderr.log",
+      "sha256": "230c9fdb67fb9ef8f6fc9502f0a1cb0cccd0039e4a4eaef016e03b0ccf3a8afd",
+      "bytes": 295,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/cdp-events.json",
+      "sha256": "d9dfa8546093b1729ef4f3e975fce376017c2d47ed554880578b520f0c78c705",
+      "bytes": 2539420,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/cdp-transport.json",
+      "sha256": "f63f133424e9b1dc2f2d1496cd7b01d45e2b96164dd2ca5aa6de00a76b593fde",
+      "bytes": 1048180,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-cabin-edge.json",
+      "sha256": "e2ba050ae87efb0fa59cddf83a3d927d50912f5bf62c25baedafdd53fff197fb",
+      "bytes": 755107,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-cabin-edge.png",
+      "sha256": "623c471a1d415be855319c2bfec0dc31abdcb1c4d531f254acb215a8a5f31bf2",
+      "bytes": 2773250,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-events.json",
+      "sha256": "ea0688cc6d7067dc5700b5c43f99ea4314f6f0ea5c4a9a5e99797d708e00678c",
+      "bytes": 1270581,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-forest-hillside.json",
+      "sha256": "35c6ecb23f92de74627cd4f81b3e728c7642f0f67f5bb4eb8ae122052c218b78",
+      "bytes": 755400,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-forest-hillside.png",
+      "sha256": "f5707ac6e5bd20a1a27b41bba68ad9573d284504284a351187388cf320e7051d",
+      "bytes": 3034384,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-ground-lane.json",
+      "sha256": "8f70099e8e1a2c04b25723afef49d7553cfed09a0a191c1db2f32feed4ce8256",
+      "bytes": 755240,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-ground-lane.png",
+      "sha256": "c0f73eff338758cd9f554ded54bffac2c4e7e43724252f9502d1aec4696fd987",
+      "bytes": 2863894,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-network.json",
+      "sha256": "da53d2c90161ae612cd760f6d1c2aa9339ede1f2de1641ec882cf383f2c965dc",
+      "bytes": 143917,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-puddle-sun.json",
+      "sha256": "699151660ca1023b94ebee26935f22e5b230e8de20801515acb61bb69da81e3d",
+      "bytes": 755254,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-puddle-sun.png",
+      "sha256": "489a26002fedca960af3b52d72acaf2cbf45cef881a41bafdc2ad1a19b46f533",
+      "bytes": 3382991,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-river-hero.json",
+      "sha256": "97a1d1dbbab7881dcef93f2ec36f6c78f85d1a4c4c85f37c60d19a99d80d6bc6",
+      "bytes": 755388,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-river-hero.png",
+      "sha256": "7616a43597459d1ca3ba55fed6788a0fa98baa048a98a71a8d1e67735d4f2708",
+      "bytes": 3366954,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-river-wide.json",
+      "sha256": "2550698256d65c01029f352a056ae1d16c66d477f3f88a578e3a38e6c87d9816",
+      "bytes": 755280,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-river-wide.png",
+      "sha256": "751b1308a7c6e80a3a7e76e25ba48b09c5d12a04f429950b60b703beee34f42e",
+      "bytes": 4420692,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-storm-ground-lane.json",
+      "sha256": "7f74a3d87e0119cae93baafafc69c37ee77674f6d803d54720a4fe8cc2fbc5ed",
+      "bytes": 755258,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/current-storm-ground-lane.png",
+      "sha256": "b015825d897248b6c0bc9fb4b7c19367d587678e3693d489943637723f5d3149",
+      "bytes": 2899858,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-cabin-edge.json",
+      "sha256": "d9823f2f80b62625d14a055d2a5a53fa25f757aebcb2fa85f832e03ce9f39b07",
+      "bytes": 749655,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-cabin-edge.png",
+      "sha256": "401a27f5bb80b97fe2009ab2acdac9f251cbc77d4dd9abc1c6ebbda3e9dbe2bf",
+      "bytes": 3262068,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-events.json",
+      "sha256": "55477eb88a270029b97d0f45e4d8850630963a0f0bec7640751f236ef41ca8f7",
+      "bytes": 1267746,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-forest-hillside.json",
+      "sha256": "c289633726d906f5a5b366e926d2757b160bf0af1a8d7ea3db926ad32cd8aabe",
+      "bytes": 749952,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-forest-hillside.png",
+      "sha256": "fcbe4bab9feb43e571fb7be8ed7ed752cfc655a83d649715d4302ba55b9bf22f",
+      "bytes": 3426467,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-ground-lane.json",
+      "sha256": "a826f51b75f1e60dc610856b9cdd884be80cea85937af17ddb988945591818e4",
+      "bytes": 749922,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-ground-lane.png",
+      "sha256": "078a97b5329c6cb2ac42d86b122f033a857dbf6345c5d944b5638f60c071989b",
+      "bytes": 3559169,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-network.json",
+      "sha256": "e947aabfd2ac66e51d5c19f05d5ffffe68771b4e36f6b4e08f00c32ef61f799c",
+      "bytes": 143931,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-puddle-sun.json",
+      "sha256": "e64a9ef28c75d999880a419b49944b7d1808e9f8330933fc28aea27936e48eb0",
+      "bytes": 749920,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-puddle-sun.png",
+      "sha256": "01035d89420154bf81e511cdb4c4e35d684dfa9261684d6a95e26e658119840f",
+      "bytes": 3697562,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-river-hero.json",
+      "sha256": "08a4d070fa69a9cbab719c8f6089b1c37d28ea8fd0b82f537b2b81e0b23b5099",
+      "bytes": 749948,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-river-hero.png",
+      "sha256": "a129d02addd8d899a6c02da297dcafc01e81e9fd26adb7f1e41b1f8fbfcbcfbe",
+      "bytes": 3470151,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-river-wide.json",
+      "sha256": "1a06d86caf031ba073be44c1086af01efbb948a53e941c3e447e10a723a8e94a",
+      "bytes": 749976,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-river-wide.png",
+      "sha256": "d937b666222dc0bffae53f1bd2934cc685e7f45a267312b59161781c955ad73d",
+      "bytes": 4606261,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-storm-ground-lane.json",
+      "sha256": "bda34f1a576f7b6e715193a2b2282cc7277a8a6546e9e5701213ab6870839648",
+      "bytes": 749954,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/previous-storm-ground-lane.png",
+      "sha256": "ac026e35c07e6570ffda3dd932190a99f05ea95da585ceb54cd597c62c3af1e8",
+      "bytes": 3350254,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/report.json",
+      "sha256": "231a239afde78cc00c959f4c17b7e92f9a4819a01ac28d6773cd8403721a1ad2",
+      "bytes": 1367838,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC/source-manifest.json",
+      "sha256": "14e32143ccb5d7566073479bc0dfbca109926e5368f419d0fe89f3c0a25d2a90",
+      "bytes": 56631,
+      "phase": "visual"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/browser-stderr.log",
+      "sha256": "78c64a1af96c4b59908294dee03f3ee7189c392f41f8849d6fc7d04a4c67dd46",
+      "bytes": 511,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/cdp-events.json",
+      "sha256": "4884ccf8dd34c6ea7c56b1607cfb0c64a8fcbb265a785c4b2e50c3593f3aec08",
+      "bytes": 2837860,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/cdp-transport.json",
+      "sha256": "0e2272dac3d7b15aae6ce2ec1c6993c01dfc46ee62c19045fafdf11dfaeac1eb",
+      "bytes": 244376,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/current-legacy-events.json",
+      "sha256": "e2309a82e36e8e753071d31289cbb1913a318dcbaccf649138422c7d139b6bd1",
+      "bytes": 1417630,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/current-legacy-ground-lane.json",
+      "sha256": "3be084f006f8f07ef1aed2b35eb6f0696d3eb6b2bc2b1d380b42fb4a47917490",
+      "bytes": 554308,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/current-legacy-ground-lane.png",
+      "sha256": "e8a49aee22b961e27e83640ef37d3988dfbb1eb96498ce2a4f9d98a29c9aeb51",
+      "bytes": 4472679,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/current-legacy-network.json",
+      "sha256": "814ce8979e8b9a6471d19a0880f8d3f3a0c308fb395bc6e65cbb47ed641ee40c",
+      "bytes": 151181,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/previous-legacy-events.json",
+      "sha256": "a6a520e6c80cc309e9fa39a3bea3519529a5209c1e5fb53d91c424c26c2f7e8c",
+      "bytes": 1419137,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/previous-legacy-ground-lane.json",
+      "sha256": "2cd938e37334d00d3f9c80be6481b77d8b06ed49b324a21795d830b3963c0c15",
+      "bytes": 552390,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/previous-legacy-ground-lane.png",
+      "sha256": "424777634715157eebbabd04b479ac136172c4292e35cf6ad9906ffff9c701cb",
+      "bytes": 4733693,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/previous-legacy-network.json",
+      "sha256": "f9b83492a17c68dff48982dded19d05f652ecf1d428017ead4e12839cd4765f9",
+      "bytes": 151195,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/report.json",
+      "sha256": "c5cde11ea6b0b427efc60dab7746f86bf1fdeeab64982eba2c0bac8d72b9099f",
+      "bytes": 1373079,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-look-2026-11-20T05-00-45-041Z-Kh8zwF/source-manifest.json",
+      "sha256": "14e32143ccb5d7566073479bc0dfbca109926e5368f419d0fe89f3c0a25d2a90",
+      "bytes": 56631,
+      "phase": "compat"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/0-map-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/0-map-checks.stdout.log",
+      "sha256": "84d4946f18a404332cf7ebfa36c96455d7bdff8d8a932102ae65d18eea62ab3f",
+      "bytes": 3137,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/1-terrain-rays.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/1-terrain-rays.stdout.log",
+      "sha256": "89a13ad5c0ec4a0f8533e9480081ec0327366741da3413a427caa37c6792f44c",
+      "bytes": 26,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/10-water-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/10-water-checks.stdout.log",
+      "sha256": "4c5020400721f2d704e71a2e01d214ffde7a9b460b305419961c43c3f51434e0",
+      "bytes": 193,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/11-wildbank-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/11-wildbank-checks.stdout.log",
+      "sha256": "2c5afe95b08a42e3a59a7e5f01263c42160d25e279476d5e341bb292a6c23af1",
+      "bytes": 196,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/12-surface-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/12-surface-checks.stdout.log",
+      "sha256": "b28aa6a90784618f78c3b0a4e6d016935c4189ea71f9545b7ce6b349a69f57c6",
+      "bytes": 134,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/13-masonry-materials-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/13-masonry-materials-checks.stdout.log",
+      "sha256": "e38406e95e8587bc18b8b27e200ae8e4bd4739d122992ffd133a846b43e1694d",
+      "bytes": 3996,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/14-height-fog-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/14-height-fog-checks.stdout.log",
+      "sha256": "8b453ec120095e21e0dacb86b1c2e41cae70558ff1799db8b4bc2114bc3cf9b8",
+      "bytes": 5025,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/15-downloaded-dressing-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/15-downloaded-dressing-checks.stdout.log",
+      "sha256": "e89747508782f4b396c609902894626d1c96484232a8cd536be731e822a9a49a",
+      "bytes": 2890,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/16-environment-polish-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/16-environment-polish-checks.stdout.log",
+      "sha256": "eef73e7dee246be168c51690979ff7c1913c3551f22f6e4a727e9d15243e1e69",
+      "bytes": 280,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/17-shot-feedback-event-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/17-shot-feedback-event-checks.stdout.log",
+      "sha256": "ba7407b54c3656efb5430ed85a41aa855a1ba27bc4cfc68a6eaaabff61366bed",
+      "bytes": 463,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/18-polish-preservation-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/18-polish-preservation-checks.stdout.log",
+      "sha256": "edd43429d8f4e2d83717e3e81f001c02c301c79bea92ad7fee29eedbb3bc07aa",
+      "bytes": 533,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/19-stone-cover-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/19-stone-cover-checks.stdout.log",
+      "sha256": "d77951b32100f6e6a204f5efc6fadbb05c60682ae4e711c8a14c9068bf0dd7c9",
+      "bytes": 2401,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/2-ai-movement.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/2-ai-movement.stdout.log",
+      "sha256": "41c8da0e5f5a4ada7e07c1cefddc1018ad1c3e06d4d43b08bb21af04a7ba9db8",
+      "bytes": 40,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/20-combat-feedback-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/20-combat-feedback-checks.stdout.log",
+      "sha256": "0ad219a55c41469ddbdd89f17ebc3633b6c0f3902c2487a93ec96ef7f7b40ffc",
+      "bytes": 6410,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/21-procedural-materials-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/21-procedural-materials-checks.stdout.log",
+      "sha256": "854add7dc3fa3e47adf636a9c9535528ed01c5cc9e5f478ccbf9b96224d5e8e4",
+      "bytes": 12995,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/22-procedural-ground-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/22-procedural-ground-checks.stdout.log",
+      "sha256": "3c033092d0065ade010bacece44599e531c02cf6e3153453643bcd71af806099",
+      "bytes": 118,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/23-migration-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/23-migration-checks.stdout.log",
+      "sha256": "2fdf7d1bd087070a471350d0aa0441bd45a18e62942d313346358ed4d9e040fa",
+      "bytes": 5331,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/24-forest-floor-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/24-forest-floor-checks.stdout.log",
+      "sha256": "06a67218dafc06b23eb2950019eeefc690b9eb5ddff23d878809d1b3ab60698c",
+      "bytes": 3601,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/25-afterrain-ground-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/25-afterrain-ground-checks.stdout.log",
+      "sha256": "1a3ea4754e7c06a5d3a1e96a6b0bbccc9ced5fbc40b408a842bf56b126956e2d",
+      "bytes": 102,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/26-afterrain-look-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/26-afterrain-look-checks.stdout.log",
+      "sha256": "9399592d69799cfbd41f1a76a955d13a731ed488951f84d8510d35e7b3a10c37",
+      "bytes": 10150,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/3-village-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/3-village-checks.stdout.log",
+      "sha256": "dafd791f653a1f14d75d0bba32097ae81dda2d6cfa0899da2b83676f49b93cb5",
+      "bytes": 1184,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/4-fracture-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/4-fracture-checks.stdout.log",
+      "sha256": "95d1d907535134c3bc63eeca17af2a847e648241432c1d1f922a8de8414c1c5b",
+      "bytes": 920,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/5-buffer-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/5-buffer-checks.stdout.log",
+      "sha256": "d084fff2e7f53bc6c1a1dd321cdfe7147e51297911186f2dfc9e84dfd7a20b44",
+      "bytes": 145,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/6-landscape-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/6-landscape-checks.stdout.log",
+      "sha256": "9b0222d800126dbe7f0626960520a48335229b1f6f44c2e90972d6a1ca1c0247",
+      "bytes": 14742,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/7-riverbank-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/7-riverbank-checks.stdout.log",
+      "sha256": "085069520d3bdb62a4020c4d72d7c920db6241c1f2917d545119bd7dff480c3c",
+      "bytes": 1356,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/8-afterrain-assets-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/8-afterrain-assets-checks.stdout.log",
+      "sha256": "9aa044ff8af3a7246cee14c35c68734b32311cff8d8e885d68ce90643aa2c3f1",
+      "bytes": 165,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/9-vegetation-clumps.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/9-vegetation-clumps.stdout.log",
+      "sha256": "2436b371949559a6c4d421ba480180253d03a86dec0653804d2f31e1b589076c",
+      "bytes": 15084,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/progress.json",
+      "sha256": "fb18e6267860463471fd7b2f429c21166b5abf7bf09f55100a5504062b1152b2",
+      "bytes": 82035,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-units-2026-11-20T04-49-51-331Z/report.json",
+      "sha256": "156598a80afe3fe24cde4606d66a954f12b7cf44d1cddf692c0b4744d0542e8e",
+      "bytes": 113087,
+      "phase": "units"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/0-current-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/0-current-checks.stdout.log",
+      "sha256": "2d0079ed4e99eec0cf819fffd85943a43f06d8b25d495bbac51688ae2a6fdb28",
+      "bytes": 249,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/1-current-cabins.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/1-current-cabins.stdout.log",
+      "sha256": "1e6c4a58a7aceca9a642743141936dd532a9451c9f6e835c8de3f1651263d375",
+      "bytes": 249,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/10-current-benchmark.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/10-current-benchmark.stdout.log",
+      "sha256": "4986dfea57ec43b27209e78078b7eb0d03f4b0f717eec67581927939cf8bf10a",
+      "bytes": 206,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/2-current-traversal.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/2-current-traversal.stdout.log",
+      "sha256": "f8785a55e12fb3c3703634baf0a3f029b210f7fd4e043a9a62b175c70aa67732",
+      "bytes": 264,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/3-current-weather.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/3-current-weather.stdout.log",
+      "sha256": "9639fb8941352d4f0ff4cdeb1a078ea1870f2a8dca3cbb0c1a393b8972f92a25",
+      "bytes": 253,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/4-current-imported-fallback.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/4-current-imported-fallback.stdout.log",
+      "sha256": "ac68cba6a86c70c30bb28585d1fc3ea9e541132467b1f61521cd2f0c117790aa",
+      "bytes": 283,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/5-previous-checks.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/5-previous-checks.stdout.log",
+      "sha256": "84f731d2171784e363901b4b5c00baa44d5e2424e7bf9fd1a0bd454ccd0bb2e5",
+      "bytes": 249,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/6-previous-cabins.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/6-previous-cabins.stdout.log",
+      "sha256": "977f6a8df2b9018901eb02ec54de0ff38b9517ec6b004d3042057ad08fe3939f",
+      "bytes": 249,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/7-previous-traversal.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/7-previous-traversal.stdout.log",
+      "sha256": "6495cf6a2db0fe08f265ecc72f5b441388bbd7abcdbba7054dcd8e39c850db7e",
+      "bytes": 264,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/8-current-sunny-benchmark.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/8-current-sunny-benchmark.stdout.log",
+      "sha256": "d569c3d7e4b7a5fa7b0c8c9e64d8807d1613212bb758623311228821014fe7c9",
+      "bytes": 224,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/9-current-benchmark.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/9-current-benchmark.stdout.log",
+      "sha256": "fec3801bd4b47c3ebfea8d4aa62904e9397295336851cd47c3cd70331f53e863",
+      "bytes": 206,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/progress.json",
+      "sha256": "463901bcc72ba63712e502c118e97be15fe4017098498b01486cecb69e0123d3",
+      "bytes": 35554,
+      "phase": "regressions"
+    },
+    {
+      "path": "experiments/sunbreak-river-v4/qa/evidence/afterrain-regressions-2026-11-20T04-50-47-134Z/report.json",
+      "sha256": "b907aa85208ef06db3d331e8105294e9ac300cefa5b69cf9e3d6cffa8815d41d",
+      "bytes": 65539,
+      "phase": "regressions"
+    }
+  ],
+  "delivery": "local playable lighting/ground/understory checkpoint; no Pages deployment",
+  "visualEngineering": "PASS",
+  "cpuSuites": {
+    "count": 27,
+    "pass": true
+  },
+  "functional": {
+    "pass": true,
+    "runs": [
+      {
+        "phase": "checks",
+        "look": "current",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 51373,
+        "pass": true,
+        "stdoutSHA256": "2d0079ed4e99eec0cf819fffd85943a43f06d8b25d495bbac51688ae2a6fdb28",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-20T04-50-47-458Z/checks-1.json",
+        "sha256": "250c39f824e44b8c1b3afbe49eff1c5bb582b46fccb4ec40eb6f14364d56af34",
+        "checks": 32
+      },
+      {
+        "phase": "cabins",
+        "look": "current",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 37024,
+        "pass": true,
+        "stdoutSHA256": "1e6c4a58a7aceca9a642743141936dd532a9451c9f6e835c8de3f1651263d375",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-20T04-51-38-831Z/cabins-1.json",
+        "sha256": "1e1a71748d7b3b72d1db5c3439dc7ff99149e3943aa830d783c43cb14cf25a2d",
+        "checks": 17
+      },
+      {
+        "phase": "traversal",
+        "look": "current",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 76726,
+        "pass": true,
+        "stdoutSHA256": "f8785a55e12fb3c3703634baf0a3f029b210f7fd4e043a9a62b175c70aa67732",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-20T04-52-15-856Z/traversal-1.json",
+        "sha256": "c8a398e63cf1dbfde6e51fc37c2883e7842bb619f8c767d8eb93c32ed7bdde19",
+        "checks": 54
+      },
+      {
+        "phase": "weather",
+        "look": "current",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 38906,
+        "pass": true,
+        "stdoutSHA256": "9639fb8941352d4f0ff4cdeb1a078ea1870f2a8dca3cbb0c1a393b8972f92a25",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/weather-2026-11-20T04-53-32-584Z/weather-1.json",
+        "sha256": "52f8d020c4b2949dddf4a4a0e98ab8d24d82defbfbf384f0349c56d79979af09",
+        "checks": 4
+      },
+      {
+        "phase": "imported-fallback",
+        "look": "current",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 23129,
+        "pass": true,
+        "stdoutSHA256": "ac68cba6a86c70c30bb28585d1fc3ea9e541132467b1f61521cd2f0c117790aa",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/imported-fallback-2026-11-20T04-54-11-490Z/imported-fallback-1.json",
+        "sha256": "14d1757c661747b59223ead9edd4aad5a16b652a7aaec9619183fc3ea8df8998",
+        "checks": 2
+      },
+      {
+        "phase": "checks",
+        "look": "previous",
+        "materials": "legacy",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 50125,
+        "pass": true,
+        "stdoutSHA256": "84f731d2171784e363901b4b5c00baa44d5e2424e7bf9fd1a0bd454ccd0bb2e5",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/checks-2026-11-20T04-54-34-622Z/checks-1.json",
+        "sha256": "831082711cc23be82ad72e107674014669850516c2cbd06f9d45534eda3901a3",
+        "checks": 32
+      },
+      {
+        "phase": "cabins",
+        "look": "previous",
+        "materials": "legacy",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 35411,
+        "pass": true,
+        "stdoutSHA256": "977f6a8df2b9018901eb02ec54de0ff38b9517ec6b004d3042057ad08fe3939f",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/cabins-2026-11-20T04-55-24-751Z/cabins-1.json",
+        "sha256": "595710f4416c6937b3c765e4978febaaf6ab9ce5ee975f4f131e0111ac4167ba",
+        "checks": 17
+      },
+      {
+        "phase": "traversal",
+        "look": "previous",
+        "materials": "legacy",
+        "exit": 0,
+        "signal": null,
+        "error": null,
+        "durationMs": 76426,
+        "pass": true,
+        "stdoutSHA256": "6495cf6a2db0fe08f265ecc72f5b441388bbd7abcdbba7054dcd8e39c850db7e",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/traversal-2026-11-20T04-56-00-170Z/traversal-1.json",
+        "sha256": "17b400b32415d2ebc54e79347176c682ea07689f57141a91437a679244948be2",
+        "checks": 54
+      }
+    ]
+  },
+  "performance": {
+    "pass": false,
+    "thresholds": {
+      "warmupSeconds": 10,
+      "sampleSeconds": 30,
+      "p95": 33.3,
+      "p99": 33.3,
+      "max": 50,
+      "over50": 0
+    },
+    "runs": [
+      {
+        "phase": "sunny-benchmark",
+        "look": "current",
+        "exit": 1,
+        "signal": null,
+        "error": null,
+        "durationMs": 66884,
+        "pass": false,
+        "stdoutSHA256": "d569c3d7e4b7a5fa7b0c8c9e64d8807d1613212bb758623311228821014fe7c9",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/sunny-benchmark-2026-11-20T04-57-16-610Z/sunny-benchmark-1.json",
+        "sha256": "c63c54592eae26dcfdedab30f28eca353fe98e7ded0b9bfb13a776a46a76234d",
+        "checks": 2,
+        "performance": {
+          "p50": 18,
+          "p95": 35.900000000001455,
+          "p99": 36.80000000000291,
+          "max": 71.80000000000291,
+          "over50": 10,
+          "frames": 1246,
+          "duration": 30007.9,
+          "viewport": [
+            1920,
+            1080
+          ],
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "strictPass": false
+      },
+      {
+        "phase": "benchmark",
+        "look": "current",
+        "sample": "storm-A",
+        "exit": 1,
+        "signal": null,
+        "error": null,
+        "durationMs": 65899,
+        "pass": false,
+        "stdoutSHA256": "fec3801bd4b47c3ebfea8d4aa62904e9397295336851cd47c3cd70331f53e863",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-20T04-58-23-506Z/benchmark-1.json",
+        "sha256": "47e800df1323b0c8b174cde316b7ded1696d9fb3dd11f4c95cdc4b6fce6b5749",
+        "checks": 2,
+        "performance": {
+          "p50": 17.900000000001455,
+          "p95": 35.900000000001455,
+          "p99": 36.69999999999709,
+          "max": 71.29999999999563,
+          "over50": 8,
+          "frames": 1241,
+          "duration": 30005.799999999996,
+          "viewport": [
+            1920,
+            1080
+          ],
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "strictPass": false
+      },
+      {
+        "phase": "benchmark",
+        "look": "current",
+        "sample": "storm-B",
+        "exit": 1,
+        "signal": null,
+        "error": null,
+        "durationMs": 66460,
+        "pass": false,
+        "stdoutSHA256": "4986dfea57ec43b27209e78078b7eb0d03f4b0f717eec67581927939cf8bf10a",
+        "stderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "report": "E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/evidence/benchmark-2026-11-20T04-59-29-389Z/benchmark-1.json",
+        "sha256": "1bdc02a7fc6b163b3c70663dfb12680724d8391666962fb26e6d39e7bcc74f0d",
+        "checks": 2,
+        "performance": {
+          "p50": 18,
+          "p95": 35.900000000001455,
+          "p99": 39.30000000000291,
+          "max": 88.30000000000291,
+          "over50": 12,
+          "frames": 1240,
+          "duration": 30003.800000000003,
+          "viewport": [
+            1920,
+            1080
+          ],
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "strictPass": false
+      }
+    ]
+  },
+  "review": {
+    "schema": "river-afterrain-independent-review-v1",
+    "task": "river-afterrain-light-understory-2026-11-20",
+    "date": "2026-11-20",
+    "profile": "offscreen-cinematic-v1",
+    "reviewer": "Chandrasekhar",
+    "reviewerId": "01a1f727-eb3f-74d2-9369-abf70fd83e99",
+    "recordedBy": "root integrator from the independent review response; reviewer was read-only",
+    "runtimeSHA256": "894ec9dfb0dc9cecd8470e270390f5fc5dd922ce98d0d48b85cce839a559be07",
+    "source": "PASS",
+    "sampledArt": "PASS",
+    "evidenceIntegrity": "PASS",
+    "release": "BLOCKED",
+    "scope": "bounded after-rain lighting, puddles and green understory; not whole-game or AAA acceptance",
+    "visualDirectory": "qa/evidence/afterrain-look-2026-11-20T05-02-55-902Z-jcaWIC",
+    "visualReportSHA256": "231a239afde78cc00c959f4c17b7e92f9a4819a01ac28d6773cd8403721a1ad2",
+    "reviewed": {
+      "variants": [
+        "previous",
+        "current"
+      ],
+      "views": [
+        "ground-lane",
+        "puddle-sun",
+        "forest-hillside",
+        "cabin-edge",
+        "river-hero",
+        "river-wide",
+        "storm-ground-lane"
+      ],
+      "images": 14,
+      "pairs": 7,
+      "capture": "native-headless actual 1920x1080 WebGL canvas; no desktop screenshots",
+      "imageAndStateHashesVerified": true
+    },
+    "findings": [
+      "No unresolved source blockers in lighting, y=0 puddle projection, reflection isolation, understory integration or previous-look bypass.",
+      "Stronger warm directional light, recognizable irregular pool reflections and broad green understory satisfy the scoped look objectives.",
+      "The rim correction holds. Remaining thin pale edges are Minor; no further runtime change requested.",
+      "Final CPU/regression source manifests match visual capture. Source/history unchanged and14/14captures plus7/7pairs pass.",
+      "Compatibility checks pass; that explicitly selected two-image run correctly remains PARTIAL."
+    ],
+    "functional": {
+      "cpuSuites": "27/27 PASS",
+      "browserPhases": "8/8 PASS"
+    },
+    "performance": {
+      "verdict": "FAIL",
+      "thresholdsUnchanged": true,
+      "sunny": {
+        "p95": 35.9,
+        "p99": 36.8,
+        "max": 71.8,
+        "over50": 10
+      },
+      "stormA": {
+        "p95": 35.9,
+        "p99": 36.7,
+        "max": 71.3,
+        "over50": 8
+      },
+      "stormB": {
+        "p95": 35.9,
+        "p99": 39.3,
+        "max": 88.3,
+        "over50": 12
+      }
+    },
+    "limitations": [
+      "Stills do not establish continuous-motion quality; continuous subjective review remains UNVERIFIED.",
+      "Selective planar reflections with canopy impostors are an approximation, not full-scene ray tracing.",
+      "Universal previous-look pixel identity is not established.",
+      "Historical performance, legacy traversal and seven newline-evidence failures are not retroactively cleared.",
+      "Browser WebGL demo, not UE5 output or AAA release acceptance."
+    ],
+    "reviewActivity": "read-only, no GPU jobs, evidence writes or test reruns"
+  },
+  "previousPixelComparisons": [
+    {
+      "view": "ground-lane",
+      "pass": true,
+      "changedPixels": 0,
+      "maxChannelDelta": 0,
+      "bounds": null,
+      "policy": "exact decoded RGB; any mismatch remains FAIL, not normalized or tolerated"
+    },
+    {
+      "view": "river-hero",
+      "pass": true,
+      "changedPixels": 0,
+      "maxChannelDelta": 0,
+      "bounds": null,
+      "policy": "exact decoded RGB; any mismatch remains FAIL, not normalized or tolerated"
+    },
+    {
+      "view": "river-wide",
+      "pass": true,
+      "changedPixels": 0,
+      "maxChannelDelta": 0,
+      "bounds": null,
+      "policy": "exact decoded RGB; any mismatch remains FAIL, not normalized or tolerated"
+    }
+  ],
+  "inherited": {
+    "path": "experiments/sunbreak-river-v4/qa/migration-release.json",
+    "sha256": "f731e0045f1970648a3d80693ec8e1379f469bd7927b1dc73fed501e2141dd5f",
+    "failures": [
+      "three strict frame-pacing failures",
+      "timed legacy bridge traversal failure",
+      "seven historical CRLF-only raw-byte discrepancies"
+    ],
+    "waived": false
+  },
+  "releaseVerdict": "BLOCKED",
+  "continuousMotion": "UNVERIFIED; actual stills and functional samples are not continuous subjective review",
+  "aaa": "NOT ACCEPTED; browser demo, not UE5 or ray-traced AAA output",
+  "localURLs": {
+    "current": "http://127.0.0.1:5190/river/",
+    "previous": "http://127.0.0.1:5190/river/?look=previous",
+    "previousLegacy": "http://127.0.0.1:5190/river/?look=previous&materials=legacy"
+  },
+  "privateAssets": {
+    "changed": false,
+    "browserSnapshot": "cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407",
+    "canonicalUEVault": "pre-existing dirty state preserved; not full-project portability"
+  }
+}

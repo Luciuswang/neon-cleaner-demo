@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "event_id": "20261120T051208Z-8db4461721",
+  "task_id": "river-afterrain-light-understory-2026-11-20",
+  "timestamp_utc": "2026-11-20T05:12:08.246562+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "provenance-correction",
+  "summary": "Correct evidence locator in prior event20261120T051001Z-719aa83f2a: current independent review is qa/afterrain-look-review-2026-11-20.json, NOT historical qa/afterrain-review.json. Staged scope audit caught filename collision, restored the2026-11-18report exactly from baseline, and regenerated final manifest with corrected binding. First manifest retained as superseded with audit explanation. Runtime/tests/verdicts unchanged.",
+  "commit_shas": [
+    "8647a8fcdfaf9fcd199e4b0495628b894fd64aef"
+  ],
+  "evidence": [
+    "experiments/sunbreak-river-v4/qa/afterrain-look-review-2026-11-20.json",
+    "experiments/sunbreak-river-v4/qa/afterrain-release.json",
+    "experiments/sunbreak-river-v4/qa/evidence/afterrain-checkpoint-audit-2026-11-20/audit.json"
+  ],
+  "blockers": [
+    "Strict performance FAIL and continuous-motion UNVERIFIED; no AAA release acceptance."
+  ],
+  "next_action": "Verify staged historical files unchanged, finish authorized public Git/LFS checkpoint, then isolate frame pacing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

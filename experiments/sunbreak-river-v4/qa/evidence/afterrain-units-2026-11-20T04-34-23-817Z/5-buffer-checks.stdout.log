@@ -1,0 +1,9 @@
+{
+  "pass": true,
+  "unitPass": true,
+  "integrationPass": true,
+  "checks": 40,
+  "traversals": 16,
+  "rayComparisons": 174,
+  "failures": []
+}

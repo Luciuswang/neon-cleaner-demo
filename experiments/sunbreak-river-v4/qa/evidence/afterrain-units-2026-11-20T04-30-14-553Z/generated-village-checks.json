@@ -1,0 +1,44 @@
+{
+  "pass": true,
+  "date": "2026-11-20T04:30:18.697Z",
+  "wallBoxes": 72,
+  "architecture": {
+    "houses": 6,
+    "walls": 72,
+    "boxes": 756,
+    "solids": 205,
+    "tiles": 2496,
+    "drawCalls": 14,
+    "triangles": 63697,
+    "stoneCover": {
+      "revision": "bounded-uneven-stone-cover-v3",
+      "covers": 6,
+      "stones": 536,
+      "drawCalls": 2,
+      "triangles": 13545,
+      "replacedTriangles": 72,
+      "addedTriangles": 13473,
+      "maxRecess": 0.012,
+      "outwardProtrusion": 0,
+      "opaqueContinuousShell": true,
+      "collidersChanged": false,
+      "sources": [
+        "Poly Haven rocky_gravel (CC0-1.0)",
+        "Poly Haven worn_plaster_wall (CC0-1.0); procedural mortar"
+      ],
+      "budgets": {
+        "maxRecess": 0.012,
+        "maxAddedTriangles": 40000,
+        "maxBeautyDraws": 3
+      },
+      "drawCaveat": "Beauty draws only; shadow/reflection passes are measured by root."
+    },
+    "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+  },
+  "checks": "exact wall geometry; six clear passages and solid walls; roof slabs/half-collapse openings; bridge shot occlusion; batching budgets",
+  "sources": {
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "map-layout.js": "7d608b49578d6d08a21e5b97ab1ee75c1dbe1a43727f2abaf7ce32fc491249d6",
+    "qa/village-checks.mjs": "6889a913e4d6fcc9768aa580ee756227c5fcd1dd33b67ccb6f34155e625a638e"
+  }
+}

@@ -1,0 +1,430 @@
+{
+  "verdict": "PASS",
+  "scope": "CPU only; visual/GPU/temporal acceptance remains independent",
+  "checks": 580,
+  "sourceSHA256": "94d24529e3e22070364fbf95969777d27097bb20d2601d4900ac4c03b1a02f65",
+  "resolution": 512,
+  "estimatedGPUBytes": 33554400,
+  "bakeMilliseconds": 569.6253000000006,
+  "testMilliseconds": 3925.4098999999997,
+  "fingerprints": {
+    "mud": {
+      "albedo": "c8a0d071d8eb31cfa3f680dc7f594bb13364e39877866945e180dd84869abe2b",
+      "normal": "b21e76e6f560662a39be813ca1384f997b2bb8b752a05657b20f3e2359ec3988",
+      "orm": "702f251134fe132cc264c8a10ebc1598b30a9797b3016aaf4a7af1b741437813",
+      "heightField": "7cdf2a15a8dde2e27daa98b9ded74418424a2aa249c8360b611b697fb6c992f5"
+    },
+    "dirt": {
+      "albedo": "c865bdb72c7d73396e1364c84e09bfb7a7b7f80b1129d31313e78f2e9ee529c5",
+      "normal": "efd115c332b3e2250e053027c0800ae3b5989fc68c4fea65bdcae7233ac4fd38",
+      "orm": "036a2b3212759961f38682ab40536646a976627f105dc9a7bbff6d0d8acc19ac",
+      "heightField": "9f3b9ab6faf7e777757278b445afefc96ca1b8e1138ffdaab28dd2211df4a471"
+    },
+    "forest_ground_04": {
+      "albedo": "3f372f7f44329bb9e060226f32521bf19587ce8aa14dfab39d1d778f07df6986",
+      "normal": "5f0e70c29f14511fcd90a4263879fdc7322b9280909302bd45b0a8e1cb30f0c7",
+      "orm": "ba2a1612dc8db7d45ac0ffe8e432fcf54f022d12f495821becf5733952898001",
+      "heightField": "3e054e4243126185b3e36573874259264aa84f911597057600a918320b68476f"
+    },
+    "stone": {
+      "albedo": "74b9cfac9b1b99619c7c415f1f75d6bf8d0f269182674108052b20ee8e08e3d8",
+      "normal": "7591568b40bd787bbc06e3424cc50a3663c2e7386740a5fe5e11b684d8ab6da1",
+      "orm": "210bac5c52e3ed8ac5fed2e451fd30f445e612e7b2304225ad28f18a38c3857d",
+      "heightField": "de0370c4ed2f29766cf089b8002ea5c81cf8c347989388bb952dabf8b8493dcc"
+    },
+    "plaster": {
+      "albedo": "f487bb3b5b091ebc7feb3ca173802c07bac27247b383d5bfe4d7a84abf296acc",
+      "normal": "51135f5e0487428b7e1e19531446dd880c9af5a20acf805c39ec4ef154217e7c",
+      "orm": "604a65a2ab1e24a69e4c5297de3c08802eb01f41ec9cb0913ca1b1926c3be96f",
+      "heightField": "1a32aad61c264d2788f52f17a12bdc678fde257b93cc506615420ead5168440a"
+    },
+    "wood": {
+      "albedo": "64131fb5290b4db34da22c407fa929903023e9175f0521249763244cf6cd3ee7",
+      "normal": "6bdc9988115e6ba3e8eedae495269bc15f21d142cd58ec0999ab970d79b34a17",
+      "orm": "fd31da26b36492a1a0ff3972a0a49e64f9bad26c727404c6a06413b2cb2e6976",
+      "heightField": "ed0705bdc972bc8cbf7edf0ea10952f0fe621af304917b9a4ce12c39c01100bc"
+    },
+    "brick": {
+      "albedo": "ac51f2c3b7ce9866ead8f9cd8748661ffa78b08564e49b1b43b933ecb6dbb3fb",
+      "normal": "619d17662d59dfc65adae5c47a0c33562895f784f285186c8ff887b652a2f2b4",
+      "orm": "ee57a8469e85a3e2623762d89417d1b2be58a84a11169a37806bc5b5cbca4e79",
+      "heightField": "703305266aed90a533c194d581328595d4bb9324b52394ba57d7a1ab5fc5c9b5"
+    },
+    "metal": {
+      "albedo": "24389e8d1faa51843b2638257a367dff895283503f9a98f6203279cd1b1594f1",
+      "normal": "d7b1be4fe8d2fbc8140fb747c43b7cb610a9b57cda42c8fbf39563f4c816805e",
+      "orm": "a737e829bde686a11539bbcf9fbbdc5ccb75120f06760642d88208daf12ee10e",
+      "heightField": "0f6c6679d245c92a7eec2a6ae1d1f5d46d5499c57177972e9dcaa18aef13429e"
+    }
+  },
+  "metrics": {
+    "mud": {
+      "height": {
+        "min": 0.21895095705986023,
+        "max": 0.8330307602882385,
+        "mean": 0.5443469247651933
+      },
+      "rough": {
+        "min": 204,
+        "max": 252,
+        "mean": 219.49993133544922
+      },
+      "ao": {
+        "min": 177,
+        "max": 255,
+        "mean": 243.4720344543457
+      },
+      "heightColor": 0.9774795728278584,
+      "heightAO": 0.6272386367995122,
+      "normal": {
+        "maxLengthError": 0.005964526705017681,
+        "maxDerivativeError": 0.003921559621844199
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.8817284981943677,
+          "y": 0.9921778612337077,
+          "directionalRatio": 0.993798943508067
+        },
+        "albedo": {
+          "x": 0.9104108651903025,
+          "y": 1.0597848925982556,
+          "directionalRatio": 1.0012160803809196
+        },
+        "normal": {
+          "x": 1.0448168600363008,
+          "y": 0.9464200789898459,
+          "directionalRatio": 1.0026779930604994
+        },
+        "orm": {
+          "x": 0.9859238675387397,
+          "y": 0.9992868990207638,
+          "directionalRatio": 0.9971762792898834
+        }
+      }
+    },
+    "dirt": {
+      "height": {
+        "min": 0.38927361369132996,
+        "max": 0.6046581864356995,
+        "mean": 0.5111156526742207
+      },
+      "rough": {
+        "min": 189,
+        "max": 237,
+        "mean": 204.20030975341797
+      },
+      "ao": {
+        "min": 186,
+        "max": 248,
+        "mean": 241.77675247192383
+      },
+      "heightColor": 0.9759850369775781,
+      "heightAO": 0.45808852645315723,
+      "normal": {
+        "maxLengthError": 0.0015520443296799247,
+        "maxDerivativeError": 0.0039215686274509665
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.8431205319664185,
+          "y": 0.9165653774376376,
+          "directionalRatio": 1.0010822539265662
+        },
+        "albedo": {
+          "x": 0.8130601550839662,
+          "y": 1.0022736273891424,
+          "directionalRatio": 1.001052003368928
+        },
+        "normal": {
+          "x": 1.1074637910984249,
+          "y": 0.8840791530012546,
+          "directionalRatio": 1.0006122916446418
+        },
+        "orm": {
+          "x": 0.8729950529119807,
+          "y": 0.8814617297558696,
+          "directionalRatio": 0.9990000566769495
+        }
+      }
+    },
+    "forest_ground_04": {
+      "height": {
+        "min": 0.21895095705986023,
+        "max": 0.862969696521759,
+        "mean": 0.5463104297190853
+      },
+      "rough": {
+        "min": 217,
+        "max": 255,
+        "mean": 232.3177604675293
+      },
+      "ao": {
+        "min": 177,
+        "max": 255,
+        "mean": 243.5696563720703
+      },
+      "heightColor": 0.9771484517265787,
+      "heightAO": 0.6293732066822002,
+      "normal": {
+        "maxLengthError": 0.005474423332845535,
+        "maxDerivativeError": 0.003921553670434723
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.9446606951428017,
+          "y": 1.0078346591114933,
+          "directionalRatio": 0.9912338908891668
+        },
+        "albedo": {
+          "x": 0.9600982169577087,
+          "y": 1.0110929344862507,
+          "directionalRatio": 0.9985924554513981
+        },
+        "normal": {
+          "x": 0.8829482803227007,
+          "y": 1.0245880090116872,
+          "directionalRatio": 1.0004414666151622
+        },
+        "orm": {
+          "x": 0.9695283146877033,
+          "y": 1.0036699746529902,
+          "directionalRatio": 0.9963562648849211
+        }
+      }
+    },
+    "stone": {
+      "height": {
+        "min": 0.25688308477401733,
+        "max": 0.6649991273880005,
+        "mean": 0.5089864230930061
+      },
+      "rough": {
+        "min": 194,
+        "max": 238,
+        "mean": 209.27815628051758
+      },
+      "ao": {
+        "min": 184,
+        "max": 252,
+        "mean": 246.48056411743164
+      },
+      "heightColor": 0.9072050612031757,
+      "heightAO": 0.5576804991735514,
+      "normal": {
+        "maxLengthError": 0.0051692614365357326,
+        "maxDerivativeError": 0.003921562932115461
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.8394708903420266,
+          "y": 0.5751373342501913,
+          "directionalRatio": 1.0031510352243918
+        },
+        "albedo": {
+          "x": 0.8362607942674198,
+          "y": 0.7076237579787572,
+          "directionalRatio": 1.001650817861881
+        },
+        "normal": {
+          "x": 0.9823220494509698,
+          "y": 0.7790421605064843,
+          "directionalRatio": 0.9995712651074844
+        },
+        "orm": {
+          "x": 1.011583460016673,
+          "y": 0.486089402131474,
+          "directionalRatio": 0.999833526477033
+        }
+      }
+    },
+    "plaster": {
+      "height": {
+        "min": 0.20688307285308838,
+        "max": 0.6649991273880005,
+        "mean": 0.5079677223050112
+      },
+      "rough": {
+        "min": 210,
+        "max": 253,
+        "mean": 224.57881546020508
+      },
+      "ao": {
+        "min": 182,
+        "max": 252,
+        "mean": 246.4493637084961
+      },
+      "heightColor": 0.8661307817308936,
+      "heightAO": 0.6761613068926784,
+      "normal": {
+        "maxLengthError": 0.004423470589472789,
+        "maxDerivativeError": 0.0039215682374225975
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.9126666938312605,
+          "y": 0.7148606724339063,
+          "directionalRatio": 1.002313978550452
+        },
+        "albedo": {
+          "x": 0.8644054874416875,
+          "y": 0.820470674470519,
+          "directionalRatio": 1.0011182004596693
+        },
+        "normal": {
+          "x": 1.082060187522296,
+          "y": 0.9427688777324097,
+          "directionalRatio": 0.9996271092892864
+        },
+        "orm": {
+          "x": 0.9791869727851235,
+          "y": 0.6651421220945813,
+          "directionalRatio": 0.9997269837057752
+        }
+      }
+    },
+    "wood": {
+      "height": {
+        "min": 0.4165503680706024,
+        "max": 0.6099510192871094,
+        "mean": 0.5142081192711885
+      },
+      "rough": {
+        "min": 194,
+        "max": 237,
+        "mean": 204.63057327270508
+      },
+      "ao": {
+        "min": 186,
+        "max": 247,
+        "mean": 246.33182907104492
+      },
+      "heightColor": 0.17991883584088342,
+      "heightAO": 0.12293599064598797,
+      "normal": {
+        "maxLengthError": 0.001306336285238574,
+        "maxDerivativeError": 0.0039215686274509665
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.9704974341284519,
+          "y": 0.908784439088968,
+          "directionalRatio": 10.965808521190583
+        },
+        "albedo": {
+          "x": 0.7914490508950762,
+          "y": 0.9275440031257737,
+          "directionalRatio": 15.349007672081548
+        },
+        "normal": {
+          "x": 0.9821968742122511,
+          "y": 0.8301743745261562,
+          "directionalRatio": 2.9093143433324933
+        },
+        "orm": {
+          "x": 0.04952030235487935,
+          "y": 0.8233592926935074,
+          "directionalRatio": 23.456245760248088
+        }
+      }
+    },
+    "brick": {
+      "height": {
+        "min": 0.25688308477401733,
+        "max": 0.6649991273880005,
+        "mean": 0.5089864230930061
+      },
+      "rough": {
+        "min": 212,
+        "max": 255,
+        "mean": 227.12875366210938
+      },
+      "ao": {
+        "min": 184,
+        "max": 252,
+        "mean": 246.48056411743164
+      },
+      "heightColor": 0.9070501363015473,
+      "heightAO": 0.5576804991755994,
+      "normal": {
+        "maxLengthError": 0.004618324390355033,
+        "maxDerivativeError": 0.003921552905509884
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.7940594218744957,
+          "y": 0.9440701766573607,
+          "directionalRatio": 1.0023391762294727
+        },
+        "albedo": {
+          "x": 0.760683367321838,
+          "y": 1.0496975823248116,
+          "directionalRatio": 1.000089666172048
+        },
+        "normal": {
+          "x": 1.0392853120631744,
+          "y": 1.089613662742497,
+          "directionalRatio": 0.998860527204913
+        },
+        "orm": {
+          "x": 0.7792066051731923,
+          "y": 0.6889211442503383,
+          "directionalRatio": 0.9990014835838225
+        }
+      }
+    },
+    "metal": {
+      "height": {
+        "min": 0.4099999964237213,
+        "max": 0.6559910178184509,
+        "mean": 0.5308295133892216
+      },
+      "rough": {
+        "min": 95,
+        "max": 244,
+        "mean": 154.84296417236328
+      },
+      "ao": {
+        "min": 200,
+        "max": 250,
+        "mean": 247.50199127197266
+      },
+      "heightColor": -0.9772857829995837,
+      "heightAO": -0.18594347199233524,
+      "normal": {
+        "maxLengthError": 0.0026569854007567617,
+        "maxDerivativeError": 0.0039215686274509665
+      },
+      "seams": {
+        "heightField": {
+          "x": 0.42636730505616605,
+          "y": 1.1508485088779747,
+          "directionalRatio": 1.011293788958673
+        },
+        "albedo": {
+          "x": 0.40801979652458786,
+          "y": 1.0942011116146284,
+          "directionalRatio": 1.013641668879082
+        },
+        "normal": {
+          "x": 0.7100356085249807,
+          "y": 1.20660181299176,
+          "directionalRatio": 1.0019242376980446
+        },
+        "orm": {
+          "x": 0.4022315239030372,
+          "y": 1.1439152071992387,
+          "directionalRatio": 1.0113837747443661
+        }
+      },
+      "populations": {
+        "rustPixels": 22804,
+        "barePixels": 48704,
+        "paintPixels": 81629,
+        "rustMetalMean": 15.99162427644273,
+        "rustRoughMean": 231.13659884230836,
+        "bareRoughMean": 104.15392986202366
+      }
+    }
+  }
+}

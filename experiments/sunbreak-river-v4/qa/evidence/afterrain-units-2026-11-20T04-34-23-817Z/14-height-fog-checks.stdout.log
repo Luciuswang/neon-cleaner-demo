@@ -1,0 +1,151 @@
+{
+  "suite": "height-fog-cpu-v1",
+  "verdict": "PASS",
+  "checksPassed": 20,
+  "checksTotal": 20,
+  "threeRevision": "160",
+  "sources": {
+    "../height-fog.js": "0398a649d705a06bbc10095d06c502a8fe6e5641b906be7fa09f7eec104c7dbc",
+    "./height-fog-checks.mjs": "f8213c4d6ac9238465dd8a8a54b944f33aa62025dfc9bdeb99fcf79052bfd9ea",
+    "../vegetation.js": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202",
+    "../river-water.js": "561289f5007ff0a472d83fce0f82fe83368fcafb58160eb542f14e35e9524c96",
+    "../distant-landscape.js": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b",
+    "../world.js": "171d5ea0b2820f881029bdcce45737b4a3ef9f1be6fcfbf3bf4c16a65cd2abf8"
+  },
+  "scope": "CPU analytic integration, actual local shader-template/hook composition and transform tests only. No GLSL driver compilation, GPU visual, temporal or performance acceptance.",
+  "checks": [
+    {
+      "name": "coefficient agrees with independent numerical line integration including base crossing",
+      "pass": true,
+      "evidence": {
+        "rays": 147,
+        "largestError": 3.574788820515096e-8
+      }
+    },
+    {
+      "name": "four-metre near clearing, monotone low haze and clearer high elevations",
+      "pass": true,
+      "evidence": [
+        {
+          "weather": 0,
+          "near5": 0.003188835176194301,
+          "low25": 0.06038879197384684,
+          "low80": 0.19932667843953566,
+          "high80": 0.00462541904401935
+        },
+        {
+          "weather": 1,
+          "near5": 0.0043835769219564774,
+          "low25": 0.08318578607008802,
+          "low80": 0.26709775038705125,
+          "high80": 0.013305109691561122
+        },
+        {
+          "weather": 2,
+          "near5": 0.005577076550269471,
+          "low25": 0.10557794963463132,
+          "low80": 0.3296106306835871,
+          "high80": 0.0275788556569987
+        }
+      ]
+    },
+    {
+      "name": "stable horizontal, zero falloff, below-ground and extreme-height integrals",
+      "pass": true
+    },
+    {
+      "name": "actual GLSL scalar math matches CPU reference and disabled branch",
+      "pass": true,
+      "evidence": {
+        "sourceDerivedSamples": 36
+      }
+    },
+    {
+      "name": "reflection intersection is finite for crossing, grazing, plane-endpoint and invalid-side rays",
+      "pass": true,
+      "evidence": {
+        "validCrossings": 6,
+        "emptyOrInvalidSideRays": 9,
+        "nonfiniteInputsRejected": 12
+      }
+    },
+    {
+      "name": "reflected segment agrees with independent integration, including negative plane and zero near-clear",
+      "pass": true,
+      "evidence": {
+        "rays": 21,
+        "largestError": 1.9059389086417688e-7
+      }
+    },
+    {
+      "name": "reflection GLSL source matches CPU on oblique, horizontal, grazing and out-of-plane rays",
+      "pass": true,
+      "evidence": {
+        "sourceDerivedReflectionSamples": 78
+      }
+    },
+    {
+      "name": "split optical path counts real eye-to-water once and never integrates below-water mirrored eye",
+      "pass": true,
+      "evidence": {
+        "realEyeToWater": 0.05851260844696398,
+        "planeToSurface": 0.09536065770568879,
+        "composedOpacity": 0.14261932672228217
+      }
+    },
+    {
+      "name": "real standard/basic/physical templates preserve distance fog, alpha and output order",
+      "pass": true
+    },
+    {
+      "name": "existing hook this/renderer semantics and dynamic custom cache key compose",
+      "pass": true
+    },
+    {
+      "name": "default cache keys preserve original hook identity across both local Three copies",
+      "pass": true
+    },
+    {
+      "name": "duplicate installs/patches are idempotent; hook replacement and double ownership fail loudly",
+      "pass": true
+    },
+    {
+      "name": "normal/depth/distance overrides, custom water, exclusions and gun scene stay untouched",
+      "pass": true
+    },
+    {
+      "name": "actual foliage wind/root hook composes and shadow materials remain byte-identical",
+      "pass": true
+    },
+    {
+      "name": "actual distant mineral hook composes without changing texture shading",
+      "pass": true
+    },
+    {
+      "name": "world position uses deformed local point and full nested instance/batch transforms",
+      "pass": true
+    },
+    {
+      "name": "real skinned vertex motion changes world height and therefore fog",
+      "pass": true
+    },
+    {
+      "name": "custom water consumes shared uniforms and its already-displaced vRiver without touching alpha",
+      "pass": true
+    },
+    {
+      "name": "weather/toggle reuse uniform objects and cache programs; unsupported patches fail atomically",
+      "pass": true
+    },
+    {
+      "name": "reflection mode shares world/water uniforms, survives weather changes, and restores in finally without recompilation",
+      "pass": true,
+      "evidence": {
+        "reflectionCalls": 2,
+        "exceptionRestored": true,
+        "sharedUniforms": 8,
+        "recompilations": 0
+      }
+    }
+  ]
+}

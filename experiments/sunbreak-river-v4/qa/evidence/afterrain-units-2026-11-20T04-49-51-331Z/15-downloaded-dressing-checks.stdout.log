@@ -1,0 +1,127 @@
+{
+  "pass": true,
+  "checks": 20,
+  "results": [
+    {
+      "name": "deterministic layout",
+      "pass": true
+    },
+    {
+      "name": "measured instance triangles within fixed cap",
+      "pass": true
+    },
+    {
+      "name": "every converted model is represented in scene",
+      "pass": true
+    },
+    {
+      "name": "dark dry stems are outside playable woodland only",
+      "pass": true
+    },
+    {
+      "name": "source geometry files identified",
+      "pass": true
+    },
+    {
+      "name": "grass circles clear paths, doors, spawns and crossings",
+      "pass": true
+    },
+    {
+      "name": "large solid decorations completely outside playable rectangle",
+      "pass": true
+    },
+    {
+      "name": "micro debris below unchanged 3cm support tolerance, no cover",
+      "pass": true
+    },
+    {
+      "name": "actual transformed micro mesh vertices vs current terrain and ruin support",
+      "pass": true
+    },
+    {
+      "name": "two houses have clear trunks and near-flat grounded footprint envelopes",
+      "pass": true
+    },
+    {
+      "name": "no scan props in collision or support contract",
+      "pass": true
+    },
+    {
+      "name": "exact served manifest hash binds client bytes",
+      "pass": true
+    },
+    {
+      "name": "public package only adds loader source",
+      "pass": true
+    },
+    {
+      "name": "absent optional pack has baseline manifest",
+      "pass": true
+    },
+    {
+      "name": "disabled optional pack baseline",
+      "pass": true
+    },
+    {
+      "name": "reject unsafe name or unsupported kind wall",
+      "pass": true
+    },
+    {
+      "name": "reject unsafe name or unsupported kind unknown",
+      "pass": true
+    },
+    {
+      "name": "external GLB dependency rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid optional manifest returns usable empty layer",
+      "pass": true
+    },
+    {
+      "name": "public host never requests local assets",
+      "pass": true
+    }
+  ],
+  "counts": {
+    "woodland-house": 2,
+    "castle-wall": 2,
+    "mossy-wall-a": 2,
+    "mossy-wall-b": 2,
+    "cement-rubble": 2,
+    "cement-rubble-small": 22,
+    "grass-clumps-a": 5,
+    "grass-clumps-b": 3,
+    "tundra-grass-a": 92,
+    "tundra-grass-d": 167,
+    "tundra-grass-h": 159,
+    "grass-clumps-c": 3
+  },
+  "triangles": 349364,
+  "bytes": 12862004,
+  "micro": {
+    "surfaceSamples": 16874,
+    "maxVisibleGap": 0.019511172997412222,
+    "maxBuried": 0.006
+  },
+  "houseGrounding": [
+    {
+      "id": "woodland-house",
+      "x": -12,
+      "z": -40.5,
+      "lowestBase": -0.06,
+      "minGround": 0,
+      "maxGround": 0.03815823559950389,
+      "nearestTrunk": 11.256677492394132
+    },
+    {
+      "id": "woodland-house",
+      "x": 12,
+      "z": 33,
+      "lowestBase": -0.06,
+      "minGround": 0,
+      "maxGround": 0.07749193667795283,
+      "nearestTrunk": 9.52124123075354
+    }
+  ]
+}
