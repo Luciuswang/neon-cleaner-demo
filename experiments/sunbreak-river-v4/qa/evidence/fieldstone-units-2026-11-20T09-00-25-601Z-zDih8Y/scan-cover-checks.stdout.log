@@ -1,0 +1,53 @@
+{
+  "pass": true,
+  "source": "actual verified GLB geometry; no image material/GPU claim",
+  "assets": [
+    {
+      "id": "mossy-wall-a",
+      "sha256": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754"
+    },
+    {
+      "id": "mossy-wall-b",
+      "sha256": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4"
+    }
+  ],
+  "info": {
+    "revision": "local-reference-scanned-cover-v1",
+    "enabled": true,
+    "covers": 6,
+    "drawCalls": 2,
+    "triangles": 26942,
+    "addedTriangles": 26870,
+    "replacedTriangles": 72,
+    "movementCollidersChanged": false,
+    "shotAndLOSColliders": "exact rendered scan geometry; old box raycast disabled",
+    "cosmeticProjection": false,
+    "localOnly": true,
+    "batches": [
+      {
+        "id": "mossy-wall-a",
+        "instances": 4,
+        "triangles": 17868,
+        "sha256": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754"
+      },
+      {
+        "id": "mossy-wall-b",
+        "instances": 2,
+        "triangles": 9074,
+        "sha256": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4"
+      }
+    ],
+    "limitations": [
+      "Movement retains the original broad AABB; irregular edges are not precision body collision.",
+      "Private models are not licensed for public redistribution; missing/local-off uses procedural fallback.",
+      "Geometry relief is real; no12mm restriction applies because shot/LOS use the same visible triangles."
+    ]
+  },
+  "rays": 6732,
+  "hits": 5983,
+  "misses": 749,
+  "maxGap": 0.000014261548743732533,
+  "maxNormalError": 0.00008092710272455398,
+  "fallbackRestored": true,
+  "movementBoxDataUnchanged": true
+}

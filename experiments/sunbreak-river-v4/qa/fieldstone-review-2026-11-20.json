@@ -1,0 +1,102 @@
+{
+  "schema": "river-reference-fieldstone-review-v1",
+  "quality_profile": "offscreen-cinematic-v1",
+  "task": "river-stone-cover-reference-2026-11-20",
+  "baseline": "f53de8504c71aa550f5af8b6431df180eef53c7e",
+  "runtimeSHA256": "2870796d5ca710e3c63abd3d253e5701e4121ce3ae798171bfba0011dd02a77d",
+  "runtimeHashMethod": "SHA256 of migration.canonical(report.sources)",
+  "scope": "Six existing river/outer cover walls; reference scan reuse locally with distributable procedural fallback",
+  "verdicts": {
+    "scopedFeature": "PASS",
+    "source": "PASS",
+    "sampledArt": "PASS",
+    "functional": "PASS",
+    "actualGameLOS": "PASS",
+    "strictPerformance": "FAIL",
+    "continuousMotion": "UNVERIFIED",
+    "fullAAARelease": "BLOCKED"
+  },
+  "independentReviewer": {
+    "name": "Ramanujan",
+    "agentId": "01a1f80f-f6f4-7d23-a865-d3f128b7271a",
+    "finalSignoff": "PASS for bounded replacement; strict release BLOCKED. Audited223runtime source entries,7CPU suites,106functional checks,12nativeLOSprobes and all1236performance frames.",
+    "method": "Read-only source/asset/evidence inspection; individually opened all six final native PNGs at original resolution",
+    "findings": [
+      "Actual reference scan resolves tile-veneer appearance with irregular crests, deep joints and substantial corners.",
+      "Minor: shadow detail compression and chunky outer-wall proportions.",
+      "Initial P2 proxy identity finding corrected: authoritative intersections return actual rendered object and instanceId, plus coverWallId.",
+      "Public package whitelist/import-closure omission corrected; package remains undeployed."
+    ],
+    "priorIndependentExtraRayProbe": "6590 comparisons of prior scan revision across all axes, finite near/far and combined solids passed; final identity correction separately source-reviewed and tested."
+  },
+  "visual": {
+    "report": "qa/evidence/fieldstone-visual-2026-11-20T09-06-23-009Z-JSsiyS/report.json",
+    "sha256": "083878df0a3cc569cf5ea4b850a35935918b32cc51c8d2ed077999cc787b1e67",
+    "captures": 6,
+    "dimensions": [1920,1080],
+    "method": "Native headless actual WebGL canvas; no desktop capture/focus/input",
+    "sourceAndHistoryUnchanged": true,
+    "notContinuousReview": true
+  },
+  "units": {
+    "report": "qa/evidence/fieldstone-units-2026-11-20T09-18-58-468Z-oq2ZuX/report.json",
+    "sha256": "e9ba7fc41ed171d7545c879ab8e39ad4077a36ca98aa0c828083860afa970cdd",
+    "suitesPassed": 7,
+    "sourceAndHistoryUnchanged": true,
+    "unchangedFallbackSuiteChecks": 559426,
+    "sharedVolumeCellsAcrossFaces": 232,
+    "actualGLBRays": 6732,
+    "actualGLBHits": 5983,
+    "actualGLBMisses": 749,
+    "maximumHitGapMetres": 0.0000021701831851572706,
+    "maximumNormalError": 0,
+    "renderObjectAndInstanceIdentity": "PASS",
+    "fallbackRayFunctionRestoration": "PASS",
+    "movementBoxDataPreservation": "PASS"
+  },
+  "regressions": {
+    "report": "qa/evidence/fieldstone-regressions-2026-11-20T09-10-43-398Z-KqBkAP/report.json",
+    "sha256": "2e00f1301c80f580338ebb13856b6742c23dc87abc5fb431ff179102c23f10d3",
+    "overallPass": false,
+    "functionalPhases": {"checks":32,"traversal":54,"weather":4,"polishAndActualImpacts":14,"importedFallback":2},
+    "functionalPass": true,
+    "sourceAndHistoryUnchanged": true,
+    "performance": {"pass":false,"warmupSeconds":10,"sampleDurationMs":30004.2,"frames":1236,"p95Ms":35.9,"p99Ms":36.6,"maximumMs":88.7,"framesOver50Ms":10,"dimensions":[1920,1080],"renderer":"NVIDIA RTX5070 Direct3D11"},
+    "strictThresholds": {"p95Ms":33.3,"p99Ms":33.3,"maximumMs":50,"framesOver50Ms":0},
+    "noRetryForPass": true
+  },
+  "nativeLOS": {
+    "report": "qa/evidence/fieldstone-scan-runtime-2026-11-20T09-17-40-593Z-8LCqqk/report.json",
+    "sha256": "e61ee228a0b7d5b50c48d74dd097b37455c487456280ae44b6774a8b04dd0838",
+    "passed": 12,
+    "scope": "Real game LOS against independent actual-GLB hit and silhouette-miss probe for every cover",
+    "sourceAndHistoryUnchanged": true
+  },
+  "assetsAndPackaging": {
+    "referenceModels": ["mossy-wall-a","mossy-wall-b"],
+    "localOnly": true,
+    "privatePackUnchanged": true,
+    "verifiedBrowserSnapshot": "cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407",
+    "beautyDraws": 2,
+    "triangles": 26942,
+    "movement": "Original broad movement AABBs retained; not precision irregular body collision",
+    "shotsAndLOS": "Exact render mesh geometry and instance transform; old box raycast disabled atomically",
+    "publicFallback": "bounded-weathered-fieldstone-v6",
+    "packageReport": "qa/fieldstone-package-2026-11-20.json",
+    "packageSHA256": "f424d2c3948042cfc0e3a22bd17c2b8696fe8dd72b72af2d5736bb810b3cefdf",
+    "packagePass": true,
+    "files": 102,
+    "bytes": 123856559,
+    "verifiedRelativeImports": 66,
+    "verifiedSharedDependencies": 103,
+    "privateGLBsExcluded": 12,
+    "publiclyDeployed": false,
+    "wholeProjectPortability": "NOT CLAIMED: pre-existing dirty UE private vault preserved; unchanged browser snapshot only"
+  },
+  "history": {
+    "rejectedProceduralArt": ["qa/evidence/fieldstone-visual-2026-11-20T08-34-37-581Z-5c7V9m","qa/evidence/fieldstone-visual-2026-11-20T08-38-20-654Z-yzskwB"],
+    "failedSliverGeometry": "qa/evidence/fieldstone-units-2026-11-20T08-41-42-437Z-UrzDlu",
+    "preservation": "No historical evidence or QA threshold rewritten. Prior performance, motion, traversal and old newline failures remain separately recorded."
+  },
+  "nextAction": "Profile inherited frame pacing separately. Verify scan redistribution permission before publishing the same reference appearance publicly."
+}

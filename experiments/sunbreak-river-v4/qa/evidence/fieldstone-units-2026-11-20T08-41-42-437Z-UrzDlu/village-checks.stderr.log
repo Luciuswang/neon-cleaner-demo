@@ -1,0 +1,14 @@
+file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/stone-cover.js:108
+  if(!Number.isFinite(normal.x)||normal.dot(new T.Vector3(...face.n))<=0)throw Error('Invalid stone cover winding');
+                                                                               ^
+
+Error: Invalid stone cover winding
+    at emit (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/stone-cover.js:108:80)
+    at buildStoneCover (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/stone-cover.js:138:40)
+    at buildVillage (file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/village.js:79:20)
+    at file:///E:/codex_project/neon-cleaner-demo/experiments/sunbreak-river-v4/qa/village-checks.mjs:8:15
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.1

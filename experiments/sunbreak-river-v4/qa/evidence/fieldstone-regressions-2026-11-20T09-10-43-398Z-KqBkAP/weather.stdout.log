@@ -1,0 +1,3 @@
+Capturing weather-sunny
+Encoded weather-sunny 2219140
+{"phase":"weather","pass":true,"checks":4,"errors":[],"report":"E:\\codex_project\\neon-cleaner-demo\\experiments\\sunbreak-river-v4\\qa\\evidence\\weather-2026-11-20T09-12-58-983Z\\weather-1.json"}

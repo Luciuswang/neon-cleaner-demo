@@ -212,5 +212,8 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     G.add(m); draws++; tris += b.i.length / 3;
   }
   const counts = { houses: houses.length, walls: walls.length, boxes, solids: solidCount, tiles:tiles.length, drawCalls: draws+2+stoneCover.info().drawCalls, triangles: tris+tiles.length*16+96+stoneCover.info().triangles, stoneCover:stoneCover.info(), contribution:'Fable 5.2 structure, reviewed and refined by Codex' };
-  return { update() {}, info() { return counts; },projectStoneCoverHit:stoneCover.projectHit };
+  let coverReplacement=null;
+  return { update() {}, info() { if(!coverReplacement)return counts;const c=coverReplacement.info();return {...counts,drawCalls:counts.drawCalls-counts.stoneCover.drawCalls+c.drawCalls,triangles:counts.triangles-counts.stoneCover.triangles+c.triangles,stoneCover:{...c,fallback:counts.stoneCover.revision}}; },
+   setCoverReplacement(replacement){coverReplacement?.setEnabled(false);coverReplacement=replacement;stoneCover.group.visible=!replacement;replacement?.setEnabled(true)},
+   projectStoneCoverHit(event){return coverReplacement?null:stoneCover.projectHit(event)} };
 }

@@ -1,5 +1,5 @@
 import {cp,mkdir,mkdtemp,readFile,writeFile,readdir} from 'node:fs/promises';
-import {resolve,dirname} from 'node:path';
+import {resolve,dirname,posix} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
@@ -13,6 +13,7 @@ runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','grou
 runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','masonry-materials.js');
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
 runtime.push('environment-polish.js','stone-cover.js','combat-feedback.js','shot-feedback-event.js');
+runtime.push('procedural-materials.js','procedural-ground.js','afterrain-ground.js','afterrain-light.js','forest-floor.js','puddle-reflection.js','fieldstone-surface.js','scan-cover.js','PROCEDURAL-NOTICE.txt');
 const sharedRelease=JSON.parse(git(['show','origin/main:sunbreak/public-release.json']));
 const sharedFiles=sharedRelease.files.filter(f=>/^(assets\/|vendor\/|assets-manifest\.json$|weapon-provenance\.json$|soldier-provenance\.json$|credits\.html$)/.test(f.path));
 for(const f of sharedFiles)assert.equal(hash(await readFile(resolve(root,'../sunbreak-storm-v3',f.path))),f.sha256,'Shared dependency changed '+f.path);
@@ -30,6 +31,17 @@ for(const f of [...afterrain.assets.flatMap(a=>a.files),...daylight.files])asser
 for(const f of foliage.derivatives)assert.equal(hash(await readFile(resolve(root,f.file))),f.sha256,'Foliage manifest stale '+f.file);
 const files=[];
 for(const path of included){const b=await readFile(resolve(root,path));await mkdir(dirname(resolve(out,path)),{recursive:true});await cp(resolve(root,path),resolve(out,path));assert.equal(hash(await readFile(resolve(out,path))),hash(b));files.push({path,bytes:b.length,sha256:hash(b)})}
+const emitted=new Set(files.map(f=>f.path)),sharedNames=new Set(sharedFiles.map(f=>f.path)),importClosure=[];
+for(const f of files.filter(f=>/\.(js|html)$/.test(f.path))){
+ const text=await readFile(resolve(out,f.path),'utf8');
+ for(const match of text.matchAll(/(?:from\s*|import\s*\(\s*)['"](\.[^'"]+)['"]/g)){
+  const spec=match[1],html=f.path.endsWith('.html');
+  const target=html?spec.replace(/^\.\//,''):posix.normalize(posix.join(posix.dirname(f.path),spec));
+  const local=html?target.startsWith('river/'):!target.startsWith('../');
+  const key=html&&local?target.slice(6):!html&&!local?target.slice(3):target;
+  assert.ok((local?emitted:sharedNames).has(key),'Unpackaged runtime import '+f.path+' -> '+spec);importClosure.push({from:f.path,spec,target:key,shared:!local});
+ }
+}
 const release={schema:'sunbreak-river-overlay-v1',sourceCommit:git(['rev-parse','HEAD']),created:new Date().toISOString(),publicPath:'sunbreak/river/',files,sharedReleaseSource:sharedRelease.sourceCommit,sharedFiles,scope:'Separate single-player river map, retained v4 weapon/NPC animation; previous four pages unchanged. No multiplayer or AAA certification.'};
 await writeFile(resolve(out,'public-release.json'),JSON.stringify(release,null,2)+'\n');
 let privateAssets=[];try{privateAssets=JSON.parse(await readFile(resolve(repo,'.local/river-downloaded-assets/manifest.json'),'utf8')).assets}catch(e){if(e.code!=='ENOENT')throw e}
@@ -39,7 +51,7 @@ for(const f of files){
 }
 async function actualTree(dir,prefix=''){const result=[];for(const d of await readdir(dir,{withFileTypes:true})){const name=prefix+d.name;if(d.isDirectory())result.push(...await actualTree(resolve(dir,d.name),name+'/'));else result.push(name)}return result}
 assert.deepEqual((await actualTree(out)).sort(),[...files.map(f=>f.path),'public-release.json'].sort(),'Unexpected package residue');
-const receipt={schema:'river-public-package-exclusion-v1',pass:true,builderSHA256:hash(await readFile(fileURLToPath(import.meta.url))),releaseSHA256:hash(await readFile(resolve(out,'public-release.json'))),files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0),sharedDependenciesVerified:sharedFiles.length,privateGLBsChecked:privateAssets.length,privateManifestSHA256:hash(await readFile(resolve(repo,'.local/river-downloaded-assets/manifest.json'))),privateBinariesIncluded:false,publiclyDeployed:false,packageFiles:files,checks:['fresh output directory','all emitted file bytes match source','no imported model filename or content hash','no local metadata manifest','exact recursive output whitelist','shared public dependency hashes unchanged']};
+const receipt={schema:'river-public-package-exclusion-v1',pass:true,builderSHA256:hash(await readFile(fileURLToPath(import.meta.url))),releaseSHA256:hash(await readFile(resolve(out,'public-release.json'))),files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0),sharedDependenciesVerified:sharedFiles.length,privateGLBsChecked:privateAssets.length,privateManifestSHA256:hash(await readFile(resolve(repo,'.local/river-downloaded-assets/manifest.json'))),privateBinariesIncluded:false,publiclyDeployed:false,packageFiles:files,importClosure,checks:['fresh output directory','all emitted file bytes match source','no imported model filename or content hash','no local metadata manifest','exact recursive output whitelist','shared public dependency hashes unchanged','relative JS and HTML runtime import closure']};
 const reportName=process.argv.find(a=>a.startsWith('--report='))?.slice(9)||'downloaded-package.json';
 assert.match(reportName,/^[a-z0-9-]+\.json$/,'Unsafe package receipt filename');
 await writeFile(resolve(root,'qa',reportName),JSON.stringify(receipt,null,2)+'\n');

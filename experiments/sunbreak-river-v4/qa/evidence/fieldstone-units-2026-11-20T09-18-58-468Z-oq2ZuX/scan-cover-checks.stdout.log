@@ -1,0 +1,223 @@
+{
+  "pass": true,
+  "source": "actual verified GLB geometry; no image material/GPU claim",
+  "assets": [
+    {
+      "id": "mossy-wall-a",
+      "sha256": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754"
+    },
+    {
+      "id": "mossy-wall-b",
+      "sha256": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4"
+    }
+  ],
+  "info": {
+    "revision": "local-reference-scanned-cover-v1",
+    "enabled": true,
+    "covers": 6,
+    "drawCalls": 2,
+    "triangles": 26942,
+    "addedTriangles": 26870,
+    "replacedTriangles": 72,
+    "movementCollidersChanged": false,
+    "shotAndLOSColliders": "exact rendered scan geometry; old box raycast disabled",
+    "cosmeticProjection": false,
+    "localOnly": true,
+    "batches": [
+      {
+        "id": "mossy-wall-a",
+        "instances": 4,
+        "triangles": 17868,
+        "sha256": "ac42eb756cb7bcfa50c849acfbfc89d0739ffa15372992f867c96c94cd3de754"
+      },
+      {
+        "id": "mossy-wall-b",
+        "instances": 2,
+        "triangles": 9074,
+        "sha256": "8f4f8dc7755e0e9a113dafaf6cb2f4c22a9f8981421f126c06c915282506d4e4"
+      }
+    ],
+    "limitations": [
+      "Movement retains the original broad AABB; irregular edges are not precision body collision.",
+      "Private models are not licensed for public redistribution; missing/local-off uses procedural fallback.",
+      "Geometry relief is real; no12mm restriction applies because shot/LOS use the same visible triangles."
+    ]
+  },
+  "rays": 6732,
+  "hits": 5983,
+  "misses": 749,
+  "maxGap": 0.0000021701831851572706,
+  "maxNormalError": 0,
+  "runtimeProbes": [
+    {
+      "wall": "cover--1--13",
+      "clear": true,
+      "from": [
+        -9.494117647058824,
+        0.05909090909090908,
+        -14.075
+      ],
+      "to": [
+        -9.494117647058824,
+        0.05909090909090908,
+        -12.075
+      ]
+    },
+    {
+      "wall": "cover--1--13",
+      "clear": false,
+      "from": [
+        -9.494117647058824,
+        0.17727272727272725,
+        -14.075
+      ],
+      "to": [
+        -9.494117647058824,
+        0.17727272727272725,
+        -12.075
+      ]
+    },
+    {
+      "wall": "outer-cover--1--13",
+      "clear": false,
+      "from": [
+        -27.223529411764705,
+        0.0636363636363636,
+        -14.3
+      ],
+      "to": [
+        -27.223529411764705,
+        0.0636363636363636,
+        -12.3
+      ]
+    },
+    {
+      "wall": "outer-cover--1--13",
+      "clear": true,
+      "from": [
+        -25.847058823529412,
+        1.3363636363636364,
+        -14.3
+      ],
+      "to": [
+        -25.847058823529412,
+        1.3363636363636364,
+        -12.3
+      ]
+    },
+    {
+      "wall": "cover--1-8",
+      "clear": true,
+      "from": [
+        -9.494117647058824,
+        0.05909090909090908,
+        6.925
+      ],
+      "to": [
+        -9.494117647058824,
+        0.05909090909090908,
+        8.925
+      ]
+    },
+    {
+      "wall": "cover--1-8",
+      "clear": false,
+      "from": [
+        -9.494117647058824,
+        0.17727272727272725,
+        6.925
+      ],
+      "to": [
+        -9.494117647058824,
+        0.17727272727272725,
+        8.925
+      ]
+    },
+    {
+      "wall": "cover-1--13",
+      "clear": false,
+      "from": [
+        6.105882352941176,
+        0.05909090909090908,
+        -14.075
+      ],
+      "to": [
+        6.105882352941176,
+        0.05909090909090908,
+        -12.075
+      ]
+    },
+    {
+      "wall": "cover-1--13",
+      "clear": true,
+      "from": [
+        6.105882352941176,
+        1.240909090909091,
+        -14.075
+      ],
+      "to": [
+        6.105882352941176,
+        1.240909090909091,
+        -12.075
+      ]
+    },
+    {
+      "wall": "cover-1-8",
+      "clear": false,
+      "from": [
+        6.105882352941176,
+        0.05909090909090908,
+        6.925
+      ],
+      "to": [
+        6.105882352941176,
+        0.05909090909090908,
+        8.925
+      ]
+    },
+    {
+      "wall": "cover-1-8",
+      "clear": true,
+      "from": [
+        6.105882352941176,
+        1.240909090909091,
+        6.925
+      ],
+      "to": [
+        6.105882352941176,
+        1.240909090909091,
+        8.925
+      ]
+    },
+    {
+      "wall": "outer-cover-1-8",
+      "clear": false,
+      "from": [
+        24.776470588235295,
+        0.0636363636363636,
+        6.7
+      ],
+      "to": [
+        24.776470588235295,
+        0.0636363636363636,
+        8.7
+      ]
+    },
+    {
+      "wall": "outer-cover-1-8",
+      "clear": true,
+      "from": [
+        24.776470588235295,
+        1.0818181818181818,
+        6.7
+      ],
+      "to": [
+        24.776470588235295,
+        1.0818181818181818,
+        8.7
+      ]
+    }
+  ],
+  "fallbackRestored": true,
+  "movementBoxDataUnchanged": true
+}

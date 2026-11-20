@@ -17,3 +17,6 @@ qa/evidence/*-2026-11-20T*/*.png filter=lfs diff=lfs merge=lfs -text
 qa/evidence/afterrain-look-*/browser-stderr.log -whitespace
 # Preserve raw failed-process diagnostics in this checkpoint without recoding.
 qa/evidence/afterrain-regressions-2026-11-20T*/*.stderr.log -whitespace
+# Keep this task's native diagnostic bytes intact, including Windows CRLF.
+qa/evidence/fieldstone-*/browser-stderr.log -whitespace
+qa/evidence/fieldstone-*/*.stderr.log -whitespace

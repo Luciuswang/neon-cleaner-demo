@@ -79,7 +79,10 @@ export async function buildDownloadedDressing(T,world){
  const group=new T.Group();group.name='local-downloaded-dressing';
  const time={value:0},loaded=new Map();let preview=null,hidden=[];
  const info=()=>({...state,counts:{...state.counts},batches:state.batches.map(b=>({...b}))});
- const result={update(t){time.value=t},info,setVisible(v){group.visible=!!v},reviewAsset(id){
+ const result={update(t){time.value=t},info,setVisible(v){group.visible=!!v},coverSources(){
+  if(!state.enabled)return[];
+  return state.assets.filter(a=>a.id==='mossy-wall-a'||a.id==='mossy-wall-b').map(a=>({...a,scene:loaded.get(a.id).scene}));
+ },reviewAsset(id){
   if(preview){world.remove(preview);preview=null;for(const [o,v]of hidden)o.visible=v;hidden=[]}
   if(!id)return null;const source=loaded.get(id);if(!source)throw Error('Unknown review asset');
   hidden=world.children.map(o=>[o,o.visible]);world.children.forEach(o=>{o.visible=false});

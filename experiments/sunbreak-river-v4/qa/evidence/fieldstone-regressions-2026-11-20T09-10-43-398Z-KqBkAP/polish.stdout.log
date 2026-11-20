@@ -1,0 +1,37 @@
+Capturing hero
+Encoded hero 4514212
+Capturing stone-close
+Encoded stone-close 4193884
+Capturing plaster-close
+Encoded plaster-close 2271612
+Capturing plaster-sun
+Encoded plaster-sun 1425372
+Capturing ground-growth
+Encoded ground-growth 4922048
+Capturing forest-belt
+Encoded forest-belt 5081716
+Capturing forest-lateral
+Encoded forest-lateral 4430952
+Capturing sun-gun
+Encoded sun-gun 4514432
+Capturing turned-gun
+Encoded turned-gun 5281980
+Capturing sheltered-gun
+Encoded sheltered-gun 2990504
+Capturing timber-close
+Encoded timber-close 3747076
+Capturing stone-impact
+Encoded stone-impact 4157228
+Capturing earth-impact
+Encoded earth-impact 4915340
+Capturing water-impact
+Encoded water-impact 5843948
+Capturing sky-miss
+Encoded sky-miss 1673036
+Capturing blocked-barrel
+Encoded blocked-barrel 3684952
+Capturing ads-clear
+Encoded ads-clear 4654948
+Capturing ads-shot
+Encoded ads-shot 4660120
+{"phase":"polish","pass":true,"checks":14,"errors":[],"report":"E:\\codex_project\\neon-cleaner-demo\\experiments\\sunbreak-river-v4\\qa\\evidence\\polish-2026-11-20T09-13-38-638Z\\polish-1.json"}

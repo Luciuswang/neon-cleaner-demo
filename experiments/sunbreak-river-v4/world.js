@@ -23,6 +23,7 @@ import {SOIL_MOISTURE_GLSL,soilMoisture} from './ground-moisture.js';
 import {applySurfaceAttributes,installGroundSurface,buildFoundationWeeds,surfaceZones} from './ground-surface.js';
 import {createHeightFog} from './height-fog.js';
 import {buildDownloadedDressing} from './downloaded-dressing.js';
+import {buildScanCover} from './scan-cover.js';
 import {buildProceduralMaterials} from './procedural-materials.js';
 import {installProceduralGround} from './procedural-ground.js';
 import {lowerSkySun,AFTERRAIN_LIGHT} from './afterrain-light.js';
@@ -132,6 +133,8 @@ export async function buildWorld(ctx){
  const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials});
  const dressing=await buildDownloadedDressing(T,world);
+ try{const scanned=buildScanCover({T,world,walls:layout.walls,solids,sources:dressing.coverSources()});if(scanned)village.setCoverReplacement(scanned)}
+ catch(error){textureErrors.push('Reference cover fallback: '+error.message)}
  const forestFloor=afterRain?buildForestFloor(T,world):null;
 
  const water=buildRiverWater({T,Reflector,world,time:windTime,rain:rainStrength,sunDirection});

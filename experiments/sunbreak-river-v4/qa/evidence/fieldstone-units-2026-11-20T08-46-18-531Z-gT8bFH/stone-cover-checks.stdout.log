@@ -1,0 +1,91 @@
+{
+  "status": "CPU PASS; GPU/art/performance NOT evaluated",
+  "checks": 559426,
+  "inputs": {
+    "village.js": "330a66bffc6b6ade96e788727a3a9f1179f23a1130f6ee66b9eec4352a9d2116",
+    "masonry-materials.js": "2369a751d2c28ce168589b5c38c5cbbbb0a042dda6a3d12f46bb5e1ef099a49a",
+    "stone-cover.js": "cff6d1efd0646b859629e623953f47102c2f9f67d556f7fad320cca0d53e4b68",
+    "qa/stone-cover-checks.mjs": "e81201e8259ebbccd26c2b2b102e2a475e8d4a116cccf80a95e95a92d5c3386e"
+  },
+  "nonCoverGeometry": "3721e80f7902909666feb35c04e7734b4675801fa6e742b0bec186691292a7ea",
+  "exactColliderFingerprint": "d59338d8eb067668142a7e3b277ad9c9c44d1fb9fa36581cd73a73d12b21f7bb",
+  "info": {
+    "houses": 6,
+    "walls": 72,
+    "boxes": 756,
+    "solids": 205,
+    "tiles": 2496,
+    "drawCalls": 14,
+    "triangles": 78358,
+    "stoneCover": {
+      "revision": "bounded-weathered-fieldstone-v6",
+      "covers": 6,
+      "stones": 732,
+      "drawCalls": 2,
+      "triangles": 28206,
+      "replacedTriangles": 72,
+      "addedTriangles": 28134,
+      "maxRecess": 0.012,
+      "outwardProtrusion": 0,
+      "opaqueContinuousShell": true,
+      "collidersChanged": false,
+      "sources": [
+        "original procedural fieldstone geometry and correlated mineral bake",
+        "original procedural mortar"
+      ],
+      "surface": {
+        "revision": "fieldstone-mineral-correlated-v3",
+        "size": 512,
+        "tileMetres": 0.72,
+        "heightMetres": 0.023,
+        "bytes": 3145728,
+        "perFrameBakes": 0,
+        "source": "original procedural mineral fields, no external images"
+      },
+      "budgets": {
+        "maxRecess": 0.012,
+        "maxAddedTriangles": 40000,
+        "maxBeautyDraws": 3
+      },
+      "drawCaveat": "Beauty draws only; shadow/reflection passes are measured by root."
+    },
+    "contribution": "Fable 5.2 structure, reviewed and refined by Codex"
+  },
+  "actualDraws": 14,
+  "actualTriangles": 78358,
+  "geometryBytes": 4731120,
+  "watertightMortarEdges": 468,
+  "polygonSizes": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    24
+  ],
+  "irregularEdges": 7767,
+  "totalEdges": 9298,
+  "faceRays": 7956,
+  "obliqueRays": 23868,
+  "projectedMarks": 7956,
+  "maxNormalGap": 0.012000274658202054,
+  "maxHitGap": 0.02400052547454929,
+  "maxMarkShift": 0.012000274658202414,
+  "limitations": [
+    "CPU shader assembly is not WebGL compilation.",
+    "First-hit tests cover 0/30/60 degrees; at grazing incidence ray-length separation can exceed normal surface recess; projectStoneCoverHit snaps cosmetic marks along the face normal.",
+    "Root owns cosmetic impact integration, GPU captures, draw/shadow/reflection totals and performance."
+  ]
+}
