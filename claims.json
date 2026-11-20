@@ -18,26 +18,17 @@
     "river-reference-house-2026-11-20": {
       "base_commit": "573c7ad44a9924c2fae2aeb1f08704acadbaeade",
       "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-20T17:32:04.269779+00:00",
+      "expires_at": "2026-11-20T19:14:48.944132+00:00",
       "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
       "scopes": [
-        "experiments/sunbreak-river-v4/village.js",
-        "experiments/sunbreak-river-v4/map-layout.js",
-        "experiments/sunbreak-river-v4/reference-house.js",
-        "experiments/sunbreak-river-v4/reference-house-plan.js",
-        "experiments/sunbreak-river-v4/qa/reference-house-checks.mjs",
-        "experiments/sunbreak-river-v4/qa/reference-house.mjs",
-        "experiments/sunbreak-river-v4/qa/reference-house-review-2026-11-20.json",
-        "experiments/sunbreak-river-v4/qa/reference-house-package-2026-11-20.json",
-        "experiments/sunbreak-river-v4/qa/evidence",
-        "experiments/sunbreak-river-v4/tools/package.mjs",
+        "AGENTS.md",
         "docs/tasks/river-reference-house-2026-11-20.md",
         "docs/handoff.md",
         "docs/sprint-2026-08-24.md",
         "docs/worklog"
       ],
       "task_id": "river-reference-house-2026-11-20",
-      "updated_at": "2026-11-20T09:32:04.269779+00:00"
+      "updated_at": "2026-11-20T11:14:48.944132+00:00"
     }
   },
   "schema": 1
