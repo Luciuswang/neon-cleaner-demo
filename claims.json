@@ -14,22 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "river-afterrain-light-understory-2026-11-20": {
-      "base_commit": "8647a8fcdfaf9fcd199e4b0495628b894fd64aef",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-20T12:11:53.514308+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/river-afterrain-light-understory-2026-11-20.md",
-        "docs/sprint-2026-08-24.md",
-        "docs/handoff.md",
-        "docs/worklog",
-        ".gitattributes"
-      ],
-      "task_id": "river-afterrain-light-understory-2026-11-20",
-      "updated_at": "2026-11-20T04:11:53.514308+00:00"
     }
   },
   "schema": 1
