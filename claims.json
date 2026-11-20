@@ -14,21 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "river-reference-house-2026-11-20": {
-      "base_commit": "573c7ad44a9924c2fae2aeb1f08704acadbaeade",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-20T19:14:48.944132+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "AGENTS.md",
-        "docs/tasks/river-reference-house-2026-11-20.md",
-        "docs/handoff.md",
-        "docs/sprint-2026-08-24.md",
-        "docs/worklog"
-      ],
-      "task_id": "river-reference-house-2026-11-20",
-      "updated_at": "2026-11-20T11:14:48.944132+00:00"
     }
   },
   "schema": 1
