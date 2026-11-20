@@ -1,5 +1,27 @@
 # Codex Project Entry: Neon Cleaner
 
+## Model priority — standing user instruction, 2026-11-20
+
+Use the user's Gateway route with the explicit model `claude-fable-5-2` first
+for project production, including planning, implementation, revisions and
+delegated review. Do not silently do the production in Codex while Fable has
+available credit. Keep any unavoidable Codex coordination minimal; this rule
+does not itself switch the current conversation's model or make coordination free.
+
+Codex may take over production ONLY after current provider evidence explicitly
+confirms that the Fable route's usable credit/budget is exhausted. Connection
+errors, timeouts, authentication failures, generic HTTP 429 responses, model
+unavailability or an unverified balance are NOT evidence of exhausted credit.
+In those cases, preserve work, diagnose the route without paid retry loops and
+report the blocker instead of substituting Codex. No automatic top-ups/purchases.
+
+Before claiming Fable produced work, retain a sanitized receipt of the requested
+model, returned model identifier, result and reported usage/cost. Distinguish
+Gateway-reported identity/billing from independently verified upstream billing.
+Historical Fable contributions do not establish that a new task used Fable.
+If exhausted-credit fallback is needed, explicitly identify the reason and the
+switch in the task record and user update. This preference applies across PCs.
+
 ## Locked-screen cinematic work - 2026-10-29
 
 Use `ue/Render-NeonOffscreen.ps1` for new visual evidence. The user locks the

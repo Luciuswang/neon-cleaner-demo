@@ -757,3 +757,7 @@ River after-rain look checkpoint: stronger warm sun, retained puddles/selective 
 ## Sync note - 2026-11-20T17:27:18.7830589+08:00
 
 River stone-cover task complete: six local reference scan walls, exact rendered-instance shot/LOS and distributable procedural fallback. Source/art, 7 CPU suites, 5 functional phases and 12 native LOS probes PASS. Strict performance FAIL: p95 35.9ms, max88.7ms, 10 frames over50ms; full AAA release BLOCKED. Canonical QA: experiments/sunbreak-river-v4/qa/fieldstone-review-2026-11-20.json. Existing private browser snapshot cc1f9345cfb74e06e3b26f4ba9446bd7b5cf2407 unchanged; dirty UE vault preserved. No Pages deployment. Next: isolate frame pacing and verify scan redistribution permission.
+
+## Sync note - 2026-11-20T19:16:04.0372837+08:00
+
+Standing user model preference recorded in AGENTS.md: use Gateway claude-fable-5-2 first for production; Codex fallback only after explicit current exhausted-credit evidence, not timeout/auth/connection errors. Reference-house work is paused before implementation and no new Fable call occurred. Next: verify the Fable route and current response/usage, then resume bounded plan/review. Documentation-only checkpoint; runtime and private dependencies unchanged, dirty UE vault preserved, private transfer skipped. No new game QA or deployment.

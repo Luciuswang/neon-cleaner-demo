@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261120T111604Z-fa9676e65a",
+  "task_id": "river-reference-house-2026-11-20",
+  "timestamp_utc": "2026-11-20T11:16:04.661135+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Standing user model preference recorded in AGENTS.md: use Gateway claude-fable-5-2 first for production; Codex fallback only after explicit current exhausted-credit evidence, not timeout/auth/connection errors. Reference-house work is paused before implementation and no new Fable call occurred. Next: verify the Fable route and current response/usage, then resume bounded plan/review. Documentation-only checkpoint; runtime and private dependencies unchanged, dirty UE vault preserved, private transfer skipped. No new game QA or deployment.",
+  "commit_shas": [
+    "573c7ad44a9924c2fae2aeb1f08704acadbaeade"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
