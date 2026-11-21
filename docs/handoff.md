@@ -761,3 +761,7 @@ River stone-cover task complete: six local reference scan walls, exact rendered-
 ## Sync note - 2026-11-20T19:16:04.0372837+08:00
 
 Standing user model preference recorded in AGENTS.md: use Gateway claude-fable-5-2 first for production; Codex fallback only after explicit current exhausted-credit evidence, not timeout/auth/connection errors. Reference-house work is paused before implementation and no new Fable call occurred. Next: verify the Fable route and current response/usage, then resume bounded plan/review. Documentation-only checkpoint; runtime and private dependencies unchanged, dirty UE vault preserved, private transfer skipped. No new game QA or deployment.
+
+## Sync note - 2026-11-21T17:38:09.4470903+08:00
+
+Generated repository-only biweekly report for 2026-11-08 through 2026-11-21 from 17 origin branches, 122 commits and 57 worklog events. Email delivery remains blocked by prior Gmail safety restriction; private vault had unfinished local changes and was preserved.
