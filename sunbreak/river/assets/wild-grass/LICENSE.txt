@@ -1,0 +1,7 @@
+Wild grass runtime derivatives
+
+Created using Foliage001 and Foliage006 from ambientCG.com, licensed under Creative Commons CC0 1.0 Universal.
+https://docs.ambientcg.com/license/
+https://creativecommons.org/publicdomain/zero/1.0/
+
+Original deterministic curved-blade geometry and atlas preparation: this project. Source atlases are photographs with PBR maps, NOT scanned 3D tuft meshes. Source ZIPs and license snapshots remain in source/ and are not in the public runtime whitelist.

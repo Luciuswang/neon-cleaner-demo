@@ -1,0 +1,12 @@
+{
+  "date": "2026-11-18",
+  "requestedModel": "claude-fable-5-2",
+  "reportedModels": ["claude-fable-5-2"],
+  "cliVersion": "2.1.326",
+  "reportedCostUSD": 0.207996,
+  "billingIndependentlyVerified": false,
+  "toolsGranted": [],
+  "contribution": "Deterministic chipped slab geometry with separate fractured edges; original visible code at source/fable-fracture.js, runtime fracture-geometry.js. Placement, structural ruins, materials, cabins, foliage, lighting and QA integrated separately by Codex. Static art, not dynamic destruction.",
+  "visibleCodeBytes": 5583,
+  "status": "Integrated static fracture contribution; 160 deterministic closed-manifold geometry samples and 1480 pile/support ray comparisons passed. Visual and overall map release acceptance are separately recorded in qa/release.json. No AAA or dynamic-destruction certification."
+}

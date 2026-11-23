@@ -1,0 +1,141 @@
+{
+  "schema": "river-surface-assets-v1",
+  "license": "CC0-1.0",
+  "licenseURL": "https://polyhaven.com/license",
+  "assets": [
+    {
+      "id": "dirt",
+      "source": "https://polyhaven.com/a/dirt",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "file": "assets/ground-surfaces/dirt/color.jpg",
+          "role": "color",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg",
+          "officialMD5": "cb37e24797597b1dd1ae3819fa80f076",
+          "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+          "bytes": 730425
+        },
+        {
+          "file": "assets/ground-surfaces/dirt/normal.jpg",
+          "role": "normal",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_nor_gl_1k.jpg",
+          "officialMD5": "362610edf09fd31735958eecec823a84",
+          "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+          "bytes": 1202783
+        },
+        {
+          "file": "assets/ground-surfaces/dirt/roughness.jpg",
+          "role": "roughness",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_rough_1k.jpg",
+          "officialMD5": "d936d6760ce0f899b131d30626d52ce9",
+          "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+          "bytes": 253549
+        }
+      ]
+    },
+    {
+      "id": "forest_ground_04",
+      "source": "https://polyhaven.com/a/forest_ground_04",
+      "license": "CC0-1.0",
+      "files": [
+        {
+          "file": "assets/ground-surfaces/forest_ground_04/color.jpg",
+          "role": "color",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_diff_1k.jpg",
+          "officialMD5": "6ad9df4d731a238299806f739a26af83",
+          "sha256": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+          "bytes": 1113899
+        },
+        {
+          "file": "assets/ground-surfaces/forest_ground_04/normal.jpg",
+          "role": "normal",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_nor_gl_1k.jpg",
+          "officialMD5": "a010a0802c2d9a930c6f00d3b1f196d2",
+          "sha256": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+          "bytes": 1326812
+        },
+        {
+          "file": "assets/ground-surfaces/forest_ground_04/roughness.jpg",
+          "role": "roughness",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_rough_1k.jpg",
+          "officialMD5": "b5c7ba5c16f00261e9a765d52cf7e0ac",
+          "sha256": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+          "bytes": 627507
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "file": "assets/ground-surfaces/dirt/official-files.json",
+      "bytes": 23174,
+      "sha256": "e47999c63343557cf1764f278a0c5b09b5e420d9b2c42daeda38ec3abfa0d7b7"
+    },
+    {
+      "file": "assets/ground-surfaces/dirt/color.jpg",
+      "role": "color",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg",
+      "officialMD5": "cb37e24797597b1dd1ae3819fa80f076",
+      "sha256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+      "bytes": 730425
+    },
+    {
+      "file": "assets/ground-surfaces/dirt/normal.jpg",
+      "role": "normal",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_nor_gl_1k.jpg",
+      "officialMD5": "362610edf09fd31735958eecec823a84",
+      "sha256": "5a5f97d920fdcdf352b350b95558bf48bb306be1fe61a47418aadc60b7deb0ce",
+      "bytes": 1202783
+    },
+    {
+      "file": "assets/ground-surfaces/dirt/roughness.jpg",
+      "role": "roughness",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_rough_1k.jpg",
+      "officialMD5": "d936d6760ce0f899b131d30626d52ce9",
+      "sha256": "eff62d5ae7bf0c46b84173bc46f07528dd164aa39f5d550c93a805b36f54b704",
+      "bytes": 253549
+    },
+    {
+      "file": "assets/ground-surfaces/forest_ground_04/official-files.json",
+      "bytes": 27232,
+      "sha256": "2d591a0413dbbff2d2aa87d7a4fae00bd5c353edb4923aedd443efbc4c691156"
+    },
+    {
+      "file": "assets/ground-surfaces/forest_ground_04/color.jpg",
+      "role": "color",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_diff_1k.jpg",
+      "officialMD5": "6ad9df4d731a238299806f739a26af83",
+      "sha256": "50a4dda30875020c64385261aa7e00e2155b592302fa6794165f58fae73cbd2c",
+      "bytes": 1113899
+    },
+    {
+      "file": "assets/ground-surfaces/forest_ground_04/normal.jpg",
+      "role": "normal",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_nor_gl_1k.jpg",
+      "officialMD5": "a010a0802c2d9a930c6f00d3b1f196d2",
+      "sha256": "9c3a0200e02ce40edffbbf9f5f623ef08ea9b1b7812b556182ec978f88887151",
+      "bytes": 1326812
+    },
+    {
+      "file": "assets/ground-surfaces/forest_ground_04/roughness.jpg",
+      "role": "roughness",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/forest_ground_04/forest_ground_04_rough_1k.jpg",
+      "officialMD5": "b5c7ba5c16f00261e9a765d52cf7e0ac",
+      "sha256": "89d4d50395eb92824a64132c4bc8a5a09009071e0b325ab66dc3104c7a3090ed",
+      "bytes": 627507
+    }
+  ],
+  "publicWhitelist": [
+    "assets/ground-surfaces/dirt/color.jpg",
+    "assets/ground-surfaces/dirt/normal.jpg",
+    "assets/ground-surfaces/dirt/roughness.jpg",
+    "assets/ground-surfaces/forest_ground_04/color.jpg",
+    "assets/ground-surfaces/forest_ground_04/normal.jpg",
+    "assets/ground-surfaces/forest_ground_04/roughness.jpg"
+  ],
+  "preparation": {
+    "script": "tools/prepare-ground-surfaces.mjs",
+    "sha256": "f1efb68450df9afef5edf7137b18fec18c409cc052b3d6726c20634f09f71a83"
+  }
+}

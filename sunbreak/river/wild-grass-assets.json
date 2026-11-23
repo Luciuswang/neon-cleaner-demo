@@ -1,0 +1,368 @@
+{
+  "schema": "wild-grass-assets-v1",
+  "license": "CC0-1.0",
+  "licenseSource": "https://docs.ambientcg.com/license/",
+  "sourceAssets": [
+    {
+      "id": "Foliage001",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "download": "https://ambientcg.com/get?file=Foliage001_1K-JPG.zip",
+      "bytes": 3899839,
+      "license": "CC0-1.0"
+    },
+    {
+      "id": "Foliage006",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "download": "https://ambientcg.com/get?file=Foliage006_1K-JPG.zip",
+      "bytes": 2279998,
+      "license": "CC0-1.0"
+    }
+  ],
+  "preparation": {
+    "script": "tools/prepare-wild-grass.mjs",
+    "sha256": "daf39f42bed2b1e2111aa609e4840258c9ceb91567a442e4785d6d018b260c2a",
+    "command": "node experiments/sunbreak-river-v4/tools/prepare-wild-grass.mjs",
+    "dependencies": {
+      "node": "24+",
+      "sharp": "0.35.5"
+    },
+    "offline": "Reuses checked source ZIPs and metadata; rebuilds runtime deterministically."
+  },
+  "definitions": [
+    {
+      "name": "wild_leafy_a",
+      "id": "Foliage001",
+      "blades": 20,
+      "height": 0.34,
+      "radiusRatio": 0.55,
+      "seed": 221
+    },
+    {
+      "name": "wild_leafy_b",
+      "id": "Foliage006",
+      "blades": 26,
+      "height": 0.22,
+      "radiusRatio": 1.35,
+      "seed": 746,
+      "posture": "outward"
+    },
+    {
+      "name": "wild_upright_a",
+      "id": "Foliage001",
+      "blades": 16,
+      "height": 0.48,
+      "radiusRatio": 0.36,
+      "seed": 821
+    },
+    {
+      "name": "wild_upright_b",
+      "id": "Foliage006",
+      "blades": 18,
+      "height": 0.48,
+      "radiusRatio": 0.35,
+      "seed": 962
+    }
+  ],
+  "palette": {
+    "Foliage001": [
+      64,
+      72,
+      45
+    ],
+    "Foliage006": [
+      66,
+      74,
+      44
+    ]
+  },
+  "files": [
+    {
+      "file": "assets/wild-grass/Foliage001-leaf-rgba.png",
+      "sha256": "9471a98a4919996bf68226f4718cefe4213a1634f50edd0e913bd57d3ab2f254",
+      "bytes": 491434,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Color/opacity combined; opaque-median luminance normalized into shared subdued olive palette; 4% source chroma retained"
+    },
+    {
+      "file": "assets/wild-grass/Foliage006-leaf-rgba.png",
+      "sha256": "8bf2240f489e3d6493a6dff8c63878648a74601208687c78bbffc2aefc9bd0ac",
+      "bytes": 405149,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Color/opacity combined; opaque-median luminance normalized into shared subdued olive palette; 4% source chroma retained"
+    },
+    {
+      "file": "assets/wild-grass/LICENSE.txt",
+      "sha256": "3ac393051380ac223bd208d84764dac9643bf5b4364759ce0231763ff7e0df1d",
+      "bytes": 484,
+      "license": "CC0-1.0",
+      "source": "https://docs.ambientcg.com/license/",
+      "derivatives": "Attribution and derivative description"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Color.jpg",
+      "sha256": "f63f946a199b1853c9bc9dcd42cc742118dfc4fc26387cd0aee3a0eba0f65702",
+      "bytes": 329089,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Displacement.jpg",
+      "sha256": "29c2949ef4ad6ed3afae03388bfa63d4dfcfc725bbf7305089bf231ec7376cf9",
+      "bytes": 174377,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalDX.jpg",
+      "sha256": "634858e5700679fb1a61880903c2ded67cd2d6196ace9c29a394b61acb6b660c",
+      "bytes": 900576,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_NormalGL.jpg",
+      "sha256": "5d44cd4b37acef76b6abd2cd0aa8f06dd295c404548971977fbf291a333f8bad",
+      "bytes": 900591,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Opacity.jpg",
+      "sha256": "e99abbfc0c34a19c3d7dfe2ed8754494655e0f5a795943d2654d5201b6e3a6f6",
+      "bytes": 113829,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG_Roughness.jpg",
+      "sha256": "bbcfc895b2d1da5f9fa54e30f4938169abb7d3fec7797a8febd6096f2569b866",
+      "bytes": 207943,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.blend",
+      "sha256": "eff709c69ebf9de202c6a0a883bd8d7a32ef64bbcb97601c800bc033edd2a9f3",
+      "bytes": 1109380,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.mtlx",
+      "sha256": "c2dc5476f25c01456a3ada2da09815757f4f9a3c2bcbde617e476607dee4ce49",
+      "bytes": 2626,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.tres",
+      "sha256": "01eae29f33a979719b7cbbf5d22a5907847a298eb3f0103d5c763ca921bcf5b9",
+      "bytes": 812,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.usdc",
+      "sha256": "da5e7947e980304f06b387a7e7f1ffefa3ed90314e7774fc93de41e3767bfbac",
+      "bytes": 2972,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001_1K-JPG.zip",
+      "sha256": "9d24074827b412adcf963b073943852a07324825df60796e85bb91e5d2aceee7",
+      "bytes": 3899839,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/Foliage001.png",
+      "sha256": "2061793010e1e0f9288922fe19c8b884accab78c61ba7d687da2354d495299ec",
+      "bytes": 155628,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage001/metadata.json",
+      "sha256": "ada771a39393ad353cf20ba21967f2b1f242be005b38a911431da44e4e9d151b",
+      "bytes": 11749,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Color.jpg",
+      "sha256": "876eda2d14da041db3670456464a23287a2f531d2e87191211d137cfa943e3e2",
+      "bytes": 387709,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Displacement.jpg",
+      "sha256": "8561ebdcc224227e8a7de5b2e4bc5ee5734680cd87bbe3c21f56d5d7ebdde1c8",
+      "bytes": 171880,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalDX.jpg",
+      "sha256": "c5292789de9122dedf8cfe22946d2304cd355e509dcbd02009a520d057b59533",
+      "bytes": 174149,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_NormalGL.jpg",
+      "sha256": "384f4859866d518d2e05716b6f5d3fc74adcac1b46228668bffecbcf220affd8",
+      "bytes": 172377,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Opacity.jpg",
+      "sha256": "fa477e051a483d10a7d259d070623bad3957f5f6c07e026c8a848e1951d84b76",
+      "bytes": 81677,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG_Roughness.jpg",
+      "sha256": "355828c844b54c5e5d9c206673a41254a7dd30908b82d478e64814ec6647d4bf",
+      "bytes": 91860,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.blend",
+      "sha256": "06bcc04fb130a4b7d9d2c9a3d1dfe5d47ea07444d5676187829c549480c06fca",
+      "bytes": 1109380,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.mtlx",
+      "sha256": "1c098410b2e0b3dd9181bfd1fae2e3f250f3c29bb6e84a6d3a4b76eb0e6ecab2",
+      "bytes": 2626,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.tres",
+      "sha256": "db6a2bd96b079da7615f2c9ec8c3ed2b53ab30b3f9983ddaec280ac0e56cff97",
+      "bytes": 812,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.usdc",
+      "sha256": "20dda9af88598ecd29b57cb379fb596cba58824445de48180cc0e46d030a6ad3",
+      "bytes": 2974,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006_1K-JPG.zip",
+      "sha256": "e842382a2967cb3eb6d425f50066391b98882be490bc4493e8fe3ace77dec51c",
+      "bytes": 2279998,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/Foliage006.png",
+      "sha256": "0dd94787d710e7e7915a7dfea8373689a12a4551d74e0a9e7eafc96c8b15dc68",
+      "bytes": 82284,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/Foliage006/metadata.json",
+      "sha256": "68a6d76bbc3ead247cc3301d042be0f2de2b57140d4bacb5f2631dc001965362",
+      "bytes": 12914,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/license/ambientcg-license.html",
+      "sha256": "86d690c1384e979c84fcb607c66dcd4802ff75f917a2fbef1658add632d1b11b",
+      "bytes": 34349,
+      "license": "CC0-1.0",
+      "source": "https://docs.ambientcg.com/license/",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/source/license/CC0-1.0.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "bytes": 7048,
+      "license": "CC0-1.0",
+      "source": "https://docs.ambientcg.com/license/",
+      "derivatives": "Unmodified source or official license/API snapshot"
+    },
+    {
+      "file": "assets/wild-grass/wild_leafy_a.glb",
+      "sha256": "d961d0df64882e7407e485cc2aa9b64113319605af6cf3ca18f76ed3850fdaaa",
+      "bytes": 513588,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Original 6-segment arched/drooping blades, width <=9mm before runtime scaling; narrow leaf crops; embedded olive-normalized RGBA atlas; deterministic seed"
+    },
+    {
+      "file": "assets/wild-grass/wild_leafy_b.glb",
+      "sha256": "19d704336df4f1872ebc7558d4e9b34a8985b9586d726ee0959480397bcba81b",
+      "bytes": 433388,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Original 6-segment arched/drooping blades, width <=9mm before runtime scaling; narrow leaf crops; embedded olive-normalized RGBA atlas; deterministic seed"
+    },
+    {
+      "file": "assets/wild-grass/wild_upright_a.glb",
+      "sha256": "5f7043a31cfb71142f9a2bb083652ddb6853bb7a3b7941c5ceb52d9776a38239",
+      "bytes": 509388,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage001",
+      "derivatives": "Original 6-segment arched/drooping blades, width <=9mm before runtime scaling; narrow leaf crops; embedded olive-normalized RGBA atlas; deterministic seed"
+    },
+    {
+      "file": "assets/wild-grass/wild_upright_b.glb",
+      "sha256": "379525071c9dd5e17540a023e5d63208d5613b3292e74c7a508ec729eac6febf",
+      "bytes": 425076,
+      "license": "CC0-1.0",
+      "source": "https://ambientcg.com/a/Foliage006",
+      "derivatives": "Original 6-segment arched/drooping blades, width <=9mm before runtime scaling; narrow leaf crops; embedded olive-normalized RGBA atlas; deterministic seed"
+    }
+  ],
+  "publicWhitelist": [
+    "assets/wild-grass/wild_leafy_a.glb",
+    "assets/wild-grass/wild_leafy_b.glb",
+    "assets/wild-grass/wild_upright_a.glb",
+    "assets/wild-grass/wild_upright_b.glb",
+    "assets/wild-grass/LICENSE.txt"
+  ],
+  "limits": "CPU provenance and geometry only. Main owns actual rendered art/performance acceptance."
+}
