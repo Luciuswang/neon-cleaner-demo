@@ -1,0 +1,42 @@
+{
+  "landscape-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "vegetation-clumps": {
+    "status": 0,
+    "pass": true
+  },
+  "riverbank-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "wildbank-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "environment-polish-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "map-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "reference-house-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "village-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "timber-mud-fx-checks": {
+    "status": 0,
+    "pass": true
+  },
+  "combat-feedback-checks": {
+    "status": 0,
+    "pass": true
+  }
+}

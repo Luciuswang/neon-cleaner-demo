@@ -1,0 +1,9 @@
+**PASS, conditional.** The plan matches the brief, but "non-colliding" does not by itself protect sightlines or hit detection.
+
+Hard conditions:
+1. No new ledges, rubble, trees or tall grass on paths or in play lanes. Decoration there stays below player eye and hit height.
+2. New meshes are excluded from gameplay raycasts and hit tests.
+3. No rock that reads as cover without matching existing collision.
+4. Placement is seeded and deterministic, with all geometry and textures generated in code.
+5. A numeric frame-time and draw-call budget is fixed before work begins.
+6. Any failure of collision or sightline parity reverts the change.

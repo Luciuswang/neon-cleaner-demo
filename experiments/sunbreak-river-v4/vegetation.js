@@ -149,7 +149,7 @@ export async function buildVegetation(T,world,polishOptions){
  const names=['island_tree_01','island_tree_01-far','tree_small_02','tree_small_02-far','grass_bermuda_01','wild_leafy_a','wild_leafy_b','wild_upright_a','wild_upright_b'];
  const assets=await Promise.all(names.map(n=>loader.loadAsync('./river/assets/'+(n.startsWith('wild_')?'wild-grass/':'foliage-revision/')+n+'.glb')));
  const dummy=new T.Object3D(),color=new T.Color();
- function windMaterial(material,height,amplitude,label,rootShade=false){
+ function windMaterial(material,height,amplitude,label,rootShade=false,crown=!!material.userData?.crownLight){
   material.onBeforeCompile=s=>{
    s.uniforms.uFoliageTime=time;
    s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nuniform float uFoliageTime;');
@@ -158,6 +158,15 @@ export async function buildVegetation(T,world,polishOptions){
     float foliageBend=pow(clamp(position.y/${height.toFixed(4)},0.,1.),2.);
     transformed.x+=sin(uFoliageTime*1.1+foliagePhase+position.y*.65)*${amplitude.toFixed(4)}*foliageBend;
     transformed.z+=sin(uFoliageTime*.83+foliagePhase)*${(amplitude*.46).toFixed(4)}*foliageBend;`);
+   if(crown){
+    // Height-graded crown light: warm sunlit upper leaves, cool shaded undersides. Multiplies the existing map; no flat pigment.
+    s.vertexShader=s.vertexShader.replace('#include <common>',`#include <common>
+varying float vCrownLight;`).replace('#include <begin_vertex>',`#include <begin_vertex>
+vCrownLight=clamp(position.y/${height.toFixed(4)},0.,1.);`);
+    s.fragmentShader=s.fragmentShader.replace('#include <common>',`#include <common>
+varying float vCrownLight;`).replace('#include <color_fragment>',`#include <color_fragment>
+diffuseColor.rgb*=mix(vec3(.62,.68,.74),vec3(1.12,1.08,.93),smoothstep(.36,.95,vCrownLight));`);
+   }
    if(rootShade){
     s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying float vGrassRootHeight;');
     s.vertexShader=s.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvGrassRootHeight=position.y*length(instanceMatrix[1].xyz);');
@@ -165,7 +174,7 @@ export async function buildVegetation(T,world,polishOptions){
     s.fragmentShader=s.fragmentShader.replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb*=mix(.55,1.,smoothstep(.012,.13,vGrassRootHeight));');
    }
   };
-  material.customProgramCacheKey=()=>`foliage-revision-wind-${label}-${height}-${amplitude}-root${rootShade}`;
+  material.customProgramCacheKey=()=>`foliage-revision-wind-${label}-${height}-${amplitude}-root${rootShade}-crown${crown}`;
  }
  function instances(source,placements,height,label,{shadow=false,wind=.015,tree=false}={}){
   if(!placements.length)return;
@@ -187,7 +196,7 @@ export async function buildVegetation(T,world,polishOptions){
    if(leaf){mat.alphaTest=.35;mat.color.multiply(new T.Color().setRGB(.96,1,.94));if(mat.normalScale)mat.normalScale.multiplyScalar(.4)}
    else mat.color.multiply(new T.Color(0x9e9b88));
    if(mat.map)mat.map.anisotropy=8;
-   windMaterial(mat,height,wind,label,!tree);
+   mat.userData.crownLight=tree&&leaf;windMaterial(mat,height,wind,label,!tree);
    for(let sector=0;sector<4;sector++){
     const ps=sectors[sector];if(!ps.length)continue;
     const inst=new T.InstancedMesh(geometry,mat,ps.length);inst.name=`foliage-${label}-${sector}`;
@@ -222,7 +231,92 @@ export async function buildVegetation(T,world,polishOptions){
   if(!source)throw Error(`Foliage variant missing: ${batch.node}`);
   instances(source,batch.placements,batch.height,batch.label,{wind:batch.layer==='low'?.013:batch.layer==='medium'?.022:.028});
  }
+ // Static merged ribbon meadow: one draw call, own seeded RNG (the plan RNG is untouched),
+ // decorative only (raycast no-op, no collider), every blade capped below .48m.
+ const ribbon=(()=>{
+  let s=71933;const rnd=()=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296};
+  const MAX_BLADES=6000,MAX_H=.46,MAX_DRIFTS=16,pos=[],col=[],nor=[],idx=[],drifts=[];let blades=0,flecks=0,rejected=0,maxH=0;
+  const ok=(x,z)=>{if(!grassAllowed(x,z,.6)||inGrassGap(x,z,plan.gaps,.5))return false;for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;if(!grassAllowed(x+Math.cos(a)*.35,z+Math.sin(a)*.35,.6))return false}return true};
+  // The low-frequency field keeps broad areas bare: drifts never fill every gap.
+  const field=(x,z)=>Math.sin(x*.21+1.3)*Math.cos(z*.17-.6)+.5*Math.sin((x+z)*.09+2.1);
+  for(let a=0;a<700&&drifts.length<MAX_DRIFTS;a++){
+   const x=MAP.minX-5+rnd()*(MAP.maxX-MAP.minX+10),z=MAP.minZ-5+rnd()*(MAP.maxZ-MAP.minZ+10),reach=1.2+rnd()*1.4,ang=.5+(rnd()-.5)*.7,flower=rnd()<.25,fa=rnd()*6.283,fr=rnd()*.5,ph=rnd()*6.283;
+   if(field(x,z)<.12||!ok(x,z)||drifts.some(d=>Math.hypot(d.x-x,d.z-z)<(d.reach+reach)*.8+1.5))continue;
+   drifts.push({x,z,reach,ang,flower,fa,fr,ph});
+  }
+  // Linear-space vertex colours.
+  const BASE=[.089,.107,.024],TIP=[.57,.39,.107],SOFT=[.214,.243,.064],SHADE=[.04,.043,.036],RED=[.34,.04,.027];
+  const mix=(a,b,t)=>[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t];
+  for(const d of drifts){
+   const roots=Math.ceil(Math.PI*d.reach*d.reach*.5*20),ca=Math.cos(d.ang),sa=Math.sin(d.ang),fu=Math.cos(d.fa)*d.fr*d.reach,fv=Math.sin(d.fa)*d.fr*d.reach*.5;
+   for(let i=0;i<roots&&blades+3<=MAX_BLADES;i++){
+    const th=rnd()*6.283,rho=Math.pow(rnd(),.7),edge=1+.28*Math.sin(th*3+d.ph)+.16*Math.cos(th*5-d.ph),u=Math.cos(th)*d.reach*rho*edge,v=Math.sin(th)*d.reach*.5*rho*edge,rx=d.x+u*ca-v*sa,rz=d.z+u*sa+v*ca;
+    if(!ok(rx,rz)){rejected++;continue}
+    const wet=Math.min(1,Math.max(0,1-(Math.abs(rx)-riverWidth(rz)-2)/5)),c0=mix(BASE,SHADE,.3+.4*(1-Math.min(1,rho))),inSpot=d.flower&&Math.hypot(u-fu,v-fv)<.7;
+    for(let k=0;k<3;k++){
+     const red=inSpot&&k===0&&rnd()<.35,h=Math.min(MAX_H,.17+rnd()*.29*(1-.35*Math.min(1,rho))),yaw=rnd()*6.283,w=.014+rnd()*.012,bx=rx+(rnd()-.5)*.12,bz=rz+(rnd()-.5)*.12,y=landscapeHeight(bx,bz)-.01,lean=h*(.25+rnd()*.3),sx=Math.cos(yaw)*w,sz=Math.sin(yaw)*w,tone=.85+rnd()*.3,tip=red?RED:mix(mix(TIP,SOFT,wet*.8),BASE,rnd()*.25).map(c=>c*tone),mid=mix(c0,tip,.55),b=pos.length/3;
+     pos.push(bx-sx,y,bz-sz,bx+sx,y,bz+sz,bx+ca*lean*.35-sx*.7,y+h*.55,bz+sa*lean*.35-sz*.7,bx+ca*lean*.35+sx*.7,y+h*.55,bz+sa*lean*.35+sz*.7,bx+ca*lean,y+h,bz+sa*lean);
+     col.push(...c0,...c0,...mid,...mid,...tip);
+     for(let n=0;n<5;n++)nor.push(ca*.25,.94,sa*.25);
+     idx.push(b,b+1,b+3,b,b+3,b+2,b+2,b+3,b+4);
+     blades++;if(red)flecks++;if(h>maxH)maxH=h;
+    }
+   }
+  }
+  const budget={maxTriangles:18000,maxDrawCalls:1,frameBudgetMs:.3,frameTimeMeasured:false};
+  const info={blades,triangles:blades*3,drawCalls:blades?1:0,drifts:drifts.length,flowerFlecks:flecks,rejectedRoots:rejected,maxBladeHeight:maxH,heightCap:MAX_H,static:true,raycast:'no-op',collider:'none',budget};
+  if(!blades)return{mesh:null,triangles:0,info};
+  const g=new T.BufferGeometry();
+  g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setAttribute('normal',new T.Float32BufferAttribute(nor,3));g.setAttribute('color',new T.Float32BufferAttribute(col,3));
+  g.setIndex(idx);g.computeBoundingBox();g.computeBoundingSphere();
+  const m=new T.MeshLambertMaterial({vertexColors:true,side:T.DoubleSide});
+  // Keep the up-biased normal on both faces so back faces are not lit as down-facing.
+  m.onBeforeCompile=sh=>{sh.fragmentShader=sh.fragmentShader.replace('#include <normal_fragment_begin>',`#include <normal_fragment_begin>
+normal=normalize(vNormal);`)};
+  m.customProgramCacheKey=()=>'foliage-ribbon-meadow-r1';
+  const mesh=new T.Mesh(g,m);mesh.name='foliage-ribbon-meadow';mesh.castShadow=false;mesh.receiveShadow=true;
+  mesh.raycast=()=>{};mesh.userData.decorative=true;mesh.userData.noHit=true;mesh.userData.noCollision=true;
+  mesh.matrixAutoUpdate=false;mesh.updateMatrix();world.add(mesh);meshes.push(mesh);
+  return{mesh,triangles:blades*3,info};
+ })();
+ const bankCards=(()=>{
+  const MAX=3600,MAX_CARD_H=.44;let seed=0x5eed1234;
+  const r=()=>{seed=(seed+0x6D2B79F5)|0;let t=Math.imul(seed^(seed>>>15),1|seed);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296};
+  const cv=document.createElement('canvas');cv.width=cv.height=128;const g=cv.getContext('2d');g.clearRect(0,0,128,128);g.lineCap='round';
+  const tones=['#6f7440','#7d7a45','#8a8350','#9c9160','#b0a26c','#5f6a3a','#857f4a'];
+  for(let i=0;i<50;i++){
+   const rx=64+(r()-.5)*70,lean=(r()-.5)*56,tipY=6+r()*58,tx=Math.min(124,Math.max(4,rx+lean)),bend=(r()-.5)*26;
+   g.strokeStyle=tones[(r()*tones.length)|0];g.globalAlpha=.85+r()*.15;g.lineWidth=1.1+r()*1.5;
+   g.beginPath();g.moveTo(rx,128);g.quadraticCurveTo(rx+lean*.25+bend,128-(128-tipY)*.55,tx,tipY);g.stroke();
+  }
+  g.globalAlpha=1;
+  const map=new T.CanvasTexture(cv);map.colorSpace=T.SRGBColorSpace;map.anisotropy=4;
+  const geo=new T.PlaneGeometry(1,1);geo.translate(0,.5,0);
+  const mat=new T.MeshLambertMaterial({map,alphaTest:.4,side:T.DoubleSide});
+  const mesh=new T.InstancedMesh(geo,mat,MAX),d=new T.Object3D(),c=new T.Color();let n=0,roots=0,stands=0,rejected=0,maxH=0;
+  for(let s=0;s<900&&n+3<=MAX;s++){
+   const side=r()<.5?-1:1,cz=(r()*2-1)*47,outer=r()<.3,cx=side*(outer?40+r()*8:riverWidth(cz)+2+r()*3),rad=.5+r()*1.3,k=3+((r()*8)|0),stretch=.7+r()*1.2;let used=0;
+   for(let j=0;j<k&&n+3<=MAX;j++){
+    const a=r()*6.2832,q=Math.sqrt(r())*rad*(.5+r()*.8),x=cx+Math.cos(a)*q,z=cz+Math.sin(a)*q*stretch,ax=Math.abs(x),rw=riverWidth(z);
+    if(ax<rw+2||ax>48||Math.abs(z)>48||(!outer&&ax>rw+5)||!grassAllowed(x,z,.55)||inGrassGap(x,z,plan.gaps,.3)){rejected++;continue}
+    const yaw=r()*3.1416,dry=r(),hBase=.26+r()*.16;
+    for(let m=0;m<3;m++){
+     const px=x+(r()-.5)*.14,pz=z+(r()-.5)*.14,h=Math.min(MAX_CARD_H,hBase*(.85+r()*.3)),w=.45+r()*.3;
+     d.position.set(px,landscapeHeight(px,pz)-.015,pz);d.rotation.set(0,yaw+m*1.047+(r()-.5)*.5,0);d.scale.set(w,h,1);d.updateMatrix();mesh.setMatrixAt(n,d.matrix);
+     c.setRGB(.72+dry*.2+r()*.06,.74+dry*.1+r()*.06,.62+dry*.12+r()*.06);mesh.setColorAt(n,c);maxH=Math.max(maxH,h);n++;
+    }
+    roots++;used++;
+   }
+   if(used)stands++;
+  }
+  mesh.count=n;mesh.instanceMatrix.needsUpdate=true;if(mesh.instanceColor)mesh.instanceColor.needsUpdate=true;
+  mesh.name='bank_grass_cards';mesh.receiveShadow=true;mesh.castShadow=false;mesh.frustumCulled=false;mesh.raycast=()=>{};
+  const info={instances:n,roots,stands,rejected,maxInstances:MAX,triangles:n*2,drawCalls:1,maxHeight:+maxH.toFixed(3),texture:'128x128 procedural canvas, 50 strokes',wind:false,castsShadow:false};
+  mesh.userData={bankGrassCards:true,...info};
+  (world.add?world:world.scene).add(mesh);meshes.push(mesh);
+  return{mesh,info};
+ })();
  const polish=polishOptions?buildEnvironmentPolish({T,world,...polishOptions,grassSource:assets[4].scene.getObjectByName('grass_bermuda_01_small_a'),treeSources:[assets[0].scene,assets[2].scene]}):null;
- const triangles=batches.reduce((n,b)=>n+b.triangles,0),shadowTriangles=batches.filter(b=>b.shadow).reduce((n,b)=>n+b.triangles,0);
- return{update(t){time.value=t;polish?.update(t)},setWeather(w){polish?.setWeather(w)},info(){return{revision:'wildbank-mixed-posture-r3-plus-meadow-canopy',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,polish:polish?.info(),patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},treeCollidersNeeded:0,source:'Poly Haven CC0 trees/low Bermuda; ambientCG CC0 narrow blades; accepted original near forest and grass clusters plus separately budgeted meadow/mineral/distant canopy layer',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
+ const triangles=batches.reduce((n,b)=>n+b.triangles,0)+ribbon.triangles+bankCards.info.triangles,shadowTriangles=batches.filter(b=>b.shadow).reduce((n,b)=>n+b.triangles,0);
+ return{update(t){time.value=t;polish?.update(t)},setWeather(w){polish?.setWeather(w)},info(){return{revision:'wildbank-mixed-posture-r3-plus-meadow-canopy',counts,drawCalls:meshes.length,triangles,shadowCalls:batches.filter(b=>b.shadow).length,shadowTriangles,polish:polish?.info(),patches:plan.patches.length,clumps:plan.clumps.length,bareIntervals:plan.gaps.map(g=>({...g})),infill:{added:0,removed:true},bankCards:bankCards.info,ribbonMeadow:ribbon.info,crownLight:'height-graded leaf shader on tree and shrub leaves; maps, roots and geometry unchanged',treeCollidersNeeded:0,source:'Poly Haven CC0 trees/low Bermuda; ambientCG CC0 narrow blades; accepted original near forest and grass clusters plus separately budgeted meadow/mineral/distant canopy layer',limits:'CPU geometry budgets only; main must validate frame times and visual quality'}}};
 }

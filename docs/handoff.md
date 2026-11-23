@@ -789,3 +789,7 @@ Riverfall: shaded wood tear, dark masonry chip and wider water crown. Scoped CON
 ## Sync note - 2026-11-23T16:42:12.8213269+08:00
 
 Riverfall impact art: PR 13 merged; anonymous Pages manifest, HTML and FX bytes verified for source 55b3844. Conditional art pass, next player in-motion review. Earlier demos unchanged.
+
+## Sync note - 2026-11-23T17:04:22.0183410+08:00
+
+Riverfall: floodplain meadow banks, weathered edge shelves, lit crowns, palms and forested ridges. Ten suites, new paired mode geometry and six matched cameras passed scoped QA. Private web snapshot separately verified. Pages next.

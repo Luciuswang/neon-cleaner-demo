@@ -1,0 +1,15 @@
+**Art plan: three layers, in priority order**
+
+1. **Foreground ground cover.** Instanced procedural blades in straw/ochre, wind-sheared in irregular clumps. Shift to softer olive low growth near water. Add sparse muted-red wildflower patches and stony-earth breaks on the banks.
+
+2. **Midground rock and trees.** Asymmetric, chunky angular ledges with darkened recesses; slabs and rubble clustered at their feet. Olive trees with sunlit tops, darker undersides, real crown volume and irregular gaps.
+
+3. **Background.** Ascending cool, low-contrast blue-green ridges with broken treelines; open sky and valley.
+
+**Guardrails**
+- Paths, map, colliders, hit volumes and sightlines untouched; new meshes are non-colliding decoration.
+- Existing Three.js and verified materials only; no external loads.
+- No exposure or UI edits; no reference billboard.
+
+**Acceptance**
+Before/after captures from identical cameras at native resolution: collision and sightline parity, stable frame time.

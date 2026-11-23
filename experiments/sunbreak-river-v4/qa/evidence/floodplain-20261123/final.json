@@ -1,0 +1,513 @@
+{
+  "tag": "final",
+  "errors": [],
+  "views": [
+    {
+      "name": "bank",
+      "v": [
+        -6.3,
+        1.65,
+        10.6,
+        -0.22,
+        -0.055
+      ],
+      "calls": 1247,
+      "triangles": 55462377,
+      "n": 40,
+      "p50": 16.69999999999709,
+      "p95": 16.799999999999272,
+      "gpuTime": {
+        "p50": 8.5,
+        "p95": 9.899999618530273,
+        "ms": [
+          7,
+          7.800000190734863,
+          8,
+          8.200000762939453,
+          8.399999618530273,
+          8.5,
+          8.800000190734863,
+          9,
+          9.600000381469727,
+          9.899999618530273
+        ]
+      }
+    },
+    {
+      "name": "rock",
+      "v": [
+        4.8,
+        1.62,
+        -27.6,
+        0.15,
+        -0.035
+      ],
+      "calls": 846,
+      "triangles": 38042587,
+      "n": 40,
+      "p50": 16.700000000000728,
+      "p95": 16.799999999999272,
+      "gpuTime": null
+    },
+    {
+      "name": "grove",
+      "v": [
+        -13,
+        1.68,
+        13,
+        1.87,
+        0.075
+      ],
+      "calls": 1030,
+      "triangles": 35629043,
+      "n": 40,
+      "p50": 16.700000000000728,
+      "p95": 16.799999999999272,
+      "gpuTime": null
+    },
+    {
+      "name": "ridge",
+      "v": [
+        6.6,
+        1.65,
+        -14,
+        2.78,
+        0.11
+      ],
+      "calls": 1200,
+      "triangles": 52630294,
+      "n": 40,
+      "p50": 16.700000000000728,
+      "p95": 16.799999999999272,
+      "gpuTime": {
+        "p50": 7.699999809265137,
+        "p95": 8.800000190734863,
+        "ms": [
+          6.90000057220459,
+          7,
+          7.199999809265137,
+          7.300000190734863,
+          7.399999618530273,
+          7.699999809265137,
+          7.800000190734863,
+          8.199999809265137,
+          8.399999618530273,
+          8.800000190734863
+        ]
+      }
+    },
+    {
+      "name": "meadow",
+      "v": [
+        8.4,
+        1.62,
+        7.2,
+        0.6,
+        -0.2
+      ],
+      "calls": 1087,
+      "triangles": 54575621,
+      "n": 40,
+      "p50": 16.700000000000728,
+      "p95": 16.799999999999272,
+      "gpuTime": {
+        "p50": 7.5,
+        "p95": 8.5,
+        "ms": [
+          6.09999942779541,
+          6.5,
+          7,
+          7.199999809265137,
+          7.300000190734863,
+          7.5,
+          7.699999809265137,
+          8.100000381469727,
+          8.199999809265137,
+          8.5
+        ]
+      }
+    },
+    {
+      "name": "south",
+      "v": [
+        -6.9,
+        1.6,
+        22.1,
+        2.9,
+        -0.07
+      ],
+      "calls": 826,
+      "triangles": 33056658,
+      "n": 40,
+      "p50": 16.700000000000728,
+      "p95": 16.799999999999272,
+      "gpuTime": null
+    }
+  ],
+  "diag": {
+    "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "viewport": [
+      1280,
+      800
+    ],
+    "rays": [
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      true
+    ],
+    "map": {
+      "houses": 6,
+      "buffers": 2,
+      "walls": 88,
+      "crossings": [
+        -23,
+        -4,
+        15
+      ],
+      "water": "continuous channel; two shallow submerged fords and one dry bridge",
+      "soil": [
+        {
+          "x": 2,
+          "z": 10,
+          "moisture": 1
+        },
+        {
+          "x": 5,
+          "z": 10,
+          "moisture": 0.9340540081543399
+        },
+        {
+          "x": 8,
+          "z": 10,
+          "moisture": 0.010924873546447111
+        },
+        {
+          "x": 12,
+          "z": 10,
+          "moisture": 0
+        }
+      ]
+    },
+    "foliage": {
+      "revision": "wildbank-mixed-posture-r3-plus-meadow-canopy",
+      "counts": {
+        "canopy-0-shadow": 8,
+        "canopy-0": 11,
+        "forest-0": 18,
+        "canopy-1-shadow": 5,
+        "canopy-1": 14,
+        "forest-1": 15,
+        "woody-understorey": 24,
+        "bermuda-base": 7445,
+        "wild-leafy-a": 1752,
+        "wild-leafy-b": 2053,
+        "wild-upright-a": 19,
+        "wild-upright-b": 19
+      },
+      "drawCalls": 114,
+      "triangles": 30271605,
+      "shadowCalls": 21,
+      "shadowTriangles": 4894491,
+      "polish": {
+        "revision": "clustered-meadow-mineral-and-distant-canopy-v1",
+        "grass": 3600,
+        "patches": 171,
+        "grit": 1350,
+        "distantTrees": 190,
+        "triangles": 70580,
+        "drawCalls": 5,
+        "shadowDraws": 0,
+        "atlas": [
+          2048,
+          1024
+        ],
+        "atlasBytesWithMips": 11184810.666666666,
+        "maxSupportDetail": 0.028,
+        "source": "existing CC0 grass, stone and four actual rendered source-tree views; original close 3D forest unchanged",
+        "limitation": "Distant canopy uses orientation-selected whole-tree cards, baked sun with weather tint, no close-up parallax/self-shadow"
+      },
+      "patches": 104,
+      "clumps": 269,
+      "bareIntervals": [
+        {
+          "side": -1,
+          "z": 22.066502624191344,
+          "halfLength": 1.4727967202430592,
+          "bankDepth": 5.3
+        },
+        {
+          "side": -1,
+          "z": -15.269439276307821,
+          "halfLength": 1.3364796607987957,
+          "bankDepth": 5.3
+        },
+        {
+          "side": -1,
+          "z": 6.655961639247835,
+          "halfLength": 1.7023104349849747,
+          "bankDepth": 5.3
+        },
+        {
+          "side": 1,
+          "z": -8.92503222823143,
+          "halfLength": 1.7875142772914843,
+          "bankDepth": 5.3
+        },
+        {
+          "side": 1,
+          "z": -16.63594368286431,
+          "halfLength": 1.4842193685704843,
+          "bankDepth": 5.3
+        },
+        {
+          "side": 1,
+          "z": -29.92312503233552,
+          "halfLength": 1.24923230514396,
+          "bankDepth": 5.3
+        }
+      ],
+      "infill": {
+        "added": 0,
+        "removed": true
+      },
+      "bankCards": {
+        "instances": 3600,
+        "roots": 1200,
+        "stands": 242,
+        "rejected": 751,
+        "maxInstances": 3600,
+        "triangles": 7200,
+        "drawCalls": 1,
+        "maxHeight": 0.44,
+        "texture": "128x128 procedural canvas, 50 strokes",
+        "wind": false,
+        "castsShadow": false
+      },
+      "ribbonMeadow": {
+        "blades": 4779,
+        "triangles": 14337,
+        "drawCalls": 1,
+        "drifts": 16,
+        "flowerFlecks": 55,
+        "rejectedRoots": 326,
+        "maxBladeHeight": 0.4566773641481815,
+        "heightCap": 0.46,
+        "static": true,
+        "raycast": "no-op",
+        "collider": "none",
+        "budget": {
+          "maxTriangles": 18000,
+          "maxDrawCalls": 1,
+          "frameBudgetMs": 0.3,
+          "frameTimeMeasured": false
+        }
+      },
+      "crownLight": "height-graded leaf shader on tree and shrub leaves; maps, roots and geometry unchanged",
+      "treeCollidersNeeded": 0,
+      "source": "Poly Haven CC0 trees/low Bermuda; ambientCG CC0 narrow blades; accepted original near forest and grass clusters plus separately budgeted meadow/mineral/distant canopy layer",
+      "limits": "CPU geometry budgets only; main must validate frame times and visual quality"
+    },
+    "bank": {
+      "revision": "reference-substrate-mixed-gravel-v5-slabs",
+      "counts": {
+        "micro": 2500,
+        "cobbles": 720,
+        "grass": 360,
+        "outcrops": 12,
+        "patches": 36,
+        "grassIslands": 7,
+        "submergedStones": 2546,
+        "substrateStones": 1051
+      },
+      "triangles": 199776,
+      "drawCalls": 28,
+      "shadowCalls": 4,
+      "shadowTriangles": 3456,
+      "bed": {
+        "additionalDrawCalls": 0,
+        "replacesExistingBed": true,
+        "sourceUV": "x/2,z/2",
+        "scanTileMeters": 2.16,
+        "continuousSheet": false,
+        "sharedDepositField": true,
+        "underwaterSubstrateWithMudPockets": true
+      },
+      "ledges": {
+        "clusters": 8,
+        "pieces": 63,
+        "toeFragments": 27,
+        "triangles": 1289,
+        "drawCalls": 1,
+        "shadowCalls": 1,
+        "countedInDrawCallsAbove": false,
+        "outsidePlayableBounds": true,
+        "colliders": 0,
+        "raycast": "disabled on mesh",
+        "frameBudgetMs": 0.3,
+        "frameTimeVerified": false
+      },
+      "replacesOld850Stones": true,
+      "collidersRequired": 0,
+      "limits": "CPU submitted geometry budget only. Main must verify actual WebGL art, frame times and route regressions."
+    },
+    "ridge": {
+      "version": "eroded-ridges-v2-low-valley",
+      "weather": "sunny",
+      "disposed": false,
+      "seeded": true,
+      "snow": false,
+      "visualOnly": true,
+      "colliders": 0,
+      "shadows": false,
+      "triangles": 99160,
+      "drawCalls": 12,
+      "meshes": 6,
+      "materials": 6,
+      "terrainHalfExtent": 130,
+      "valleyOpening": {
+        "minX": -36,
+        "maxX": 36
+      },
+      "distanceBudget": [
+        120,
+        700
+      ],
+      "layers": 3,
+      "patches": [
+        {
+          "id": "west-foothills",
+          "layer": 0,
+          "axis": "z",
+          "bounds": {
+            "min": {
+              "x": -280,
+              "y": -10.493041838449782,
+              "z": -240
+            },
+            "max": {
+              "x": -134,
+              "y": 55.20061284820008,
+              "z": 250
+            }
+          },
+          "triangles": 14052,
+          "vertices": 7957,
+          "drawCalls": 2
+        },
+        {
+          "id": "east-foothills",
+          "layer": 0,
+          "axis": "z",
+          "bounds": {
+            "min": {
+              "x": 134,
+              "y": -10.868789355145715,
+              "z": -260
+            },
+            "max": {
+              "x": 295,
+              "y": 54.425415131834285,
+              "z": 230
+            }
+          },
+          "triangles": 14052,
+          "vertices": 7957,
+          "drawCalls": 2
+        },
+        {
+          "id": "west-escarpment",
+          "layer": 1,
+          "axis": "x",
+          "bounds": {
+            "min": {
+              "x": -410,
+              "y": -9.13073382759136,
+              "z": -435
+            },
+            "max": {
+              "x": -70,
+              "y": 98.04916526111151,
+              "z": -215
+            }
+          },
+          "triangles": 19684,
+          "vertices": 10805,
+          "drawCalls": 2
+        },
+        {
+          "id": "east-broken-range",
+          "layer": 1,
+          "axis": "x",
+          "bounds": {
+            "min": {
+              "x": 88,
+              "y": -9.67965374001415,
+              "z": -450
+            },
+            "max": {
+              "x": 420,
+              "y": 102.42949210277125,
+              "z": -210
+            }
+          },
+          "triangles": 19684,
+          "vertices": 10805,
+          "drawCalls": 2
+        },
+        {
+          "id": "west-distant-range",
+          "layer": 2,
+          "axis": "x",
+          "bounds": {
+            "min": {
+              "x": -340,
+              "y": -9,
+              "z": -590
+            },
+            "max": {
+              "x": -50,
+              "y": 114.24891664283648,
+              "z": -425
+            }
+          },
+          "triangles": 15844,
+          "vertices": 8861,
+          "drawCalls": 2
+        },
+        {
+          "id": "east-distant-range",
+          "layer": 2,
+          "axis": "x",
+          "bounds": {
+            "min": {
+              "x": 60,
+              "y": -9,
+              "z": -590
+            },
+            "max": {
+              "x": 340,
+              "y": 112.84493851844859,
+              "z": -430
+            }
+          },
+          "triangles": 15844,
+          "vertices": 8861,
+          "drawCalls": 2
+        }
+      ]
+    }
+  },
+  "pass": true
+}

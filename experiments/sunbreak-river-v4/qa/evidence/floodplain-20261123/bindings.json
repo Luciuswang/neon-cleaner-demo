@@ -1,0 +1,10 @@
+{
+  "base": "af606c896b3c249d7a748d706c9d54019ce21586",
+  "hashes": {
+    "vegetation.js": "dc337dec583d30fd4b8c268b6b86c2d7bcbd1a5f518f55eb06034a2751befdda",
+    "distant-landscape.js": "dd372acd8865c550bf1258f0bc4ccce5a04c6177ccd4866a4386ba8df5199eaa",
+    "riverbank-detail.js": "9386e2395c243ade837eb606201c4920d04ebed9360a795776163bf2324fbc22",
+    "world.js": "5312d3ffdf7f69480378bbb359b2c9b9b4f3759fd3a86be02395650c6e4d4bc4"
+  },
+  "method": "Headless native WebGL render, no desktop capture. Same six fixed eye positions and sun. 15 LOS rays and unchanged map metadata. 10 warm synchronous world+gun samples in three views, not continuous interactive performance or dedicated GPU timestamp queries. Compare like for like. Public-equivalent dressing=off disabled private meshes."
+}

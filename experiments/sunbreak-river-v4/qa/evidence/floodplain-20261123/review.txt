@@ -1,0 +1,17 @@
+**Verdict: PASS for the scoped demo, as a directional environment art pass only.** This rests on the coordinator's reported observations and measurements; I did not inspect anything myself.
+
+**What the evidence supports**
+- **Art direction:** six paired native captures at the same daylight and eye show gold and olive clumps on banks and river outlets, planted slabs with talus, and a cool irregular skyline.
+- **Gameplay:** the 10 unchanged suites pass, and the 15 player line-of-sight probes and map metadata are identical.
+- **Stability:** zero page or texture errors.
+- **Assets:** the new work is procedural and the existing private GLBs are excluded.
+- **Cost:** five added beauty draws (18 total submissions), with median and p95 change inside the +3/+6 ms budgets at the fixed poses.
+
+**Limits on what may be claimed**
+- **Not a reference match.** The scene is still a more open, built village, with abrupt patch boundaries, minor red flecks, and simpler distant species and tree self-shadow. Make no 1:1 or recreation claim.
+- **Palms versus olive trees.** The reference analysis calls for volumetric olive trees, but the skyline is now carried by five palms. Treat this as a deviation: either justify it as original interpretation or log it as an open art item.
+- **Performance is narrow.** The timing is 10 warm samples on one GPU at fixed poses, and a p95 from 10 samples is effectively the worst sample. It supports "within budget at the tested poses" only, not interactive frame rate or other hardware. The 3600 alpha cards and 4779 blades leave overdraw on weaker GPUs untested.
+- **Hit volumes are inferred.** The LOS probes and metadata support unchanged sightlines and map. Unchanged hit volumes and collision hold only if the 10 suites cover them, and the 63 new rock pieces need explicit confirmation that they have no colliders.
+- **Three constraints have no direct evidence.** Zero texture errors does not show there were no external image loads; that needs a network log. Nothing reported shows a diff confirming global exposure and UI are untouched. Nothing reported confirms the provenance of the "verified public materials."
+
+**To lift the limits:** provide a network log, an exposure/UI diff, a collider check on the new rocks, and an interactive multi-GPU performance run.
