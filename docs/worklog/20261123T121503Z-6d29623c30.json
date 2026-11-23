@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261123T121503Z-6d29623c30",
+  "task_id": "river-online-squads-20261123",
+  "timestamp_utc": "2026-11-23T12:15:03.198028+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall optional 4v4 casual elimination implemented. Two isolated WebRTC browsers agree on rooms, movement and result. Local quick match, eight-slot capacity, rejection, AI takeover and authority rules pass. Private web snapshot verified separately. Pages smoke next.",
+  "commit_shas": [
+    "afce9a730198f59f84ee046f8999fde43c44913d"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

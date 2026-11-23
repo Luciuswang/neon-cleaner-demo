@@ -12,6 +12,7 @@ const runtime=['index.html','world.js','village.js','ruins.js','fracture-geometr
 runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','ground-moisture.js','daylight-assets.json','afterrain-assets.json','wild-grass-assets.json');
 runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','masonry-materials.js');
 runtime.push('aim-assist.js');
+runtime.push('squads-sim.js','squads-net.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
 runtime.push('environment-polish.js','stone-cover.js','combat-feedback.js','shot-feedback-event.js');
 runtime.push('procedural-materials.js','procedural-ground.js','afterrain-ground.js','afterrain-light.js','forest-floor.js','puddle-reflection.js','fieldstone-surface.js','scan-cover.js','PROCEDURAL-NOTICE.txt');
@@ -43,7 +44,7 @@ for(const f of files.filter(f=>/\.(js|html)$/.test(f.path))){
   assert.ok((local?emitted:sharedNames).has(key),'Unpackaged runtime import '+f.path+' -> '+spec);importClosure.push({from:f.path,spec,target:key,shared:!local});
  }
 }
-const release={schema:'sunbreak-river-overlay-v1',sourceCommit:git(['rev-parse','HEAD']),created:new Date().toISOString(),publicPath:'sunbreak/river/',files,sharedReleaseSource:sharedRelease.sourceCommit,sharedFiles,scope:'Separate single-player river map, retained v4 weapon/NPC animation; previous four pages unchanged. No multiplayer or AAA certification.'};
+const release={schema:'sunbreak-river-overlay-v1',sourceCommit:git(['rev-parse','HEAD']),created:new Date().toISOString(),publicPath:'sunbreak/river/',files,sharedReleaseSource:sharedRelease.sourceCommit,sharedFiles,scope:'Separate single-player river map, retained v4 weapon/NPC animation; previous four pages unchanged. Opt-in ?mode=squads adds an unranked friendly 4v4 prototype (browser-host WebRTC via PeerJS, host-labeled AI fill); solo loads no network code. No ranked play or AAA certification.'};
 await writeFile(resolve(out,'public-release.json'),JSON.stringify(release,null,2)+'\n');
 let privateAssets=[];try{privateAssets=JSON.parse(await readFile(resolve(repo,'.local/river-downloaded-assets/manifest.json'),'utf8')).assets}catch(e){if(e.code!=='ENOENT')throw e}
 for(const f of files){

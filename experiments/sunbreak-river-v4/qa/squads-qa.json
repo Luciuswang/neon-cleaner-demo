@@ -1,0 +1,236 @@
+{
+  "schema": "river-squads-browser-1",
+  "sourceSha256": {
+    "index.html": "2f505a5a8bd141242a35f1b5593c453d02ee1f830a460376fcb012bd9e2dce31",
+    "squads-net.js": "1d6812f15949d07a437fe3cbf9b98cca09b9978a6e6c5dd03f94352b6509a3f9",
+    "squads-sim.js": "cf5ca6f2c2435a210cd3c60266bc1ca53585814c3c575f55e95c22fde10a81c6",
+    "squads-view.js": "c68a2bea03294aabc4240805d93a22f17a920f488540d495735a5bf4b4d8d66b",
+    "peer-runtime.js": "7604d8c31bec4f134b0d15c2d80b1d095ea18af005354f439f14291fcd7b4168",
+    "qa/squads-network.mjs": "f892c807ab8033ae57d7d8ecce3db2332d9d4af9649a2236b7e0f8fdb6aa68ad",
+    "qa/squads-rules.mjs": "42d70a7ab7511e197c0db7e2eba38269ff819179e6432c5cba7dd0e8e46d3530"
+  },
+  "local": {
+    "ok": true,
+    "issues": [],
+    "testedAt": "2026-11-23T12:12:16.288Z",
+    "mode": "local",
+    "room": true,
+    "distinctSlots": true,
+    "roster": {
+      "host": {
+        "humans": 2,
+        "bots": 6,
+        "slot": 0
+      },
+      "guest": {
+        "humans": 2,
+        "bots": 6,
+        "slot": 1
+      }
+    },
+    "movement": {
+      "hostSlotOnHost": 0.69,
+      "hostSlotOnGuest": 0.69,
+      "guestSlotOnHost": 0.46,
+      "guestSlotOnGuest": 0.46,
+      "sent": {
+        "host": 3,
+        "guest": 3
+      },
+      "sendErr": {
+        "host": null,
+        "guest": null
+      },
+      "ok": true
+    },
+    "result": {
+      "host": {
+        "round": 1,
+        "phase": "result",
+        "score": [
+          1,
+          0
+        ],
+        "winner": 0,
+        "seq": 993
+      },
+      "guest": {
+        "round": 1,
+        "phase": "result",
+        "score": [
+          1,
+          0
+        ],
+        "winner": 0,
+        "seq": 993
+      },
+      "consensus": true,
+      "secondsFromLive": 10.5
+    },
+    "afterGuestLeft": {
+      "humans": 1,
+      "bots": 7,
+      "phase": "result"
+    },
+    "quickMatch": true,
+    "privateRoomIsolation": true,
+    "capacity": {
+      "humans": 8,
+      "bots": 0
+    },
+    "ninthRejection": true,
+    "hostStill8": true
+  },
+  "cloud": {
+    "ok": true,
+    "issues": [],
+    "testedAt": "2026-11-23T12:11:04.593Z",
+    "mode": "cloud",
+    "room": true,
+    "distinctSlots": true,
+    "roster": {
+      "host": {
+        "humans": 2,
+        "bots": 6,
+        "slot": 0
+      },
+      "guest": {
+        "humans": 2,
+        "bots": 6,
+        "slot": 1
+      }
+    },
+    "movement": {
+      "hostSlotOnHost": 0.69,
+      "hostSlotOnGuest": 0.69,
+      "guestSlotOnHost": 0.69,
+      "guestSlotOnGuest": 0.69,
+      "sent": {
+        "host": 3,
+        "guest": 3
+      },
+      "sendErr": {
+        "host": null,
+        "guest": null
+      },
+      "ok": true
+    },
+    "result": {
+      "host": {
+        "round": 1,
+        "phase": "result",
+        "score": [
+          1,
+          0
+        ],
+        "winner": 0,
+        "seq": 993
+      },
+      "guest": {
+        "round": 1,
+        "phase": "result",
+        "score": [
+          1,
+          0
+        ],
+        "winner": 0,
+        "seq": 993
+      },
+      "consensus": true,
+      "secondsFromLive": 10.5
+    },
+    "afterGuestLeft": {
+      "humans": 1,
+      "bots": 7,
+      "phase": "result"
+    }
+  },
+  "localFullGameInvite": {
+    "ok": true,
+    "published": false,
+    "inviteFromVisibleUI": true,
+    "both3dScenes": true,
+    "players": [
+      {
+        "slots": [
+          "✕ 你 1",
+          "✕ [AI] 3",
+          "✕ [AI] 5",
+          "✕ [AI] 7",
+          "● 玩家 2",
+          "● [AI] 4",
+          "● [AI] 6",
+          "✕ [AI] 8"
+        ],
+        "sceneActors": 8,
+        "gameState": "play"
+      },
+      {
+        "slots": [
+          "✕ 玩家 1",
+          "✕ [AI] 3",
+          "✕ [AI] 5",
+          "✕ [AI] 7",
+          "● 你 2",
+          "● [AI] 4",
+          "● [AI] 6",
+          "✕ [AI] 8"
+        ],
+        "sceneActors": 8,
+        "gameState": "play"
+      }
+    ],
+    "errors": []
+  },
+  "rules": {
+    "ok": true,
+    "seats": {
+      "slots": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "ninth": -1,
+      "a": [
+        -27,
+        22
+      ],
+      "b": [
+        27,
+        22
+      ]
+    },
+    "ticksPerQuarterSecond": 15,
+    "clampChecked": true,
+    "inputExpiry": true,
+    "firstHit": "direct",
+    "friendlyFireBlocked": true,
+    "hpTrace": [
+      100,
+      75,
+      50,
+      25,
+      0
+    ],
+    "deadSeatInert": true,
+    "phases": 16,
+    "score": [
+      5,
+      0
+    ],
+    "rounds": 5,
+    "idleDraw": true
+  },
+  "solo": {
+    "sixActors": true,
+    "starts": true,
+    "networkModulesOrRequests": 0,
+    "pageErrors": 0
+  },
+  "limits": "Same workstation, independent browser contexts, not eight physical users, independent WANs, ranked anticheat or TURN-only certification. Separate public Pages verification recorded in task handoff."
+}

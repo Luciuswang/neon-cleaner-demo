@@ -61,8 +61,8 @@ if(process.argv.includes('--prepare')){
  const head=git(['rev-parse','HEAD'],checkout),branch='codex/sunbreak-river-'+sourceCommit.slice(0,12);
  git(['push','origin',head+':refs/heads/'+branch],checkout);
  const existing=await api('/pulls?state=open&base=main&head='+encodeURIComponent('Luciuswang:'+branch));
- const pr=existing[0]||await api('/pulls','POST',{title:'Publish separate SUNBREAK Riverfall village map',head:branch,base:'main',
-  body:'Only sunbreak/river/ from source '+sourceCommit+'. Earlier four demos and shared assets are unchanged. New mirrored river village with scanned mud/foliage, flowing water, ruins and retained v4 weapons/NPCs. Single-player map experiment; multiplayer, competitive balance and AAA parity are not claimed. Normal protected-main workflow, no bypass.'});
+ const pr=existing[0]||await api('/pulls','POST',{title:'Publish SUNBREAK Riverfall: opt-in online squads beta with retained village art',head:branch,base:'main',
+  body:'Only sunbreak/river/ from source '+sourceCommit+'. Earlier four demos and shared assets are unchanged. Retains the mirrored river village art (scanned mud/foliage, flowing water, ruins) and v4 weapons/NPCs. Solo is unchanged and loads no network code until Online is clicked. Adds an opt-in online beta for friendly matches: friend invitations and quick match over public PeerJS signaling with a browser host, two teams of four, empty slots filled by host-labelled [AI] players, one life per round, spectating and synced results. Peers can see IP addresses (disclosed before connecting); no accounts or credentials. QA covered 2 humans + 6 AI over real WebRTC, with the public-signaling smoke run recorded separately from the local run. A full lobby on eight separate devices, ranked play, competitive balance and AAA parity are not claimed. Normal protected-main workflow, no bypass.'});
  number=pr.number;
  writeFileSync(resolve(repo,'.local/sunbreak-river-prepared.json'),JSON.stringify({number,url:pr.html_url,sourceCommit,head,beforeMain,checkout,manifestSha256},null,2)+'\n');
  console.log(JSON.stringify({pr:number,url:pr.html_url,sourceCommit,head}));

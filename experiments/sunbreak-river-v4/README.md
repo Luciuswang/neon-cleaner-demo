@@ -9,7 +9,29 @@ Rainy Vietnamese-inspired village, six paired buildings (intact, partly ruined,
 and ruined), central shallow river, one timber bridge and two gravel fords.
 The entire river is wadeable. Mirrored collision geometry and equal path lengths
 are geometric checks, not proof of competitive balance. This remains a six-bot
-single-player experiment, not networked 4v4, Unreal Engine or certified AAA work.
+single-player experiment by default. The opt-in network entry below shares its
+map and art. Neither entry is Unreal Engine or a certified AAA build.
+
+### 4v4 elimination — friends and quick match
+
+Open `https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/?mode=squads`
+on a desktop browser. Accept the peer-to-peer notice, then create an invitation
+room or choose quick match. From inside a room use **邀请 → 复制**; the generated
+link, not just the lobby URL, joins that match. Click the game canvas to play.
+Each side has four seats. Additional humans take AI seats on alternating teams
+without resetting their life; departure returns the same seat to AI. Warmup,
+one life, teammate spectating, a 75-second round and first to five. Timeout
+uses survivors then health; tied rounds do not award a point. This is team
+elimination, not plant/defuse or an economy mode. No friendly damage.
+
+The host tab simulates both teams. Keep it open and active: no host migration,
+dedicated server or ranked anticheat. Browser/network restrictions can prevent
+peer connections. Public quick-match rooms and private invite rooms are separate.
+Only online mode loads the vendored MIT PeerJS 1.5.5; see `peer-notice.html`.
+For repeatable local transport QA run the existing game server, plus PeerServer
+`peerjs --host 127.0.0.1 --port 5193 --path /squads`, then
+`node experiments/sunbreak-river-v4/qa/squads-network.mjs --capacity`.
+`--cloud` tests real remote signaling; `BASE_URL` can select the deployed overlay.
 
 Controls: WASD, mouse / arrow keys, hold left mouse / F for automatic fire,
 R reload, Shift sprint, Space jump, T weather, V color grade, G presentation,

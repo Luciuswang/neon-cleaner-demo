@@ -797,3 +797,7 @@ Riverfall: floodplain meadow banks, weathered edge shelves, lit crowns, palms an
 ## Sync note - 2026-11-23T17:07:05.5488936+08:00
 
 Floodplain art is public via PR 14. Anonymous Pages manifest, HTML, and four changed runtime modules verified for source 4d2c8b6. Earlier demos unchanged; user visual review in motion next.
+
+## Sync note - 2026-11-23T20:15:02.6853108+08:00
+
+Riverfall optional 4v4 casual elimination implemented. Two isolated WebRTC browsers agree on rooms, movement and result. Local quick match, eight-slot capacity, rejection, AI takeover and authority rules pass. Private web snapshot verified separately. Pages smoke next.
