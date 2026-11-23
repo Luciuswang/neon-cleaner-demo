@@ -1,6 +1,6 @@
 // Authored game AI, not a real-world tactics/ballistics simulation.
 // Local deterministic decisions; no renderer dependency or player-rule changes.
-import {spawns,terrainHeight,bounds as mapBounds} from './map-layout.js';
+import {spawns,terrainHeight,navigationBounds as mapBounds} from './map-layout.js';
 export const TACTICAL_SPAWNS=spawns;
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.z-b.z);

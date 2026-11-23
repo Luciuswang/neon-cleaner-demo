@@ -1,0 +1,449 @@
+{
+  "schema": "river-afterrain-detail-v1",
+  "task": "sunbreak-river-afterrain-2026-11-18",
+  "date": "2026-11-18T07:08:34.441Z",
+  "license": "CC0-1.0",
+  "licenseURL": "https://polyhaven.com/license",
+  "assets": [
+    {
+      "id": "ganges_river_pebbles",
+      "source": "https://polyhaven.com/a/ganges_river_pebbles",
+      "api": "https://api.polyhaven.com/files/ganges_river_pebbles",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "officialDimensions": [
+        2159.9998474121094,
+        2159.9998474121094
+      ],
+      "tileMeters": 2.16,
+      "sourceFiles": [
+        {
+          "path": "assets/afterrain-detail/source/ganges_river_pebbles/color-2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/ganges_river_pebbles/ganges_river_pebbles_diff_2k.jpg",
+          "bytes": 3264787,
+          "officialMD5": "c7265256e7cb4ee18d189c48e5d66f06",
+          "sha256": "4284c19b6a546c8536a2d5383e5dcdbbae83ab6c2c337c7a0fb25284b0bea419"
+        },
+        {
+          "path": "assets/afterrain-detail/source/ganges_river_pebbles/normal-2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/ganges_river_pebbles/ganges_river_pebbles_nor_gl_2k.jpg",
+          "bytes": 4615719,
+          "officialMD5": "652fc148857ee24cd1f0024796d5f58c",
+          "sha256": "c73e2ea059f50f25d7f8dd719048d26bc0ca355d3009b0ef806898531231d03b"
+        },
+        {
+          "path": "assets/afterrain-detail/source/ganges_river_pebbles/arm-1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/ganges_river_pebbles/ganges_river_pebbles_arm_1k.jpg",
+          "bytes": 802567,
+          "officialMD5": "a4e824cfb2bb6ac6fc84e0f304b829a7",
+          "sha256": "37b8f017bac62b3e792d88747803d7772490ebc5b06feb2e8faa1545d81f15f8"
+        }
+      ],
+      "files": [
+        {
+          "role": "color",
+          "path": "assets/afterrain-detail/ganges_river_pebbles/color.jpg",
+          "bytes": 1102985,
+          "sha256": "f5ebfc1d402ff84274004c56e22bab3df4f35437b5f634fc8e1e7762fbd48a34",
+          "width": 2048,
+          "height": 2048,
+          "sourceSHA256": "4284c19b6a546c8536a2d5383e5dcdbbae83ab6c2c337c7a0fb25284b0bea419",
+          "processing": "JPEG quality 88; 4:2:0; no invented detail"
+        },
+        {
+          "role": "normal",
+          "path": "assets/afterrain-detail/ganges_river_pebbles/normal.jpg",
+          "bytes": 2606204,
+          "sha256": "c87fae6cdca7c9412da5e58bf0666c02fb1355db90f247a8598ca5123b603133",
+          "width": 2048,
+          "height": 2048,
+          "sourceSHA256": "c73e2ea059f50f25d7f8dd719048d26bc0ca355d3009b0ef806898531231d03b",
+          "processing": "JPEG quality 92; OpenGL normal, 4:4:4; no invented detail"
+        },
+        {
+          "role": "arm",
+          "path": "assets/afterrain-detail/ganges_river_pebbles/arm.jpg",
+          "bytes": 253971,
+          "sha256": "52e3fed8a7b4bdaa4dae612bdf2dd489f24109510fc62d43287fe089657a551c",
+          "width": 1024,
+          "height": 1024,
+          "sourceSHA256": "37b8f017bac62b3e792d88747803d7772490ebc5b06feb2e8faa1545d81f15f8",
+          "processing": "JPEG quality 90; 4:2:0; no invented detail"
+        }
+      ]
+    },
+    {
+      "id": "dry_riverbed_rock",
+      "source": "https://polyhaven.com/a/dry_riverbed_rock",
+      "api": "https://api.polyhaven.com/files/dry_riverbed_rock",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "authors": {
+        "Amal Kumar": "All"
+      },
+      "officialDimensions": [
+        2000,
+        2000
+      ],
+      "tileMeters": 2,
+      "sourceFiles": [
+        {
+          "path": "assets/afterrain-detail/source/dry_riverbed_rock/color-2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/dry_riverbed_rock/dry_riverbed_rock_diff_2k.jpg",
+          "bytes": 4334972,
+          "officialMD5": "de1a2a7dea03f8a741ac899e0b2ea7fb",
+          "sha256": "8db12446cefecf667f21b0c039bff6ceea6dd5e4ced676d13d545eee4603e67c"
+        },
+        {
+          "path": "assets/afterrain-detail/source/dry_riverbed_rock/normal-2k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/dry_riverbed_rock/dry_riverbed_rock_nor_gl_2k.jpg",
+          "bytes": 3831261,
+          "officialMD5": "7001f96d411834c52e0cdaacef18036f",
+          "sha256": "a4981b72e406759bd971fe5070979d40999ab8bf48173143c0b82660a1e0139c"
+        },
+        {
+          "path": "assets/afterrain-detail/source/dry_riverbed_rock/arm-1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_riverbed_rock/dry_riverbed_rock_arm_1k.jpg",
+          "bytes": 837134,
+          "officialMD5": "e39579a0341249356dbc469d52410a9c",
+          "sha256": "bb948a4d7e6cf9c2d01b6283da7789b2550c148515f02a56d9dfb1cd8f0ca998"
+        }
+      ],
+      "files": [
+        {
+          "role": "color",
+          "path": "assets/afterrain-detail/dry_riverbed_rock/color.jpg",
+          "bytes": 1656205,
+          "sha256": "4829e790f2a4164eec9a3352735f066cac8e334ae25c884ab5399c9d7adca524",
+          "width": 2048,
+          "height": 2048,
+          "sourceSHA256": "8db12446cefecf667f21b0c039bff6ceea6dd5e4ced676d13d545eee4603e67c",
+          "processing": "JPEG quality 88; 4:2:0; no invented detail"
+        },
+        {
+          "role": "normal",
+          "path": "assets/afterrain-detail/dry_riverbed_rock/normal.jpg",
+          "bytes": 1987056,
+          "sha256": "97ac69667f54f11ece990344a9372acea5a2476d07f32c7257a962832520b96d",
+          "width": 2048,
+          "height": 2048,
+          "sourceSHA256": "a4981b72e406759bd971fe5070979d40999ab8bf48173143c0b82660a1e0139c",
+          "processing": "JPEG quality 92; OpenGL normal, 4:4:4; no invented detail"
+        },
+        {
+          "role": "arm",
+          "path": "assets/afterrain-detail/dry_riverbed_rock/arm.jpg",
+          "bytes": 249322,
+          "sha256": "93406a83e5d904ec26683d8d70aaf9c23c984263fcd2f544b1c5fe4c05fe0c1e",
+          "width": 1024,
+          "height": 1024,
+          "sourceSHA256": "bb948a4d7e6cf9c2d01b6283da7789b2550c148515f02a56d9dfb1cd8f0ca998",
+          "processing": "JPEG quality 90; 4:2:0; no invented detail"
+        }
+      ]
+    }
+  ],
+  "publicWhitelist": [
+    "assets/afterrain-detail/ganges_river_pebbles/color.jpg",
+    "assets/afterrain-detail/ganges_river_pebbles/normal.jpg",
+    "assets/afterrain-detail/ganges_river_pebbles/arm.jpg",
+    "assets/afterrain-detail/dry_riverbed_rock/color.jpg",
+    "assets/afterrain-detail/dry_riverbed_rock/normal.jpg",
+    "assets/afterrain-detail/dry_riverbed_rock/arm.jpg"
+  ],
+  "dependencies": [
+    {
+      "path": "assets/foliage-revision/grass_bermuda_01.glb",
+      "bytes": 791068,
+      "sha256": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+      "source": "https://polyhaven.com/a/grass_bermuda_01",
+      "license": "CC0-1.0",
+      "licenseManifest": "foliage-revision.json",
+      "alreadyPublic": true,
+      "purpose": "Reuse only low green shore tufts; no new source download"
+    }
+  ],
+  "notes": [
+    "Scanned surface textures, not scanned individual rock meshes. Dimensional stones are bounded procedural geometry.",
+    "Original official files are preserved and verified against API MD5/size; public JPEG derivatives have independent SHA256.",
+    "No source/ originals or API snapshots in the public whitelist. No generated QA reports."
+  ],
+  "totalPublicBytes": 7855743,
+  "runtime": {
+    "revision": "afterrain-bank-clusters-v1",
+    "counts": {
+      "micro": 2400,
+      "cobbles": 600,
+      "grass": 720,
+      "outcrops": 10,
+      "patches": 52
+    },
+    "placementSHA256": "fc9ab0067d114a0e6ee49e2d949ee0a113a61a9e20340cd60cd2385166f59ebd",
+    "triangles": 186720,
+    "drawCalls": 28,
+    "shadowTriangles": 2880,
+    "shadowCalls": 4,
+    "incrementalTriangles": 33720,
+    "incrementalDrawCalls": 27,
+    "bedAdditionalDraws": 0,
+    "bedSourceUV": "x/2,z/2",
+    "bedTileMeters": 2.16,
+    "maxPlayableStoneProtrusionMeters": 0.061,
+    "largeOutcropsFullyOutsidePlayableBounds": true,
+    "collidersNeeded": 0,
+    "ownedInputs": [
+      {
+        "path": "riverbank-detail.js",
+        "bytes": 12802,
+        "sha256": "d52f6bd0f84d1d14f2f64ec452242031d344f8b43781ceb3e2c48c57025d731c"
+      },
+      {
+        "path": "tools/afterrain-assets.mjs",
+        "bytes": 9259,
+        "sha256": "8394486b1ec72d7ad0dcd742d28eae1878c624da28663c06559fac899e71ff5f"
+      },
+      {
+        "path": "qa/riverbank-checks.mjs",
+        "bytes": 11353,
+        "sha256": "e5a28160aca53dcb463d966b23d62259c15c2048b2b73b7b81f98ae3d84e7907"
+      }
+    ],
+    "batches": [
+      {
+        "kind": "micro",
+        "variant": 0,
+        "sector": 0,
+        "instances": 266,
+        "triangles": 12768,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 0,
+        "sector": 1,
+        "instances": 303,
+        "triangles": 14544,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 0,
+        "sector": 2,
+        "instances": 346,
+        "triangles": 16608,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 0,
+        "sector": 3,
+        "instances": 285,
+        "triangles": 13680,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 1,
+        "sector": 0,
+        "instances": 271,
+        "triangles": 13008,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 1,
+        "sector": 1,
+        "instances": 292,
+        "triangles": 14016,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 1,
+        "sector": 2,
+        "instances": 350,
+        "triangles": 16800,
+        "shadow": false
+      },
+      {
+        "kind": "micro",
+        "variant": 1,
+        "sector": 3,
+        "instances": 287,
+        "triangles": 13776,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 0,
+        "sector": 0,
+        "instances": 71,
+        "triangles": 7100,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 0,
+        "sector": 1,
+        "instances": 72,
+        "triangles": 7200,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 0,
+        "sector": 2,
+        "instances": 83,
+        "triangles": 8300,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 0,
+        "sector": 3,
+        "instances": 74,
+        "triangles": 7400,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 1,
+        "sector": 0,
+        "instances": 63,
+        "triangles": 6300,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 1,
+        "sector": 1,
+        "instances": 85,
+        "triangles": 8500,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 1,
+        "sector": 2,
+        "instances": 71,
+        "triangles": 7100,
+        "shadow": false
+      },
+      {
+        "kind": "cobbles",
+        "variant": 1,
+        "sector": 3,
+        "instances": 81,
+        "triangles": 8100,
+        "shadow": false
+      },
+      {
+        "kind": "outcrops",
+        "variant": 0,
+        "sector": 0,
+        "instances": 3,
+        "triangles": 864,
+        "shadow": true
+      },
+      {
+        "kind": "outcrops",
+        "variant": 0,
+        "sector": 1,
+        "instances": 2,
+        "triangles": 576,
+        "shadow": true
+      },
+      {
+        "kind": "outcrops",
+        "variant": 0,
+        "sector": 2,
+        "instances": 2,
+        "triangles": 576,
+        "shadow": true
+      },
+      {
+        "kind": "outcrops",
+        "variant": 0,
+        "sector": 3,
+        "instances": 3,
+        "triangles": 864,
+        "shadow": true
+      },
+      {
+        "kind": "grass",
+        "variant": 0,
+        "sector": 0,
+        "instances": 93,
+        "triangles": 1116,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 0,
+        "sector": 1,
+        "instances": 90,
+        "triangles": 1080,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 0,
+        "sector": 2,
+        "instances": 95,
+        "triangles": 1140,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 0,
+        "sector": 3,
+        "instances": 82,
+        "triangles": 984,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 1,
+        "sector": 0,
+        "instances": 91,
+        "triangles": 1092,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 1,
+        "sector": 1,
+        "instances": 71,
+        "triangles": 852,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 1,
+        "sector": 2,
+        "instances": 90,
+        "triangles": 1080,
+        "shadow": false
+      },
+      {
+        "kind": "grass",
+        "variant": 1,
+        "sector": 3,
+        "instances": 108,
+        "triangles": 1296,
+        "shadow": false
+      }
+    ],
+    "acceptance": "CPU invariants only. GPU compile, visual, frame times and gameplay remain main-owned validation.",
+    "tradeoffs": [
+      "Procedural rounded stones use scanned surface textures; not scanned individual meshes.",
+      "No shadow casts for tiny stones/shore grass; only 10 inaccessible outcrops cast shadows. Existing scene contact/AO provides near grounding.",
+      "28 maximum color batches before frustum culling; reflection/normal/post passes can resubmit geometry. Draw/triangle counts are not a frame-time pass.",
+      "Short shore grass is static; no unmatched shadow/wind deformation.",
+      "Existing bed geometry is reused; no parallax/tessellation/displacement or duplicated overlay planes added."
+    ]
+  }
+}

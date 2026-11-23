@@ -1,0 +1,1626 @@
+{
+  "schema": "river-foliage-revision-v1",
+  "date": "2026-11-18T04:05:56.882Z",
+  "license": "CC0-1.0",
+  "licenseURL": "https://polyhaven.com/license",
+  "sources": [
+    {
+      "id": "island_tree_01",
+      "source": "https://polyhaven.com/a/island_tree_01",
+      "api": "https://api.polyhaven.com/files/island_tree_01",
+      "license": "CC0-1.0",
+      "authors": {
+        "Rob Tuytel": "scanning, processing",
+        "Rico Cilliers": "cleanup, processing"
+      },
+      "files": [
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/island_tree_01.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/island_tree_01/island_tree_01_1k.gltf",
+          "bytes": 8576,
+          "officialMD5": "fbc0c570ebd71ea88cedc1f9d5edb835",
+          "sha256": "78e905a40670bfabb2760601d4d9a6c17193a50d68e6271c66893eb7bd75906d"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_nor_gl_1k.jpg",
+          "bytes": 1207134,
+          "officialMD5": "3871f67863453a16b866950202fa2b7f",
+          "sha256": "ca22e428e1b1ebac47b2fc67ec355700c8779d6628d2fc6c3ebae9002988f63e"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_diff_1k.jpg",
+          "bytes": 791327,
+          "officialMD5": "8a67489846657df6b859d97e0b80fcf4",
+          "sha256": "51bff9a3a6ed7d89ff4c73f01708b7267ed8d7a82b0cb12343741894f708218f"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_arm_1k.jpg",
+          "bytes": 727403,
+          "officialMD5": "8077da7d1a001867c0da0cde6bc807f2",
+          "sha256": "bf972dff0fbc71f146b4c02103fc3596477a49a9eff46b87b13c89b7b90d18ca"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_leaves_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_leaves_nor_gl_1k.jpg",
+          "bytes": 379443,
+          "officialMD5": "a08ffb98b5ffb7dfa682e05a1639c642",
+          "sha256": "07ba461c0c95da4e49a42981766bdb6191d4c3c4d815796c082266dcc3cecdb8"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_leaves_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_leaves_diff_1k.jpg",
+          "bytes": 191886,
+          "officialMD5": "1356cbb5a5dd1318f9f2a01eddbf03e1",
+          "sha256": "f56d762a1507754752abf164cc12acbc1e87ce87fa609ac44b98a1b0037c89d8"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_leaves_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_leaves_arm_1k.jpg",
+          "bytes": 489476,
+          "officialMD5": "27b06c4a53ff115ed7d51ee94e417257",
+          "sha256": "90da3a072dbcb052715b1313b9dbc69a4aa8a09a31a4b3868411a2bb51d72037"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_branches_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_branches_nor_gl_1k.jpg",
+          "bytes": 819101,
+          "officialMD5": "789084affb01f4a22290a848558f5e12",
+          "sha256": "2d67393ba76a0f49cf965fa0c99d8c16268e71e87b1203d35539bfdb971a514e"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_branches_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_branches_diff_1k.jpg",
+          "bytes": 528304,
+          "officialMD5": "7792907fe2b2b748c129a2384192a579",
+          "sha256": "bee5ec22196e9e31ad0c95a5a9b4636571cc0124d5bb27a92f1e307d289cc60d"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/textures/island_tree_01_branches_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/island_tree_01/island_tree_01_branches_arm_1k.jpg",
+          "bytes": 484806,
+          "officialMD5": "5b6f5b3838f4a8f60fea14fa3a3fef9f",
+          "sha256": "9e3f82263247ce4f619692cea4c4f6fe9936ff465a86623481849062642c7d05"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/island_tree_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/island_tree_01/island_tree_01.bin",
+          "bytes": 60709812,
+          "officialMD5": "8271f2d12c2727bd647ce0c242acdcec",
+          "sha256": "1faa817b46e24ed6fc90d3ec72188a0dc5ac75e82c89b3dd3c5fdaecf7cc005c"
+        },
+        {
+          "path": "assets/foliage-revision/source/island_tree_01/alpha.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/island_tree_01/island_tree_01_leaves_alpha_1k.png",
+          "bytes": 57438,
+          "officialMD5": "5ad9fb9a06e70c069bd3d3ba23577375",
+          "sha256": "f4341f147988dbe6b58d9ca841a8f0e4bcff25bc40d05f9877da82006d489c39"
+        }
+      ]
+    },
+    {
+      "id": "tree_small_02",
+      "source": "https://polyhaven.com/a/tree_small_02",
+      "api": "https://api.polyhaven.com/files/tree_small_02",
+      "license": "CC0-1.0",
+      "authors": {
+        "Rico Cilliers": "All"
+      },
+      "files": [
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/tree_small_02.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/tree_small_02/tree_small_02_1k.gltf",
+          "bytes": 9075,
+          "officialMD5": "63f42b19687332f7b3a5c8b531734d8e",
+          "sha256": "3062a709614c05b80fdc1e56583998bc3cb1027b0d52f956c8ecfb882ff8ca6d"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_branch_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_branch_nor_gl_1k.jpg",
+          "bytes": 581596,
+          "officialMD5": "00a3eed0d4d28e7e890d9ec6ac0619af",
+          "sha256": "a2efae9e7fede259601188cd5cb7e561fc502bd87e04d862a9532b2d8e647a62"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_branch_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_branch_diff_1k.jpg",
+          "bytes": 449977,
+          "officialMD5": "88b531469f5dba2fc44ca85df3776e7c",
+          "sha256": "a71b768e330c0c6cca097e30314f6b4e842ef724a1370f6aab14b4434eec64cb"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_branch_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_branch_arm_1k.jpg",
+          "bytes": 375732,
+          "officialMD5": "9ec3d8428295d87ae363bf0d1e0a8288",
+          "sha256": "8968b46d76c67da09ebbf4eed04b8123c9e0ddf5b55d123968b35b32aa76d27a"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_leaves_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_nor_gl_1k.jpg",
+          "bytes": 681604,
+          "officialMD5": "b06c87e73f54d9654f66d67e9de7aa85",
+          "sha256": "8c72e04fb23e16ae1df79c01385a638473d1dd4dede3d51e83d70153c129f09b"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_leaves_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_diff_1k.jpg",
+          "bytes": 340003,
+          "officialMD5": "315cbc2cebfb399e649ccd39112c109a",
+          "sha256": "261e7d7a5ac7d2e16ea8823ff8510be8f3f615999724232994039ad2885e5c36"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_leaves_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_leaves_arm_1k.jpg",
+          "bytes": 633698,
+          "officialMD5": "3dad5bafc732f7692db32a262530bbab",
+          "sha256": "71f81374daf5a8f3e6eb2c694264a1769fdb0bea508178e4105618eecea83c3e"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_nor_gl_1k.jpg",
+          "bytes": 1228646,
+          "officialMD5": "115a20da8621cd3e034e9b1bbe574746",
+          "sha256": "9c83be074c950ea1b94c732c0c0291b53b9ba357f932d378bafe3ca3b4418871"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_diff_1k.jpg",
+          "bytes": 863246,
+          "officialMD5": "a7287a3f4e7f0d4577cb949b245f5b14",
+          "sha256": "4e0093f407b3a1120a36de49a48ebe5a465a9a9b77e361c7a3e66866e115e404"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/textures/tree_small_02_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/tree_small_02/tree_small_02_arm_1k.jpg",
+          "bytes": 708242,
+          "officialMD5": "44b6ed4bf32d7cd67cb3e9d5faeacc38",
+          "sha256": "891c5a1bb124292984b01558e9f2b0302d27d2fa3ccf9dfc6c34f9ea4ca24e6c"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/tree_small_02.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/tree_small_02/tree_small_02.bin",
+          "bytes": 95102324,
+          "officialMD5": "7a7019a87e6fe0d7475c0fa2e08d8962",
+          "sha256": "8da6c3c389ad8748286d1b7488cd827f75ebdad9d8f59ef7dfb0916df5edc634"
+        },
+        {
+          "path": "assets/foliage-revision/source/tree_small_02/alpha.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/tree_small_02/tree_small_02_leaves_alpha_1k.png",
+          "bytes": 264711,
+          "officialMD5": "63199ba87a9e8928424bd8c3b8017bd0",
+          "sha256": "4f143e2dda8a6a572f427ac378b92255d21761e4611de0d26e21816c01aa533b"
+        }
+      ]
+    },
+    {
+      "id": "grass_medium_01",
+      "source": "https://polyhaven.com/a/grass_medium_01",
+      "api": "https://api.polyhaven.com/files/grass_medium_01",
+      "license": "CC0-1.0",
+      "authors": {
+        "Rob Tuytel": "Photography",
+        "Rico Cilliers": "Modeling"
+      },
+      "files": [
+        {
+          "path": "assets/foliage-revision/source/grass_medium_01/grass_medium_01.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/grass_medium_01/grass_medium_01_1k.gltf",
+          "bytes": 27110,
+          "officialMD5": "28dd8247f3faa749bf87a0b84be01e7e",
+          "sha256": "3e5e2a314c94e16de54fd7c28e41709731fbd2b1613ab539f1544f622ddb6a85"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_01/textures/grass_medium_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_01/grass_medium_01_nor_gl_1k.jpg",
+          "bytes": 956166,
+          "officialMD5": "fcf43dd1253f56e4c361079f34155c37",
+          "sha256": "cae298d3d1d7ff7c7e210ad8ac772b96706e356f9315a6b04fde373ce01ccf1e"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_01/textures/grass_medium_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_01/grass_medium_01_diff_1k.jpg",
+          "bytes": 395673,
+          "officialMD5": "6b18ed50d776fd20c1304d9994bd764e",
+          "sha256": "71495bd6a11fddcab0aaff38246fea1a7b802a705483f1c7cbca53955daa8050"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_01/textures/grass_medium_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_01/grass_medium_01_arm_1k.jpg",
+          "bytes": 679518,
+          "officialMD5": "37ed2730a507b681af2e9f9f7ef3ae5e",
+          "sha256": "9a3a30f72bc02f4398967c5b08f2d20cce30bd423a2613b42a727034296fa3ae"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_01/grass_medium_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/grass_medium_01/grass_medium_01.bin",
+          "bytes": 1006632,
+          "officialMD5": "e0527a0561c2dae5b7b5c1b478d8c6bf",
+          "sha256": "f4587cabdb96a2e96d8be644923dc954a248edfaaa717a0ff224cacb898bee1f"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_01/alpha.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/grass_medium_01/grass_medium_01_alpha_1k.png",
+          "bytes": 648718,
+          "officialMD5": "6b5b251ef1ca9a69ab9f49def66d758a",
+          "sha256": "711a8e49af758d6a6ce1f610db858899a27be19da6d1866bd35c13bc7b8ffeff"
+        }
+      ]
+    },
+    {
+      "id": "grass_medium_02",
+      "source": "https://polyhaven.com/a/grass_medium_02",
+      "api": "https://api.polyhaven.com/files/grass_medium_02",
+      "license": "CC0-1.0",
+      "authors": {
+        "Rico Cilliers": "All"
+      },
+      "files": [
+        {
+          "path": "assets/foliage-revision/source/grass_medium_02/grass_medium_02.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/grass_medium_02/grass_medium_02_1k.gltf",
+          "bytes": 8864,
+          "officialMD5": "dd8f166a6399238553bc3b2931677b68",
+          "sha256": "7037f8d2dfc6aeec0bf72f4eeb96cfa3f6b3a5e6c6f0bc5de537c055b2fd5d04"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_02/textures/grass_medium_02_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_02/grass_medium_02_nor_gl_1k.jpg",
+          "bytes": 118146,
+          "officialMD5": "90b4c27b0c0ff058bd37b88bb70784c1",
+          "sha256": "0b464550366ed72a6cad9c357e19ac4c83fc9adc87272771479138129853b300"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_02/textures/grass_medium_02_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_02/grass_medium_02_diff_1k.jpg",
+          "bytes": 161235,
+          "officialMD5": "4bb5230e09358d60dd767331685b2d36",
+          "sha256": "91ae99005b449011aceb207a68a937258fd9bfd66ff367d344c50398b1df389c"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_02/textures/grass_medium_02_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_medium_02/grass_medium_02_arm_1k.jpg",
+          "bytes": 241181,
+          "officialMD5": "2b7a7e6f8b71fd2da62cf172d4784bbb",
+          "sha256": "f0d57bfd95bff7710526b49d47cf2326ee3796e425639d53b983d1472480b57d"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_02/grass_medium_02.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/grass_medium_02/grass_medium_02.bin",
+          "bytes": 272048,
+          "officialMD5": "145041ae03fe02783a0adbd1cdcb4988",
+          "sha256": "aa8493bc1544a89e08bf440c7ba361042bfe6ea48b1fefc7e4af2dfff42fdf4a"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_medium_02/alpha.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/grass_medium_02/grass_medium_02_alpha_1k.png",
+          "bytes": 110617,
+          "officialMD5": "b231cd6a1b5eb7ae21e7c2e626f8318c",
+          "sha256": "15976877b3dbd22cd496a9549f1eb7d86710846a3631fb87eedbf046519e339f"
+        }
+      ]
+    },
+    {
+      "id": "grass_bermuda_01",
+      "source": "https://polyhaven.com/a/grass_bermuda_01",
+      "api": "https://api.polyhaven.com/files/grass_bermuda_01",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "provenance": {
+        "path": "asset-sources.json",
+        "sha256": "63819b4ad6360ad5ea140c85224782c2dc9592dc5adbd96242f2de577f138f8d",
+        "mode": "Existing local official package; no network download"
+      },
+      "files": [
+        {
+          "path": "assets/foliage-revision/source/grass_bermuda_01/grass_bermuda_01.gltf",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/grass_bermuda_01/grass_bermuda_01_1k.gltf",
+          "bytes": 32912,
+          "sha256": "a1e5bb7fcf33721dc4844d7acacab80759fccec659f1ea643f8701afc542e207",
+          "officialMD5": "a1bdd74118d2387a42dba4f605226f87"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_bermuda_01/textures/grass_bermuda_01_nor_gl_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_bermuda_01/grass_bermuda_01_nor_gl_1k.jpg",
+          "bytes": 709845,
+          "sha256": "4475b37d6e4d217ce03547216f62d1ef6e65cafda2355fd0cb2aeb6d919b9338",
+          "officialMD5": "73a585e0963ff6bf3cefa845cbee0645"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_bermuda_01/textures/grass_bermuda_01_diff_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_bermuda_01/grass_bermuda_01_diff_1k.jpg",
+          "bytes": 175425,
+          "sha256": "ef202eeb8f8fb3312446009acecc87e5679a7d612e4dee859d8a849e00af5fcb",
+          "officialMD5": "234be9f52cfcd3380c7f782baaa841c3"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_bermuda_01/textures/grass_bermuda_01_arm_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/grass_bermuda_01/grass_bermuda_01_arm_1k.jpg",
+          "bytes": 500088,
+          "sha256": "38190d342fe951c33ff8c37dd2e3de37aca4cc7633e91be8b0d1c1f71057a641",
+          "officialMD5": "87c58d5d3345d579eab570f7eb446313"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_bermuda_01/grass_bermuda_01.bin",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/grass_bermuda_01/grass_bermuda_01.bin",
+          "bytes": 32260,
+          "sha256": "b98be48b43afb9d57f6c722d918a49996635064b829b16dc14ef4a48c0f04dae",
+          "officialMD5": "2940aa3405004b62983fd70bede8e47f"
+        },
+        {
+          "path": "assets/foliage-revision/source/grass_bermuda_01/alpha.png",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/grass_bermuda_01/grass_bermuda_01_alpha_1k.png",
+          "bytes": 59564,
+          "sha256": "e58b3052aad2f107cdd763e437f80ed8fb5a31bcc43b44023f7f767cb3d9888e",
+          "officialMD5": "274285abb11b3b7a0fd277b9923d1074"
+        }
+      ]
+    }
+  ],
+  "derivatives": [
+    {
+      "file": "assets/foliage-revision/island_tree_01.glb",
+      "bytes": 13662380,
+      "sha256": "207e61e0932e9173c2e80530ea91a18bd3bd84f2f8178b00e36dcf41d59000ed",
+      "primitives": [
+        {
+          "name": "island_tree_01",
+          "sourceTriangles": 34787,
+          "triangles": 5800,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.0017939587123692036
+        },
+        {
+          "name": "island_tree_01_leaves",
+          "sourceTriangles": 1060032,
+          "triangles": 363259,
+          "sourceComponents": 44168,
+          "retainedComponents": 44168,
+          "leafScale": 1,
+          "positionPolicy": "Simple leaves: original topology/UV edge collapse. Compound twigs: original-scale center-supported UV patch ONLY if sampled official opaque silhouette retains >=98% near/95% far with <=3.5% extra and bounded 3D warp; otherwise source topology.",
+          "topologyOnlySurfaceAreaRetained": 0.9694550509072083,
+          "topologyOnlyUVAreaRetained": 0.9639438025019782,
+          "maximumLocalError": 0.05499919503927231,
+          "sourceFallbacks": 0,
+          "correctedTriangles": 0,
+          "compoundPatches": {
+            "count": 0,
+            "minOpaqueRetained": 1,
+            "maxOpaqueExtra": 0,
+            "maxRMSWarp": 0,
+            "maxVertexWarp": 0,
+            "test": "64x64 stratified alpha silhouette samples per unique source UV topology; geometry warp checked per component"
+          },
+          "winding": {
+            "area": 34.01435300471173,
+            "uvArea": 1592.2595025867122,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "island_tree_01_branches",
+          "sourceTriangles": 504584,
+          "triangles": 9693,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.0016193838091567159
+        }
+      ],
+      "triangles": 378752,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.2514305114746094,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8
+      },
+      "selfContained": true
+    },
+    {
+      "file": "assets/foliage-revision/island_tree_01-far.glb",
+      "bytes": 9435328,
+      "sha256": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80",
+      "primitives": [
+        {
+          "name": "island_tree_01",
+          "sourceTriangles": 34787,
+          "triangles": 2199,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.004779730457812548
+        },
+        {
+          "name": "island_tree_01_leaves",
+          "sourceTriangles": 1060032,
+          "triangles": 204998,
+          "sourceComponents": 44168,
+          "retainedComponents": 37889,
+          "leafScale": 1,
+          "positionPolicy": "Simple leaves: original topology/UV edge collapse. Compound twigs: original-scale center-supported UV patch ONLY if sampled official opaque silhouette retains >=98% near/95% far with <=3.5% extra and bounded 3D warp; otherwise source topology.",
+          "topologyOnlySurfaceAreaRetained": 0.9079575616558262,
+          "topologyOnlyUVAreaRetained": 0.9059898594943017,
+          "maximumLocalError": 0.0799982026219368,
+          "sourceFallbacks": 0,
+          "correctedTriangles": 0,
+          "compoundPatches": {
+            "count": 0,
+            "minOpaqueRetained": 1,
+            "maxOpaqueExtra": 0,
+            "maxRMSWarp": 0,
+            "maxVertexWarp": 0,
+            "test": "64x64 stratified alpha silhouette samples per unique source UV topology; geometry warp checked per component"
+          },
+          "winding": {
+            "area": 27.35203223614379,
+            "uvArea": 1283.8986705859759,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "island_tree_01_branches",
+          "sourceTriangles": 504584,
+          "triangles": 3928,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.0024832976050674915
+        }
+      ],
+      "triangles": 211125,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.2514305114746094,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8
+      },
+      "selfContained": true
+    },
+    {
+      "file": "assets/foliage-revision/tree_small_02.glb",
+      "bytes": 14762632,
+      "sha256": "94740e088896196c852ac486fdac825eef6176c6482f19d8a4040a79028c4af4",
+      "primitives": [
+        {
+          "name": "tree_small_02_branches",
+          "sourceTriangles": 94814,
+          "triangles": 10065,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.0009455353720113635
+        },
+        {
+          "name": "tree_small_02_leaves",
+          "sourceTriangles": 1939380,
+          "triangles": 357032,
+          "sourceComponents": 30250,
+          "retainedComponents": 30250,
+          "leafScale": 1,
+          "positionPolicy": "Simple leaves: original topology/UV edge collapse. Compound twigs: original-scale center-supported UV patch ONLY if sampled official opaque silhouette retains >=98% near/95% far with <=3.5% extra and bounded 3D warp; otherwise source topology.",
+          "topologyOnlySurfaceAreaRetained": 0.9972280837339188,
+          "topologyOnlyUVAreaRetained": 0.9902569213752931,
+          "maximumLocalError": 0.05499720200896263,
+          "sourceFallbacks": 1919,
+          "correctedTriangles": 0,
+          "compoundPatches": {
+            "count": 11044,
+            "minOpaqueRetained": 0.9872611464968153,
+            "maxOpaqueExtra": 0,
+            "maxRMSWarp": 0.04556970452581081,
+            "maxVertexWarp": 0.14248894694574193,
+            "test": "64x64 stratified alpha silhouette samples per unique source UV topology; geometry warp checked per component"
+          },
+          "winding": {
+            "area": 50.15266205049041,
+            "uvArea": 555.0071947026256,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "tree_small_02_trunk",
+          "sourceTriangles": 28293,
+          "triangles": 5798,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.0015047701308503747
+        }
+      ],
+      "triangles": 372895,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.5485811233520508,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8,
+        "atlas": {
+          "size": 2048,
+          "sourceTile": 1024,
+          "compoundTile": 512,
+          "clipping": "Official alpha intersected with original component UV triangle coverage; no foreign atlas leaves",
+          "slots": [
+            {
+              "x": 1024,
+              "y": 0,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8337117433547974,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "4e24bdd2d6a087be3b6e985b69f60a0434085178614f950aa77d80227fcc6c45"
+            },
+            {
+              "x": 1536,
+              "y": 0,
+              "minU": 0.40539756417274475,
+              "maxU": 0.5061397552490234,
+              "minV": 0.17717117071151733,
+              "maxV": 0.6611500382423401,
+              "sourceUVTopologySHA256": "dcfd01db96caf1a337e2e5c85fcd1774c810d450a84e539801891b2b74019336"
+            },
+            {
+              "x": 1024,
+              "y": 512,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "ef862e8cfa4434f0f6ea3420e1195101b8e8338ac1b7b88d1ab15e23ab334ceb"
+            },
+            {
+              "x": 1536,
+              "y": 512,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "771879a6689a3c69ba782098ef42439bf67356c41ab3d04381f92e28191ecf83"
+            },
+            {
+              "x": 1024,
+              "y": 1024,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "ac43b8043b582ce55ed16ceafc86d7674eba97a055dfa63aa0413774b535940f"
+            },
+            {
+              "x": 1536,
+              "y": 1024,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8337117433547974,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "b5f8f55e2c676af8d9db3baf94668e4e3da84eceba59387aa30f8e742ae34472"
+            },
+            {
+              "x": 1024,
+              "y": 1536,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "2739fcc91e3fb9c01c6774629c529503feecf18768f13d8926246d74fddebfab"
+            }
+          ]
+        }
+      },
+      "selfContained": true
+    },
+    {
+      "file": "assets/foliage-revision/tree_small_02-far.glb",
+      "bytes": 12473112,
+      "sha256": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412",
+      "primitives": [
+        {
+          "name": "tree_small_02_branches",
+          "sourceTriangles": 94814,
+          "triangles": 3715,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.0015821373090147972
+        },
+        {
+          "name": "tree_small_02_leaves",
+          "sourceTriangles": 1939380,
+          "triangles": 275692,
+          "sourceComponents": 30250,
+          "retainedComponents": 25945,
+          "leafScale": 1,
+          "positionPolicy": "Simple leaves: original topology/UV edge collapse. Compound twigs: original-scale center-supported UV patch ONLY if sampled official opaque silhouette retains >=98% near/95% far with <=3.5% extra and bounded 3D warp; otherwise source topology.",
+          "topologyOnlySurfaceAreaRetained": 0.9809157809000938,
+          "topologyOnlyUVAreaRetained": 0.9690684522077364,
+          "maximumLocalError": 0.07999926805496216,
+          "sourceFallbacks": 1648,
+          "correctedTriangles": 0,
+          "compoundPatches": {
+            "count": 9473,
+            "minOpaqueRetained": 0.9713375796178344,
+            "maxOpaqueExtra": 0,
+            "maxRMSWarp": 0.045090806290079,
+            "maxVertexWarp": 0.14352684468939905,
+            "test": "64x64 stratified alpha silhouette samples per unique source UV topology; geometry warp checked per component"
+          },
+          "winding": {
+            "area": 42.07269256700148,
+            "uvArea": 470.8327590860802,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "tree_small_02_trunk",
+          "sourceTriangles": 28293,
+          "triangles": 2188,
+          "simplification": "meshoptimizer 0.25.0 error-bound wood only",
+          "relativeError": 0.00284467451274395
+        }
+      ],
+      "triangles": 281595,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.5485811233520508,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8,
+        "atlas": {
+          "size": 2048,
+          "sourceTile": 1024,
+          "compoundTile": 512,
+          "clipping": "Official alpha intersected with original component UV triangle coverage; no foreign atlas leaves",
+          "slots": [
+            {
+              "x": 1024,
+              "y": 0,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8337117433547974,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "4e24bdd2d6a087be3b6e985b69f60a0434085178614f950aa77d80227fcc6c45"
+            },
+            {
+              "x": 1536,
+              "y": 0,
+              "minU": 0.40539756417274475,
+              "maxU": 0.5061397552490234,
+              "minV": 0.17717117071151733,
+              "maxV": 0.6611500382423401,
+              "sourceUVTopologySHA256": "dcfd01db96caf1a337e2e5c85fcd1774c810d450a84e539801891b2b74019336"
+            },
+            {
+              "x": 1024,
+              "y": 512,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "771879a6689a3c69ba782098ef42439bf67356c41ab3d04381f92e28191ecf83"
+            },
+            {
+              "x": 1536,
+              "y": 512,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "ac43b8043b582ce55ed16ceafc86d7674eba97a055dfa63aa0413774b535940f"
+            },
+            {
+              "x": 1024,
+              "y": 1024,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "ef862e8cfa4434f0f6ea3420e1195101b8e8338ac1b7b88d1ab15e23ab334ceb"
+            },
+            {
+              "x": 1536,
+              "y": 1024,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8337117433547974,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "b5f8f55e2c676af8d9db3baf94668e4e3da84eceba59387aa30f8e742ae34472"
+            },
+            {
+              "x": 1024,
+              "y": 1536,
+              "minU": 0.5532150864601135,
+              "maxU": 0.8508867621421814,
+              "minV": 0.04358392953872681,
+              "maxV": 0.6254580616950989,
+              "sourceUVTopologySHA256": "2739fcc91e3fb9c01c6774629c529503feecf18768f13d8926246d74fddebfab"
+            }
+          ]
+        }
+      },
+      "selfContained": true
+    },
+    {
+      "file": "assets/foliage-revision/grass_medium_01.glb",
+      "bytes": 2260016,
+      "sha256": "1e448d2172c9a455042b3352ea5a8709d945bcdbdc5a67f2f171ce4a69ae7a1e",
+      "primitives": [
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 833,
+          "triangles": 464,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006972321774810553,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.008325471529850671,
+            "uvArea": 0.09510079866939541,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.008385852860126984,
+            "uvArea": 0.09734313863641808,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 4626,
+          "triangles": 1853,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006962914019823074,
+          "correctedTriangles": 1,
+          "winding": {
+            "area": 0.04502284608211813,
+            "uvArea": 0.6016566384567626,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.04641096427295048,
+            "uvArea": 0.661983316354479,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 1257,
+          "triangles": 536,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006883266381919384,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.011614402168071096,
+            "uvArea": 0.16905393039135985,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.01217266560611503,
+            "uvArea": 0.19198847943106379,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 310,
+          "triangles": 162,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006829334422945976,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.008755123552475997,
+            "uvArea": 0.07689666540244566,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.009224146845623424,
+            "uvArea": 0.08162335529553921,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 290,
+          "triangles": 131,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006893546786159277,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.008561983600818383,
+            "uvArea": 0.05183426325122831,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.009203711596521785,
+            "uvArea": 0.05755309775148554,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 340,
+          "triangles": 215,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.0068959626369178295,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.010007140361210176,
+            "uvArea": 0.0940522685065428,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.010195739267089441,
+            "uvArea": 0.09637391140753593,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 653,
+          "triangles": 381,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.0069962069392204285,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.006535002129482383,
+            "uvArea": 0.07511066316643766,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.006536998810761713,
+            "uvArea": 0.07492742381015866,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 1466,
+          "triangles": 597,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006992656271904707,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.013311533152420191,
+            "uvArea": 0.15430901667373775,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.014226138716703788,
+            "uvArea": 0.18071672767651425,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 2287,
+          "triangles": 1213,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.006893235724419355,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.036440713804278164,
+            "uvArea": 0.3706457408849868,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.03644017921844466,
+            "uvArea": 0.3933480358703214,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 6422,
+          "triangles": 2568,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.004535330925136805,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.06530093378145398,
+            "uvArea": 0.6386123369435528,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0696659417605067,
+            "uvArea": 0.7547491817755132,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 5945,
+          "triangles": 2378,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.0048813289031386375,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.04347560726711113,
+            "uvArea": 0.6107917504592735,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.04798435331089609,
+            "uvArea": 0.7366543430435977,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 40,
+          "triangles": 40,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.0002251040108342085,
+            "uvArea": 0.004807983295584961,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0002251040108342085,
+            "uvArea": 0.004807983295584961,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 79,
+          "triangles": 79,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.0006995768238778564,
+            "uvArea": 0.009559496408334311,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0006995768238778564,
+            "uvArea": 0.009559496408334311,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 28,
+          "triangles": 28,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.00021891925044460956,
+            "uvArea": 0.0028876985974297664,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.00021891925044460956,
+            "uvArea": 0.0028876985974297664,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 32,
+          "triangles": 32,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.00029019249491628356,
+            "uvArea": 0.004502819127221613,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.00029019249491628356,
+            "uvArea": 0.004502819127221613,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 62,
+          "triangles": 62,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.000557442300636591,
+            "uvArea": 0.005560399888711931,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.000557442300636591,
+            "uvArea": 0.005560399888711931,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_01",
+          "sourceTriangles": 60,
+          "triangles": 60,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.00046429859690059886,
+            "uvArea": 0.010218365936889018,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.00046429859690059886,
+            "uvArea": 0.010218365936889018,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        }
+      ],
+      "triangles": 10799,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.1898365020751953,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8
+      },
+      "selfContained": true
+    },
+    {
+      "file": "assets/foliage-revision/grass_medium_02.glb",
+      "bytes": 699608,
+      "sha256": "38df754d39670615d0c11de30b424c3dca0ba8c8d69386d020162cf017ff583b",
+      "primitives": [
+        {
+          "name": "grass_medium_02",
+          "sourceTriangles": 714,
+          "triangles": 285,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.005255200434476137,
+          "correctedTriangles": 3,
+          "winding": {
+            "area": 0.003148558493760713,
+            "uvArea": 0.16966511004661822,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0035879966616958647,
+            "uvArea": 0.17953956701186424,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_02",
+          "sourceTriangles": 1760,
+          "triangles": 704,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.00568225746974349,
+          "correctedTriangles": 2,
+          "winding": {
+            "area": 0.008536904261923354,
+            "uvArea": 0.293250498683328,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.009359830912417537,
+            "uvArea": 0.30799257196519214,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_02",
+          "sourceTriangles": 1215,
+          "triangles": 486,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.004247317556291819,
+          "correctedTriangles": 1,
+          "winding": {
+            "area": 0.008621954527346,
+            "uvArea": 0.3484001211977503,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.009201894713231825,
+            "uvArea": 0.357637309746908,
+            "backwardsAreaFraction": 0.0001855064365278753,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_02",
+          "sourceTriangles": 2489,
+          "triangles": 995,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.0033085825853049755,
+          "correctedTriangles": 3,
+          "winding": {
+            "area": 0.019078405845231256,
+            "uvArea": 0.7066348309321135,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.02052854539624231,
+            "uvArea": 0.7230633747446455,
+            "backwardsAreaFraction": 0.0002141550552037469,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_medium_02",
+          "sourceTriangles": 1664,
+          "triangles": 665,
+          "simplification": "UV-weighted source topology, 40% target and <=0.7% local tuft error; no whole-blade thinning",
+          "relativeError": 0.004233174026012421,
+          "correctedTriangles": 1,
+          "winding": {
+            "area": 0.03631615923727225,
+            "uvArea": 0.5000446646140242,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.03785553847258958,
+            "uvArea": 0.5321711216156579,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        }
+      ],
+      "triangles": 3135,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.10338211059570312,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8
+      },
+      "selfContained": true
+    },
+    {
+      "file": "assets/foliage-revision/grass_bermuda_01.glb",
+      "bytes": 791068,
+      "sha256": "ac9a1501a2e8ff942252a8b6dcf1441d23ae72df243d55022b580c956a7f6561",
+      "primitives": [
+        {
+          "name": "grass_bermuda_01",
+          "variant": "grass_bermuda_01_medium_c",
+          "sourceTriangles": 20,
+          "triangles": 20,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.004668599292063956,
+            "uvArea": 0.04705398061893895,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.004668599292063956,
+            "uvArea": 0.04705398061893895,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_bermuda_01",
+          "variant": "grass_bermuda_01_small_a",
+          "sourceTriangles": 12,
+          "triangles": 12,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.0018802417446725746,
+            "uvArea": 0.01890149129208929,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0018802417446725746,
+            "uvArea": 0.01890149129208929,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_bermuda_01",
+          "variant": "grass_bermuda_01_small_b",
+          "sourceTriangles": 12,
+          "triangles": 12,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.0020686357848330662,
+            "uvArea": 0.01890149129208929,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0020686357848330662,
+            "uvArea": 0.01890149129208929,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        },
+        {
+          "name": "grass_bermuda_01",
+          "variant": "grass_bermuda_01_small_c",
+          "sourceTriangles": 18,
+          "triangles": 18,
+          "correctedTriangles": 0,
+          "winding": {
+            "area": 0.0037583907130209018,
+            "uvArea": 0.03168475688563499,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          },
+          "sourceSurface": {
+            "area": 0.0037583907130209018,
+            "uvArea": 0.03168475688563499,
+            "backwardsAreaFraction": 0,
+            "flipped": 0
+          }
+        }
+      ],
+      "triangles": 62,
+      "alpha": {
+        "embedded": true,
+        "mode": "MASK",
+        "cutoff": 0.35,
+        "coverageAtCutoff": 0.06861686706542969,
+        "orientation": "official unchanged; no flip",
+        "alphaInflation": false,
+        "RGBGutterPixels": 8
+      },
+      "selfContained": true
+    }
+  ],
+  "publicWhitelist": [
+    "assets/foliage-revision/island_tree_01.glb",
+    "assets/foliage-revision/island_tree_01-far.glb",
+    "assets/foliage-revision/tree_small_02.glb",
+    "assets/foliage-revision/tree_small_02-far.glb",
+    "assets/foliage-revision/grass_medium_01.glb",
+    "assets/foliage-revision/grass_medium_02.glb",
+    "assets/foliage-revision/grass_bermuda_01.glb"
+  ],
+  "audit": {
+    "previousLeafRetention": [
+      0.13,
+      0.045
+    ],
+    "previousLeafEnlargement": [
+      2.2,
+      3.2
+    ],
+    "previousTreeHeight": 14,
+    "findings": [
+      "Prior near/far retained only 13%/4.5% of whole leaves then enlarged each by 2.2x/3.2x; sparse detached silhouette follows directly.",
+      "Prior whole-tree scaling from 3.4m to 14m compounded oversized leaves and pale forked trunk repetition.",
+      "Poly Haven glTF diffuse JPEGs have no alpha channel although leaf materials request BLEND; separate official alpha must be embedded.",
+      "Prior procedural wind was applied to visible material only, not custom shadow depth."
+    ]
+  },
+  "limits": [
+    "CPU checks are not visual or runtime acceptance. Await main new headless frames and 1080p benchmark; no AAA pass.",
+    "Tree Small 02 is Burkea africana, a visual stand-in rather than a verified Vietnamese species.",
+    "More complete foliage geometry intentionally increases the prior ~10.9M worst-case triangle baseline. Spatial culling reduces actual visibility but is not a substitute for measured performance.",
+    "Compound leaves use bounded curvature approximation and 512px source-clipped tiles in a 2048px atlas. Far retains 86% components. Review movement/shimmer and silhouette, not merely one still.",
+    "Public deployment should include only the current publicWhitelist GLBs, foliage-revision.json and vegetation.js; source originals/toolchain stay off web.",
+    "Bermuda infill is much cheaper in triangles but introduces 16 additional draws and overlapping alpha-tested blades. Verify visible density, natural leaf scale, overdraw and movement shimmer in current-build evidence.",
+    "Whole-scene 1080p p95/p99<=33.3ms and max<=50ms remain unchanged. Main reported prior p99~16.8ms with two hitches; that does not qualify this revision."
+  ],
+  "processingTool": {
+    "name": "meshoptimizer",
+    "version": "0.25.0",
+    "license": "MIT",
+    "source": "https://cdn.jsdelivr.net/npm/meshoptimizer@0.25.0/meshopt_simplifier.module.js",
+    "sha256": "c1d23d1a1ead1251def1f98fa427b6e61d9e6f53ff32e69aaf7159d502cd77ca",
+    "licenseURL": "https://cdn.jsdelivr.net/npm/meshoptimizer@0.25.0/LICENSE.md",
+    "encoder": {
+      "url": "https://cdn.jsdelivr.net/npm/meshoptimizer@0.25.0/meshopt_encoder.module.js",
+      "sha256": "54f67e999c6facbb946219f967e96cb6dc00a004d1c7c7ae5ca373e003600ebf"
+    }
+  },
+  "runtime": {
+    "revision": "layered-foliage-2026-11-18-bermuda-base",
+    "counts": {
+      "canopy-0-shadow": 8,
+      "canopy-0": 11,
+      "forest-0": 18,
+      "canopy-1-shadow": 5,
+      "canopy-1": 14,
+      "forest-1": 15,
+      "woody-understorey": 24,
+      "low-grass": 11990,
+      "bermuda-base": 13125,
+      "dense-grass": 8870,
+      "seed-grass": 655
+    },
+    "drawCalls": 125,
+    "triangles": 37386708,
+    "shadowCalls": 21,
+    "shadowTriangles": 4894491,
+    "patches": 142,
+    "infill": {
+      "added": 13125,
+      "banks": 2233,
+      "outerMargins": 6779,
+      "betweenHouses": 4113,
+      "nominalSpacing": 0.27,
+      "baselineLow": 11990,
+      "asset": "grass_bermuda_01",
+      "variants": 4,
+      "triangles": 203442,
+      "drawCalls": 16
+    },
+    "treeCollidersNeeded": 0,
+    "source": "Poly Haven CC0; full near components, verified winding and source-clipped compound alpha; spatial instance culling",
+    "limits": "CPU geometry budgets only; main must validate frame times and visual quality",
+    "allBatchesWorstCase": true,
+    "assetBytes": 54084144,
+    "decoder": "../vendor/presentation/examples/jsm/libs/meshopt_decoder.module.js",
+    "publicWhitelist": [
+      "assets/foliage-revision/island_tree_01.glb",
+      "assets/foliage-revision/island_tree_01-far.glb",
+      "assets/foliage-revision/tree_small_02.glb",
+      "assets/foliage-revision/tree_small_02-far.glb",
+      "assets/foliage-revision/grass_medium_01.glb",
+      "assets/foliage-revision/grass_medium_02.glb",
+      "assets/foliage-revision/grass_bermuda_01.glb"
+    ]
+  },
+  "validation": {
+    "date": "2026-11-18T04:17:30.093Z",
+    "verdict": "CPU-ONLY PASS / RENDER AND PERFORMANCE PENDING",
+    "verifiedOfficialSourceFiles": 42,
+    "sourceBytes": 173769562,
+    "decodedViews": 156,
+    "primitives": 38,
+    "embeddedAlphaMaterials": 7,
+    "officialAlphaPixelsMatched": 7340032,
+    "geometryChecks": [
+      {
+        "file": "assets/foliage-revision/island_tree_01.glb",
+        "node": "island_tree_01_LOD0",
+        "triangles": 363259,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/island_tree_01-far.glb",
+        "node": "island_tree_01_LOD0",
+        "triangles": 204998,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/tree_small_02.glb",
+        "node": "tree_small_02_LOD0",
+        "triangles": 357032,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/tree_small_02-far.glb",
+        "node": "tree_small_02_LOD0",
+        "triangles": 275692,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_small_a_LOD0",
+        "triangles": 464,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_large_b_LOD0",
+        "triangles": 1853,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_mid_b_LOD0",
+        "triangles": 536,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tall_b_LOD0",
+        "triangles": 162,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tall_a_LOD0",
+        "triangles": 131,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tall_c_LOD0",
+        "triangles": 215,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_small_b_LOD0",
+        "triangles": 381,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_mid_c_LOD0",
+        "triangles": 597,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_mid_a_LOD0",
+        "triangles": 1213,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_large_a_LOD0",
+        "triangles": 2568,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_large_c_LOD0",
+        "triangles": 2378,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tiny_c_LOD0",
+        "triangles": 40,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tiny_a_LOD0",
+        "triangles": 79,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tiny_b_LOD0",
+        "triangles": 28,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tiny_d_LOD0",
+        "triangles": 32,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tiny_e_LOD0",
+        "triangles": 62,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_01.glb",
+        "node": "grass_medium_01_tiny_f_LOD0",
+        "triangles": 60,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_02.glb",
+        "node": "grass_medium_02_a",
+        "triangles": 285,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_02.glb",
+        "node": "grass_medium_02_b",
+        "triangles": 704,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_02.glb",
+        "node": "grass_medium_02_c",
+        "triangles": 486,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_02.glb",
+        "node": "grass_medium_02_d",
+        "triangles": 995,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_medium_02.glb",
+        "node": "grass_medium_02_e",
+        "triangles": 665,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_bermuda_01.glb",
+        "node": "grass_bermuda_01_medium_c",
+        "triangles": 20,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_bermuda_01.glb",
+        "node": "grass_bermuda_01_small_a",
+        "triangles": 12,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_bermuda_01.glb",
+        "node": "grass_bermuda_01_small_b",
+        "triangles": 12,
+        "backwardsAreaFraction": 0
+      },
+      {
+        "file": "assets/foliage-revision/grass_bermuda_01.glb",
+        "node": "grass_bermuda_01_small_c",
+        "triangles": 18,
+        "backwardsAreaFraction": 0
+      }
+    ],
+    "planningCaps": {
+      "triangles": 38360000,
+      "drawCalls": 125,
+      "shadowCalls": 24,
+      "shadowTriangles": 6000000,
+      "additionalLowGrass": 18000
+    },
+    "groundChecks": 34640,
+    "transformedRootBounds": 95,
+    "matchingVisibleDepthDistanceWind": 21,
+    "deterministic": true,
+    "noBrowserOrGPUUsed": true,
+    "sourceHashes": {
+      "vegetation": "525eac366c2f5b9d2e1af66a15896924ddc5b200d047ef6618101cb6e0ab71e9",
+      "tool": "f768f0100c6569ee4589a3d6ede4f588341f675f3d4ac6d79524b3db498e7146",
+      "layout": "728b4d8d7cb2bdd6dbc32546ec55fcb29c7647e67c85595dfff1351617af7c6e"
+    }
+  },
+  "derivationNotes": [
+    "Near canopy retains all original connected leaf components; far retains 86% deterministically with no leaf enlargement. Simple leaves use source-topology/UV-weighted edge collapse and measured area bounds.",
+    "Compound-twig envelopes preserve source boundary positions and use a source-supported center. Their opacity is clipped to the original source UV triangles in a dedicated atlas tile: neighbouring atlas leaves are not exposed. >=98% near/95% far sampled opaque coverage; <=5% near/7.5% far RMS 3D warp. Full source-topology fallback if any constraint fails.",
+    "Trees use two authored crown/trunk shapes at near 10.4m/11.6m and far 12.8m/14m plus bounded instance scale. Whole-tree scale differs from the scan; individual leaf scale compensation is never used.",
+    "Official alpha remains unflipped and uninﬂated. RGB-only 8px transparent gutter prevents black-matte filtering fringes. ARM uses AO red/roughness green; leaf AO .18 and nearly neutral linear tint replace .65 AO and the dark sRGB multiplier.",
+    "Original grass_medium layers retain a 40% triangle target with <=0.7% local-extent error and UV weighting. They remain unchanged in the Bermuda follow-up.",
+    "Playable infill keeps the same jittered .27m lattice and coherent patch gaps: banks x~+/-6..8, outer house margins, and between houses. Only the infill species changes to grass_bermuda_01 small_a/b/c and medium_c. Their unchanged source topology totals 62 triangles across four variants; heights .14/.18/.22/.23m avoid inflating the flattened tufts. Runtime.infill records counts and cost.",
+    "Bermuda comes from the existing official CC0 package verified against asset-sources.json SHA256/MD5/size; no network download. Its separate compact GLB embeds official alpha with RGB gutter and verifies winding. The preceding six GLBs are unchanged. Four variants in four sectors add 16 non-shadow draws, no new trees or shadow batches.",
+    "Map predicate, cabin exclusions, dirt lanes and crossings remain enforced per tuft. No woody bounds intersect play. Visible/depth/distance wind is identical and bounded. Every public asset and manifest replaces atomically."
+  ],
+  "integrationFixes": [
+    "Historical intermediate grass Uint16 data was incorrectly declared/encoded with a 32-bit stride; all emitted indices are now Uint32 and all decoded index/accessor checks pass.",
+    "Tree_small_02 UV1 is VEC2; branch textures preserve that channel.",
+    "03:33 raw convex-hull leaf derivation reversed area-weighted winding by 100% for island_tree_01 and ~70.7% for tree_small_02. Current decoded MASK geometry is checked for zero reversed area.",
+    "Raw compound UV envelopes exposed neighbouring atlas leaves (sampled excess 13%–122% depending source shape). Derived compound atlas opacity is now intersected with each component original UV footprint.",
+    "Official alpha/diffuse channel alignment was correct; neither is flipped. The prior dark tint multiplied linear albedo by roughly .47/.55/.39 before AO and instance colour, unnecessarily crushing leaf bodies.",
+    "No-post diagnostic retained the failure, so SSAO was not its primary cause. Main owns potential alpha-aware SSAO follow-up."
+  ]
+}
