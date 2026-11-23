@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "55b38441363f5a282ef350f8e14ce8265a7e688b",
-  "created": "2026-11-23T08:39:44.859Z",
+  "sourceCommit": "4d2c8b637b64e8e95ea5d8027222134f183e9671",
+  "created": "2026-11-23T09:04:39.915Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -11,8 +11,8 @@
     },
     {
       "path": "world.js",
-      "bytes": 32281,
-      "sha256": "e56f51149bd72d8ad40e4e092fc2a87e456fc659c9a10aa6d0d7ed8656cf18ce"
+      "bytes": 35160,
+      "sha256": "5312d3ffdf7f69480378bbb359b2c9b9b4f3759fd3a86be02395650c6e4d4bc4"
     },
     {
       "path": "village.js",
@@ -51,8 +51,8 @@
     },
     {
       "path": "vegetation.js",
-      "bytes": 18524,
-      "sha256": "5cf357613f9e6fcc8034974f4d186d2c0bb111cf94d5c3ec49710bf0e3e5d202"
+      "bytes": 26473,
+      "sha256": "dc337dec583d30fd4b8c268b6b86c2d7bcbd1a5f518f55eb06034a2751befdda"
     },
     {
       "path": "map-layout.js",
@@ -146,13 +146,13 @@
     },
     {
       "path": "distant-landscape.js",
-      "bytes": 16930,
-      "sha256": "9590cbb16992e872df7f84546f5a4f0592a662039c1f6cd693cbef85abd8c12b"
+      "bytes": 21036,
+      "sha256": "dd372acd8865c550bf1258f0bc4ccce5a04c6177ccd4866a4386ba8df5199eaa"
     },
     {
       "path": "riverbank-detail.js",
-      "bytes": 20167,
-      "sha256": "212836f782453061f6af1cbe3b8b54f2b4915f7be24ec59abed70c77e796613f"
+      "bytes": 25707,
+      "sha256": "9386e2395c243ade837eb606201c4920d04ebed9360a795776163bf2324fbc22"
     },
     {
       "path": "river-water.js",

@@ -1,7 +1,7 @@
 import {MAP,crossings,riverWidth,landscapeHeight,vegetationAllowed,inBuffer,bounds,houses,spawns,teamSpawns} from './map-layout.js';
 
-export const RIVERBANK_REVISION='reference-substrate-mixed-gravel-v3';
-export const RIVERBANK_LIMITS={micro:2500,cobbles:720,grass:360,outcrops:12,maxProtrusion:.065,crossingHalfWidth:2.7,maxTriangles:200000,maxDrawCalls:28};
+export const RIVERBANK_REVISION='reference-substrate-mixed-gravel-v5-slabs';
+export const RIVERBANK_LIMITS={micro:2500,cobbles:720,grass:360,outcrops:12,maxProtrusion:.065,crossingHalfWidth:2.7,maxTriangles:200000,maxDrawCalls:28,ledgeTriangles:6000,ledgeDrawCalls:1,ledgeShadowCalls:1,ledgeFrameMs:.3};
 const TAU=Math.PI*2;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const outside=(x,z,pad=0)=>x<MAP.minX-pad||x>MAP.maxX+pad||z<MAP.minZ-pad||z>MAP.maxZ+pad;
@@ -114,8 +114,31 @@ export function riverbankPlan(seed=18112607){
   const r=footprintRadius(p);if(!outside(p.x,p.z,r+1))throw Error('Riverbank outcrop intrudes into playable rectangle');
   p.y=footprintGround(p).low-p.height*.34;outcrops.push(p);
  }
+ // Stepped split ledge formations: strictly beyond the playable rectangle, off the
+ // river and both lane contracts. Drawn after all existing placements so the
+ // seeded shoal/pebble/outcrop sequence is unchanged. Decorative, no collision.
+ const ledges=[];let cluster=0;
+ for(const [ax,az,s]of [[-6.4,-47.5,1],[17,-45.5,1.25],[-17,-50,1.4],[6.6,-52.5,1.1],[6.4,41,1],[-17,39.5,1.25],[17,44,1.4],[-6.6,46.5,1.1]]){
+  const n=3+Math.floor(random()*4),base=Math.PI/2+(random()-.5)*.8,toes=2+Math.floor(random()*3),face=-Math.sign(ax);
+  for(let i=0;i<n+toes;i++){
+   const toe=i>=n,t=toe?(random()-.5)*n*.8:i-(n-1)/2,along=t*1.2*s,off=toe?face*(1.1+random()*.9)*s:(random()-.5)*.6*s;
+   const width=toe?.3+random()*.5:(1.7+random()*.9)*s,depth=width*(toe?.6+random()*.3:.5+random()*.22),height=toe?width*(.28+random()*.2):(.95-.5*i/(n-1))*s*(.8+random()*.3);
+   const p={x:ax+Math.cos(base)*along+off,z:az+Math.sin(base)*along+(random()-.5)*.3,width,depth,height,yaw:base+(random()-.5)*.8,dip:(random()-.5)*.5,sides:toe?5:5+Math.floor(random()*2),toe,cluster,seed:Math.floor(random()*4294967296)};
+   const r=footprintRadius(p);
+   // Full footprint test: enclosing circle (covers sculpt overhang) plus perimeter samples; shrink, else drop.
+   let ok=false;const lane=(x,z,m)=>[10+.32*Math.sin(z*.19),11.2+.6*Math.sin(z*.15)].some(l=>Math.abs(Math.abs(x)-l)<m);
+   for(let k=0;k<3&&!ok;k++){
+    const R=footprintRadius(p)*1.1;ok=outside(p.x,p.z,R+1)&&Math.abs(p.x)-R>riverWidth(p.z)+.2&&!lane(p.x,p.z,.6+R);
+    for(let a=0;a<8&&ok;a++){const fx=p.x+Math.cos(a*TAU/8)*R,fz=p.z+Math.sin(a*TAU/8)*R;ok=outside(fx,fz,1)&&Math.abs(fx)>riverWidth(fz)+.2&&!lane(fx,fz,.6)}
+    if(!ok){p.width*=.72;p.depth*=.72;p.height*=.85}
+   }
+   if(!ok)continue;
+   ledges.push(p);
+  }
+  cluster++;
+ }
  for(const [name,list]of Object.entries({micro,cobbles,grass,outcrops}))if(list.length!==RIVERBANK_LIMITS[name])throw Error(`Riverbank ${name}: ${list.length} placements, expected ${RIVERBANK_LIMITS[name]}`);
- return{micro,cobbles,grass,outcrops,patches,grassIslands};
+ return{micro,cobbles,grass,outcrops,patches,grassIslands,ledges};
 }
 
 // Bevelled/tumbled asymmetric stones, not scaled plastic spheres. The texture
@@ -141,7 +164,33 @@ export function riverStoneGeometry(T,kind,variant=0){
  g.translate(-center.x,-b.min.y,-center.z);g.scale(1/size.x,1/size.y,1/size.z);g.computeBoundingBox();g.computeBoundingSphere();
  return g;
 }
+// Original procedural faceted ledge blocks: irregular 5-6 sided prisms with an
+// offset mid joint, dipping tops and ground-following buried bases. Flat face
+// normals, per-face planar UVs rotated per piece (no shared horizontal stripes).
+export function ledgeFormationGeometry(T,pieces){
+ const pos=[],nor=[],uv=[],damp=[];
+ for(const p of pieces){
+  let h=p.seed>>>0;const r=()=>{h=(Math.imul(h,1664525)+1013904223)>>>0;return h/4294967296};
+  const n=p.sides,c=Math.cos(p.yaw),s=Math.sin(p.yaw),levels=p.toe?[0,1]:[0,.38+r()*.3,1],by=landscapeHeight(p.x,p.z),q=p.yaw*.37+r(),qc=Math.cos(q)*.4,qs=Math.sin(q)*.4,o=[p.x,by+p.height*.4,p.z];
+  const ang=[],rad=[];for(let j=0;j<n;j++){ang.push((j+(r()-.5)*.55)/n*TAU);rad.push((.85+r()*.2)*(j===1?.7:1))}
+  const rings=levels.map((lv,k)=>{const inset=1-k*(.09+r()*.08),sx=k*(r()-.5)*.2*p.width,sz=k*(r()-.5)*.2*p.depth;return ang.map((a,j)=>{
+   const lx=Math.cos(a)*rad[j]*inset*p.width*.5+sx,lz=Math.sin(a)*rad[j]*inset*p.depth*.5+sz,x=p.x+c*lx-s*lz,z=p.z+s*lx+c*lz;
+   return[x,k?by+p.height*lv*(1+p.dip*3*lx/p.width+p.dip*lz/p.depth+(r()-.5)*.07):landscapeHeight(x,z)-.3,z]})});
+  const tri=(a,b,d)=>{
+   let nx=(b[1]-a[1])*(d[2]-a[2])-(b[2]-a[2])*(d[1]-a[1]),ny=(b[2]-a[2])*(d[0]-a[0])-(b[0]-a[0])*(d[2]-a[2]),nz=(b[0]-a[0])*(d[1]-a[1])-(b[1]-a[1])*(d[0]-a[0]);
+   if(nx*((a[0]+b[0]+d[0])/3-o[0])+ny*((a[1]+b[1]+d[1])/3-o[1])+nz*((a[2]+b[2]+d[2])/3-o[2])<0){[b,d]=[d,b];nx=-nx;ny=-ny;nz=-nz}
+   const l=Math.hypot(nx,ny,nz)||1;nx/=l;ny/=l;nz/=l;const ux=Math.abs(nx),uy=Math.abs(ny),uz=Math.abs(nz);
+   for(const v of [a,b,d]){pos.push(v[0],v[1],v[2]);nor.push(nx,ny,nz);const e=uy>=ux&&uy>=uz?[v[0],v[2]]:ux>=uz?[v[2],v[1]]:[v[0],v[1]];uv.push(e[0]*qc-e[1]*qs,e[0]*qs+e[1]*qc);damp.push(clamp(1.1-(v[1]-by)/.45,0,1)*.9)}
+  };
+  for(let k=0;k<rings.length-1;k++)for(let j=0;j<n;j++){const j2=(j+1)%n;tri(rings[k][j],rings[k][j2],rings[k+1][j2]);tri(rings[k][j],rings[k+1][j2],rings[k+1][j])}
+  const top=rings[rings.length-1];for(let j=1;j<n-1;j++)tri(top[0],top[j],top[j+1]);
+ }
+ const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setAttribute('normal',new T.Float32BufferAttribute(nor,3));
+ g.setAttribute('uv',new T.Float32BufferAttribute(uv,2));g.setAttribute('uv1',new T.Float32BufferAttribute(uv,2));g.setAttribute('bankDamp',new T.Float32BufferAttribute(damp,1));
+ g.computeBoundingBox();g.computeBoundingSphere();return g;
+}
 const NOISE_GLSL=`
+ varying float vBankDamp;
  float bankHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
  float bankNoise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(bankHash(i),bankHash(i+vec2(1.,0.)),f.x),mix(bankHash(i+vec2(0.,1.)),bankHash(i+1.),f.x),f.y);}
 `;
@@ -154,13 +203,13 @@ export function riverbankMaterialHook(material,{bed=false}={}){
    s.uniforms.uBankDeposits={value:new Float32Array(DEPOSITS.flatMap(p=>[p.x,p.z,p.rx,p.rz]))};
    s.uniforms.uBankWeights={value:new Float32Array(DEPOSITS.map(p=>p.weight))};
   }
-  s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vBankWorld;');
+  s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vBankWorld;varying float vBankDamp;attribute float bankDamp;');
   s.vertexShader=s.vertexShader.replace('#include <begin_vertex>',`#include <begin_vertex>
    vec4 bankLocal=vec4(transformed,1.);
    #ifdef USE_INSTANCING
     bankLocal=instanceMatrix*bankLocal;
    #endif
-   vBankWorld=(modelMatrix*bankLocal).xyz;`);
+   vBankWorld=(modelMatrix*bankLocal).xyz;vBankDamp=bankDamp;`);
   if(!bed)s.vertexShader=s.vertexShader.replace('#include <uv_vertex>',`#include <uv_vertex>
    #ifdef USE_INSTANCING
     float mineralScale=max(length(instanceMatrix[0].xyz),length(instanceMatrix[2].xyz))*1.4;
@@ -204,7 +253,8 @@ export function riverbankMaterialHook(material,{bed=false}={}){
    }`);
   s.fragmentShader=s.fragmentShader.replace('#include <map_fragment>',`#include <map_fragment>
    float bankWet=1.-smoothstep(-.16,.12,vBankWorld.y+bankNoise(vBankWorld.xz*2.3)*.07);
-   diffuseColor.rgb*=mix(vec3(1.),vec3(.72,.76,.77),bankWet);`);
+   diffuseColor.rgb*=mix(vec3(1.),vec3(.72,.76,.77),bankWet);
+   diffuseColor.rgb*=mix(vec3(1.),vec3(.56,.6,.62),vBankDamp);`);
   s.fragmentShader=s.fragmentShader.replace('#include <roughnessmap_fragment>',bed?`#include <roughnessmap_fragment>
    roughnessFactor=clamp(mix(max(roughnessFactor,.84),.76,bankWet*.74),.72,.98);`:`#include <roughnessmap_fragment>
    roughnessFactor=clamp(mix(roughnessFactor,.55,bankWet*.74),.48,.96);`);
@@ -239,6 +289,12 @@ export function populateRiverbankInstances({T,world,plan,stoneMaterial,grassSour
  }
  for(const kind of ['micro','cobbles'])for(let variant=0;variant<2;variant++)add(riverStoneGeometry(T,kind,variant),stoneMaterial,plan[kind].filter(p=>p.variant===variant),kind+'-'+variant);
  add(riverStoneGeometry(T,'outcrops'),stoneMaterial,plan.outcrops,'outcrops',true);
+ let ledges=null;
+ if(plan.ledges?.length){
+  const lg=ledgeFormationGeometry(T,plan.ledges),lm=new T.Mesh(lg,stoneMaterial);lm.name='riverbank-ledges';
+  lm.castShadow=lm.receiveShadow=true;lm.raycast=()=>{};lm.userData.decorative=true;lm.userData.noCollision=true;world.add(lm);
+  ledges={mesh:lm,triangles:lg.attributes.position.count/3,drawCalls:1,shadowCalls:1,pieces:plan.ledges.length,toeFragments:plan.ledges.filter(p=>p.toe).length,clusters:new Set(plan.ledges.map(p=>p.cluster)).size};
+ }
  for(let variant=0;variant<2;variant++){
   const source=grassSources[variant];if(!source?.isMesh)throw Error('Bermuda shore grass mesh missing');source.updateWorldMatrix(true,false);
   const g=source.geometry.clone().applyMatrix4(source.matrixWorld);g.computeBoundingBox();const b=g.boundingBox,size=b.getSize(new T.Vector3()),center=b.getCenter(new T.Vector3());
@@ -250,7 +306,7 @@ export function populateRiverbankInstances({T,world,plan,stoneMaterial,grassSour
   add(g,m,plan.grass.filter(p=>p.variant===variant),'grass-'+variant);
  }
  world.add(group);
- return{group,batches};
+ return{group,batches,ledges};
 }
 
 export async function buildRiverbankDetail({T,world,materials}){
@@ -271,9 +327,10 @@ export async function buildRiverbankDetail({T,world,materials}){
  stoneMaterial.name='CC0 weathered river stone';riverbankMaterialHook(stoneMaterial);
  const asset=await new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).loadAsync(assetURL('assets/foliage-revision/grass_bermuda_01.glb'));
  const grassSources=['small_a','small_b'].map(v=>asset.scene.getObjectByName('grass_bermuda_01_'+v));
- const plan=riverbankPlan(),{group,batches}=populateRiverbankInstances({T,world,plan,stoneMaterial,grassSources});
+ const plan=riverbankPlan(),{group,batches,ledges}=populateRiverbankInstances({T,world,plan,stoneMaterial,grassSources});
  const triangles=batches.reduce((n,b)=>n+b.triangles,0),shadow=batches.filter(b=>b.shadow);
  if(triangles>RIVERBANK_LIMITS.maxTriangles||batches.length>RIVERBANK_LIMITS.maxDrawCalls)throw Error('Riverbank geometry budget exceeded');
+ if(ledges&&(ledges.triangles>RIVERBANK_LIMITS.ledgeTriangles||ledges.drawCalls>RIVERBANK_LIMITS.ledgeDrawCalls||ledges.shadowCalls>RIVERBANK_LIMITS.ledgeShadowCalls))throw Error('Riverbank ledge budget exceeded');
  // materials is deliberately untouched: ownership stays with the integrator.
- return{bedMaterial,group,info(){return{revision:RIVERBANK_REVISION,counts:{micro:plan.micro.length,cobbles:plan.cobbles.length,grass:plan.grass.length,outcrops:plan.outcrops.length,patches:plan.patches.length,grassIslands:plan.grassIslands.length,submergedStones:[...plan.micro,...plan.cobbles].filter(p=>p.submerged).length,substrateStones:[...plan.micro,...plan.cobbles].filter(p=>p.deposit===-1).length},triangles,drawCalls:batches.length,shadowCalls:shadow.length,shadowTriangles:shadow.reduce((n,b)=>n+b.triangles,0),bed:{additionalDrawCalls:0,replacesExistingBed:true,sourceUV:'x/2,z/2',scanTileMeters:2.16,continuousSheet:false,sharedDepositField:true,underwaterSubstrateWithMudPockets:true},replacesOld850Stones:true,collidersRequired:0,limits:'CPU submitted geometry budget only. Main must verify actual WebGL art, frame times and route regressions.'}}};
+ return{bedMaterial,group,info(){return{revision:RIVERBANK_REVISION,counts:{micro:plan.micro.length,cobbles:plan.cobbles.length,grass:plan.grass.length,outcrops:plan.outcrops.length,patches:plan.patches.length,grassIslands:plan.grassIslands.length,submergedStones:[...plan.micro,...plan.cobbles].filter(p=>p.submerged).length,substrateStones:[...plan.micro,...plan.cobbles].filter(p=>p.deposit===-1).length},triangles,drawCalls:batches.length,shadowCalls:shadow.length,shadowTriangles:shadow.reduce((n,b)=>n+b.triangles,0),bed:{additionalDrawCalls:0,replacesExistingBed:true,sourceUV:'x/2,z/2',scanTileMeters:2.16,continuousSheet:false,sharedDepositField:true,underwaterSubstrateWithMudPockets:true},ledges:ledges?{clusters:ledges.clusters,pieces:ledges.pieces,toeFragments:ledges.toeFragments,triangles:ledges.triangles,drawCalls:ledges.drawCalls,shadowCalls:ledges.shadowCalls,countedInDrawCallsAbove:false,outsidePlayableBounds:true,colliders:0,raycast:'disabled on mesh',frameBudgetMs:RIVERBANK_LIMITS.ledgeFrameMs,frameTimeVerified:false}:null,replacesOld850Stones:true,collidersRequired:0,limits:'CPU submitted geometry budget only. Main must verify actual WebGL art, frame times and route regressions.'}}};
 }

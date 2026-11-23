@@ -153,6 +153,28 @@ export function generateRidgeGeometry(p){
   groups:[{start:0,count:rock.length,materialIndex:0},{start:rock.length,count:scrub.length,materialIndex:1}]};
 }
 
+// Seeded clustered canopy sites near the sampled crest. Noise-masked negative
+// space, steep rock faces, the valley opening and the playable terrain stay clear.
+function canopySites(p,maxLobes){
+ const H=LANDSCAPE_LIMITS,L=[],xAxis=p.axis==='x',la=p.along[1]-p.along[0],lc=p.across[1]-p.across[0];
+ const at=(a,c)=>xAxis?sampleRidge(p,a,c):sampleRidge(p,c,a);
+ for(let n=0;n<maxLobes*12&&L.length<maxLobes;n++){
+  const c=(n/6)|0,sp=12+34*hash(c,3,p.seed+211),u=.05+.9*hash(c,1,p.seed+101);
+  const cv=clamp(keyAt(p.crest,u,1)+(hash(c,2,p.seed+113)-.5)*.7,.06,.94);
+  const along=p.along[0]+la*u+(hash(n,5,p.seed+131)-.5)*sp,across=p.across[0]+lc*cv+(hash(n,6,p.seed+137)-.5)*sp;
+  const r=(3+5.5*hash(n,7,p.seed+149)**2)*(1+p.layer*.3),m=r*1.25+4;
+  if(along<p.along[0]+m||along>p.along[1]-m||across<p.across[0]+m||across>p.across[1]-m)continue;
+  const x=xAxis?along:across,z=xAxis?across:along,d=Math.hypot(x,z);
+  if(Math.abs(x)<H.valleyHalfWidth+m||(Math.abs(x)<H.terrainHalfExtent+m&&Math.abs(z)<H.terrainHalfExtent+m)||d-m<H.minRange||d+m>H.maxRange)continue;
+  const s=at(along,across),sa=at(along+3,across),sc=at(along,across+3);
+  if(!s||!sa||!sc||s.y<-5.5)continue;
+  const slope=Math.hypot(sa.y-s.y,sc.y-s.y)/3;
+  if(slope>1.15||fbm(along*.021,across*.027,p.seed+91)<.42+.16*s.cross)continue;
+  L.push({n,x,z,y:s.y,r,slope});
+ }
+ return L;
+}
+
 export function validateRidgeGeometry(g,p){
  const errors=[],n=g.positions.length/3;let minRadius=Infinity,maxRadius=0,minY=Infinity,maxY=-Infinity,minArea=Infinity;
  const fail=m=>{if(!errors.includes(m))errors.push(m)};
@@ -183,14 +205,50 @@ export function validateRidgeGeometry(g,p){
  return {ok:errors.length===0,errors,id:p.id,vertices:n,triangles:g.indices.length/3,minRadius,maxRadius,minY,maxY,minProjectedArea:minArea};
 }
 
+// Visual-only canopy lobes appended to the existing scrub material group of a
+// generated ridge (no new draw call). Seeded, clustered, crest-following; the
+// pure generateRidgeGeometry output is copied, never mutated. Build-time only.
+function appendCanopy(p,g,maxLobes){
+ const H=LANDSCAPE_LIMITS,base=g.positions.length/3,L=canopySites(p,Math.min(maxLobes,Math.floor(H.maxTriangles/15))),xAxis=p.axis==='x';
+ const nv=base+L.length*11,positions=new Float32Array(nv*3),normals=new Float32Array(nv*3),colors=new Float32Array(nv*3),uvs=new Float32Array(nv*2);
+ positions.set(g.positions);normals.set(g.normals);colors.set(g.colors);uvs.set(g.uvs);
+ const indices=new(nv<=65535?Uint16Array:Uint32Array)(g.indices.length+L.length*45);indices.set(g.indices);
+ const bounds={min:{...g.bounds.min},max:{...g.bounds.max}},top=[[.42,.5,.26],[.4,.5,.4],[.42,.52,.53]][p.layer],s=p.seed+173;
+ let q=g.indices.length;
+ L.forEach((l,i)=>{
+  const v0=base+i*11,ph=hash(l.n,11,s)*6.2832,h=l.r*(.85+.6*hash(l.n,13,s)),tone=.84+.3*hash(l.n,17,s),cy=l.y+h*.25;
+  // Smooth normals radiate from a low centre: sunlit tops, darker undersides.
+  const put=(k,px,py,pz,shade)=>{
+   const o=(v0+k)*3,nx=px-l.x,ny=py-cy+l.r*.35,nz=pz-l.z,len=Math.hypot(nx,ny,nz)||1;
+   positions[o]=px;positions[o+1]=py;positions[o+2]=pz;normals[o]=nx/len;normals[o+1]=ny/len;normals[o+2]=nz/len;
+   for(let c=0;c<3;c++)colors[o+c]=clamp(top[c]*tone*shade,.1,1);
+   uvs[(v0+k)*2]=(xAxis?px:pz)/13;uvs[(v0+k)*2+1]=((xAxis?pz:px)*.48+py*.88)/13;
+   bounds.min.x=Math.min(bounds.min.x,px);bounds.max.x=Math.max(bounds.max.x,px);
+   bounds.min.y=Math.min(bounds.min.y,py);bounds.max.y=Math.max(bounds.max.y,py);
+   bounds.min.z=Math.min(bounds.min.z,pz);bounds.max.z=Math.max(bounds.max.z,pz);
+  };
+  for(let k=0;k<5;k++){
+   const a=ph+k*1.2566,j=l.n*8+k,r0=l.r*.62*(.85+.3*hash(j,23,s)),r1=l.r*(.78+.44*hash(j,29,s)),k1=(k+1)%5;
+   // Skirt ring is sunk below the sampled slope so no lobe floats.
+   put(k,l.x+Math.cos(a)*r0,l.y-l.r*(.5+.6*l.slope),l.z+Math.sin(a)*r0,.5);
+   put(5+k,l.x+Math.cos(a)*r1,l.y+h*(.34+.22*hash(j,31,s)),l.z+Math.sin(a)*r1,.76+.14*hash(j,37,s));
+   indices.set([v0+k,v0+5+k,v0+k1,v0+k1,v0+5+k,v0+5+k1,v0+5+k,v0+10,v0+5+k1],q);q+=9;
+  }
+  put(10,l.x+(hash(l.n,19,s)-.5)*l.r*.5,l.y+h,l.z+(hash(l.n,41,s)-.5)*l.r*.5,1.08);
+ });
+ return {...g,positions,normals,colors,uvs,indices,bounds,canopyLobes:L.length,groups:[{...g.groups[0]},{...g.groups[1],count:g.groups[1].count+L.length*45}]};
+}
+
 /** Add once after stone/bark materials load; do NOT add this group to solids.
  * Inherits world environment, HDR sun and fog. Optional setWeather accepts
  * 0/'sunny', 1/'overcast', 2/'storm'; it only changes owned material clones.
  */
-export function buildDistantLandscape({T,world,materials}){
+export function buildDistantLandscape({T,world,materials,forested=false}){
  if(!T?.BufferGeometry||!world?.add||!materials?.stone?.clone||!materials?.bark?.clone)throw new TypeError('Distant landscape requires T, world and loaded stone/bark materials');
  const plan=landscapePlan(),validation=validateLandscapePlan(plan);
  if(!validation.ok)throw new Error(validation.errors.join('; '));
+ // Real headroom: limit minus terrain triangles, 15 tris per lobe, 0 new draws.
+ const lobeBudget=Math.max(0,Math.min(220,Math.floor((LANDSCAPE_LIMITS.maxTriangles-validation.triangles)/plan.length/15)));
  const root=new T.Group();root.name='Riverfall distant eroded ranges';root.userData.visualOnly=true;
  const ownedMaterials=[],meshes=[],records=[];let weather='sunny',disposed=false;
  for(let layer=0;layer<3;layer++)for(const kind of ['stone','bark']){
@@ -212,7 +270,7 @@ export function buildDistantLandscape({T,world,materials}){
   ownedMaterials.push(m);
  }
  for(const p of plan){
-  const g=generateRidgeGeometry(p),geo=new T.BufferGeometry();
+  const base=generateRidgeGeometry(p),g=forested?appendCanopy(p,base,lobeBudget):base,geo=new T.BufferGeometry();
   for(const [name,array,itemSize]of [['position',g.positions,3],['normal',g.normals,3],['color',g.colors,3],['uv',g.uvs,2]])geo.setAttribute(name,new T.BufferAttribute(array,itemSize));
   geo.setIndex(new T.BufferAttribute(g.indices,1));
   for(const group of g.groups)geo.addGroup(group.start,group.count,group.materialIndex);
