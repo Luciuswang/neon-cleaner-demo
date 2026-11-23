@@ -1,0 +1,120 @@
+{
+  "profile": "offscreen-cinematic-v1",
+  "method": "Native WebGL canvas readback in headless Chrome, sampled lateral camera, not continuous video. Public-equivalent dressing=off.",
+  "base": "b6d8f821068cfce8594243ebaed7af1f1cae8ac8",
+  "geometry": {
+    "before": {
+      "count": 211,
+      "sha": "9b12a8ba08fc805671bc10cab7e2fff13c311697c4ad27305f93618be43adfc0",
+      "draws": 14,
+      "triangles": 92894
+    },
+    "now": {
+      "count": 211,
+      "sha": "9b12a8ba08fc805671bc10cab7e2fff13c311697c4ad27305f93618be43adfc0",
+      "draws": 14,
+      "triangles": 92894
+    },
+    "previous": {
+      "count": 211,
+      "sha": "9b12a8ba08fc805671bc10cab7e2fff13c311697c4ad27305f93618be43adfc0",
+      "draws": 14,
+      "triangles": 92894
+    }
+  },
+  "captures": {
+    "before-corner-walk-0": "e8fd3a29bf30d4de38bafb9263e7e307599a2bc92493536b3fe251c8d21732d1",
+    "before-corner-walk-4": "29a6f6d520864e8fb7e816a91f19d6d37e0810721a4b752d0b12196b67158080",
+    "before-corner-walk-8": "cd62a83c058b47166254025652f8ae0f7d75aae6b2cc9a49fb832b159e1630b8",
+    "release-walk-0": "23ee358db90c7a4dae5511f67d572fc85daf3575ddeccf7f615fe88cc784fb02",
+    "release-walk-4": "426a1b6b07b1a9bca6df89dfd9a8384e790b8185f46f046bee6f550970d7f097",
+    "release-walk-8": "2403bf1b5c9e32ec9d9ff6fb98afaa1ac0338361097bdfea505e408b91a18104",
+    "release-veranda": "e044cb285c0749f6b111f0e9e0a3494d2e106836b47f64cbef12199b0fe13544",
+    "release-boot-bank": "1ecf46558cf48ccb4b69dde817db8e4ee5dbb89842a9de315ebe4a45305e5c7b",
+    "release-boot-lane": "606bf4fa01e40be7eaca00ac5680e3b826f9e6284108c78757f20fac3a802b65",
+    "release-water-fire": "e4d1f3987d0507049be078ab2e3baef3ee6f99349e43bdc378fff105f5ba8e08",
+    "release-puddle-post": "be65e4cab4a5536852035d5a85f87aeaf730b7b0fa23db961cc45141946269f6",
+    "release-earth-post": "44e44b06bf4d5b70b094946fdfbf9fadcbf10894a12df8c9339486206da08fee",
+    "release-wood-post": "584b368011031500fdf95b820f85154c2fcc72401b9691d897fec8441352d199",
+    "release-stone-post": "4bae5b45ce9fe89f7ea9c74b16cab8dd80b6543eddf5b1524889ef81230128c2"
+  },
+  "suites": [
+    "timber-mud-fx-checks",
+    "reference-house-checks",
+    "village-checks",
+    "assist-reference-checks",
+    "map-checks",
+    "combat-feedback-checks"
+  ],
+  "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 5070 (0x00002F04) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+  "errors": [],
+  "failedRequests": [],
+  "shots": [
+    {
+      "label": "water",
+      "adapter": "water",
+      "visual": "water",
+      "location": [
+        -0.9419701356181349,
+        -0.1877971000671388,
+        8.998029293828196
+      ],
+      "flash": true
+    },
+    {
+      "label": "puddle",
+      "adapter": "earth",
+      "visual": "water",
+      "location": [
+        10.101572827134381,
+        0,
+        -18.048108694843858
+      ],
+      "flash": false
+    },
+    {
+      "label": "earth",
+      "adapter": "earth",
+      "visual": "earth",
+      "location": [
+        -9.59958512995228,
+        0,
+        3.022787103235256
+      ],
+      "flash": false
+    },
+    {
+      "label": "wood",
+      "adapter": "wood",
+      "visual": "wood",
+      "location": [
+        -20.640000000596046,
+        1.1572387061336094,
+        -21.202600229305368
+      ],
+      "flash": true
+    },
+    {
+      "label": "stone",
+      "adapter": "stone",
+      "visual": "stone",
+      "location": [
+        -7.683165582408717,
+        0.7880786360197475,
+        8.324999988079071
+      ],
+      "flash": false
+    }
+  ],
+  "sourceHashes": {
+    "village.js": "72946fd3e422fe4c9c51c517e3d4f384a32beac674d9a5428718e116de0ff4f9",
+    "afterrain-ground.js": "2e1a166ff6d2e62248dd244c7c3dc8921448168c64000bc8f308c2efcec3d504",
+    "world.js": "e56f51149bd72d8ad40e4e092fc2a87e456fc659c9a10aa6d0d7ed8656cf18ce",
+    "weapon.js": "b917b883a9dabd02bb87105619ae1b239db23a788945e7dfb418a4612f851f65",
+    "combat-feedback.js": "e30b90ee56acc8e973ff6539754a31f57283a863d231da160e7b59a10e5ef484"
+  },
+  "limitations": [
+    "Strong backlighting and points along some seam highlights remain. No universal shimmer/AAA/frame-time certification.",
+    "Water classification on broad pond interiors only; sloping tracks do not receive planar reflections. CPU tests verify the one-second lifetime, not every frame on every GPU."
+  ]
+}

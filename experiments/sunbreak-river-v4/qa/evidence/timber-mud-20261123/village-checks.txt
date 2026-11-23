@@ -1,0 +1,38 @@
+{
+  pass: true,
+  date: '2026-11-23T06:50:16.362Z',
+  wallBoxes: 88,
+  architecture: {
+    houses: 6,
+    walls: 88,
+    boxes: 906,
+    solids: 211,
+    tiles: 3292,
+    drawCalls: 14,
+    triangles: 92894,
+    stoneCover: {
+      revision: 'bounded-weathered-fieldstone-v6',
+      covers: 6,
+      stones: 732,
+      drawCalls: 2,
+      triangles: 28206,
+      replacedTriangles: 72,
+      addedTriangles: 28134,
+      maxRecess: 0.012,
+      outwardProtrusion: 0,
+      opaqueContinuousShell: true,
+      collidersChanged: false,
+      sources: [Array],
+      surface: [Object],
+      budgets: [Object],
+      drawCaveat: 'Beauty draws only; shadow/reflection passes are measured by root.'
+    },
+    contribution: 'Fable 5.2 structure, reviewed and refined by Codex'
+  },
+  checks: 'exact wall geometry; six clear passages and solid walls; roof slabs/half-collapse openings; bridge shot occlusion; batching budgets',
+  sources: {
+    'village.js': '72946fd3e422fe4c9c51c517e3d4f384a32beac674d9a5428718e116de0ff4f9',
+    'map-layout.js': '4e298c4e6a6aa488e6484d0959d33f7f48f91c3fd6e025fadf9850db90514a88',
+    'qa/village-checks.mjs': '6889a913e4d6fcc9768aa580ee756227c5fcd1dd33b67ccb6f34155e625a638e'
+  }
+}

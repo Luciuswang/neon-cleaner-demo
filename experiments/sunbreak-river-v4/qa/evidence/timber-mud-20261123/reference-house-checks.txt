@@ -1,0 +1,98 @@
+{
+  "pass": true,
+  "date": "2026-11-23T06:50:16.004Z",
+  "intactHouses": [
+    "house--1-0",
+    "house-1-0"
+  ],
+  "wallBoxes": 88,
+  "solids": 211,
+  "passed": 21,
+  "failed": 0,
+  "results": [
+    {
+      "name": "exactly two intact houses, mirrored across the river, centres kept",
+      "pass": true
+    },
+    {
+      "name": "reference timber parts exist only on ruin===0 houses",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: all wall/post/bench records are wood, live in layout.walls and have exact matching solids",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: twin open bays centred z=+-2.1, clear 1.45 wide and 2.30 high",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: central square window z=0, 1.00..1.85, width .85",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: four slender veranda posts at x offset 4.1 reaching the 2.65 eave",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: low solid bench at x offset 3.30, z=0, blocks the player; side-base blockage kept",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: player passage: veranda -> each bay -> interior -> legacy z-end doors, on level floor",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: ray occlusion: bays and window open, boards solid",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: vertical wall tops stay beneath the roof at both x edges (bench/posts excluded)",
+      "pass": true
+    },
+    {
+      "name": "house--1-0: broad low gable: halfspan 4.7, half-length 4.2, ridge 4.35, eave 2.65, deep eaves solid",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: all wall/post/bench records are wood, live in layout.walls and have exact matching solids",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: twin open bays centred z=+-2.1, clear 1.45 wide and 2.30 high",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: central square window z=0, 1.00..1.85, width .85",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: four slender veranda posts at x offset 4.1 reaching the 2.65 eave",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: low solid bench at x offset 3.30, z=0, blocks the player; side-base blockage kept",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: player passage: veranda -> each bay -> interior -> legacy z-end doors, on level floor",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: ray occlusion: bays and window open, boards solid",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: vertical wall tops stay beneath the roof at both x edges (bench/posts excluded)",
+      "pass": true
+    },
+    {
+      "name": "house-1-0: broad low gable: halfspan 4.7, half-length 4.2, ridge 4.35, eave 2.65, deep eaves solid",
+      "pass": true
+    },
+    {
+      "name": "opposite-bank symmetry: mirrored wall records, collision and roof",
+      "pass": true
+    }
+  ]
+}

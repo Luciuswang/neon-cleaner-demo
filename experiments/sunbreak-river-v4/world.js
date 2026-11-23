@@ -27,7 +27,7 @@ import {buildScanCover} from './scan-cover.js';
 import {buildProceduralMaterials} from './procedural-materials.js';
 import {installProceduralGround} from './procedural-ground.js';
 import {lowerSkySun,AFTERRAIN_LIGHT} from './afterrain-light.js';
-import {installLegacyForestTint} from './afterrain-ground.js';
+import {installLegacyForestTint,afterRainPuddleInterior} from './afterrain-ground.js';
 import {buildPuddleReflection} from './puddle-reflection.js';
 import {applyForestAttributes,buildForestFloor} from './forest-floor.js';
 import {MAP,TERRAIN_GRID,layout,bounds,terrainHeight,groundHeight,landscapeHeight,roofHeight,riverWidth,bufferPlacements,vegetationAllowed,wallTopAt} from './map-layout.js';
@@ -177,6 +177,26 @@ export async function buildWorld(ctx){
  const haze=createHeightFog(T);haze.install(world);enemies.forEach(e=>haze.install(e.g));
  const puddleReflection=afterRain&&procedural?buildPuddleReflection({T,Reflector,world,scene,terrain,water,cam,haze}):null;
  if(puddleReflection)Object.assign(puddleBinding.uniforms,puddleReflection.uniforms);
+ // Presentation only. Tags a true terrain hit that lands inside a broad visible
+ // puddle so feedback can show the water impact style. No raycast, accuracy or
+ // damage change; a miss or a non-terrain hit is returned untouched. Gates mirror
+ // the shader: shared basin noise, then flat y=0 height, slope, foundation and
+ // forest cover read from the same vertex attributes the shader interpolates.
+ // combatFeedback reads event.kind, so a qualifying earth hit on the terrain is
+ // returned as a copy with kind 'water'. The input event is never mutated.
+ const puddleHitEvent=event=>{
+  if(!procedural||!afterRain||!puddleReflection||event?.kind!=='earth'||event.object!==terrain||!event.point)return event;
+  const x=event.point.x,z=event.point.z;
+  if(!afterRainPuddleInterior(x,z))return event;
+  const g=terrain.geometry,P=g.attributes.position,N=g.attributes.normal,Z=g.attributes.surfaceZones,F=g.attributes.forestCover;
+  if(!P||!N||!Z||!F)return event;
+  const S=TERRAIN_GRID.segments,half=TERRAIN_GRID.size/2,step=TERRAIN_GRID.size/S,ix=Math.min(S-1,Math.max(0,Math.floor((x+half)/step))),iz=Math.min(S-1,Math.max(0,Math.floor((z+half)/step)));let near=0;
+  for(const i of [iz*(S+1)+ix,iz*(S+1)+ix+1,(iz+1)*(S+1)+ix,(iz+1)*(S+1)+ix+1]){
+   if(Math.abs(P.getY(i))>.006||1-Math.abs(N.getY(i))>.015||Z.getY(i)>=.08||F.getX(i)>=.08)return event;
+   near++;
+  }
+  return near>=4?{...event,kind:'water'}:event;
+ };
  haze.shaderPatch(water.mesh.material,{worldPosition:'vRiver'});
  const reflectedRender=water.mesh.onBeforeRender;
  water.mesh.onBeforeRender=function(...args){
@@ -261,7 +281,7 @@ export async function buildWorld(ctx){
   migrationQA:{freeze(seconds){if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid migration time');migrationFrozen=true;time=seconds;windTime.value=seconds;foliage.update(seconds);dressing.update(seconds);forestFloor?.update(seconds);flash=0;flashLight.intensity=0;lightningAt=seconds+9;return migrationInfo()}},
   waterTime(){return time},
   shot(event){const projected=event.hit&&event.object?.userData.wall?village.projectStoneCoverHit?.({point:event.point,normal:event.normal,wallId:event.object.userData.wall}):null;
-   if(projected)event={...event,point:projected.point,normal:projected.normal};weapon.shot(event);feedback.shot(event)},resetFeedback(){weapon.reset();feedback.reset()},
+   if(projected)event={...event,point:projected.point,normal:projected.normal};weapon.shot(event);feedback.shot(puddleHitEvent(event))},resetFeedback(){weapon.reset();feedback.reset()},
   polishInfo(){return{environment:foliage.info().polish,cover:village.info().stoneCover,combat:feedback.info(),weapon:weapon.info()}},
   floorHeight(x,z){return buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z))},ceilingY(p,previousY){const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))},blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),resetHouse:()=>buffers.reset(),
   update(dt,{S,pres,live,player}){

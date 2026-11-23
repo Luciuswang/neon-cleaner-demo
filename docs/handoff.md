@@ -773,3 +773,7 @@ Playable river demo: Fable 5.2 authored aim assist and two traversable timber ho
 ## Sync note - 2026-11-23T11:29:46.2952158+08:00
 
 PR 11 merged; public Pages source 9c2f6ef verified. Public Chrome manual-input smoke passed; email sent. Four changed runtime files matched live hashes. All-resource check timed out and two console 404s were not attributed; no exhaustive network/AAA claim.
+
+## Sync note - 2026-11-23T14:52:21.1441014+08:00
+
+Riverfall: procedural timber, trampled mud and 1s material-specific impacts. Six regression suites and native RTX canvas shots passed; review is scoped conditional. Unchanged private web asset manifest verified; dirty unrelated UE vault preserved. See docs/tasks/river-timber-mud-20261123.md.

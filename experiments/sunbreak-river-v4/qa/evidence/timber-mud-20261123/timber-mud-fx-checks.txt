@@ -1,0 +1,110 @@
+{
+ "suite": "timber-mud-fx-checks",
+ "passed": 10,
+ "failed": 0,
+ "notCovered": "Real village wood proxies, terrain puddle classification, hut wood, boot tracks, muzzle flash and all rendered pixels are not exercised here; GPU/art/performance review pending.",
+ "checks": [
+  {
+   "name": "actual water hit: surface marks hold at .5s, fade by .85s, gone after 1s",
+   "pass": true,
+   "evidence": {
+    "modes": [
+     4.358,
+     4.235
+    ],
+    "alpha0": [
+     0.8,
+     0.6
+    ],
+    "alpha85": [
+     0.443,
+     0.332
+    ]
+   }
+  },
+  {
+   "name": "actual earth hit: surface marks hold at .5s, fade by .85s, gone after 1s",
+   "pass": true,
+   "evidence": {
+    "modes": [
+     5.358
+    ],
+    "alpha0": [
+     0.9
+    ],
+    "alpha85": [
+     0.498
+    ]
+   }
+  },
+  {
+   "name": "actual wood hit: surface marks hold at .5s, fade by .85s, gone after 1s",
+   "pass": true,
+   "evidence": {
+    "modes": [
+     6.358
+    ],
+    "alpha0": [
+     0.9
+    ],
+    "alpha85": [
+     0.498
+    ]
+   }
+  },
+  {
+   "name": "actual stone hit: surface marks hold at .5s, fade by .85s, gone after 1s",
+   "pass": true,
+   "evidence": {
+    "modes": [
+     7.358
+    ],
+    "alpha0": [
+     0.88
+    ],
+    "alpha85": [
+     0.487
+    ]
+   }
+  },
+  {
+   "name": "metal and actor hits create no surface marks",
+   "pass": true
+  },
+  {
+   "name": "true miss and invalid hits never create an impact or mark",
+   "pass": true,
+   "evidence": {
+    "misses": 4,
+    "invalidHits": 3
+   }
+  },
+  {
+   "name": "repeated max-rate fire stays inside fixed pools and two draws, then fully expires",
+   "pass": true,
+   "evidence": {
+    "peakInstances": 170,
+    "peakMarks": 48
+   }
+  },
+  {
+   "name": "dispose releases resources and detaches; repeated max-rate cycles leave nothing",
+   "pass": true,
+   "evidence": {
+    "disposeEvents": 4,
+    "cycles": 25
+   }
+  },
+  {
+   "name": "classifier contract: explicit tag wins, names map puddle/mud/timber",
+   "pass": true
+  },
+  {
+   "name": "tagged wood proxy stand-in: real raycast hit gives wood mark, real miss gives none",
+   "pass": true,
+   "evidence": {
+    "hitDistance": 3.8914
+   }
+  }
+ ]
+}

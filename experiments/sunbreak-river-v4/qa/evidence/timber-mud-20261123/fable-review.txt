@@ -1,0 +1,16 @@
+**Verdict: CONDITIONAL PASS (scoped).**
+
+I have not viewed any images; this rests on the coordinator's review, the logs and the source excerpt.
+
+**Supported:** six suites exit 0, pool tests 10/10, openings 21/21, gameplay files unchanged, impacts classified on the actual shot path, look toggle present.
+
+**Residual limitations:**
+- Moving-camera stippling is judged from start/end stills only; there is no continuous temporal or frame-time certification.
+- Strong backlighting on the timber remains.
+- Reflected water in the deep-print minority is not independently evidenced; the shader metadata still reads "unverified in browser".
+- Coverage is one GPU, D3D11 fallback, 1280x800; the basin hash needs WebGL2.
+- The pond classifier is conservative, so shoreline hits read as earth.
+- Muzzle flash is confirmed on unobstructed shots only.
+- No actor marks.
+
+No AAA signoff is claimed.
