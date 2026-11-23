@@ -765,3 +765,7 @@ Standing user model preference recorded in AGENTS.md: use Gateway claude-fable-5
 ## Sync note - 2026-11-21T17:38:09.4470903+08:00
 
 Generated repository-only biweekly report for 2026-11-08 through 2026-11-21 from 17 origin branches, 122 commits and 57 worklog events. Email delivery remains blocked by prior Gmail safety restriction; private vault had unfinished local changes and was preserved.
+
+## Sync note - 2026-11-23T11:22:23.4078678+08:00
+
+Playable river demo: Fable 5.2 authored aim assist and two traversable timber houses. Scope checked: 21 house checks and real fallback WebGL. Prior strict performance and legacy HTML/map identity not certified. Preparing Pages release. No private asset changes.

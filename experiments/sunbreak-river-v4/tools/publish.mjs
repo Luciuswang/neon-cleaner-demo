@@ -21,11 +21,18 @@ async function api(path,method='GET',body){
 let number=Number(process.argv.find(a=>a.startsWith('--pr='))?.slice(5)||0);
 if(process.argv.includes('--prepare')){
  assert.equal(git(['status','--porcelain']),'','Source checkpoint must be clean first');
- const sourceCommit=git(['rev-parse','HEAD']),out=resolve(repo,'.local/sunbreak-river-build');
+ const sourceCommit=git(['rev-parse','HEAD']);
+ const buildArg=process.argv.find(a=>a.startsWith('--build='))?.slice(8);
+ assert.ok(buildArg,'Required --build=<absolute fresh output from tools/package.mjs>');
+ const out=resolve(buildArg);
+ assert.equal(out,buildArg,'--build must be an absolute normalized path');
+ assert.equal(dirname(out),resolve(repo,'.local'),'--build must be a direct child of repo .local');
+ const buildName=out.slice(dirname(out).length+1);
+ assert.ok(buildName.startsWith('sunbreak-river-build-')&&buildName.length>'sunbreak-river-build-'.length,'--build must be a fresh sunbreak-river-build-* output');
  const release=JSON.parse(readFileSync(resolve(out,'public-release.json')));
  assert.equal(release.schema,'sunbreak-river-overlay-v1');assert.equal(release.sourceCommit,sourceCommit);assert.equal(release.publicPath,subtree);
  for(const f of release.files){
-  assert.match(f.path,/^[a-zA-Z0-9_\-./]+\.(js|html|json|glb|gltf|bin|png|jpg)$/);assert.ok(!f.path.split('/').includes('..'));assert.ok(!/(?:serve|hooks|qa)/.test(f.path));
+  assert.ok(/^[a-zA-Z0-9_\-./]+\.(js|html|json|glb|gltf|bin|png|jpg)$/.test(f.path)||['PROCEDURAL-NOTICE.txt','assets/wild-grass/LICENSE.txt','assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr'].includes(f.path),'Unexpected public file '+f.path);assert.ok(!f.path.split('/').includes('..'));assert.ok(!/(?:serve|hooks|qa)/.test(f.path));
   const bytes=readFileSync(resolve(out,f.path));assert.equal(hash(bytes),f.sha256);
   assert.equal(hash(readFileSync(resolve(game,f.path))),f.sha256,'Stale source '+f.path);
   assert.ok(!/(?:sk-proj-|ghp_|github_pat_)[A-Za-z0-9_-]{20,}/.test(bytes.toString()),'Credential-like output');
@@ -70,8 +77,10 @@ if(number){
   const prepared=JSON.parse(readFileSync(resolve(repo,'.local/sunbreak-river-prepared.json')));
   validatePreparedPR(pr,prepared);
   const pinnedRelease=validateManifest(execFileSync('git',['show',prepared.head+':'+subtree+'public-release.json'],{cwd:repo,maxBuffer:8e6}),prepared);
-  const files=await api('/pulls/'+number+'/files?per_page=100');
-  assert.ok(files.length>0&&files.length<100&&files.every(f=>f.filename.startsWith(subtree)));
+  const prInfo=await api('/pulls/'+number),files=[];
+  assert.ok(Number.isInteger(prInfo.changed_files)&&prInfo.changed_files>0&&prInfo.changed_files<=3000,'Unexpected PR changed_files count');
+  for(let page=1;page<=30;page++){const batch=await api('/pulls/'+number+'/files?per_page=100&page='+page);assert.ok(Array.isArray(batch));files.push(...batch);if(batch.length<100)break}
+  assert.ok(files.length>0&&files.length===prInfo.changed_files&&new Set(files.map(f=>f.filename)).size===files.length&&files.every(f=>f.filename.startsWith(subtree)&&(!f.previous_filename||f.previous_filename.startsWith(subtree))),'PR must change only '+subtree+' and every changed file must be listed');
   assert.equal(pr.head.repo.full_name,'Luciuswang/neon-cleaner-demo');
   assert.ok(pr.state==='open'&&!pr.draft&&pr.mergeable===true&&pr.mergeable_state==='clean');
   assert.ok([...latest.values()].filter(v=>v==='APPROVED').length>=required&&![...latest.values()].includes('CHANGES_REQUESTED'));

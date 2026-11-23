@@ -1,0 +1,529 @@
+{
+  "task": "river-reference-house-2026-11-20",
+  "date": "2026-11-23T03:21:56.434Z",
+  "profile": "offscreen-cinematic-v1",
+  "scope": "Playable single-player web demo; not AAA/performance certification",
+  "sourceSha256": {
+    "aim-assist.js": "ba94cf715e992baeca18aa1b86d5244a5f07022ae8377cd8541338ddbb1431d5",
+    "map-layout.js": "4e298c4e6a6aa488e6484d0959d33f7f48f91c3fd6e025fadf9850db90514a88",
+    "village.js": "affd736cfc78fcec2c61a9db9824c010feeb42d00fa219fdf555bdc82b696465",
+    "index.html": "f77d49d7812e905980801e5a36f0cf954ce8357d60cce5a7c3b7634fefcfaa4f",
+    "qa/assist-reference-checks.mjs": "8300d5c79ed83dea56c786d59f58c116075b03c554086de8b963e07fb1b9191e",
+    "qa/reference-house-checks.mjs": "ca17f39d0d024a8a59314f27f4f377d98ef39589bccfde132d1f7b5f181916a2"
+  },
+  "orchestration": "Fable planned, gated, generated runtime and QA. Coordinator mechanically applied outputs, ran tests, inspected captures, and handled release.",
+  "gatewayReportedOnly": true,
+  "modelCalls": [
+    {
+      "phase": "assist",
+      "stamp": "2026-11-23T02-59-47.746Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 29248,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 13303,
+        "output_tokens_details": {
+          "thinking_tokens": 6759
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 29248
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.824632
+    },
+    {
+      "phase": "fix",
+      "stamp": "2026-11-23T03-02-25.981Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 8221,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 9273,
+        "output_tokens_details": {
+          "thinking_tokens": 6313
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 8221
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.453162
+    },
+    {
+      "phase": "gate",
+      "stamp": "2026-11-23T02-56-49.944Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 12,
+        "cache_creation_input_tokens": 92057,
+        "cache_read_input_tokens": 44276,
+        "output_tokens": 7238,
+        "output_tokens_details": {
+          "thinking_tokens": 6309
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 92057
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 1.2190412000000002
+    },
+    {
+      "phase": "gate",
+      "stamp": "2026-11-23T02-57-37.483Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 44308,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 2452,
+        "output_tokens_details": {
+          "thinking_tokens": 2032
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 44308
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.541192
+    },
+    {
+      "phase": "house",
+      "stamp": "2026-11-23T03-09-35.685Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": false,
+      "code": 1,
+      "usage": {
+        "input_tokens": 12,
+        "cache_creation_input_tokens": 63615,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 48000,
+        "output_tokens_details": {
+          "thinking_tokens": 48000
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 63615
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 3.4095679999999997
+    },
+    {
+      "phase": "housecheck",
+      "stamp": "2026-11-23T03-14-05.976Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 13417,
+        "cache_read_input_tokens": 6850,
+        "output_tokens": 12032,
+        "output_tokens_details": {
+          "thinking_tokens": 6548
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 13417
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.616884
+    },
+    {
+      "phase": "layout",
+      "stamp": "2026-11-23T03-10-37.786Z",
+      "requested": "claude-fable-5-2",
+      "returned": [],
+      "ok": false,
+      "status": 400,
+      "cost": null
+    },
+    {
+      "phase": "layout",
+      "stamp": "2026-11-23T03-11-45.867Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 5081,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 4592,
+        "output_tokens_details": {
+          "thinking_tokens": 3482
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 5081
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.23452199999999998
+    },
+    {
+      "phase": "mesh",
+      "stamp": "2026-11-23T03-10-37.891Z",
+      "requested": "claude-fable-5-2",
+      "returned": [],
+      "ok": false,
+      "status": 400,
+      "cost": null
+    },
+    {
+      "phase": "mesh",
+      "stamp": "2026-11-23T03-13-41.122Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 12,
+        "cache_creation_input_tokens": 21639,
+        "cache_read_input_tokens": 7567,
+        "output_tokens": 14069,
+        "output_tokens_details": {
+          "thinking_tokens": 12681
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 21639
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.7807594
+    },
+    {
+      "phase": "plan",
+      "stamp": "2026-11-23T02-55-10.660Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 46817,
+        "cache_read_input_tokens": 43249,
+        "output_tokens": 4508,
+        "output_tokens_details": {
+          "thinking_tokens": 3170
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 46817
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.6572038000000001
+    },
+    {
+      "phase": "release",
+      "stamp": "2026-11-23T02-59-59.790Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 6212,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 4502,
+        "output_tokens_details": {
+          "thinking_tokens": 3141
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 6212
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.242232
+    },
+    {
+      "phase": "review",
+      "stamp": "2026-11-23T03-17-59.634Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 17621,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 3517,
+        "output_tokens_details": {
+          "thinking_tokens": 3110
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 17621
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.31692200000000004
+    },
+    {
+      "phase": "roof",
+      "stamp": "2026-11-23T03-20-03.372Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 8,
+        "cache_creation_input_tokens": 14419,
+        "cache_read_input_tokens": 7852,
+        "output_tokens": 7071,
+        "output_tokens_details": {
+          "thinking_tokens": 6163
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 14419
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.42866439999999995
+    },
+    {
+      "phase": "trim",
+      "stamp": "2026-11-23T03-16-06.147Z",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 6513,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 2703,
+        "output_tokens_details": {
+          "thinking_tokens": 1822
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 6513
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.173282
+    }
+  ],
+  "reportedUsdTotal": 9.8980648,
+  "localBrowser": {
+    "views": [
+      {
+        "name": "west-front",
+        "sha": "a89c4d0901aa8f503a831018b5dce387cfff14cbe69ee8f8dc2af13ca89ab150",
+        "lit": 13327
+      },
+      {
+        "name": "west-quarter",
+        "sha": "e6452112a9e54bb7a6256c785eab357ae0b2752e4f86f6c77efa62c1f6e645d0",
+        "lit": 12942
+      },
+      {
+        "name": "east-front",
+        "sha": "7dc5eb570496afe022fcca377b9365fa84e5cf6ed4ed8664240b668f051d5d7f",
+        "lit": 12729
+      },
+      {
+        "name": "west-rear",
+        "sha": "f21da02dc3ff5dc547d7aa0acad4287b2d33be50aaa8bf9a077c2e330f5597e9",
+        "lit": 12621
+      },
+      {
+        "name": "west-gable",
+        "sha": "2103f2a405c268f4723243ccf2e9767961b32ca842bb5d59927b2cc80d792e22",
+        "lit": 13344
+      },
+      {
+        "name": "playing",
+        "sha": "524a74da3ab0a42233c37757ae1077847733cbadf90540c7c437619342138ed5",
+        "lit": 13478
+      },
+      {
+        "name": "narrow",
+        "sha": "18a25c73c5b9ffb75c7171170db0bc71e5b8a5d840b24bacfee1c729be0c5bf7",
+        "lit": 12484
+      }
+    ],
+    "switchBefore": "辅助瞄准：开",
+    "switchOff": "辅助瞄准：关",
+    "ammo": {
+      "mag": 27,
+      "reserve": 90
+    },
+    "errors": [],
+    "failed": []
+  },
+  "checks": {
+    "referenceHouse": 21,
+    "combatFeedback": 19,
+    "assist": "PASS",
+    "mapPolish": "PASS",
+    "village": {
+      "draws": 14,
+      "triangles": 92894
+    },
+    "unchangedEarlierDemos": true,
+    "legacyPolishIdentity": "FAIL (intentionally replaced map-layout and index; historical tests unmodified), other 12 preserved files match",
+    "continuousMotion": "not certified",
+    "strictFramePacing": "prior failure not cleared"
+  },
+  "independentReview": "CONDITIONAL PASS\n\nThe supplied code matches the agreed dimensions: facade, posts, bays, window, bench blockage, roof function, wood materials, intact-only scope, enemy-only bay blockers and input-gated aim assist. Nothing was run here.\n\nConditions before public release:\n\n1. **Roof clipping (likely blocker).** Retained walls top out at y=3.3, but the new roof is only about 3.08 at x=±3.5 and drops below 3.3 beyond |x|≈2.9. The rear wall top and all four end-wall corners should poke through the shingles by up to 0.2. The three viewpoints don't evidently cover rear or gable; capture those and fix if confirmed.\n\n2. **Failing legacy suite.** polish-preservation-checks fails. \"By design\" needs a recorded owner waiver limited to the whole-map and HTML identity cases, with every other case shown passing.\n\n3. **Public URL.** The remote browser run after the PR deploys is still outstanding: no console or HTTP errors, and the toggle persists.\n\n4. **Frame pacing.** State in the release notes that it is uncertified.\n\nMinor: the intact rear window now has no frame or shutters; confirm that is intended.",
+  "releaseQualification": "New house/header geometry and aim input intentionally supersede only the legacy whole-file map and whole-HTML identity contract for this single-player river revision. No blanket waiver or AAA release. Original historical test remains red; all other 12 byte-pinned files and four hooks were checked. Roof-edge clearance now tested on both houses; see rear/gable captures."
+}

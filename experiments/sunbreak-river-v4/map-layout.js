@@ -24,6 +24,24 @@ export function rubbleHeight(x,z){let y=0;for(const m of rubbleMounds){if(Math.a
 export const walls=[];
 function wall(id,x,y,z,w,h,d,material,houseId=null){walls.push({id,x,y,z,w,h,d,material,houseId})}
 for(const h of houses){
+ if(!h.ruin){
+  const r=-h.side,fx=h.x+r*2.75,bx=h.x+h.side*3.5,W=(n,x,y,z,w,t,d)=>wall(h.id+n,x,y,z,w,t,d,'wood',h.id);
+  for(const e of [-1,1]){
+   for(const s of [-1,1])W(`-end-${e}-${s}`,h.x+s*2.2,1.45,h.z+e*3.5,2.6,2.9,.28);
+   W('-lintel-'+e,h.x,2.88,h.z+e*3.5,1.8,.84,.28);
+   W(`-pier-${h.side}-${e}`,bx,1.95,h.z+e*2.2,.28,1.9,2.6);
+   W(`-facade-end-${e}`,fx,1.15,h.z+e*3.1625,.2,2.3,.675);
+   W(`-facade-jamb-${e}`,fx,1.425,h.z+e*.9,.2,.85,.95);
+   for(const p of [1.3,3.9])W(`-post-${e}-${p}`,h.x+r*4.1,1.325,h.z+e*p,.14,2.65,.14);
+  }
+  W(`-side-base-${h.side}`,bx,.5,h.z,.28,1,7);
+  W(`-window-head-${h.side}`,bx,2.68,h.z,.28,.44,1.8);
+  W('-facade-base',fx,.5,h.z,.2,1,2.75);
+  W('-facade-mid',fx,2.075,h.z,.2,.45,2.75);
+  W('-facade-head',fx,2.8,h.z,.2,1,7);
+  W('-bench-0',h.x+r*3.3,.25,h.z,.5,.5,1.6);
+  continue;
+ }
  const height=h.ruin===2?1.05:h.h;
  for(const end of [-1,1]){
   for(const side of [-1,1])wall(h.id+`-end-${end}-${side}`,h.x+side*2.2,height/2,h.z+end*3.5,2.6,height,.28,'plaster',h.id);
@@ -57,7 +75,7 @@ export function wallTopAt(w,x,z,r=0){
 }
 export const bounds=walls.map(b=>({min:{x:b.x-b.w/2,y:b.y-b.h/2,z:b.z-b.d/2},max:{x:b.x+b.w/2,y:b.y+b.h/2,z:b.z+b.d/2},id:b.id,...b.profile?{profileWall:b}:{}}));
 // NPCs use the outside buffer routes; indoor navigation is not introduced.
-export const navigationBounds=[...bounds,...bufferPlacements.map(p=>({id:p.id,...createHouseTransform(p).localBounds(CABIN_NAVIGATION_LOCAL_BOUNDS)}))];
+export const navigationBounds=[...bounds,...houses.filter(h=>!h.ruin).flatMap(h=>[-1,1].map(s=>{const x=h.x-h.side*2.75,z=h.z+s*2.1;return{id:`${h.id}-bay-nav-${s}`,min:{x:x-.1,y:0,z:z-.725},max:{x:x+.1,y:2.3,z:z+.725}}})),...bufferPlacements.map(p=>({id:p.id,...createHouseTransform(p).localBounds(CABIN_NAVIGATION_LOCAL_BOUNDS)}))];
 export const spawns=[[-25,0,-25],[25,0,-25],[-9,0,-10],[9,0,-10],[-25,0,20],[25,0,20]];
 export function riverWidth(z){return 3.4+.8*Math.cos(z*.17)+.35*Math.sin(z*.47)}
 export function groundHeight(x,z){
@@ -89,6 +107,7 @@ export function blocked(x,z,r=.4,y=1.6,actor='player'){
 }
 export function roofHeight(x,z){
  for(const h of houses){
+  if(!h.ruin){if(Math.abs(x-h.x)>4.7||Math.abs(z-h.z)>4.2)continue;return 2.65+1.7*(1-Math.abs(x-h.x)/4.7)}
   if(Math.abs(x-h.x)>3.8||Math.abs(z-h.z)>3.8||h.ruin===2)continue;
   if(h.ruin===1&&z>h.z)continue;
   return h.h+1.7*(1-Math.abs(x-h.x)/3.8);

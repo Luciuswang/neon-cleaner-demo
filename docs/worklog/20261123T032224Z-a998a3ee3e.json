@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261123T032224Z-a998a3ee3e",
+  "task_id": "river-reference-house-2026-11-20",
+  "timestamp_utc": "2026-11-23T03:22:24.183760+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Playable river demo: Fable 5.2 authored aim assist and two traversable timber houses. Scope checked: 21 house checks and real fallback WebGL. Prior strict performance and legacy HTML/map identity not certified. Preparing Pages release. No private asset changes.",
+  "commit_shas": [
+    "56de46d9f00d562c89c3a82b04f37092cc74f1dd"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

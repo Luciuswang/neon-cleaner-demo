@@ -11,6 +11,7 @@ const git=args=>execFileSync('git',args,{cwd:repo,encoding:'utf8',maxBuffer:8e6}
 const runtime=['index.html','world.js','village.js','ruins.js','fracture-geometry.js','buffer-house.js','buffer-house-logic.js','timber-house.js','house-logic.js','vegetation.js','map-layout.js','terrain-ray.js','weapon.js','actors.js','audio.js','storm-audio.js','tactical-ai.js','boot-ui.js','combat-controls.js','reload-pose.js','credits.html','asset-sources.json','foliage-derivatives.json','foliage-revision.json','fable-production.json','fable-art-revision.json','weapon-provenance.json','soldier-provenance.json'];
 runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','ground-moisture.js','daylight-assets.json','afterrain-assets.json','wild-grass-assets.json');
 runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','masonry-materials.js');
+runtime.push('aim-assist.js');
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
 runtime.push('environment-polish.js','stone-cover.js','combat-feedback.js','shot-feedback-event.js');
 runtime.push('procedural-materials.js','procedural-ground.js','afterrain-ground.js','afterrain-light.js','forest-floor.js','puddle-reflection.js','fieldstone-surface.js','scan-cover.js','PROCEDURAL-NOTICE.txt');
@@ -54,5 +55,9 @@ assert.deepEqual((await actualTree(out)).sort(),[...files.map(f=>f.path),'public
 const receipt={schema:'river-public-package-exclusion-v1',pass:true,builderSHA256:hash(await readFile(fileURLToPath(import.meta.url))),releaseSHA256:hash(await readFile(resolve(out,'public-release.json'))),files:files.length,bytes:files.reduce((n,f)=>n+f.bytes,0),sharedDependenciesVerified:sharedFiles.length,privateGLBsChecked:privateAssets.length,privateManifestSHA256:hash(await readFile(resolve(repo,'.local/river-downloaded-assets/manifest.json'))),privateBinariesIncluded:false,publiclyDeployed:false,packageFiles:files,importClosure,checks:['fresh output directory','all emitted file bytes match source','no imported model filename or content hash','no local metadata manifest','exact recursive output whitelist','shared public dependency hashes unchanged','relative JS and HTML runtime import closure']};
 const reportName=process.argv.find(a=>a.startsWith('--report='))?.slice(9)||'downloaded-package.json';
 assert.match(reportName,/^[a-z0-9-]+\.json$/,'Unsafe package receipt filename');
-await writeFile(resolve(root,'qa',reportName),JSON.stringify(receipt,null,2)+'\n');
-console.log(JSON.stringify({out,files:receipt.files,bytes:receipt.bytes,privateAssetsExcluded:privateAssets.length,sharedVerified:sharedFiles.length}));
+// --local-report: postcommit exact-HEAD build keeps the tree clean; receipt goes to a fresh .local sibling of the build, never inside the bundle.
+const reportDir=process.argv.includes('--local-report')?await mkdtemp(resolve(repo,'.local/sunbreak-river-report-')):resolve(root,'qa');
+const reportPath=resolve(reportDir,reportName);
+assert.ok(!reportPath.startsWith(out),'Package receipt must stay outside the bundle');
+await writeFile(reportPath,JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify({out,report:reportPath,files:receipt.files,bytes:receipt.bytes,privateAssetsExcluded:privateAssets.length,sharedVerified:sharedFiles.length}));

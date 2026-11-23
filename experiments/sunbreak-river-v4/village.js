@@ -87,6 +87,32 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     for (const w of walls) {
       if (w.houseId === h.id && Math.abs(w.x - X) < .5 && Math.abs(Math.abs(w.z - Z) - 3.5) < .4 && w.y - w.h / 2 > 1) dh = w.y - w.h / 2;
     }
+    if(ruin===0){
+      const A2=Math.atan2(1.7,4.7),S2=Math.hypot(4.7,1.7),tn=['wood','woodA','woodB'],tc=[0x8a6352,0x7d5a4c,0x967060,0x74584e,0x8c6a58,0x857468];
+      for(const s of [-1,1]){
+        both('roof',S2,.12,8.4,X+s*2.35,3.5,Z,-s*A2,ud);
+        for(let i=0;i<15;i++)for(let j=0;j<40;j++){const t=(i+.5)/15;
+          tiles.push({x:X+s*4.7*(1-t)+s*Math.sin(A2)*.09,y:2.65+1.7*t+Math.cos(A2)*.09+(i%2)*.012,z:Z-4.2+(j+.5)*.21,rz:-s*A2,sx:4/3,tint:tc[(R()*6)|0]});}
+      }
+      for(let j=0;j<30;j++)tiles.push({x:X,y:4.45,z:Z-4.2+(j+.5)*.28,rz:0,ry:Math.PI/2,sc:1.35,tint:tc[(R()*6)|0]});
+      add('wood',.16,.16,8.2,X-h.side*4.1,2.7,Z);
+      for(const w of walls)if(w.houseId===h.id&&w.material==='wood'){
+        if(/bench/.test(w.id)){
+          add('woodA',w.w+.08,.05,w.d+.08,w.x,w.y+w.h/2+.025,w.z);
+          for(const sz of [-1,1])add('woodB',w.w+.03,w.h,.08,w.x,w.y,w.z+sz*(w.d/2-.06));
+        }else if(/post/.test(w.id))add('woodB',.7,.07,.07,w.x+h.side*.25,2.37,w.z,h.side*Math.PI/4);
+        else{const n=Math.max(1,Math.round(w.h/.22)),bh=w.h/n,zr=w.w<w.d;
+          for(let i=0;i<n;i++)add(tn[(R()*3)|0],w.w+(zr?.04:0),bh-.02,w.d+(zr?0:.04),w.x,w.y-w.h/2+(i+.5)*bh,w.z);}
+      }
+      for(const e of [-1,1])for(let i=0;i<8;i++){const y=2.65+i*.2125,gw=Math.min(7.2,9.4*(4.1375-y)/1.7-.1);
+        if(gw>.1)both(tn[(R()*3)|0],gw,.22,.12,X,y+.106,Z+e*3.5,0,ud);}
+      for(const e of [-1,1])for(const s of [-1,1])add('woodB',S2,.2,.1,X+s*2.35,3.38,Z+e*3.5,-s*A2);
+      for(const sz of [-1,1]){
+        for(const s of [-1,1])add('wood',.1,dh,.5,X+s*1.16,dh/2,Z+sz*3.5);
+        add('wood',2.6,.14,.52,X,dh+.07,Z+sz*3.5);
+      }
+      continue;
+    }
     // roof slabs, tile courses, ridge cap
     const len = ruin === 0 ? 7.6 : 3.8, cz = ruin === 0 ? Z : Z - 1.9;
     if (ruin < 2) {
@@ -193,7 +219,7 @@ export function buildVillage({ T, world, materials, layout, solids }) {
 
   const tileGeometry=new T.CylinderGeometry(.115,.115,.34,8,1,true,0,Math.PI);tileGeometry.rotateZ(Math.PI/2);
   const tileMesh=new T.InstancedMesh(tileGeometry,M.tile,tiles.length),dummy=new T.Object3D(),color=new T.Color();
-  tiles.forEach((t,i)=>{dummy.position.set(t.x,t.y,t.z);dummy.rotation.set(0,0,t.rz);dummy.updateMatrix();tileMesh.setMatrixAt(i,dummy.matrix);color.setScalar(.8+(i%7)*.035);tileMesh.setColorAt(i,color)});
+  tiles.forEach((t,i)=>{dummy.position.set(t.x,t.y,t.z);dummy.rotation.set(0,t.ry||0,t.rz);dummy.scale.setScalar(t.sc||1);if(t.sx)dummy.scale.x*=t.sx;dummy.updateMatrix();tileMesh.setMatrixAt(i,dummy.matrix);if(t.tint){color.set(t.tint);color.r/=M.tile.color.r;color.g/=M.tile.color.g;color.b/=M.tile.color.b}else color.setScalar(.8+(i%7)*.035);tileMesh.setColorAt(i,color)});
   tileMesh.castShadow=tileMesh.receiveShadow=true;tileMesh.computeBoundingSphere();G.add(tileMesh);
 
   // flush batches: one mesh per material

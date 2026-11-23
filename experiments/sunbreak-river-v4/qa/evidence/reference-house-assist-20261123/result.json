@@ -1,0 +1,396 @@
+{
+  "target": "http://127.0.0.1:5190/river/?dressing=off",
+  "errors": [],
+  "consoleErrors": [],
+  "failed": [],
+  "views": [
+    {
+      "name": "west-front",
+      "sha": "a89c4d0901aa8f503a831018b5dce387cfff14cbe69ee8f8dc2af13ca89ab150",
+      "lit": 13327
+    },
+    {
+      "name": "west-quarter",
+      "sha": "e6452112a9e54bb7a6256c785eab357ae0b2752e4f86f6c77efa62c1f6e645d0",
+      "lit": 12942
+    },
+    {
+      "name": "east-front",
+      "sha": "7dc5eb570496afe022fcca377b9365fa84e5cf6ed4ed8664240b668f051d5d7f",
+      "lit": 12729
+    },
+    {
+      "name": "west-rear",
+      "sha": "f21da02dc3ff5dc547d7aa0acad4287b2d33be50aaa8bf9a077c2e330f5597e9",
+      "lit": 12621
+    },
+    {
+      "name": "west-gable",
+      "sha": "2103f2a405c268f4723243ccf2e9767961b32ca842bb5d59927b2cc80d792e22",
+      "lit": 13344
+    },
+    {
+      "name": "playing",
+      "sha": "524a74da3ab0a42233c37757ae1077847733cbadf90540c7c437619342138ed5",
+      "lit": 13478
+    },
+    {
+      "name": "narrow",
+      "sha": "18a25c73c5b9ffb75c7171170db0bc71e5b8a5d840b24bacfee1c729be0c5bf7",
+      "lit": 12484
+    }
+  ],
+  "spawn": {
+    "state": "menu",
+    "version": "river-v4",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 100,
+    "ammo": {
+      "mag": 30,
+      "reserve": 90
+    },
+    "kills": 0,
+    "firing": {
+      "mouse": false,
+      "keyboard": false,
+      "held": false
+    },
+    "reloadSeconds": 2.25,
+    "reloadProgress": 0,
+    "shots": 0,
+    "aimAssist": {
+      "enabled": true,
+      "target": null
+    },
+    "camera": {
+      "x": -26,
+      "y": 1.7,
+      "z": 22,
+      "yaw": -1.35,
+      "pitch": -0.06
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -25,
+        "y": 0,
+        "z": -25,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 25,
+        "y": 0,
+        "z": -25,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -9,
+        "y": 0,
+        "z": -10,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 9,
+        "y": 0,
+        "z": -10,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      }
+    ],
+    "tactical": {
+      "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+      "elapsed": 0,
+      "totalShots": 0,
+      "totalMovementMeters": 0,
+      "decisions": 0,
+      "navigation": {
+        "width": 83,
+        "height": 78,
+        "blocked": 771,
+        "cells": 6474
+      },
+      "coverPairs": 320,
+      "actors": [
+        {
+          "id": 0,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 1,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 2,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 3,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 4,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 5,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        }
+      ]
+    }
+  },
+  "switchBefore": "辅助瞄准：开",
+  "switchOff": "辅助瞄准：关",
+  "play": {
+    "state": "play",
+    "version": "river-v4",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 100,
+    "ammo": {
+      "mag": 27,
+      "reserve": 90
+    },
+    "kills": 0,
+    "firing": {
+      "mouse": false,
+      "keyboard": false,
+      "held": false
+    },
+    "reloadSeconds": 2.25,
+    "reloadProgress": 0,
+    "shots": 3,
+    "aimAssist": {
+      "enabled": true,
+      "target": null
+    },
+    "camera": {
+      "x": -24.54,
+      "y": 1.7,
+      "z": 21.67,
+      "yaw": -1.35,
+      "pitch": -0.06
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -24.2,
+        "y": 0,
+        "z": -23.13,
+        "mode": "advance",
+        "stance": 0.30124904634029553
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 23.38,
+        "y": 0,
+        "z": -25.81,
+        "mode": "advance",
+        "stance": 0.30251527044952614
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -10.35,
+        "y": 0,
+        "z": -9.47,
+        "mode": "advance",
+        "stance": 0.30754345527532867
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 8.14,
+        "y": 0,
+        "z": -9.22,
+        "mode": "advance",
+        "stance": 0.3188456164487754
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      }
+    ],
+    "tactical": {
+      "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+      "elapsed": 0.9041000003814698,
+      "totalShots": 0,
+      "totalMovementMeters": 6.461550000429141,
+      "decisions": 6,
+      "navigation": {
+        "width": 83,
+        "height": 78,
+        "blocked": 771,
+        "cells": 6474
+      },
+      "coverPairs": 320,
+      "actors": [
+        {
+          "id": 0,
+          "role": "cover rifleman",
+          "mode": "advance",
+          "cover": "25:0:-1:1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 2.034225000858304,
+          "stance": 0.30124904634029553,
+          "pathPoints": 2
+        },
+        {
+          "id": 1,
+          "role": "corner rifleman",
+          "mode": "advance",
+          "cover": "84:1:0:1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 1.8092250008582904,
+          "stance": 0.30251527044952614,
+          "pathPoints": 4
+        },
+        {
+          "id": 2,
+          "role": "cover rifleman",
+          "mode": "advance",
+          "cover": "26:0:-1:-1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 1.4561999995708512,
+          "stance": 0.30754345527532867,
+          "pathPoints": 2
+        },
+        {
+          "id": 3,
+          "role": "corner rifleman",
+          "mode": "advance",
+          "cover": "36:0:-1:1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 1.1618999991416958,
+          "stance": 0.3188456164487754,
+          "pathPoints": 2
+        },
+        {
+          "id": 4,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 5,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        }
+      ]
+    }
+  },
+  "ok": true
+}
