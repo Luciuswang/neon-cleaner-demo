@@ -1,0 +1,374 @@
+{
+  "target": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "errors": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 ()",
+    "Failed to load resource: the server responded with a status of 404 ()"
+  ],
+  "failed": [],
+  "views": [
+    {
+      "name": "playing",
+      "sha": "ad147166c420e29f4c15d67afb57677d6831d1fd29600b83312d0ef7c4ad90e5",
+      "lit": 13496
+    },
+    {
+      "name": "narrow",
+      "sha": "25eb6a9b44885abf1c19c71fcffa3b1494c268b7bfae9077a060ccd47f06aff8",
+      "lit": 12486
+    }
+  ],
+  "spawn": {
+    "state": "menu",
+    "version": "river-v4",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 100,
+    "ammo": {
+      "mag": 30,
+      "reserve": 90
+    },
+    "kills": 0,
+    "firing": {
+      "mouse": false,
+      "keyboard": false,
+      "held": false
+    },
+    "reloadSeconds": 2.25,
+    "reloadProgress": 0,
+    "shots": 0,
+    "aimAssist": {
+      "enabled": true,
+      "target": null
+    },
+    "camera": {
+      "x": -26,
+      "y": 1.7,
+      "z": 22,
+      "yaw": -1.35,
+      "pitch": -0.06
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -25,
+        "y": 0,
+        "z": -25,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 25,
+        "y": 0,
+        "z": -25,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -9,
+        "y": 0,
+        "z": -10,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 9,
+        "y": 0,
+        "z": -10,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      }
+    ],
+    "tactical": {
+      "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+      "elapsed": 0,
+      "totalShots": 0,
+      "totalMovementMeters": 0,
+      "decisions": 0,
+      "navigation": {
+        "width": 83,
+        "height": 78,
+        "blocked": 771,
+        "cells": 6474
+      },
+      "coverPairs": 320,
+      "actors": [
+        {
+          "id": 0,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 1,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 2,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 3,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 4,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 5,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        }
+      ]
+    }
+  },
+  "switchBefore": "辅助瞄准：开",
+  "switchOff": "辅助瞄准：关",
+  "play": {
+    "state": "play",
+    "version": "river-v4",
+    "style": "热带竞技",
+    "styleIndex": 0,
+    "health": 100,
+    "ammo": {
+      "mag": 27,
+      "reserve": 90
+    },
+    "kills": 0,
+    "firing": {
+      "mouse": false,
+      "keyboard": false,
+      "held": false
+    },
+    "reloadSeconds": 2.25,
+    "reloadProgress": 0,
+    "shots": 3,
+    "aimAssist": {
+      "enabled": true,
+      "target": null
+    },
+    "camera": {
+      "x": -24.55,
+      "y": 1.7,
+      "z": 21.68,
+      "yaw": -1.35,
+      "pitch": -0.06
+    },
+    "enemies": [
+      {
+        "i": 0,
+        "alive": true,
+        "hp": 100,
+        "x": -24.21,
+        "y": 0,
+        "z": -23.14,
+        "mode": "advance",
+        "stance": 0.3013035356911685
+      },
+      {
+        "i": 1,
+        "alive": true,
+        "hp": 100,
+        "x": 23.45,
+        "y": 0,
+        "z": -25.77,
+        "mode": "advance",
+        "stance": 0.30320682175028146
+      },
+      {
+        "i": 2,
+        "alive": true,
+        "hp": 100,
+        "x": -10.37,
+        "y": 0,
+        "z": -9.46,
+        "mode": "advance",
+        "stance": 0.30720791938670144
+      },
+      {
+        "i": 3,
+        "alive": true,
+        "hp": 100,
+        "x": 8.13,
+        "y": 0,
+        "z": -9.21,
+        "mode": "advance",
+        "stance": 0.31827401929383736
+      },
+      {
+        "i": 4,
+        "alive": true,
+        "hp": 100,
+        "x": -25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      },
+      {
+        "i": 5,
+        "alive": true,
+        "hp": 100,
+        "x": 25,
+        "y": 0,
+        "z": 20,
+        "mode": "hide",
+        "stance": 1
+      }
+    ],
+    "tactical": {
+      "method": "authored cover-pair state machine + obstacle grid A*, not human simulation",
+      "elapsed": 0.898,
+      "totalShots": 0,
+      "totalMovementMeters": 6.394274996995917,
+      "decisions": 6,
+      "navigation": {
+        "width": 83,
+        "height": 78,
+        "blocked": 771,
+        "cells": 6474
+      },
+      "coverPairs": 320,
+      "actors": [
+        {
+          "id": 0,
+          "role": "cover rifleman",
+          "mode": "advance",
+          "cover": "25:0:-1:1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 2.020499999999997,
+          "stance": 0.3013035356911685,
+          "pathPoints": 2
+        },
+        {
+          "id": 1,
+          "role": "corner rifleman",
+          "mode": "advance",
+          "cover": "84:1:0:1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 1.7311499991416794,
+          "stance": 0.30320682175028146,
+          "pathPoints": 4
+        },
+        {
+          "id": 2,
+          "role": "cover rifleman",
+          "mode": "advance",
+          "cover": "26:0:-1:-1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 1.4708249995708504,
+          "stance": 0.30720791938670144,
+          "pathPoints": 2
+        },
+        {
+          "id": 3,
+          "role": "corner rifleman",
+          "mode": "advance",
+          "cover": "36:0:-1:1",
+          "shots": 0,
+          "bursts": 0,
+          "moves": 1.1717999982833887,
+          "stance": 0.31827401929383736,
+          "pathPoints": 2
+        },
+        {
+          "id": 4,
+          "role": "cover rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        },
+        {
+          "id": 5,
+          "role": "corner rifleman",
+          "mode": "hide",
+          "cover": null,
+          "shots": 0,
+          "bursts": 0,
+          "moves": 0,
+          "stance": 1,
+          "pathPoints": 0
+        }
+      ]
+    }
+  },
+  "ok": true
+}

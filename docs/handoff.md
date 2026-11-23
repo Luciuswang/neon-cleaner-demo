@@ -769,3 +769,7 @@ Generated repository-only biweekly report for 2026-11-08 through 2026-11-21 from
 ## Sync note - 2026-11-23T11:22:23.4078678+08:00
 
 Playable river demo: Fable 5.2 authored aim assist and two traversable timber houses. Scope checked: 21 house checks and real fallback WebGL. Prior strict performance and legacy HTML/map identity not certified. Preparing Pages release. No private asset changes.
+
+## Sync note - 2026-11-23T11:29:46.2952158+08:00
+
+PR 11 merged; public Pages source 9c2f6ef verified. Public Chrome manual-input smoke passed; email sent. Four changed runtime files matched live hashes. All-resource check timed out and two console 404s were not attributed; no exhaustive network/AAA claim.

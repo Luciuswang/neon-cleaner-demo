@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261123T032946Z-5c18b5c538",
+  "task_id": "river-reference-house-2026-11-20",
+  "timestamp_utc": "2026-11-23T03:29:46.718984+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "PR 11 merged; public Pages source 9c2f6ef verified. Public Chrome manual-input smoke passed; email sent. Four changed runtime files matched live hashes. All-resource check timed out and two console 404s were not attributed; no exhaustive network/AAA claim.",
+  "commit_shas": [
+    "9c2f6ef5642fd25ebc99b03bf6c474c2b7591b1b"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

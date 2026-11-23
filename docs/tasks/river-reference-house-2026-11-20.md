@@ -55,3 +55,16 @@ change. Its historical test was not edited and does not pass; the other 12
 protected sources and four feedback hooks are intact. This is a scoped demo,
 not a strict AAA or frame-pacing signoff. Preserve the unrelated dirty private
 vault; verified unchanged 12-GLB web snapshot, no new private dependencies.
+
+## Delivery (completed 2026-11-23)
+
+Protected GitHub PR #11 merged to main at 9d19ddc8337762f3b23c5f5f35494a20117be24a.
+The anonymous Pages manifest identifies source 9c2f6ef5642fd25ebc99b03bf6c474c2b7591b1b;
+live HTML, layout, village mesh and aim module match the prepared hashes. No
+other public subtree changed. Public WebGL smoke passed: toggle survives
+reload, movement, three manually triggered shots, desktop/narrow canvas pixels.
+No page exception or failed response in the page response log. Two unattributed
+404 console entries remain; the all-assets live hash sweep also timed out.
+Do not claim an exhaustive clean network run. The playable URL was sent to
+the user via their connected Gmail account and the send receipt was confirmed.
+URL: https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/
