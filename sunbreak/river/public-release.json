@@ -1,13 +1,13 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "4d2c8b637b64e8e95ea5d8027222134f183e9671",
-  "created": "2026-11-23T09:04:39.915Z",
+  "sourceCommit": "4481321ae367493da3422c8f457d049ca027c830",
+  "created": "2026-11-23T12:15:17.410Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
       "path": "index.html",
-      "bytes": 43514,
-      "sha256": "f77d49d7812e905980801e5a36f0cf954ce8357d60cce5a7c3b7634fefcfaa4f"
+      "bytes": 45527,
+      "sha256": "2f505a5a8bd141242a35f1b5593c453d02ee1f830a460376fcb012bd9e2dce31"
     },
     {
       "path": "world.js",
@@ -203,6 +203,31 @@
       "path": "aim-assist.js",
       "bytes": 4660,
       "sha256": "ba94cf715e992baeca18aa1b86d5244a5f07022ae8377cd8541338ddbb1431d5"
+    },
+    {
+      "path": "squads-sim.js",
+      "bytes": 19067,
+      "sha256": "cf5ca6f2c2435a210cd3c60266bc1ca53585814c3c575f55e95c22fde10a81c6"
+    },
+    {
+      "path": "squads-net.js",
+      "bytes": 15985,
+      "sha256": "1d6812f15949d07a437fe3cbf9b98cca09b9978a6e6c5dd03f94352b6509a3f9"
+    },
+    {
+      "path": "squads-view.js",
+      "bytes": 25465,
+      "sha256": "c68a2bea03294aabc4240805d93a22f17a920f488540d495735a5bf4b4d8d66b"
+    },
+    {
+      "path": "peer-runtime.js",
+      "bytes": 86948,
+      "sha256": "7604d8c31bec4f134b0d15c2d80b1d095ea18af005354f439f14291fcd7b4168"
+    },
+    {
+      "path": "peer-notice.html",
+      "bytes": 1210,
+      "sha256": "6327fa336429d08944a18527747c061adb191cafd34b2419c67ba8e91412888c"
     },
     {
       "path": "downloaded-dressing.js",
@@ -1038,5 +1063,5 @@
       "sha256": "96f686dabe1ec3754c0e1454c5f252af91017c134b2668eb9433a339205ab55c"
     }
   ],
-  "scope": "Separate single-player river map, retained v4 weapon/NPC animation; previous four pages unchanged. No multiplayer or AAA certification."
+  "scope": "Separate single-player river map, retained v4 weapon/NPC animation; previous four pages unchanged. Opt-in ?mode=squads adds an unranked friendly 4v4 prototype (browser-host WebRTC via PeerJS, host-labeled AI fill); solo loads no network code. No ranked play or AAA certification."
 }
