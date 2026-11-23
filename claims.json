@@ -18,12 +18,13 @@
     "river-floodplain-art-20261123": {
       "base_commit": "af606c896b3c249d7a748d706c9d54019ce21586",
       "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-23T16:43:59.916666+00:00",
+      "expires_at": "2026-11-23T16:53:22.438268+00:00",
       "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
       "scopes": [
         "experiments/sunbreak-river-v4/vegetation.js",
         "experiments/sunbreak-river-v4/riverbank-detail.js",
         "experiments/sunbreak-river-v4/distant-landscape.js",
+        "experiments/sunbreak-river-v4/world.js",
         "experiments/sunbreak-river-v4/qa/evidence/floodplain-20261123",
         "docs/tasks/river-floodplain-art-20261123.md",
         "docs/worklog",
@@ -31,7 +32,7 @@
         "docs/sprint-2026-08-24.md"
       ],
       "task_id": "river-floodplain-art-20261123",
-      "updated_at": "2026-11-23T08:43:59.916666+00:00"
+      "updated_at": "2026-11-23T08:53:22.438268+00:00"
     }
   },
   "schema": 1
