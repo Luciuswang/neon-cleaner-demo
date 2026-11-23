@@ -1,0 +1,9 @@
+**PASS**, conditional on these safeguards:
+
+- Draw calls stay at 2 and triangles at or below 400, confirmed with renderer.info before and after.
+- Hashes are seeded per impact, so there is no frame-to-frame shimmer.
+- No additive blending or emissive on wood or masonry; clamp their luminance near the surface albedo.
+- Water is fixed in world space, not offset relative to the gun, with depth-write off and correct sorting.
+- Remnants last exactly 1s.
+- Shader changes only: no gameplay, actor or asset changes.
+- Old and new captures use identical cameras, daylight and distance.

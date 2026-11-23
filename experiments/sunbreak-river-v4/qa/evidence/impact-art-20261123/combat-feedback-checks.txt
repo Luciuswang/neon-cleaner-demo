@@ -1,0 +1,200 @@
+{
+  "suite": "combat-feedback-cpu-v1",
+  "verdict": "PASS",
+  "passed": 19,
+  "total": 19,
+  "threeRevision": "160",
+  "sources": {
+    "weapon.js": "b917b883a9dabd02bb87105619ae1b239db23a788945e7dfb418a4612f851f65",
+    "combat-feedback.js": "b640f4f03624d550ee7a66c9921ec2ba2ffeb8f7f207d7101d8695fc68c05022",
+    "qa/combat-feedback-checks.mjs": "95c440d1c573b0e990a11f913b5de721672651df1baa3cf8ba1133abb6bab0e9",
+    "reload-pose.js": "fa68ce57a07fa318c348347598f64bf31d5b418dc0652f4cd20fcf1e4547e546",
+    "combat-controls.js": "a070dca84365b0d32a20e7572d14e16f08d60f5268a639dcf41597af88bef6e8",
+    "village.js": "72946fd3e422fe4c9c51c517e3d4f384a32beac674d9a5428718e116de0ff4f9",
+    "index.html": "f77d49d7812e905980801e5a36f0cf954ce8357d60cce5a7c3b7634fefcfaa4f",
+    "world.js": "e56f51149bd72d8ad40e4e092fc2a87e456fc659c9a10aa6d0d7ed8656cf18ce",
+    "source-mp5a5.glb": "90f223cbd44a75463a09b5cefaa594cbc8a61276ce31ba0b0734c8735701e1da"
+  },
+  "scope": "CPU imports, pinned rig/control code, actual Three math/raycast/material hooks, bounded particle state and shader-source checks. NOT GLSL driver compilation, GPU art/performance, actual controls or continuous animation acceptance.",
+  "checks": [
+    {
+      "name": "module imports and exact sleeve/reload/control invariants remain pinned",
+      "pass": true,
+      "evidence": {
+        "heldSleeve": "exact normalized SHA256 unchanged",
+        "reload": "unchanged",
+        "controls": "105ms cadence / 2.25s reload unchanged"
+      }
+    },
+    {
+      "name": "IBL patch covers both r160 PMREM directions and composes prior hooks/cache keys",
+      "pass": true
+    },
+    {
+      "name": "final roughness floor follows ORM multiplication, preserves authored texture variation and composes with IBL",
+      "pass": true
+    },
+    {
+      "name": "world light and IBL transforms preserve lighting under nested camera yaw pitch roll",
+      "pass": true,
+      "evidence": {
+        "orientations": 4,
+        "crossThreeCopies": true
+      }
+    },
+    {
+      "name": "weather/color/environment update without shader recompile or unowned world edits",
+      "pass": true
+    },
+    {
+      "name": "authoritative invisible village roof and cover occlude (render invisibility never skips shells)",
+      "pass": true,
+      "evidence": {
+        "invisibleAuthoritativeShell": true,
+        "shelterAndExit": true
+      }
+    },
+    {
+      "name": "single-sided roof, glass and finite probe range distinguish actual blockers",
+      "pass": true
+    },
+    {
+      "name": "probe budget is bounded at normal and stalled frame rates; freeze has no extra ray work",
+      "pass": true,
+      "evidence": {
+        "raysOver10s": 344,
+        "perTick": 4
+      }
+    },
+    {
+      "name": "explicit flash survives first update and several frames; no baseline intensity feedback loop",
+      "pass": true
+    },
+    {
+      "name": "fixed upper-side lobes clear actual decoded weapon and repaired arms in 100 aim/recoil/bob poses",
+      "pass": true,
+      "evidence": {
+        "socketMatchesActualBarrelTip": true,
+        "poses": 100,
+        "samplesPerPose": 24,
+        "minimumVisibleSamples": 12,
+        "fullyOccludedPoses": [],
+        "ADSVisibleRange": [
+          12,
+          24
+        ],
+        "representative": [
+          {
+            "aim": 0,
+            "recoil": 0,
+            "bob": 0,
+            "visibleLobeSamples": 12,
+            "total": 24,
+            "projectedAreaNDC": 0.0015982457555839217
+          },
+          {
+            "aim": 0,
+            "recoil": 1,
+            "bob": 0,
+            "visibleLobeSamples": 12,
+            "total": 24,
+            "projectedAreaNDC": 0.0018098668248503044
+          },
+          {
+            "aim": 1,
+            "recoil": 0,
+            "bob": 0,
+            "visibleLobeSamples": 12,
+            "total": 24,
+            "projectedAreaNDC": 0.0015761363393853398
+          },
+          {
+            "aim": 1,
+            "recoil": 1,
+            "bob": 0,
+            "visibleLobeSamples": 24,
+            "total": 24,
+            "projectedAreaNDC": 0.0017951343078263058
+          }
+        ],
+        "sourceArraysAndTextureBindings": "exactly preserved",
+        "limitation": "CPU geometric visibility only; center remains depth-occluded. GPU flash/readability and continuous-motion acceptance belong to root."
+      }
+    },
+    {
+      "name": "finite normalized hit validation, facing normal and no input mutation",
+      "pass": true
+    },
+    {
+      "name": "real first-hit adapter preserves point and inverse-transpose normals including instances",
+      "pass": true
+    },
+    {
+      "name": "material classification respects explicit event kind and metal wood soil water semantics",
+      "pass": true
+    },
+    {
+      "name": "misses never spawn impacts, invalid hits never manufacture points, muzzle has separate suppression",
+      "pass": true
+    },
+    {
+      "name": "all surface effects start within 3cm of the exact hit, outgoing hemisphere and no decals",
+      "pass": true,
+      "evidence": [
+        {
+          "kind": "stone",
+          "puffs": 11,
+          "flecks": 0
+        },
+        {
+          "kind": "wood",
+          "puffs": 13,
+          "flecks": 0
+        },
+        {
+          "kind": "metal",
+          "puffs": 1,
+          "flecks": 8
+        },
+        {
+          "kind": "earth",
+          "puffs": 14,
+          "flecks": 0
+        },
+        {
+          "kind": "water",
+          "puffs": 22,
+          "flecks": 0
+        },
+        {
+          "kind": "actor",
+          "puffs": 2,
+          "flecks": 0
+        }
+      ]
+    },
+    {
+      "name": "stone wood earth water use normal blending; only metal sparks are additive",
+      "pass": true
+    },
+    {
+      "name": "bounded pools, lifetime expiry, zero-dt actual-event freeze and two single-pass beauty draws",
+      "pass": true,
+      "evidence": {
+        "maxTriangles": 400,
+        "maxDraws": 2,
+        "flashTriangles": 26,
+        "decals": 0,
+        "overflow": "oldest circular slot replaced, never pool growth"
+      }
+    },
+    {
+      "name": "particle flight stays finite, ends at source plane, deterministic replay and no per-shot objects",
+      "pass": true
+    },
+    {
+      "name": "effect shaders retain distance fog and root-independent reflected-camera orientation",
+      "pass": true
+    }
+  ]
+}

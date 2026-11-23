@@ -1,0 +1,9 @@
+**Plan (art only, same two pooled draws, ≤400 tris, 1s marks):**
+
+**Wood (mode 6):** Drop the sine fibre stripes. Use a small dark ragged hole plus 3–5 hashed, unequal-length tapered slivers along the grain, biased to one side. Colour is muted raw-wood tan, barely brighter than the plank, with no glow.
+
+**Masonry (mode 7):** Replace the radial polygon with a hash-jittered, angular, off-centre chip. Give it a dark pit, a thin pale fracture edge on one side only, and faint uneven dust at low alpha, darkened toward the brick colour.
+
+**Water (modes 3/4):** A larger, taller, lopsided crown: one leaning main column plus 3–4 unequal droplets, launched higher so it clears the gun. Broken, wider, more opaque ring; grey-blue shading for daylight contrast.
+
+**Verify:** Old/new captures from identical cameras at typical distance in daylight; confirm triangle and draw counts and 1s lifetimes.

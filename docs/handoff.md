@@ -781,3 +781,7 @@ Riverfall: procedural timber, trampled mud and 1s material-specific impacts. Six
 ## Sync note - 2026-11-23T14:55:49.5936791+08:00
 
 Riverfall PR 12 merged and live. Anonymous Pages manifest matches 8ee6b9ae30db444200563cd56eff24bf2191e2b5; HTML and all five changed runtime files were hash-verified. No earlier demo was replaced.
+
+## Sync note - 2026-11-23T16:39:29.9886306+08:00
+
+Riverfall: shaded wood tear, dark masonry chip and wider water crown. Scoped CONDITIONAL PASS; paired daylight renders and 2-call/400-triangle GPU limit verified. Public release next; unchanged web snapshot verified separately.

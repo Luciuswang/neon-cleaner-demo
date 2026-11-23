@@ -1,0 +1,50 @@
+{
+  "protocol": "offscreen browser WebGL render target; matched accepted game shots; native crops",
+  "sourceBefore": "4a57007be907a587f8c68b54972ac81e8a9b874b",
+  "fxGitBeforeSha256": "e30b90ee56acc8e973ff6539754a31f57283a863d231da160e7b59a10e5ef484",
+  "fxFinalWorkingBytesSha256": "b640f4f03624d550ee7a66c9921ec2ba2ffeb8f7f207d7101d8695fc68c05022",
+  "metric": "In the same frame, count pixels where any 8-bit RGB channel differs by >=12 when toggling the isolated impact layer. Not world area or volume.",
+  "limits": "Offline, fixed camera & seeded shot, public-equivalent dressing disabled. Advance real VFX only, not AI or the tracer clock. No continuous-motion, perf or all-weather acceptance.",
+  "samples": {
+    "wood": {
+      "0": 87,
+      "0.12": 536,
+      "0.24": 591,
+      "0.5": 27,
+      "0.85": 20,
+      "1.02": 0
+    },
+    "brick": {
+      "0": 114,
+      "0.12": 158,
+      "0.24": 86,
+      "0.5": 93,
+      "0.85": 47,
+      "1.02": 0
+    },
+    "water": {
+      "0": 815,
+      "0.12": 1153,
+      "0.24": 975,
+      "0.5": 1,
+      "0.85": 3,
+      "1.02": 0
+    },
+    "puddle": {
+      "0": 808,
+      "0.12": 1246,
+      "0.24": 1301,
+      "0.5": 94,
+      "0.85": 63,
+      "1.02": 0
+    },
+    "fieldstone": {
+      "0": 353,
+      "0.12": 659,
+      "0.24": 876,
+      "0.5": 190,
+      "0.85": 3,
+      "1.02": 0
+    }
+  }
+}

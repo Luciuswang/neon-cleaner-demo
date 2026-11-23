@@ -1,0 +1,10 @@
+**CONDITIONAL PASS**
+
+Coordinator evidence supports the masonry fix (dark chip, not pale badge) and the constraints: 2 calls / 400 triangles under 250-event stress, 0/0 after expiry, no errors, six suites passing.
+
+Conditions:
+- Wood is still subtle and water still reads as a sprite; the user must confirm both on the same-camera captures.
+- At 0.50s, changed pixels fell roughly 88–94%, and remnants are gone by 1.02s; confirm the 1s remnants still read.
+- Shader comment says jet .12–.24 but the branch is `f<.27`; reconcile.
+
+No motion, fps or gameplay claims assessed.
