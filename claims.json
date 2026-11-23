@@ -14,20 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "river-reference-house-2026-11-20": {
-      "base_commit": "56de46d9f00d562c89c3a82b04f37092cc74f1dd",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-23T10:54:14.145163+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/river-reference-house-2026-11-20.md",
-        "docs/handoff.md",
-        "docs/sprint-2026-08-24.md"
-      ],
-      "task_id": "river-reference-house-2026-11-20",
-      "updated_at": "2026-11-23T02:54:14.145163+00:00"
     }
   },
   "schema": 1
