@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "8ee6b9ae30db444200563cd56eff24bf2191e2b5",
-  "created": "2026-11-23T06:52:58.656Z",
+  "sourceCommit": "55b38441363f5a282ef350f8e14ce8265a7e688b",
+  "created": "2026-11-23T08:39:44.859Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -221,8 +221,8 @@
     },
     {
       "path": "combat-feedback.js",
-      "bytes": 16282,
-      "sha256": "e30b90ee56acc8e973ff6539754a31f57283a863d231da160e7b59a10e5ef484"
+      "bytes": 19870,
+      "sha256": "b640f4f03624d550ee7a66c9921ec2ba2ffeb8f7f207d7101d8695fc68c05022"
     },
     {
       "path": "shot-feedback-event.js",

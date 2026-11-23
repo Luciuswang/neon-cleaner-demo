@@ -98,7 +98,30 @@ void main(){
   a=step(-.43,vFxUv.y)*step(vFxUv.y,.42)*step(abs(vFxUv.x),(.5-vFxUv.y)*.57);
  }else if(vFxShape.w<2.5){
   a=(1.-smoothstep(.10,.48,abs(vFxUv.x)))*(1.-smoothstep(.18,.5,abs(vFxUv.y)));
- }else if(vFxShape.w<3.5){a=1.-smoothstep(.12,.5,r);}
+ }else if(vFxShape.w<3.5){
+  // water transients, sub-shape from the per-particle fraction (all <3.5): <.1 droplet, .12-.24 jet, .3-.46 crown sheet
+  float f=fract(vFxShape.w);
+  if(f<.1){
+   float dl=clamp(.5+(vFxUv.y-vFxUv.x)*1.4,0.,1.);
+   a=1.-smoothstep(.12,.5,length(vFxUv*vec2(1.,.8+.4*step(0.,vFxUv.y))));
+   col=mix(col*.8,vec3(.88,.93,.95),dl*.55);
+  }else if(f<.27){
+   // skinny tapered jet that breaks into beads toward its tip
+   float j=(f-.12)/.12,y=vFxUv.y+.5,x=vFxUv.x+.1*y*sin(y*6.+j*20.),wv=.42*(1.-.72*y);
+   a=(1.-smoothstep(wv*.35,wv,abs(x)))*smoothstep(0.,.12,y)*(1.-smoothstep(.82,1.,y));
+   a*=mix(1.,smoothstep(-.5,.2,sin(y*15.+j*40.)),smoothstep(.25,.9,y));
+   col=mix(col*.82,vec3(.9,.94,.96),(1.-smoothstep(0.,wv*.6,abs(x+wv*.25)))*.6);
+  }else{
+   // asymmetric flared crown: upper half of quad only, leaning, ragged torn top, translucent body with lit rim
+   float c=clamp((f-.3)/.16,0.,1.),h=vFxUv.y*2.,x=vFxUv.x*2.-(c-.5)*.5*h;
+   float hw=.16+.62*h*(1.-.35*h);
+   float top=clamp(.66+.18*sin(x*9.+c*31.)+.12*sin(x*23.-c*17.)+(c-.5)*.7*x,.2,1.);
+   float body=smoothstep(0.,.06,h)*(1.-smoothstep(top-.14,top,h))*(1.-smoothstep(hw-.1,hw,abs(x)));
+   body*=mix(1.,smoothstep(-.3,.4,sin(x*33.+c*50.)),smoothstep(.45,.95,h/top));
+   float rim=clamp(smoothstep(hw-.3,hw-.04,abs(x))+smoothstep(top-.34,top-.06,h),0.,1.);
+   a=body*mix(.42,1.,rim);col=mix(col*.8,vec3(.88,.93,.96),rim*(.35+.3*clamp(.5-x,0.,1.)));
+  }
+ }
  else{
   float ang=atan(vFxUv.y,vFxUv.x+1e-5);
   if(vFxShape.w<4.5){
@@ -113,15 +136,33 @@ void main(){
    col=mix(vFxColor*1.7,vFxColor*.45,core);a=max(core*.95,rim*.7);
   }else if(vFxShape.w<6.5){
    // wood: small dark hole with pale fibrous splinters along the tangent
-   float hole=1.-smoothstep(.05,.11,length(vFxUv*vec2(3.2,1.)));
-   float fiber=.55+.45*sin(vFxUv.y*46.+s*50.+sin(vFxUv.x*9.+s*20.)*2.);
-   float streak=(1.-smoothstep(.12,.5,abs(vFxUv.x)))*(1.-smoothstep(.04,.42,abs(vFxUv.y)*(1.+3.*abs(vFxUv.x))));
-   col=mix(vFxColor,vec3(.09,.065,.04),hole);a=max(hole*.95,streak*fiber*.85);
+   vec2 q=vFxUv-vec2(fract(sin(s*91.7)*43758.5)-.5,fract(sin(s*37.3+1.7)*24634.6)-.5)*vec2(.06,.1);
+   float aw=fwidth(vFxUv.y)*1.5;
+   // wood v2: off-centre split, interrupted dull heartwood edge, 1-2 unequal tapered fibres. Per-impact seeded, non-emissive.
+   {
+    float e=aw+1e-4,ha=fract(sin(s*57.)*43758.5),hb=fract(sin(s*113.)*24634.6),hc=fract(sin(s*71.)*35311.7);
+    vec2 p=vec2(q.x*3.2*(ha<.5?-1.:1.),q.y*(hb<.5?-1.:1.));
+    float pit=1.-smoothstep(.07,.095+e,length(p+vec2(.06,0.))*(1.+.3*sin(atan(p.y,p.x+.06001)*3.+s*40.)));
+    float t=(p.x+.16)/.38,dy=p.y-.022*sin(p.x*17.+s*30.),w=.045*min(t*4.,1.)*(1.-.8*t);
+    float split=smoothstep(0.,.08,t)*(1.-smoothstep(.9,1.,t))*(1.-smoothstep(w-e,w+e,abs(dy)));
+    float hh=.12*smoothstep(.1,.3,t)*(1.-smoothstep(.55,.92,t))*(.78+.22*sin(p.x*41.+s*60.));
+    float heart=smoothstep(.015,.05,hh)*smoothstep(.03,.07,abs(t-.42-.2*hc))*smoothstep(-e,e,dy-w*.5)*(1.-smoothstep(hh-e,hh+e,dy-w));
+    float u=(p.x-.02)/(.2+.06*hc),v=(-.04-p.x)/.13;
+    float f1=smoothstep(0.,.08,u)*(1.-smoothstep(.8,1.,u))*(1.-smoothstep(-e,e,abs(p.y+.03+u*u*.13)-.034*(1.-u)));
+    float f2=step(.35,hc)*smoothstep(0.,.1,v)*(1.-smoothstep(.75,1.,v))*(1.-smoothstep(-e,e,abs(p.y+.02+v*.07)-.024*(1.-v)));
+    float dark=max(max(pit,split),max(f1,f2)*.85);
+    col=mix(min(vFxColor*.95,vec3(.4)),vec3(.035,.026,.018),dark);a=max(dark*.92,heart*.72);
+   }
   }else{
    // stone: angular pale chip, dark pit, soft powder halo
-   float rr=r*(1.+.3*abs(sin(ang*2.5+s*30.)));
-   float chip=1.-smoothstep(.2,.26,rr),pit=1.-smoothstep(.04,.09,rr);
-   col=mix(vFxColor,vFxColor*.4,pit);a=max(chip*.85,(1.-smoothstep(.22,.5,r))*.3);
+   vec2 q=vFxUv-vec2(fract(sin(s*91.7)*43758.5)-.5,fract(sin(s*37.3+1.7)*24634.6)-.5)*.08;
+   float a2=atan(q.y,q.x+1e-5);
+   float rr=length(q)*(1.+.45*abs(sin(a2*1.5+s*30.))+.3*abs(sin(a2*2.5-s*47.))+.25*sin(a2+s*19.));
+   float aw=fwidth(rr)*1.5;
+   vec2 pq=q-vec2(cos(s*23.),sin(s*23.))*.035;
+   float chip=1.-smoothstep(.2-aw,.2+aw,rr),pit=1.-smoothstep(.05,.11,length(pq)*(1.+.4*abs(sin(atan(pq.y,pq.x+1e-5)*2.5+s*61.))));
+   float facet=smoothstep(.15,.19,rr)*chip*smoothstep(.2,.7,.5*sin(a2*4.+s*33.)+.5*cos(a2-s*9.));
+   col=mix(mix(vec3(.05,.048,.045),vFxColor,facet*.55),vec3(.015),pit);a=max(chip*mix(.55,.45,facet),pit*.85);
   }
  }
  a*=vFxShape.z;if(a<.003)discard;
@@ -208,10 +249,14 @@ export function buildCombatFeedback({T,world}){
     p.p.copy(hit.point).addScaledVector(hit.normal,L.markOffset);const a=spin?random()*6.2832:0;p.t.copy(tangent).multiplyScalar(Math.cos(a)).addScaledVector(bitangent,Math.sin(a));return p};
    const bit=(o,speed)=>{const p=initialize(puffs.take(),hit.point,hit.normal,o);p.v.copy(hit.normal).multiplyScalar(speed).addScaledVector(tangent,(random()-.5)*.7).addScaledVector(bitangent,(random()-.5)*.7);return p};
    if(watery){mark(.28,0x8497a6,4,.8,2.2,1,true);mark(.16,0x8497a6,4,.6,1.6,1,true);
-    bit({life:.38,size:.24,alpha:.6,mode:3,color:0xe4f0f2,gravity:3,drag:1,aspect:.26},1.4).v.copy(hit.normal).multiplyScalar(1.4);}
+    // crown sheets stay anchored on the true hit; jets and droplets use the existing velocity model
+    bit({life:.34,size:.9,alpha:.5,mode:3.3+random()*.16,color:0x8fa6b4,growth:.6,aspect:1},0).v.set(0,0,0);
+    bit({life:.27,size:.62,alpha:.42,mode:3.3+random()*.16,color:0x9db2be,growth:.8,aspect:1.25},0).v.set(0,0,0);
+    for(let i=0;i<4;i++)bit({life:.3+random()*.16,size:.2+random()*.14,alpha:.62,mode:3.12+random()*.12,color:0xa9bdc8,gravity:7+random()*3,drag:.8,aspect:.13+random()*.06},2.1+random()*1.3).v.addScaledVector(tangent,(i-1.5)*.35);
+    for(let i=0;i<5;i++)bit({life:.36+random()*.26,size:.035+random()*.03,alpha:.7,mode:3,color:0xc4d4da,gravity:5+random()*5,drag:.5+random()*1.2,aspect:.8},1.2+random()*2.2).v.addScaledVector(tangent,(random()-.5)*2.2).addScaledVector(bitangent,(random()-.5)*2.2);}
    else if(hit.kind==='earth'){mark(.34,0x3a3122,5,.9,0,1,true);for(let i=0;i<4;i++)bit({life:.4+random()*.2,size:.03+random()*.025,alpha:.85,mode:1,color:0x2e281d,gravity:6,drag:1.2,aspect:.9},.9+random()*.8);}
-   else if(hit.kind==='wood'){mark(.11,0xd8c296,6,.9,0,3.2,false);for(let i=0;i<3;i++)bit({life:.4+random()*.2,size:.035+random()*.02,alpha:.8,mode:1,color:0xcdb588,gravity:5,drag:1.5,aspect:.3},.7+random()*.7);}
-   else{mark(.26,0xb9b4a8,7,.88,0,1,true);bit({life:.6,size:.12,alpha:.22,mode:0,color:0xb8b2a4,gravity:.15,drag:3,growth:2},.25);}
+   else if(hit.kind==='wood'){mark(.11,0x66533a,6,.8,0,3.2,false);for(let i=0;i<3;i++)bit({life:.4+random()*.2,size:.035+random()*.02,alpha:.7,mode:1,color:0x80694a,gravity:5,drag:1.5,aspect:.3},.7+random()*.7);}
+   else{mark(.26,0x6f6b64,7,.8,0,1,true);bit({life:.6,size:.12,alpha:.15,mode:0,color:0x8c877d,gravity:.15,drag:3,growth:2},.25);}
   }
   puffs.sync();flecks.sync();return {accepted:true,impact:true,kind:hit.kind};
  }
