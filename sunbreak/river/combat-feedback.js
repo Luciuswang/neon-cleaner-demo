@@ -1,6 +1,6 @@
 // Visual-only authoritative hit feedback. No weapon cadence, damage, raycasts,
 // invented hit endpoints, source mesh mutations, textures or persistent decals.
-export const COMBAT_FEEDBACK_LIMITS=Object.freeze({puffs:72,flecks:128,drawCalls:2,triangles:400,maxLifetime:.65,surfaceOffset:.008,decals:0,shadowLights:0});
+export const COMBAT_FEEDBACK_LIMITS=Object.freeze({puffs:120,flecks:80,marks:48,drawCalls:2,triangles:400,maxLifetime:1,markLifetime:1,surfaceOffset:.008,markOffset:.026,decals:0,shadowLights:0});
 const kinds=new Set(['stone','wood','metal','earth','water','actor']);
 const finiteVector=v=>!!v&&[v.x,v.y,v.z].every(Number.isFinite);
 const step=dt=>Number.isFinite(dt)?Math.max(0,dt):0;
@@ -52,6 +52,7 @@ attribute vec3 fxColor;
 attribute vec4 fxShape;
 attribute vec3 fxContact;
 attribute vec3 fxNormal;
+attribute vec3 fxTangent;
 varying vec2 vFxUv;
 varying vec3 vFxColor;
 varying vec4 vFxShape;
@@ -66,6 +67,8 @@ void main(){
  // Inverse camera rotation handles real and Reflector cameras identically.
  vec3 right=vec3(viewMatrix[0][0],viewMatrix[1][0],viewMatrix[2][0]);
  vec3 up=vec3(viewMatrix[0][1],viewMatrix[1][1],viewMatrix[2][1]);
+ // Modes >=4 are surface-plane marks: quad lies in the stored tangent frame.
+ if(fxShape.w>3.5){right=fxTangent;up=cross(fxNormal,fxTangent);}
  vFxWorld=fxCenter+right*offset.x+up*offset.y;
  vec4 mvPosition=viewMatrix*vec4(vFxWorld,1.);
  gl_Position=projectionMatrix*mvPosition;
@@ -86,6 +89,7 @@ void main(){
  // half-space. No billboard patch can extend behind its thin source wall.
  if(dot(vFxNormal,vFxNormal)>.5&&dot(vFxWorld-vFxContact,vFxNormal)<.001)discard;
  float r=length(vFxUv),a=0.;
+ vec3 col=vFxColor;float s=fract(vFxShape.w)*2.;
  if(vFxShape.w<.5){
   float noise=sin(vFxUv.x*13.+sin(vFxUv.y*9.))*sin(vFxUv.y*11.+vFxUv.x*4.);
   a=(1.-smoothstep(.08,.50,r+noise*.025));a*=a;
@@ -94,34 +98,62 @@ void main(){
   a=step(-.43,vFxUv.y)*step(vFxUv.y,.42)*step(abs(vFxUv.x),(.5-vFxUv.y)*.57);
  }else if(vFxShape.w<2.5){
   a=(1.-smoothstep(.10,.48,abs(vFxUv.x)))*(1.-smoothstep(.18,.5,abs(vFxUv.y)));
- }else{a=1.-smoothstep(.12,.5,r);}
+ }else if(vFxShape.w<3.5){a=1.-smoothstep(.12,.5,r);}
+ else{
+  float ang=atan(vFxUv.y,vFxUv.x+1e-5);
+  if(vFxShape.w<4.5){
+   // water: thin expanding ring plus faint inner ripple
+   float rpW=fwidth(r)*1.5;float rpR=r*(1.+.035*sin(ang*3.+s*17.)+.02*sin(ang*7.-s*29.));a=smoothstep(.335-rpW,.350+rpW,rpR)*(1.-smoothstep(.365-rpW,.385+rpW,rpR))+.35*smoothstep(.155-rpW,.165+rpW,rpR)*(1.-smoothstep(.175-rpW,.190+rpW,rpR));
+   a*=smoothstep(-.35,.25,sin(ang*3.+s*40.)+.5*sin(ang*5.-s*23.));float rpL=.5+.5*cos(ang-.9);a*=.32*mix(.3,1.,rpL*rpL);
+  }else if(vFxShape.w<5.5){
+   // soil: uneven dark crater with broken raised rim
+   float rr=r*(1.+.22*sin(ang*3.+s*40.)+.12*sin(ang*7.+s*90.));
+   float core=1.-smoothstep(.13,.23,rr);
+   float rim=smoothstep(.2,.27,rr)*(1.-smoothstep(.31,.46,rr))*(.6+.4*sin(ang*5.+s*70.));
+   col=mix(vFxColor*1.7,vFxColor*.45,core);a=max(core*.95,rim*.7);
+  }else if(vFxShape.w<6.5){
+   // wood: small dark hole with pale fibrous splinters along the tangent
+   float hole=1.-smoothstep(.05,.11,length(vFxUv*vec2(3.2,1.)));
+   float fiber=.55+.45*sin(vFxUv.y*46.+s*50.+sin(vFxUv.x*9.+s*20.)*2.);
+   float streak=(1.-smoothstep(.12,.5,abs(vFxUv.x)))*(1.-smoothstep(.04,.42,abs(vFxUv.y)*(1.+3.*abs(vFxUv.x))));
+   col=mix(vFxColor,vec3(.09,.065,.04),hole);a=max(hole*.95,streak*fiber*.85);
+  }else{
+   // stone: angular pale chip, dark pit, soft powder halo
+   float rr=r*(1.+.3*abs(sin(ang*2.5+s*30.)));
+   float chip=1.-smoothstep(.2,.26,rr),pit=1.-smoothstep(.04,.09,rr);
+   col=mix(vFxColor,vFxColor*.4,pit);a=max(chip*.85,(1.-smoothstep(.22,.5,r))*.3);
+  }
+ }
  a*=vFxShape.z;if(a<.003)discard;
- gl_FragColor=vec4(vFxColor,a);
+ gl_FragColor=vec4(col,a);
  #include <tonemapping_fragment>
  #include <colorspace_fragment>
  #include <fog_fragment>
 }`;
 
-function pool(T,root,name,capacity,additive){
+function pool(T,root,name,capacity,additive,reserved=0){
  const geometry=new T.InstancedBufferGeometry();
  geometry.setAttribute('position',new T.Float32BufferAttribute([-.5,-.5,0,.5,-.5,0,.5,.5,0,-.5,.5,0],3));geometry.setIndex([0,1,2,0,2,3]);
- const attributes={};for(const [key,size]of Object.entries({fxCenter:3,fxColor:3,fxShape:4,fxContact:3,fxNormal:3})){
+ const attributes={};for(const [key,size]of Object.entries({fxCenter:3,fxColor:3,fxShape:4,fxContact:3,fxNormal:3,fxTangent:3})){
   const a=new T.InstancedBufferAttribute(new Float32Array(capacity*size),size);a.setUsage(T.DynamicDrawUsage);geometry.setAttribute(key,a);attributes[key]=a;
  }
  const material=new T.ShaderMaterial({name,vertexShader:VERTEX,fragmentShader:FRAGMENT,uniforms:T.UniformsUtils.clone(T.UniformsLib.fog),fog:true,transparent:true,depthWrite:false,depthTest:true,side:T.DoubleSide,blending:additive?T.AdditiveBlending:T.NormalBlending});
  material.forceSinglePass=true;
  const mesh=new T.Mesh(geometry,material);mesh.name=name;mesh.frustumCulled=false;mesh.castShadow=mesh.receiveShadow=false;mesh.visible=false;root.add(mesh);geometry.instanceCount=0;
- const records=Array.from({length:capacity},()=>({p:new T.Vector3(),v:new T.Vector3(),n:new T.Vector3(),contact:new T.Vector3(),color:new T.Color(),age:0,life:0,size:0,aspect:1,alpha:0,mode:0,gravity:0,drag:0,growth:0}));
- let cursor=0,overwritten=0;
+ const records=Array.from({length:capacity},()=>({p:new T.Vector3(),v:new T.Vector3(),n:new T.Vector3(),t:new T.Vector3(1,0,0),contact:new T.Vector3(),color:new T.Color(),age:0,life:0,size:0,aspect:1,alpha:0,mode:0,gravity:0,drag:0,growth:0}));
+ // records[0..reserved) are 1s surface marks with their own ring, so short
+ // dust/chips can never recycle a mark early; both share this one draw.
+ let cursor=reserved,markCursor=0,overwritten=0;
  return {records,mesh,capacity,
-  take(){const p=records[cursor];cursor=(cursor+1)%capacity;if(p.life>p.age)overwritten++;return p},
-  sync(){let count=0;for(const p of records){if(p.age>=p.life)continue;const t=p.age/p.life,size=p.size*(1+p.growth*t),fade=Math.pow(1-t,1.4);
+  take(){const p=records[cursor];cursor=cursor+1<capacity?cursor+1:reserved;if(p.life>p.age)overwritten++;return p},
+  takeMark(){if(reserved<1)return this.take();const p=records[markCursor];markCursor=(markCursor+1)%reserved;if(p.life>p.age)overwritten++;return p},
+  sync(){let count=0;for(const p of records){if(p.age>=p.life)continue;const t=p.age/p.life,size=p.size*(1+p.growth*t),u=Math.min(1,Math.max(0,(t-.72)/.28)),fade=p.mode>=3.5?1-u*u*(3-2*u):Math.pow(1-t,1.4);
     attributes.fxCenter.setXYZ(count,p.p.x,p.p.y,p.p.z);attributes.fxColor.setXYZ(count,p.color.r,p.color.g,p.color.b);
     attributes.fxShape.setXYZW(count,size*p.aspect,size,p.alpha*fade,p.mode);
-    attributes.fxContact.setXYZ(count,p.contact.x,p.contact.y,p.contact.z);attributes.fxNormal.setXYZ(count,p.n.x,p.n.y,p.n.z);count++;
+    attributes.fxContact.setXYZ(count,p.contact.x,p.contact.y,p.contact.z);attributes.fxTangent.setXYZ(count,p.t.x,p.t.y,p.t.z);attributes.fxNormal.setXYZ(count,p.n.x,p.n.y,p.n.z);count++;
    }geometry.instanceCount=count;mesh.visible=count>0;for(const a of Object.values(attributes))a.needsUpdate=true;return count;
   },
-  reset(){for(const p of records)p.age=p.life=0;cursor=0;this.sync()},
+  reset(){for(const p of records)p.age=p.life=0;cursor=reserved;markCursor=0;this.sync()},
   info(){return {capacity,active:geometry.instanceCount,overwritten,drawCalls:mesh.visible?1:0,triangles:geometry.instanceCount*2}},
   dispose(){mesh.removeFromParent();geometry.dispose();material.dispose()}
  };
@@ -135,7 +167,7 @@ function pool(T,root,name,capacity,additive){
 export function buildCombatFeedback({T,world}){
  if(!T?.InstancedBufferGeometry||!world?.add)throw new TypeError('buildCombatFeedback needs THREE and world');
  const root=new T.Group();root.name='authoritative-combat-feedback';root.userData.heightFog=false;world.add(root);
- const puffs=pool(T,root,'combat-dust-smoke',COMBAT_FEEDBACK_LIMITS.puffs,false),flecks=pool(T,root,'combat-chips-sparks',COMBAT_FEEDBACK_LIMITS.flecks,true);
+ const puffs=pool(T,root,'combat-dust-smoke',COMBAT_FEEDBACK_LIMITS.puffs,false,COMBAT_FEEDBACK_LIMITS.marks),flecks=pool(T,root,'combat-chips-sparks',COMBAT_FEEDBACK_LIMITS.flecks,true);
  const counts={shots:0,impacts:0,misses:0,invalidHits:0,smoke:0,kinds:{stone:0,wood:0,metal:0,earth:0,water:0,actor:0}};
  const tangent=new T.Vector3(),bitangent=new T.Vector3(),direction=new T.Vector3(),up=new T.Vector3(0,1,0);
  const palettes={stone:0x8b8578,wood:0x897254,metal:0xffb44e,earth:0x71684d,water:0xb3c9ce,actor:0x8b877a};
@@ -168,6 +200,18 @@ export function buildCombatFeedback({T,world}){
    const p=initialize((metal?flecks:puffs).take(),hit.point,hit.normal,{life:metal?.12+random()*.12:.16+random()*.18,size:metal?.04+random()*.045:watery?.014+random()*.018:.008+random()*.018,alpha:metal?.78:.5,mode:metal?2:watery?3:1,color:palettes[hit.kind],gravity:metal?4:5,drag:1.8,aspect:metal?.2:watery?.55:.7});
    p.v.copy(hit.normal).multiplyScalar(.42+random()*(metal?1.5:.85)).addScaledVector(tangent,(random()-.5)*1.25).addScaledVector(bitangent,(random()-.5)*1.25);
    if(metal)p.color.multiplyScalar(2.5);
+  }
+  // Surface-plane marks (modes>=4): real hits only, fixed 1s life, late fade.
+  if(!actor&&!metal&&tangent.lengthSq()>.5&&bitangent.lengthSq()>.5){
+   const L=COMBAT_FEEDBACK_LIMITS;
+   const mark=(size,color,mode,alpha,growth,aspect,spin)=>{const p=initialize(puffs.takeMark(),hit.point,hit.normal,{life:L.markLifetime,size,alpha,mode:mode+random()*.49,color,growth,aspect});
+    p.p.copy(hit.point).addScaledVector(hit.normal,L.markOffset);const a=spin?random()*6.2832:0;p.t.copy(tangent).multiplyScalar(Math.cos(a)).addScaledVector(bitangent,Math.sin(a));return p};
+   const bit=(o,speed)=>{const p=initialize(puffs.take(),hit.point,hit.normal,o);p.v.copy(hit.normal).multiplyScalar(speed).addScaledVector(tangent,(random()-.5)*.7).addScaledVector(bitangent,(random()-.5)*.7);return p};
+   if(watery){mark(.28,0x8497a6,4,.8,2.2,1,true);mark(.16,0x8497a6,4,.6,1.6,1,true);
+    bit({life:.38,size:.24,alpha:.6,mode:3,color:0xe4f0f2,gravity:3,drag:1,aspect:.26},1.4).v.copy(hit.normal).multiplyScalar(1.4);}
+   else if(hit.kind==='earth'){mark(.34,0x3a3122,5,.9,0,1,true);for(let i=0;i<4;i++)bit({life:.4+random()*.2,size:.03+random()*.025,alpha:.85,mode:1,color:0x2e281d,gravity:6,drag:1.2,aspect:.9},.9+random()*.8);}
+   else if(hit.kind==='wood'){mark(.11,0xd8c296,6,.9,0,3.2,false);for(let i=0;i<3;i++)bit({life:.4+random()*.2,size:.035+random()*.02,alpha:.8,mode:1,color:0xcdb588,gravity:5,drag:1.5,aspect:.3},.7+random()*.7);}
+   else{mark(.26,0xb9b4a8,7,.88,0,1,true);bit({life:.6,size:.12,alpha:.22,mode:0,color:0xb8b2a4,gravity:.15,drag:3,growth:2},.25);}
   }
   puffs.sync();flecks.sync();return {accepted:true,impact:true,kind:hit.kind};
  }

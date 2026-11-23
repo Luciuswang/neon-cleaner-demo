@@ -5,6 +5,13 @@ export function buildVillage({ T, world, materials, layout, solids }) {
   const G = new T.Group(); G.name = 'village'; world.add(G);
   let seed = 1337;
   const R = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  // Intact-hut timber pass, geometry/UV only; ?look=previous restores the old boards exactly (no location in Node => new look).
+  // New look: hut wall/gable boards all go through the woodA batch with per-vertex linear colour (0xb5a58e base, x.90..1.10
+  // per board); other woodA shapes get white. Legacy builds no colour attribute. Mud boot prints are ground-shader work, not in this file.
+  // Corners per layout: end walls stop on the side-wall centre line, so side-wall boards run .18 past z=Z+-3.5 and bury the
+  // end-board ends; their caps sit >=10mm proud of the end-board faces. No R() calls, boxes, solids, batches or draws are added.
+  const hutLook = new URLSearchParams(globalThis.location?.search || '').get('look') !== 'previous';
+  const ph = (a, b) => { const s = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return s - Math.floor(s); };
   const tint = (k, c) => cloneSurfaceMaterial(T,materials[k]||materials.plaster,c);
   const M = {
     ochre:createMasonryMaterial(T,materials.plaster,{color:0xbab5a5}),ivory:createMasonryMaterial(T,materials.plaster,{color:0xc1c2b9}),plaster:createMasonryMaterial(T,materials.plaster),
@@ -13,6 +20,8 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     shutter: tint('wood', 0x3f5f52), roof: tint('roof', 0x4b3b36), tile: tint('roof', 0x3a2c29)
   };
   const B = {};
+  const lift=new T.Color(0xb5a58e);lift.r/=M.woodA.color.r;lift.g/=M.woodA.color.g;lift.b/=M.woodA.color.b;
+  const board=(a,b)=>{const m=.9+.2*ph(a,b);return [lift.r*m,lift.g*m,lift.b*m];};
   let boxes = 0, solidCount = 0;
   // batched visual box, UVs in meters
   function wallGeometry(w,h,d,profile){
@@ -20,12 +29,12 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     if(profile){const p=g.attributes.position;for(let i=0;i<p.count;i++)if(p.getY(i)>0)p.setY(i,wallTopAt(profile,profile.x+p.getX(i),profile.z+p.getZ(i))-profile.y);g.computeVertexNormals()}
     return g;
   }
-  const add = (k, w, h, d, x, y, z, rz = 0, ry = 0, profile=null) => {
+  const add = (k, w, h, d, x, y, z, rz = 0, ry = 0, profile=null, uo = 0, vo = 0, col=null) => {
     if (!M[k]) k = 'plaster';
     const g = wallGeometry(w,h,d,profile), uv = g.attributes.uv,p=g.attributes.position,n=g.attributes.normal;
     const breakDistance=[];
     for (let i = 0; i < uv.count; i++) {
-      uv.setXY(i,Math.abs(n.getX(i))>.7?p.getZ(i)+d/2:p.getX(i)+w/2,Math.abs(n.getY(i))>.7?p.getZ(i)+d/2:p.getY(i)+h/2);
+      uv.setXY(i,uo+(Math.abs(n.getX(i))>.7?p.getZ(i)+d/2:p.getX(i)+w/2),vo+(Math.abs(n.getY(i))>.7?p.getZ(i)+d/2:p.getY(i)+h/2));
       // Distance from the exact unchanged fracture profile, not a horizontal
       // painted stripe. Interpolates across the existing side subdivisions.
       breakDistance.push(profile?Math.max(0,wallTopAt(profile,profile.x+p.getX(i),profile.z+p.getZ(i))-profile.y-p.getY(i)):10);
@@ -35,6 +44,7 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     g.translate(x, y, z);
     const P = g.attributes.position.array, N = g.attributes.normal.array, U = uv.array, I = g.index.array;
     const append=(key,indices,core=0)=>{const b=B[key]||(B[key]={p:[],n:[],u:[],i:[],core:[],break:[],c:0});
+      if(hutLook&&key==='woodA'){const q=b.col||(b.col=[]);for(let i=0;i<p.count;i++)q.push(col?col[0]:1,col?col[1]:1,col?col[2]:1);}
       for(let i=0;i<P.length;i++){b.p.push(P[i]);b.n.push(N[i])}
       for(let i=0;i<U.length;i++)b.u.push(U[i]);
       for(let i=0;i<p.count;i++){
@@ -73,7 +83,7 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     const k = w.material === 'plaster' || !M[w.material] ? wallTint(hById[w.houseId]) : w.material;
     if(isStoneCover(w))boxes++; // replacement visuals below; exact shot shell retained
     else add(k,w.w,w.h,w.d,w.x,w.y,w.z,0,0,w.profile?w:null);
-    solid(w.w,w.h,w.d,w.x,w.y,w.z,0,{wall:w.id,houseId:w.houseId},w.profile?w:null);
+    solid(w.w,w.h,w.d,w.x,w.y,w.z,0,{wall:w.id,houseId:w.houseId,...(w.material==='wood'?{impactKind:'wood'}:null)},w.profile?w:null);
   }
 
   const stoneCover=buildStoneCover({T,world:G,materials,walls});
@@ -102,14 +112,24 @@ export function buildVillage({ T, world, materials, layout, solids }) {
           for(const sz of [-1,1])add('woodB',w.w+.03,w.h,.08,w.x,w.y,w.z+sz*(w.d/2-.06));
         }else if(/post/.test(w.id))add('woodB',.7,.07,.07,w.x+h.side*.25,2.37,w.z,h.side*Math.PI/4);
         else{const n=Math.max(1,Math.round(w.h/.22)),bh=w.h/n,zr=w.w<w.d;
-          for(let i=0;i<n;i++)add(tn[(R()*3)|0],w.w+(zr?.04:0),bh-.02,w.d+(zr?0:.04),w.x,w.y-w.h/2+(i+.5)*bh,w.z);}
+          for(let i=0;i<n;i++){const pk=tn[(R()*3)|0];
+            if(!hutLook){add(pk,w.w+(zr?.04:0),bh-.02,w.d+(zr?0:.04),w.x,w.y-w.h/2+(i+.5)*bh,w.z);continue;}
+            // Lapped boards: no see-through 2cm slits, alternating proud/recessed thickness, and a length
+            // extension always smaller than the thickness offset so end faces never sit on a neighbour's face.
+            const pt=.04+ph(w.x*3.1+w.z*1.7,w.y+i)*.008+(i%2)*.012,pl=.006+ph(w.z,w.x+w.y)*.01;
+            const sd=zr&&Math.abs(w.w-.28)<.01,e0=sd&&Math.abs(w.z-w.d/2-Z+3.5)<.01?.18:0,e1=sd&&Math.abs(w.z+w.d/2-Z-3.5)<.01?.18:0;
+            add('woodA',w.w+(zr?pt:pl),bh+.004,w.d+(zr?pl+e0+e1:pt),w.x,w.y-w.h/2+(i+.5)*bh,w.z+(e1-e0)/2,0,0,null,ph(i,w.x+w.z)*3,ph(w.z-i,w.x)*2,board(w.x+i*7.3,w.z+w.y));}}
       }
       for(const e of [-1,1])for(let i=0;i<8;i++){const y=2.65+i*.2125,gw=Math.min(7.2,9.4*(4.1375-y)/1.7-.1);
-        if(gw>.1)both(tn[(R()*3)|0],gw,.22,.12,X,y+.106,Z+e*3.5,0,ud);}
-      for(const e of [-1,1])for(const s of [-1,1])add('woodB',S2,.2,.1,X+s*2.35,3.38,Z+e*3.5,-s*A2);
+        if(gw>.1){const gk=tn[(R()*3)|0];
+          // Visual only: old gable boards overlapped 7.5mm with coplanar fronts. Shot solid below is unchanged.
+          if(hutLook)add('woodA',gw+.012+(i%2)*.01,.22,.106+(i%2)*.016+(e>0?.003:0),X,y+.106,Z+e*3.5,0,0,null,ph(i,X+Z+e)*3,ph(e-i,Z)*2,board(X+i*5.1,Z+e));
+          else add(gk,gw,.22,.12,X,y+.106,Z+e*3.5,0,0);
+          solid(gw,.22,.12,X,y+.106,Z+e*3.5,0,{...ud,impactKind:'wood'},null,0);}}
+      for(const e of [-1,1])for(const s of [-1,1])add('woodB',S2,.2,hutLook?.15+s*.004:.1,X+s*2.35,3.38,Z+e*3.5,-s*A2);
       for(const sz of [-1,1]){
         for(const s of [-1,1])add('wood',.1,dh,.5,X+s*1.16,dh/2,Z+sz*3.5);
-        add('wood',2.6,.14,.52,X,dh+.07,Z+sz*3.5);
+        add('wood',2.6,.14,.52,X,dh+.07-(hutLook?.006:0),Z+sz*3.5);
       }
       continue;
     }
@@ -231,6 +251,7 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     g.setAttribute('uv', new T.Float32BufferAttribute(b.u, 2));
     if(k==='brick')g.setAttribute('masonryCore',new T.Float32BufferAttribute(b.core,1));
     if(M[k].userData.masonry?.role==='plaster')g.setAttribute('masonryBreak',new T.Float32BufferAttribute(b.break,2));
+    if(b.col){g.setAttribute('color',new T.Float32BufferAttribute(b.col,3));M[k].vertexColors=true;}
     g.setIndex(b.i);
     g.computeBoundingSphere(); g.computeBoundingBox();
     const m = new T.Mesh(g, M[k]);
