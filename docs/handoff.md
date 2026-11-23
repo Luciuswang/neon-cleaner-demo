@@ -785,3 +785,7 @@ Riverfall PR 12 merged and live. Anonymous Pages manifest matches 8ee6b9ae30db44
 ## Sync note - 2026-11-23T16:39:29.9886306+08:00
 
 Riverfall: shaded wood tear, dark masonry chip and wider water crown. Scoped CONDITIONAL PASS; paired daylight renders and 2-call/400-triangle GPU limit verified. Public release next; unchanged web snapshot verified separately.
+
+## Sync note - 2026-11-23T16:42:12.8213269+08:00
+
+Riverfall impact art: PR 13 merged; anonymous Pages manifest, HTML and FX bytes verified for source 55b3844. Conditional art pass, next player in-motion review. Earlier demos unchanged.

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261123T084213Z-2296cbd595",
+  "task_id": "river-impact-art-20261123",
+  "timestamp_utc": "2026-11-23T08:42:13.207400+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall impact art: PR 13 merged; anonymous Pages manifest, HTML and FX bytes verified for source 55b3844. Conditional art pass, next player in-motion review. Earlier demos unchanged.",
+  "commit_shas": [
+    "55b38441363f5a282ef350f8e14ce8265a7e688b"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

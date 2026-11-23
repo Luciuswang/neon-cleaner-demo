@@ -2,7 +2,7 @@
 
 Task `river-impact-art-20261123`. Source branch `codex/character-continuity-pipeline`.
 Baseline `4a57007be907a587f8c68b54972ac81e8a9b874b`. Gate: scoped visual/demo,
-not UE cinematic acceptance. Current state: local QA complete, publication next.
+not UE cinematic acceptance. Current state: DONE (public release verified).
 
 ## Scope and owners
 
@@ -49,5 +49,11 @@ assertion. No thresholds/tests changed.
 Unrelated dirty UE private vault preserved. Unchanged web snapshot checked
 separately: 12 GLBs / 12,862,004 bytes; no new private dependencies or transfer.
 
-Next: publish only the river demo, verify the anonymous Pages build, then have
-the player judge wood visibility and the water silhouette in motion.
+Published by normal PR #13 (only `sunbreak/river/`), main merge
+`d45fad2f065ba4a1acd59119fa0aa1e23f864818`, source
+`55b38441363f5a282ef350f8e14ce8265a7e688b`. Anonymous Pages verification
+at 2026-11-23 08:41:54 UTC: manifest matched pinned bytes, `index.html`
+SHA-256 `f77d49d7812e905980801e5a36f0cf954ce8357d60cce5a7c3b7634fefcfaa4f`
+and `combat-feedback.js` SHA-256
+`b640f4f03624d550ee7a66c9921ec2ba2ffeb8f7f207d7101d8695fc68c05022`.
+Next: player review of wood visibility and water silhouette during live play.
