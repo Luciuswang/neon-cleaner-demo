@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "9c2f6ef5642fd25ebc99b03bf6c474c2b7591b1b",
-  "created": "2026-11-23T03:22:44.742Z",
+  "sourceCommit": "8ee6b9ae30db444200563cd56eff24bf2191e2b5",
+  "created": "2026-11-23T06:52:58.656Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -11,13 +11,13 @@
     },
     {
       "path": "world.js",
-      "bytes": 30817,
-      "sha256": "2d684bc413756d6f08f8bdf76c60018a061b8321f58ee85ea4fff388f989af8d"
+      "bytes": 32281,
+      "sha256": "e56f51149bd72d8ad40e4e092fc2a87e456fc659c9a10aa6d0d7ed8656cf18ce"
     },
     {
       "path": "village.js",
-      "bytes": 14574,
-      "sha256": "affd736cfc78fcec2c61a9db9824c010feeb42d00fa219fdf555bdc82b696465"
+      "bytes": 17034,
+      "sha256": "72946fd3e422fe4c9c51c517e3d4f384a32beac674d9a5428718e116de0ff4f9"
     },
     {
       "path": "ruins.js",
@@ -66,8 +66,8 @@
     },
     {
       "path": "weapon.js",
-      "bytes": 27012,
-      "sha256": "cffeb71a38a36bb3e0b481ac8ec3faea0049a5b5f42d7f76150326b4d80d3658"
+      "bytes": 27096,
+      "sha256": "b917b883a9dabd02bb87105619ae1b239db23a788945e7dfb418a4612f851f65"
     },
     {
       "path": "actors.js",
@@ -221,8 +221,8 @@
     },
     {
       "path": "combat-feedback.js",
-      "bytes": 12355,
-      "sha256": "dbe1d0b4bc6933bb3e8c0295734bd72633f5eabfcb1a1da18f4a33fa8811601b"
+      "bytes": 16282,
+      "sha256": "e30b90ee56acc8e973ff6539754a31f57283a863d231da160e7b59a10e5ef484"
     },
     {
       "path": "shot-feedback-event.js",
@@ -241,8 +241,8 @@
     },
     {
       "path": "afterrain-ground.js",
-      "bytes": 5617,
-      "sha256": "47777489d6c897a793e3a136d6175bd9991479c4c2e3e5a2b568b705ec7fbb7b"
+      "bytes": 12820,
+      "sha256": "2e1a166ff6d2e62248dd244c7c3dc8921448168c64000bc8f308c2efcec3d504"
     },
     {
       "path": "afterrain-light.js",

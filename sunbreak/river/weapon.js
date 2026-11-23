@@ -207,11 +207,11 @@ export function createWeaponFlash(T,gun,light){
   fragmentShader:`varying vec2 vUv;varying float vEdge;varying float vPart;uniform float uFlash;uniform float uVariation;
    void main(){float a,t;
     if(vPart<.5){vec2 q=(vUv-.5)*2.;t=clamp(length(q),0.,1.);a=1.-smoothstep(.48,1.,vEdge);
-     a*=mix(.82,1.,sin(q.x*27.+q.y*17.+uVariation)*.5+.5);
+     a*=mix(.82,1.,sin(q.x*27.+q.y*17.+uVariation)*.5+.5)*mix(.62,1.,smoothstep(-.9,.5,q.y+q.x*.35*sin(uVariation)));
     }else{float taper=mix(.30,.78,sin(vUv.y*3.14159));float x=abs(vUv.x-.5)*2.;
      a=(1.-smoothstep(taper*.35,taper,x))*(1.-smoothstep(.35,1.,vUv.y))*.65;t=vUv.y;
     }
-    gl_FragColor=vec4(mix(vec3(2.2,1.55,.65),vec3(1.65,.49,.065),t),a*uFlash*.82);}`});
+    gl_FragColor=vec4(mix(vec3(2.6,2.3,1.7),vec3(1.9,.62,.05),smoothstep(.18,.8,t)),min(a*uFlash*1.15,1.));}`});
  material.forceSinglePass=true;
  const mesh=new T.Mesh(geometry,material);mesh.name='mp5-socket-muzzle-flash';mesh.position.set(0,.005,-1.85);mesh.frustumCulled=false;mesh.visible=false;gun.add(mesh);
  if(light)light.castShadow=false;
