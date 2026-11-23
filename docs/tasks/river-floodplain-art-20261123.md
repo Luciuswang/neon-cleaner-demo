@@ -2,7 +2,7 @@
 
 Task `river-floodplain-art-20261123`, 2026-11-23. Source branch
 `codex/character-continuity-pipeline`, baseline `af606c896b3c249d7a748d706c9d54019ce21586`.
-State: local final QA passed within scope; Pages publication follows.
+State: DONE for the directional art pass; anonymous Pages release verified.
 
 Reference analysis prioritized dry straw/olive ground cover with deliberate
 breaks, interlocking low rock shelves, lit crowns with openings, and receding
@@ -45,5 +45,8 @@ reference; grass clump transitions, distant tree variety, canopy shadowing and
 rapid-motion alpha stability are not fully matched or certified.
 
 Unrelated dirty UE vault left alone; the pinned web snapshot was verified:
-12 GLBs / 12,862,004 bytes; none in the public overlay. Next: publish and
-check anonymous build bytes; player reviews the two outlets and meadow in motion.
+12 GLBs / 12,862,004 bytes; none in the public overlay. Normal PR #14 merged
+as `acf57f84ec90fadb3441feb0b246483eaeddff78`. Anonymous Pages served the
+pinned manifest for source `4d2c8b637b64e8e95ea5d8027222134f183e9671`.
+Live HTML and all four runtime files matched SHA-256. Next: player reviews the
+two outlets and meadow in motion.

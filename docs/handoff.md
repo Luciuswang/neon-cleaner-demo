@@ -793,3 +793,7 @@ Riverfall impact art: PR 13 merged; anonymous Pages manifest, HTML and FX bytes 
 ## Sync note - 2026-11-23T17:04:22.0183410+08:00
 
 Riverfall: floodplain meadow banks, weathered edge shelves, lit crowns, palms and forested ridges. Ten suites, new paired mode geometry and six matched cameras passed scoped QA. Private web snapshot separately verified. Pages next.
+
+## Sync note - 2026-11-23T17:07:05.5488936+08:00
+
+Floodplain art is public via PR 14. Anonymous Pages manifest, HTML, and four changed runtime modules verified for source 4d2c8b6. Earlier demos unchanged; user visual review in motion next.
