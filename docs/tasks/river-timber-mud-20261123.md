@@ -35,4 +35,13 @@ frame-time certification.
 
 Unrelated dirty UE vault preserved. Independently checked the unchanged web
 snapshot: 12 GLBs / 12,862,004 bytes; no new private dependency. Do not claim
-a new UE/private transfer. Next: verify the public Riverfall release.
+a new UE/private transfer.
+
+## Delivery
+
+Public release completed via normal PR #12 (main merge
+`ee5d8e94ca1b0afca683f1e65ece8e568bb9c87b`). Anonymous GitHub Pages
+manifest at `https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/`
+identifies `8ee6b9ae30db444200563cd56eff24bf2191e2b5`; live HTML and all five
+changed runtime files matched the released SHA-256 hashes. Earlier demo paths
+unchanged. Private GLBs excluded. Next: player art-direction review online.

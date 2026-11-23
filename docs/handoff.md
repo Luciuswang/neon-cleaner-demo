@@ -777,3 +777,7 @@ PR 11 merged; public Pages source 9c2f6ef verified. Public Chrome manual-input s
 ## Sync note - 2026-11-23T14:52:21.1441014+08:00
 
 Riverfall: procedural timber, trampled mud and 1s material-specific impacts. Six regression suites and native RTX canvas shots passed; review is scoped conditional. Unchanged private web asset manifest verified; dirty unrelated UE vault preserved. See docs/tasks/river-timber-mud-20261123.md.
+
+## Sync note - 2026-11-23T14:55:49.5936791+08:00
+
+Riverfall PR 12 merged and live. Anonymous Pages manifest matches 8ee6b9ae30db444200563cd56eff24bf2191e2b5; HTML and all five changed runtime files were hash-verified. No earlier demo was replaced.

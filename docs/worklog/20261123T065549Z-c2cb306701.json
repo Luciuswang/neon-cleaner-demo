@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261123T065549Z-c2cb306701",
+  "task_id": "river-timber-mud-20261123",
+  "timestamp_utc": "2026-11-23T06:55:49.991673+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall PR 12 merged and live. Anonymous Pages manifest matches 8ee6b9ae30db444200563cd56eff24bf2191e2b5; HTML and all five changed runtime files were hash-verified. No earlier demo was replaced.",
+  "commit_shas": [
+    "8ee6b9ae30db444200563cd56eff24bf2191e2b5"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
