@@ -14,22 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "river-impact-art-20261123": {
-      "base_commit": "4a57007be907a587f8c68b54972ac81e8a9b874b",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-23T16:25:41.028509+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4/combat-feedback.js",
-        "experiments/sunbreak-river-v4/qa/evidence/impact-art-20261123",
-        "docs/tasks/river-impact-art-20261123.md",
-        "docs/worklog",
-        "docs/handoff.md",
-        "docs/sprint-2026-08-24.md"
-      ],
-      "task_id": "river-impact-art-20261123",
-      "updated_at": "2026-11-23T08:25:41.028509+00:00"
     }
   },
   "schema": 1
