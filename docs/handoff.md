@@ -801,3 +801,7 @@ Floodplain art is public via PR 14. Anonymous Pages manifest, HTML, and four cha
 ## Sync note - 2026-11-23T20:15:02.6853108+08:00
 
 Riverfall optional 4v4 casual elimination implemented. Two isolated WebRTC browsers agree on rooms, movement and result. Local quick match, eight-slot capacity, rejection, AI takeover and authority rules pass. Private web snapshot verified separately. Pages smoke next.
+
+## Sync note - 2026-11-23T20:19:43.4115473+08:00
+
+Riverfall online beta live and verified on Pages PR 15. Anonymous bundle matches; real invite UI and two WebRTC contexts agree on roster, movement, round result and refilling. Next: friends on independent networks.

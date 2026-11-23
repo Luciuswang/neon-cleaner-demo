@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261123T121943Z-c285189346",
+  "task_id": "river-online-squads-20261123",
+  "timestamp_utc": "2026-11-23T12:19:43.836166+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall online beta live and verified on Pages PR 15. Anonymous bundle matches; real invite UI and two WebRTC contexts agree on roster, movement, round result and refilling. Next: friends on independent networks.",
+  "commit_shas": [
+    "4481321ae367493da3422c8f457d049ca027c830"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
