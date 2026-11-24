@@ -1,0 +1,85 @@
+[
+  {
+    "status": "ready",
+    "os": "26.2",
+    "model": "iPhone18,1",
+    "simulator": true,
+    "mode": "solo",
+    "seconds": 17.374148964881897,
+    "checks": {
+      "pixels": {
+        "min": 13,
+        "cssW": 402,
+        "h": 778,
+        "samples": 64,
+        "range": 178,
+        "uniqueColors": 23,
+        "preserveDrawingBuffer": true,
+        "max": 191,
+        "w": 402,
+        "glError": 0
+      },
+      "startTapped": true,
+      "draws": 37,
+      "tris": 25878,
+      "sustainedFps": 38.1,
+      "ammoAfterReload": 30,
+      "sustainedFrames": 116,
+      "yawDelta": 0.2549999999999999,
+      "moveForward": 5.150242712727235,
+      "startOverlayGone": true,
+      "firstFrames": 3,
+      "ammoBefore": 30,
+      "ammoAfterFire": 18
+    },
+    "failures": [],
+    "boot": "运行中"
+  },
+  {
+    "status": "failed",
+    "os": "26.2",
+    "model": "iPhone18,1",
+    "simulator": true,
+    "mode": "4v4 mobile host + bots (not human cross-device)",
+    "seconds": 27.106961965560913,
+    "checks": {
+      "startTapped": false,
+      "squadsCreateClicked": true,
+      "squadsBoardVisible": true,
+      "squadsSignalingConnected": true,
+      "ammoAfterFire": 30,
+      "tris": 25530,
+      "ammoAfterReload": 30,
+      "squadsWarmupDone": true,
+      "sustainedFrames": 144,
+      "squadsAiTagVisible": true,
+      "yawDelta": 0.2549999999999999,
+      "firstFrames": 3,
+      "draws": 32,
+      "pixels": {
+        "min": 13,
+        "cssW": 402,
+        "h": 778,
+        "samples": 64,
+        "range": 178,
+        "uniqueColors": 14,
+        "preserveDrawingBuffer": true,
+        "max": 191,
+        "w": 402,
+        "glError": 0
+      },
+      "squadsEightSeats": true,
+      "squadsConsent": true,
+      "moveForward": 0,
+      "ammoBefore": 30,
+      "moveBackward": 0,
+      "sustainedFps": 47.9
+    },
+    "failures": [
+      "move stick: x/z change 0 <= 0.15",
+      "fire hold: ammo did not decrease",
+      "reload: mag did not increase"
+    ],
+    "boot": "运行中"
+  }
+]

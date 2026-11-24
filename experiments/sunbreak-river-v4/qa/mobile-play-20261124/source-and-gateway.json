@@ -282,6 +282,41 @@
       "cost": 0.6507033999999999
     },
     {
+      "phase": "review",
+      "requested": "claude-fable-5-2",
+      "returned": [
+        "claude-fable-5-2"
+      ],
+      "ok": true,
+      "code": 0,
+      "utc": "2026-11-24T05:31:02.665Z",
+      "result": "completed",
+      "responseSHA": "e8c44655d4e8c3ccbe4bf426f8d727919adc9747e82290b30035104b12b8738e",
+      "usage": {
+        "input_tokens": 4,
+        "cache_creation_input_tokens": 551,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 232,
+        "output_tokens_details": {
+          "thinking_tokens": 0
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 551
+        },
+        "inference_geo": "global",
+        "iterations": [],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "cost": 0.014822
+    },
+    {
       "phase": "squadprobe",
       "requested": "claude-fable-5-2",
       "returned": [
@@ -492,7 +527,7 @@
       "cost": 0.5416246
     }
   ],
-  "costUSD": 4.0082224,
+  "costUSD": 4.0230444,
   "notes": {
     "input": "First tool-based producer did not write files. Dedicated no-tool phases produced the scoped modules/edits.",
     "world": "First attempt incomplete, superseded by worldraw + prefix + cabins.",

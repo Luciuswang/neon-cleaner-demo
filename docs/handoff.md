@@ -817,3 +817,7 @@ Riverfall diagonal opening is live on Pages PR 16: public bytes match, two brows
 ## Sync note - 2026-11-24T12:32:35.1239510+08:00
 
 iOS boot checkpoint only, Pages unchanged. Explicit dynamic paths fix Windows WebKit reproduction; iPhone 17 Pro iOS 26.2 Simulator candidate displayed 4v4 notice but did not signal scene ready. Next: diagnose first frame/process termination before shipping.
+
+## Sync note - 2026-11-24T13:37:57.4539782+08:00
+
+River mobile PR 17 live. Apple iPhone 17 Pro iOS 26.2 simulator passed solo, offline 4v4, and public-signaled invite host with movement, look, held fire, reload and visible rendered frames. Production bytes and public solo/practice replay verified; physical iPhone Chrome remains user acceptance.

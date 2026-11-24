@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261124T053757Z-8f33b6bbb2",
+  "task_id": "river-mobile-play-20261124",
+  "timestamp_utc": "2026-11-24T05:37:57.890325+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "River mobile PR 17 live. Apple iPhone 17 Pro iOS 26.2 simulator passed solo, offline 4v4, and public-signaled invite host with movement, look, held fire, reload and visible rendered frames. Production bytes and public solo/practice replay verified; physical iPhone Chrome remains user acceptance.",
+  "commit_shas": [
+    "97636447383569fdf3e68ab04743c08cdc2c1dc8"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

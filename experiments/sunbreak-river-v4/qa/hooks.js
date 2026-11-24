@@ -113,4 +113,5 @@ window.arenaQA={
  }
 };
 document.body.dataset.version='arena-v4';
-setInterval(()=>document.body.dataset.render=JSON.stringify(visual.info()),200);
+// Desktop-only art telemetry. Mobile publishes its own measured post-render stats.
+if (!MOBILE) setInterval(()=>document.body.dataset.render=JSON.stringify(visual.info()),200);
