@@ -568,7 +568,7 @@ function tick(){
  rnd.autoClear=true;
 }
 const WORLD_JS=MOBILE?'river/mobile-world.js':'river/world.js';window.riverBootStage='河谷场景模块 / '+WORLD_JS;
-const {buildWorld}=await riverImport('./'+WORLD_JS,'河谷场景模块');
+const {buildWorld}=MOBILE?await riverImport('./river/mobile-world.js','移动河谷'):await riverImport('./river/world.js','河谷场景模块');
 window.riverBootStage=(MOBILE?'准备移动端河谷场景 / ':'建立河谷场景 / ')+WORLD_JS;
 visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:!squadsMode&&S.state==='play'&&!pres,player:pos})});
 if(!squadsMode)tactical=createTacticalAI({enemies,bounds:colliders,

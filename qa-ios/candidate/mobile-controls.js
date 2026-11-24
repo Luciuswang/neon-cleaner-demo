@@ -107,6 +107,7 @@ export function mountTouch({ keys, look, trigger, fire, reload, engage, isActive
     const id = pid(e);
     if (pointers.has(id)) end(id);            // stale id reuse (synthetic events)
     if (slot[kind] !== null) return;          // control already held by another finger
+    if (engage() === false) return;
     const el = els[kind];
     // Capture when possible; window-level listeners below cover synthetic/uncapturable pointers.
     try { el.setPointerCapture(id); } catch { /* synthetic event or inactive pointer */ }
@@ -120,7 +121,6 @@ export function mountTouch({ keys, look, trigger, fire, reload, engage, isActive
       p.r = Math.max(1, rect.width / 2);
       stick(p, e.clientX, e.clientY);
     } else if (kind === 'fire') {
-      engage();                               // squads: engage; no-op in solo
       setFiring(true);
       fire();                                 // solo: immediate shot
     } else if (kind === 'reload') {

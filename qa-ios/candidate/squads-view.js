@@ -1,4 +1,5 @@
 import {connectRoom} from './squads-net.js';
+import {createMatch} from './squads-sim.js';
 
 // Riverfall online squads view (4v4, one life per round, friendly prototype).
 // Assumptions about the host page, each read defensively:
@@ -60,6 +61,27 @@ const el = (tag, cls, text) => {
 const wrapA = a => Math.atan2(Math.sin(a), Math.cos(a));
 const readable = e => String((e && e.message) || e || '未知错误').slice(0, 200);
 const fmtTime = s => { s = Math.max(0, Math.ceil(+s || 0)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
+
+function localPractice(onState) {
+  const match = createMatch();
+  const slot = match.join();
+  const STEP = 50, MAX_ELAPSED = 250;
+  let closed = false, last = performance.now(), acc = 0;
+  const emit = () => { if (!closed) onState(match.snapshot(), slot); };
+  const tick = () => {
+    const now = performance.now();
+    acc += Math.min(now - last, MAX_ELAPSED); // cap catch-up after backgrounding
+    last = now;
+    let stepped = false;
+    for (; acc >= STEP; acc -= STEP, stepped = true) match.step(STEP / 1000);
+    if (stepped) emit();
+  };
+  const timer = setInterval(tick, STEP);
+  setTimeout(emit, 0); // async so the caller can assign the session first
+  return { room: '', localPractice: true,
+    send(p) { if (!closed) match.input(slot, p); },
+    close() { if (closed) return; closed = true; clearInterval(timer); match.leave(slot); } };
+}
 
 export function mountSquads(o) {
   const {S, pos, cam, gun, enemies, keys, trigger, lockReq, clearKeys, updHUD, initAudio, onShot} = o;
@@ -169,7 +191,7 @@ export function mountSquads(o) {
     } else {
       if (h.given) { const p = el('p', 'sq-err', '邀请链接中的房间号无效，已忽略。'); p.setAttribute('role', 'alert'); nodes.push(p); }
       nodes.push(el('p', '', '创建房间邀请好友，或快速匹配其他玩家。不足八人时由 [AI] 补位。'));
-      nodes.push(btnRow(btn('创建邀请房间', () => connect(ACTION_CREATE)), btn('快速匹配', () => connect(ACTION_QUICK)), btn('返回单人', backSolo, true)));
+      nodes.push(btnRow(btn('创建邀请房间', () => connect(ACTION_CREATE)), btn('快速匹配', () => connect(ACTION_QUICK)), btn('4v4 AI 练习（不联网）', () => connect('practice'), true), btn('返回单人', backSolo, true)));
     }
     render('联机大厅', false, ...nodes);
   }
@@ -198,7 +220,8 @@ export function mountSquads(o) {
     closeSession();
     const g = ++gen; last = {action, room};
     showConnecting();
-    Promise.resolve().then(() => connectRoom({
+    const receive = (s, slot) => { if (g === gen) onState(s, slot); };
+    Promise.resolve().then(() => action === 'practice' ? localPractice(receive) : connectRoom({
       action, room,
       onState: (s, slot) => { if (g === gen) onState(s, slot); },
       onStatus: t => { if (g === gen) setStatus(t); },
@@ -206,6 +229,7 @@ export function mountSquads(o) {
     })).then(s => {
       if (g !== gen) { try { s.close(); } catch (e) {} return; }
       session = s; S[stateKey] = 'play';
+      invBtn.hidden = !!s.localPractice; root.dataset.practice = s.localPractice ? '1':'0';
       if (action === ACTION_JOIN && !last.room) last.room = s.room;
       overlay.hidden = true; board.hidden = false; root.dataset.connected = '1'; root.dataset.room = String(s.room || '');
       updatePrompt();
@@ -477,7 +501,7 @@ export function mountSquads(o) {
   function mayTouch() { return !!(session && snap && !finalShown && snap.phase !== 'finished' && snap.phase !== 'lobby'); }
   function touchEngage() {
     if (!mayTouch()) return null;
-    if (!engaged) { engaged = true; holdFire = true; try { initAudio && initAudio(); } catch (e) {} updatePrompt(); }
+    if (!engaged) { engaged = true; holdFire = false; try { initAudio && initAudio(); } catch (e) {} updatePrompt(); }
     return {session, snap};
   }
   function touchReload() { if (engaged && mayTouch()) reloadLatch = true; }

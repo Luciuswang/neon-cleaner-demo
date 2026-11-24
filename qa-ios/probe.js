@@ -146,14 +146,14 @@
 
 if (S.mode !== 'solo') {
   stage('squads-host-public');
-  const BOARD = '.sq-board'; // ASSUMPTION: replace with the real squads board selector
+  const practice=new URLSearchParams(location.search).has('practice');const BOARD = '.sq-board'; // ASSUMPTION: replace with the real squads board selector
   const btn = t => [...document.querySelectorAll('button')].find(b => visible(b) && b.textContent.includes(t));
   const need = async (fn, ms, msg) => {
     const v = await waitFor(fn, ms).catch(() => null);
     if (!v) { fail(msg); throw new Error(msg); }
     return v;
   };
-  for (const [text, flag] of [['我已了解', 'squadsConsent'], ['创建邀请房间', 'squadsCreateClicked']]) {
+  for (const [text, flag] of [['我已了解', 'squadsConsent'], [practice?'4v4 AI 练习':'创建邀请房间', 'squadsCreateClicked']]) {
     (await need(() => btn(text), 8000, 'squads: visible button not found: ' + text)).click();
     C[flag] = true;
   }
@@ -161,7 +161,7 @@ if (S.mode !== 'solo') {
   const t0 = Date.now(), left = () => Math.max(1, 23000 - (Date.now() - t0));
   const live = () => document.querySelector('[data-connected="1"]');
   await need(live, left(), 'squads: public signaling not connected within 23s (network failure, no offline fallback)');
-  C.squadsSignalingConnected = true;
+  C.squadsSignalingConnected = !practice; C.practice = practice; if(practice && live().dataset.practice!=="1") throw Error("not practice");
   const board = await need(() => { const b = document.querySelector(BOARD); return b && visible(b) && b; },
     left(), 'squads: board not visible within 23s of room creation');
   C.squadsBoardVisible = true;
@@ -174,7 +174,7 @@ if (S.mode !== 'solo') {
   C.squadsEightSeats = true;
   if (!/\bAI\b/.test(board.innerText)) { fail('squads: no AI tag in visible board text'); throw new Error('squads: no AI tag'); }
   C.squadsAiTagVisible = true;
-  S.label = '4v4 mobile host + bots (not human cross-device)'; // report only if the common probes below pass
+  S.label = practice?'offline 4v4 practice':'4v4 mobile host + bots (not human cross-device)'; // report only if the common probes below pass
   stage('squads-ready');
 }
 // falls through to the common movement / yaw / fire / reload / pixel / frame checks

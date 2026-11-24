@@ -2,7 +2,7 @@ import {MAP,walls,houses,bufferPlacements,bounds,wallTopAt,groundHeight,landscap
 export async function buildWorld(ctx){
   const {THREE:T,scene,rnd,cam,gscene,sun,amb,solids,colliders,enemies}=ctx;
   const keep=new Set([sun,amb,cam,sun&&sun.target,enemies]);
-  for(const e of (Array.isArray(enemies)?enemies:[])){keep.add(e);keep.add(e&&e.group);keep.add(e&&e.mesh);}
+  for(const e of enemies)keep.add(e.g);
   for(const c of scene.children)if(!keep.has(c))c.visible=false;
   const world=new T.Group();world.name='riverfall-world';scene.add(world);
   let seed=20261124;
@@ -11,18 +11,7 @@ export async function buildWorld(ctx){
   const land=(x,z)=>num(()=>landscapeHeight(x,z),0),floor=(x,z)=>num(()=>terrainHeight(x,z),land(x,z)),roofAt=(x,z)=>num(()=>roofHeight(x,z),-Infinity);
   const isBlocked=(x,z,r)=>blocked(x,z,r),SIZE=152,cx=0,cz=-4;
   colliders.length=0;solids.length=0;
-  for(const w of walls){
-    let b=null;try{b=typeof bounds==='function'?bounds(w):null;}catch(e){}
-    b=b&&Number.isFinite(b.minX)?b:w;
-    const hw=(w.w??w.width??1)/2,hd=(w.d??w.depth??1)/2;
-    const x0=b.minX??w.x-hw,x1=b.maxX??w.x+hw,z0=b.minZ??w.z-hd,z1=b.maxZ??w.z+hd,mx=(x0+x1)/2,mz=(z0+z1)/2;
-    const base=w.y??w.base??floor(mx,mz),flat=w.top??base+(w.h??w.height??3);
-    const topAt=(x,z)=>num(()=>wallTopAt(w,x,z),flat);
-    let top=flat;for(const [x,z] of [[mx,mz],[x0,z0],[x1,z0],[x0,z1],[x1,z1]])top=Math.max(top,topAt(x,z));
-    const box=new T.Box3(new T.Vector3(x0,Math.min(base,floor(mx,mz))-2,z0),new T.Vector3(x1,top,z1));
-    box.wall=w;if(w.profile||w.profiled||w.slope)box.topAt=topAt;
-    colliders.push(box);
-  }
+  for(const b of bounds){const box=new T.Box3(new T.Vector3(b.min.x,b.min.y,b.min.z),new T.Vector3(b.max.x,b.max.y,b.max.z));if(b.profileWall)box.topAt=(x,z,r)=>wallTopAt(b.profileWall,x,z,r);colliders.push(box)}
   const tex=(c1,c2,w,h,n,rx=1,ry=1)=>{
     const cv=document.createElement('canvas');cv.width=w;cv.height=h;const g=cv.getContext('2d');
     g.fillStyle=c1;g.fillRect(0,0,w,h);g.fillStyle=c2;
@@ -40,6 +29,41 @@ export async function buildWorld(ctx){
     brick:mk(tex('#8d4f3c','#4e2a20',32,32,200,3,3)),
     plaster:mk(tex('#cfc4ab','#8f8570',32,32,150,2,2))
   };
+// Riverfall buffer cabins: local room x[-4,4] z[-4,2.4], porch z 2.4..4, steps z 4..5.6 at door x=-1.08. Assumes flat pad at y=0.
+const cabinGeo = new T.BoxGeometry(1, 1, 1), CAB_FY = .66, CAB_EAVE = 4.74, CAB_DX = -1.08;
+for (const p of bufferPlacements) {
+  const g = new T.Group(), walls = []; g.position.set(p.x, 0, p.z); g.rotation.y = p.yaw; world.add(g);
+  const B = (m, x, y, z, sx, sy, sz, hit, rx = 0) => { const b = new T.Mesh(cabinGeo, m); b.position.set(x, y, z);
+    b.scale.set(sx, sy, sz); b.rotation.x = rx; g.add(b); solids.push(b); hit && walls.push(b); return b; };
+  // Wall with one punched opening [a,b]x[y0,y1]; alongX: runs on x at z=c, else on z at x=c. Overhead parts (lintels) get no collider.
+  const W = (alongX, c, lo, hi, a, b, y0, y1) => [[lo, a, CAB_FY, CAB_EAVE], [b, hi, CAB_FY, CAB_EAVE], [a, b, y1, CAB_EAVE], [a, b, CAB_FY, y0]]
+    .forEach(([u0, u1, v0, v1]) => { if (u1 - u0 < 1e-3 || v1 - v0 < 1e-3) return; const u = (u0 + u1) / 2, v = (v0 + v1) / 2, hit = v0 < 2;
+      alongX ? B(M.wood, u, v, c, u1 - u0, v1 - v0, .24, hit) : B(M.wood, c, v, u, .24, v1 - v0, u1 - u0, hit); });
+  B(M.wood, 0, CAB_FY / 2, 0, 8, CAB_FY, 8);                                   // board floor + porch deck, top y=.66
+  for (let i = 0; i < 4; i++) { const h = CAB_FY * (4 - i) / 5; B(M.wood, CAB_DX, h / 2, 4.2 + i * .4, 1.55, h, .4); } // four steps
+  W(1, 2.28, -4, .2, CAB_DX - .76, CAB_DX + .76, CAB_FY, 2.96);                // front-left: open doorway 1.52 wide, no door leaf
+  W(1, 2.28, .2, 4, 1.2, 2.8, 1.9, 3.2);                                       // front-right: window
+  W(1, -3.88, -4, 4, -1, 1, 1.9, 3.2);                                         // back: window
+  for (const s of [-1, 1]) {
+    W(0, s * 3.88, -3.76, 2.16, -1.7, -.1, 1.9, 3.2);                          // side wall + window
+    B(M.plaster, s * 3.88, 5.09, 0, .24, .7, 5.2); B(M.plaster, s * 3.88, 5.79, 0, .24, .7, 2.6); // stepped gable infill
+    B(M.wood, s * 3.85, (CAB_FY + CAB_EAVE) / 2, 3.85, .18, CAB_EAVE - CAB_FY, .18);  // porch post
+    B(M.roof, 0, 5.72, s * 2.16, 8.8, .16, 4.95, 0, s * Math.atan2(2.14, 4));  // terracotta pitch: ridge 6.88, eaves 4.74
+  }
+  B(M.wood, .9, (CAB_FY + CAB_EAVE) / 2, 3.85, .18, CAB_EAVE - CAB_FY, .18);   // mid porch post (clear of steps)
+  B(M.wood, 0, CAB_EAVE - .09, 3.85, 7.9, .18, .18);                           // porch beam
+  B(M.wood, 0, 6.86, 0, 8.8, .14, .3);                                         // ridge cap
+  g.updateWorldMatrix(true, true);                                             // so raycasts + AABBs use the real transform
+  for (const b of walls) colliders.push(new T.Box3().setFromObject(b));        // wall parts only; yaw 0/PI keeps AABBs exact
+}
+function cabinFloor(x, z) {
+  for (const p of bufferPlacements) {
+    const c = Math.cos(p.yaw), s = Math.sin(p.yaw), dx = x - p.x, dz = z - p.z, lx = dx * c - dz * s, lz = dx * s + dz * c;
+    if (Math.abs(lx) <= 4 && lz >= -4 && lz <= 4) return CAB_FY;
+    if (Math.abs(lx - CAB_DX) <= .775 && lz > 4 && lz <= 5.6) return CAB_FY * (4 - Math.min(3, Math.floor((lz - 4) / .4))) / 5;
+  }
+  return 0;
+}
   const matFor=m=>M[m]||M.stone;
   const tg=new T.PlaneGeometry(SIZE,SIZE,80,80).rotateX(-Math.PI/2).translate(cx,0,cz);
   const tp=tg.attributes.position,col=new Float32Array(tp.count*3),k=new T.Color();
@@ -111,7 +135,7 @@ export async function buildWorld(ctx){
   waterTime(){return t},
   resetHouse(id){for(const [k,m] of roofs)if(id==null||k===id)m.visible=true;resetFeedback()},
   resetFeedback,
-  floorHeight:(x,z)=>floor(x,z),
+  floorHeight:(x,z)=>cabinFloor(x,z)||floor(x,z),
   ceilingY(p,prevY){const y=roofAt(p.x,p.z);return y>(prevY??p.y)?y-.2:Infinity},
   blocksMovement(p,actor){return p.x<MAP.minX+.4||p.x>MAP.maxX-.4||p.z<MAP.minZ+.4||p.z>MAP.maxZ-.4||isBlocked(p.x,p.z,actor==='player'?.4:.5)}
  };
