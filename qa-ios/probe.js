@@ -229,7 +229,7 @@ if (S.mode !== 'solo') {
     if (!(e.tris > 500)) { fail('triangles missing or trivial: ' + e.tris); }
 
     stage('pixels');
-    const a=window.riverMobileWorld?.info?.();C.art={weapon:a?.weapon?.info?.loaded,actors:a?.actors?.info?.loaded,actorCount:a?.actors?.info?.count,sky:a?.sky?.size};if(!a||!C.art.actors||!C.art.actorCount||!C.art.sky)fail('real asset path not loaded');if(!a?.weapon?.names?.some(n=>n.includes('mp5')))fail('real weapon not present');C.pixels = samplePixels();try{const cv=document.querySelector('canvas'),c=document.createElement('canvas');c.width=560;c.height=Math.round(560*cv.height/cv.width);c.getContext('2d').drawImage(cv,0,0,c.width,c.height);S.artJPEG=c.toDataURL('image/jpeg',.74).split(',')[1]}catch(e){fail('art readback '+e.message)}
+    {const a=window.riverMobileWorld?.info?.();C.art={weapon:a?.weapon?.info?.loaded,actors:a?.actors?.info?.loaded,actorCount:a?.actors?.info?.count,sky:a?.sky?.size};if(!a||!C.art.actors||!C.art.actorCount||!C.art.sky)fail('real asset path not loaded');if(!a?.weapon?.names?.some(n=>n.includes('mp5')))fail('real weapon not present');C.pixels = samplePixels();try{const cv=document.querySelector('canvas'),c=document.createElement('canvas');c.width=560;c.height=Math.round(560*cv.height/cv.width);c.getContext('2d').drawImage(cv,0,0,c.width,c.height);S.artJPEG=c.toDataURL('image/jpeg',.74).split(',')[1]}catch(e){fail('art readback '+e.message)}}
     if (C.pixels.error) { fail('pixels: ' + C.pixels.error); }
     else if (!C.pixels.preserveDrawingBuffer) { fail('pixels: preserveDrawingBuffer off, readback not trustworthy (is ?mobileqa=1 in the URL?)'); }
     else if (C.pixels.range < 24 || C.pixels.uniqueColors < 4) { fail('pixels: canvas content nearly uniform'); }

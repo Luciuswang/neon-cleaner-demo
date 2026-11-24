@@ -48,7 +48,7 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
   const path=Math.max(num(s.path??s.traffic),.8*num(s.foundation));
   const bank=1-smooth(-.2,2.4,sd);                       // wet mud only; no dry bank strip outside the river
   const forest=Math.max(num(s.forest??s.litter),forestCover(x,z))*(1-bank);
-  const puddle=num(afterRainBasin(x,z),'wet','puddle','depth','basin','value')*smooth(.2,1.2,sd);
+  const puddle=(1-smooth(.33,.45,num(afterRainBasin(x,z),'wet','puddle','depth','basin','value')))*smooth(.2,1.2,sd);
   zone.set([clamp(path),clamp(forest),bank,clamp(puddle)],v*4);
  }
  const idx=new Uint16Array(SEG*SEG*6);
@@ -64,24 +64,28 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
  // Terrain uses the real PC dirt map/normal plus two extra samplers (mud, forest floor).
  const ground=new T.MeshStandardMaterial({map:materials.dirt.map,normalMap:materials.dirt.normalMap,roughness:.92,metalness:0});
  ground.normalScale.set(.65,.65);ground.envMapIntensity=.7;ground.name='terrain';
- const gu={uMud:{value:materials.mud.map},uForest:{value:materials.forest_ground_04.map}};
+ const pebbleMap=await tex('./river/assets/afterrain-detail/ganges_river_pebbles/color.jpg',true);
+ const gu={uMud:{value:materials.mud.map},uForest:{value:materials.forest_ground_04.map},uPebble:{value:pebbleMap}};
  ground.onBeforeCompile=sh=>{
   Object.assign(sh.uniforms,gu);
   sh.vertexShader=sh.vertexShader
    .replace('#include <common>','#include <common>\nattribute vec4 aZone;varying vec4 vZone;')
    .replace('#include <begin_vertex>','#include <begin_vertex>\nvZone=aZone;');
   sh.fragmentShader=sh.fragmentShader
-   .replace('#include <common>','#include <common>\nuniform sampler2D uMud,uForest;varying vec4 vZone;')
+   .replace('#include <common>','#include <common>\nuniform sampler2D uMud,uForest,uPebble;varying vec4 vZone;')
    .replace('#include <map_fragment>',`
-    vec3 gD=texture2D(map,vMapUv).rgb,gM=texture2D(uMud,vMapUv).rgb,gF=texture2D(uForest,vMapUv*.7).rgb;
-    float pud=smoothstep(.35,.75,vZone.w),wet=max(vZone.z,vZone.w);
-    vec3 gC=mix(mix(gF*vec3(.85,1.,.7),gF,vZone.y),gD,vZone.x);   // grass -> forest floor -> worn path
-    gC=mix(gC,gM,vZone.z)*mix(1.,.55,wet);                         // wet bank mud, moisture darkening
-    diffuseColor.rgb*=mix(gC,gC*.45,pud);`)
-   .replace('#include <roughnessmap_fragment>','float roughnessFactor=roughness*mix(1.,.5,wet)*mix(1.,.1,pud);')
+    vec3 gD=texture2D(map,vMapUv).rgb,gM=texture2D(uMud,vMapUv).rgb,gF=texture2D(uForest,vMapUv*.7).rgb,gP=texture2D(uPebble,vMapUv*1.7).rgb;
+    float gN=smoothstep(.2,.7,texture2D(map,vMapUv*.19+.37).g),gB=smoothstep(.15,.65,texture2D(uForest,vMapUv*.043+.11).r);
+    float pud=smoothstep(.47,.55,vZone.w+(gN-.5)*.22),wet=max(vZone.z,pud),rim=pud*(1.-pud)*4.;
+    float foot=vZone.x*smoothstep(.5,.72,texture2D(uMud,vMapUv*.83+.5).g)*(1.-pud);
+    float soil=max(vZone.x,(1.-vZone.y)*smoothstep(.4,.6,gB+(gN-.5)*.3)*.75);
+    vec3 gC=mix(mix(gF*vec3(.85,1.,.7),gF,vZone.y),gD*vec3(.84,.74,.62),soil)*mix(.72,1.06,gB);   // grass -> forest floor -> worn path
+    gC=mix(gC,mix(gM*.7,gP*.8,smoothstep(.5,.95,vZone.z+(gN-.5)*.3)),vZone.z)*mix(1.,.7,foot)*mix(1.,.8,rim);                         // wet bank mud, moisture darkening
+    diffuseColor.rgb*=mix(gC,gM*vec3(.34,.31,.27),pud);`)
+   .replace('#include <roughnessmap_fragment>','float roughnessFactor=roughness*mix(1.,.78,vZone.z*gN)*mix(1.,.62,foot);roughnessFactor=mix(roughnessFactor,.08,pud*(1.-.8*rim));')
    .replace('#include <normal_fragment_maps>','#include <normal_fragment_maps>\nnormal=normalize(mix(normal,nonPerturbedNormal,pud));');
  };
- ground.customProgramCacheKey=()=>'mobile-terrain-ground-v1';
+ ground.customProgramCacheKey=()=>'mobile-terrain-ground-v2';
  materials.terrain=ground;
  const terrain=new T.Mesh(geo,ground);
  terrain.name='mobile-terrain';terrain.receiveShadow=true;
@@ -100,8 +104,8 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
  rgeo.setAttribute('position',new T.BufferAttribute(rp,3));
  rgeo.setAttribute('normal',new T.BufferAttribute(rn,3));
  rgeo.setIndex(new T.BufferAttribute(ri,1));
- const water=new T.MeshStandardMaterial({color:0x2f4a44,roughness:.06,metalness:0,transparent:true,depthWrite:false});
- water.envMapIntensity=1.2;water.name='river';
+ const water=new T.MeshStandardMaterial({color:0x4a4a3a,roughness:.2,metalness:0,transparent:true,depthWrite:false});
+ water.envMapIntensity=.55;water.name='river';
  const time={value:0};
  water.onBeforeCompile=sh=>{
   sh.uniforms.uTime=time;
@@ -109,16 +113,22 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
    .replace('#include <common>','#include <common>\nvarying vec3 vWp;')
    .replace('#include <begin_vertex>','#include <begin_vertex>\nvWp=(modelMatrix*vec4(transformed,1.)).xyz;');
   sh.fragmentShader=sh.fragmentShader
-   .replace('#include <common>','#include <common>\nuniform float uTime;varying vec3 vWp;')
+   .replace('#include <common>','#include <common>\nuniform float uTime;varying vec3 vWp;float wH(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float wN(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(wH(i),wH(i+vec2(1.,0.)),f.x),mix(wH(i+vec2(0.,1.)),wH(i+1.),f.x),f.y);}')
    .replace('#include <normal_fragment_maps>',`
     vec2 wp=vWp.xz;float wt=uTime;
     vec2 rip=vec2(cos(wp.x*3.1+wp.y*1.3+wt*1.7)+.6*cos(wp.x*7.3-wp.y*2.1-wt*2.3),
-                  cos(wp.y*2.3-wt*2.9+wp.x*.7)+.6*cos(wp.y*5.9+wp.x*3.3+wt*1.9))*.045;
+                  cos(wp.y*2.3-wt*2.9+wp.x*.7)+.6*cos(wp.y*5.9+wp.x*3.3+wt*1.9))*.014;
+    vec2 wf=wp*vec2(8.,4.5)+vec2(0.,wt*2.4),wg=wp*vec2(19.,11.)+vec2(wt*.6,wt*3.8);
+    float w0=wN(wf),w1=wN(wg);
+    rip+=vec2(wN(wf+vec2(.4,0.))-w0,wN(wf+vec2(0.,.4))-w0)*.16+vec2(wN(wg+vec2(.4,0.))-w1,wN(wg+vec2(0.,.4))-w1)*.09;
+    float wk=wN(wp*vec2(1.7,.8)+vec2(w0*.6,wt*.4));
+    roughnessFactor=mix(.12,.34,wk);
     normal=normalize(normal+(viewMatrix*vec4(rip.x,0.,rip.y,0.)).xyz);
-    float fres=pow(1.-abs(dot(normal,normalize(vViewPosition))),3.);
-    diffuseColor.a=mix(.3,.92,fres);`);   // Fresnel: clear when looking down, reflective at grazing angles
+    float fres=pow(1.-abs(dot(normal,normalize(vViewPosition))),4.);
+    diffuseColor.rgb*=mix(.7,1.1,w0);
+    diffuseColor.a=mix(.12,.58,fres)*mix(.65,1.,wk);`);   // Fresnel: clear when looking down, reflective at grazing angles
  };
- water.customProgramCacheKey=()=>'mobile-terrain-river-v1';
+ water.customProgramCacheKey=()=>'mobile-terrain-river-v2';
  materials.river=water;
  const river=new T.Mesh(rgeo,water);
  river.name='mobile-river';river.renderOrder=2;

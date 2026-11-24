@@ -119,7 +119,7 @@ export async function buildMobileEcology({T,world,landscapeHeight:lhArg=layoutHe
  }
  // ---------- billboard rendering: y-locked camera-facing quads, no crossed planes
  let scene=world;while(scene.parent)scene=scene.parent;
- const hazeColor=scene.fog&&scene.fog.color?scene.fog.color.clone():new T.Color(0xb9c9cf);
+ const hazeColor=(scene.fog&&scene.fog.color?scene.fog.color.clone():new T.Color(0xb9c9cf)).lerp(new T.Color(0x9aa08c),.65);
  const quad=new T.PlaneGeometry(1,1);quad.translate(0,.5,0);
  [bb0,bb1].forEach((tex,t)=>{
   tex.colorSpace=T.SRGBColorSpace;tex.anisotropy=4;tex.needsUpdate=true;textures.add(tex);
@@ -142,7 +142,7 @@ export async function buildMobileEcology({T,world,landscapeHeight:lhArg=layoutHe
      gl_Position=projectionMatrix*mvPosition;`);
    shader.fragmentShader=shader.fragmentShader
     .replace('#include <common>','#include <common>\nuniform vec3 uHaze;\nvarying float vHaze;')
-    .replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb=mix(diffuseColor.rgb,uHaze,vHaze);');
+    .replace('#include <color_fragment>','#include <color_fragment>\ndiffuseColor.rgb*=vec3(1.04,.98,.86);diffuseColor.rgb=mix(diffuseColor.rgb,mix(vec3(dot(diffuseColor.rgb,vec3(.2126,.7152,.0722))),uHaze,.4),vHaze*.32);');
   };
   const sectors=[[],[],[],[]];billboards[t].forEach(b=>sectors[sectorOf(b)].push(b));
   sectors.forEach((group,sector)=>{
