@@ -1,0 +1,49 @@
+{
+  "id": 45339913607,
+  "head": "35112042952f729fe432c029f7f205a2a21bb623",
+  "conclusion": "success",
+  "url": "https://github.com/Luciuswang/neon-cleaner-demo/actions/runs/45339913607",
+  "steps": [
+    [
+      "Set up job",
+      "success"
+    ],
+    [
+      "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+      "success"
+    ],
+    [
+      "Serve the actual public tree with the scoped runtime overlay",
+      "success"
+    ],
+    [
+      "River valley play on Apple iPhone",
+      "success"
+    ],
+    [
+      "Play 4v4 AI practice on same iPhone",
+      "success"
+    ],
+    [
+      "Public signaling invite room on same iPhone (separate external-service check)",
+      "success"
+    ],
+    [
+      "Sanitized server paths on failure",
+      "skipped"
+    ],
+    [
+      "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+      "success"
+    ],
+    [
+      "Complete job",
+      "success"
+    ]
+  ],
+  "observations": [
+    "2026-11-24T06:23:18.8064890Z DEVICE iPhone 17 Pro / iOS 26.2",
+    "2026-11-24T06:27:43.3445860Z DEVICE iPhone 17 Pro / iOS 26.2",
+    "2026-11-24T06:29:23.8099150Z DEVICE iPhone 17 Pro / iOS 26.2"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "mode": "squads",
+  "phase": {
+    "frames": 307,
+    "draws": 145,
+    "triangles": 380921,
+    "x": -27,
+    "z": 20,
+    "yaw": -1.703,
+    "mag": 30,
+    "reload": 0,
+    "state": "play",
+    "profile": "mobile"
+  },
+  "buffer": false,
+  "controls": [
+    [
+      "rf-move",
+      true
+    ],
+    [
+      "rf-look",
+      true
+    ],
+    [
+      "rf-fire",
+      true
+    ],
+    [
+      "rf-reload",
+      true
+    ]
+  ],
+  "errors": [],
+  "firstFrameWaitMs": 28521
+}

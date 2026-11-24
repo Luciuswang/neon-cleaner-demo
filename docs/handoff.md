@@ -825,3 +825,7 @@ River mobile PR 17 live. Apple iPhone 17 Pro iOS 26.2 simulator passed solo, off
 ## Sync note - 2026-11-24T14:25:14.1533803+08:00
 
 Riverfall mobile now uses the desktop art family. Matched camera review conditional; waiting for Apple simulator and public acceptance before replacing the live entry.
+
+## Sync note - 2026-11-24T14:37:01.4613015+08:00
+
+Riverfall shared-art iPhone build is live on Pages PR 18. Actual iOS Simulator solo, AI practice and invitation host passed; all 27 public look assets matched and both normal public entries replayed. Owner hardware/art acceptance remains.

@@ -1,0 +1,36 @@
+{
+  "mode": "solo",
+  "phase": {
+    "frames": 21,
+    "draws": 146,
+    "triangles": 487640,
+    "x": -26,
+    "z": 22,
+    "yaw": -1.35,
+    "mag": 29,
+    "reload": 0,
+    "state": "play",
+    "profile": "mobile"
+  },
+  "buffer": false,
+  "controls": [
+    [
+      "rf-move",
+      true
+    ],
+    [
+      "rf-look",
+      true
+    ],
+    [
+      "rf-fire",
+      true
+    ],
+    [
+      "rf-reload",
+      true
+    ]
+  ],
+  "errors": [],
+  "firstFrameWaitMs": 24810
+}

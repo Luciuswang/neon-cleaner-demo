@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261124T063701Z-3294c3e5b3",
+  "task_id": "river-mobile-realism-20261124",
+  "timestamp_utc": "2026-11-24T06:37:01.908173+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall shared-art iPhone build is live on Pages PR 18. Actual iOS Simulator solo, AI practice and invitation host passed; all 27 public look assets matched and both normal public entries replayed. Owner hardware/art acceptance remains.",
+  "commit_shas": [
+    "a88a70ddb7562ba3df5ec807874a6ad6481bf70e"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
