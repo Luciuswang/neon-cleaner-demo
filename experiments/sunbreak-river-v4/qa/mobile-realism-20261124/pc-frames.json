@@ -1,0 +1,65 @@
+{
+  "report": [
+    {
+      "name": "bank",
+      "view": [
+        -6.3,
+        1.65,
+        10.6,
+        -0.22,
+        -0.055,
+        false
+      ],
+      "calls": 1269,
+      "tris": 56459803,
+      "tex": 211,
+      "programs": 102,
+      "mobile": false,
+      "size": [
+        848,
+        390
+      ]
+    },
+    {
+      "name": "grove",
+      "view": [
+        -13,
+        1.68,
+        13,
+        1.87,
+        0.075,
+        false
+      ],
+      "calls": 1034,
+      "tris": 35735539,
+      "tex": 211,
+      "programs": 102,
+      "mobile": false,
+      "size": [
+        848,
+        390
+      ]
+    },
+    {
+      "name": "actor",
+      "view": [
+        -11,
+        1.68,
+        14,
+        0,
+        -0.035,
+        true
+      ],
+      "calls": 1311,
+      "tris": 57083280,
+      "tex": 211,
+      "programs": 102,
+      "mobile": false,
+      "size": [
+        848,
+        390
+      ]
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261124T062514Z-618233d882",
+  "task_id": "river-mobile-realism-20261124",
+  "timestamp_utc": "2026-11-24T06:25:14.602760+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall mobile now uses the desktop art family. Matched camera review conditional; waiting for Apple simulator and public acceptance before replacing the live entry.",
+  "commit_shas": [
+    "23bc9ef96555344b63daa6b4bc6d1ef597e33483"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

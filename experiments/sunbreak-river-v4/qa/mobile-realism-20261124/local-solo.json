@@ -1,0 +1,95 @@
+{
+  "errors": [],
+  "result": {
+    "probe": "riverfall-mobile",
+    "started": 69,
+    "now": 18850,
+    "stage": "done-pass",
+    "done": true,
+    "pass": true,
+    "failures": [],
+    "checks": {
+      "firstFrames": 3,
+      "startTapped": true,
+      "startOverlayGone": true,
+      "moveForward": 5.105536210820562,
+      "yawDelta": 0.47499999999999987,
+      "ammoBefore": 30,
+      "ammoAfterFire": 17,
+      "ammoAfterReload": 30,
+      "sustainedFrames": 79,
+      "sustainedFps": 25.9,
+      "draws": 180,
+      "tris": 488132,
+      "art": {
+        "weapon": true,
+        "actors": true,
+        "actorCount": 6,
+        "sky": [
+          1024,
+          512
+        ]
+      },
+      "pixels": {
+        "w": 750,
+        "h": 342,
+        "cssW": 750,
+        "samples": 64,
+        "min": 2,
+        "max": 223,
+        "range": 221,
+        "uniqueColors": 54,
+        "preserveDrawingBuffer": true,
+        "glError": 0
+      }
+    },
+    "mode": "solo",
+    "note": "",
+    "stageAt": 18850,
+    "statsSeen": {
+      "frames": 3,
+      "x": -26,
+      "z": 22,
+      "yaw": -1.35,
+      "mag": 30,
+      "draws": 203,
+      "tris": 559400,
+      "webgl": null,
+      "keys": [
+        "frames",
+        "draws",
+        "triangles",
+        "x",
+        "z",
+        "yaw",
+        "mag",
+        "reload",
+        "state",
+        "profile"
+      ]
+    },
+    "touchEventError": "TypeError: Illegal constructor",
+    "final": {
+      "frames": 276,
+      "x": -21.01,
+      "z": 20.92,
+      "yaw": -1.825,
+      "mag": 30,
+      "draws": 180,
+      "tris": 488132,
+      "webgl": null,
+      "keys": [
+        "frames",
+        "draws",
+        "triangles",
+        "x",
+        "z",
+        "yaw",
+        "mag",
+        "reload",
+        "state",
+        "profile"
+      ]
+    }
+  }
+}

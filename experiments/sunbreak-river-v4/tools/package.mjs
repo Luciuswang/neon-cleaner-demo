@@ -13,6 +13,7 @@ runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','grou
 runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','masonry-materials.js');
 runtime.push('aim-assist.js');
 runtime.push('mobile-world.js','mobile-controls.js');
+runtime.push('mobile-terrain.js','mobile-ecology.js','mobile-look.json');
 runtime.push('squads-sim.js','squads-net.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
 runtime.push('environment-polish.js','stone-cover.js','combat-feedback.js','shot-feedback-event.js');
@@ -22,6 +23,13 @@ const sharedFiles=sharedRelease.files.filter(f=>/^(assets\/|vendor\/|assets-mani
 for(const f of sharedFiles)assert.equal(hash(await readFile(resolve(root,'../sunbreak-storm-v3',f.path))),f.sha256,'Shared dependency changed '+f.path);
 async function walk(dir){for(const d of await readdir(resolve(root,dir),{withFileTypes:true})){const path=dir+'/'+d.name;if(d.isDirectory())await walk(path);else runtime.push(path)}}
 await walk('assets');
+const mobileLook=JSON.parse(await readFile(resolve(root,'mobile-look.json')));
+const mobileNames=new Set(mobileLook.files.map(f=>f.file));
+assert.deepEqual(runtime.filter(p=>p.startsWith('assets/mobile-look/')).sort(),[...mobileNames].sort(),'Unlisted mobile derivative');
+for(const f of mobileLook.files){
+ assert.match(f.file,/^assets\/mobile-look\/[a-z0-9_-]+\.(jpg|png)$/);
+ const b=await readFile(resolve(root,f.file));assert.equal(b.length,f.bytes);assert.equal(hash(b),f.sha256);
+}
 // Full original tree is source-only; public game uses two simplified GLBs.
 const foliage=JSON.parse(await readFile(resolve(root,'foliage-revision.json')));
 const afterrain=JSON.parse(await readFile(resolve(root,'afterrain-assets.json'))),daylight=JSON.parse(await readFile(resolve(root,'daylight-assets.json')));

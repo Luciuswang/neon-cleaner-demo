@@ -1,0 +1,171 @@
+{
+  "generated": "2026-11-24T06:16:57.335Z",
+  "sources": [
+    {
+      "file": "assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr",
+      "sha256": "462a3cc63bfcd9fe0299137a0f33f4ade84e237f4cb6115fe46f5ab400693fe6"
+    },
+    {
+      "file": "procedural-materials.js",
+      "sha256": "94d24529e3e22070364fbf95969777d27097bb20d2601d4900ac4c03b1a02f65"
+    },
+    {
+      "file": "tools/bake-mobile-maps.mjs",
+      "sha256": "e70ba536dfdc435fd7a8d16fcc8853c67281fc8c7c30c4574453ceebc121047b"
+    },
+    {
+      "file": "tools/bake-mobile-trees.mjs",
+      "sha256": "f9ebea33bef35e0e9d90224592029fdb4d6f20eca6f3930b0dc3101059713568"
+    },
+    {
+      "file": "assets/foliage-revision/island_tree_01-far.glb",
+      "sha256": "83798e5af16693a173ef3928e5da59be25b9d8425185238bc59f9a9ecf52cf80"
+    },
+    {
+      "file": "assets/foliage-revision/tree_small_02-far.glb",
+      "sha256": "19b15b34a59c7c5352e70442ffa3fbc365c6a94b94326be432a492527dce2412"
+    }
+  ],
+  "provenance": [
+    "*-color/-normal/-roughness.jpg: createProceduralBaker 512 bake of PROCEDURAL_FAMILIES, RGB taken without alpha compositing, roughness = ORM green, resized to 256x256.",
+    "sky.jpg: assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr via python/cv2 — brightest texel rotated to u=.36, sun lowered to 26deg with atan(tan(elevation)/scale), warmed, 1024x512, ACES filmic + sRGB.",
+    "tree-0.png, tree-1.png: produced by the separate tree tool; only hashed here."
+  ],
+  "files": [
+    {
+      "file": "assets/mobile-look/brick-color.jpg",
+      "sha256": "05eb7089befb5b2deecf5343af4cc56f29648df255b028dad0479cc0e71aba58",
+      "bytes": 6179
+    },
+    {
+      "file": "assets/mobile-look/brick-normal.jpg",
+      "sha256": "28ce05d04ffd57c2aeb6a4108fdbb6667aae10a54ff178fea7d0697c7d8fec20",
+      "bytes": 3016
+    },
+    {
+      "file": "assets/mobile-look/brick-roughness.jpg",
+      "sha256": "9c9c09c82bb74f611fa582e04a7be52672aef0a428f089c69ba14dbae7b32097",
+      "bytes": 6342
+    },
+    {
+      "file": "assets/mobile-look/dirt-color.jpg",
+      "sha256": "dfbc2fb2fddafc7a596ac249686081900e949c4bc3318bf1d766c12293f1c545",
+      "bytes": 6508
+    },
+    {
+      "file": "assets/mobile-look/dirt-normal.jpg",
+      "sha256": "f4ff98a0b08d6c02e82a23b049d185afaf05c5a59d1dd91038a158c1e1cd0233",
+      "bytes": 567
+    },
+    {
+      "file": "assets/mobile-look/dirt-roughness.jpg",
+      "sha256": "3573b883963e4e6755e86e673a3cad3c7a9cea869e21de85081b1522e6f84860",
+      "bytes": 6352
+    },
+    {
+      "file": "assets/mobile-look/forest_ground_04-color.jpg",
+      "sha256": "12cea2a51a396e98ad29c8751211cd52d99893087595783496f7a94fd527d577",
+      "bytes": 6899
+    },
+    {
+      "file": "assets/mobile-look/forest_ground_04-normal.jpg",
+      "sha256": "bf5fe8611f502bfb4c0494aaf9a7d131815946aed684e5262d46b89355f33b78",
+      "bytes": 10376
+    },
+    {
+      "file": "assets/mobile-look/forest_ground_04-roughness.jpg",
+      "sha256": "b2087d2b33018b56488ecb3b7089688f7ee46e435292ca7afb294a2a984d57eb",
+      "bytes": 6263
+    },
+    {
+      "file": "assets/mobile-look/metal-color.jpg",
+      "sha256": "73810270867ff8ecdd4ed6eee3237071dca2888c13e433dfe23b99a509b7c2fe",
+      "bytes": 13481
+    },
+    {
+      "file": "assets/mobile-look/metal-normal.jpg",
+      "sha256": "270fa59f244ff261d0519841afc36357e9ad52389de0819cb179d3c3a19131d3",
+      "bytes": 1037
+    },
+    {
+      "file": "assets/mobile-look/metal-roughness.jpg",
+      "sha256": "8b653a11d4c8a9ef5ad94abe66452dbd94785ddbd9f9eaba19c8a690bb2aea50",
+      "bytes": 15361
+    },
+    {
+      "file": "assets/mobile-look/mud-color.jpg",
+      "sha256": "dc65f7f586036bbc94ce2e26258cb5c5679d96e05e0735c32b131125314d4a6f",
+      "bytes": 6480
+    },
+    {
+      "file": "assets/mobile-look/mud-normal.jpg",
+      "sha256": "03c290fdf71ff0a464a5bec8cd5e8e89f579506b3409f1ab36b546e77338dda2",
+      "bytes": 12606
+    },
+    {
+      "file": "assets/mobile-look/mud-roughness.jpg",
+      "sha256": "f11f858d9cc24a0b010785febf5b150412b38e83eaaf172f5a3b587dbccb8abb",
+      "bytes": 6310
+    },
+    {
+      "file": "assets/mobile-look/plaster-color.jpg",
+      "sha256": "a073e776dc9a3733b7e8ac2cd2808de1046c7ab9620457d19258cc0f13e9d522",
+      "bytes": 6208
+    },
+    {
+      "file": "assets/mobile-look/plaster-normal.jpg",
+      "sha256": "6ccb9bec626585b5a324e1944033110dfea3fefebee003e5b9d25c87f7a5d95e",
+      "bytes": 1262
+    },
+    {
+      "file": "assets/mobile-look/plaster-roughness.jpg",
+      "sha256": "76b65afd4f06a930367da1dd775be95cafaadcf89dec3ad07435865248b6e09c",
+      "bytes": 6236
+    },
+    {
+      "file": "assets/mobile-look/sky.jpg",
+      "sha256": "42c21ed24d8a7ca4c4fba76c769704ed74942e13f2d82b30486556b508cb6ca6",
+      "bytes": 27489
+    },
+    {
+      "file": "assets/mobile-look/stone-color.jpg",
+      "sha256": "4c6cce5872b86969fdf5a1232b34ca0a9199df570e4ee082d68a3ee9e8f6858c",
+      "bytes": 6072
+    },
+    {
+      "file": "assets/mobile-look/stone-normal.jpg",
+      "sha256": "59ee7231574aa39bf1f73a04e5304c8b2206578111645aa151a93d503a16b430",
+      "bytes": 7339
+    },
+    {
+      "file": "assets/mobile-look/stone-roughness.jpg",
+      "sha256": "6d1149ffae2e6c2fcb1d755de9b5f66415cf0700a6eb4ed0a8f1c4b03e86282a",
+      "bytes": 6281
+    },
+    {
+      "file": "assets/mobile-look/tree-0.png",
+      "sha256": "8d546a1048b1f91af26d709c65bda65badad7aa0193d798500afe635811b1afe",
+      "bytes": 451558
+    },
+    {
+      "file": "assets/mobile-look/tree-1.png",
+      "sha256": "3640be2c888b91caa42d18da17deac19a8e1427f71b4bc83c2af7f79a22ccc9e",
+      "bytes": 279285
+    },
+    {
+      "file": "assets/mobile-look/wood-color.jpg",
+      "sha256": "d20fbd28f2c5d7e5871c7bd8cdab02e0fff1494cff166ee251842252f8ed2b9a",
+      "bytes": 3693
+    },
+    {
+      "file": "assets/mobile-look/wood-normal.jpg",
+      "sha256": "150e76ebe1ab5aaccd27b4aa2363214bfbd5f59b793184a9ca7ddd878e7d881b",
+      "bytes": 1330
+    },
+    {
+      "file": "assets/mobile-look/wood-roughness.jpg",
+      "sha256": "d2f3a9aa87805052502b902a0ee94e51bf6adf87e90ed9e082591a5200792fc6",
+      "bytes": 3872
+    }
+  ]
+}

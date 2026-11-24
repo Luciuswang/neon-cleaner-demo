@@ -1,0 +1,103 @@
+{
+  "errors": [],
+  "result": {
+    "probe": "riverfall-mobile",
+    "started": 62,
+    "now": 23732,
+    "stage": "done-pass",
+    "done": true,
+    "pass": true,
+    "failures": [],
+    "checks": {
+      "firstFrames": 3,
+      "startTapped": false,
+      "squadsConsent": true,
+      "squadsCreateClicked": true,
+      "squadsSignalingConnected": false,
+      "practice": true,
+      "squadsBoardVisible": true,
+      "squadsWarmupDone": true,
+      "squadsEightSeats": true,
+      "squadsAiTagVisible": true,
+      "moveForward": 6.164965531128295,
+      "yawDelta": 0.47499999999999987,
+      "ammoBefore": 30,
+      "ammoAfterFire": 17,
+      "ammoAfterReload": 30,
+      "sustainedFrames": 79,
+      "sustainedFps": 26,
+      "draws": 104,
+      "tris": 328961,
+      "art": {
+        "weapon": true,
+        "actors": true,
+        "actorCount": 8,
+        "sky": [
+          1024,
+          512
+        ]
+      },
+      "pixels": {
+        "w": 750,
+        "h": 342,
+        "cssW": 750,
+        "samples": 64,
+        "min": 2,
+        "max": 213,
+        "range": 211,
+        "uniqueColors": 53,
+        "preserveDrawingBuffer": true,
+        "glError": 0
+      }
+    },
+    "mode": "squads-host",
+    "note": "Actual mobile host room, automated DOM pointer actions; no second physical player.",
+    "stageAt": 23732,
+    "statsSeen": {
+      "frames": 3,
+      "x": -26,
+      "z": 22,
+      "yaw": -1.35,
+      "mag": 30,
+      "draws": 234,
+      "tris": 611214,
+      "webgl": null,
+      "keys": [
+        "frames",
+        "draws",
+        "triangles",
+        "x",
+        "z",
+        "yaw",
+        "mag",
+        "reload",
+        "state",
+        "profile"
+      ]
+    },
+    "label": "offline 4v4 practice",
+    "touchEventError": "TypeError: Illegal constructor",
+    "final": {
+      "frames": 396,
+      "x": -20.92,
+      "z": 21.03,
+      "yaw": -2.178,
+      "mag": 30,
+      "draws": 104,
+      "tris": 328961,
+      "webgl": null,
+      "keys": [
+        "frames",
+        "draws",
+        "triangles",
+        "x",
+        "z",
+        "yaw",
+        "mag",
+        "reload",
+        "state",
+        "profile"
+      ]
+    }
+  }
+}
