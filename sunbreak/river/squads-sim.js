@@ -13,7 +13,7 @@
 //   Not specified in the brief, chosen here: warmup after round 1 is 3s; players
 //   are frozen during warmup; 30-round magazine, 105 ms cadence; 25 damage per hit.
 
-import { terrainHeight, blocked, navigationBounds, wallTopAt, teamSpawns, MAP } from './map-layout.js';
+import { terrainHeight, blocked, navigationBounds, wallTopAt, MAP } from './map-layout.js';
 
 const SEATS = 8, WIN_SCORE = 5;
 const TICK = 1 / 60, MAX_DT = 0.25;
@@ -29,8 +29,7 @@ const BOT_TURN = 3.2, BOT_REACT = 0.7, BOT_SPREAD = 0.03, BOT_AIM_OK = 0.08, BOT
 // Bot-only burst fire: 0.5s burst, then ~0.9-1.2s pause on a per-bot clock (human weapons untouched).
 // Every bot gets the same reaction time and burst length; only the pause varies slightly.
 const BOT_BURST = 0.5, BOT_PAUSE = 0.9, BOT_PAUSE_JITTER = 0.3;
-const botPeriods = new WeakMap(); let botPeriodSeq = 0;
-function botPeriod(a) { let p = botPeriods.get(a); if (p === undefined) { p = BOT_BURST + BOT_PAUSE + ((++botPeriodSeq * 0.618034) % 1) * BOT_PAUSE_JITTER; botPeriods.set(a, p); } return p; }
+function botPeriod(slot) { return BOT_BURST + BOT_PAUSE + (((slot + 1) * 0.618034) % 1) * BOT_PAUSE_JITTER; }
 
 // ---------- map adapters ----------
 const num = (v, d) => (Number.isFinite(v) ? v : d);
@@ -154,37 +153,15 @@ function distanceField(target) {
 }
 
 // ---------- spawns ----------
-function findFree(x, z) {
-  for (let r = 0; r <= 40; r += 1) {
-    const steps = r === 0 ? 1 : 12;
-    for (let k = 0; k < steps; k++) {
-      const a = (k / steps) * Math.PI * 2;
-      const px = x + Math.cos(a) * r, pz = z + Math.sin(a) * r;
-      if (!solid(px, pz, RADIUS)) return [px, pz];
-    }
-  }
-  return [x, z];
+const WEST_SPAWNS = [[-27,20],[-23.8,18.6],[-25.9,23.3],[-22.4,21.7]];
+const EAST_SPAWNS = [[24,-29],[27,-27],[26,-32],[22,-26]];
+const WEST_ROUTE = [[[-12,22],[-14,24],[-10,24],[-12,20]],[[-10,14],[-12,12],[-8,14],[-12,8]]];
+function spawnPoint(slot) { // returns [x, z]
+  return (slot % 2 ? EAST_SPAWNS : WEST_SPAWNS)[(slot >> 1) % 4];
 }
-const spawnCache = [null, null];
-// Four staggered, collision-free points around the team spawn.
-function teamSpawnPoints(team) {
-  if (spawnCache[team]) return spawnCache[team];
-  const s = teamSpawns[team], out = [];
-  for (let r = 0; r <= 12 && out.length < 4; r += 1.5) {
-    const steps = r === 0 ? 1 : Math.round(r * 4);
-    for (let k = 0; k < steps && out.length < 4; k++) {
-      const a = (k / steps) * Math.PI * 2;
-      const px = s[0] + Math.cos(a) * r, pz = s[2] + Math.sin(a) * r;
-      if (!solid(px, pz, RADIUS)) out.push([px, pz]);
-    }
-  }
-  while (out.length < 4) out.push(findFree(s[0], s[2]));
-  spawnCache[team] = out;
-  return out;
-}
-function spawnPoint(slot) {
-  const p = teamSpawnPoints(slot % 2)[(slot >> 1) % 4];
-  return [p[0], p[1]];
+function routePoint(slot, leg) { // east = 180 deg rotation about [0,-4]
+  const w = WEST_ROUTE[leg][(slot >> 1) % 4];
+  return slot % 2 ? [-w[0], -8 - w[1]] : w;
 }
 
 // ---------- input sanitising ----------
@@ -228,11 +205,20 @@ export function createMatch() {
     for (const p of players) {
       const [x, z] = spawnPoint(p.slot);
       p.x = x; p.z = z; p.y = ground(x, z);
-      p.yaw = p.team === 0 ? -Math.PI / 2 : Math.PI / 2; // face the opposing side
       p.pitch = 0;
       p.hp = HP; p.mag = MAG; p.reload = 0; p.cooldown = 0;
       p.in = neutralInput(); p.age = 0;
       const a = p.ai;
+      {
+        const seat = (p.slot >> 1) % 4, w = routePoint(p.slot, 0);
+        a.rn = (a.rn || 0) + 1; // per-agent round counter, deterministic variation
+        const v = (a.rn * 7 + seat * 3) % 5, u = (a.rn * 3 + seat) % 3;
+        a.leg = 0; a.hx = 0; a.hz = 0;
+        a.ox = (v - 2) * 0.25; a.oz = (u - 1) * 0.3; // subtle second-destination offset (west frame, mirrored in goal)
+        a.wait = 0.1 * seat + 0.08 * ((a.rn + seat) % 3); // short start stagger
+        a.pace = 1 - 0.03 * seat - 0.02 * ((a.rn * 2 + seat) % 3); // own pace <= 1
+        p.yaw = Math.atan2(-(w[0] - p.x), -(w[1] - p.z)); // assumes forward = (-sin yaw, -cos yaw)
+      }
       a.field = null; a.target = -1; a.repath = 0; a.seen = 0; a.strafeT = 0; a.stuck = 0; a.dodge = 0;
     }
   }
@@ -259,6 +245,7 @@ export function createMatch() {
     const p = players[slot];
     if (p.bot) return;
     p.bot = true; // bot continues from the same state
+    if (phase === 'live') { p.ai.leg = 2; p.ai.wait = 0; }
     p.in = neutralInput(); p.age = 0;
     p.ai.field = null; p.ai.repath = 0; p.ai.seen = 0;
   }
@@ -371,9 +358,49 @@ export function createMatch() {
       if (a.strafeT <= 0) { a.strafe = rand() < 0.5 ? -1 : 1; a.strafeT = 0.8 + rand() * 0.9; }
       if (dist > 1e-6) { mx = (-ez / dist) * a.strafe; mz = (ex / dist) * a.strafe; }
     } else {
-      [mx, mz] = routeDir(p, e, dt);
+      if (!(a.leg >= 0) || ROUND_TIME - seconds >= 12) a.leg = 2; // unset leg or timeout => hunt
+      const wp = l => { const r = routePoint(p.slot, l), s = p.slot % 2 ? -1 : 1; return l === 1 ? [r[0] + s * (a.ox || 0), r[1] + s * (a.oz || 0)] : r; };
+      let w = a.leg < 2 ? wp(a.leg) : null;
+      if (w && Math.hypot(w[0] - p.x, w[1] - p.z) < 1.5) w = ++a.leg < 2 ? wp(a.leg) : null;
+      const tg = w ? { x: w[0], z: w[1] } : e;
+      let gd = routeDir(p, tg, dt);
+      if (!gd || Math.hypot(gd[0], gd[1]) < 0.05) { // same nav cell: go direct instead of zero velocity
+        const tx = tg ? tg.x - p.x : 0, tz = tg ? tg.z - p.z : 0, tl = Math.hypot(tx, tz);
+        gd = tl > 0.3 ? [tx / tl, tz / tl] : [0, 0];
+      }
+      const gk = clamp(dt * 10, 0, 1); // sustain personal heading, no jitter
+      a.hx = (a.hx || 0) + (gd[0] - (a.hx || 0)) * gk;
+      a.hz = (a.hz || 0) + (gd[1] - (a.hz || 0)) * gk;
+      mx = a.hx; mz = a.hz;
+      if (Math.hypot(mx, mz) < 0.05) { mx = gd[0]; mz = gd[1]; }
     }
-    const moved = move(p, mx, mz, BOT_SPEED, dt);
+    let sx = mx, sz = mz, sp = clamp(a.pace || 1, 0, 1);
+    const near = [];
+    if (a.wait > 0) { a.wait -= dt; sx = sz = mx = mz = 0; }
+    else for (const q of players) {
+      if (q === p || q.hp <= 0 || q.team !== p.team) continue;
+      let dx = p.x - q.x, dz = p.z - q.z, d = Math.hypot(dx, dz);
+      if (d >= 1.8) continue;
+      let nx, nz;
+      if (d < 0.05) { const t = p.slot * 2.4; nx = Math.cos(t); nz = Math.sin(t); } // coincident: split by slot
+      else { nx = dx / d; nz = dz / d; }
+      const k = clamp((1.8 - d) / 1.8, 0, 1), f = k * (0.6 + 1.2 * k); // stronger when close
+      sx += nx * f; sz += nz * f;
+      if (d < 0.82) near.push([nx, nz, d]);
+      if (p.slot > q.slot && mx * nx + mz * nz < 0) sp = Math.min(sp, 0.45 + 0.3 * d / 1.8); // higher slot yields, never stops
+    }
+    for (const c of near) { // never step further into overlap; slide on bounded tangent instead of stalling
+      const into = sx * c[0] + sz * c[1];
+      if (into < 0) { sx -= into * c[0]; sz -= into * c[1]; }
+      const cr = mz * c[0] - mx * c[1];
+      const side = Math.abs(cr) > 0.05 ? Math.sign(cr) : ((p.slot >> 1) & 1 ? 1 : -1);
+      const tg = 0.25 + 0.5 * (1 - c[2] / 0.82);
+      sx += -c[1] * side * tg; sz += c[0] * side * tg;
+    }
+    let sl = Math.hypot(sx, sz);
+    if (sl < 0.05 && !near.length) { sx = mx; sz = mz; sl = Math.hypot(sx, sz); }
+    if (sl > 1) { sx /= sl; sz /= sl; } // move() does not normalize
+    const moved = move(p, sx, sz, BOT_SPEED * clamp(sp, 0, 1), dt);
     if ((mx || mz) && moved < BOT_SPEED * dt * 0.2) {
       a.stuck += dt;
       if (a.stuck > 0.5) { a.stuck = 0; a.dodge = 0.5; a.dodgeA = rand() * Math.PI * 2; a.strafe = -a.strafe; }
@@ -394,7 +421,7 @@ export function createMatch() {
     // fire: needs line of sight, reaction delay, settled aim; shots carry spread
     const aimed = Math.abs(wrap(wantYaw - p.yaw)) < BOT_AIM_OK && Math.abs(wantPitch - p.pitch) < BOT_AIM_OK;
     const burstT = a.seen - BOT_REACT;
-    const fire = los && burstT >= 0 && (burstT % botPeriod(a)) < BOT_BURST && aimed;
+    const fire = los && burstT >= 0 && (burstT % botPeriod(p.slot)) < BOT_BURST && aimed;
     const jy = (rand() - 0.5) * 2 * BOT_SPREAD, jp = (rand() - 0.5) * 2 * BOT_SPREAD;
     weapon(p, fire, !los && p.mag < MAG / 2, wrap(p.yaw + jy), clamp(p.pitch + jp, -PITCH_LIMIT, PITCH_LIMIT), dt);
   }
