@@ -1,0 +1,35 @@
+name: Riverfall mobile realism verification
+on:
+  push:
+    branches: ['codex/river-mobile-realism-sim-20261124']
+permissions:
+  contents: read
+jobs:
+  iphone:
+    runs-on: macos-15
+    timeout-minutes: 19
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            sunbreak
+            qa-ios
+      - name: Serve the actual public tree with the scoped runtime overlay
+        run: |
+          set -euo pipefail
+          cp -R qa-ios/candidate/. sunbreak/river/
+          python3 -m http.server 9181 --bind 127.0.0.1 --directory "$PWD" >"$RUNNER_TEMP/river-http.log" 2>&1 &
+          curl --retry 6 --retry-connrefused -fsS -o /dev/null http://127.0.0.1:9181/sunbreak/river/
+      - name: River valley play on Apple iPhone
+        run: bash qa-ios/probe.sh 'http://127.0.0.1:9181/sunbreak/river/?mobileqa=1'
+      - name: Play 4v4 AI practice on same iPhone
+        if: ${{ !cancelled() }}
+        run: bash qa-ios/probe.sh 'http://127.0.0.1:9181/sunbreak/river/?mobileqa=1&mode=squads&practice=1'
+      - name: Public signaling invite room on same iPhone (separate external-service check)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: bash qa-ios/probe.sh 'http://127.0.0.1:9181/sunbreak/river/?mobileqa=1&mode=squads'
+      - name: Sanitized server paths on failure
+        if: failure()
+        run: tail -12 "$RUNNER_TEMP/river-http.log" | cut -c1-240
