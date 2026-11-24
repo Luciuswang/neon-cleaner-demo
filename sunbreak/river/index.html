@@ -119,19 +119,23 @@ html,body{background:#172229;color:#d5dedc}
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
 <div id="bootStatus">正在装载雨林河谷、植被与材质…</div>
-<script type="module" src="./river/boot-ui.js"></script>
 <script type="importmap">{"imports":{"three":"./vendor/presentation/build/three.module.js","three/addons/":"./vendor/presentation/examples/jsm/"}}</script>
+<script src="./river/boot-ui.js"></script>
 <script type="module">
 import {TACTICAL_SPAWNS,createTacticalAI,enemyHitBounds} from './river/tactical-ai.js';
 import {SHOT_INTERVAL_MS,RELOAD_SECONDS,RELOAD_CUES,reloadProgress,controlTarget,createTrigger} from './river/combat-controls.js';
 import {createShotFeedbackAdapter} from './river/shot-feedback-event.js';
 import {createAimAssist,actorCenter} from './river/aim-assist.js';
-const E=document.getElementById('err');
-window.onerror=e=>{E.style.display='block';E.textContent='初始化失败 / Error: '+e};
+async function riverImport(spec, label) {
+  let p = '';
+  try { const u = new URL(spec, document.baseURI); p = u.pathname; return await import(u.href); }
+  catch (e) { throw new Error(`模块加载失败 [阶段: ${label}] 入口: ${p || '(无效路径)'}`); }
+}
 let THREE;
 let visual=null;
-try{THREE=await import('./vendor/three/build/three.module.js')}
-catch(e){E.style.display='block';E.textContent='无法加载本地渲染组件。请通过预览网页访问。\n'+e;throw e}
+window.riverBootStage='渲染引擎 / vendor/three/build/three.module.js';
+THREE=await riverImport('./vendor/three/build/three.module.js','渲染引擎');
+window.riverBootStage='建立 WebGL 渲染器';
 
 const PRESETS=[
  {n:'热带竞技',sky:0x5fc8ef,hz:0xeadfbe,fog:0x9fd9ef,fd:[40,230],sun:0xfff3d4,si:2.5,amb:0x9fd6ff,ai:.85,hemi:0xfff0cf,sea:0x19b5c9,sand:0xe8d2a3,wallA:0xf6ead2,wallB:0xef9a84,roof:0xc4624a,door:0x27c2c8,gun:0x2f353a,acc:0xff7a5e,ui:'#ff8a6a',sunpos:[60,78,40]},
@@ -140,9 +144,15 @@ const PRESETS=[
 let si=0,P=PRESETS[0];
 
 const app=document.getElementById('app');
-const rnd=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});
-rnd.setPixelRatio(Math.min(devicePixelRatio,2));rnd.setSize(innerWidth,innerHeight);
-rnd.shadowMap.enabled=true;rnd.shadowMap.type=THREE.PCFSoftShadowMap;
+const ua=navigator.userAgent,tp=navigator.maxTouchPoints||0;
+const MOBILE=/iPhone|iPad|iPod/i.test(ua)||(/Macintosh/.test(ua)&&tp>1)||(tp>0&&matchMedia('(pointer:coarse)').matches);
+const MOBILEQA=MOBILE&&new URLSearchParams(location.search).get('mobileqa')==='1';
+const mobPR=()=>Math.max(0.1,Math.min(1,devicePixelRatio||1,840/Math.max(innerWidth,innerHeight,1)));
+let touch=null,mobFrames=0,mobDraws=0,mobTris=0;
+const rnd=new THREE.WebGLRenderer({antialias:!MOBILE,powerPreference:'high-performance',preserveDrawingBuffer:MOBILE?MOBILEQA:true});
+rnd.setPixelRatio(MOBILE?mobPR():Math.min(devicePixelRatio,2));rnd.setSize(innerWidth,innerHeight);
+rnd.shadowMap.enabled=!MOBILE;rnd.shadowMap.type=THREE.PCFSoftShadowMap;
+if(MOBILE)rnd.info.autoReset=false; // mobile loop must call rnd.info.reset() once per frame before both passes
 rnd.toneMapping=THREE.ACESFilmicToneMapping;rnd.toneMappingExposure=1.02;app.appendChild(rnd.domElement);
 
 const scene=new THREE.Scene();
@@ -335,15 +345,15 @@ addEventListener('keydown',e=>{if(controlTarget(e.target))return;keys[e.code]=tr
  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();});
 addEventListener('keyup',e=>{keys[e.code]=false;if(e.code==='KeyF')trigger.setKeyboard(false)},true);
 let pres=false,plOK=true;
-function clearKeys(){for(const k in keys)keys[k]=false;trigger.clear();drag=false;S.aimHold=false}
+function clearKeys(){for(const k in keys)keys[k]=false;trigger.clear();drag=false;S.aimHold=false;if(touch)touch.reset()}
 addEventListener('blur',()=>{clearKeys();if(!squadsMode&&S.state==='play'&&!pres){S.state='pause';showMenu('继续作战')}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){clearKeys();if(!squadsMode&&S.state==='play'&&!pres){S.state='pause';showMenu('继续作战')}}});
-addEventListener('pointercancel',clearKeys,true);
+addEventListener('pointercancel',e=>{if(e.pointerType!=='touch')clearKeys()},true);
 addEventListener('focusin',e=>{if(controlTarget(e.target))clearKeys()},true);
-function lockReq(){if(!cv.requestPointerLock){plOK=false;return}try{const r=cv.requestPointerLock();if(r&&r.catch)r.catch(()=>{plOK=false})}catch(e){plOK=false}}
+function lockReq(){if(MOBILE||!cv.requestPointerLock){plOK=false;return}try{const r=cv.requestPointerLock();if(r&&r.catch)r.catch(()=>{plOK=false})}catch(e){plOK=false}}
 document.addEventListener('pointerlockerror',()=>{plOK=false});
 document.addEventListener('pointerlockchange',()=>{if(document.pointerLockElement!==cv){clearKeys();if(!squadsMode&&S.state==='play'&&plOK&&!pres){S.state='pause';showMenu('继续作战')}}});
-addEventListener('resize',()=>{cam.aspect=gcam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();rnd.setSize(innerWidth,innerHeight)});
+addEventListener('resize',()=>{cam.aspect=gcam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();if(MOBILE)rnd.setPixelRatio(mobPR());rnd.setSize(innerWidth,innerHeight)});
 
 // Optional light aim assist: visible in-game NPCs only; it nudges the look angles only while the player is moving the view (mouse or arrow look) and never fires. Fire or ADS alone never rotates the camera.
 const assist=createAimAssist({actors:()=>enemies,center:e=>actorCenter(e,enemyHitBounds),visible:(a,b)=>clearSight(a,b)});
@@ -353,14 +363,14 @@ bAssist.onclick=()=>{assist.toggle();showAssist();bAssist.blur()};
 showAssist();
 let drag=false,lx=0,ly=0;
 const cv=rnd.domElement;
-cv.addEventListener('mousedown',e=>{if(S.state!=='play')return;
+cv.addEventListener('mousedown',e=>{if(MOBILE||S.state!=='play')return;
  if(e.button===2){S.aimHold=true;return}
  if(e.button!==0||pres||document.hidden)return;
  trigger.setMouse(true);
  if(document.pointerLockElement!==cv){drag=true;lx=e.clientX;ly=e.clientY;lockReq()}
  fire();});
 addEventListener('mouseup',e=>{if(e.button===2)S.aimHold=false;if(e.button===0){trigger.setMouse(false);drag=false}},true);
-addEventListener('pointerup',e=>{if(e.button===0)trigger.setMouse(false)},true);
+addEventListener('pointerup',e=>{if(e.pointerType!=='touch'&&e.button===0)trigger.setMouse(false)},true);
 cv.addEventListener('contextmenu',e=>e.preventDefault());
 addEventListener('mousemove',e=>{
  if(trigger.snapshot().mouse&&(e.buttons&1)===0)trigger.setMouse(false);
@@ -370,7 +380,7 @@ function look(dx,dy){if(dx||dy)assist.noteLook(performance.now());const k=.0024*
 
 // audio
 let createGameAudio;
-try{({createGameAudio}=await Promise.race([import('./river/audio.js'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
+try{({createGameAudio}=await Promise.race([riverImport('./river/audio.js','声音'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
 catch{createGameAudio=({onStatus})=>{
  const info={failed:true,ready:false,unlocked:false,loaded:0,muted:false,volume:.65};
  queueMicrotask(()=>onStatus({...info}));
@@ -506,6 +516,7 @@ function tick(){
  requestAnimationFrame(tick);
  const dt=Math.min(clock.getDelta(),.05);
  const live=S.state==='play'&&!pres;if(!live)assist.clear();
+ if(touch)touch.update(dt);
  sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);
  if(squads)squads.frame(dt);
  if(squadsMode){sea.position.x=pos.x;sea.position.z=pos.z}
@@ -550,11 +561,15 @@ function tick(){
  gun.scale.setScalar(.78);
  if(visual)visual.update(dt,{S,pres,cam,gun,live,player:pos});
  rnd.autoClear=true;
+ if(!mobFrames)window.riverBootStage='首帧渲染';rnd.info.reset();
  if(visual)visual.render();else rnd.render(scene,cam);
  rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);
+ mobDraws=rnd.info.render.calls;mobTris=rnd.info.render.triangles;mobFrames++;if(mobFrames===1)window.riverBootStage='运行中';
  rnd.autoClear=true;
 }
-const {buildWorld}=await import('./river/world.js');
+const WORLD_JS=MOBILE?'river/mobile-world.js':'river/world.js';window.riverBootStage='河谷场景模块 / '+WORLD_JS;
+const {buildWorld}=MOBILE?await riverImport('./river/mobile-world.js','移动河谷'):await riverImport('./river/world.js','河谷场景模块');
+window.riverBootStage=(MOBILE?'准备移动端河谷场景 / ':'建立河谷场景 / ')+WORLD_JS;
 visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:!squadsMode&&S.state==='play'&&!pres,player:pos})});
 if(!squadsMode)tactical=createTacticalAI({enemies,bounds:colliders,
  isBlocked:p=>collide(new THREE.Vector3(p.x,p.y,p.z),'enemy'),canSee:clearSight,onShoot:enemyShoot,floorHeight:visual.floorHeight});
@@ -563,7 +578,8 @@ document.getElementById('bWeather').onclick=()=>visual.cycleWeather();
 if(squadsMode){
  S.state='squads';
  try{
-  const {mountSquads}=await import('./river/squads-view.js');
+  window.riverBootStage='4v4 大厅 / river/squads-view.js';
+  const {mountSquads}=await riverImport('./river/squads-view.js','4v4 大厅');
   squads=await mountSquads({THREE,S,pos,cam,gun,enemies,keys,trigger,snd,lockReq,clearKeys,updHUD,initAudio,onShot({local,actor,player}){
    if(!local){if(actor&&player)snd('enemy',[player.x,player.y+1.5,player.z]);return}
    recoil=1;muz.intensity=5;snd('shot');
@@ -576,11 +592,23 @@ if(squadsMode){
   }});
  }catch(err){
   console.error(err);
-  const d=document.createElement('div');d.className='panel';d.textContent='联机模块加载失败。';
+  const d=document.createElement('div');d.className='panel';d.textContent='联机大厅加载失败：river/squads-view.js。';
   const a=document.createElement('a');a.href='./river/';a.textContent=' 返回单人模式';d.appendChild(a);document.body.appendChild(d);
  }
 }
 addEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});
+Object.defineProperty(window,'riverMobileStats',{writable:false,configurable:false,value:()=>({frames:mobFrames,draws:mobDraws,triangles:mobTris,x:+pos.x.toFixed(2),z:+pos.z.toFixed(2),yaw:+S.yaw.toFixed(3),mag:S.mag,reload:S.reload,state:S.state,profile:MOBILE?'mobile':'desktop'})});
+if(MOBILE){
+ window.riverBootStage='触控模块 / river/mobile-controls.js';
+ const {mountTouch}=await riverImport('./river/mobile-controls.js','触控模块');
+ window.riverBootStage='挂载触控';
+ touch=mountTouch({keys,look,trigger,
+  fire:()=>{if(!squadsMode&&S.state==='play'&&!pres&&!document.hidden)fire()},
+  reload:()=>{if(squadsMode){if(squads&&squads.touchReload)squads.touchReload()}else if(S.state==='play'&&!pres)reload()},
+  engage:()=>squadsMode?!!(squads&&squads.touchEngage&&squads.touchEngage()):S.state==='play'&&!pres,
+  isActive:()=>squadsMode?!!(squads&&squads.mayTouch&&squads.mayTouch()):S.state==='play'&&!pres});
+ const mh=document.querySelector('#menu p');if(mh)mh.textContent='左摇杆移动 · 右侧滑动瞄准 · 开火 / 换弹按钮';
+}
 tick();
 
 window.demoQA={snapshot(){return{
