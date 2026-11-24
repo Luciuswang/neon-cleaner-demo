@@ -1,142 +1,208 @@
-import {MAP,walls,houses,bufferPlacements,bounds,wallTopAt,groundHeight,landscapeHeight,terrainHeight,roofHeight,blocked} from './map-layout.js';
+import {buildMobileTerrain} from './mobile-terrain.js';
+import {buildMobileEcology} from './mobile-ecology.js';
+import {buildVillage} from './village.js';
+import {buildRuins} from './ruins.js';
+import {buildBufferHouses} from './buffer-house.js';
+import {buildWeapon} from './weapon.js';
+import {buildActors} from './actors.js';
+import {buildCombatFeedback} from './combat-feedback.js';
+import {MAP,layout,bounds,bufferPlacements,terrainHeight,roofHeight,wallTopAt} from './map-layout.js';
+import {AFTERRAIN_LIGHT} from './afterrain-light.js';
+import {buildDistantLandscape} from './distant-landscape.js';
+
+const SKY_URL=new URL('./assets/mobile-look/sky.jpg',import.meta.url).href;
+const BUDGET={draws:450,triangles:1400000};
+const ROLES=['wood','plaster','stone','metal','brick','roof','mud','dirt','forest_ground_04','bark'];
+const LIGHT_KEYS=['key','skyFill','groundFill','sun','ambient','exposure','sky'];
+
 export async function buildWorld(ctx){
-  const {THREE:T,scene,rnd,cam,gscene,sun,amb,solids,colliders,enemies}=ctx;
-  const keep=new Set([sun,amb,cam,sun&&sun.target,enemies]);
-  for(const e of enemies)keep.add(e.g);
-  for(const c of scene.children)if(!keep.has(c))c.visible=false;
-  const world=new T.Group();world.name='riverfall-world';scene.add(world);
-  let seed=20261124;
-  const R=()=>{seed=(seed+0x6D2B79F5)|0;let t=Math.imul(seed^(seed>>>15),1|seed);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296;};
-  const num=(fn,fallback=0)=>{try{const v=fn();return Number.isFinite(v)?v:fallback;}catch(e){return fallback;}};
-  const land=(x,z)=>num(()=>landscapeHeight(x,z),0),floor=(x,z)=>num(()=>terrainHeight(x,z),land(x,z)),roofAt=(x,z)=>num(()=>roofHeight(x,z),-Infinity);
-  const isBlocked=(x,z,r)=>blocked(x,z,r),SIZE=152,cx=0,cz=-4;
-  colliders.length=0;solids.length=0;
-  for(const b of bounds){const box=new T.Box3(new T.Vector3(b.min.x,b.min.y,b.min.z),new T.Vector3(b.max.x,b.max.y,b.max.z));if(b.profileWall)box.topAt=(x,z,r)=>wallTopAt(b.profileWall,x,z,r);colliders.push(box)}
-  const tex=(c1,c2,w,h,n,rx=1,ry=1)=>{
-    const cv=document.createElement('canvas');cv.width=w;cv.height=h;const g=cv.getContext('2d');
-    g.fillStyle=c1;g.fillRect(0,0,w,h);g.fillStyle=c2;
-    for(let i=0;i<n;i++){g.globalAlpha=.15+R()*.45;g.fillRect((R()*w)|0,(R()*h)|0,1+((R()*3)|0),1+((R()*2)|0));}
-    const t=new T.CanvasTexture(cv);t.wrapS=t.wrapT=T.RepeatWrapping;t.repeat.set(rx,ry);
-    if('colorSpace' in t)t.colorSpace=T.SRGBColorSpace;return t;
-  };
-  const mk=(map,o)=>new T.MeshLambertMaterial(Object.assign({map},o));
-  const M={
-    roof:mk(tex('#7a3b2c','#3f1d16',32,32,160,3,3),{side:T.DoubleSide}),
-    wood:mk(tex('#6b4a2e','#3a2616',32,32,140,2,2)),
-    stone:mk(tex('#85857d','#4c4e4a',32,32,180,2,2)),
-    leaf:mk(tex('#3f6b34','#1f3d1c',32,32,160,2,2)),
-    grass:mk(tex('#5d8442','#3b5a2b',32,32,180,8,8)),
-    brick:mk(tex('#8d4f3c','#4e2a20',32,32,200,3,3)),
-    plaster:mk(tex('#cfc4ab','#8f8570',32,32,150,2,2))
-  };
-// Riverfall buffer cabins: local room x[-4,4] z[-4,2.4], porch z 2.4..4, steps z 4..5.6 at door x=-1.08. Assumes flat pad at y=0.
-const cabinGeo = new T.BoxGeometry(1, 1, 1), CAB_FY = .66, CAB_EAVE = 4.74, CAB_DX = -1.08;
-for (const p of bufferPlacements) {
-  const g = new T.Group(), walls = []; g.position.set(p.x, 0, p.z); g.rotation.y = p.yaw; world.add(g);
-  const B = (m, x, y, z, sx, sy, sz, hit, rx = 0) => { const b = new T.Mesh(cabinGeo, m); b.position.set(x, y, z);
-    b.scale.set(sx, sy, sz); b.rotation.x = rx; g.add(b); solids.push(b); hit && walls.push(b); return b; };
-  // Wall with one punched opening [a,b]x[y0,y1]; alongX: runs on x at z=c, else on z at x=c. Overhead parts (lintels) get no collider.
-  const W = (alongX, c, lo, hi, a, b, y0, y1) => [[lo, a, CAB_FY, CAB_EAVE], [b, hi, CAB_FY, CAB_EAVE], [a, b, y1, CAB_EAVE], [a, b, CAB_FY, y0]]
-    .forEach(([u0, u1, v0, v1]) => { if (u1 - u0 < 1e-3 || v1 - v0 < 1e-3) return; const u = (u0 + u1) / 2, v = (v0 + v1) / 2, hit = v0 < 2;
-      alongX ? B(M.wood, u, v, c, u1 - u0, v1 - v0, .24, hit) : B(M.wood, c, v, u, .24, v1 - v0, u1 - u0, hit); });
-  B(M.wood, 0, CAB_FY / 2, 0, 8, CAB_FY, 8);                                   // board floor + porch deck, top y=.66
-  for (let i = 0; i < 4; i++) { const h = CAB_FY * (4 - i) / 5; B(M.wood, CAB_DX, h / 2, 4.2 + i * .4, 1.55, h, .4); } // four steps
-  W(1, 2.28, -4, .2, CAB_DX - .76, CAB_DX + .76, CAB_FY, 2.96);                // front-left: open doorway 1.52 wide, no door leaf
-  W(1, 2.28, .2, 4, 1.2, 2.8, 1.9, 3.2);                                       // front-right: window
-  W(1, -3.88, -4, 4, -1, 1, 1.9, 3.2);                                         // back: window
-  for (const s of [-1, 1]) {
-    W(0, s * 3.88, -3.76, 2.16, -1.7, -.1, 1.9, 3.2);                          // side wall + window
-    B(M.plaster, s * 3.88, 5.09, 0, .24, .7, 5.2); B(M.plaster, s * 3.88, 5.79, 0, .24, .7, 2.6); // stepped gable infill
-    B(M.wood, s * 3.85, (CAB_FY + CAB_EAVE) / 2, 3.85, .18, CAB_EAVE - CAB_FY, .18);  // porch post
-    B(M.roof, 0, 5.72, s * 2.16, 8.8, .16, 4.95, 0, s * Math.atan2(2.14, 4));  // terracotta pitch: ridge 6.88, eaves 4.74
-  }
-  B(M.wood, .9, (CAB_FY + CAB_EAVE) / 2, 3.85, .18, CAB_EAVE - CAB_FY, .18);   // mid porch post (clear of steps)
-  B(M.wood, 0, CAB_EAVE - .09, 3.85, 7.9, .18, .18);                           // porch beam
-  B(M.wood, 0, 6.86, 0, 8.8, .14, .3);                                         // ridge cap
-  g.updateWorldMatrix(true, true);                                             // so raycasts + AABBs use the real transform
-  for (const b of walls) colliders.push(new T.Box3().setFromObject(b));        // wall parts only; yaw 0/PI keeps AABBs exact
-}
-function cabinFloor(x, z) {
-  for (const p of bufferPlacements) {
-    const c = Math.cos(p.yaw), s = Math.sin(p.yaw), dx = x - p.x, dz = z - p.z, lx = dx * c - dz * s, lz = dx * s + dz * c;
-    if (Math.abs(lx) <= 4 && lz >= -4 && lz <= 4) return CAB_FY;
-    if (Math.abs(lx - CAB_DX) <= .775 && lz > 4 && lz <= 5.6) return CAB_FY * (4 - Math.min(3, Math.floor((lz - 4) / .4))) / 5;
-  }
-  return 0;
-}
-  const matFor=m=>M[m]||M.stone;
-  const tg=new T.PlaneGeometry(SIZE,SIZE,80,80).rotateX(-Math.PI/2).translate(cx,0,cz);
-  const tp=tg.attributes.position,col=new Float32Array(tp.count*3),k=new T.Color();
-  const wood=new T.Color('#4d6a35'),lush=new T.Color('#6f9a48'),dry=new T.Color('#a39a62'),wet=new T.Color('#4a5a44');
-  const pathZ=[...houses.flatMap(h=>[h.z-4,h.z+4]),...bufferPlacements.map(b=>b.z)];
- for(let i=0;i<tp.count;i++){const x=tp.getX(i),z=tp.getZ(i),y=land(x,z);tp.setY(i,y);
-  const out=x<MAP.minX||x>MAP.maxX||z<MAP.minZ||z>MAP.maxZ,n=Math.sin(x*.9+z*.6)*.5+.5;
-  k.copy(out?wood:lush).lerp(dry,out?n*.2:n*.45);
-  if(!out&&pathZ.some(p=>Math.abs(z-p+Math.sin(x*.4)*.6)<1.3))k.lerp(wet,.75);
-  if(y<MAP.waterY+.35)k.lerp(wet,.9);
-  col[i*3]=k.r;col[i*3+1]=k.g;col[i*3+2]=k.b}
- tg.setAttribute('color',new T.BufferAttribute(col,3));tg.computeVertexNormals();
- const terrain=new T.Mesh(tg,new T.MeshStandardMaterial({vertexColors:true,roughness:.55,metalness:.05,flatShading:true}));terrain.name='terrain';world.add(terrain);
- // River: one plane at waterY, visible wherever the valley dips below it; texture scrolls downstream.
- const flow=tex('#3f7f8c','#0e2f3a',3,22,180,14,14);
- const river=new T.Mesh(new T.PlaneGeometry(SIZE,SIZE).rotateX(-Math.PI/2),new T.MeshStandardMaterial({map:flow,color:0xbfe6ee,roughness:.12,metalness:.35,transparent:true,opacity:.8}));
- river.position.set(cx,MAP.waterY,cz);river.name='river';world.add(river);
- // Walls from the shared map; each visible mesh is also a raycast solid.
- for(const w of walls){const b=bounds.find(b=>b.profileWall===w||(w.id&&b.id===w.id));
-  const sx=b?b.max.x-b.min.x:w.w,sy=b?b.max.y-b.min.y:w.h,sz=b?b.max.z-b.min.z:w.d;
-  const px=b?(b.min.x+b.max.x)/2:w.x,py=b?(b.min.y+b.max.y)/2:w.y,pz=b?(b.min.z+b.max.z)/2:w.z;
-  const prof=!!w.profile,g=new T.BoxGeometry(sx,sy,sz,prof?Math.max(1,Math.ceil(sx*2)):1,1,prof?Math.max(1,Math.ceil(sz*2)):1);
-  if(prof){const p=g.attributes.position;for(let i=0;i<p.count;i++)if(p.getY(i)>0){const top=num(()=>wallTopAt(w,px+p.getX(i),pz+p.getZ(i),0),py+sy/2);p.setY(i,Math.max(-sy/2+.05,Math.min(sy/2,top-py)))}g.computeVertexNormals()}
-  const m=new T.Mesh(g,matFor(w.material));m.position.set(px,py,pz);m.name=w.id||'wall';m.userData.wall=w;world.add(m);solids.push(m)}
- // Roofs sampled from the map's own roofHeight, so shapes (and ruins without roofs) are preserved.
- const prints=[...houses.map(h=>({id:h.id,x:h.x,z:h.z,yaw:0,x0:-h.w/2-.4,x1:h.w/2+.4,z0:-h.d/2-.4,z1:h.d/2+.4})),...bufferPlacements.map(p=>({id:p.id,x:p.x,z:p.z,yaw:p.yaw,x0:-4.8,x1:4.8,z0:-4.8,z1:6.45}))];
- const roofs=new Map();
- for(const f of prints){const g=new T.PlaneGeometry(1,1,10,10),p=g.attributes.position,c=Math.cos(f.yaw),s=Math.sin(f.yaw),ys=[];
-  for(let i=0;i<p.count;i++){const qx=f.x0+(p.getX(i)+.5)*(f.x1-f.x0),qz=f.z0+(p.getY(i)+.5)*(f.z1-f.z0),x=f.x+qx*c+qz*s,z=f.z-qx*s+qz*c,y=roofAt(x,z);p.setXYZ(i,x,0,z);ys.push(y>floor(x,z)+1?y:NaN)}
-  const ok=ys.filter(Number.isFinite);if(ok.length<p.count*.3){g.dispose();continue}
-  const eave=Math.min(...ok);ys.forEach((y,i)=>p.setY(i,Number.isFinite(y)?y:eave));g.computeVertexNormals();
-  const m=new T.Mesh(g,M.roof);m.name=f.id+'-roof';world.add(m);roofs.set(f.id,m)}
- // Instanced props.
- const dummy=new T.Object3D();
- const inst=(geo,mat,list,name)=>{if(!list.length)return;const m=new T.InstancedMesh(geo,mat,list.length);list.forEach((a,i)=>{dummy.position.set(a[0],a[1],a[2]);dummy.scale.set(a[3],a[4]??a[3],a[5]??a[3]);dummy.rotation.set(0,a[6]??0,0);dummy.updateMatrix();m.setMatrixAt(i,dummy.matrix)});m.name=name;world.add(m)};
- const trees=[],rocks=[],tufts=[],planks=[];
- for(let i=0;i<2600&&trees.length<230;i++){const x=cx+(R()-.5)*SIZE,z=cz+(R()-.5)*SIZE,y=land(x,z);
-  if((x<MAP.minX-1.5||x>MAP.maxX+1.5||z<MAP.minZ-1.5||z>MAP.maxZ+1.5)&&y>MAP.waterY+.4)trees.push([x,y,z,.8+R()*.9,1+R()*.8,.8+R()*.9,R()*6.3])}
- for(let i=0;i<4000&&(rocks.length<90||tufts.length<420);i++){const x=MAP.minX+R()*(MAP.maxX-MAP.minX),z=MAP.minZ+R()*(MAP.maxZ-MAP.minZ),y=land(x,z),d=y-MAP.waterY;
-  if(Math.abs(d)<.3&&rocks.length<90)rocks.push([x,y,z,.25+R()*.55,.2+R()*.3,.25+R()*.5,R()*6.3]);
-  else if(d>.35&&tufts.length<420&&!isBlocked(x,z,.2))tufts.push([x,floor(x,z),z,.6+R()*.8,.5+R(),.6+R()*.8,R()*6.3])}
- inst(new T.CylinderGeometry(.14,.22,2.4,5).translate(0,1.2,0),M.wood,trees,'trunks');
- inst(new T.ConeGeometry(1.5,3.6,6).translate(0,3.8,0),M.leaf,trees,'canopy');
- inst(new T.DodecahedronGeometry(1,0),M.stone,rocks,'rocks');
- inst(new T.ConeGeometry(.12,.5,4).translate(0,.25,0),M.grass,tufts,'grass');
- // Bridges: plank rows wherever the map's walkable floor is raised over the river bed.
- for(let z=MAP.minZ;z<=MAP.maxZ;z+=.5){let a=Infinity,b=-Infinity;
-  for(let x=MAP.minX;x<=MAP.maxX;x+=.5)if(groundHeight(x,z)<MAP.waterY){a=Math.min(a,x);b=Math.max(b,x)}
-  if(a>b)continue;const mid=(a+b)/2,y=floor(mid,z);
-  if(y>MAP.waterY+.15){planks.push([mid,y-.07,z,b-a+1.6,.12,.44,0]);for(const e of [a-.7,b+.7])planks.push([e,y+.4,z,.12,1,.12,0])}}
- inst(new T.BoxGeometry(1,1,1),M.wood,planks,'bridge');
- // Lighting and weather.
- const hemi=new T.HemisphereLight(0xcfe3ee,0x3b4a34,.7);scene.add(hemi);
- const styles={afterRain:[0xa9c4cf,.012,1.5,.55],overcast:[0x8f9aa0,.02,.9,.7],dusk:[0xd49a72,.015,1.1,.4]},names=Object.keys(styles);
- let style='afterRain',t=0,sparkLife=0;
- const setStyle=n=>{if(!styles[n])n='afterRain';style=n;const s=styles[n];scene.background=new T.Color(s[0]);scene.fog=new T.FogExp2(s[0],s[1]);
-  if(sun){sun.intensity=s[2];sun.position.set(cx-30,45,cz+24);sun.color.set(n==='dusk'?0xffc38f:0xfff2dc)}if(amb)amb.intensity=s[3];hemi.intensity=s[3]+.2;return style};
- setStyle(style);
- const spark=new T.Mesh(new T.OctahedronGeometry(.12,0),new T.MeshBasicMaterial({color:0xffd27a,transparent:true}));spark.visible=false;world.add(spark);
- const resetFeedback=()=>{sparkLife=0;spark.visible=false};
- const gcam=ctx.gcam||cam;
- return{
-  world,
-  render(){rnd.render(scene,cam);},
-  update(dt=0){t+=dt;flow.offset.y=(t*.07)%1;flow.offset.x=Math.sin(t*.3)*.02;if(sparkLife>0){sparkLife-=dt;spark.material.opacity=Math.max(0,sparkLife/.18);spark.scale.setScalar(1+(.18-sparkLife)*8);if(sparkLife<=0)spark.visible=false}},
-  setStyle,
-  cycleWeather(){return setStyle(names[(names.indexOf(style)+1)%names.length])},
-  shot(hit){const p=hit&&(hit.point||hit);if(p&&Number.isFinite(p.x)){spark.position.set(p.x,p.y,p.z);spark.visible=true;sparkLife=.18}},
-  waterTime(){return t},
-  resetHouse(id){for(const [k,m] of roofs)if(id==null||k===id)m.visible=true;resetFeedback()},
-  resetFeedback,
-  floorHeight:(x,z)=>cabinFloor(x,z)||floor(x,z),
-  ceilingY(p,prevY){const y=roofAt(p.x,p.z);return y>(prevY??p.y)?y-.2:Infinity},
-  blocksMovement(p,actor){return p.x<MAP.minX+.4||p.x>MAP.maxX-.4||p.z<MAP.minZ+.4||p.z>MAP.maxZ-.4||isBlocked(p.x,p.z,actor==='player'?.4:.5)}
+ const T=ctx.THREE, latitude=26*Math.PI/180, phi=(.36-.5)*Math.PI*2;
+ const sunDirection=new T.Vector3(Math.cos(latitude)*Math.cos(phi),Math.sin(latitude),Math.cos(latitude)*Math.sin(phi));
+ if(!T)throw new Error('mobile-world: ctx.THREE is required');
+ const {scene,cam,rnd,gscene,gun,sun,amb,enemies,solids,colliders}=ctx;
+ for(const k of LIGHT_KEYS)if(AFTERRAIN_LIGHT?.[k]===undefined)throw new Error('mobile-world: AFTERRAIN_LIGHT.'+k+' is missing; cannot match the PC daylight');
+ if(!sunDirection?.isVector3)throw new Error('mobile-world: PC sunDirection (Vector3) is required');
+
+ const iOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+ const lowMemory=iOS||(navigator.deviceMemory!==undefined&&navigator.deviceMemory<=4);
+ const pause=()=>new Promise(resolve=>setTimeout(resolve,16));
+ const stages=[];
+ // Heavy builders run strictly one after another, with a frame of slack between
+ // them so iOS can release decode/upload transients before the next peak.
+ const stage=async(label,fn)=>{
+  window.riverBootStage='移动河谷 / '+label;await pause();
+  const started=performance.now();
+  try{const result=await fn();stages.push({label,ms:Math.round(performance.now()-started)});return result}
+  catch(error){window.riverBootStage='移动河谷 / '+label+' 失败';throw new Error('mobile-world: '+label+' failed: '+(error?.message??error),{cause:error})}
  };
+
+ // Same scene takeover as PC.
+ const keep=new Set([sun,amb,...enemies.map(e=>e.g)]);
+ for(const child of scene.children)if(!keep.has(child))child.visible=false;
+ // Remove old-map proxies before creating the new authoritative map.
+ solids.length=colliders.length=0;
+ for(const b of bounds){const box=new T.Box3(new T.Vector3(b.min.x,b.min.y,b.min.z),new T.Vector3(b.max.x,b.max.y,b.max.z));if(b.profileWall)box.topAt=(x,z,r)=>wallTopAt(b.profileWall,x,z,r);colliders.push(box)}
+ const world=new T.Group();world.name='Riverfall village';scene.add(world);
+
+ // Sky: offline LDR backdrop, plus a PMREM environment from a 256px downsample.
+ const look=await stage('天空',async()=>{
+  let sky;
+  try{sky=await new T.TextureLoader().loadAsync(SKY_URL)}
+  catch(error){throw new Error('sky backdrop did not load: '+SKY_URL,{cause:error})}
+  sky.name='mobile-look/sky.jpg';sky.colorSpace=T.SRGBColorSpace;sky.mapping=T.EquirectangularReflectionMapping;
+  sky.generateMipmaps=false;sky.minFilter=sky.magFilter=T.LinearFilter;sky.needsUpdate=true;
+  const canvas=document.createElement('canvas');canvas.width=256;canvas.height=128;
+  const g=canvas.getContext('2d');if(!g)throw new Error('2D canvas unavailable for the environment downsample');
+  g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';g.drawImage(sky.image,0,0,256,128);
+  const small=new T.CanvasTexture(canvas);small.colorSpace=T.SRGBColorSpace;small.mapping=T.EquirectangularReflectionMapping;
+  small.generateMipmaps=false;small.minFilter=small.magFilter=T.LinearFilter;
+  const pmrem=new T.PMREMGenerator(rnd);
+  const env=pmrem.fromEquirectangular(small);
+  pmrem.dispose();small.dispose();canvas.width=canvas.height=0;
+  env.texture.name='mobile-look/sky-pmrem-256';
+  return{sky,env,size:[sky.image.width,sky.image.height]};
+ });
+ scene.background=look.sky;scene.environment=gscene.environment=look.env.texture;
+ // Rotation is baked into sky.jpg; keep runtime rotation at identity so the
+ // backdrop, the reflections and the PC sun direction stay aligned.
+ scene.backgroundRotation?.set(0,0,0);scene.environmentRotation?.set(0,0,0);gscene.environmentRotation?.set(0,0,0);
+
+ // Builders, sequenced.
+ const terrain=await stage('地形',()=>buildMobileTerrain({T,rnd,world,solids}));
+ const materials=terrain?.materials;
+ if(!materials||typeof terrain.update!=='function')throw new Error('mobile-world: buildMobileTerrain must return {materials,update}');
+ const missing=ROLES.filter(role=>!materials[role]?.isMaterial);
+ if(missing.length)throw new Error('mobile-world: mobile terrain is missing material roles: '+missing.join(', '));
+ buildDistantLandscape({T,world,materials,forested:true});
+ const village=await stage('村落',()=>buildVillage({T,world,materials,layout,solids}));
+ const ruins=await stage('废墟',()=>buildRuins({T,world,materials,layout,solids}));
+ const buffers=await stage('缓冲房屋',()=>buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements}));
+ const ecology=await stage('生态',()=>buildMobileEcology({T,world}));
+ if(typeof ecology?.info!=='function')throw new Error('mobile-world: buildMobileEcology must return {info}');
+ const weapon=await stage('武器',()=>buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids}));
+ const actors=await stage('角色',()=>buildActors({THREE:T,enemies}));
+ const feedback=await stage('战斗反馈',()=>buildCombatFeedback({T,world}));
+
+ // Map logic, identical to PC.
+ const floorHeight=(x,z)=>buffers.floorHeight(x,z)??Math.max(terrainHeight(x,z),ruins.floorHeight(x,z));
+ const ceilingY=(p,previousY)=>{const roof=roofHeight(p.x,p.z);return Math.min(previousY<roof?roof-.15:Infinity,buffers.ceilingY(p,previousY))};
+
+ // Daylight: PC AFTERRAIN_LIGHT values, PC fog, PC exposure.
+ const area=new T.Box3();for(const box of colliders)area.union(box);
+ if(area.isEmpty())area.set(new T.Vector3(-60,-4,-60),new T.Vector3(60,30,60));
+ const center=area.getCenter(new T.Vector3());center.y=0;
+ const MAX_HALF=120;
+ area.min.set(Math.max(area.min.x,center.x-MAX_HALF),Math.max(area.min.y,-10),Math.max(area.min.z,center.z-MAX_HALF));
+ area.max.set(Math.min(area.max.x,center.x+MAX_HALF),Math.min(area.max.y,40),Math.min(area.max.z,center.z+MAX_HALF));
+ const target=sun.target;target.position.copy(center);world.add(target);
+ function applyDaylight(){
+  sun.position.copy(sunDirection).multiplyScalar(75).add(target.position);
+  sun.color.set(AFTERRAIN_LIGHT.key);sun.intensity=AFTERRAIN_LIGHT.sun;
+  amb.color.set(AFTERRAIN_LIGHT.skyFill);amb.groundColor.set(AFTERRAIN_LIGHT.groundFill);amb.intensity=AFTERRAIN_LIGHT.ambient;
+  scene.background=look.sky;scene.environment=gscene.environment=look.env.texture;
+  scene.fog=new T.Fog(0x9db7ce,95,920);
+  rnd.toneMappingExposure=AFTERRAIN_LIGHT.exposure;scene.backgroundIntensity=AFTERRAIN_LIGHT.sky;
+  const weatherName=document.getElementById('weatherName');if(weatherName)weatherName.textContent='雨后 · 湿润河谷';
+ }
+ applyDaylight();
+
+ // Same per-material daylight scaling PC applies in afterRain day.
+ let pointLights=0;
+ const visited=new Set();
+ world.traverse(o=>{
+  if(o.isPointLight){pointLights++;o.userData.weatherBase??=o.intensity;o.intensity=o.userData.weatherBase*.20}
+  if(o.isMesh)for(const m of [].concat(o.material)){
+   if(!m||visited.has(m))continue;visited.add(m);
+   if(m.name==='WindowTrim')m.color.set(0x999d92);
+   if(m.envMapIntensity!==undefined&&!m.name.startsWith('landscape-')){m.userData.baseEnvironment??=m.envMapIntensity;m.envMapIntensity=m.userData.baseEnvironment*.72}
+   if(m.emissiveIntensity>0){m.userData.weatherBase??=m.emissiveIntensity;m.emissiveIntensity=m.userData.weatherBase*.15}
+  }
+ });
+
+ // One bounded daylight shadow, rendered once and cached for the static world.
+ // Actors must not cast into it: they would be frozen into the cached map.
+ const shadowSize=lowMemory?768:1024;
+ for(const e of enemies)e.g.traverse(o=>{if(o.isMesh)o.castShadow=false});
+ rnd.shadowMap.enabled=true;rnd.shadowMap.autoUpdate=false;
+ sun.castShadow=true;sun.shadow.mapSize.set(shadowSize,shadowSize);sun.shadow.autoUpdate=false;
+ sun.shadow.bias=-.0004;sun.shadow.normalBias=.25;
+ {
+  const sc=sun.shadow.camera;
+  sc.position.copy(sun.position);sc.lookAt(target.position);sc.updateMatrixWorld(true);
+  const inverse=new T.Matrix4().copy(sc.matrixWorld).invert(),fit=new T.Box3(),v=new T.Vector3();
+  for(let i=0;i<8;i++){v.set(i&1?area.max.x:area.min.x,i&2?area.max.y:area.min.y,i&4?area.max.z:area.min.z).applyMatrix4(inverse);fit.expandByPoint(v)}
+  sc.left=fit.min.x;sc.right=fit.max.x;sc.bottom=fit.min.y;sc.top=fit.max.y;
+  sc.near=Math.max(.1,-fit.max.z-5);sc.far=-fit.min.z+5;sc.updateProjectionMatrix();
+ }
+ const refreshShadow=()=>{sun.shadow.needsUpdate=true;rnd.shadowMap.needsUpdate=true};
+ refreshShadow();
+
+ // Optional actor contact shadows: one instanced draw for every enemy.
+ const blobCanvas=document.createElement('canvas');blobCanvas.width=blobCanvas.height=64;
+ const bg=blobCanvas.getContext('2d'),grad=bg.createRadialGradient(32,32,2,32,32,32);
+ grad.addColorStop(0,'rgba(0,0,0,.55)');grad.addColorStop(1,'rgba(0,0,0,0)');bg.fillStyle=grad;bg.fillRect(0,0,64,64);
+ const blobGeo=new T.PlaneGeometry(1.5,1.5);blobGeo.rotateX(-Math.PI/2);
+ const blobCount=Math.max(1,enemies.length);
+ const blobs=new T.InstancedMesh(blobGeo,new T.MeshBasicMaterial({map:new T.CanvasTexture(blobCanvas),transparent:true,depthWrite:false,fog:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2}),blobCount);
+ blobs.name='actor-contact-shadows';blobs.frustumCulled=false;blobs.renderOrder=2;world.add(blobs);
+ const blobMatrix=new T.Matrix4(),hidden=new T.Matrix4().makeScale(0,0,0);
+ function updateBlobs(){
+  for(let i=0;i<blobCount;i++){
+   const g=enemies[i]?.g;
+   if(g?.visible){blobMatrix.makeTranslation(g.position.x,floorHeight(g.position.x,g.position.z)+.03,g.position.z);blobs.setMatrixAt(i,blobMatrix)}
+   else blobs.setMatrixAt(i,hidden);
+  }
+  blobs.instanceMatrix.needsUpdate=true;
+ }
+
+ // Stats and reporting.
+ let time=0,style=0,frozen=false,draws=0,triangles=0,warned=false;
+ const namesIn=roots=>{const names=new Set();for(const root of roots)root?.traverse(o=>{if(o.name&&(o.isMesh||o===root||o.parent===root))names.add(o.name)});return[...names].slice(0,64)};
+ function info(){
+  return{
+   mode:'mobile-lod',draws,triangles,budget:BUDGET,overBudget:{draws:draws>=BUDGET.draws,triangles:triangles>=BUDGET.triangles},
+   memory:{geometries:rnd.info.memory.geometries,textures:rnd.info.memory.textures},
+   actors:{info:actors.info?.()??null,names:namesIn(enemies.map(e=>e.g))},
+   weapon:{info:weapon.info?.()??null,names:namesIn([gun])},
+   ecology:ecology.info(),
+   shadow:{size:shadowSize,cachedStatic:true,dynamicActorShadows:false,contactShadows:true},
+   sky:{url:SKY_URL,size:look.size,envSource:256,runtimeRotation:0},
+   light:{sun:sun.intensity,ambient:amb.intensity,exposure:rnd.toneMappingExposure,toneMapping:rnd.toneMapping,backgroundIntensity:scene.backgroundIntensity},
+   pointLights,lowMemory,pixelRatio:rnd.getPixelRatio(),stages,time
+  };
+ }
+
+ const api={
+  mobile:true,info,refreshShadow,
+  migrationQA:{freeze(seconds){if(!Number.isFinite(seconds)||seconds<0)throw Error('Invalid migration time');frozen=true;time=seconds;terrain.update(seconds);return info()}},
+  waterTime(){return time},
+  shot(event){const projected=event.hit&&event.object?.userData.wall?village.projectStoneCoverHit?.({point:event.point,normal:event.normal,wallId:event.object.userData.wall}):null;
+   if(projected)event={...event,point:projected.point,normal:projected.normal};weapon.shot(event);feedback.shot(event)},
+  resetFeedback(){weapon.reset();feedback.reset()},
+  polishInfo(){return{environment:ecology.info(),cover:village.info?.().stoneCover,combat:feedback.info(),weapon:weapon.info()}},
+  floorHeight,ceilingY,blocksMovement:(p,actor)=>buffers.blocksMovement(p,actor),
+  resetHouse(){buffers.reset();refreshShadow()},
+  // Mobile ships the PC default daylight only; the cached shadow is baked for it.
+  setStyle(i){style=i?1:0;applyDaylight();const styleName=document.getElementById('styleName');if(styleName)styleName.textContent='自然 · 山谷日照'},
+  cycleWeather(){applyDaylight();return 0},
+  update(dt,{S,pres,live,player}){
+   const active=!pres&&!['pause','dead','win'].includes(S.state);if(active&&!frozen)time+=dt;
+   terrain.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
+   weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
+   if(active)feedback.update(dt);else feedback.reset();
+   updateBlobs();
+  },
+  // World pass only: no composer, no screen passes. The HTML draws the gun pass.
+  render(){
+   rnd.render(scene,cam);
+   draws=rnd.info.render.calls;triangles=rnd.info.render.triangles;
+   if(!warned&&(draws>=BUDGET.draws||triangles>=BUDGET.triangles)){warned=true;console.warn('mobile-world over budget',{draws,triangles,budget:BUDGET})}
+  },
+  unlockAudio(){}
+ };
+ window.riverMobileWorld=api;
+ return api;
 }
+// Squads use the exact same implementation.
+export {buildWorld as buildSquadsWorld,buildWorld as buildMobileWorld};
+export default buildWorld;
