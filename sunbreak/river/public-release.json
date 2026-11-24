@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "97636447383569fdf3e68ab04743c08cdc2c1dc8",
-  "created": "2026-11-24T05:26:34.158Z",
+  "sourceCommit": "a88a70ddb7562ba3df5ec807874a6ad6481bf70e",
+  "created": "2026-11-24T06:25:45.815Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -206,13 +206,28 @@
     },
     {
       "path": "mobile-world.js",
-      "bytes": 12223,
-      "sha256": "6f7976d9e99965efa4486d763c05d83850d5a1849159f7a80bff4c0ff71d4252"
+      "bytes": 13574,
+      "sha256": "9471766aaf6b7a89510a6876e23f4967d8f9fec5363ce2310f227d325ebed5c0"
     },
     {
       "path": "mobile-controls.js",
       "bytes": 8735,
       "sha256": "8dac545b09638f6124b0fc23b850a13b1bf0851b71d3adb7a87a75aebffc2abc"
+    },
+    {
+      "path": "mobile-terrain.js",
+      "bytes": 9884,
+      "sha256": "6a146c2b4a4c9c27f2fa57663782cc5291e8c82740beddce4e7b7484b2f01fec"
+    },
+    {
+      "path": "mobile-ecology.js",
+      "bytes": 13766,
+      "sha256": "9f0cf9b0913a7df2e5ea406061c56f3f855241fcde4c916124f27c1a6bc35694"
+    },
+    {
+      "path": "mobile-look.json",
+      "bytes": 6112,
+      "sha256": "44588dbdd724ac767175c8098f323312a3021e3bdf1062190f3fdc640dac4421"
     },
     {
       "path": "squads-sim.js",
@@ -513,6 +528,141 @@
       "path": "assets/island_tree_02/tree-lod.glb",
       "bytes": 14612568,
       "sha256": "f560fdcb7f75b2b392082e8f2600664248de9d5c0e775f802430562d68db1bfe"
+    },
+    {
+      "path": "assets/mobile-look/brick-color.jpg",
+      "bytes": 6179,
+      "sha256": "05eb7089befb5b2deecf5343af4cc56f29648df255b028dad0479cc0e71aba58"
+    },
+    {
+      "path": "assets/mobile-look/brick-normal.jpg",
+      "bytes": 3016,
+      "sha256": "28ce05d04ffd57c2aeb6a4108fdbb6667aae10a54ff178fea7d0697c7d8fec20"
+    },
+    {
+      "path": "assets/mobile-look/brick-roughness.jpg",
+      "bytes": 6342,
+      "sha256": "9c9c09c82bb74f611fa582e04a7be52672aef0a428f089c69ba14dbae7b32097"
+    },
+    {
+      "path": "assets/mobile-look/dirt-color.jpg",
+      "bytes": 6508,
+      "sha256": "dfbc2fb2fddafc7a596ac249686081900e949c4bc3318bf1d766c12293f1c545"
+    },
+    {
+      "path": "assets/mobile-look/dirt-normal.jpg",
+      "bytes": 567,
+      "sha256": "f4ff98a0b08d6c02e82a23b049d185afaf05c5a59d1dd91038a158c1e1cd0233"
+    },
+    {
+      "path": "assets/mobile-look/dirt-roughness.jpg",
+      "bytes": 6352,
+      "sha256": "3573b883963e4e6755e86e673a3cad3c7a9cea869e21de85081b1522e6f84860"
+    },
+    {
+      "path": "assets/mobile-look/forest_ground_04-color.jpg",
+      "bytes": 6899,
+      "sha256": "12cea2a51a396e98ad29c8751211cd52d99893087595783496f7a94fd527d577"
+    },
+    {
+      "path": "assets/mobile-look/forest_ground_04-normal.jpg",
+      "bytes": 10376,
+      "sha256": "bf5fe8611f502bfb4c0494aaf9a7d131815946aed684e5262d46b89355f33b78"
+    },
+    {
+      "path": "assets/mobile-look/forest_ground_04-roughness.jpg",
+      "bytes": 6263,
+      "sha256": "b2087d2b33018b56488ecb3b7089688f7ee46e435292ca7afb294a2a984d57eb"
+    },
+    {
+      "path": "assets/mobile-look/metal-color.jpg",
+      "bytes": 13481,
+      "sha256": "73810270867ff8ecdd4ed6eee3237071dca2888c13e433dfe23b99a509b7c2fe"
+    },
+    {
+      "path": "assets/mobile-look/metal-normal.jpg",
+      "bytes": 1037,
+      "sha256": "270fa59f244ff261d0519841afc36357e9ad52389de0819cb179d3c3a19131d3"
+    },
+    {
+      "path": "assets/mobile-look/metal-roughness.jpg",
+      "bytes": 15361,
+      "sha256": "8b653a11d4c8a9ef5ad94abe66452dbd94785ddbd9f9eaba19c8a690bb2aea50"
+    },
+    {
+      "path": "assets/mobile-look/mud-color.jpg",
+      "bytes": 6480,
+      "sha256": "dc65f7f586036bbc94ce2e26258cb5c5679d96e05e0735c32b131125314d4a6f"
+    },
+    {
+      "path": "assets/mobile-look/mud-normal.jpg",
+      "bytes": 12606,
+      "sha256": "03c290fdf71ff0a464a5bec8cd5e8e89f579506b3409f1ab36b546e77338dda2"
+    },
+    {
+      "path": "assets/mobile-look/mud-roughness.jpg",
+      "bytes": 6310,
+      "sha256": "f11f858d9cc24a0b010785febf5b150412b38e83eaaf172f5a3b587dbccb8abb"
+    },
+    {
+      "path": "assets/mobile-look/plaster-color.jpg",
+      "bytes": 6208,
+      "sha256": "a073e776dc9a3733b7e8ac2cd2808de1046c7ab9620457d19258cc0f13e9d522"
+    },
+    {
+      "path": "assets/mobile-look/plaster-normal.jpg",
+      "bytes": 1262,
+      "sha256": "6ccb9bec626585b5a324e1944033110dfea3fefebee003e5b9d25c87f7a5d95e"
+    },
+    {
+      "path": "assets/mobile-look/plaster-roughness.jpg",
+      "bytes": 6236,
+      "sha256": "76b65afd4f06a930367da1dd775be95cafaadcf89dec3ad07435865248b6e09c"
+    },
+    {
+      "path": "assets/mobile-look/sky.jpg",
+      "bytes": 27489,
+      "sha256": "42c21ed24d8a7ca4c4fba76c769704ed74942e13f2d82b30486556b508cb6ca6"
+    },
+    {
+      "path": "assets/mobile-look/stone-color.jpg",
+      "bytes": 6072,
+      "sha256": "4c6cce5872b86969fdf5a1232b34ca0a9199df570e4ee082d68a3ee9e8f6858c"
+    },
+    {
+      "path": "assets/mobile-look/stone-normal.jpg",
+      "bytes": 7339,
+      "sha256": "59ee7231574aa39bf1f73a04e5304c8b2206578111645aa151a93d503a16b430"
+    },
+    {
+      "path": "assets/mobile-look/stone-roughness.jpg",
+      "bytes": 6281,
+      "sha256": "6d1149ffae2e6c2fcb1d755de9b5f66415cf0700a6eb4ed0a8f1c4b03e86282a"
+    },
+    {
+      "path": "assets/mobile-look/tree-0.png",
+      "bytes": 451558,
+      "sha256": "8d546a1048b1f91af26d709c65bda65badad7aa0193d798500afe635811b1afe"
+    },
+    {
+      "path": "assets/mobile-look/tree-1.png",
+      "bytes": 279285,
+      "sha256": "3640be2c888b91caa42d18da17deac19a8e1427f71b4bc83c2af7f79a22ccc9e"
+    },
+    {
+      "path": "assets/mobile-look/wood-color.jpg",
+      "bytes": 3693,
+      "sha256": "d20fbd28f2c5d7e5871c7bd8cdab02e0fff1494cff166ee251842252f8ed2b9a"
+    },
+    {
+      "path": "assets/mobile-look/wood-normal.jpg",
+      "bytes": 1330,
+      "sha256": "150e76ebe1ab5aaccd27b4aa2363214bfbd5f59b793184a9ca7ddd878e7d881b"
+    },
+    {
+      "path": "assets/mobile-look/wood-roughness.jpg",
+      "bytes": 3872,
+      "sha256": "d2f3a9aa87805052502b902a0ee94e51bf6adf87e90ed9e082591a5200792fc6"
     },
     {
       "path": "assets/rocky_gravel/color.jpg",
