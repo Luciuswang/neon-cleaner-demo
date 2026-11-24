@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261124T043235Z-7d30baf8bd",
+  "task_id": "river-ios-boot-20261124",
+  "timestamp_utc": "2026-11-24T04:32:35.574312+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "iOS boot checkpoint only, Pages unchanged. Explicit dynamic paths fix Windows WebKit reproduction; iPhone 17 Pro iOS 26.2 Simulator candidate displayed 4v4 notice but did not signal scene ready. Next: diagnose first frame/process termination before shipping.",
+  "commit_shas": [
+    "1a847aad0c099c7acaf1517aaa4eb38893eb9247"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

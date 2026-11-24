@@ -813,3 +813,7 @@ Riverfall 4v4 opening: diagonal screened starts and distinct crowd motion. Teste
 ## Sync note - 2026-11-24T11:23:59.8966731+08:00
 
 Riverfall diagonal opening is live on Pages PR 16: public bytes match, two browser peers sync movement/score and AI refill on leave. Next: subjective player playtest on independent devices.
+
+## Sync note - 2026-11-24T12:32:35.1239510+08:00
+
+iOS boot checkpoint only, Pages unchanged. Explicit dynamic paths fix Windows WebKit reproduction; iPhone 17 Pro iOS 26.2 Simulator candidate displayed 4v4 notice but did not signal scene ready. Next: diagnose first frame/process termination before shipping.

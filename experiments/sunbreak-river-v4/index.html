@@ -119,19 +119,23 @@ html,body{background:#172229;color:#d5dedc}
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
 <div id="bootStatus">正在装载雨林河谷、植被与材质…</div>
-<script type="module" src="./river/boot-ui.js"></script>
 <script type="importmap">{"imports":{"three":"./vendor/presentation/build/three.module.js","three/addons/":"./vendor/presentation/examples/jsm/"}}</script>
+<script src="./river/boot-ui.js"></script>
 <script type="module">
 import {TACTICAL_SPAWNS,createTacticalAI,enemyHitBounds} from './river/tactical-ai.js';
 import {SHOT_INTERVAL_MS,RELOAD_SECONDS,RELOAD_CUES,reloadProgress,controlTarget,createTrigger} from './river/combat-controls.js';
 import {createShotFeedbackAdapter} from './river/shot-feedback-event.js';
 import {createAimAssist,actorCenter} from './river/aim-assist.js';
-const E=document.getElementById('err');
-window.onerror=e=>{E.style.display='block';E.textContent='初始化失败 / Error: '+e};
+async function riverImport(spec, label) {
+  let p = '';
+  try { const u = new URL(spec, document.baseURI); p = u.pathname; return await import(u.href); }
+  catch (e) { throw new Error(`模块加载失败 [阶段: ${label}] 入口: ${p || '(无效路径)'}`); }
+}
 let THREE;
 let visual=null;
-try{THREE=await import('./vendor/three/build/three.module.js')}
-catch(e){E.style.display='block';E.textContent='无法加载本地渲染组件。请通过预览网页访问。\n'+e;throw e}
+window.riverBootStage='渲染引擎 / vendor/three/build/three.module.js';
+THREE=await riverImport('./vendor/three/build/three.module.js','渲染引擎');
+window.riverBootStage='建立 WebGL 渲染器';
 
 const PRESETS=[
  {n:'热带竞技',sky:0x5fc8ef,hz:0xeadfbe,fog:0x9fd9ef,fd:[40,230],sun:0xfff3d4,si:2.5,amb:0x9fd6ff,ai:.85,hemi:0xfff0cf,sea:0x19b5c9,sand:0xe8d2a3,wallA:0xf6ead2,wallB:0xef9a84,roof:0xc4624a,door:0x27c2c8,gun:0x2f353a,acc:0xff7a5e,ui:'#ff8a6a',sunpos:[60,78,40]},
@@ -370,7 +374,7 @@ function look(dx,dy){if(dx||dy)assist.noteLook(performance.now());const k=.0024*
 
 // audio
 let createGameAudio;
-try{({createGameAudio}=await Promise.race([import('./river/audio.js'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
+try{({createGameAudio}=await Promise.race([riverImport('./river/audio.js','声音'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
 catch{createGameAudio=({onStatus})=>{
  const info={failed:true,ready:false,unlocked:false,loaded:0,muted:false,volume:.65};
  queueMicrotask(()=>onStatus({...info}));
@@ -554,7 +558,9 @@ function tick(){
  rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);
  rnd.autoClear=true;
 }
-const {buildWorld}=await import('./river/world.js');
+window.riverBootStage='河谷场景模块 / river/world.js';
+const {buildWorld}=await riverImport('./river/world.js','河谷场景模块');
+window.riverBootStage='建立河谷场景 / river/world.js';
 visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:!squadsMode&&S.state==='play'&&!pres,player:pos})});
 if(!squadsMode)tactical=createTacticalAI({enemies,bounds:colliders,
  isBlocked:p=>collide(new THREE.Vector3(p.x,p.y,p.z),'enemy'),canSee:clearSight,onShoot:enemyShoot,floorHeight:visual.floorHeight});
@@ -563,7 +569,8 @@ document.getElementById('bWeather').onclick=()=>visual.cycleWeather();
 if(squadsMode){
  S.state='squads';
  try{
-  const {mountSquads}=await import('./river/squads-view.js');
+  window.riverBootStage='4v4 大厅 / river/squads-view.js';
+  const {mountSquads}=await riverImport('./river/squads-view.js','4v4 大厅');
   squads=await mountSquads({THREE,S,pos,cam,gun,enemies,keys,trigger,snd,lockReq,clearKeys,updHUD,initAudio,onShot({local,actor,player}){
    if(!local){if(actor&&player)snd('enemy',[player.x,player.y+1.5,player.z]);return}
    recoil=1;muz.intensity=5;snd('shot');
@@ -576,7 +583,7 @@ if(squadsMode){
   }});
  }catch(err){
   console.error(err);
-  const d=document.createElement('div');d.className='panel';d.textContent='联机模块加载失败。';
+  const d=document.createElement('div');d.className='panel';d.textContent='联机大厅加载失败：river/squads-view.js。';
   const a=document.createElement('a');a.href='./river/';a.textContent=' 返回单人模式';d.appendChild(a);document.body.appendChild(d);
  }
 }

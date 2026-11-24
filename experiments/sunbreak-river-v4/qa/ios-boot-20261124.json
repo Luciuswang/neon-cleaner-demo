@@ -1,0 +1,325 @@
+{
+  "baseline": "e545a986c646f93e7a9c246ce7fa36eda85583b0",
+  "candidate": {
+    "index.html": "ea1ebda8da24f53a296333675685875e2911e634da16c8ab262afb8faa856076",
+    "boot-ui.js": "4f1c5e4ebd9bc5d393ce7dc681c287bcadd91295f909c82b0f8c86bcddf58162"
+  },
+  "windowsWebKit": {
+    "old": {
+      "kind": "webkit",
+      "which": "old",
+      "ready": false,
+      "lobby": false,
+      "error": "初始化失败 / Error: TypeError: Importing a module script failed.",
+      "boot": "正在装载雨林河谷、植被与材质…",
+      "msgs": [
+        "Failed to load resource: the server responded with a status of 503 ()",
+        "Importing a module script failed."
+      ],
+      "failures": [
+        {
+          "path": "/neon-cleaner-demo/sunbreak/river/vendor/three/build/three.module.js",
+          "error": "Load request cancelled"
+        }
+      ]
+    },
+    "candidate": {
+      "kind": "webkit",
+      "which": "new",
+      "ready": true,
+      "lobby": true,
+      "error": "",
+      "msgs": [],
+      "failures": []
+    },
+    "blockedWorld": {
+      "kind": "webkit",
+      "which": "fail",
+      "ready": false,
+      "lobby": false,
+      "error": "加载失败：河谷场景模块 / river/world.js · 模块加载失败 [阶段: 河谷场景模块] 入口: /river/world.js",
+      "boot": "未能完成加载。",
+      "msgs": [
+        "模块加载失败 [阶段: 河谷场景模块] 入口: /river/world.js"
+      ],
+      "failures": [
+        {
+          "path": "/river/world.js",
+          "error": "Blocked by Web Inspector"
+        }
+      ]
+    }
+  },
+  "macOSAppleSimulator": {
+    "id": 45325862571,
+    "head": "ea4295083f6e3ce54bf686f7b109c1ee34db8788",
+    "conclusion": "failure",
+    "url": "https://github.com/Luciuswang/neon-cleaner-demo/actions/runs/45325862571",
+    "steps": [
+      [
+        "Set up job",
+        "success"
+      ],
+      [
+        "Check out only the public static game and test fixture",
+        "success"
+      ],
+      [
+        "Serve published tree and candidate on separate ports",
+        "success"
+      ],
+      [
+        "Original published build in Apple iPhone Simulator",
+        "success"
+      ],
+      [
+        "Candidate in the same iPhone Simulator",
+        "failure"
+      ],
+      [
+        "Post Check out only the public static game and test fixture",
+        "success"
+      ],
+      [
+        "Complete job",
+        "success"
+      ]
+    ],
+    "observations": [
+      "2026-11-24T04:22:49.6231220Z DEVICE iPhone 17 Pro / iOS 26.2",
+      "2026-11-24T04:27:59.6799700Z RESULT {\"status\": \"timeout\", \"lobby\": \"\", \"events\": [], \"os\": \"26.2\", \"simulator\": 1, \"err\": \"\", \"model\": \"iPhone18,1\", \"seconds\": 60, \"readyState\": \"complete\", \"qa\": \"\", \"bootStatus\": \"\"}",
+      "2026-11-24T04:27:59.7674210Z ##[error]Process completed with exit code 1.",
+      "2026-11-24T04:28:07.5157230Z DEVICE iPhone 17 Pro / iOS 26.2",
+      "2026-11-24T04:30:25.7054810Z RESULT {\"status\": \"timeout\", \"lobby\": \"我已了解\", \"events\": [], \"os\": \"26.2\", \"simulator\": 1, \"err\": \"\", \"model\": \"iPhone18,1\", \"seconds\": 92, \"readyState\": \"complete\", \"qa\": \"\", \"bootStatus\": \"正在装载雨林河谷、植被与材质…\"}",
+      "2026-11-24T04:30:25.8982630Z ##[error]Process completed with exit code 1."
+    ]
+  },
+  "gateway": {
+    "note": "Gateway/CLI requested and returned identity, usage and reported cost, not independently verified upstream billing. Discarded entry phase did not contribute.",
+    "receipts": [
+      {
+        "phase": "diag",
+        "requested": "claude-fable-5-2",
+        "returned": [
+          "claude-fable-5-2"
+        ],
+        "ok": true,
+        "code": 0,
+        "utc": "2026-11-24T04:21:03.873Z",
+        "result": "completed",
+        "responseSHA": "1447105699b4f7b6df87e60bf4ad75cdbfa52b99597b9830f3a35d6deeccab54",
+        "usage": {
+          "input_tokens": 333,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 585,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "global",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost": 0.026064
+      },
+      {
+        "phase": "entry",
+        "requested": "claude-fable-5-2",
+        "returned": [
+          "claude-fable-5-2",
+          "<synthetic>"
+        ],
+        "ok": false,
+        "code": 1,
+        "utc": "2026-11-24T04:20:27.607Z",
+        "result": "success",
+        "responseSHA": "039f52a58bfe9ee2f69873f4e85abccac7d7a9d4bfd96250d64621186fcac51e",
+        "usage": {
+          "input_tokens": 16,
+          "cache_creation_input_tokens": 13288,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 24000,
+          "output_tokens_details": {
+            "thinking_tokens": 24000
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 13288
+          },
+          "inference_geo": "global",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost": 1.093008
+      },
+      {
+        "phase": "paths",
+        "requested": "claude-fable-5-2",
+        "returned": [
+          "claude-fable-5-2"
+        ],
+        "ok": true,
+        "code": 0,
+        "utc": "2026-11-24T04:21:00.108Z",
+        "result": "completed",
+        "responseSHA": "ebeab071fd2b78d1f44a7d7aa47438b4409aa84ab92fa86ec12ee8fc997f6c8c",
+        "usage": {
+          "input_tokens": 252,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 114,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "global",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost": 0.006576
+      },
+      {
+        "phase": "plan",
+        "requested": "claude-fable-5-2",
+        "returned": [
+          "claude-fable-5-2"
+        ],
+        "ok": true,
+        "code": 0,
+        "utc": "2026-11-24T04:16:08.918Z",
+        "result": "completed",
+        "responseSHA": "b32237472a3c5b988b22f73c48067ac8956a86129c247fe5d3183c12d4839c79",
+        "usage": {
+          "input_tokens": 209,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 800,
+          "output_tokens_details": {
+            "thinking_tokens": 629
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "global",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost": 0.033672
+      },
+      {
+        "phase": "review",
+        "requested": "claude-fable-5-2",
+        "returned": [
+          "claude-fable-5-2"
+        ],
+        "ok": true,
+        "code": 0,
+        "utc": "2026-11-24T04:32:06.568Z",
+        "result": "completed",
+        "responseSHA": "022f404adff8ed32d9597a05d9de65f69c72d8ccf2c51f50431937e40dda033e",
+        "usage": {
+          "input_tokens": 482,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 714,
+          "output_tokens_details": {
+            "thinking_tokens": 556
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "global",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost": 0.032416
+      },
+      {
+        "phase": "simulator",
+        "requested": "claude-fable-5-2",
+        "returned": [
+          "claude-fable-5-2"
+        ],
+        "ok": true,
+        "code": 0,
+        "utc": "2026-11-24T04:18:56.299Z",
+        "result": "completed",
+        "responseSHA": "18c2587d00bcd2b3a5b188de21370b398bd9f3eed1534ad0d080a5529b87aa22",
+        "usage": {
+          "input_tokens": 12,
+          "cache_creation_input_tokens": 8051,
+          "cache_read_input_tokens": 1023,
+          "output_tokens": 15347,
+          "output_tokens_details": {
+            "thinking_tokens": 11416
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 8051
+          },
+          "inference_geo": "global",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost": 0.6946906
+      }
+    ]
+  },
+  "review": "**Verdict: HOLD — code+evidence checkpoint only.** Windows mobile-profile WebKit reproduces the red error and candidate fixes it; desktop solo/online pass. But the iPhone 17 Pro iOS 26.2 simulator candidate still timed out loading, readiness empty. Import-map cause unconfirmed on Apple; first frame and real interaction untested.\n\n(You gave both 65 and 45 words; I used 45, the later figure.)",
+  "desktop": {
+    "soloStarted": true,
+    "actors": 6,
+    "onlineRoomCreated": true,
+    "onlineSeats": 8,
+    "pageErrors": 0
+  },
+  "limits": [
+    "Loader and lobby only; no mobile combat or touch-control certification.",
+    "Apple Simulator WKWebView is neither physical hardware nor the iOS Chrome app."
+  ]
+}

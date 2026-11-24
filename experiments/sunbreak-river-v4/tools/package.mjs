@@ -36,7 +36,7 @@ for(const path of included){const b=await readFile(resolve(root,path));await mkd
 const emitted=new Set(files.map(f=>f.path)),sharedNames=new Set(sharedFiles.map(f=>f.path)),importClosure=[];
 for(const f of files.filter(f=>/\.(js|html)$/.test(f.path))){
  const text=await readFile(resolve(out,f.path),'utf8');
- for(const match of text.matchAll(/(?:from\s*|import\s*\(\s*)['"](\.[^'"]+)['"]/g)){
+ for(const match of text.matchAll(/(?:from\s*|(?:import|riverImport)\s*\(\s*)['"](\.[^'"]+)['"]/g)){
   const spec=match[1],html=f.path.endsWith('.html');
   const target=html?spec.replace(/^\.\//,''):posix.normalize(posix.join(posix.dirname(f.path),spec));
   const local=html?target.startsWith('river/'):!target.startsWith('../');
