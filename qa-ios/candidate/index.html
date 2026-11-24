@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<base href="../"/>
+<title>SUNBREAK · RIVERFALL / 雨林河谷</title>
+<meta name="description" content="SUNBREAK RIVERFALL：雨林河谷新地图，双岸村落、浅河木桥、废墟掩体和全自动射击。电脑单人演示。"/>
+<meta property="og:title" content="SUNBREAK · RIVERFALL"/>
+<meta property="og:description" content="雨林河谷 · 双岸交火。第四版的独立新地图。"/>
+<meta property="og:image" content="./assets/social-cover.png"/>
+<meta property="og:image:alt" content="SUNBREAK BLACK SQUALL AI宣传封面，非游戏截图"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#0b1016;font-family:"Segoe UI","Microsoft YaHei",sans-serif;color:#fff}
+#app{position:fixed;inset:0}
+canvas{display:block}
+#hud{position:fixed;inset:0;pointer-events:none}
+.bar{position:absolute;left:24px;bottom:22px;width:230px}
+.bar b{font:600 11px/1.6 inherit;letter-spacing:.22em;opacity:.8;display:block}
+.track{height:9px;border-radius:6px;background:rgba(0,0,0,.42);overflow:hidden;margin-top:3px;box-shadow:0 0 0 1px rgba(255,255,255,.18)}
+.fill{height:100%;width:100%;transition:width .18s}
+#ammo{position:absolute;right:26px;bottom:20px;text-align:right;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+#ammo i{font-size:42px;font-weight:700;line-height:1;font-style:normal}
+#ammo s{text-decoration:none;opacity:.6;font-size:19px}
+#ammo em{display:block;font:600 11px/1.8 inherit;font-style:normal;letter-spacing:.2em;opacity:.75}
+#kills{position:absolute;top:18px;right:26px;font:600 13px/1 inherit;letter-spacing:.14em;background:rgba(8,20,30,.42);padding:9px 14px;border-radius:9px;backdrop-filter:blur(6px)}
+#cross{position:absolute;left:50%;top:50%;width:26px;height:26px;transform:translate(-50%,-50%)}
+#cross div{position:absolute;background:#fff;box-shadow:0 0 4px rgba(0,0,0,.7)}
+#flash{position:absolute;inset:0;opacity:0;background:radial-gradient(circle,rgba(255,80,70,.32),rgba(255,40,40,.05) 70%)}
+.btns{position:absolute;top:16px;left:24px;display:flex;gap:9px;pointer-events:auto}
+.btn{pointer-events:auto;cursor:pointer;border:none;border-radius:9px;padding:9px 15px;font:600 12px/1 inherit;letter-spacing:.1em;color:#07202b;background:linear-gradient(#fff,#d7eef5);box-shadow:0 5px 16px rgba(0,0,0,.3)}
+.btn:hover{filter:brightness(1.07)}
+#tip{position:absolute;left:24px;top:64px;font:500 11.5px/1.9 inherit;opacity:.82;text-shadow:0 1px 6px #000}
+.panel{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(420px,88vw);background:rgba(8,24,34,.74);backdrop-filter:blur(13px);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:22px 24px;text-align:center;box-shadow:0 22px 60px rgba(0,0,0,.5)}
+.panel h1{font-size:34px;font-weight:800;line-height:1;letter-spacing:.16em;background:linear-gradient(90deg,#ffd27a,#ff7f6b,#4fd8d2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.panel p{font:500 12px/1.95 inherit;opacity:.85;margin:10px 0 14px}
+.panel .btn{margin:0 4px}
+.hide{display:none}
+#err{position:fixed;inset:0;display:none;padding:40px;background:#101a22;font:14px/1.8 monospace;color:#ffb0a0;overflow:auto}
+/* v2 presentation: gameplay UI identities stay unchanged */
+.btn{border-radius:3px;background:rgba(16,23,26,.82);color:#dbe4df;border:1px solid #6b7b79;font:600 11px/1.5 "Segoe UI",sans-serif;backdrop-filter:blur(8px)}
+.btns{flex-wrap:wrap;max-width:75vw;gap:6px}
+#tip{display:none}
+.panel{border-radius:4px;background:linear-gradient(130deg,rgba(9,17,19,.88),rgba(17,25,25,.58));border-color:#76867b55}
+.panel h1{font-size:33px;letter-spacing:.19em;background:none;color:#e6e4d7}
+.panel p{font:400 12px/1.9 "Segoe UI",sans-serif;color:#b4c4c4}
+#kills{border-radius:3px;font:600 12px/1.5 "Segoe UI",sans-serif;background:#101719b0}
+#quality{position:absolute;right:26px;top:65px;font:10px/1.7 monospace;color:#b1c2bc;text-align:right}
+.bar b,#ammo em{font:600 11px/1.7 "Segoe UI",sans-serif;letter-spacing:.13em}
+#cross{opacity:.65;transform:translate(-50%,-50%) scale(.65)}
+.btn,.panel h1,.bar b,#ammo em,#kills{letter-spacing:0}
+#soundControls{position:absolute;left:24px;top:64px;display:flex;align-items:center;gap:8px;pointer-events:auto;font:11px/1.5 "Segoe UI",sans-serif;color:#c7d2ce;background:#101719c9;padding:5px 8px;border:1px solid #6b7b7955;border-radius:3px}
+#soundControls input{width:72px;accent-color:#9aada3}#soundControls button{padding:4px 7px}#audioStatus{max-width:125px}
+.compare{display:block;margin-top:17px;font-size:11px;color:#bdcfc7}
+/* Third version: a restrained field interface, over a real playable scene. */
+html,body{background:#172229;color:#d5dedc}
+.btn{border-color:#82979666;background:#17252cc7;border-radius:2px;padding:8px 12px;color:#d6dfdb}
+.btn:focus-visible,a:focus-visible{outline:2px solid #e3ba7f;outline-offset:4px}
+.btn:disabled{opacity:.45;cursor:wait}
+.btns{top:22px;left:28px}
+#stormControls{position:absolute;left:28px;top:99px;display:flex;gap:6px;pointer-events:auto}
+#soundControls{left:28px;top:61px;background:#122027b8;border-color:#82979644}
+#quality{right:28px;top:65px;letter-spacing:.12em;color:#c5d1d1;font:10px/1.8 "Segoe UI","Microsoft YaHei",sans-serif}
+#quality strong{font-weight:500;color:#f0c590}
+#kills{top:22px;right:28px;background:none;border-bottom:1px solid #8da0a655;padding:7px 0;letter-spacing:.07em}
+.panel#menu{left:5vw;top:auto;bottom:13vh;transform:none;width:370px;padding:29px 28px;text-align:left;background:linear-gradient(110deg,#111f27ed,#16242cc4);border:1px solid #9aabad44;border-top:2px solid #d0ac7b;box-shadow:0 18px 70px #020b12aa}
+.panel .eyebrow{font:600 9px/1.6 "Segoe UI",sans-serif;letter-spacing:.24em;color:#d0ac7b;margin-bottom:12px}
+.panel h1{font:500 35px/1.03 "Segoe UI",sans-serif;letter-spacing:.055em;color:#e7ebe5}
+.panel h2{font:400 14px/1.5 "Segoe UI","Microsoft YaHei",sans-serif;letter-spacing:.18em;color:#a7b9c1;margin-top:9px}
+.panel p{margin:17px 0;color:#aebfc3;font:11px/1.9 "Segoe UI","Microsoft YaHei",sans-serif}
+.panel #bStart{background:#c1a47c;color:#13212a;border-color:#ddbd8a;padding:10px 20px;font-weight:600;margin-left:0}
+.panel #bStyle2{margin-left:7px}
+.compare{display:inline-block;margin-top:20px;font-size:10px;color:#a9bcbf;text-decoration:none;border-bottom:1px solid #95aebc44;padding-bottom:3px}
+.compare+.compare{margin-left:15px}
+.panel small{display:block;font-size:9px;line-height:1.8;color:#8ca1aa;margin-top:14px}
+.bar{left:28px;bottom:28px;width:205px}
+.bar b{color:#b9caca;font-size:10px;letter-spacing:.1em}
+.track{border-radius:0;height:4px;box-shadow:none;background:#b2c1c233}
+#ammo{right:28px;bottom:27px}#ammo i{font-size:38px;font-weight:400}#ammo s{font-size:16px}
+#ammo em{font-size:9px;color:#aebfc5;letter-spacing:.1em}
+#help{position:absolute;bottom:29px;left:50%;transform:translateX(-50%);font:9px/1.8 "Segoe UI","Microsoft YaHei",sans-serif;color:#b0c0c5aa;text-align:center;white-space:nowrap}
+#help span{color:#e2d4b6}
+#bootStatus{position:fixed;left:28px;top:146px;font:10px/1.8 "Microsoft YaHei",sans-serif;color:#e8d0a8;pointer-events:none}
+@media(max-width:640px){
+ .btns{left:12px;top:12px;max-width:calc(100vw - 24px);gap:4px}
+ .btn{padding:7px 9px;font-size:11px}
+ #quality{right:12px;top:86px;font-size:9px}
+ #kills{right:12px;top:58px;font-size:11px;padding:5px 8px}
+ .bar{left:12px;bottom:18px;width:min(165px,42vw)}
+ #ammo{right:12px;bottom:16px}#ammo i{font-size:34px}
+ .panel{width:min(390px,calc(100vw - 32px));padding:22px 16px}
+ .panel h1{font-size:30px}
+ #soundControls{left:12px;top:56px;gap:5px;max-width:calc(100vw - 124px);font-size:10px}
+ #soundControls input{width:50px}#audioStatus{max-width:76px}
+ #stormControls{left:12px;top:106px}
+ .panel#menu{left:16px;bottom:95px;width:calc(100vw - 32px);max-width:370px;padding:23px}
+ .panel h1{font-size:30px}.panel h2{font-size:12px}
+ #help{display:none}#bootStatus{left:12px;top:147px}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="hud">
+  <div class="btns"><button class="btn" id="bStyle" title="切换冷暖色调 (V)">冷调 / 暖调</button><button class="btn" id="bWeather" title="切换天气 (T)">天气</button><button class="btn" id="bPause" title="暂停或继续 (P)">暂停/继续</button><button class="btn" id="bPres" title="演示模式 (G)">演示</button><button class="btn hide" id="bPresOff">退出演示</button></div>
+  <div id="soundControls"><button class="btn" id="bMute" aria-pressed="false">静音</button><label for="soundVolume">音量</label><input id="soundVolume" type="range" min="0" max="100" value="65" aria-label="音效音量"/><span id="audioStatus" role="status">点击开始启用音效</span></div>
+  <div id="stormControls"><button class="btn" id="bPost" aria-pressed="true">后期：开</button><button class="btn" id="bFlash" aria-pressed="true">闪电：开启</button><button class="btn" id="bAssist" aria-pressed="true" title="轻度辅助瞄准：仅对视线内的敌人，不会自动开火">辅助瞄准：开</button></div>
+  <div id="quality"><strong>RIVERFALL</strong> / 新地图<br><span id="weatherName">雨后 · 山谷日照</span></div><div id="tip"></div>
+  <div class="bar"><b id="styleName">热带竞技</b><b>生命值 HP</b><div class="track"><div class="fill" id="hpf"></div></div></div>
+  <div id="ammo"><i id="am">30</i><s>/90</s><em>全自动 · R 更换弹匣</em><progress id="reloadProgress" max="1" value="0" aria-label="换弹进度" style="display:none;width:120px;height:3px;accent-color:#ddbd8a"></progress></div>
+  <div id="kills">击倒 <span id="kl">0</span>/6</div>
+  <div id="cross"><div style="left:12px;top:0;width:2px;height:8px"></div><div style="left:12px;top:18px;width:2px;height:8px"></div><div style="left:0;top:12px;width:8px;height:2px"></div><div style="left:18px;top:12px;width:8px;height:2px"></div></div>
+  <div id="flash"></div>
+  <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>按住左键 / F</span> 连射　 <span>R</span> 换弹　 <span>E</span> 木屋开关门　 <span>Shift</span> 冲刺</div>
+</div>
+<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / RIVER VILLAGE</div><h1>RIVER<br>FALL</h1><h2>雨林河谷 · 双岸交火</h2><p>按住鼠标左键持续开火，松开即停。<br>R 更换弹匣，E 开关木屋门。<br>两岸斜对称木屋、浅河与坍塌村落。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换色调</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 写实版 ↗</a><a class="compare" href="./" target="_blank" rel="noopener">03 暴雨版 ↗</a><a class="compare" href="./v4/" target="_blank" rel="noopener">04 连射版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo。<a href="./river/?mode=squads" rel="noopener">4v4 联机试玩（可选，好友邀请 / AI 补位）</a><br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./river/credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
+<div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
+<div id="err"></div>
+<div id="bootStatus">正在装载雨林河谷、植被与材质…</div>
+<script type="importmap">{"imports":{"three":"./vendor/presentation/build/three.module.js","three/addons/":"./vendor/presentation/examples/jsm/"}}</script>
+<script src="./river/boot-ui.js"></script>
+<script type="module">
+import {TACTICAL_SPAWNS,createTacticalAI,enemyHitBounds} from './river/tactical-ai.js';
+import {SHOT_INTERVAL_MS,RELOAD_SECONDS,RELOAD_CUES,reloadProgress,controlTarget,createTrigger} from './river/combat-controls.js';
+import {createShotFeedbackAdapter} from './river/shot-feedback-event.js';
+import {createAimAssist,actorCenter} from './river/aim-assist.js';
+async function riverImport(spec, label) {
+  let p = '';
+  try { const u = new URL(spec, document.baseURI); p = u.pathname; return await import(u.href); }
+  catch (e) { throw new Error(`模块加载失败 [阶段: ${label}] 入口: ${p || '(无效路径)'}`); }
+}
+let THREE;
+let visual=null;
+window.riverBootStage='渲染引擎 / vendor/three/build/three.module.js';
+THREE=await riverImport('./vendor/three/build/three.module.js','渲染引擎');
+window.riverBootStage='建立 WebGL 渲染器';
+
+const PRESETS=[
+ {n:'热带竞技',sky:0x5fc8ef,hz:0xeadfbe,fog:0x9fd9ef,fd:[40,230],sun:0xfff3d4,si:2.5,amb:0x9fd6ff,ai:.85,hemi:0xfff0cf,sea:0x19b5c9,sand:0xe8d2a3,wallA:0xf6ead2,wallB:0xef9a84,roof:0xc4624a,door:0x27c2c8,gun:0x2f353a,acc:0xff7a5e,ui:'#ff8a6a',sunpos:[60,78,40]},
+ {n:'冷调工业',sky:0x9fb0bd,hz:0xd6dde2,fog:0xaebcc6,fd:[22,150],sun:0xdce8f2,si:1.5,amb:0x8fa6bb,ai:.95,hemi:0xc9d8e4,sea:0x3d6c80,sand:0x9fa39c,wallA:0xc3c8c8,wallB:0x8e9aa0,roof:0x5d6468,door:0x3f8fa8,gun:0x3b4046,acc:0x4fd8d2,ui:'#6fe0dc',sunpos:[-50,60,-30]}
+];
+let si=0,P=PRESETS[0];
+
+const app=document.getElementById('app');
+const rnd=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});
+rnd.setPixelRatio(Math.min(devicePixelRatio,2));rnd.setSize(innerWidth,innerHeight);
+rnd.shadowMap.enabled=true;rnd.shadowMap.type=THREE.PCFSoftShadowMap;
+rnd.toneMapping=THREE.ACESFilmicToneMapping;rnd.toneMappingExposure=1.02;app.appendChild(rnd.domElement);
+
+const scene=new THREE.Scene();
+const cam=new THREE.PerspectiveCamera(72,innerWidth/innerHeight,.05,1000);
+const gcam=new THREE.PerspectiveCamera(52,innerWidth/innerHeight,.01,10);
+const M=(c,r,m=0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+const box=(w,h,d,mat,x,y,z,p=scene,ry=0)=>{const o=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat);o.position.set(x,y,z);o.rotation.y=ry;o.castShadow=o.receiveShadow=true;p.add(o);return o};
+const cyl=(a,b,h,mat,x,y,z,p=scene,s=10)=>{const o=new THREE.Mesh(new THREE.CylinderGeometry(a,b,h,s),mat);o.position.set(x,y,z);o.castShadow=o.receiveShadow=true;p.add(o);return o};
+
+function tex(draw,rx=1,ry=1){const c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');draw(x);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);t.anisotropy=4;return t}
+let SD=12345;const rr=()=>(SD=(SD*16807)%2147483647)/2147483647;
+function noise(x,a,n){for(let i=0;i<n;i++){const v=(rr()-.5)*a;x.fillStyle='rgba('+(v>0?'255,255,255,':'0,0,0,')+Math.abs(v).toFixed(3)+')';x.fillRect(rr()*256,rr()*256,2+rr()*3,2+rr()*3)}}
+const stuccoT=tex(x=>{x.fillStyle='#fff';x.fillRect(0,0,256,256);noise(x,.22,5000)},2,2);
+const woodT=tex(x=>{x.fillStyle='#fff';x.fillRect(0,0,256,256);for(let i=0;i<34;i++){x.fillStyle='rgba(0,0,0,'+(.03+rr()*.09).toFixed(3)+')';x.fillRect(0,i*7.6,256,2+rr()*3)}noise(x,.12,1500)},1,3);
+const sandT=tex(x=>{x.fillStyle='#fff';x.fillRect(0,0,256,256);noise(x,.3,9000);for(let i=0;i<40;i++){x.strokeStyle='rgba(0,0,0,.04)';x.beginPath();x.moveTo(0,rr()*256);x.bezierCurveTo(80,rr()*256,170,rr()*256,256,rr()*256);x.stroke()}},26,26);
+const roofT=tex(x=>{x.fillStyle='#fff';x.fillRect(0,0,256,256);for(let r=0;r<8;r++){x.fillStyle='rgba(0,0,0,.16)';x.fillRect(0,r*32+28,256,4);for(let c2=0;c2<9;c2++){x.fillStyle='rgba(0,0,0,.09)';x.fillRect(c2*32+(r%2?16:0),r*32,2,32)}}noise(x,.1,1200)},3,2);
+const mat={sand:M(P.sand,.96),sea:new THREE.MeshStandardMaterial({color:P.sea,roughness:.18,metalness:.35}),
+ wA:M(P.wallA,.85),wB:M(P.wallB,.8),roof:M(P.roof,.72),door:M(P.door,.45),
+ rail:M(0xf3f5f2,.5,.25),crate:M(0xd8a24e,.82),crate2:M(0x2f7f86,.7,.1),
+ trunk:M(0x8a6a44,.95),leaf:M(0x3fa05a,.78),gun:M(P.gun,.45,.75),acc:M(P.acc,.4,.2),
+ glove:M(0x2c3338,.85),skin:M(0xd9a07a,.9),
+ e1:M(0x2e3a45,.85),e2:M(0xe5884f,.75),e3:M(0x1f2a33,.7,.3)};
+mat.sand.map=sandT;mat.wA.map=stuccoT;mat.wB.map=stuccoT;mat.roof.map=roofT;mat.trunk.map=woodT;
+mat.trim=M(0xfbf7ee,.7);mat.glass=new THREE.MeshStandardMaterial({color:0x2a4652,roughness:.12,metalness:.6});
+mat.awn=M(0xffffff,.85);mat.awn.map=tex(x=>{for(let i=0;i<8;i++){x.fillStyle=i%2?'#ff6f52':'#fdf6e6';x.fillRect(i*32,0,32,256)}noise(x,.1,900)},2,1);
+mat.post=M(0xd9cdb4,.8);
+const sky=new THREE.Mesh(new THREE.SphereGeometry(400,24,16),new THREE.ShaderMaterial({side:THREE.BackSide,uniforms:{t:{value:new THREE.Color(P.sky)},b:{value:new THREE.Color(P.hz)}},
+ vertexShader:'varying float h;void main(){h=normalize(position).y;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+ fragmentShader:'varying float h;uniform vec3 t,b;void main(){gl_FragColor=vec4(mix(b,t,smoothstep(-.05,.55,h)),1.);}'}));
+scene.add(sky);
+scene.fog=new THREE.Fog(P.fog,P.fd[0],P.fd[1]);
+
+const sun=new THREE.DirectionalLight(P.sun,P.si);sun.position.set(...P.sunpos);sun.castShadow=true;
+sun.shadow.mapSize.set(2048,2048);const sc=sun.shadow.camera;sc.left=sc.bottom=-45;sc.right=sc.top=45;sc.far=220;sun.shadow.bias=-.0006;scene.add(sun);
+const amb=new THREE.HemisphereLight(P.hemi,P.amb,P.ai);scene.add(amb);
+
+// ground + sea
+const ground=new THREE.Mesh(new THREE.CircleGeometry(70,48),mat.sand);ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
+const sea=new THREE.Mesh(new THREE.PlaneGeometry(900,900,1,1),mat.sea);sea.rotation.x=-Math.PI/2;sea.position.y=-1.1;scene.add(sea);
+box(140,1.2,5,M(0xdfd6bd,.9),0,-.3,-62);
+
+const colliders=[],solids=[];
+function solid(o,pad=0){o.updateWorldMatrix(true,true);const b=new THREE.Box3().setFromObject(o);b.expandByScalar(pad);colliders.push(b);solids.push(o)}
+
+function house(x,z,w,d,h,ry,mw){
+ const g=new THREE.Group();g.position.set(x,0,z);g.rotation.y=ry;scene.add(g);
+ const body=box(w,h,d,mw,0,h/2,0,g);
+ box(w+.5,.35,d+.5,mat.trim,0,h+.15,0,g);
+ const r=new THREE.Mesh(new THREE.ConeGeometry(Math.max(w,d)*.82,1.6,4),mat.roof);
+ r.position.y=h+1.0;r.rotation.y=Math.PI/4;r.castShadow=true;g.add(r);
+ for(let i=0;i<3;i++)box((w+.5)*(1-i*.26),.08,(d+.5)*(1-i*.26),mat.roof,0,h+.36+i*.34,0,g);
+ const fz=d/2;
+ box(1.5,2.5,.1,mat.trim,0,1.25,fz+.015,g);box(1.1,2.2,.14,mat.door,0,1.1,fz+.06,g);
+ box(.09,.09,.09,mat.acc,.4,1.12,fz+.15,g);
+ box(2.0,.14,.92,mat.awn,0,2.74,fz+.44,g).rotation.x=-.18;
+ for(let s2=-1;s2<=1;s2+=2)cyl(.045,.045,.95,mat.post,s2*.82,2.26,fz+.8,g,8);
+ for(let i=-1;i<=1;i+=2)for(const wz of [[fz,0],[-fz,Math.PI]]){
+  const wg=new THREE.Group();wg.position.set(i*w*.3,h*.66,wz[0]);wg.rotation.y=wz[1];g.add(wg);
+  box(1.02,1.02,.07,mat.trim,0,0,.03,wg);box(.84,.84,.05,mat.glass,0,0,-.02,wg);
+  box(.07,.86,.09,mat.trim,0,0,.07,wg);box(.86,.07,.09,mat.trim,0,0,.07,wg);
+  box(1.16,.1,.22,mat.trim,0,-.56,.08,wg);
+  box(1.22,.1,.5,mat.awn,0,.7,.2,wg).rotation.x=-.3;}
+ solid(body);return g;}
+
+house(-13,-16,9,7,4.2,0,mat.wA);
+house(12,-18,8,8,5.2,0,mat.wB);
+house(-21,4,7,11,4.6,Math.PI/2,mat.wB);
+house(20,6,8,10,4.0,0,mat.wA);
+house(-4,-27,11,6,3.6,0,mat.wA);
+
+// railing promenade
+for(let i=-10;i<=10;i++){const p=cyl(.07,.07,1.05,mat.rail,i*2.2,.52,16);}
+for(let s=-1;s<=1;s+=2)box(44,.12,.12,mat.rail,0,s>0?1.02:.6,16);
+box(46,.5,3.4,M(0xece0c6,.92),0,.25,18.2);solid(scene.children[scene.children.length-1],0);
+
+// crates
+function crate(x,z,n,ry){for(let i=0;i<n;i++){const c=box(1.5,1.3,1.5,i%2?mat.crate2:mat.crate,x,.65+i*1.32,z,scene,ry+i*.2);box(1.56,.12,.12,mat.acc,x,.65+i*1.32,z);if(i===0)solid(c);}}
+crate(-6,2,2,.2);crate(5,-4,1,-.3);crate(8,8,2,.5);crate(-14,10,1,.8);crate(0,-12,2,0);crate(14,-6,1,.4);
+
+// palms
+function palm(x,z,hh){const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);
+ const cur=new THREE.CatmullRomCurve3([0,.25,.5,.75,1].map(t=>new THREE.Vector3(Math.sin(t*1.6)*t*t*.8,t*hh,Math.cos(t*2.2)*t*t*.4)));
+ const tr=new THREE.Mesh(new THREE.TubeGeometry(cur,18,.3,10,false),mat.trunk);
+ const pa=tr.geometry.attributes.position,uv=tr.geometry.attributes.uv;
+ for(let i=0;i<pa.count;i++){const t=uv.getX(i),c=cur.getPoint(t),s=1-t*.55;pa.setXYZ(i,c.x+(pa.getX(i)-c.x)*s,pa.getY(i),c.z+(pa.getZ(i)-c.z)*s)}
+ pa.needsUpdate=true;tr.geometry.computeVertexNormals();tr.castShadow=tr.receiveShadow=true;g.add(tr);
+ const top=cur.getPoint(1);
+ for(let i=0;i<10;i++){const a=i/10*6.283,dr=.5+(i%2)*.25;
+  const fc=new THREE.CatmullRomCurve3([new THREE.Vector3(0,0,0),new THREE.Vector3(Math.cos(a)*1.0,.7,Math.sin(a)*1.0),new THREE.Vector3(Math.cos(a)*2.4,.45,Math.sin(a)*2.4),new THREE.Vector3(Math.cos(a)*3.5,-.9-dr,Math.sin(a)*3.5)]);
+  const fm=new THREE.Mesh(new THREE.TubeGeometry(fc,18,.16,6,false),mat.leaf);
+  const fp=fm.geometry.attributes.position,fu=fm.geometry.attributes.uv;
+  for(let k=0;k<fp.count;k++){const t=fu.getX(k),c=fc.getPoint(t),s=Math.max(.1,Math.sin(Math.min(1,t*4))*(1-t*.8));
+   fp.setXYZ(k,c.x+(fp.getX(k)-c.x)*s*2.8,c.y+(fp.getY(k)-c.y)*s*.35,c.z+(fp.getZ(k)-c.z)*s*2.8)}
+  fp.needsUpdate=true;fm.geometry.computeVertexNormals();fm.position.copy(top);fm.castShadow=true;g.add(fm);}
+ for(let i=0;i<4;i++)cyl(.13,.11,.2,M(0x8a6b3a,.9),top.x+Math.cos(i*1.6)*.3,top.y-.3,top.z+Math.sin(i*1.6)*.3,g,8);
+ cyl(.46,.58,.36,M(0xcbb489,.95),0,.17,0,g,12);solid(tr,.05);}
+palm(-9,9,5.2);palm(10,12,6);palm(-18,-6,5.6);palm(18,-3,5);palm(2,14,5.8);palm(-24,14,6.2);
+
+// ===== gun view model =====
+const gscene=new THREE.Scene();
+const gkey=new THREE.DirectionalLight(0xffffff,2.2);gkey.position.set(.7,1.3,.9);gscene.add(gkey);
+const gfill=new THREE.DirectionalLight(0xbcd8ff,2.4);gfill.position.set(-1,.2,.5);gscene.add(gfill);
+const ghemi=new THREE.HemisphereLight(0xffffff,0x4b5560,1.05);gscene.add(ghemi);
+gcam.position.set(0,0,0);gcam.rotation.set(0,0,0);gscene.add(gcam);
+const gun=new THREE.Group();gscene.add(gun);
+mat.gunD=M(0x1b1f23,.6,.5);mat.gunL=M(0x6e7a82,.35,.85);mat.grip=M(0x2a2420,.95);
+// Integration correction: procedural prototype has no environment reflection map.
+mat.gun.metalness=.18;mat.gunD.metalness=.12;mat.gunL.metalness=.3;
+box(.085,.1,1.5,mat.gun,0,0,-.55,gun);
+box(.105,.17,.5,mat.gunL,0,-.085,-.24,gun);
+box(.095,.3,.16,mat.grip,0,-.22,.04,gun).rotation.x=.22;
+box(.055,.05,.78,mat.gunD,0,.095,-.7,gun);
+box(.075,.055,.1,mat.gunL,0,.14,-.26,gun);
+box(.075,.055,.1,mat.gunL,0,.14,-1.02,gun);
+box(.1,.085,.28,mat.acc,0,.005,-1.26,gun);
+for(let i=0;i<5;i++)box(.1,.022,.03,mat.gunD,0,.055,-.95+i*.07,gun);
+cyl(.03,.03,.46,mat.gunD,0,.005,-1.56,gun).rotation.x=Math.PI/2;
+cyl(.045,.045,.1,mat.gunL,0,.005,-1.78,gun).rotation.x=Math.PI/2;
+box(.115,.16,.34,mat.gunD,0,-.11,-.54,gun);
+box(.12,.045,.3,mat.acc,0,-.2,-.54,gun);
+box(.06,.065,.34,mat.gunL,0,.095,-.04,gun);
+box(.075,.11,.1,mat.gunD,0,-.08,.2,gun);
+const hands=new THREE.Group();gun.add(hands);
+const h1=box(.14,.14,.2,mat.glove,.0,-.19,-.14,hands);
+const h2=box(.15,.15,.26,mat.glove,.02,-.12,-.72,hands);
+box(.13,.1,.2,mat.acc,.02,-.19,-.72,hands);
+box(.12,.26,.12,mat.skin,.0,-.33,-.05,hands);
+const muz=new THREE.PointLight(0xffb070,0,4);muz.position.set(0,.01,-1.8);gun.add(muz);
+
+// ===== enemies =====
+const enemies=[];
+function enemy(x,z){
+ const g=new THREE.Group();g.position.set(x,0,z);scene.add(g);
+ const torso=box(.62,.78,.34,mat.e1,0,1.22,0,g);
+ box(.66,.26,.38,mat.e2,0,1.5,0,g);
+ box(.3,.34,.3,mat.skin,0,1.78,0,g);
+ box(.34,.16,.32,mat.e3,0,1.86,-.02,g);
+ box(.2,.1,.06,mat.acc,0,1.78,.16,g);
+ const la=box(.16,.56,.16,mat.e1,-.4,1.2,.05,g),ra=box(.16,.56,.16,mat.e1,.4,1.2,.05,g);
+ const ll=new THREE.Group(),rl=new THREE.Group();ll.position.set(-.17,.82,0);rl.position.set(.17,.82,0);g.add(ll,rl);
+ box(.2,.82,.22,mat.e3,0,-.41,0,ll);box(.22,.14,.3,mat.e2,0,-.8,.04,ll);
+ box(.2,.82,.22,mat.e3,0,-.41,0,rl);box(.22,.14,.3,mat.e2,0,-.8,.04,rl);
+ const wg2=new THREE.Group();wg2.position.set(.3,1.3,0);g.add(wg2);
+ box(.09,.1,.8,mat.gun,0,0,.45,wg2);box(.08,.18,.14,mat.gunD,0,-.12,.14,wg2);box(.07,.06,.26,mat.acc,0,.06,.8,wg2);
+ const gunTip=new THREE.Object3D();gunTip.position.set(0,.02,.92);wg2.add(gunTip);
+ const e={g,ll,rl,la,ra,wg2,gunTip,hp:100,alive:true,ph:Math.random()*6,cd:1+Math.random()*2,warn:0};
+ enemies.push(e);return e;}
+const squadsMode=new URLSearchParams(location.search).get('mode')==='squads';let squads=null;
+if(squadsMode)document.getElementById('menu').classList.add('hide');
+const SPAWN=TACTICAL_SPAWNS.map(p=>[p[0],p[2]]);
+(squadsMode?Array.from({length:8},(_,i)=>SPAWN[i%SPAWN.length]):SPAWN).forEach(p=>enemy(p[0],p[1]));if(squadsMode)enemies.forEach(e=>{e.tactical={recoil:0,stance:0}});
+
+// ===== style switching =====
+function applyStyle(){
+ P=PRESETS[si];
+ sky.material.uniforms.t.value.set(P.sky);sky.material.uniforms.b.value.set(P.hz);
+ scene.fog.color.set(P.fog);scene.fog.near=P.fd[0];scene.fog.far=P.fd[1];
+ rnd.setClearColor(P.fog);
+ sun.color.set(P.sun);sun.intensity=P.si;sun.position.set(...P.sunpos);
+ amb.color.set(P.hemi);amb.groundColor.set(P.amb);amb.intensity=P.ai;
+ mat.sea.color.set(P.sea);mat.sea.roughness=si?.42:.18;
+ mat.sand.color.set(P.sand);mat.wA.color.set(P.wallA);mat.wB.color.set(P.wallB);
+ mat.roof.color.set(P.roof);mat.door.color.set(P.door);
+ mat.gun.color.set(P.gun);mat.acc.color.set(P.acc);mat.acc.emissive.set(si?0x113c3a:0x000000);
+ mat.leaf.color.set(si?0x5e7a60:0x3fa05a);mat.crate.color.set(si?0x9a8f78:0xd8a24e);
+ mat.gunD.color.set(si?0x24282c:0x1b1f23);mat.gunL.color.set(si?0x93a0a8:0x6e7a82);mat.grip.color.set(si?0x3a4046:0x2a2420);
+ mat.awn.color.set(si?0x9fb0b8:0xffffff);mat.trim.color.set(si?0xdfe4e6:0xfbf7ee);mat.post.color.set(si?0xaeb6b8:0xd9cdb4);
+ document.getElementById('styleName').textContent=P.n;
+ if(visual)visual.setStyle(si);
+ document.querySelectorAll('.fill').forEach(f=>f.style.background=`linear-gradient(90deg,${P.ui},#ffffff)`);
+ document.getElementById('cross').querySelectorAll('div').forEach(d=>d.style.background=P.ui);
+}
+applyStyle();
+
+// ===== player =====
+const S={state:'menu',hp:100,mag:30,res:90,kills:0,yaw:-1.35,pitch:-0.06,aim:0,run:0,reload:0,next:0};
+const SPAWNPOS=new THREE.Vector3(-26,1.7,22);
+const pos=SPAWNPOS.clone(),vel=new THREE.Vector3();let vy=0,onGround=true,bob=0,recoil=0;
+const keys={};
+const trigger=createTrigger();
+let reloadCuePhase=0;
+const fireStats={count:0,times:[]};
+addEventListener('keydown',e=>{if(controlTarget(e.target))return;keys[e.code]=true;
+ if(e.code==='KeyV')toggleStyle();
+ if(e.code==='KeyP')togglePause();
+ if(e.code==='KeyG')setPres(!pres);
+ if(e.code==='KeyR'&&!squadsMode)reload();
+ if(e.code==='KeyF'&&!e.repeat&&S.state==='play'&&!pres&&!document.hidden){trigger.setKeyboard(true);fire()}
+ if(e.code==='Escape'&&!squadsMode&&S.state==='play'){clearKeys();S.state='pause';showMenu('继续作战')}
+ if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();});
+addEventListener('keyup',e=>{keys[e.code]=false;if(e.code==='KeyF')trigger.setKeyboard(false)},true);
+let pres=false,plOK=true;
+function clearKeys(){for(const k in keys)keys[k]=false;trigger.clear();drag=false;S.aimHold=false}
+addEventListener('blur',()=>{clearKeys();if(!squadsMode&&S.state==='play'&&!pres){S.state='pause';showMenu('继续作战')}});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){clearKeys();if(!squadsMode&&S.state==='play'&&!pres){S.state='pause';showMenu('继续作战')}}});
+addEventListener('pointercancel',clearKeys,true);
+addEventListener('focusin',e=>{if(controlTarget(e.target))clearKeys()},true);
+function lockReq(){if(!cv.requestPointerLock){plOK=false;return}try{const r=cv.requestPointerLock();if(r&&r.catch)r.catch(()=>{plOK=false})}catch(e){plOK=false}}
+document.addEventListener('pointerlockerror',()=>{plOK=false});
+document.addEventListener('pointerlockchange',()=>{if(document.pointerLockElement!==cv){clearKeys();if(!squadsMode&&S.state==='play'&&plOK&&!pres){S.state='pause';showMenu('继续作战')}}});
+addEventListener('resize',()=>{cam.aspect=gcam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();rnd.setSize(innerWidth,innerHeight)});
+
+// Optional light aim assist: visible in-game NPCs only; it nudges the look angles only while the player is moving the view (mouse or arrow look) and never fires. Fire or ADS alone never rotates the camera.
+const assist=createAimAssist({actors:()=>enemies,center:e=>actorCenter(e,enemyHitBounds),visible:(a,b)=>clearSight(a,b)});
+const bAssist=document.getElementById('bAssist');
+function showAssist(){bAssist.textContent='辅助瞄准：'+(assist.enabled?'开':'关');bAssist.setAttribute('aria-pressed',String(assist.enabled))}
+bAssist.onclick=()=>{assist.toggle();showAssist();bAssist.blur()};
+showAssist();
+let drag=false,lx=0,ly=0;
+const cv=rnd.domElement;
+cv.addEventListener('mousedown',e=>{if(S.state!=='play')return;
+ if(e.button===2){S.aimHold=true;return}
+ if(e.button!==0||pres||document.hidden)return;
+ trigger.setMouse(true);
+ if(document.pointerLockElement!==cv){drag=true;lx=e.clientX;ly=e.clientY;lockReq()}
+ fire();});
+addEventListener('mouseup',e=>{if(e.button===2)S.aimHold=false;if(e.button===0){trigger.setMouse(false);drag=false}},true);
+addEventListener('pointerup',e=>{if(e.button===0)trigger.setMouse(false)},true);
+cv.addEventListener('contextmenu',e=>e.preventDefault());
+addEventListener('mousemove',e=>{
+ if(trigger.snapshot().mouse&&(e.buttons&1)===0)trigger.setMouse(false);
+ if(document.pointerLockElement===cv){look(e.movementX,e.movementY)}
+ else if(drag){look(e.clientX-lx,e.clientY-ly);lx=e.clientX;ly=e.clientY}});
+function look(dx,dy){if(dx||dy)assist.noteLook(performance.now());const k=.0024*(1-S.aim*.45);S.yaw-=dx*k;S.pitch=Math.max(-1.3,Math.min(1.3,S.pitch-dy*k))}
+
+// audio
+let createGameAudio;
+try{({createGameAudio}=await Promise.race([riverImport('./river/audio.js','声音'),new Promise((_,reject)=>setTimeout(()=>reject(Error('Audio module timeout')),4000))]))}
+catch{createGameAudio=({onStatus})=>{
+ const info={failed:true,ready:false,unlocked:false,loaded:0,muted:false,volume:.65};
+ queueMicrotask(()=>onStatus({...info}));
+ return{unlock(){onStatus({...info})},notify(){},setScene(){},silence(){},setMuted(v){info.muted=!!v;onStatus({...info})},setVolume(v){if(Number.isFinite(v))info.volume=Math.max(0,Math.min(1,v));onStatus({...info})},snapshot(){return{...info}}};
+}}
+const sound=createGameAudio({onStatus:info=>{
+ document.getElementById('audioStatus').textContent=info.failed?'音效不可用':!info.unlocked?'点击开始启用音效':!info.ready?'音效加载中':info.muted?'已静音':info.context!=='running'?'点击继续恢复音效':'实录音效已启用';
+ document.getElementById('bMute').textContent=info.muted?'开启声音':'静音';
+ document.getElementById('bMute').setAttribute('aria-pressed',String(info.muted));
+}});
+function snd(type,origin){try{sound.notify(type,origin)}catch{}}
+function initAudio(){sound.unlock()}
+const soundControls=document.getElementById('soundControls');
+for(const type of ['pointerdown','mousedown','click','keydown'])soundControls.addEventListener(type,e=>e.stopPropagation());
+document.getElementById('bMute').onclick=()=>{initAudio();sound.setMuted(!sound.snapshot().muted)};
+document.getElementById('soundVolume').oninput=e=>{initAudio();sound.setVolume(Number(e.target.value)/100)};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)sound.silence()});
+addEventListener('blur',()=>sound.silence());
+document.addEventListener('pointerdown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});
+document.addEventListener('keydown',()=>{if(sound.snapshot().unlocked)initAudio()},{passive:true});
+
+// combat
+const ray=new THREE.Raycaster();const tmp=new THREE.Vector3();
+const shotFeedback=createShotFeedbackAdapter(THREE,solids,()=>visual?.waterTime()||0);
+const tracers=[];
+let tactical=null;
+function fire(){
+ if(squadsMode||S.state!=='play'||pres||document.hidden||S.mag<=0||S.reload>0||performance.now()<(S.next||0))return;
+ const now=performance.now();S.next=now+SHOT_INTERVAL_MS;S.mag--;recoil=1;muz.intensity=5;snd('shot');updHUD();
+ fireStats.count++;fireStats.times.push(now);if(fireStats.times.length>120)fireStats.times.shift();
+ tactical?.playerShot(pos);
+ cam.getWorldDirection(tmp);
+ const dir=tmp.clone().add(new THREE.Vector3((Math.random()-.5)*.016*(1-S.aim*.7),(Math.random()-.5)*.016,0)).normalize();
+ ray.set(cam.position,dir);ray.far=140;
+ const wall=ray.intersectObjects(solids,true)[0];
+ const wd=wall?wall.distance:999;
+ let best=null,bd=wd;
+ for(const e of enemies){if(!e.alive)continue;
+  const bounds=enemyHitBounds(e),b=new THREE.Box3(new THREE.Vector3(bounds.min.x,bounds.min.y,bounds.min.z),new THREE.Vector3(bounds.max.x,bounds.max.y,bounds.max.z));
+  const p=ray.ray.intersectBox(b,new THREE.Vector3());
+  if(p){const d=p.distanceTo(cam.position);if(d<bd){bd=d;best=e}}}
+ const end=cam.position.clone().add(dir.multiplyScalar(Math.min(bd,140)));
+ tracer(end);
+ visual?.shot(shotFeedback.event({cam,gun,wall,best,end,direction:dir}));
+ if(best){best.hp-=Math.random()<.22?60:28;snd('hit');tactical?.hit(best);
+  if(best.hp<=0){best.alive=false;best.g.rotation.x=-1.4;best.g.position.y=.35;S.kills++;updHUD();
+   if(S.kills>=6){S.state='win';cancelReload();showOver('任务完成','全部 6 名敌对单元已清除。')}}}
+}
+// Approval uses both shoulder-to-muzzle and muzzle-to-player geometry rays:
+// a weapon protruding through a wall cannot fire from a hidden body.
+const sightRay=new THREE.Raycaster(),sightFrom=new THREE.Vector3(),sightTo=new THREE.Vector3();
+function clearSight(a,b){
+ sightFrom.set(a.x,a.y,a.z);sightTo.set(b.x,b.y,b.z).sub(sightFrom);
+ const length=sightTo.length();if(length<.01)return true;
+ sightRay.set(sightFrom,sightTo.multiplyScalar(1/length));sightRay.far=Math.max(.001,length-.06);
+ return sightRay.intersectObjects(solids,true).length===0;
+}
+function enemyShoot(e,target){
+ if(!e.alive||S.state!=='play'||pres)return false;
+ const t=e.tactical||{},shoulder={x:e.g.position.x,y:e.g.position.y+1.43-.52*(t.stance||0),z:e.g.position.z};
+ const o=e.gunTip.getWorldPosition(new THREE.Vector3());
+ const barrel=new THREE.Vector3(0,0,1).applyQuaternion(e.wg2.getWorldQuaternion(new THREE.Quaternion()));
+ const toward=new THREE.Vector3(target.x,target.y,target.z).sub(o).normalize();
+ if(barrel.dot(toward)<Math.cos(.12))return false;
+ if(!clearSight(shoulder,o)||!clearSight(o,target))return false;
+ const d=o.distanceTo(pos);
+ const hitp=pos.clone().add(new THREE.Vector3((Math.random()-.5)*.7,(Math.random()-.5)*.7,(Math.random()-.5)*.7));
+ const eg=new THREE.BufferGeometry().setFromPoints([o,hitp]);
+ const el=new THREE.Line(eg,new THREE.LineBasicMaterial({color:0xffc070,transparent:true,opacity:.95}));
+ scene.add(el);tracers.push({l:el,t:.1});snd('enemy',[o.x,o.y,o.z]);
+ if(Math.random()<.55-Math.min(.3,d*.012)){S.hp-=5+Math.random()*7;fl.style.opacity=.9;updHUD();
+  if(S.hp<=0){S.hp=0;S.state='dead';cancelReload();updHUD();showOver('作战失败','你已倒下。击倒数 '+S.kills+'/6')}}
+ return true;
+}
+function tracer(end){
+ gun.updateMatrixWorld();const mz=gun.localToWorld(new THREE.Vector3(0,.005,-1.85)).applyMatrix4(cam.matrixWorld);
+ const g=new THREE.BufferGeometry().setFromPoints([mz,end]);
+ const l=new THREE.Line(g,new THREE.LineBasicMaterial({color:P.acc,transparent:true,opacity:.9}));
+ scene.add(l);tracers.push({l,t:.07});}
+function reload(){if(squadsMode)return;if(S.state!=='play'||pres||document.hidden||S.res<=0||S.mag>=30||S.reload>0)return;S.reload=RELOAD_SECONDS;reloadCuePhase=0;S.aimHold=false;updHUD()}
+function cancelReload(){S.reload=0;reloadCuePhase=0;clearKeys();sound.silence()}
+function finishReload(){const n=Math.min(30-S.mag,S.res);S.mag+=n;S.res-=n;S.reload=0;updHUD()}
+
+const hpf=document.getElementById('hpf'),am=document.getElementById('am'),kl=document.getElementById('kl'),fl=document.getElementById('flash');
+function updHUD(){hpf.style.width=Math.max(0,S.hp)+'%';am.textContent=S.mag;document.querySelector('#ammo s').textContent='/'+S.res;kl.textContent=S.kills;document.querySelector('#ammo em').textContent=S.reload>0?'更换弹匣…':S.mag===0?'弹匣已空 · 按 R 换弹':'全自动 · R 更换弹匣';const progress=document.getElementById('reloadProgress');progress.style.display=S.reload>0?'inline-block':'none';progress.value=reloadProgress(S.reload)}
+
+// UI
+const menu=document.getElementById('menu'),over=document.getElementById('over'),bStart=document.getElementById('bStart');
+function showMenu(label){menu.classList.remove('hide');bStart.textContent=label}
+function hideMenu(){menu.classList.add('hide')}
+function showOver(t,p){clearKeys();over.classList.remove('hide');document.getElementById('ot').textContent=t;document.getElementById('op').textContent=p;document.exitPointerLock&&document.exitPointerLock()}
+function toggleStyle(){si=(si+1)%2;applyStyle()}
+function togglePause(){if(pres||squadsMode)return;if(S.state==='play'){S.state='pause';clearKeys();document.exitPointerLock&&document.exitPointerLock();showMenu('继续作战')}else if(S.state==='pause'){S.state='play';hideMenu();lockReq()}}
+function setPres(v){if(squadsMode)return;pres=v;clearKeys();
+ document.getElementById('bPres').classList.toggle('hide',v);
+ document.getElementById('bPresOff').classList.toggle('hide',!v);
+ document.getElementById('tip').classList.toggle('hide',v);
+ if(v){document.exitPointerLock&&document.exitPointerLock();menu.classList.add('hide');over.classList.add('hide')}
+ else if(S.state==='menu')showMenu('开始作战');else if(S.state==='pause')showMenu('继续作战');else if(S.state==='win'||S.state==='dead')over.classList.remove('hide')}
+bStart.onclick=()=>{if(squadsMode)return;bStart.blur();clearKeys();initAudio();S.state='play';hideMenu();lockReq()};
+document.getElementById('bStyle').onclick=toggleStyle;
+document.getElementById('bStyle2').onclick=toggleStyle;
+document.getElementById('bPause').onclick=()=>{if(squadsMode)return;if(S.state==='menu'){S.state='pause';showMenu('开始作战')}else togglePause()};
+document.getElementById('bPres').onclick=()=>setPres(true);
+document.getElementById('bPresOff').onclick=()=>setPres(false);
+function resetGame(){
+ visual?.resetHouse();
+ visual?.resetFeedback();
+ cancelReload();S.hp=100;S.mag=30;S.res=90;S.kills=0;S.yaw=-1.35;S.pitch=-.06;S.aim=0;S.aimHold=false;S.next=0;S.reload=0;
+ pos.copy(SPAWNPOS);vel.set(0,0,0);vy=0;onGround=true;bob=0;recoil=0;clearKeys();
+ enemies.forEach((e,i)=>{e.alive=true;e.hp=100;e.g.rotation.set(0,0,0);e.wg2.rotation.set(0,0,0);e.g.position.set(SPAWN[i][0],0,SPAWN[i][1]);e.cd=1+Math.random()*2;e.ph=Math.random()*6;e.warn=0});
+ tactical?.reset();
+ fl.style.opacity=0;updHUD();}
+document.getElementById('bAgain').onclick=e=>{e.currentTarget.blur();initAudio();resetGame();over.classList.add('hide');S.state='play';lockReq()};
+updHUD();
+
+// movement + loop
+function stepVertical(dt,jump){
+ const supportY=1.7+(visual?.floorHeight(pos.x,pos.z)||0),previousY=pos.y;
+ if(onGround&&pos.y>supportY+.001)onGround=false;
+ if(jump&&onGround){vy=5.1;onGround=false}
+ vy-=15*dt;pos.y+=vy*dt;
+ if(vy>0){const cap=visual?.ceilingY(pos,previousY)??Infinity;if(pos.y>cap){pos.y=cap;vy=0}}
+ if(pos.y<=supportY){pos.y=supportY;vy=0;onGround=true}
+}
+function collide(p,actor='player'){
+ if(visual?.blocksMovement(p,actor))return true;
+ for(const b of colliders){
+  if(p.x>b.min.x-.4&&p.x<b.max.x+.4&&p.z>b.min.z-.4&&p.z<b.max.z+.4&&p.y-1.5<(b.topAt?b.topAt(p.x,p.z,.4):b.max.y)&&p.y+.15>b.min.y)return true}
+ return false;}
+const clock=new THREE.Clock();
+function tick(){
+ requestAnimationFrame(tick);
+ const dt=Math.min(clock.getDelta(),.05);
+ const live=S.state==='play'&&!pres;if(!live)assist.clear();
+ sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);
+ if(squads)squads.frame(dt);
+ if(squadsMode){sea.position.x=pos.x;sea.position.z=pos.z}
+ if(!squadsMode)
+ if(live){
+  if(keys.ArrowLeft)S.yaw+=1.8*dt;if(keys.ArrowRight)S.yaw-=1.8*dt;
+  if(keys.ArrowUp)S.pitch=Math.min(1.3,S.pitch+1.3*dt);if(keys.ArrowDown)S.pitch=Math.max(-1.3,S.pitch-1.3*dt);
+  {const lookNow=performance.now();if((!!keys.ArrowLeft!==!!keys.ArrowRight)||(!!keys.ArrowUp!==!!keys.ArrowDown))assist.noteLook(lookNow);const a=assist.update({dt,now:lookNow,origin:pos,yaw:S.yaw,pitch:S.pitch});S.yaw=a.yaw;S.pitch=a.pitch}
+  if(trigger.held)fire();
+  const sp=(keys.ShiftLeft||keys.ShiftRight?7.4:4.2)*(S.aim>.5?.55:1);
+  let fx=(keys.KeyW?1:0)-(keys.KeyS?1:0),sx=(keys.KeyD?1:0)-(keys.KeyA?1:0);
+  const l=Math.hypot(fx,sx)||1;fx/=l;sx/=l;
+  const sy=Math.sin(S.yaw),cy=Math.cos(S.yaw);
+  vel.set((-sy*fx+cy*sx)*sp,0,(-cy*fx-sy*sx)*sp);
+  const nx=pos.clone();nx.x+=vel.x*dt;if(!collide(nx))pos.x=nx.x;
+  const nz=pos.clone();nz.z+=vel.z*dt;if(!collide(nz))pos.z=nz.z;
+  pos.x=Math.max(-32,Math.min(32,pos.x));pos.z=Math.max(-34,Math.min(26,pos.z));
+  stepVertical(dt,keys.Space);
+  bob+=dt*(Math.hypot(vel.x,vel.z)>.4?(keys.ShiftLeft?13:9):0);
+  S.aim+=((S.aimHold&&S.reload===0?1:0)-S.aim)*Math.min(1,dt*12);
+  if(S.reload>0){S.reload=Math.max(0,S.reload-dt);
+   const phase=S.reload>0?reloadProgress(S.reload):1;
+   if(reloadCuePhase<1&&phase>=RELOAD_CUES.out){snd('magout');reloadCuePhase=1}
+   if(reloadCuePhase<2&&phase>=RELOAD_CUES.insert){snd('magin');reloadCuePhase=2}
+   if(S.reload===0)finishReload();else updHUD()}
+  // v3-authorized NPC behavior: cover selection, peeking/bursts and navigation.
+  tactical?.update(dt,{live:S.state==='play'&&!pres,player:pos});
+  // sea shimmer
+  sea.position.x=pos.x;sea.position.z=pos.z;
+ }
+ if(live){recoil*=1-Math.min(1,dt*9);muz.intensity*=1-Math.min(1,dt*18);}
+ fl.style.opacity=Math.max(0,parseFloat(fl.style.opacity||0)-dt*2.4);
+ for(let i=tracers.length-1;i>=0;i--){const t=tracers[i];t.t-=dt;t.l.material.opacity=Math.max(0,t.t*12);
+  if(t.t<=0){scene.remove(t.l);t.l.geometry.dispose();tracers.splice(i,1)}}
+ cam.position.copy(pos);cam.position.y+=Math.sin(bob)*.045;
+ cam.rotation.set(0,0,0,'YXZ');cam.rotation.order='YXZ';
+ cam.rotation.y=S.yaw;cam.rotation.x=S.pitch+recoil*.06;cam.rotation.z=Math.cos(bob*.5)*.008;
+ cam.fov=72-S.aim*16;cam.updateProjectionMatrix();
+ const rdip=S.reload>0?Math.sin(reloadProgress(S.reload)*Math.PI):0;
+ gun.position.set(.27-S.aim*.27,-.24+Math.sin(bob)*.012+S.aim*.09+rdip*.10,-.83+recoil*.1+rdip*.12);
+ gun.rotation.set(recoil*.16+Math.sin(bob*.5)*.01-rdip*.08,.1-S.aim*.1+rdip*.12,Math.cos(bob)*.014-S.aim*.014+rdip*.27);
+ gun.scale.setScalar(.78);
+ if(visual)visual.update(dt,{S,pres,cam,gun,live,player:pos});
+ rnd.autoClear=true;
+ if(visual)visual.render();else rnd.render(scene,cam);
+ rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);
+ rnd.autoClear=true;
+}
+window.riverBootStage='河谷场景模块 / river/world.js';
+const {buildWorld}=await riverImport('./river/world.js','河谷场景模块');
+window.riverBootStage='建立河谷场景 / river/world.js';
+visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:!squadsMode&&S.state==='play'&&!pres,player:pos})});
+if(!squadsMode)tactical=createTacticalAI({enemies,bounds:colliders,
+ isBlocked:p=>collide(new THREE.Vector3(p.x,p.y,p.z),'enemy'),canSee:clearSight,onShoot:enemyShoot,floorHeight:visual.floorHeight});
+visual.setStyle(si);
+document.getElementById('bWeather').onclick=()=>visual.cycleWeather();
+if(squadsMode){
+ S.state='squads';
+ try{
+  window.riverBootStage='4v4 大厅 / river/squads-view.js';
+  const {mountSquads}=await riverImport('./river/squads-view.js','4v4 大厅');
+  squads=await mountSquads({THREE,S,pos,cam,gun,enemies,keys,trigger,snd,lockReq,clearKeys,updHUD,initAudio,onShot({local,actor,player}){
+   if(!local){if(actor&&player)snd('enemy',[player.x,player.y+1.5,player.z]);return}
+   recoil=1;muz.intensity=5;snd('shot');
+   cam.getWorldDirection(tmp);ray.set(cam.position,tmp);ray.far=140;
+   let end=null,wall=null;try{wall=ray.intersectObjects(solids,false)[0]||null;end=wall?.point||null}catch(err){}end=end||cam.position.clone().addScaledVector(tmp,140);try{shotFeedback.event({cam,gun,wall,best:null,end,direction:tmp})}catch(err){console.error(err)}
+   end=end||cam.position.clone().addScaledVector(tmp,140);
+   const start=cam.position.clone().addScaledVector(tmp,1.2);start.y-=.12;
+   const l=new THREE.Line(new THREE.BufferGeometry().setFromPoints([start,end]),new THREE.LineBasicMaterial({color:0xfff2c0,transparent:true,opacity:.9}));
+   scene.add(l);tracers.push({l,t:.08});
+  }});
+ }catch(err){
+  console.error(err);
+  const d=document.createElement('div');d.className='panel';d.textContent='联机大厅加载失败：river/squads-view.js。';
+  const a=document.createElement('a');a.href='./river/';a.textContent=' 返回单人模式';d.appendChild(a);document.body.appendChild(d);
+ }
+}
+addEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});
+tick();
+
+window.demoQA={snapshot(){return{
+ state:S.state,version:'river-v4',style:P.n,styleIndex:si,health:Math.round(S.hp),ammo:{mag:S.mag,reserve:S.res},kills:S.kills,
+ firing:trigger.snapshot(),reloadSeconds:RELOAD_SECONDS,reloadProgress:reloadProgress(S.reload),shots:fireStats.count,aimAssist:assist.snapshot(),
+ camera:{x:+cam.position.x.toFixed(2),y:+cam.position.y.toFixed(2),z:+cam.position.z.toFixed(2),yaw:+S.yaw.toFixed(3),pitch:+S.pitch.toFixed(3)},
+ enemies:enemies.map((e,i)=>({i,alive:e.alive,hp:Math.max(0,Math.round(e.hp)),x:+e.g.position.x.toFixed(2),y:+e.g.position.y.toFixed(2),z:+e.g.position.z.toFixed(2),mode:e.tactical?.mode,stance:e.tactical?.stance})),tactical:tactical?.info()};},
+ setStyle(i){si=i%2;applyStyle()},pause(){togglePause()}};
+const gl=rnd.getContext(),debugRenderer=gl.getExtension('WEBGL_debug_renderer_info');
+const rendererName=debugRenderer?gl.getParameter(debugRenderer.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER);
+setInterval(()=>{document.body.dataset.qa=JSON.stringify({...window.demoQA.snapshot(),presentation:pres,reloading:S.reload,renderer:rendererName,viewport:[innerWidth,innerHeight]})},200);
+</script>
+</body>
+</html>

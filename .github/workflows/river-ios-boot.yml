@@ -1,0 +1,38 @@
+name: Riverfall iPhone boot verification
+on:
+  push:
+    branches: ['codex/river-ios-simulator-20261124']
+permissions:
+  contents: read
+jobs:
+  iphone:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - name: Check out only the public static game and test fixture
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            sunbreak
+            qa-ios
+      - name: Serve published tree and candidate on separate ports
+        run: |
+          set -euo pipefail
+          candidate="$RUNNER_TEMP/river-candidate"
+          mkdir -p "$candidate/sunbreak/river"
+          for f in "$PWD"/sunbreak/*; do
+            if [[ "${f##*/}" != river ]]; then ln -s "$f" "$candidate/sunbreak/"; fi
+          done
+          for f in "$PWD"/sunbreak/river/*; do
+            case "${f##*/}" in index.html|boot-ui.js) ;; *) ln -s "$f" "$candidate/sunbreak/river/" ;; esac
+          done
+          cp qa-ios/candidate/{index.html,boot-ui.js} "$candidate/sunbreak/river/"
+          python3 -m http.server 9180 --bind 127.0.0.1 --directory "$PWD" >"$RUNNER_TEMP/base-http.log" 2>&1 &
+          python3 -m http.server 9181 --bind 127.0.0.1 --directory "$candidate" >"$RUNNER_TEMP/new-http.log" 2>&1 &
+          for port in 9180 9181; do curl --retry 5 --retry-connrefused -fsSo /dev/null "http://127.0.0.1:$port/sunbreak/river/"; done
+      - name: Original published build in Apple iPhone Simulator
+        continue-on-error: true
+        run: bash qa-ios/probe.sh 'http://127.0.0.1:9180/sunbreak/river/?mode=squads'
+      - name: Candidate in the same iPhone Simulator
+        run: bash qa-ios/probe.sh 'http://127.0.0.1:9181/sunbreak/river/?mode=squads'
