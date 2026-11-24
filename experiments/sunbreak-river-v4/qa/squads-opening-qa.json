@@ -1,0 +1,782 @@
+{
+  "sourceBaseline": "4481321ae367493da3422c8f457d049ca027c830",
+  "checks": {
+    "squads-sim.js": "6261da7556d5e4f16a18f84e090c2e61dc17dc525732eec2661a24770d5ebc44",
+    "map-layout.js": "4e298c4e6a6aa488e6484d0959d33f7f48f91c3fd6e025fadf9850db90514a88",
+    "squads-net.js": "1d6812f15949d07a437fe3cbf9b98cca09b9978a6e6c5dd03f94352b6509a3f9",
+    "squads-view.js": "c68a2bea03294aabc4240805d93a22f17a920f488540d495735a5bf4b4d8d66b",
+    "qa/squads-opening.mjs": "cb3bf84a269e515459949d1de26ff234282a3757a8ec1bad6579cfb3d567956a",
+    "qa/squads-rules.mjs": "c72d8a94cfc4586f8647528a2f8a1577c18e90a122cb79cb583d323c71533071"
+  },
+  "comparison": {
+    "old": {
+      "name": "old",
+      "min": 0.05599999999999916,
+      "p10": 0.5729999999999986,
+      "closeSamples": 166,
+      "samples": 523,
+      "longestCloseSeconds": 7.800000000000001,
+      "travel": {
+        "4": [
+          0,
+          16.79,
+          16.62,
+          16.79,
+          16.56,
+          16.65,
+          16.56,
+          16.65
+        ],
+        "8": [
+          0,
+          18.48,
+          18.1,
+          32.9,
+          18.71,
+          32.23,
+          19.67,
+          29.96
+        ]
+      }
+    },
+    "new": {
+      "name": "new",
+      "min": 1.2588999165938513,
+      "p10": 2.650001698112662,
+      "closeSamples": 0,
+      "samples": 720,
+      "longestCloseSeconds": 0,
+      "travel": {
+        "4": [
+          0,
+          13.38,
+          11.33,
+          13.46,
+          14.63,
+          14.7,
+          10.92,
+          7.13
+        ],
+        "8": [
+          0,
+          26.42,
+          18.79,
+          21.36,
+          25.13,
+          25.28,
+          20.86,
+          8.68
+        ]
+      }
+    }
+  },
+  "artifacts": {
+    "rules-result": {
+      "ok": true,
+      "seats": {
+        "slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "ninth": -1,
+        "a": [
+          -27,
+          20
+        ],
+        "b": [
+          24,
+          -29
+        ]
+      },
+      "ticksPerQuarterSecond": 15,
+      "clampChecked": true,
+      "inputExpiry": true,
+      "firstHit": "open",
+      "friendlyFireBlocked": true,
+      "hpTrace": [
+        100,
+        75,
+        50,
+        25,
+        0
+      ],
+      "deadSeatInert": true,
+      "phases": 16,
+      "score": [
+        5,
+        0
+      ],
+      "rounds": 5,
+      "idleDraw": true
+    },
+    "opening-result": {
+      "ok": true,
+      "fails": [],
+      "notes": [
+        "createMatch exposes no external seed parameter: variety comes from 3 real rounds x 4 human/AI mixes, not copies of one seed",
+        "headless sim numbers only: no WAN or visual proof",
+        "fairCrossing is straight-line distance"
+      ],
+      "limits": [
+        [
+          "nearP10",
+          0.9,
+          1
+        ],
+        [
+          "nearMin",
+          0.5,
+          1
+        ],
+        [
+          "closeFrac",
+          0.02,
+          -1
+        ],
+        [
+          "worstOverlapS",
+          0.5,
+          -1
+        ],
+        [
+          "spreadMax",
+          9,
+          -1
+        ],
+        [
+          "lateralMin",
+          0.6,
+          1
+        ],
+        [
+          "travel4Min",
+          1.5,
+          1
+        ],
+        [
+          "travel8Min",
+          3,
+          1
+        ],
+        [
+          "humanMove",
+          0.05,
+          -1
+        ],
+        [
+          "msPerStep",
+          4,
+          -1
+        ]
+      ],
+      "new": {
+        "spawn": {
+          "ca": {
+            "x": -24.775,
+            "z": 20.900000000000002
+          },
+          "cb": {
+            "x": 24.75,
+            "z": -28.5
+          },
+          "da": 35.126,
+          "db": 34.825,
+          "ext": 30,
+          "tight": [],
+          "seatMin": 3.401,
+          "rays": 864,
+          "openRays": 0
+        },
+        "scenarios": [
+          {
+            "humans": 1,
+            "humansSeen": 1,
+            "rounds": 3,
+            "samples": 1701,
+            "phases": "warmup,live,result",
+            "nearP10": 1.745,
+            "nearMin": 0.845,
+            "closeFrac": 0,
+            "worstOverlapS": 0,
+            "spreadMean": 2.738,
+            "spreadMax": 5.898,
+            "lateralMin": 1.842,
+            "travel4Min": 7.127,
+            "travel8Min": 7.689,
+            "humanMove": 0,
+            "msPerStep": 0.039,
+            "hash": 3489781463,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          },
+          {
+            "humans": 2,
+            "humansSeen": 2,
+            "rounds": 3,
+            "samples": 1458,
+            "phases": "warmup,live,result",
+            "nearP10": 1.725,
+            "nearMin": 1.21,
+            "closeFrac": 0,
+            "worstOverlapS": 0,
+            "spreadMean": 2.5,
+            "spreadMax": 5.335,
+            "lateralMin": 1.842,
+            "travel4Min": 7.234,
+            "travel8Min": 7.766,
+            "humanMove": 0,
+            "msPerStep": 0.023,
+            "hash": 3184905118,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          },
+          {
+            "humans": 4,
+            "humansSeen": 4,
+            "rounds": 3,
+            "samples": 972,
+            "phases": "warmup,live,result",
+            "nearP10": 3.058,
+            "nearMin": 2.649,
+            "closeFrac": 0,
+            "worstOverlapS": 0,
+            "spreadMean": 2.641,
+            "spreadMax": 4.567,
+            "lateralMin": 1.329,
+            "travel4Min": 7.697,
+            "travel8Min": 14.217,
+            "humanMove": 0,
+            "msPerStep": 0.008,
+            "hash": 831473917,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          },
+          {
+            "humans": 0,
+            "humansSeen": 0,
+            "rounds": 3,
+            "samples": 1944,
+            "phases": "warmup,live,result",
+            "nearP10": 1.645,
+            "nearMin": 1.056,
+            "closeFrac": 0,
+            "worstOverlapS": 0,
+            "spreadMean": 2.596,
+            "spreadMax": 4.266,
+            "lateralMin": 1.612,
+            "travel4Min": 8.691,
+            "travel8Min": 11.841,
+            "humanMove": 0,
+            "msPerStep": 0.025,
+            "hash": 184560396,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          }
+        ]
+      },
+      "baseline": {
+        "spawn": {
+          "ca": {
+            "x": -26.625,
+            "z": 22.649500000000003
+          },
+          "cb": {
+            "x": 27.375,
+            "z": 22.649500000000003
+          },
+          "da": 37.671,
+          "db": 38.205,
+          "ext": 30,
+          "tight": [],
+          "seatMin": 1.5,
+          "rays": 864,
+          "openRays": 864
+        },
+        "scenarios": [
+          {
+            "humans": 1,
+            "humansSeen": 1,
+            "rounds": 3,
+            "samples": 1314,
+            "phases": "warmup,live,result",
+            "nearP10": 0.104,
+            "nearMin": 0.056,
+            "closeFrac": 0.296,
+            "worstOverlapS": 7.8,
+            "spreadMean": 0.733,
+            "spreadMax": 1.573,
+            "lateralMin": 0.018,
+            "travel4Min": 16.539,
+            "travel8Min": 29.523,
+            "humanMove": 0,
+            "msPerStep": 0.03,
+            "hash": 3874204759,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          },
+          {
+            "humans": 2,
+            "humansSeen": 2,
+            "rounds": 3,
+            "samples": 1079,
+            "phases": "warmup,live,result",
+            "nearP10": 0.505,
+            "nearMin": 0.316,
+            "closeFrac": 0.227,
+            "worstOverlapS": 4.7,
+            "spreadMean": 0.708,
+            "spreadMax": 1.52,
+            "lateralMin": 0.03,
+            "travel4Min": 16.539,
+            "travel8Min": 30.4,
+            "humanMove": 0,
+            "msPerStep": 0.02,
+            "hash": 1262912108,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          },
+          {
+            "humans": 4,
+            "humansSeen": 4,
+            "rounds": 3,
+            "samples": 716,
+            "phases": "warmup,live,result",
+            "nearP10": 0.837,
+            "nearMin": 0.065,
+            "closeFrac": 0.089,
+            "worstOverlapS": 3.2,
+            "spreadMean": 0.666,
+            "spreadMax": 1.637,
+            "lateralMin": 0.018,
+            "travel4Min": 16.59,
+            "travel8Min": 29.212,
+            "humanMove": 0,
+            "msPerStep": 0.013,
+            "hash": 4214262702,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          },
+          {
+            "humans": 0,
+            "humansSeen": 0,
+            "rounds": 5,
+            "samples": 2098,
+            "phases": "warmup,live,result,finished",
+            "nearP10": 0.573,
+            "nearMin": 0.284,
+            "closeFrac": 0.228,
+            "worstOverlapS": 4.8,
+            "spreadMean": 0.872,
+            "spreadMax": 4.01,
+            "lateralMin": 0.018,
+            "travel4Min": 16.539,
+            "travel8Min": null,
+            "humanMove": 0,
+            "msPerStep": 0.025,
+            "hash": 952566087,
+            "keys": "phase,players,round,score,seconds,seq,winner|bot,hp,kills,mag,pitch,reload,shots,slot,team,x,y,yaw,z"
+          }
+        ]
+      }
+    },
+    "network-local": {
+      "tool": "squads-network",
+      "mode": "local",
+      "base": "http://127.0.0.1:5190/river/",
+      "startedAt": "2026-11-24T03:19:44.911Z",
+      "assumptions": {
+        "actions": [
+          "create",
+          "join",
+          "quick"
+        ],
+        "livePhase": "live",
+        "inputAxes": [
+          "dx",
+          "dz"
+        ]
+      },
+      "privateRoom": {
+        "created": true,
+        "distinctIds": true,
+        "distinctSlots": true,
+        "sameRoom": true,
+        "sameHumanSlots": true,
+        "roster": {
+          "host": {
+            "humans": 2,
+            "bots": 6,
+            "slot": 0
+          },
+          "guest": {
+            "humans": 2,
+            "bots": 6,
+            "slot": 1
+          }
+        },
+        "live": {
+          "round": 1
+        },
+        "movement": {
+          "hostSlotOnHost": 0.69,
+          "hostSlotOnGuest": 0.69,
+          "guestSlotOnHost": 0.69,
+          "guestSlotOnGuest": 0.69,
+          "sent": {
+            "host": 3,
+            "guest": 3
+          },
+          "sendErr": {
+            "host": null,
+            "guest": null
+          },
+          "ok": true
+        },
+        "result": {
+          "host": {
+            "round": 1,
+            "phase": "result",
+            "score": [
+              0,
+              1
+            ],
+            "winner": 1,
+            "seq": 1416
+          },
+          "guest": {
+            "round": 1,
+            "phase": "result",
+            "score": [
+              0,
+              1
+            ],
+            "winner": 1,
+            "seq": 1416
+          },
+          "consensus": true,
+          "secondsFromLive": 17.6
+        },
+        "final": {
+          "host": {
+            "n": 472,
+            "slot": 0,
+            "seq": 1422,
+            "phase": "result",
+            "round": 1,
+            "seconds": 3.9,
+            "score": [
+              0,
+              1
+            ],
+            "winner": 1,
+            "count": 8,
+            "humans": 2,
+            "bots": 6,
+            "humanSlots": [
+              0,
+              1
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "teams": [
+              4,
+              4
+            ],
+            "selfHuman": true,
+            "hist": [
+              {
+                "round": 1,
+                "phase": "warmup",
+                "score": [
+                  0,
+                  0
+                ],
+                "winner": -1,
+                "seq": 3
+              },
+              {
+                "round": 1,
+                "phase": "live",
+                "score": [
+                  0,
+                  0
+                ],
+                "winner": -1,
+                "seq": 363
+              },
+              {
+                "round": 1,
+                "phase": "result",
+                "score": [
+                  0,
+                  1
+                ],
+                "winner": 1,
+                "seq": 1416
+              }
+            ],
+            "status": [
+              "正在创建房间…",
+              "房间已创建，等待好友加入",
+              "有玩家加入"
+            ],
+            "ends": [],
+            "move": {
+              "1:0": 5.903,
+              "1:1": 7.59,
+              "1:4": 33.75,
+              "1:5": 54.314,
+              "1:2": 27.142,
+              "1:3": 29.612,
+              "1:6": 27.705,
+              "1:7": 45.795
+            },
+            "sent": 320,
+            "sendErr": null,
+            "errors": []
+          },
+          "guest": {
+            "n": 465,
+            "slot": 1,
+            "seq": 1422,
+            "phase": "result",
+            "round": 1,
+            "seconds": 3.9,
+            "score": [
+              0,
+              1
+            ],
+            "winner": 1,
+            "count": 8,
+            "humans": 2,
+            "bots": 6,
+            "humanSlots": [
+              0,
+              1
+            ],
+            "slots": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "teams": [
+              4,
+              4
+            ],
+            "selfHuman": true,
+            "hist": [
+              {
+                "round": 1,
+                "phase": "warmup",
+                "score": [
+                  0,
+                  0
+                ],
+                "winner": -1,
+                "seq": 24
+              },
+              {
+                "round": 1,
+                "phase": "live",
+                "score": [
+                  0,
+                  0
+                ],
+                "winner": -1,
+                "seq": 363
+              },
+              {
+                "round": 1,
+                "phase": "result",
+                "score": [
+                  0,
+                  1
+                ],
+                "winner": 1,
+                "seq": 1416
+              }
+            ],
+            "status": [
+              "正在加入房间…",
+              "已加入对局"
+            ],
+            "ends": [],
+            "move": {
+              "1:0": 5.903,
+              "1:1": 7.59,
+              "1:4": 33.75,
+              "1:5": 54.314,
+              "1:2": 27.142,
+              "1:3": 29.612,
+              "1:6": 27.705,
+              "1:7": 45.795
+            },
+            "sent": 320,
+            "sendErr": null,
+            "errors": []
+          }
+        },
+        "afterGuestLeft": {
+          "humans": 1,
+          "bots": 7,
+          "phase": "result"
+        },
+        "hostClosed": true
+      },
+      "isolation": {
+        "distinctRooms": true,
+        "otherRoster": {
+          "humans": 1,
+          "bots": 7
+        },
+        "firstRoomStill2Humans": true
+      },
+      "quickMatch": {
+        "converged": true,
+        "sameRoom": true,
+        "distinctSlots": true,
+        "distinctIds": true,
+        "notPrivateRoom": true,
+        "privateRoomUntouched": true,
+        "otherPrivateUntouched": true,
+        "peers": [
+          {
+            "humans": 2,
+            "bots": 6,
+            "slot": 1,
+            "phase": "warmup",
+            "status": [
+              "正在匹配（1/8）…",
+              "已加入对局"
+            ],
+            "ends": [],
+            "errors": []
+          },
+          {
+            "humans": 2,
+            "bots": 6,
+            "slot": 0,
+            "phase": "warmup",
+            "status": [
+              "正在匹配（1/8）…",
+              "已创建公开房间，等待其他玩家",
+              "有玩家加入"
+            ],
+            "ends": [],
+            "errors": []
+          }
+        ]
+      },
+      "capacity": {
+        "full": {
+          "humans": 8,
+          "bots": 0
+        },
+        "ninthError": "page.evaluate: Error: 房间已满\n    at netError (http://<ip>:5190/river/squads-net.js:42:13)\n    at done (http://<ip>:5190/river/squads-net.js:176:40)\n    at e$.<anonymous> (http://<ip>:5190/river/squads-net.js:186:34)\n    at eS.emit (http://<ip>:5190/river/peer-runtime.js:7:3505)\n    at e$._handleDataMe",
+        "ninthRejected": true,
+        "hostStill8": true,
+        "ninth": {
+          "connectResolved": false,
+          "ends": [],
+          "status": [
+            "正在加入房间…"
+          ],
+          "snapshots": 0
+        }
+      },
+      "finishedAt": "2026-11-24T03:20:21.650Z",
+      "issues": [],
+      "ok": true
+    },
+    "solo-result": {
+      "soloStarted": true,
+      "actors": 6,
+      "noNetDownloads": true,
+      "errors": []
+    },
+    "native-current": {
+      "r": [
+        [
+          [
+            -27,
+            20
+          ],
+          [
+            -23.8,
+            18.6
+          ],
+          [
+            -25.9,
+            23.3
+          ],
+          [
+            -22.4,
+            21.7
+          ]
+        ],
+        [
+          [
+            24,
+            -29
+          ],
+          [
+            27,
+            -27
+          ],
+          [
+            26,
+            -32
+          ],
+          [
+            22,
+            -26
+          ]
+        ]
+      ],
+      "tested": 512,
+      "visible": 0,
+      "samples": [],
+      "errors": []
+    },
+    "centre-grid": {
+      "reference": [
+        0,
+        -4
+      ],
+      "metric": "4-neighbour 1.5m grid to centre crossing",
+      "seatDistances": [
+        [
+          54,
+          52.5,
+          52.5,
+          48
+        ],
+        [
+          49.5,
+          51,
+          54,
+          45
+        ]
+      ],
+      "teamMeans": [
+        51.75,
+        49.875
+      ],
+      "gapPercent": 3.6231884057971016
+    }
+  },
+  "review": "**Verdict: conditional pass for the scoped opening beta only, based on the evidence as reported; I have not independently verified it.**\n\nOverlap (166/523 to 0/720), zero visibility across all 16 pairings, and unchanged rules, protocol and solo checks support the change.\n\n**Limits:**\n- Local and public WebRTC regression must pass before wider release.\n- Cross-WAN behaviour and subjective player review are unverified.\n- Overlap evidence covers only host plus seven bots in the first 8s.\n- Lateral spread is confirmed for round 1 only.\n- \"No stalls\" holds only at sample times.\n- The 51.75m vs 49.875m path gap (about 3.8%) needs win-rate monitoring.\n- Confirm no discarded producer output remains.",
+  "limitations": "Fixed match seed. Same-machine browser WebRTC. Automated trajectory/sight checks, not a human perception verdict."
+}

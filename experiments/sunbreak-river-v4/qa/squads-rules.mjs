@@ -76,19 +76,42 @@ function walk(m, s, tx, tz, sec) {
   m.input(s, IN());
   return false;
 }
-// Land one hit a->b: direct spawn line first, then the z=24 lane, then close along x.
+// Land one hit a->b. Spawns are opposite diagonal corners with no line of fire, so:
+// 1) prove firing from spawn damages nobody, 2) walk both seats with legal inputs along
+// known-free axis-aligned lanes to the shared open strip on z=24, 3) fire there.
 function hit(m, a, b) {
-  if (fireAt(m, a, b, 0.5)) return 'direct';
-  walk(m, a, P(m, a).x, 24, 6);
-  walk(m, b, P(m, b).x, 24, 6);
-  if (fireAt(m, a, b, 0.5)) return 'z24';
-  for (let k = 0; k < 30 && m.snapshot().phase === 'live'; k++) {
+  const s0 = m.snapshot(), hp0 = s0.players.map((p) => p.hp);
+  assert.ok(s0.players[a].x * s0.players[b].x < 0, 'A and B should spawn in opposite corners');
+  assert.equal(fireAt(m, a, b, 0.5), false, 'spawn must not offer a direct line of fire');
+  const s1 = m.snapshot();
+  assert.ok(s1.players[a].shots > s0.players[a].shots, 'A did fire from spawn');
+  assert.deepEqual(s1.players.map((p) => p.hp), hp0, 'spawn fire must damage nobody');
+  m.input(a, IN({ reload: true })); m.step(DT); m.input(a, IN());
+  // West corner: up to z=24, then along x to 6. East corner: z=-30 lane to x=11, then along z to 24.
+  const go = (s) => {
+    const p = P(m, s);
+    const pts = p.x < 0 ? [[p.x, 24], [6, 24]] : [[p.x, -30], [11, -30], [11, 24]];
+    for (const [x, z] of pts) assert.ok(walk(m, s, x, z, 60), `slot ${s} did not reach (${x},${z})`);
+  };
+  go(b);
+  go(a);
+  assert.deepEqual(m.snapshot().players.map((p) => p.hp), hp0, 'walking must damage nobody');
+  let how = fireAt(m, a, b, 0.6) ? 'open' : null;
+  for (let k = 0; !how && k < 30 && m.snapshot().phase === 'live'; k++) {
     const pa = P(m, a), pb = P(m, b), gap = pb.x - pa.x;
     if (Math.abs(gap) < 3) break;
     walk(m, a, pa.x + Math.sign(gap) * 3, 24, 2);
-    if (fireAt(m, a, b, 0.4)) return 'closed';
+    if (fireAt(m, a, b, 0.4)) how = 'closed';
   }
-  return null;
+  if (!how) return null;
+  // Exactly one hit: trigger is released, nothing else lands while the last input expires.
+  const h1 = P(m, b).hp;
+  assert.ok(h1 < hp0[b], 'B took the hit');
+  for (let i = 0; i < 24 && m.snapshot().phase === 'live'; i++) m.step(DT);
+  const s2 = m.snapshot();
+  assert.equal(s2.players[b].hp, h1, 'only one hit should land');
+  for (const p of s2.players) if (p.slot !== b) assert.equal(p.hp, hp0[p.slot], 'no incidental damage');
+  return how;
 }
 
 try {

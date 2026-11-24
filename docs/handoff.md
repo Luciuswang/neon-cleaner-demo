@@ -805,3 +805,7 @@ Riverfall optional 4v4 casual elimination implemented. Two isolated WebRTC brows
 ## Sync note - 2026-11-23T20:19:43.4115473+08:00
 
 Riverfall online beta live and verified on Pages PR 15. Anonymous bundle matches; real invite UI and two WebRTC contexts agree on roster, movement, round result and refilling. Next: friends on independent networks.
+
+## Sync note - 2026-11-24T11:20:42.7765883+08:00
+
+Riverfall 4v4 opening: diagonal screened starts and distinct crowd motion. Tested 864 geometry and 512 engine sightlines, 12 simulated round openings, solo, real local WebRTC and eight-seat capacity. Public release verification next.

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261124T032043Z-01bed8862f",
+  "task_id": "river-squads-opening-20261124",
+  "timestamp_utc": "2026-11-24T03:20:43.238789+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall 4v4 opening: diagonal screened starts and distinct crowd motion. Tested 864 geometry and 512 engine sightlines, 12 simulated round openings, solo, real local WebRTC and eight-seat capacity. Public release verification next.",
+  "commit_shas": [
+    "534e1fea226efd48d8aa1a6fc65e526c4092cf5a"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
