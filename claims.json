@@ -14,20 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "river-ios-boot-20261124": {
-      "base_commit": "1a847aad0c099c7acaf1517aaa4eb38893eb9247",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-24T12:14:23.888125+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/river-ios-boot-20261124.md",
-        "docs/handoff.md",
-        "docs/sprint-2026-08-24.md"
-      ],
-      "task_id": "river-ios-boot-20261124",
-      "updated_at": "2026-11-24T04:14:23.888125+00:00"
     }
   },
   "schema": 1
