@@ -28,3 +28,7 @@ The first candidate exposed two targets in building footprints. It was discarded
 All 16 opposing seat combinations were occluded in both directions: 0/864 modeled-wall rays and 0/512 native game line-of-sight probes. Both teams' mean grid distances to the middle crossing differ by 1.875 m; symmetry is close, not exact. Reported movement applies to the opening, not every situation later in a round. No player study or cross-device WAN test.
 
 QA Director: `CONDITIONAL PASS` for the opening beta, conditional on network and release checks. Detailed measurements and sanitized Gateway receipts in `qa/squads-opening-{qa,fable}.json` within the river experiment. The first full simulation model call exceeded its single-response limit and was discarded; narrower Fable calls produced the integrated code. The pinned 12-model web dependency snapshot was verified separately; the unrelated dirty UE vault was not changed.
+
+## Release
+
+GitHub Pages PR 16 merged (`e545a986c646f93e7a9c246ce7fa36eda85583b0`); its anonymous manifest and six runtime files match source `9ebe9e11ba3decbe588991aeea657a3c4413ff77`. Two separate browser contexts joined a fresh public friend room, agreed on the two human seats and six AI, movement and first round result, then observed one human and seven AI on disconnect. Eight-seat capacity and quick matching passed on local signaling. Evidence: `qa/squads-opening-pages.json`. Next: player review in real matches, including opposite teams on separate devices. Existing hosts must refresh and create a new room to run the changed simulation.

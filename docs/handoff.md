@@ -809,3 +809,7 @@ Riverfall online beta live and verified on Pages PR 15. Anonymous bundle matches
 ## Sync note - 2026-11-24T11:20:42.7765883+08:00
 
 Riverfall 4v4 opening: diagonal screened starts and distinct crowd motion. Tested 864 geometry and 512 engine sightlines, 12 simulated round openings, solo, real local WebRTC and eight-seat capacity. Public release verification next.
+
+## Sync note - 2026-11-24T11:23:59.8966731+08:00
+
+Riverfall diagonal opening is live on Pages PR 16: public bytes match, two browser peers sync movement/score and AI refill on leave. Next: subjective player playtest on independent devices.

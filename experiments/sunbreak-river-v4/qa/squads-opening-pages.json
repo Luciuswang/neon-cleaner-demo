@@ -1,0 +1,295 @@
+{
+  "release": {
+    "pr": 16,
+    "merge": "e545a986c646f93e7a9c246ce7fa36eda85583b0",
+    "source": "9ebe9e11ba3decbe588991aeea657a3c4413ff77",
+    "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/"
+  },
+  "pages": {
+    "ok": true,
+    "source": "9ebe9e11ba3decbe588991aeea657a3c4413ff77",
+    "merge": "e545a986c646f93e7a9c246ce7fa36eda85583b0",
+    "manifest": "2d1f6b7a7e1da1f6d4c2437f44a8e1eadbbf5be12d5d03046764544afb976e58",
+    "checks": {
+      "index.html": "2f505a5a8bd141242a35f1b5593c453d02ee1f830a460376fcb012bd9e2dce31",
+      "squads-sim.js": "6261da7556d5e4f16a18f84e090c2e61dc17dc525732eec2661a24770d5ebc44",
+      "squads-net.js": "1d6812f15949d07a437fe3cbf9b98cca09b9978a6e6c5dd03f94352b6509a3f9",
+      "squads-view.js": "c68a2bea03294aabc4240805d93a22f17a920f488540d495735a5bf4b4d8d66b",
+      "peer-runtime.js": "7604d8c31bec4f134b0d15c2d80b1d095ea18af005354f439f14291fcd7b4168",
+      "peer-notice.html": "6327fa336429d08944a18527747c061adb191cafd34b2419c67ba8e91412888c"
+    },
+    "utc": "2026-11-24T03:23:12.482Z"
+  },
+  "transport": {
+    "tool": "squads-network",
+    "mode": "cloud",
+    "base": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+    "startedAt": "2026-11-24T03:23:12.834Z",
+    "assumptions": {
+      "actions": [
+        "create",
+        "join",
+        "quick"
+      ],
+      "livePhase": "live",
+      "inputAxes": [
+        "dx",
+        "dz"
+      ]
+    },
+    "privateRoom": {
+      "created": true,
+      "distinctIds": true,
+      "distinctSlots": true,
+      "sameRoom": true,
+      "sameHumanSlots": true,
+      "roster": {
+        "host": {
+          "humans": 2,
+          "bots": 6,
+          "slot": 0
+        },
+        "guest": {
+          "humans": 2,
+          "bots": 6,
+          "slot": 1
+        }
+      },
+      "live": {
+        "round": 1
+      },
+      "movement": {
+        "hostSlotOnHost": 0.69,
+        "hostSlotOnGuest": 0.69,
+        "guestSlotOnHost": 0.69,
+        "guestSlotOnGuest": 0.69,
+        "sent": {
+          "host": 3,
+          "guest": 3
+        },
+        "sendErr": {
+          "host": null,
+          "guest": null
+        },
+        "ok": true
+      },
+      "result": {
+        "host": {
+          "round": 1,
+          "phase": "result",
+          "score": [
+            0,
+            1
+          ],
+          "winner": 1,
+          "seq": 1416
+        },
+        "guest": {
+          "round": 1,
+          "phase": "result",
+          "score": [
+            0,
+            1
+          ],
+          "winner": 1,
+          "seq": 1416
+        },
+        "consensus": true,
+        "secondsFromLive": 17.6
+      },
+      "final": {
+        "host": {
+          "n": 474,
+          "slot": 0,
+          "seq": 1422,
+          "phase": "result",
+          "round": 1,
+          "seconds": 3.9,
+          "score": [
+            0,
+            1
+          ],
+          "winner": 1,
+          "count": 8,
+          "humans": 2,
+          "bots": 6,
+          "humanSlots": [
+            0,
+            1
+          ],
+          "slots": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "teams": [
+            4,
+            4
+          ],
+          "selfHuman": true,
+          "hist": [
+            {
+              "round": 1,
+              "phase": "warmup",
+              "score": [
+                0,
+                0
+              ],
+              "winner": -1,
+              "seq": 3
+            },
+            {
+              "round": 1,
+              "phase": "live",
+              "score": [
+                0,
+                0
+              ],
+              "winner": -1,
+              "seq": 363
+            },
+            {
+              "round": 1,
+              "phase": "result",
+              "score": [
+                0,
+                1
+              ],
+              "winner": 1,
+              "seq": 1416
+            }
+          ],
+          "status": [
+            "正在创建房间…",
+            "房间已创建，等待好友加入",
+            "有玩家加入"
+          ],
+          "ends": [],
+          "move": {
+            "1:0": 5.903,
+            "1:1": 7.59,
+            "1:4": 33.75,
+            "1:5": 54.314,
+            "1:2": 27.142,
+            "1:3": 29.612,
+            "1:6": 27.705,
+            "1:7": 45.795
+          },
+          "sent": 320,
+          "sendErr": null,
+          "errors": [
+            "console: Failed to load resource: the server responded with a status of 404 ()"
+          ]
+        },
+        "guest": {
+          "n": 434,
+          "slot": 1,
+          "seq": 1422,
+          "phase": "result",
+          "round": 1,
+          "seconds": 3.9,
+          "score": [
+            0,
+            1
+          ],
+          "winner": 1,
+          "count": 8,
+          "humans": 2,
+          "bots": 6,
+          "humanSlots": [
+            0,
+            1
+          ],
+          "slots": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "teams": [
+            4,
+            4
+          ],
+          "selfHuman": true,
+          "hist": [
+            {
+              "round": 1,
+              "phase": "warmup",
+              "score": [
+                0,
+                0
+              ],
+              "winner": -1,
+              "seq": 123
+            },
+            {
+              "round": 1,
+              "phase": "live",
+              "score": [
+                0,
+                0
+              ],
+              "winner": -1,
+              "seq": 363
+            },
+            {
+              "round": 1,
+              "phase": "result",
+              "score": [
+                0,
+                1
+              ],
+              "winner": 1,
+              "seq": 1416
+            }
+          ],
+          "status": [
+            "正在加入房间…",
+            "已加入对局"
+          ],
+          "ends": [],
+          "move": {
+            "1:0": 5.903,
+            "1:1": 7.59,
+            "1:4": 33.75,
+            "1:5": 54.314,
+            "1:2": 27.142,
+            "1:3": 29.612,
+            "1:6": 27.705,
+            "1:7": 45.795
+          },
+          "sent": 320,
+          "sendErr": null,
+          "errors": []
+        }
+      },
+      "afterGuestLeft": {
+        "humans": 1,
+        "bots": 7,
+        "phase": "result"
+      },
+      "hostClosed": true
+    },
+    "isolation": {
+      "skipped": "local only"
+    },
+    "quickMatch": {
+      "skipped": "local only (public buckets may contain real players)"
+    },
+    "capacity": {
+      "skipped": "covered by the 8-slot authority unit test; run with --capacity (local) for 9 real contexts"
+    },
+    "finishedAt": "2026-11-24T03:23:41.763Z",
+    "issues": [],
+    "ok": true
+  }
+}
