@@ -1,13 +1,13 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "9ebe9e11ba3decbe588991aeea657a3c4413ff77",
-  "created": "2026-11-24T03:21:06.056Z",
+  "sourceCommit": "97636447383569fdf3e68ab04743c08cdc2c1dc8",
+  "created": "2026-11-24T05:26:34.158Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
       "path": "index.html",
-      "bytes": 45527,
-      "sha256": "2f505a5a8bd141242a35f1b5593c453d02ee1f830a460376fcb012bd9e2dce31"
+      "bytes": 48076,
+      "sha256": "bdfa3f5c4881e9b3a58ffbdc7e5c573bae580f2d2a0144a5e7c423b47b8010e3"
     },
     {
       "path": "world.js",
@@ -91,8 +91,8 @@
     },
     {
       "path": "boot-ui.js",
-      "bytes": 811,
-      "sha256": "4c517f380aabf3c7f60587d6b09f220f2e045961f03a0c027ff4e4d277b6febf"
+      "bytes": 1500,
+      "sha256": "4f1c5e4ebd9bc5d393ce7dc681c287bcadd91295f909c82b0f8c86bcddf58162"
     },
     {
       "path": "combat-controls.js",
@@ -205,6 +205,16 @@
       "sha256": "ba94cf715e992baeca18aa1b86d5244a5f07022ae8377cd8541338ddbb1431d5"
     },
     {
+      "path": "mobile-world.js",
+      "bytes": 12223,
+      "sha256": "6f7976d9e99965efa4486d763c05d83850d5a1849159f7a80bff4c0ff71d4252"
+    },
+    {
+      "path": "mobile-controls.js",
+      "bytes": 8735,
+      "sha256": "8dac545b09638f6124b0fc23b850a13b1bf0851b71d3adb7a87a75aebffc2abc"
+    },
+    {
       "path": "squads-sim.js",
       "bytes": 21413,
       "sha256": "6261da7556d5e4f16a18f84e090c2e61dc17dc525732eec2661a24770d5ebc44"
@@ -216,8 +226,8 @@
     },
     {
       "path": "squads-view.js",
-      "bytes": 25465,
-      "sha256": "c68a2bea03294aabc4240805d93a22f17a920f488540d495735a5bf4b4d8d66b"
+      "bytes": 27306,
+      "sha256": "6ec16b486957e2fdfc61ae402ff5c4e2016f45e72bda85c15267ccdd788f66de"
     },
     {
       "path": "peer-runtime.js",

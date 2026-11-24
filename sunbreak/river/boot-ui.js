@@ -1,13 +1,30 @@
-const button=document.getElementById('bStart'),status=document.getElementById('bootStatus');
-button.disabled=true;
-const ready=new MutationObserver(()=>{
- if(document.body.dataset.qa){button.disabled=false;status.remove();ready.disconnect()}
-});
-ready.observe(document.body,{attributes:true,attributeFilter:['data-qa']});
-function failure(message){
- status.textContent='场景未能装载。请刷新后重试。';
- const error=document.getElementById('err');error.style.display='block';
- error.textContent=location.protocol==='file:'?'请勿直接双击 HTML。启动第四版预览后打开 http://127.0.0.1:5190/river/。':'场景装载失败：'+message;
-}
-addEventListener('unhandledrejection',e=>failure(e.reason?.message||String(e.reason)));
-if(location.protocol==='file:')failure('需要 HTTP 服务');
+(function () {
+  var err = document.getElementById('err'), status = document.getElementById('bootStatus'), start = document.getElementById('bStart');
+  var ready = false, failed = false;
+  window.riverBootStage = '主程序入口';
+  start.disabled = true;
+  function clean(m) {
+    return String(m).replace(/[?#][^\s'")]*/g, '').slice(0, 160);
+  }
+  function fail(e) {
+    if (ready || failed) return;
+    failed = true;
+    var x = e && (e.reason || e.error), m = x instanceof Error ? x.message : (e && typeof e.message === 'string' ? e.message : '');
+    var t = '加载失败：' + window.riverBootStage + (m ? ' · ' + clean(m) : '');
+    err.style.display = 'block'; err.textContent = t;
+    if (status) status.textContent = '未能完成加载。';
+  }
+  function onErr(e) { if (e.target === window || (e.target && e.target.tagName === 'SCRIPT')) fail(e); }
+  window.addEventListener('error', onErr, true);
+  window.addEventListener('unhandledrejection', fail);
+  function check() {
+    if (failed || !document.body.dataset.qa) return;
+    ready = true; mo.disconnect(); start.disabled = false;
+    if (status) status.remove();
+    window.removeEventListener('error', onErr, true); window.removeEventListener('unhandledrejection', fail);
+  }
+  var mo = new MutationObserver(check);
+  mo.observe(document.body, { attributes: true, attributeFilter: ['data-qa'] });
+  if (location.protocol === 'file:') fail({message:'请通过 HTTP 预览网页访问，不要双击 HTML。'});
+  check();
+})();
