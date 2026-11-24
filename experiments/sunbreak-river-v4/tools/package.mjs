@@ -12,6 +12,7 @@ const runtime=['index.html','world.js','village.js','ruins.js','fracture-geometr
 runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','ground-moisture.js','daylight-assets.json','afterrain-assets.json','wild-grass-assets.json');
 runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','masonry-materials.js');
 runtime.push('aim-assist.js');
+runtime.push('mobile-world.js','mobile-controls.js');
 runtime.push('squads-sim.js','squads-net.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
 runtime.push('environment-polish.js','stone-cover.js','combat-feedback.js','shot-feedback-event.js');

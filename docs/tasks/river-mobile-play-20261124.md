@@ -1,0 +1,9 @@
+# Riverfall mobile play — 2026-11-24
+
+Task: `river-mobile-play-20261124`. Preserve the desktop renderer, original demos, map layout and authoritative squads simulation. Resolve a second failure after the previous import-path fix; the prior Apple simulator had reached notice text but not proven play.
+
+The iPhone/coarse-pointer entry chooses a bounded WebGL renderer: shared terrain/crossing/house layout, simplified roofs, paired timber buffer cabins, forest, river, actors and first-person view. Desktop still selects `world.js`; the mobile version is not visual parity with the full desktop renderer. The touch overlay controls the real player move/look/fire/reload state. Optional explicitly offline 4v4 practice uses the existing match simulation and does not advertise an invitation; actual friend rooms still require PeerJS signaling.
+
+Windows WebKit with a mobile device configuration passed movement, look, sustained fire, reload, ongoing drawn frames and content sampling in solo and offline 4v4. Creating a public signaled room from that local WebKit test timed out. Do not conflate this with physical iPhone Chrome or a successful online match. Source-bound evidence and sanitized Gateway receipts are under `experiments/sunbreak-river-v4/qa/mobile-play-20261124/`; initial production slices with partial/tool-limited outputs are distinguished from the integrated slices.
+
+Apple test: WKWebView running in an actual Apple iPhone Simulator, using DOM-dispatched pointer inputs, evaluated against real game state and WebGL readback. This is not a physical touch or measured hardware frame rate. Independent tests: solo, explicitly offline 4v4, public-signaling host. Do not infer a successful gate from the workflow's overall exit status; the external-service step is nonblocking and reports its own result.

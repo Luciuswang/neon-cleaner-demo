@@ -144,9 +144,15 @@ const PRESETS=[
 let si=0,P=PRESETS[0];
 
 const app=document.getElementById('app');
-const rnd=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance',preserveDrawingBuffer:true});
-rnd.setPixelRatio(Math.min(devicePixelRatio,2));rnd.setSize(innerWidth,innerHeight);
-rnd.shadowMap.enabled=true;rnd.shadowMap.type=THREE.PCFSoftShadowMap;
+const ua=navigator.userAgent,tp=navigator.maxTouchPoints||0;
+const MOBILE=/iPhone|iPad|iPod/i.test(ua)||(/Macintosh/.test(ua)&&tp>1)||(tp>0&&matchMedia('(pointer:coarse)').matches);
+const MOBILEQA=MOBILE&&new URLSearchParams(location.search).get('mobileqa')==='1';
+const mobPR=()=>Math.max(0.1,Math.min(1,devicePixelRatio||1,840/Math.max(innerWidth,innerHeight,1)));
+let touch=null,mobFrames=0,mobDraws=0,mobTris=0;
+const rnd=new THREE.WebGLRenderer({antialias:!MOBILE,powerPreference:'high-performance',preserveDrawingBuffer:MOBILE?MOBILEQA:true});
+rnd.setPixelRatio(MOBILE?mobPR():Math.min(devicePixelRatio,2));rnd.setSize(innerWidth,innerHeight);
+rnd.shadowMap.enabled=!MOBILE;rnd.shadowMap.type=THREE.PCFSoftShadowMap;
+if(MOBILE)rnd.info.autoReset=false; // mobile loop must call rnd.info.reset() once per frame before both passes
 rnd.toneMapping=THREE.ACESFilmicToneMapping;rnd.toneMappingExposure=1.02;app.appendChild(rnd.domElement);
 
 const scene=new THREE.Scene();
@@ -339,15 +345,15 @@ addEventListener('keydown',e=>{if(controlTarget(e.target))return;keys[e.code]=tr
  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();});
 addEventListener('keyup',e=>{keys[e.code]=false;if(e.code==='KeyF')trigger.setKeyboard(false)},true);
 let pres=false,plOK=true;
-function clearKeys(){for(const k in keys)keys[k]=false;trigger.clear();drag=false;S.aimHold=false}
+function clearKeys(){for(const k in keys)keys[k]=false;trigger.clear();drag=false;S.aimHold=false;if(touch)touch.reset()}
 addEventListener('blur',()=>{clearKeys();if(!squadsMode&&S.state==='play'&&!pres){S.state='pause';showMenu('继续作战')}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){clearKeys();if(!squadsMode&&S.state==='play'&&!pres){S.state='pause';showMenu('继续作战')}}});
-addEventListener('pointercancel',clearKeys,true);
+addEventListener('pointercancel',e=>{if(e.pointerType!=='touch')clearKeys()},true);
 addEventListener('focusin',e=>{if(controlTarget(e.target))clearKeys()},true);
-function lockReq(){if(!cv.requestPointerLock){plOK=false;return}try{const r=cv.requestPointerLock();if(r&&r.catch)r.catch(()=>{plOK=false})}catch(e){plOK=false}}
+function lockReq(){if(MOBILE||!cv.requestPointerLock){plOK=false;return}try{const r=cv.requestPointerLock();if(r&&r.catch)r.catch(()=>{plOK=false})}catch(e){plOK=false}}
 document.addEventListener('pointerlockerror',()=>{plOK=false});
 document.addEventListener('pointerlockchange',()=>{if(document.pointerLockElement!==cv){clearKeys();if(!squadsMode&&S.state==='play'&&plOK&&!pres){S.state='pause';showMenu('继续作战')}}});
-addEventListener('resize',()=>{cam.aspect=gcam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();rnd.setSize(innerWidth,innerHeight)});
+addEventListener('resize',()=>{cam.aspect=gcam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();if(MOBILE)rnd.setPixelRatio(mobPR());rnd.setSize(innerWidth,innerHeight)});
 
 // Optional light aim assist: visible in-game NPCs only; it nudges the look angles only while the player is moving the view (mouse or arrow look) and never fires. Fire or ADS alone never rotates the camera.
 const assist=createAimAssist({actors:()=>enemies,center:e=>actorCenter(e,enemyHitBounds),visible:(a,b)=>clearSight(a,b)});
@@ -357,14 +363,14 @@ bAssist.onclick=()=>{assist.toggle();showAssist();bAssist.blur()};
 showAssist();
 let drag=false,lx=0,ly=0;
 const cv=rnd.domElement;
-cv.addEventListener('mousedown',e=>{if(S.state!=='play')return;
+cv.addEventListener('mousedown',e=>{if(MOBILE||S.state!=='play')return;
  if(e.button===2){S.aimHold=true;return}
  if(e.button!==0||pres||document.hidden)return;
  trigger.setMouse(true);
  if(document.pointerLockElement!==cv){drag=true;lx=e.clientX;ly=e.clientY;lockReq()}
  fire();});
 addEventListener('mouseup',e=>{if(e.button===2)S.aimHold=false;if(e.button===0){trigger.setMouse(false);drag=false}},true);
-addEventListener('pointerup',e=>{if(e.button===0)trigger.setMouse(false)},true);
+addEventListener('pointerup',e=>{if(e.pointerType!=='touch'&&e.button===0)trigger.setMouse(false)},true);
 cv.addEventListener('contextmenu',e=>e.preventDefault());
 addEventListener('mousemove',e=>{
  if(trigger.snapshot().mouse&&(e.buttons&1)===0)trigger.setMouse(false);
@@ -510,6 +516,7 @@ function tick(){
  requestAnimationFrame(tick);
  const dt=Math.min(clock.getDelta(),.05);
  const live=S.state==='play'&&!pres;if(!live)assist.clear();
+ if(touch)touch.update(dt);
  sound.setScene(live,[pos.x,pos.y,pos.z],S.yaw);
  if(squads)squads.frame(dt);
  if(squadsMode){sea.position.x=pos.x;sea.position.z=pos.z}
@@ -554,13 +561,15 @@ function tick(){
  gun.scale.setScalar(.78);
  if(visual)visual.update(dt,{S,pres,cam,gun,live,player:pos});
  rnd.autoClear=true;
+ if(!mobFrames)window.riverBootStage='首帧渲染';rnd.info.reset();
  if(visual)visual.render();else rnd.render(scene,cam);
  rnd.autoClear=false;rnd.clearDepth();rnd.render(gscene,gcam);
+ mobDraws=rnd.info.render.calls;mobTris=rnd.info.render.triangles;mobFrames++;if(mobFrames===1)window.riverBootStage='运行中';
  rnd.autoClear=true;
 }
-window.riverBootStage='河谷场景模块 / river/world.js';
-const {buildWorld}=await riverImport('./river/world.js','河谷场景模块');
-window.riverBootStage='建立河谷场景 / river/world.js';
+const WORLD_JS=MOBILE?'river/mobile-world.js':'river/world.js';window.riverBootStage='河谷场景模块 / '+WORLD_JS;
+const {buildWorld}=MOBILE?await riverImport('./river/mobile-world.js','移动河谷'):await riverImport('./river/world.js','河谷场景模块');
+window.riverBootStage=(MOBILE?'准备移动端河谷场景 / ':'建立河谷场景 / ')+WORLD_JS;
 visual=await buildWorld({THREE,scene,cam,rnd,gun,gscene,gcam,sun,amb,sky,ground,sea,mat,solids,colliders,enemies,getInteractionState:()=>({active:!squadsMode&&S.state==='play'&&!pres,player:pos})});
 if(!squadsMode)tactical=createTacticalAI({enemies,bounds:colliders,
  isBlocked:p=>collide(new THREE.Vector3(p.x,p.y,p.z),'enemy'),canSee:clearSight,onShoot:enemyShoot,floorHeight:visual.floorHeight});
@@ -588,6 +597,18 @@ if(squadsMode){
  }
 }
 addEventListener('keydown',e=>{if(e.code==='KeyT'&&!e.repeat)visual.cycleWeather()});
+Object.defineProperty(window,'riverMobileStats',{writable:false,configurable:false,value:()=>({frames:mobFrames,draws:mobDraws,triangles:mobTris,x:+pos.x.toFixed(2),z:+pos.z.toFixed(2),yaw:+S.yaw.toFixed(3),mag:S.mag,reload:S.reload,state:S.state,profile:MOBILE?'mobile':'desktop'})});
+if(MOBILE){
+ window.riverBootStage='触控模块 / river/mobile-controls.js';
+ const {mountTouch}=await riverImport('./river/mobile-controls.js','触控模块');
+ window.riverBootStage='挂载触控';
+ touch=mountTouch({keys,look,trigger,
+  fire:()=>{if(!squadsMode&&S.state==='play'&&!pres&&!document.hidden)fire()},
+  reload:()=>{if(squadsMode){if(squads&&squads.touchReload)squads.touchReload()}else if(S.state==='play'&&!pres)reload()},
+  engage:()=>squadsMode?!!(squads&&squads.touchEngage&&squads.touchEngage()):S.state==='play'&&!pres,
+  isActive:()=>squadsMode?!!(squads&&squads.mayTouch&&squads.mayTouch()):S.state==='play'&&!pres});
+ const mh=document.querySelector('#menu p');if(mh)mh.textContent='左摇杆移动 · 右侧滑动瞄准 · 开火 / 换弹按钮';
+}
 tick();
 
 window.demoQA={snapshot(){return{
