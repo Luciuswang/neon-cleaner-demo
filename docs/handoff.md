@@ -841,3 +841,7 @@ Riverfall loading menu live on unchanged Pages URL, PR 19; HTML, controller, sce
 ## Sync note - 2026-11-25T16:21:58.1040576+08:00
 
 Riverfall field wear and matching stone perimeter: desktop and phone-profile render checks, boundary collision, desktop walk/jump, and squad regressions passed. See task packet for evidence and release status.
+
+## Sync note - 2026-11-25T16:25:25.8380438+08:00
+
+Pages PR 20 live at the existing River URL. The release manifest and all seven changed/new runtime modules matched; next is owner visual acceptance.

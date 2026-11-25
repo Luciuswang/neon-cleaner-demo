@@ -8,4 +8,4 @@ QA evidence: `experiments/sunbreak-river-v4/qa/fieldwear-ring-20261125`. Offscre
 
 Art precheck: conditional pass. The paired ruts and patchy footprints now read as directional wear, the stone profile shows the limit before the body reaches it, and the backplate was removed from the river outlets. Stone courses remain fairly even; the phone has simplified mud highlights. Separate visual art review from collision PASS. The pinned River asset mirror was verified; unrelated private UE vault work was preserved.
 
-Next: publish the packaged River overlay to the existing URL and verify live bytes.
+Released through Pages PR 20. The normal public URLs for the manifest and all seven changed/new runtime modules were byte-verified; see `live.json`. Next: player visual acceptance along the western lane and both river outlets.

@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261125T082526Z-99f3a17f72",
+  "task_id": "river-fieldwear-ring-20261125",
+  "timestamp_utc": "2026-11-25T08:25:26.237786+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Pages PR 20 live at the existing River URL. The release manifest and all seven changed/new runtime modules matched; next is owner visual acceptance.",
+  "commit_shas": [
+    "bf7d268729b16053dd27f8a37f8b427d36378177"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
