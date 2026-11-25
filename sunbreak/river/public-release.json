@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "bf7d268729b16053dd27f8a37f8b427d36378177",
-  "created": "2026-11-25T08:22:39.668Z",
+  "sourceCommit": "2f8499b2bec2bce8b8e9e3e1362bc2e0376bc440",
+  "created": "2026-11-25T09:29:04.002Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -56,8 +56,8 @@
     },
     {
       "path": "map-layout.js",
-      "bytes": 8521,
-      "sha256": "9731a1d15fc74450fb29db7852858ca4ed7bae276b491a303501920ca552714e"
+      "bytes": 8975,
+      "sha256": "c05de4e902889afb7f519a1f8e9fbe76d893ff1c99e15dd456e0da3cacebc47d"
     },
     {
       "path": "terrain-ray.js",
@@ -211,8 +211,8 @@
     },
     {
       "path": "perimeter-art.js",
-      "bytes": 5072,
-      "sha256": "afdfbee2ec35079431c13076ef368556f1b8e5b80ab8e31099c6b40fe8c36e3d"
+      "bytes": 8003,
+      "sha256": "46160f2cc8c9c8b69b24224e982b14f23edf075ed0c8e9e60dbd8d91fe10db8c"
     },
     {
       "path": "mobile-world.js",

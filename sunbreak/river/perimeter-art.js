@@ -1,5 +1,5 @@
 // river/perimeter-art.js
-import {MAP,groundHeight,riverWidth} from './map-layout.js';
+import {MAP,groundHeight,riverWidth,bankScreens} from './map-layout.js';
 
 import {TH,TOP,perimeterBounds} from './perimeter-layout.js';
 
@@ -108,6 +108,64 @@ export function buildPerimeter(T,world,stone,solids){
  group.add(coreMesh,stoneMesh);
  const bounds=perimeterBounds(M);
  group.userData={renderMarker:'perimeter-fieldstone-fence',drawCalls:2,stones,triangles:S.n+C.n,stoneTriangles:S.n,coreTriangles:C.n,height:TOP,culverts:2,bounds};
+ if(world&&world.add)world.add(group);
+ if(Array.isArray(solids))solids.push(coreMesh,stoneMesh);
+ addBankScreens(T,world,stone,solids,bankScreens);
+ return group;
+}
+function addBankScreens(T,world,stone,solids,screens){
+ if(!Array.isArray(screens)||!screens.length)return null;
+ const S={pos:[],nor:[],col:[],uv:[],n:0},C={pos:[],nor:[],col:[],uv:[],n:0};
+ const G=.035,COURSES=5;
+ let stones=0;
+ for(const s of screens){
+  // one deterministic seed per stable id (fallback: position)
+  let h=0x9e3779b1;
+  for(const ch of String(s.id??[s.x,s.z]))h=Math.imul(h^ch.charCodeAt(0),0x45d9f3b);
+  const r=rng(h),hw=s.w/2,hd=s.d/2,yb=s.y-s.h/2,yt=s.y+s.h/2,CH=(yt-yb)/COURSES;
+  // depth remap: face relief stays within ~4cm of the collider, backs stop at the centre plane
+  const m=(w,lim)=>Math.min(w<.3?w*.7:.21+(w-.3)*1.3,lim+G)-G;
+  const faces=[];
+  for(const sd of[-1,1]){
+   faces.push({a:s.z-hd,b:s.z+hd,P:(u,w)=>[s.x+sd*(hw-m(w,hw)),u]}); // broad river-parallel faces
+   faces.push({a:s.x-hw,b:s.x+hw,P:(u,w)=>[u,s.z+sd*(hd-m(w,hw))]}); // end faces
+  }
+  // closed dark core behind the seams: no see-through from back, top or ends
+  coreBox(C,{P:(u,w)=>[s.x+w,u]},s.z-hd+.11,s.z+hd-.11,yb-.3,yt-.1,-(hw-.11),hw-.11);
+  const p0=S.pos.length;
+  for(const W of faces)for(let c=0;c<COURSES;c++){
+   const top=c===COURSES-1;
+   let u=W.a-r()*.3;
+   while(u<W.b-.05){
+    let u1=u+.5+r()*.55+(top?.15:0);
+    if(W.b-u1<.3)u1=W.b;
+    const y0=yb+c*CH+(c?(r()-.5)*.04:0);
+    const y1=top?yt+(r()-.5)*.04:yb+(c+1)*CH+(r()-.5)*.04;
+    stoneBlock(S,W,r,Math.max(u,W.a)+.008,u1-.008,y0-.01,y1+.01,c,top);
+    stones++;u=u1;
+   }
+  }
+  // clamp silhouette to the shared collision box (+4cm); footing may sink below ground
+  for(let i=p0;i<S.pos.length;i+=3){
+   S.pos[i]=Math.max(s.x-hw-.04,Math.min(s.x+hw+.04,S.pos[i]));
+   S.pos[i+1]=Math.min(yt+.04,S.pos[i+1]);
+   S.pos[i+2]=Math.max(s.z-hd-.04,Math.min(s.z+hd+.04,S.pos[i+2]));
+  }
+ }
+ for(let i=0;i<S.uv.length;i++)if(!Number.isFinite(S.uv[i]))S.uv[i]=0;
+ const group=new T.Group();
+ group.name='bank-screens-fieldstone';
+ const mat=stone&&stone.clone?stone.clone():new T.MeshStandardMaterial({color:0x8d8a7c,roughness:1});
+ mat.vertexColors=true;mat.flatShading=true;mat.needsUpdate=true;
+ if(mat.color&&mat.color.set)mat.color.set(0xffffff);
+ const coreMat=new T.MeshStandardMaterial({color:0x3b382f,roughness:1,metalness:0});
+ const stoneMesh=new T.Mesh(geo(T,S),mat);
+ stoneMesh.name='bank-screen-stones';stoneMesh.castShadow=true;stoneMesh.receiveShadow=true;
+ const coreMesh=new T.Mesh(geo(T,C),coreMat);
+ coreMesh.name='bank-screen-core';coreMesh.castShadow=true;coreMesh.receiveShadow=false;
+ stoneMesh.userData.impactKind='stone';coreMesh.userData.impactKind='stone';
+ group.add(coreMesh,stoneMesh);
+ group.userData={renderMarker:'bank-screens-fieldstone',drawCalls:2,screens:screens.length,stones,triangles:S.n+C.n,stoneTriangles:S.n,coreTriangles:C.n};
  if(world&&world.add)world.add(group);
  if(Array.isArray(solids))solids.push(coreMesh,stoneMesh);
  return group;
