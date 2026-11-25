@@ -136,17 +136,16 @@ export function generateRidgeGeometry(p){
   const n=k*3,len=Math.hypot(normals[n],normals[n+1],normals[n+2]);
   normals[n]/=len;normals[n+1]/=len;normals[n+2]/=len;
   const s=samples[k],nY=normals[n+1];
-  const cover=smooth(.61,.94,nY)*(1-smooth(.43,.85,(s.y+9)/(s.crest+9)));
+  const cover=smooth(.4,.78,nY)*(1-.25*smooth(.82,1,(s.y+9)/(s.crest+9)));
   const grain=fbm(s.along*.08,s.across*.085,p.seed+53),bedding=Math.sin(s.y*.63+s.along*.031);
   const contrast=[.7,.48,.27][p.layer],value=1+((grain-.5)*.12+bedding*.018)*contrast;
   const rocky=[[.61,.65,.56],[.56,.62,.63],[.49,.58,.65]][p.layer];
-  const green=[[.36,.45,.30],[.41,.49,.42],[.43,.52,.55]][p.layer];
-  for(let c=0;c<3;c++)colors[n+c]=clamp(mix(rocky[c],green[c],cover*.82)*value,.12,1);
+  const green=[[.2,.36,.27],[.25,.4,.36],[.31,.44,.47]][p.layer];
+  for(let c=0;c<3;c++)colors[n+c]=clamp(mix(rocky[c],green[c],cover*.92)*value,.12,1);
  }
  for(let i=0;i<raw.length;i+=3){
   const a=raw[i],b=raw[i+1],c=raw[i+2],nY=(normals[a*3+1]+normals[b*3+1]+normals[c*3+1])/3;
-  const relative=(samples[a].y+9)/(samples[a].crest+9);
-  (nY>.77&&relative<.67?scrub:rock).push(a,b,c);
+  (nY>.6?scrub:rock).push(a,b,c);
  }
  const Index=count<=65535?Uint16Array:Uint32Array,indices=new Index([...rock,...scrub]);
  return {id:p.id,positions,normals,colors,uvs,indices,bounds,
@@ -159,17 +158,17 @@ function canopySites(p,maxLobes){
  const H=LANDSCAPE_LIMITS,L=[],xAxis=p.axis==='x',la=p.along[1]-p.along[0],lc=p.across[1]-p.across[0];
  const at=(a,c)=>xAxis?sampleRidge(p,a,c):sampleRidge(p,c,a);
  for(let n=0;n<maxLobes*12&&L.length<maxLobes;n++){
-  const c=(n/6)|0,sp=12+34*hash(c,3,p.seed+211),u=.05+.9*hash(c,1,p.seed+101);
+  const c=(n/6)|0,sp=9+24*hash(c,3,p.seed+211),u=.05+.9*hash(c,1,p.seed+101);
   const cv=clamp(keyAt(p.crest,u,1)+(hash(c,2,p.seed+113)-.5)*.7,.06,.94);
   const along=p.along[0]+la*u+(hash(n,5,p.seed+131)-.5)*sp,across=p.across[0]+lc*cv+(hash(n,6,p.seed+137)-.5)*sp;
-  const r=(3+5.5*hash(n,7,p.seed+149)**2)*(1+p.layer*.3),m=r*1.25+4;
+  const r=(3.6+6*hash(n,7,p.seed+149)**2)*(1+p.layer*.3),m=r*1.25+4;
   if(along<p.along[0]+m||along>p.along[1]-m||across<p.across[0]+m||across>p.across[1]-m)continue;
   const x=xAxis?along:across,z=xAxis?across:along,d=Math.hypot(x,z);
   if(Math.abs(x)<H.valleyHalfWidth+m||(Math.abs(x)<H.terrainHalfExtent+m&&Math.abs(z)<H.terrainHalfExtent+m)||d-m<H.minRange||d+m>H.maxRange)continue;
   const s=at(along,across),sa=at(along+3,across),sc=at(along,across+3);
   if(!s||!sa||!sc||s.y<-5.5)continue;
   const slope=Math.hypot(sa.y-s.y,sc.y-s.y)/3;
-  if(slope>1.15||fbm(along*.021,across*.027,p.seed+91)<.42+.16*s.cross)continue;
+  if(slope>1.15||fbm(along*.021,across*.027,p.seed+91)<.33+.1*s.cross)continue;
   L.push({n,x,z,y:s.y,r,slope});
  }
  return L;
@@ -213,10 +212,10 @@ function appendCanopy(p,g,maxLobes){
  const nv=base+L.length*11,positions=new Float32Array(nv*3),normals=new Float32Array(nv*3),colors=new Float32Array(nv*3),uvs=new Float32Array(nv*2);
  positions.set(g.positions);normals.set(g.normals);colors.set(g.colors);uvs.set(g.uvs);
  const indices=new(nv<=65535?Uint16Array:Uint32Array)(g.indices.length+L.length*45);indices.set(g.indices);
- const bounds={min:{...g.bounds.min},max:{...g.bounds.max}},top=[[.42,.5,.26],[.4,.5,.4],[.42,.52,.53]][p.layer],s=p.seed+173;
+ const bounds={min:{...g.bounds.min},max:{...g.bounds.max}},top=[[.22,.4,.28],[.27,.42,.37],[.32,.46,.48]][p.layer],s=p.seed+173;
  let q=g.indices.length;
  L.forEach((l,i)=>{
-  const v0=base+i*11,ph=hash(l.n,11,s)*6.2832,h=l.r*(.85+.6*hash(l.n,13,s)),tone=.84+.3*hash(l.n,17,s),cy=l.y+h*.25;
+  const v0=base+i*11,ph=hash(l.n,11,s)*6.2832,h=l.r*(.6+.45*hash(l.n,13,s)),tone=.84+.3*hash(l.n,17,s),cy=l.y+h*.16;
   // Smooth normals radiate from a low centre: sunlit tops, darker undersides.
   const put=(k,px,py,pz,shade)=>{
    const o=(v0+k)*3,nx=px-l.x,ny=py-cy+l.r*.35,nz=pz-l.z,len=Math.hypot(nx,ny,nz)||1;
@@ -248,7 +247,7 @@ export function buildDistantLandscape({T,world,materials,forested=false}){
  const plan=landscapePlan(),validation=validateLandscapePlan(plan);
  if(!validation.ok)throw new Error(validation.errors.join('; '));
  // Real headroom: limit minus terrain triangles, 15 tris per lobe, 0 new draws.
- const lobeBudget=Math.max(0,Math.min(220,Math.floor((LANDSCAPE_LIMITS.maxTriangles-validation.triangles)/plan.length/15)));
+ const lobeBudget=Math.max(0,Math.min(320,Math.floor((LANDSCAPE_LIMITS.maxTriangles-validation.triangles)/plan.length/15)));
  const root=new T.Group();root.name='Riverfall distant eroded ranges';root.userData.visualOnly=true;
  const ownedMaterials=[],meshes=[],records=[];let weather='sunny',disposed=false;
  for(let layer=0;layer<3;layer++)for(const kind of ['stone','bark']){
@@ -263,10 +262,13 @@ export function buildDistantLandscape({T,world,materials,forested=false}){
    const mapChunk=T.ShaderChunk.map_fragment.replace('diffuseColor *= sampledDiffuseColor;',`
     float mineralLuma = dot(sampledDiffuseColor.rgb, vec3(0.2126, 0.7152, 0.0722));
     sampledDiffuseColor.rgb = mix(vec3(0.18), mix(vec3(mineralLuma), sampledDiffuseColor.rgb, 0.15), ${contrast.toFixed(2)});
-    diffuseColor *= sampledDiffuseColor;`);
+    diffuseColor *= sampledDiffuseColor;
+    ${forested ? `vec3 lwp = cameraPosition + (-vViewPosition) * mat3(viewMatrix);
+    float dap = sin(lwp.x*.42+sin(lwp.z*.31)*2.3+lwp.y*.2)*sin(lwp.z*.47+sin(lwp.x*.27)*2.1)*.6+sin(lwp.x*1.7+lwp.y+sin(lwp.z*1.3)*1.7)*sin(lwp.z*1.9+sin(lwp.x*1.1))*.4/(1.+length(vViewPosition)*.004);
+    diffuseColor.rgb *= 1. + dap * ${(kind==='bark'?.26:.08).toFixed(2)};` : ''}`);
    shader.fragmentShader=shader.fragmentShader.replace('#include <map_fragment>',mapChunk);
   };
-  m.customProgramCacheKey=()=>`landscape-mineral-v2-${layer}`;
+  m.customProgramCacheKey=()=>forested?`landscape-canopy-v3-${layer}-${kind}`:`landscape-mineral-v2-${layer}`;
   ownedMaterials.push(m);
  }
  for(const p of plan){

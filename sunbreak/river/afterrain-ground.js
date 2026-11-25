@@ -7,7 +7,7 @@ export function installLegacyForestTint(material){
   s.vertexShader=s.vertexShader.replace('#include <common>','#include <common>\nattribute float forestCover;varying float vForestCover;').replace('#include <begin_vertex>','#include <begin_vertex>\nvForestCover=forestCover;');
   s.fragmentShader=s.fragmentShader.replace('#include <common>','#include <common>\nvarying float vForestCover;').replace('diffuseColor*=vec4(surface,1.);',`surface=mix(surface,mix(vec3(.033,.068,.013),vec3(.105,.157,.035),macro),vForestCover*(1.-vSurfaceZones.y));diffuseColor*=vec4(surface,1.);`);
  };
- material.customProgramCacheKey=()=>key()+'-afterrain-forest';
+ material.customProgramCacheKey=()=>key()+'-afterrain-sward-v2';
 }
 // Shared macro basin noise. Integer lattice hash: bit-identical in JS (Math.imul)
 // and GLSL ES 3.00 (uint), unlike a sin-based hash. Same two octaves, weights and
@@ -80,6 +80,12 @@ export function enhanceAfterRainGround(T,material,s,reflection){
    vec3 greens=mix(vec3(.022,.056,.012),vec3(.095,.145,.029),plantCommunity);
    float leafGrain=clamp(dot(litterSample.rgb,vec3(.2126,.7152,.0722))/.045,.48,1.6)*mix(.72,1.16,smoothstep(.38,.66,litterSample.a));
    surface=mix(surface,greens*leafGrain,greenCover);
+   float outerD=max(abs(gp.x)-32.,abs(gp.y+4.)-30.);
+   float outerGrass=smoothstep(0.,7.,outerD)*smoothstep(.45,2.6,abs(gp.x)-(3.4+.8*cos(gp.y*.17)+.35*sin(gp.y*.47)));
+   vec3 outerCol=mix(vec3(.02,.05,.022),vec3(.062,.105,.05),smoothstep(.2,.8,valleyNoise(gp*.09+vec2(5.1,27.3))))*mix(.68,1.14,valleyNoise(gp*.31+vec2(61.,13.)));
+   outerCol=mix(outerCol,vec3(.03,.06,.036),smoothstep(50.,98.,outerD)*.5);
+   surface=mix(surface,outerCol*leafGrain,outerGrass);
+   greenCover=max(greenCover,outerGrass);
    litterBlend=max(litterBlend,greenCover);
    float basin=basinNoise(gp*.34+vec2(8.3,2.7))*.68+basinNoise(gp*.97)*.32+(microHeight-.5)*.045;
    float flatPlane=1.-smoothstep(.006,.025,abs(vGroundWorld.y));`);
