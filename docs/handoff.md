@@ -873,3 +873,7 @@ Riverfall slope meadow release PR 23 merged. Normal public URLs for the release 
 ## Sync note - 2026-11-25T22:01:13.5182959+08:00
 
 Riverfall five textured palms, ten vine-bearing covers and roof patina checked at four poses on both browser profiles. Visual conditional pass with shade-readability caveat; release pending Pages byte check.
+
+## Sync note - 2026-11-25T22:04:43.7696090+08:00
+
+Riverfall material ageing is live on Pages PR 24. Public manifest and 7 runtime modules byte verified. Next: owner art review, especially vine stems in deep shade.

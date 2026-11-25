@@ -1,0 +1,17 @@
+{
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "pr": 24,
+  "source": "8ad5a46e8c5ff50d842df82d695a2d83b3ceb2dc",
+  "merge": "da8922cce6edef2c9f26bc19afcdca2d312aba3a",
+  "utc": "2026-11-25T14:04:23.850Z",
+  "checked": {
+    "public-release.json": "99216ead45d1b8a58bddc3e6cf1fe8cc895d67cb63ab3a0e7f5995b788e482d7",
+    "coconut-grove.js": "6ce4011d00f29b174414276241b3ad1b8fb5ea0293b647b44e267a9394822039",
+    "cover-creepers.js": "eab713cbeadead7470deca8d9f2bccb4ed0c538a6ff6c27b0bd75619a179d2ca",
+    "roof-patina.js": "70af56f2002e089cd2e604d0bbe93d4dc8a560e33f77167b4f0bee176b73829b",
+    "mobile-world.js": "c0f371b872f9a59a9013f80bc6488d45f1bab8f9f736f274cf611fcf9cffb610",
+    "world.js": "03690aacbe58702ab9026471eac6081c6f52b9c25cc4932d101fcc6afc991fd7",
+    "timber-house.js": "226e6b59bef8fab734c99f9c2a556bb9c3c2a473a40f8077a8001b1d93b0d10d",
+    "village.js": "098123af8eaf5bd3c061b0c37b7cff0dec7a61935128c1cd2541de94ecf2194e"
+  }
+}
