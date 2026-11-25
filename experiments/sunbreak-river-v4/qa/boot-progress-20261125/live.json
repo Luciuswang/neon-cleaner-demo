@@ -1,0 +1,13 @@
+{
+  "pr": 19,
+  "merge": "9ac38876058d086ed8c7df2d33a1e78128336505",
+  "source": "42c0727f267665d5f4d3e5ea4930993cf72f6abb",
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "verified": "2026-11-25T07:59:37.888Z",
+  "sha256": {
+    "index.html": "68910cb7e467e7e06c53479993615f92d4883bb47eea99025b8bfbddb8c733e3",
+    "boot-ui.js": "5cbd545c439ddeeda05a65fbf789649dd723cfac1277c505224c8371dcde43c0",
+    "world.js": "a240ee09809267db6b519cefaaf92a841daf7eda2fc5abf7739e3ab40425dccf",
+    "public-release.json": "bad81390077149b0183032fb05a0b128d5a9f96bdc9175ba3fc9e4c8e708fe25"
+  }
+}

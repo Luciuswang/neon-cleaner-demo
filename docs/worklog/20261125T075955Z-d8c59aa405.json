@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261125T075955Z-d8c59aa405",
+  "task_id": "river-boot-progress-20261125",
+  "timestamp_utc": "2026-11-25T07:59:55.258362+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall loading menu live on unchanged Pages URL, PR 19; HTML, controller, scene module, and release manifest are byte-verified. Startup lifecycle QA passed.",
+  "commit_shas": [
+    "42c0727f267665d5f4d3e5ea4930993cf72f6abb"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

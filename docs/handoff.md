@@ -833,3 +833,7 @@ Riverfall shared-art iPhone build is live on Pages PR 18. Actual iOS Simulator s
 ## Sync note - 2026-11-25T15:56:32.9637411+08:00
 
 Riverfall loading feedback lifecycle regression passed. Preserve the existing public game URL; Pages release verification follows. Unrelated private UE vault remains untouched.
+
+## Sync note - 2026-11-25T15:59:54.8226022+08:00
+
+Riverfall loading menu live on unchanged Pages URL, PR 19; HTML, controller, scene module, and release manifest are byte-verified. Startup lifecycle QA passed.
