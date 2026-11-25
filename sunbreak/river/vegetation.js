@@ -18,8 +18,9 @@ export const GRASS_VARIANTS=Object.freeze([
  {asset:'wild_upright_a',node:'wild_upright_a',height:.48,range:[.43,.55],radiusRatio:.36,label:'wild-upright-a',layer:'tall'},
  {asset:'wild_upright_b',node:'wild_upright_b',height:.48,range:[.42,.54],radiusRatio:.35,label:'wild-upright-b',layer:'tall'}
 ].map(v=>Object.freeze({...v,range:Object.freeze(v.range)})));
+export const meadowSuperseded=(x,z)=>!outside(x,z)&&Math.abs(x)>riverWidth(z)+1.5;
 export function grassBatches(plan){
- const grass=[...plan.low,...plan.medium,...plan.tall];
+ const grass=[...plan.low,...plan.medium,...plan.tall].filter(p=>!((p.variant===4||p.variant===5)&&meadowSuperseded(p.x,p.z)));
  return GRASS_VARIANTS.map((spec,variant)=>({...spec,variant,placements:grass.filter(p=>p.variant===variant)}));
 }
 export function inGrassGap(x,z,gaps,padding=0){
@@ -236,7 +237,7 @@ diffuseColor.rgb*=mix(vec3(.62,.68,.74),vec3(1.12,1.08,.93),smoothstep(.36,.95,v
  const ribbon=(()=>{
   let s=71933;const rnd=()=>{s=(Math.imul(s,1664525)+1013904223)>>>0;return s/4294967296};
   const MAX_BLADES=6000,MAX_H=.46,MAX_DRIFTS=16,pos=[],col=[],nor=[],idx=[],drifts=[];let blades=0,flecks=0,rejected=0,maxH=0;
-  const ok=(x,z)=>{if(!grassAllowed(x,z,.6)||inGrassGap(x,z,plan.gaps,.5))return false;for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;if(!grassAllowed(x+Math.cos(a)*.35,z+Math.sin(a)*.35,.6))return false}return true};
+  const ok=(x,z)=>{if(meadowSuperseded(x,z)||!grassAllowed(x,z,.6)||inGrassGap(x,z,plan.gaps,.5))return false;for(let i=0;i<4;i++){const a=i*Math.PI/2+.4;if(!grassAllowed(x+Math.cos(a)*.35,z+Math.sin(a)*.35,.6))return false}return true};
   // The low-frequency field keeps broad areas bare: drifts never fill every gap.
   const field=(x,z)=>Math.sin(x*.21+1.3)*Math.cos(z*.17-.6)+.5*Math.sin((x+z)*.09+2.1);
   for(let a=0;a<700&&drifts.length<MAX_DRIFTS;a++){
