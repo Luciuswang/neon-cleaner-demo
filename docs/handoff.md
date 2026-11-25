@@ -829,3 +829,7 @@ Riverfall mobile now uses the desktop art family. Matched camera review conditio
 ## Sync note - 2026-11-24T14:37:01.4613015+08:00
 
 Riverfall shared-art iPhone build is live on Pages PR 18. Actual iOS Simulator solo, AI practice and invitation host passed; all 27 public look assets matched and both normal public entries replayed. Owner hardware/art acceptance remains.
+
+## Sync note - 2026-11-25T15:56:32.9637411+08:00
+
+Riverfall loading feedback lifecycle regression passed. Preserve the existing public game URL; Pages release verification follows. Unrelated private UE vault remains untouched.

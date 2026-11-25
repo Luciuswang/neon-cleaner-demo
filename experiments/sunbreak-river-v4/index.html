@@ -82,7 +82,7 @@ html,body{background:#172229;color:#d5dedc}
 #ammo em{font-size:9px;color:#aebfc5;letter-spacing:.1em}
 #help{position:absolute;bottom:29px;left:50%;transform:translateX(-50%);font:9px/1.8 "Segoe UI","Microsoft YaHei",sans-serif;color:#b0c0c5aa;text-align:center;white-space:nowrap}
 #help span{color:#e2d4b6}
-#bootStatus{position:fixed;left:28px;top:146px;font:10px/1.8 "Microsoft YaHei",sans-serif;color:#e8d0a8;pointer-events:none}
+.panel#menu{max-height:84vh;overflow-y:auto}#bootStatus span{display:block}#bootStatus progress{display:block;width:100%;height:6px;margin:4px 0;accent-color:#ddbd8a}#bootStatus{margin:0 0 12px;font-size:12px!important;font:10px/1.8 "Microsoft YaHei",sans-serif;color:#e8d0a8;pointer-events:none}
 @media(max-width:640px){
  .btns{left:12px;top:12px;max-width:calc(100vw - 24px);gap:4px}
  .btn{padding:7px 9px;font-size:11px}
@@ -97,7 +97,7 @@ html,body{background:#172229;color:#d5dedc}
  #stormControls{left:12px;top:106px}
  .panel#menu{left:16px;bottom:95px;width:calc(100vw - 32px);max-width:370px;padding:23px}
  .panel h1{font-size:30px}.panel h2{font-size:12px}
- #help{display:none}#bootStatus{left:12px;top:147px}
+ #help{display:none}.panel#menu{max-height:calc(100vh - 110px)}
 }
 </style>
 </head>
@@ -115,12 +115,12 @@ html,body{background:#172229;color:#d5dedc}
   <div id="flash"></div>
   <div id="help"><span>W A S D</span> 移动　 <span>鼠标 / 方向键</span> 瞄准　 <span>按住左键 / F</span> 连射　 <span>R</span> 换弹　 <span>E</span> 木屋开关门　 <span>Shift</span> 冲刺</div>
 </div>
-<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / RIVER VILLAGE</div><h1>RIVER<br>FALL</h1><h2>雨林河谷 · 双岸交火</h2><p>按住鼠标左键持续开火，松开即停。<br>R 更换弹匣，E 开关木屋门。<br>两岸斜对称木屋、浅河与坍塌村落。</p><button class="btn" id="bStart">开始作战</button><button class="btn" id="bStyle2">切换色调</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 写实版 ↗</a><a class="compare" href="./" target="_blank" rel="noopener">03 暴雨版 ↗</a><a class="compare" href="./v4/" target="_blank" rel="noopener">04 连射版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo。<a href="./river/?mode=squads" rel="noopener">4v4 联机试玩（可选，好友邀请 / AI 补位）</a><br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./river/credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
+<div class="panel" id="menu"><div class="eyebrow">SUNBREAK / RIVER VILLAGE</div><h1>RIVER<br>FALL</h1><h2>雨林河谷 · 双岸交火</h2><p>按住鼠标左键持续开火，松开即停。<br>R 更换弹匣，E 开关木屋门。<br>两岸斜对称木屋、浅河与坍塌村落。</p><div id="bootStatus"><span id="bootLabel" role="status">正在加载 · 1/6 主程序</span><progress id="bootBar" max="6" value="1" aria-labelledby="bootLabel"></progress><span id="bootTime"></span><noscript>需要启用 JavaScript 才能加载。</noscript></div><button class="btn" id="bStart" disabled>开始作战</button><button class="btn" id="bStyle2">切换色调</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 写实版 ↗</a><a class="compare" href="./" target="_blank" rel="noopener">03 暴雨版 ↗</a><a class="compare" href="./v4/" target="_blank" rel="noopener">04 连射版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo。<a href="./river/?mode=squads" rel="noopener">4v4 联机试玩（可选，好友邀请 / AI 补位）</a><br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./river/credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
-<div id="bootStatus">正在装载雨林河谷、植被与材质…</div>
+
 <script type="importmap">{"imports":{"three":"./vendor/presentation/build/three.module.js","three/addons/":"./vendor/presentation/examples/jsm/"}}</script>
-<script src="./river/boot-ui.js"></script>
+<script src="./river/boot-ui.js" onerror="var s=document.getElementById('bootStatus');if(s)s.innerHTML='启动脚本加载失败。<button class=btn style=pointer-events:auto onclick=location.reload()>重新加载</button>'"></script>
 <script type="module">
 import {TACTICAL_SPAWNS,createTacticalAI,enemyHitBounds} from './river/tactical-ai.js';
 import {SHOT_INTERVAL_MS,RELOAD_SECONDS,RELOAD_CUES,reloadProgress,controlTarget,createTrigger} from './river/combat-controls.js';

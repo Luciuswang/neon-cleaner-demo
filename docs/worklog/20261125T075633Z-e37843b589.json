@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261125T075633Z-e37843b589",
+  "task_id": "river-boot-progress-20261125",
+  "timestamp_utc": "2026-11-25T07:56:33.422429+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall loading feedback lifecycle regression passed. Preserve the existing public game URL; Pages release verification follows. Unrelated private UE vault remains untouched.",
+  "commit_shas": [
+    "7acd41c73856c3f41effba2d51041bf675e7d3f7"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}
