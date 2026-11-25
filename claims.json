@@ -14,6 +14,22 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "river-boot-progress-20261125": {
+      "base_commit": "7acd41c73856c3f41effba2d51041bf675e7d3f7",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-25T15:51:41.979125+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/sunbreak-river-v4/index.html",
+        "experiments/sunbreak-river-v4/boot-ui.js",
+        "experiments/sunbreak-river-v4/world.js",
+        "experiments/sunbreak-river-v4/qa/boot-progress-20261125",
+        "docs/tasks/river-boot-progress-20261125.md",
+        "docs/handoff.md"
+      ],
+      "task_id": "river-boot-progress-20261125",
+      "updated_at": "2026-11-25T07:51:41.979125+00:00"
     }
   },
   "schema": 1
