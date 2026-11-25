@@ -1,3 +1,4 @@
+import {installRoofPatina} from './roof-patina.js';
 import {mergeGeometries} from 'three/addons/utils/BufferGeometryUtils.js';
 import {RoundedBoxGeometry} from 'three/addons/geometries/RoundedBoxGeometry.js';
 import {HOUSE,floorHeight,underRoof,doorBounds,bodyOverlaps,swingOccupied,createDoorState,localPoint} from './house-logic.js';
@@ -19,6 +20,7 @@ export function buildBlackTileRoof(T,parent){
  }
  const texture=data=>{const t=new T.DataTexture(data,size,size);t.wrapS=t.wrapT=T.RepeatWrapping;t.magFilter=t.minFilter=T.LinearFilter;t.needsUpdate=true;return t};
  const tileMat=new T.MeshStandardMaterial({color:0x343c42,metalness:.035,roughness:.62,roughnessMap:texture(rough),normalMap:texture(normal),normalScale:new T.Vector2(.3,.3),envMapIntensity:.42});
+ if(new URLSearchParams(globalThis.location?.search||'').get('look')!=='previous')installRoofPatina(tileMat,{eaveY:HOUSE.eave});
  const edgeMat=new T.MeshStandardMaterial({color:0x293238,metalness:.06,roughness:.52,envMapIntensity:.36});
  const rise=HOUSE.ridge-HOUSE.eave,slope=Math.atan2(rise,3.2),tiles=[],caps=[],edgeGeos=[],dummy=new T.Object3D();
  function edge(w,h,d,x,y,z,rx=0){

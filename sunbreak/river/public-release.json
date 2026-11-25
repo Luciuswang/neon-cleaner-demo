@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "409a8c3041f49e3f42aac5d3b84cf5b4ad2bf219",
-  "created": "2026-11-25T12:17:20.253Z",
+  "sourceCommit": "8ad5a46e8c5ff50d842df82d695a2d83b3ceb2dc",
+  "created": "2026-11-25T14:01:29.965Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -11,13 +11,13 @@
     },
     {
       "path": "world.js",
-      "bytes": 35527,
-      "sha256": "86f5747225bcea0162e53e5aa1158ef52ad572776d960e45375f4e86ac426b24"
+      "bytes": 32880,
+      "sha256": "03690aacbe58702ab9026471eac6081c6f52b9c25cc4932d101fcc6afc991fd7"
     },
     {
       "path": "village.js",
-      "bytes": 17034,
-      "sha256": "72946fd3e422fe4c9c51c517e3d4f384a32beac674d9a5428718e116de0ff4f9"
+      "bytes": 17154,
+      "sha256": "098123af8eaf5bd3c061b0c37b7cff0dec7a61935128c1cd2541de94ecf2194e"
     },
     {
       "path": "ruins.js",
@@ -41,8 +41,8 @@
     },
     {
       "path": "timber-house.js",
-      "bytes": 23766,
-      "sha256": "31dcb143860c9bd1dba3f4362909fb9c2c7b378a92937bd0e710814a9361031c"
+      "bytes": 23947,
+      "sha256": "226e6b59bef8fab734c99f9c2a556bb9c3c2a473a40f8077a8001b1d93b0d10d"
     },
     {
       "path": "house-logic.js",
@@ -216,8 +216,8 @@
     },
     {
       "path": "mobile-world.js",
-      "bytes": 13822,
-      "sha256": "38b2a2fd9678d04802db40045007691dea5c244d48372fbd0f112a79b168b672"
+      "bytes": 14012,
+      "sha256": "c0f371b872f9a59a9013f80bc6488d45f1bab8f9f736f274cf611fcf9cffb610"
     },
     {
       "path": "mobile-controls.js",
@@ -238,6 +238,21 @@
       "path": "slope-sward.js",
       "bytes": 1510,
       "sha256": "b110748d7fec12d38325d19d363a3d5a315a6821bd3ea4dbee68d2a185afee53"
+    },
+    {
+      "path": "coconut-grove.js",
+      "bytes": 5802,
+      "sha256": "6ce4011d00f29b174414276241b3ad1b8fb5ea0293b647b44e267a9394822039"
+    },
+    {
+      "path": "cover-creepers.js",
+      "bytes": 6558,
+      "sha256": "eab713cbeadead7470deca8d9f2bccb4ed0c538a6ff6c27b0bd75619a179d2ca"
+    },
+    {
+      "path": "roof-patina.js",
+      "bytes": 3689,
+      "sha256": "70af56f2002e089cd2e604d0bbe93d4dc8a560e33f77167b4f0bee176b73829b"
     },
     {
       "path": "mobile-terrain.js",

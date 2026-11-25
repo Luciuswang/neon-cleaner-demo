@@ -1,3 +1,5 @@
+import {buildCoconutGrove} from './coconut-grove.js';
+import {buildCoverCreepers} from './cover-creepers.js';
 import {buildMobileTerrain} from './mobile-terrain.js';
 import {buildMobileEcology} from './mobile-ecology.js';
 import {buildWallMeadow} from './wall-meadow.js';
@@ -82,6 +84,7 @@ export async function buildWorld(ctx){
  const buffers=await stage('缓冲房屋',()=>buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements}));
  const ecology=await stage('生态',()=>buildMobileEcology({T,world}));
  const wallMeadow=buildWallMeadow(T,world,true);
+ buildCoconutGrove(T,world,true);world.add(buildCoverCreepers(T,world,layout));
  if(typeof ecology?.info!=='function')throw new Error('mobile-world: buildMobileEcology must return {info}');
  const weapon=await stage('武器',()=>buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids}));
  const actors=await stage('角色',()=>buildActors({THREE:T,enemies}));
