@@ -853,3 +853,7 @@ Four mirrored riverbank screens pass solo opening LOS, crossing and squad regres
 ## Sync note - 2026-11-25T17:32:04.2369810+08:00
 
 GitHub Pages PR 21 is live. The default Riverfall URL serves the verified paired bank screen build. Next: player feel check from the near-bank route.
+
+## Sync note - 2026-11-25T19:30:44.6761654+08:00
+
+Riverfall wall meadow: PC/phone-profile artwork and source-mask checks pass; unchanged gameplay regressions pass. Evidence includes a same-camera before/after. GitHub Pages verification follows.

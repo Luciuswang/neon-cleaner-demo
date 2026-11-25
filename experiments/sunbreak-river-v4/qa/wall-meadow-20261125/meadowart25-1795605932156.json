@@ -1,0 +1,35 @@
+{
+  "phase": "meadowart25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T11:25:32.154Z",
+  "result": "completed",
+  "responseSHA": "2dd3a5115a2c98e462864d4d0e7ce91c45cf2c02482f26bc91791519610d3e9a",
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 7438,
+    "cache_read_input_tokens": 871,
+    "output_tokens": 7148,
+    "output_tokens_details": {
+      "thinking_tokens": 3842
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 7438
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.3605382
+}

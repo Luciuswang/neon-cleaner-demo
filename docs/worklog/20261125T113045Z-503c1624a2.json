@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261125T113045Z-503c1624a2",
+  "task_id": "river-wall-meadow-20261125",
+  "timestamp_utc": "2026-11-25T11:30:45.204017+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall wall meadow: PC/phone-profile artwork and source-mask checks pass; unchanged gameplay regressions pass. Evidence includes a same-camera before/after. GitHub Pages verification follows.",
+  "commit_shas": [
+    "642fbcf72157ff415486f7815c871c084409c061"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

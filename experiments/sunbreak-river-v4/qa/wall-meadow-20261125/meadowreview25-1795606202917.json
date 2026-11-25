@@ -1,0 +1,35 @@
+{
+  "phase": "meadowreview25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T11:30:02.914Z",
+  "result": "completed",
+  "responseSHA": "cc3efe3428f4ac72cef9cc6fe4ea954893cb46e3c1ceca029884015334d0da21",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 835,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 876,
+    "output_tokens_details": {
+      "thinking_tokens": 614
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 835
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.043422
+}

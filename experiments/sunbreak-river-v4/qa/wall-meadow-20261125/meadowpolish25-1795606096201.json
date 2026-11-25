@@ -1,0 +1,35 @@
+{
+  "phase": "meadowpolish25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T11:28:16.199Z",
+  "result": "completed",
+  "responseSHA": "3b3490245aba7794721f5579fd72ae2aa4bfc2529ba5d2e478230f6cbbb87e72",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 3866,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 3775,
+    "output_tokens_details": {
+      "thinking_tokens": 2337
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 3866
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.189692
+}

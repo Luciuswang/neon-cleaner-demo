@@ -1,5 +1,6 @@
 import {buildMobileTerrain} from './mobile-terrain.js';
 import {buildMobileEcology} from './mobile-ecology.js';
+import {buildWallMeadow} from './wall-meadow.js';
 import {buildVillage} from './village.js';
 import {buildPerimeter} from './perimeter-art.js';
 import {buildRuins} from './ruins.js';
@@ -80,6 +81,7 @@ export async function buildWorld(ctx){
  const ruins=await stage('废墟',()=>buildRuins({T,world,materials,layout,solids}));
  const buffers=await stage('缓冲房屋',()=>buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements}));
  const ecology=await stage('生态',()=>buildMobileEcology({T,world}));
+ const wallMeadow=buildWallMeadow(T,world,true);
  if(typeof ecology?.info!=='function')throw new Error('mobile-world: buildMobileEcology must return {info}');
  const weapon=await stage('武器',()=>buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids}));
  const actors=await stage('角色',()=>buildActors({THREE:T,enemies}));
@@ -166,7 +168,7 @@ export async function buildWorld(ctx){
    memory:{geometries:rnd.info.memory.geometries,textures:rnd.info.memory.textures},
    actors:{info:actors.info?.()??null,names:namesIn(enemies.map(e=>e.g))},
    weapon:{info:weapon.info?.()??null,names:namesIn([gun])},
-   ecology:ecology.info(),
+   ecology:ecology.info(),meadow:wallMeadow.info(),
    shadow:{size:shadowSize,cachedStatic:true,dynamicActorShadows:false,contactShadows:true},
    sky:{url:SKY_URL,size:look.size,envSource:256,runtimeRotation:0},
    light:{sun:sun.intensity,ambient:amb.intensity,exposure:rnd.toneMappingExposure,toneMapping:rnd.toneMapping,backgroundIntensity:scene.backgroundIntensity},
@@ -189,7 +191,7 @@ export async function buildWorld(ctx){
   cycleWeather(){applyDaylight();return 0},
   update(dt,{S,pres,live,player}){
    const active=!pres&&!['pause','dead','win'].includes(S.state);if(active&&!frozen)time+=dt;
-   terrain.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
+   terrain.update(time);wallMeadow.update(time);village.update?.(dt,time);buffers.update(dt,{S,pres,live,player});
    weapon.update(dt,{...S,presentation:pres,live});actors.update(dt,{live,pres});
    if(active)feedback.update(dt);else feedback.reset();
    updateBlobs();

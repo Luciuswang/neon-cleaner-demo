@@ -1,0 +1,20 @@
+{
+  "profile": "phone-profile",
+  "errors": [],
+  "views": [
+    "screens",
+    "house",
+    "lane"
+  ],
+  "edges": [],
+  "meadow": {
+    "roots": 14761,
+    "sourceRoots": 15900,
+    "drawCalls": 4,
+    "triangles": 177132,
+    "planesPerTuft": 3,
+    "atlas": 512,
+    "mobile": true
+  },
+  "pass": true
+}

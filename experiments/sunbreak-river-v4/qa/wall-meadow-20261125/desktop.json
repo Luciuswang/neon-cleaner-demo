@@ -1,0 +1,20 @@
+{
+  "profile": "desktop",
+  "errors": [],
+  "views": [
+    "screens",
+    "house",
+    "lane"
+  ],
+  "edges": [],
+  "meadow": {
+    "roots": 15625,
+    "sourceRoots": 15900,
+    "drawCalls": 4,
+    "triangles": 500000,
+    "planesPerTuft": 4,
+    "atlas": 1024,
+    "mobile": false
+  },
+  "pass": true
+}

@@ -1,0 +1,9 @@
+**Verdict: PASS for art/functional beta, with caveats.**
+
+The evidence is internally consistent: wall-family counts sum to 4504, coverage is 92.7%, both logs are error-free at 4 draw calls, and the exclusion, collision, occlusion and multiplayer regressions passed.
+
+Caveats:
+- **Performance:** unverified. There was no real phone or physical GPU run, and 500k desktop triangles is untested.
+- **Visual fix:** no images were supplied to me, and re-inspection after the normals/palette revision isn't explicitly stated.
+- **Thinned coverage:** metrics are on the 15900 source roots, not the thinned sets (15625 desktop, 14761 phone).
+- **Views:** browser logs cover only screens, house and lane.
