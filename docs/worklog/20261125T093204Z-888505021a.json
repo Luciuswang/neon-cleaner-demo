@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261125T093204Z-888505021a",
+  "task_id": "river-bank-screens-20261125",
+  "timestamp_utc": "2026-11-25T09:32:04.646163+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "GitHub Pages PR 21 is live. The default Riverfall URL serves the verified paired bank screen build. Next: player feel check from the near-bank route.",
+  "commit_shas": [
+    "2f8499b2bec2bce8b8e9e3e1362bc2e0376bc440"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

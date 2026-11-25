@@ -849,3 +849,7 @@ Pages PR 20 live at the existing River URL. The release manifest and all seven c
 ## Sync note - 2026-11-25T17:28:47.7646175+08:00
 
 Four mirrored riverbank screens pass solo opening LOS, crossing and squad regressions on the Riverfall map; representative desktop and mobile-profile frame evidence is in the task packet. Public release verification follows.
+
+## Sync note - 2026-11-25T17:32:04.2369810+08:00
+
+GitHub Pages PR 21 is live. The default Riverfall URL serves the verified paired bank screen build. Next: player feel check from the near-bank route.

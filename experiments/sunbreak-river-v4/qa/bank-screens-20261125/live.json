@@ -1,0 +1,17 @@
+{
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "pr": 21,
+  "source": "2f8499b2bec2bce8b8e9e3e1362bc2e0376bc440",
+  "merge": "0dc0d97524132859f89aea2e98daec4d2f31b067",
+  "utc": "2026-11-25T09:31:26.053Z",
+  "checked": {
+    "public-release.json": "059386d49896276126bdbedc6106dc1a03e0d55575140a593bd01024fa88fb94",
+    "perimeter-layout.js": "d8da04faf5976e89eb92ec984881e0eb4e7f2a8ceeadfd84a6e6bfa6639b3401",
+    "perimeter-art.js": "46160f2cc8c9c8b69b24224e982b14f23edf075ed0c8e9e60dbd8d91fe10db8c",
+    "map-layout.js": "c05de4e902889afb7f519a1f8e9fbe76d893ff1c99e15dd456e0da3cacebc47d",
+    "afterrain-ground.js": "accf4fe06a5b4615c49c8d065b5f601659e0b27e5f47a3bd071e946856c23eb1",
+    "mobile-terrain.js": "27d4ad17a7ed1118b716e65ed55e25e0da4da511c6da6dcfd28aa5924aec1787",
+    "mobile-world.js": "45eb1bb1e296bd9957e7c48e9028d75a9b3281b356e8a6533a8610c06108ce79",
+    "world.js": "cefa8ca8af514fc7c9f6d4b68d6dcf1ff4b7d2f6e01f7152125d7fe283e3a8e2"
+  }
+}
