@@ -1,18 +1,18 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "a88a70ddb7562ba3df5ec807874a6ad6481bf70e",
-  "created": "2026-11-24T06:25:45.815Z",
+  "sourceCommit": "42c0727f267665d5f4d3e5ea4930993cf72f6abb",
+  "created": "2026-11-25T07:56:57.392Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
       "path": "index.html",
-      "bytes": 48076,
-      "sha256": "bdfa3f5c4881e9b3a58ffbdc7e5c573bae580f2d2a0144a5e7c423b47b8010e3"
+      "bytes": 48653,
+      "sha256": "68910cb7e467e7e06c53479993615f92d4883bb47eea99025b8bfbddb8c733e3"
     },
     {
       "path": "world.js",
-      "bytes": 35160,
-      "sha256": "5312d3ffdf7f69480378bbb359b2c9b9b4f3759fd3a86be02395650c6e4d4bc4"
+      "bytes": 35380,
+      "sha256": "a240ee09809267db6b519cefaaf92a841daf7eda2fc5abf7739e3ab40425dccf"
     },
     {
       "path": "village.js",
@@ -91,8 +91,8 @@
     },
     {
       "path": "boot-ui.js",
-      "bytes": 1500,
-      "sha256": "4f1c5e4ebd9bc5d393ce7dc681c287bcadd91295f909c82b0f8c86bcddf58162"
+      "bytes": 4835,
+      "sha256": "5cbd545c439ddeeda05a65fbf789649dd723cfac1277c505224c8371dcde43c0"
     },
     {
       "path": "combat-controls.js",
