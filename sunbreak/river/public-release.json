@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "a9ae0f04e7dfb30e33fa3043f14bac09111ac25e",
-  "created": "2026-11-25T11:31:03.271Z",
+  "sourceCommit": "409a8c3041f49e3f42aac5d3b84cf5b4ad2bf219",
+  "created": "2026-11-25T12:17:20.253Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -146,8 +146,8 @@
     },
     {
       "path": "distant-landscape.js",
-      "bytes": 21036,
-      "sha256": "dd372acd8865c550bf1258f0bc4ccce5a04c6177ccd4866a4386ba8df5199eaa"
+      "bytes": 21379,
+      "sha256": "c03e7107a7f589b245dff011f548cef00493cc4629e905cf7e64f6447ceeb7c1"
     },
     {
       "path": "riverbank-detail.js",
@@ -231,13 +231,18 @@
     },
     {
       "path": "wall-meadow.js",
-      "bytes": 6661,
-      "sha256": "e078b664ab21f31e466024bb8b04d1073516b862c87af0b82f6c28b6103c4b55"
+      "bytes": 7065,
+      "sha256": "79279bfd8a258ed1601b644591bdc4b3966a499d76b09635f8555d569bfcb31c"
+    },
+    {
+      "path": "slope-sward.js",
+      "bytes": 1510,
+      "sha256": "b110748d7fec12d38325d19d363a3d5a315a6821bd3ea4dbee68d2a185afee53"
     },
     {
       "path": "mobile-terrain.js",
-      "bytes": 11252,
-      "sha256": "27d4ad17a7ed1118b716e65ed55e25e0da4da511c6da6dcfd28aa5924aec1787"
+      "bytes": 11681,
+      "sha256": "8b14752730ce5ba1d5d68ee25d19476d52f4cbdb9d24bec18fcb79a2871899a5"
     },
     {
       "path": "mobile-ecology.js",
@@ -311,8 +316,8 @@
     },
     {
       "path": "afterrain-ground.js",
-      "bytes": 14318,
-      "sha256": "accf4fe06a5b4615c49c8d065b5f601659e0b27e5f47a3bd071e946856c23eb1"
+      "bytes": 14826,
+      "sha256": "90236cdbc5e742ace6e60accae60a8809ef638ff27c645e26862379d3dcc8609"
     },
     {
       "path": "afterrain-light.js",

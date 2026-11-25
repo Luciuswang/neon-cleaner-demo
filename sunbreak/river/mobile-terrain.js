@@ -94,11 +94,16 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
     float soil=max(vZone.x,(1.-vZone.y)*smoothstep(.4,.6,gB+(gN-.5)*.3)*.75);
     vec3 gC=mix(mix(gF*vec3(.85,1.,.7),gF,vZone.y),gD*vec3(.84,.74,.62),soil)*mix(.72,1.06,gB);   // grass -> forest floor -> worn path
     gC=mix(gC,mix(gM*.7,gP*.8,smoothstep(.5,.95,vZone.z+(gN-.5)*.3)),vZone.z)*mix(1.,.7,foot)*mix(1.,.8,rim);                         // wet bank mud, moisture darkening
+    float oD=max(abs(vGp.x)-32.,abs(vGp.y+4.)-30.),oG=smoothstep(0.,7.,oD)*smoothstep(.45,2.6,abs(vGp.x)-(3.4+.8*cos(vGp.y*.17)+.35*sin(vGp.y*.47)))*(1.-vZone.z);
+    float oL=clamp(dot(gF,vec3(.2126,.7152,.0722))/.09,.55,1.5);
+    vec3 oC=mix(vec3(.02,.05,.022),vec3(.062,.105,.05),smoothstep(.3,.7,gB))*mix(.68,1.14,gN)*oL;
+    gC=mix(gC,mix(oC,vec3(.03,.06,.036)*oL,smoothstep(50.,98.,oD)*.5),oG);
+    pud*=1.-oG;foot*=1.-oG;
     diffuseColor.rgb*=mix(gC,gM*vec3(.34,.31,.27),pud);`)
    .replace('#include <roughnessmap_fragment>','float roughnessFactor=roughness*mix(1.,.78,vZone.z*gN)*mix(1.,.62,foot);roughnessFactor=mix(roughnessFactor,.08,pud*(1.-.8*rim));')
    .replace('#include <normal_fragment_maps>','#include <normal_fragment_maps>\nnormal=normalize(mix(normal,nonPerturbedNormal,pud));');
  };
- ground.customProgramCacheKey=()=>'mobile-terrain-ground-v4';
+ ground.customProgramCacheKey=()=>'mobile-terrain-ground-v5';
  materials.terrain=ground;
  const terrain=new T.Mesh(geo,ground);
  terrain.name='mobile-terrain';terrain.receiveShadow=true;
