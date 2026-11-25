@@ -1,0 +1,7 @@
+**CONDITIONAL PASS**
+
+- **Palm:** The white, unlit look is gone. It now reads as a brown trunk with green-yellow fronds. Caveat: the trunk is rather flat and dark, and the yellow frond tips are slightly saturated.
+- **Vines:** Clearly legible green leaves on the stone. Caveat: they read as scattered, floating confetti-like cards with no visible stems or rooting, and are sparse at left.
+- **Roof moss:** Visible green patches along the ridge, eave and tile field. Caveat: subtle, and slightly stripe-like at the edges.
+
+Open conditions: vine naturalism, no real phone performance measurement, and three pre-existing unrelated suite failures.

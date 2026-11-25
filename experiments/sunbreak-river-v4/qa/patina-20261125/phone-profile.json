@@ -1,0 +1,32 @@
+{
+  "profile": "phone-profile",
+  "errors": [],
+  "views": [
+    "palm",
+    "stone",
+    "roof",
+    "village"
+  ],
+  "edges": [],
+  "surface": {
+    "palms": {
+      "barkMap": "coconut-bark-atlas",
+      "frondMap": "coconut-frond-atlas",
+      "palms": 5,
+      "groups": 2,
+      "draws": 2,
+      "triangles": 6300,
+      "decorative": true,
+      "collision": false
+    },
+    "creepers": {
+      "walls": 10,
+      "clusters": 37,
+      "leaves": 2770,
+      "draws": 1,
+      "triangles": 29840
+    },
+    "roofMaterials": 4
+  },
+  "pass": true
+}

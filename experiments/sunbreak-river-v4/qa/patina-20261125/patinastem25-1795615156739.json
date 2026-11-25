@@ -1,0 +1,35 @@
+{
+  "phase": "patinastem25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T13:59:16.737Z",
+  "result": "completed",
+  "responseSHA": "c474192cd2c3b17cbfecb881f7f1e193c6f77c10546cc62064587882d99dd041",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 1576,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1395,
+    "output_tokens_details": {
+      "thinking_tokens": 1016
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 1576
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.071592
+}

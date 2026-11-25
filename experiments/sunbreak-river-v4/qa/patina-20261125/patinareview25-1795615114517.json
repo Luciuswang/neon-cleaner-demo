@@ -1,0 +1,35 @@
+{
+  "phase": "patinareview25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T13:58:34.515Z",
+  "result": "completed",
+  "responseSHA": "0b7a7609a393362b822ee43a15d3dd7c8804fe9690373db0f78b8e4e89c814ab",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 1334,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 245,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 1334
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.023171999999999998
+}

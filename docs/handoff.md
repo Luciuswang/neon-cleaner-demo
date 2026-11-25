@@ -869,3 +869,7 @@ Riverfall meadow colour and exterior sward complete; fixed-camera WebGL both pro
 ## Sync note - 2026-11-25T20:19:55.5293883+08:00
 
 Riverfall slope meadow release PR 23 merged. Normal public URLs for the release manifest and all five changed modules byte-verified. Next: visual owner/handset feedback.
+
+## Sync note - 2026-11-25T22:01:13.5182959+08:00
+
+Riverfall five textured palms, ten vine-bearing covers and roof patina checked at four poses on both browser profiles. Visual conditional pass with shade-readability caveat; release pending Pages byte check.

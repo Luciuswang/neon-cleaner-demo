@@ -1,3 +1,4 @@
+import {installRoofPatina} from './roof-patina.js';
 import {wallTopAt} from './map-layout.js';
 import {cloneSurfaceMaterial,createMasonryMaterial,MASONRY_PALETTE} from './masonry-materials.js';
 import {buildStoneCover,isStoneCover} from './stone-cover.js';
@@ -19,6 +20,7 @@ export function buildVillage({ T, world, materials, layout, solids }) {
     wood: tint('wood', 0x5b3e27), woodA: tint('wood', 0x8d8473), woodB: tint('wood', 0x6f6352),
     shutter: tint('wood', 0x3f5f52), roof: tint('roof', 0x4b3b36), tile: tint('roof', 0x3a2c29)
   };
+  if(hutLook){installRoofPatina(M.tile);installRoofPatina(M.roof);}
   const B = {};
   const lift=new T.Color(0xb5a58e);lift.r/=M.woodA.color.r;lift.g/=M.woodA.color.g;lift.b/=M.woodA.color.b;
   const board=(a,b)=>{const m=.9+.2*ph(a,b);return [lift.r*m,lift.g*m,lift.b*m];};
