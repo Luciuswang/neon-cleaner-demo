@@ -865,3 +865,7 @@ GitHub Pages PR 22 is live; the public manifest and all six changed or new game 
 ## Sync note - 2026-11-25T20:16:47.8288116+08:00
 
 Riverfall meadow colour and exterior sward complete; fixed-camera WebGL both profiles and geometry checks passed, visual iteration conditional pass. Publish this source via river-only Pages PR.
+
+## Sync note - 2026-11-25T20:19:55.5293883+08:00
+
+Riverfall slope meadow release PR 23 merged. Normal public URLs for the release manifest and all five changed modules byte-verified. Next: visual owner/handset feedback.

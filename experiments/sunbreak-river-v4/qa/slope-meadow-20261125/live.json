@@ -1,0 +1,15 @@
+{
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "pr": 23,
+  "source": "409a8c3041f49e3f42aac5d3b84cf5b4ad2bf219",
+  "merge": "89debec9df670fcbc5f07aad9c1348bfc71e0dd6",
+  "utc": "2026-11-25T12:19:39.131Z",
+  "checked": {
+    "public-release.json": "ad37baecf13adac83ceef66c18d997d89041a55c53e6963d8acc1939f5693ebd",
+    "slope-sward.js": "b110748d7fec12d38325d19d363a3d5a315a6821bd3ea4dbee68d2a185afee53",
+    "wall-meadow.js": "79279bfd8a258ed1601b644591bdc4b3966a499d76b09635f8555d569bfcb31c",
+    "afterrain-ground.js": "90236cdbc5e742ace6e60accae60a8809ef638ff27c645e26862379d3dcc8609",
+    "distant-landscape.js": "c03e7107a7f589b245dff011f548cef00493cc4629e905cf7e64f6447ceeb7c1",
+    "mobile-terrain.js": "8b14752730ce5ba1d5d68ee25d19476d52f4cbdb9d24bec18fcb79a2871899a5"
+  }
+}
