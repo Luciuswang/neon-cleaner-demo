@@ -69,15 +69,28 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
  ground.onBeforeCompile=sh=>{
   Object.assign(sh.uniforms,gu);
   sh.vertexShader=sh.vertexShader
-   .replace('#include <common>','#include <common>\nattribute vec4 aZone;varying vec4 vZone;')
-   .replace('#include <begin_vertex>','#include <begin_vertex>\nvZone=aZone;');
+   .replace('#include <common>','#include <common>\nattribute vec4 aZone;varying vec4 vZone;varying vec2 vGp;')
+   .replace('#include <begin_vertex>','#include <begin_vertex>\nvZone=aZone;vGp=(modelMatrix*vec4(transformed,1.)).xz;');
   sh.fragmentShader=sh.fragmentShader
-   .replace('#include <common>','#include <common>\nuniform sampler2D uMud,uForest,uPebble;varying vec4 vZone;')
+   .replace('#include <common>','#include <common>\nuniform sampler2D uMud,uForest,uPebble;varying vec4 vZone;varying vec2 vGp;')
    .replace('#include <map_fragment>',`
     vec3 gD=texture2D(map,vMapUv).rgb,gM=texture2D(uMud,vMapUv).rgb,gF=texture2D(uForest,vMapUv*.7).rgb,gP=texture2D(uPebble,vMapUv*1.7).rgb;
     float gN=smoothstep(.2,.7,texture2D(map,vMapUv*.19+.37).g),gB=smoothstep(.15,.65,texture2D(uForest,vMapUv*.043+.11).r);
     float pud=smoothstep(.47,.55,vZone.w+(gN-.5)*.22),wet=max(vZone.z,pud),rim=pud*(1.-pud)*4.;
-    float foot=vZone.x*smoothstep(.5,.72,texture2D(uMud,vMapUv*.83+.5).g)*(1.-pud);
+    float rS=vGp.x<0.?-1.:1.,rW=smoothstep(8.,13.,vGp.y)*(1.-smoothstep(31.,36.,vGp.y));
+    float rD=min(abs(abs(abs(vGp.x)-(10.+.55*sin(vGp.y*.16-rS*.8)+.25*sin(vGp.y*.53+2.)))-.75),abs(abs(vGp.x+26.-.7*sin((vGp.y-22.)*.19))-.75)+(1.-rW)*9.);
+    float rN=.5+.5*sin(vGp.y*5.3+sin(vGp.y*1.7+vGp.x*2.1)*2.5),rM=(1.-vZone.y*.5)*(1.-pud);
+    float rG=(1.-smoothstep(.08,.24+.06*rN,rD))*rM,rR=smoothstep(.16,.3,rD)*(1.-smoothstep(.34,.52,rD))*(.45+.55*rN)*rM;
+    pud=max(pud,rG*smoothstep(.35,.7,sin(vGp.y*.83+rS*2.)*sin(vGp.y*.29+1.)));
+    float foot=(max(vZone.x*smoothstep(.5,.72,texture2D(uMud,vMapUv*.83+.5).g)*1.25,rG*.9)-rR*.3)*(1.-pud);
+    vec2 bq=vec2(abs(vGp.x)-(21.5+.35*sin(vGp.y*.4)),vGp.y-(21.+.3*sin(vGp.x*.5)));
+    float bA=step(abs(bq.y),.4)*step(12.,abs(vGp.x))*step(abs(vGp.x),30.),bW=max(bA,step(abs(bq.x),.4)*step(14.,vGp.y)*step(vGp.y,29.));
+    vec2 bt=bA>.5?vec2(abs(vGp.x),bq.y):vec2(vGp.y,bq.x);
+    float bi=floor(bt.x/.74),bs=mod(bi,2.)*2.-1.,bH=fract(sin(bi*12.99+bA*7.)*43758.5);
+    vec2 bp=vec2(fract(bt.x/.74)*.74-.37,bt.y-bs*.11);
+    float bS=min(length(vec2(max(abs(bp.x-.05)-.04,0.),bp.y))-.05,length(vec2(bp.x+.09,bp.y))-.04),bM=bW*step(.25,bH)*(1.-vZone.y)*(1.-pud);
+    float bF=(1.-smoothstep(-.01,.012,bS))*bM,bR=smoothstep(0.,.02,bS)*(1.-smoothstep(.03,.06,bS))*bM;
+    foot=max(foot,bF*.95)-bR*.35;pud=max(pud,bF*step(.8,bH)*.8);
     float soil=max(vZone.x,(1.-vZone.y)*smoothstep(.4,.6,gB+(gN-.5)*.3)*.75);
     vec3 gC=mix(mix(gF*vec3(.85,1.,.7),gF,vZone.y),gD*vec3(.84,.74,.62),soil)*mix(.72,1.06,gB);   // grass -> forest floor -> worn path
     gC=mix(gC,mix(gM*.7,gP*.8,smoothstep(.5,.95,vZone.z+(gN-.5)*.3)),vZone.z)*mix(1.,.7,foot)*mix(1.,.8,rim);                         // wet bank mud, moisture darkening
@@ -85,7 +98,7 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
    .replace('#include <roughnessmap_fragment>','float roughnessFactor=roughness*mix(1.,.78,vZone.z*gN)*mix(1.,.62,foot);roughnessFactor=mix(roughnessFactor,.08,pud*(1.-.8*rim));')
    .replace('#include <normal_fragment_maps>','#include <normal_fragment_maps>\nnormal=normalize(mix(normal,nonPerturbedNormal,pud));');
  };
- ground.customProgramCacheKey=()=>'mobile-terrain-ground-v2';
+ ground.customProgramCacheKey=()=>'mobile-terrain-ground-v4';
  materials.terrain=ground;
  const terrain=new T.Mesh(geo,ground);
  terrain.name='mobile-terrain';terrain.receiveShadow=true;
