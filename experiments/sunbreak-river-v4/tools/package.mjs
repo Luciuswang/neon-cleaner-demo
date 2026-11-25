@@ -12,6 +12,7 @@ const runtime=['index.html','world.js','village.js','ruins.js','fracture-geometr
 runtime.push('distant-landscape.js','riverbank-detail.js','river-water.js','ground-moisture.js','daylight-assets.json','afterrain-assets.json','wild-grass-assets.json');
 runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','masonry-materials.js');
 runtime.push('aim-assist.js');
+runtime.push('perimeter-layout.js','perimeter-art.js');
 runtime.push('mobile-world.js','mobile-controls.js');
 runtime.push('mobile-terrain.js','mobile-ecology.js','mobile-look.json');
 runtime.push('squads-sim.js','squads-net.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.

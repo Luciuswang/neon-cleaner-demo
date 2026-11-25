@@ -1,0 +1,54 @@
+{
+  "profile": "desktop",
+  "errors": [],
+  "views": [
+    "lane",
+    "spawn",
+    "west-wall",
+    "river-outlet"
+  ],
+  "edges": [
+    {
+      "x": -31.95,
+      "z": 0,
+      "ground": true,
+      "jump": true
+    },
+    {
+      "x": 31.95,
+      "z": -14,
+      "ground": true,
+      "jump": true
+    },
+    {
+      "x": 0,
+      "z": -33.95,
+      "ground": true,
+      "jump": true
+    },
+    {
+      "x": 0,
+      "z": 25.95,
+      "ground": true,
+      "jump": true
+    },
+    {
+      "x": -31.94,
+      "z": -33.94,
+      "ground": true,
+      "jump": true
+    },
+    {
+      "x": 31.94,
+      "z": 25.94,
+      "ground": true,
+      "jump": true
+    }
+  ],
+  "walkIntoWall": [
+    -31.586419997596746,
+    2.3012160499879832,
+    1
+  ],
+  "pass": true
+}

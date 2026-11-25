@@ -1,6 +1,7 @@
 import {buildMobileTerrain} from './mobile-terrain.js';
 import {buildMobileEcology} from './mobile-ecology.js';
 import {buildVillage} from './village.js';
+import {buildPerimeter} from './perimeter-art.js';
 import {buildRuins} from './ruins.js';
 import {buildBufferHouses} from './buffer-house.js';
 import {buildWeapon} from './weapon.js';
@@ -75,6 +76,7 @@ export async function buildWorld(ctx){
  if(missing.length)throw new Error('mobile-world: mobile terrain is missing material roles: '+missing.join(', '));
  buildDistantLandscape({T,world,materials,forested:true});
  const village=await stage('村落',()=>buildVillage({T,world,materials,layout,solids}));
+ buildPerimeter(T,world,materials.stone,solids);
  const ruins=await stage('废墟',()=>buildRuins({T,world,materials,layout,solids}));
  const buffers=await stage('缓冲房屋',()=>buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements}));
  const ecology=await stage('生态',()=>buildMobileEcology({T,world}));

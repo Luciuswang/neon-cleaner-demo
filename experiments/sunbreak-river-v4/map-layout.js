@@ -1,4 +1,5 @@
 import {CABIN_NAVIGATION_LOCAL_BOUNDS,createHouseTransform} from './buffer-house-logic.js';
+import {perimeterBounds} from './perimeter-layout.js';
 // One shared geometric contract for rendering, movement, ray occlusion and AI.
 export const MAP={minX:-32,maxX:32,minZ:-34,maxZ:26,waterY:-.18};
 export const TERRAIN_GRID={size:260,segments:520};
@@ -74,6 +75,7 @@ export function wallTopAt(w,x,z,r=0){
  return w.y-w.h/2+top*w.h;
 }
 export const bounds=walls.map(b=>({min:{x:b.x-b.w/2,y:b.y-b.h/2,z:b.z-b.d/2},max:{x:b.x+b.w/2,y:b.y+b.h/2,z:b.z+b.d/2},id:b.id,...b.profile?{profileWall:b}:{}}));
+bounds.push(...perimeterBounds(MAP));
 // NPCs use the outside buffer routes; indoor navigation is not introduced.
 export const navigationBounds=[...bounds,...houses.filter(h=>!h.ruin).flatMap(h=>[-1,1].map(s=>{const x=h.x-h.side*2.75,z=h.z+s*2.1;return{id:`${h.id}-bay-nav-${s}`,min:{x:x-.1,y:0,z:z-.725},max:{x:x+.1,y:2.3,z:z+.725}}})),...bufferPlacements.map(p=>({id:p.id,...createHouseTransform(p).localBounds(CABIN_NAVIGATION_LOCAL_BOUNDS)}))];
 export const spawns=[[-25,0,-25],[25,0,-25],[-9,0,-10],[9,0,-10],[-25,0,20],[25,0,20]];

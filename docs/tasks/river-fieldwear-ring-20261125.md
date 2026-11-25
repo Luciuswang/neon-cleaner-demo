@@ -1,0 +1,11 @@
+# Riverfall: post-rain road wear and visible perimeter
+
+Scope: rural terrain material and perimeter, PC and phone render paths. No changes to match rules, inputs, spawns, houses or earlier demos. Gate: representative art review plus runtime movement and map regression.
+
+Production via the user Gateway (requested/reported `claude-fable-5-2`): shared fieldstone perimeter, material-based ruts and additional boot trails, seam/color variation, and an open-backed culvert. The protected world-space map limits remain intact; the common collider list now includes four physical wall faces. The river continues behind the lintels; the opening is not a playable exit. The face has two render meshes, nominal top 1.50 m. Ground changes are shading only, with no change to walking height. Two unused producer attempts (an independent decal module and a wholesale face rewrite) returned no usable code; they are not credited. Sanitized gateway receipts are in the QA directory, not upstream billing verification.
+
+QA evidence: `experiments/sunbreak-river-v4/qa/fieldwear-ring-20261125`. Offscreen Chromium on the desktop and emulated phone rendering paths produced four representative frames each, with no reported JS/GL errors. Both profiles blocked the body at standing and jump heights at four edges and two corners. Holding forward and jump into the west wall in desktop solo stopped the body at x -31.586 (visible face x -32, player radius .4 m). `squads-opening.mjs`, `squads-rules.mjs`, and the loading lifecycle regression passed. These tests are not physical-phone or WAN playtests.
+
+Art precheck: conditional pass. The paired ruts and patchy footprints now read as directional wear, the stone profile shows the limit before the body reaches it, and the backplate was removed from the river outlets. Stone courses remain fairly even; the phone has simplified mud highlights. Separate visual art review from collision PASS. The pinned River asset mirror was verified; unrelated private UE vault work was preserved.
+
+Next: publish the packaged River overlay to the existing URL and verify live bytes.

@@ -12,6 +12,7 @@ import {buildCombatFeedback} from './combat-feedback.js';
 import {buildActors} from './actors.js';
 import {createStormAudio} from './storm-audio.js';
 import {buildVillage} from './village.js';
+import {buildPerimeter} from './perimeter-art.js';
 import {buildVegetation} from './vegetation.js';
 import {installTerrainRaycast} from './terrain-ray.js';
 import {buildBufferHouses} from './buffer-house.js';
@@ -126,6 +127,7 @@ export async function buildWorld(ctx){
  };
  const bed=new T.Mesh(bedGeo,gravel);bed.receiveShadow=true;world.add(bed);
  const village=buildVillage({T,world,materials,layout,solids});
+ buildPerimeter(T,world,materials.stone,solids);
  const ruins=buildRuins({T,world,materials,layout,solids});
  const buffers=buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements});
  window.riverBootStep?.(5,'村落与植被');const foliage=await buildVegetation(T,world,{renderer:rnd,stoneMaterial:materials.stone,sunDirection,environment:env.texture});

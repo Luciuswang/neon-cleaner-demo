@@ -111,8 +111,28 @@ export function enhanceAfterRainGround(T,material,s,reflection){
     if(abs(cC)<.36&&bootAx<11.5)bootPrint=max(bootPrint,bootTrail(vec2(gp.x+.37,cC),29.));
     bootPrint*=bootMud;
    }
+   float bkM=mix(.55,1.,smoothstep(.2,.55,soilWet))*(1.-vSurfaceZones.y)*(1.-greenCover)*(1.-puddle)*smoothstep(bootWidth+.25,bootWidth+.7,bootAx)*(1.-smoothstep(.22,.45,vGroundSlope));
+   if(bkM>.003){
+    vec3 bk=vec3(0.);
+    float bkB=gp.x<0.?1.:smoothstep(-.2,.2,sin(gp.x*.9+gp.y*.3));
+    float d1=gp.y-(21.+.3*sin(gp.x*.5));
+    float d2=bootAx-(21.5+.35*sin(gp.y*.4));
+    float d3=gp.y-(-4.6+.3*sin(gp.x*.6));
+    if(abs(d1)<.36&&bootAx>12.&&bootAx<30.)bk=max(bk,bootTrail(vec2(gp.x,d1),41.)*bkB);
+    if(abs(d2)<.36&&gp.y>14.&&gp.y<29.)bk=max(bk,bootTrail(vec2(gp.y,d2),47.)*bkB);
+    if(abs(d3)<.36&&bootAx>11.5&&bootAx<18.)bk=max(bk,bootTrail(vec2(-gp.x,d3),53.)*smoothstep(-.3,.1,sin(gp.x*1.1)));
+    bootPrint=max(bootPrint,bk*vec3(1.,1.35,1.)*bkM);
+   }
    // Height in metres, used later for the derivative normal.
-   float bootHeight=(bootPrint.y*.35-bootPrint.x)*.03;
+   float rutS=gp.x<0.?-1.:1.;
+   float rutWin=smoothstep(8.,13.,gp.y)*(1.-smoothstep(31.,36.,gp.y));
+   float rutD=min(abs(abs(bootAx-(10.+.55*sin(gp.y*.16-rutS*.8)+.25*sin(gp.y*.53+2.)))-.75),abs(abs(gp.x+26.-.7*sin((gp.y-22.)*.19))-.75)+(1.-rutWin)*9.);
+   float rutN=.5+.5*sin(gp.y*5.3+sin(gp.y*1.7+gp.x*2.1)*2.5);
+   float rutMask=bootFade*mix(.65,1.,smoothstep(.2,.55,soilWet))*(1.-vSurfaceZones.y)*(1.-.5*greenCover)*(1.-puddle)*(1.-smoothstep(.22,.45,vGroundSlope));
+   float rutG=1.-smoothstep(.08,.24+.06*rutN,rutD);
+   float rutR=smoothstep(.16,.3,rutD)*(1.-smoothstep(.34,.52,rutD))*(.45+.55*rutN);
+   bootPrint=max(bootPrint,vec3(rutG*.9,rutR,rutG*smoothstep(.35,.7,sin(gp.y*.83+rutS*2.)*sin(gp.y*.29+1.)))*rutMask);
+   float bootHeight=(bootPrint.y*.35-bootPrint.x)*.05;
    // Water only in the lowest bowls on flat y=0 wet ground, where the planar
    // reflection is valid. Sloped-bank prints darken only and never reflect.
    float bootWater=smoothstep(.45,.75,bootPrint.z)*basinFlatness*flatPlane*(1.-vForestCover)*smoothstep(.3,.6,soilWet+soilRain*.3);
