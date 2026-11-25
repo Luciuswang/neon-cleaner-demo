@@ -75,6 +75,14 @@ export function wallTopAt(w,x,z,r=0){
  return w.y-w.h/2+top*w.h;
 }
 export const bounds=walls.map(b=>({min:{x:b.x-b.w/2,y:b.y-b.h/2,z:b.z-b.d/2},max:{x:b.x+b.w/2,y:b.y+b.h/2,z:b.z+b.d/2},id:b.id,...b.profile?{profileWall:b}:{}}));
+// Mirrored banks. The gap at the bridge and the two ford approaches stay open.
+export const bankScreens=[];
+for(const [side,x] of [['west',-7.5],['east',7.5]]){
+ for(const [tag,z,d] of [['mid',-9,4.7],['north',20.2,6.6]]){
+  bankScreens.push({id:`bank-screen-${side}-${tag}`,x,y:1,z,w:.85,h:2,d,material:'stone'});
+ }
+}
+bounds.push(...bankScreens.map(b=>({min:{x:b.x-b.w/2,y:b.y-b.h/2,z:b.z-b.d/2},max:{x:b.x+b.w/2,y:b.y+b.h/2,z:b.z+b.d/2},id:b.id})));
 bounds.push(...perimeterBounds(MAP));
 // NPCs use the outside buffer routes; indoor navigation is not introduced.
 export const navigationBounds=[...bounds,...houses.filter(h=>!h.ruin).flatMap(h=>[-1,1].map(s=>{const x=h.x-h.side*2.75,z=h.z+s*2.1;return{id:`${h.id}-bay-nav-${s}`,min:{x:x-.1,y:0,z:z-.725},max:{x:x+.1,y:2.3,z:z+.725}}})),...bufferPlacements.map(p=>({id:p.id,...createHouseTransform(p).localBounds(CABIN_NAVIGATION_LOCAL_BOUNDS)}))];
