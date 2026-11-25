@@ -14,20 +14,6 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
-    },
-    "river-slope-meadow-20261125": {
-      "base_commit": "6cbf653414fc1f1054ada335756693fb56cd5513",
-      "branch": "codex/character-continuity-pipeline",
-      "expires_at": "2026-11-25T20:07:35.453251+00:00",
-      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
-      "scopes": [
-        "experiments/sunbreak-river-v4",
-        "docs/tasks/river-slope-meadow-20261125.md",
-        "docs/worklog",
-        "docs/handoff.md"
-      ],
-      "task_id": "river-slope-meadow-20261125",
-      "updated_at": "2026-11-25T12:07:35.453251+00:00"
     }
   },
   "schema": 1
