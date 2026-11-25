@@ -166,7 +166,7 @@ export async function buildMobileEcology({T,world,landscapeHeight:lhArg=layoutHe
  // ---------- grass: desktop clump positions, original alpha maps, true .12–.55 m heights
  const GRASS_HEIGHT=desktop.GRASS_VARIANTS?desktop.GRASS_VARIANTS.map(v=>v.height):[.14,.18,.22,.23,.34,.22,.48,.48];
  const grassBaked=[grassA,grassB].map((gltf,i)=>bake(gltf.scene.getObjectByName(GRASS_NODES[i])||gltf.scene,()=>true));
- const roots=[...plan.low,...plan.medium,...plan.tall];
+ const roots=[...plan.low,...plan.medium,...plan.tall].filter(p=>!(GRASS_SOURCE[p.variant]===0&&desktop.meadowSuperseded(p.x,p.z)));
  const grassTotal=roots.reduce((a,p)=>a+grassBaked[GRASS_SOURCE[p.variant]??0].triangles,0);
  const keep=Math.min(1,GRASS_TRI_BUDGET/Math.max(1,grassTotal));
  const grassItems=[[],[]];

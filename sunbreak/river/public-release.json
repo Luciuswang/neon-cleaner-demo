@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "2f8499b2bec2bce8b8e9e3e1362bc2e0376bc440",
-  "created": "2026-11-25T09:29:04.002Z",
+  "sourceCommit": "a9ae0f04e7dfb30e33fa3043f14bac09111ac25e",
+  "created": "2026-11-25T11:31:03.271Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -11,8 +11,8 @@
     },
     {
       "path": "world.js",
-      "bytes": 35480,
-      "sha256": "cefa8ca8af514fc7c9f6d4b68d6dcf1ff4b7d2f6e01f7152125d7fe283e3a8e2"
+      "bytes": 35527,
+      "sha256": "86f5747225bcea0162e53e5aa1158ef52ad572776d960e45375f4e86ac426b24"
     },
     {
       "path": "village.js",
@@ -51,8 +51,8 @@
     },
     {
       "path": "vegetation.js",
-      "bytes": 26473,
-      "sha256": "dc337dec583d30fd4b8c268b6b86c2d7bcbd1a5f518f55eb06034a2751befdda"
+      "bytes": 26651,
+      "sha256": "9549e40341118dbb6d214bb1fc4bf3418abe0d2da2bbea6284b95c62053a30f9"
     },
     {
       "path": "map-layout.js",
@@ -216,13 +216,23 @@
     },
     {
       "path": "mobile-world.js",
-      "bytes": 13674,
-      "sha256": "45eb1bb1e296bd9957e7c48e9028d75a9b3281b356e8a6533a8610c06108ce79"
+      "bytes": 13822,
+      "sha256": "38b2a2fd9678d04802db40045007691dea5c244d48372fbd0f112a79b168b672"
     },
     {
       "path": "mobile-controls.js",
       "bytes": 8735,
       "sha256": "8dac545b09638f6124b0fc23b850a13b1bf0851b71d3adb7a87a75aebffc2abc"
+    },
+    {
+      "path": "meadow-roots.js",
+      "bytes": 4043,
+      "sha256": "9a97d97b3379d051b157172449ce696fdbf46aef623af196f0bfe1f99043d098"
+    },
+    {
+      "path": "wall-meadow.js",
+      "bytes": 6661,
+      "sha256": "e078b664ab21f31e466024bb8b04d1073516b862c87af0b82f6c28b6103c4b55"
     },
     {
       "path": "mobile-terrain.js",
@@ -231,8 +241,8 @@
     },
     {
       "path": "mobile-ecology.js",
-      "bytes": 13766,
-      "sha256": "9f0cf9b0913a7df2e5ea406061c56f3f855241fcde4c916124f27c1a6bc35694"
+      "bytes": 13843,
+      "sha256": "b6585395b9f41aee465d135c7637690eb07af7373a4368a44319c730e2d67999"
     },
     {
       "path": "mobile-look.json",
