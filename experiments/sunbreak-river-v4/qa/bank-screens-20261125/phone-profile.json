@@ -1,0 +1,66 @@
+{
+  "profile": "phone-profile",
+  "errors": [],
+  "views": [
+    "bank",
+    "opposite",
+    "overview"
+  ],
+  "edges": [],
+  "opening": {
+    "sample": [
+      {
+        "x": 25,
+        "z": -25,
+        "h": 1.7,
+        "visible": false,
+        "reverseVisible": false
+      },
+      {
+        "x": 25,
+        "z": -25,
+        "h": 1.95,
+        "visible": false,
+        "reverseVisible": false
+      },
+      {
+        "x": 9,
+        "z": -10,
+        "h": 1.7,
+        "visible": false,
+        "reverseVisible": false
+      },
+      {
+        "x": 9,
+        "z": -10,
+        "h": 1.95,
+        "visible": false,
+        "reverseVisible": false
+      },
+      {
+        "x": 25,
+        "z": 20,
+        "h": 1.7,
+        "visible": false,
+        "reverseVisible": false
+      },
+      {
+        "x": 25,
+        "z": 20,
+        "h": 1.95,
+        "visible": false,
+        "reverseVisible": false
+      }
+    ],
+    "render": {
+      "renderMarker": "bank-screens-fieldstone",
+      "drawCalls": 2,
+      "screens": 4,
+      "stones": 346,
+      "triangles": 6276,
+      "stoneTriangles": 6228,
+      "coreTriangles": 48
+    }
+  },
+  "pass": true
+}

@@ -1,0 +1,35 @@
+{
+  "phase": "bankreview25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T09:28:18.632Z",
+  "result": "completed",
+  "responseSHA": "5509d4de4388221d48a727c5d6260d8c1b0a706156703fba8b28a9c8f94783f4",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 1524,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 663,
+    "output_tokens_details": {
+      "thinking_tokens": 370
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 1524
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.041791999999999996
+}

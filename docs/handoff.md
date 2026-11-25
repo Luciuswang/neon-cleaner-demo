@@ -845,3 +845,7 @@ Riverfall field wear and matching stone perimeter: desktop and phone-profile ren
 ## Sync note - 2026-11-25T16:25:25.8380438+08:00
 
 Pages PR 20 live at the existing River URL. The release manifest and all seven changed/new runtime modules matched; next is owner visual acceptance.
+
+## Sync note - 2026-11-25T17:28:47.7646175+08:00
+
+Four mirrored riverbank screens pass solo opening LOS, crossing and squad regressions on the Riverfall map; representative desktop and mobile-profile frame evidence is in the task packet. Public release verification follows.

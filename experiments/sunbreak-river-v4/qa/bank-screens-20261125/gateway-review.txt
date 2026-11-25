@@ -1,0 +1,11 @@
+**Verdict: PASS, scoped to the supplied evidence. No genuine blocker.**
+
+- **Cover:** geometry tests, spawn sight lines (2/6 → 6/6 blocked), and the 0-open result across 864 online opening checks agree.
+- **Logs:** both profiles pass with no errors, all 12 samples are hidden in both directions, and the triangle counts reconcile (6228 + 48 = 6276).
+- **Regression:** the old rules pass and all three crossings remain traversable.
+
+Caveats, none blocking:
+- There was no physical phone or WAN run on this revision; the "phone-profile" is emulation only.
+- The browser clearSight check sampled east NPCs only; west coverage rests on the CPU and simulation tests.
+- Visual quality rests on the coordinator's render review; I did not see the images.
+- Performance and battery are unattested.
