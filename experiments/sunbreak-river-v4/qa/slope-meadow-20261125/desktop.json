@@ -1,0 +1,22 @@
+{
+  "profile": "desktop",
+  "errors": [],
+  "views": [
+    "west",
+    "east",
+    "ridge",
+    "grass"
+  ],
+  "edges": [],
+  "meadow": {
+    "roots": 26855,
+    "sourceRoots": 26855,
+    "drawCalls": 4,
+    "triangles": 322260,
+    "planesPerTuft": 3,
+    "outerRoots": 10955,
+    "atlas": 1024,
+    "mobile": false
+  },
+  "pass": true
+}

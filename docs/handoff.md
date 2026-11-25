@@ -861,3 +861,7 @@ Riverfall wall meadow: PC/phone-profile artwork and source-mask checks pass; unc
 ## Sync note - 2026-11-25T19:33:28.4021787+08:00
 
 GitHub Pages PR 22 is live; the public manifest and all six changed or new game modules match. Next: player review of grass and retained roads, and a physical handset performance check.
+
+## Sync note - 2026-11-25T20:16:47.8288116+08:00
+
+Riverfall meadow colour and exterior sward complete; fixed-camera WebGL both profiles and geometry checks passed, visual iteration conditional pass. Publish this source via river-only Pages PR.

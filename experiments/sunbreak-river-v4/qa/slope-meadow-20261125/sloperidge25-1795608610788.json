@@ -1,0 +1,35 @@
+{
+  "phase": "sloperidge25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T12:10:10.786Z",
+  "result": "completed",
+  "responseSHA": "3b25c7f666f360fe2b45b927e546c715a70de09a3a6c651ab3fcad4a9a41d11e",
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 12797,
+    "cache_read_input_tokens": 6230,
+    "output_tokens": 6835,
+    "output_tokens_details": {
+      "thinking_tokens": 4303
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 12797
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.40268000000000004
+}

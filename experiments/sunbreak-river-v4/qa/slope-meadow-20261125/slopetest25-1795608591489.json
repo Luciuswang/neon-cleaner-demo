@@ -1,0 +1,35 @@
+{
+  "phase": "slopetest25",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-25T12:09:51.487Z",
+  "result": "completed",
+  "responseSHA": "56de45c9e31f2cbd16aeb530da25baf3afea083183158edb11022a95a70af4ef",
+  "usage": {
+    "input_tokens": 368,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2397,
+    "output_tokens_details": {
+      "thinking_tokens": 643
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.098824
+}

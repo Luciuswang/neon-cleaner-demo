@@ -1,0 +1,13 @@
+**Verdict: CONDITIONAL PASS** — shippable as an iteration.
+
+**Visible in frames**
+- Fluorescent yellow-lime is gone; foreground reads as natural mid/deep green live grass with blade variation.
+- Beyond-wall ground is now a continuous muted green rather than a pale flat strip, but at these distances it reads as tone, not distinct tufts.
+- Distant ground and tree line are cooler and hazier, giving a believable blue-green depth.
+
+**Implementation evidence only (not verifiable visually)**
+- Tuft counts, 3244/3360 coverage, batches, triangles, passing tests.
+
+**Caveats**
+- Bottom AFTER frame leans dark and slightly desaturated; check under other lighting.
+- No real phone frame-pacing test; mobile performance is unproven.

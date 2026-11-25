@@ -14,7 +14,7 @@ runtime.push('ground-surface.js','ground-surface-assets.json','height-fog.js','m
 runtime.push('aim-assist.js');
 runtime.push('perimeter-layout.js','perimeter-art.js');
 runtime.push('mobile-world.js','mobile-controls.js');
-runtime.push('meadow-roots.js','wall-meadow.js');
+runtime.push('meadow-roots.js','wall-meadow.js','slope-sward.js');
 runtime.push('mobile-terrain.js','mobile-ecology.js','mobile-look.json');
 runtime.push('squads-sim.js','squads-net.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
