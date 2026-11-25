@@ -49,7 +49,7 @@ export async function buildWorld(ctx){
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296};
  const weatherAudio=createStormAudio(),windTime={value:0},rainStrength={value:0};
  async function map(path,color){const t=await loader.loadAsync(path);t.colorSpace=color?T.SRGBColorSpace:T.NoColorSpace;t.wrapS=t.wrapT=T.RepeatWrapping;t.anisotropy=Math.min(8,rnd.capabilities.getMaxAnisotropy());return t}
- const [shared,local]=await Promise.all(['./assets-manifest.json','./river/asset-sources.json'].map(p=>fetch(p).then(r=>{if(!r.ok)throw Error(p);return r.json()})));
+ window.riverBootStep?.(4,'材质与贴图');const [shared,local]=await Promise.all(['./assets-manifest.json','./river/asset-sources.json'].map(p=>fetch(p).then(r=>{if(!r.ok)throw Error(p);return r.json()})));
  async function surface(name,files,tint=0xffffff,roughness=.85){
   const m=new T.MeshStandardMaterial({color:tint,roughness,metalness:0});
   await Promise.all(files.map(async f=>{const role=f.role,key={base_color:'map',normal_opengl:'normalMap',roughness:'roughnessMap',color:'map',normal:'normalMap'}[role];if(key)m[key]=await map(f.path,key==='map')}));
@@ -65,7 +65,7 @@ export async function buildWorld(ctx){
  const groundAssets=await fetch('./river/ground-surface-assets.json').then(r=>r.json());
  if(!procedural)await Promise.all(groundAssets.assets.map(a=>surface(a.id,a.files.map(f=>({role:f.role,path:'./river/'+f.file})))));
  const legacyTextureURLs=[...shared.assets.filter(a=>['plaster','wood'].includes(roles[a.semantic_role])).flatMap(a=>a.files.map(f=>f.path)),...local.assets.filter(a=>a.kind==='surface').flatMap(a=>a.files.map(f=>f.path)),...groundAssets.assets.flatMap(a=>a.files.map(f=>'./river/'+f.file))].map(p=>new URL(p,document.baseURI).href);
- const [hdr,cloudHDR]=await Promise.all([
+ window.riverBootStep?.(4,'天空与光照');const [hdr,cloudHDR]=await Promise.all([
   new RGBELoader().setDataType(T.FloatType).loadAsync('./river/assets/afterrain-light/kloofendal_43d_clear_puresky_2k.hdr'),
   new RGBELoader().loadAsync('./assets/kloofendal_overcast_puresky/kloofendal_overcast_puresky_2k.hdr')]);
  hdr.mapping=cloudHDR.mapping=T.EquirectangularReflectionMapping;
@@ -128,12 +128,12 @@ export async function buildWorld(ctx){
  const village=buildVillage({T,world,materials,layout,solids});
  const ruins=buildRuins({T,world,materials,layout,solids});
  const buffers=buildBufferHouses({T,world,materials,solids,cam,getInteractionState:ctx.getInteractionState,placements:bufferPlacements});
- const foliage=await buildVegetation(T,world,{renderer:rnd,stoneMaterial:materials.stone,sunDirection,environment:env.texture});
+ window.riverBootStep?.(5,'村落与植被');const foliage=await buildVegetation(T,world,{renderer:rnd,stoneMaterial:materials.stone,sunDirection,environment:env.texture});
  const foundationWeeds=await buildFoundationWeeds(T,world);
  const bankDetail=await buildRiverbankDetail({T,world,materials});bed.material=bankDetail.bedMaterial;bed.material.color.set(0xc8c5ba);bed.material.normalScale.set(.54,.54);gravel.dispose();
  const distant=buildDistantLandscape({T,world,materials,forested:afterRain});
  if(afterRain){let s=20261123;const R=()=>{s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};const tp=[],tc=[],ti=[],fp=[],fc=[];const mix=(a,b,k)=>[a[0]+(b[0]-a[0])*k,a[1]+(b[1]-a[1])*k,a[2]+(b[2]-a[2])*k];const add=(p,d,k)=>[p[0]+d[0]*k,p[1]+d[1]*k,p[2]+d[2]*k];const V=(p,c)=>{fp.push(p[0],p[1],p[2]);fc.push(c[0],c[1],c[2]);};const tri=(a,ca,b,cb,c,cc)=>{V(a,ca);V(b,cb);V(c,cc);};const spots=[[12.4+R()*.6,MAP.maxZ+8.6+R(),10.6,3.9],[14.9+R()*.6,MAP.maxZ+11.2+R(),7.9,3],[13.3+R()*.6,MAP.maxZ+14+R(),6.3,2.3],[-12,MAP.minZ-8.8-R(),9.3,3.5],[-12,MAP.minZ-12.6-R(),6.8,2.6]];for(const [px,pz,H,W] of spots){const y0=landscapeHeight(px,pz)-.25,la=R()*6.283,L=H*(.12+.14*R()),dx=Math.cos(la),dz=Math.sin(la),R0=.17+H*.011,b0=tp.length/3;for(let i=0;i<16;i++){const t=i/15,k=L*(1-(1-t)*(1-t)),rad=R0*(1-.5*t)*(1+.45*Math.exp(-t*9))*(i%2?1:1.13),g=(i%2?.74:1)*(.85+.25*t);for(let j=0;j<6;j++){const a=j*1.0472;tp.push(px+dx*k+Math.cos(a)*rad,y0+H*t,pz+dz*k+Math.sin(a)*rad);tc.push(.4*g,.34*g,.26*g);if(i<15){const p=b0+i*6+j,q=b0+i*6+(j+1)%6;ti.push(p,p+6,q,q,p+6,q+6);}}}const top=[px+dx*L,y0+H,pz+dz*L],fl=W*.62;for(let k=0;k<14;k++){const u=k/13,az0=k*2.39996+R()*.5,el=1.2-1.65*u+R()*.15,Lf=fl*(.78+.3*R()),ds=Lf/14,o=Math.max(0,Math.min(1,(u-.62)/.3))*(.5+.5*R()),v=.85+.3*R(),cb=mix([.17*v,.3*v,.12*v],[.5,.4,.2],o),ct=mix([.42*v,.5*v,.2*v],[.68,.56,.27],o),c2=mix(cb,ct,.5);let p=top;for(let j=0;j<14;j++){const q=j/14,az=az0+.3*q,pt=Math.max(-1.35,el-(1+u)*Math.pow(q,1.3)),F=[Math.cos(pt)*Math.cos(az),Math.sin(pt),Math.cos(pt)*Math.sin(az)],S=[-Math.sin(az),0,Math.cos(az)],n=add(p,F,ds),w=.012+.035*(1-q),cm=mix(cb,ct,q*.5);tri(add(p,S,-w),cm,add(p,S,w),cm,add(n,S,w),cm);tri(add(p,S,-w),cm,add(n,S,w),cm,add(n,S,-w),cm);const ll=Lf*.36*Math.sin(3.1416*(.1+.82*(j+1)/14))*(.85+.3*R()),lw=.03+ll*.07;for(const sd of [-1,1]){const d=[S[0]*sd*.8+F[0]*.45,-.3-.45*u+F[1]*.45,S[2]*sd*.8+F[2]*.45],m=add(n,d,ll*.5),e=add(n,d,ll);e[1]-=ll*.22;const a2=add(n,F,lw),m2=add(m,F,lw*.7);tri(n,cb,a2,cb,m2,c2);tri(n,cb,m2,c2,m,c2);tri(m,c2,m2,c2,e,ct);}p=n;}}}const mk=(pos,col,idx)=>{const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(pos,3));g.setAttribute('color',new T.Float32BufferAttribute(col,3));if(idx)g.setIndex(idx);g.computeVertexNormals();return g;};const palms=new T.Group();palms.name='palmGrove';const tm=new T.Mesh(mk(tp,tc,ti),new T.MeshStandardMaterial({vertexColors:true,roughness:.95,metalness:0}));const fm=new T.Mesh(mk(fp,fc),new T.MeshStandardMaterial({vertexColors:true,roughness:.8,metalness:0,side:T.DoubleSide}));for(const m of [tm,fm]){m.castShadow=false;m.receiveShadow=true;m.raycast=()=>{};palms.add(m);}palms.userData={palms:5,groups:2,draws:2,triangles:ti.length/3+fp.length/9,decorative:true,collision:false};world.add(palms);}
- const dressing=await buildDownloadedDressing(T,world);
+ window.riverBootStep?.(5,'装饰与掩体');const dressing=await buildDownloadedDressing(T,world);
  try{const scanned=buildScanCover({T,world,walls:layout.walls,solids,sources:dressing.coverSources()});if(scanned)village.setCoverReplacement(scanned)}
  catch(error){textureErrors.push('Reference cover fallback: '+error.message)}
  const forestFloor=afterRain?buildForestFloor(T,world):null;
@@ -171,7 +171,7 @@ export async function buildWorld(ctx){
   const light=new T.PointLight(0xffb36c,9,8,2);light.position.set(h.x+2,2.35,h.z+1.8);world.add(light);lamps.push(light);
   const shade=new T.Mesh(new T.SphereGeometry(.095,8,6),new T.MeshStandardMaterial({color:0xffbd76,emissive:0xffa347,emissiveIntensity:3}));shade.position.copy(light.position);world.add(shade);
  }
- const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids}),buildActors({THREE:T,enemies})]);
+ window.riverBootStep?.(5,'武器与角色');const [weapon,actors]=await Promise.all([buildWeapon({THREE:T,gun,gscene,cam,scene,sun,amb,solids}),buildActors({THREE:T,enemies})]);
  const feedback=buildCombatFeedback({T,world});
  // Install last so terrain, masonry and wind hooks compose rather than replace
  // one another. Gun/HUD are deliberately outside these world/enemy roots.
