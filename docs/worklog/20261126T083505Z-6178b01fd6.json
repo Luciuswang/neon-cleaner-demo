@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261126T083505Z-6178b01fd6",
+  "task_id": "river-party-lobby-20261126",
+  "timestamp_utc": "2026-11-26T08:35:05.078711+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall PR 26 live with byte checks and public invitation/team/start UI PASS on two clients; official links delivered to owner by SeaTalk DM. See river-party-lobby-20261126.",
+  "commit_shas": [
+    "91dad7d6c61461e9ed815fb14b7ffa208e4ebabb"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

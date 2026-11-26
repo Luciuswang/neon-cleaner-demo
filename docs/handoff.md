@@ -893,3 +893,7 @@ Record personal SeaTalk delivery for every verified playable update. This releas
 ## Sync note - 2026-11-26T16:29:54.1138725+08:00
 
 Riverfall candidate: host-start invitation lobby, explicit team picks, enemy-only occluded red edges; local rules, WebRTC UI, capacity and render gates passed. Public delivery tracked in task.
+
+## Sync note - 2026-11-26T16:35:04.5946740+08:00
+
+Riverfall PR 26 live with byte checks and public invitation/team/start UI PASS on two clients; official links delivered to owner by SeaTalk DM. See river-party-lobby-20261126.
