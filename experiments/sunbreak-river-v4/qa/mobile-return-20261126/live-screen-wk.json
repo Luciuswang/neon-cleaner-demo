@@ -1,0 +1,43 @@
+{
+  "engine": "WebKit iPhone profile (Windows)",
+  "url": "https://luciuswang.github.io/neon-cleaner-demo/sunbreak/river/",
+  "errors": [],
+  "response": "install instructions",
+  "landscape": {
+    "canvas": [
+      750,
+      342
+    ],
+    "viewport": [
+      750,
+      342
+    ],
+    "profile": "mobile",
+    "fire": "rf-fire"
+  },
+  "portrait": {
+    "canvas": [
+      390,
+      810
+    ],
+    "viewport": [
+      390,
+      810
+    ],
+    "profile": "mobile",
+    "fire": "rf-fire"
+  },
+  "returned": {
+    "canvas": [
+      820,
+      390
+    ],
+    "viewport": [
+      820,
+      390
+    ],
+    "profile": "mobile",
+    "fire": "rf-fire"
+  },
+  "pass": true
+}

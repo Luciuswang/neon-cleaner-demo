@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261126T044933Z-fdbf16e509",
+  "task_id": "river-mobile-return-20261126",
+  "timestamp_utc": "2026-11-26T04:49:33.580721+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "PR 25 released and byte-verified. Public invite after host freeze/thaw: two connected peers, six AI; phone touch and rotation passed. Apple candidate solo, practice and host passed. Physical SeaTalk app switch not tested.",
+  "commit_shas": [
+    "871241424a1817752d9b892207e13a1e9c762902"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

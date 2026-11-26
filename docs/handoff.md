@@ -881,3 +881,7 @@ Riverfall material ageing is live on Pages PR 24. Public manifest and 7 runtime 
 ## Sync note - 2026-11-26T12:44:31.6652593+08:00
 
 Riverfall phone viewport, recoverable room invitation and water. Local two-peer original-link freeze/thaw and reload, narrow copy control, screen fit, water frames and rules verified; public release and Apple probe pending.
+
+## Sync note - 2026-11-26T12:49:33.1097476+08:00
+
+PR 25 released and byte-verified. Public invite after host freeze/thaw: two connected peers, six AI; phone touch and rotation passed. Apple candidate solo, practice and host passed. Physical SeaTalk app switch not tested.
