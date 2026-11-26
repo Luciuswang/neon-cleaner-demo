@@ -1,0 +1,35 @@
+{
+  "phase": "phone26-host",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T04:39:55.439Z",
+  "result": "completed",
+  "responseSHA": "dd239b43f8c328897e0285af30cef444f04a76f1571a5e52195ece55d6bdf9d0",
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 15616,
+    "cache_read_input_tokens": 4555,
+    "output_tokens": 13960,
+    "output_tokens_details": {
+      "thinking_tokens": 11329
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 15616
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.715567
+}

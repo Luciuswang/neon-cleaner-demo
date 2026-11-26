@@ -1,0 +1,35 @@
+{
+  "phase": "phone26-water",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T04:32:11.777Z",
+  "result": "completed",
+  "responseSHA": "5cf0aed8e2d97c98d205f08ea2ea7126ddb72c6e35c290026957e554bbbd245c",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 929,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 772,
+    "output_tokens_details": {
+      "thinking_tokens": 147
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 929
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.040202
+}

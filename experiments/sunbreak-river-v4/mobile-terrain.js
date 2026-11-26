@@ -122,7 +122,7 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
  rgeo.setAttribute('position',new T.BufferAttribute(rp,3));
  rgeo.setAttribute('normal',new T.BufferAttribute(rn,3));
  rgeo.setIndex(new T.BufferAttribute(ri,1));
- const water=new T.MeshStandardMaterial({color:0x4a4a3a,roughness:.2,metalness:0,transparent:true,depthWrite:false});
+ const water=new T.MeshStandardMaterial({color:0x24424a,roughness:.3,metalness:0,transparent:true,depthWrite:false});
  water.envMapIntensity=.55;water.name='river';
  const time={value:0};
  water.onBeforeCompile=sh=>{
@@ -138,15 +138,23 @@ export async function buildMobileTerrain({T,rnd,world,solids}){
                   cos(wp.y*2.3-wt*2.9+wp.x*.7)+.6*cos(wp.y*5.9+wp.x*3.3+wt*1.9))*.014;
     vec2 wf=wp*vec2(8.,4.5)+vec2(0.,wt*2.4),wg=wp*vec2(19.,11.)+vec2(wt*.6,wt*3.8);
     float w0=wN(wf),w1=wN(wg);
-    rip+=vec2(wN(wf+vec2(.4,0.))-w0,wN(wf+vec2(0.,.4))-w0)*.16+vec2(wN(wg+vec2(.4,0.))-w1,wN(wg+vec2(0.,.4))-w1)*.09;
+    rip+=vec2(wN(wf+vec2(.4,0.))-w0,wN(wf+vec2(0.,.4))-w0)*.06+vec2(wN(wg+vec2(.4,0.))-w1,wN(wg+vec2(0.,.4))-w1)*.025;
     float wk=wN(wp*vec2(1.7,.8)+vec2(w0*.6,wt*.4));
-    roughnessFactor=mix(.12,.34,wk);
+    roughnessFactor=mix(.24,.5,wk);
     normal=normalize(normal+(viewMatrix*vec4(rip.x,0.,rip.y,0.)).xyz);
     float fres=pow(1.-abs(dot(normal,normalize(vViewPosition))),4.);
-    diffuseColor.rgb*=mix(.7,1.1,w0);
-    diffuseColor.a=mix(.12,.58,fres)*mix(.65,1.,wk);`);   // Fresnel: clear when looking down, reflective at grazing angles
+    diffuseColor.rgb*=mix(.9,1.06,wk);
+    float rw=abs(3.4+.8*cos(wp.y*.17)+.35*sin(wp.y*.47));float sd=rw+.35-abs(wp.x);float wEdge=smoothstep(0.,.6,sd);float wDeep=smoothstep(.2,rw*.55,sd+(wk-.5)*.6);diffuseColor.a=mix(mix(.2,.5,fres),mix(.78,.86,fres),wDeep);
+    float wc=wN(vec2(wp.x*2.3+wp.y*.55+wk*1.3,wp.y*.34+wt*.55));float wc2=wN(vec2(wp.x*1.3-wp.y*.42+wk*.9+5.3,wp.y*.21+wt*.38));float wb=wN(vec2(wp.x*.7+3.7,wp.y*.5+wt*.9));
+    float cw=.09+fwidth(wc)*1.5;float cw2=.07+fwidth(wc2)*1.5;
+    float wCrest=((1.-smoothstep(0.,cw,abs(wc-.5)))*(.09/cw)*smoothstep(.4,.62,wb)+(1.-smoothstep(0.,cw2,abs(wc2-.5)))*(.07/cw2)*.6*smoothstep(.45,.7,wk))*(.45+.55*fres)*wEdge*mix(.3,1.,wDeep);
+    float wSheen=(.08+sqrt(fres))*(1.-smoothstep(.3,.65,wk));`)
+   .replace(/#include <(?:opaque|output)_fragment>/,m=>`
+    vec3 wBody=mix(vec3(.085,.15,.145),vec3(.03,.085,.105),wDeep)*mix(.86,1.12,wk)+vec3(.2,.3,.38)*fres*.6;outgoingLight=mix(min(outgoingLight,vec3(.55)),wBody,mix(.45,.88,wDeep));outgoingLight+=vec3(.5,.64,.72)*(wCrest*.55+wSheen*.07*wDeep);
+    diffuseColor.a=min(.9,diffuseColor.a+wCrest*.3)*wEdge;
+    `+m);   // Fresnel: clear when looking down, reflective at grazing angles
  };
- water.customProgramCacheKey=()=>'mobile-terrain-river-v2';
+ water.customProgramCacheKey=()=>'mobile-terrain-river-v4';
  materials.river=water;
  const river=new T.Mesh(rgeo,water);
  river.name='mobile-river';river.renderOrder=2;

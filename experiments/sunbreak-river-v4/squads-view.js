@@ -136,13 +136,18 @@ export function mountSquads(o) {
   const side = el('div', 'sq-side');
   const invBtn = el('button', 'sq-btn sq-mini', '邀请'); invBtn.type = 'button';
   side.appendChild(invBtn);
+  const netMsg = el('span', 'sq-sub', ''); netMsg.setAttribute('role', 'status'); netMsg.setAttribute('aria-live', 'polite');
+  side.appendChild(netMsg);
   board.append(teamBox(0), mid, teamBox(1), side);
 
   const invPanel = el('div', 'sq-invite'); invPanel.hidden = true;
   const invInput = el('input'); invInput.readOnly = true; invInput.setAttribute('aria-label', '邀请链接');
   const invCopy = el('button', 'sq-btn sq-mini', '复制'); invCopy.type = 'button';
   const invMsg = el('span', 'sq-sub', ''); invMsg.setAttribute('role', 'status');
-  invPanel.append(invInput, invCopy, invMsg);
+  const invShare = el('button', 'sq-btn sq-mini', '分享'); invShare.type = 'button';
+  invShare.hidden = !(typeof navigator.share === 'function');
+  const invNote = el('span', 'sq-sub', '');
+  invPanel.append(invInput, invCopy, invShare, invMsg, invNote);
 
   const banner = el('div', 'sq-banner'); banner.hidden = true; banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'polite');
   const prompt = el('div', 'sq-prompt', (navigator.maxTouchPoints > 0 && matchMedia('(pointer:coarse)').matches ? '触摸摇杆开始操作' : '点击画面开始操作 · Esc 释放鼠标')); prompt.hidden = true; prompt.setAttribute('role', 'status');
@@ -164,7 +169,19 @@ export function mountSquads(o) {
     return {given: true, room: ROOM_RE.test(v) ? v : ''};
   };
   const soloUrl = () => { const u = new URL(location.href); u.searchParams.delete('mode'); u.hash = ''; return u.href; };
-  const backSolo = () => { leave(); location.href = soloUrl(); };
+  const MEM_KEY = 'sq-host-room', MEM_TTL = 10 * 60 * 1000;
+  let hostRoom = '', keepTimer = 0;
+  const forgetRoom = () => { try { sessionStorage.removeItem(MEM_KEY); } catch (e) {} };
+  const rememberRoom = room => { try { sessionStorage.setItem(MEM_KEY, JSON.stringify({room: String(room), exp: Date.now() + MEM_TTL})); } catch (e) {} };
+  const recallRoom = () => {
+    try {
+      const raw = sessionStorage.getItem(MEM_KEY); if (!raw) return '';
+      const m = JSON.parse(raw), left = m && typeof m.exp === 'number' ? m.exp - Date.now() : 0;
+      if (m && typeof m.room === 'string' && ROOM_RE.test(m.room) && left > 0 && left <= MEM_TTL) return m.room;
+    } catch (e) {}
+    forgetRoom(); return '';
+  };
+  const backSolo = () => { forgetRoom(); leave(); location.href = soloUrl(); };
 
   function showNotice() {
     const ul = el('ul');
@@ -190,10 +207,23 @@ export function mountSquads(o) {
       nodes.push(btnRow(btn(err ? '重试加入' : '加入房间', () => connect(ACTION_JOIN, h.room)), btn('返回单人', backSolo, true)));
     } else {
       if (h.given) { const p = el('p', 'sq-err', '邀请链接中的房间号无效，已忽略。'); p.setAttribute('role', 'alert'); nodes.push(p); }
+      const mem = h.given ? '' : recallRoom();
+      if (mem) {
+        nodes.push(el('p', '', '此标签页不久前创建过邀请房间：' + mem + '。可恢复原房间号，让原邀请链接继续可用。'));
+        nodes.push(btnRow(btn('恢复原房间', () => confirmRestore(mem)), btn('忘记原房间', () => { forgetRoom(); showChoices(); }, true)));
+      }
       nodes.push(el('p', '', '创建房间邀请好友，或快速匹配其他玩家。不足八人时由 [AI] 补位。'));
       nodes.push(btnRow(btn('创建邀请房间', () => connect(ACTION_CREATE)), btn('快速匹配', () => connect(ACTION_QUICK)), btn('4v4 AI 练习（不联网）', () => connect('practice'), true), btn('返回单人', backSolo, true)));
     }
     render('联机大厅', false, ...nodes);
+  }
+
+  function confirmRestore(room) {
+    if (!noticeOk) return showNotice();
+    if (hashRoom().given || recallRoom() !== room) return showChoices();
+    const p = el('p', '', '将以房主身份恢复房间 ' + room + '。这会开始全新的一局：之前的比分和进度不会保留，原来的玩家需要通过邀请链接重新加入。');
+    render('恢复原房间？', false, p,
+      btnRow(btn('确认，开始新的一局', () => connect('restore', room)), btn('取消', () => showChoices(), true)));
   }
 
   let statusEl = null;
@@ -201,10 +231,10 @@ export function mountSquads(o) {
     statusEl = el('p', '', '正在连接…'); statusEl.setAttribute('role', 'status'); statusEl.setAttribute('aria-live', 'polite');
     render('正在连接', false, statusEl, btnRow(btn('取消', () => { closeSession(); showChoices(); }, true)));
   }
-  const setStatus = t => { if (statusEl) statusEl.textContent = String(t == null ? '' : t).slice(0, 200); };
+  const setStatus = t => { if (session) netMsg.textContent = String(t == null ? '' : t).slice(0, 200); if (statusEl) statusEl.textContent = String(t == null ? '' : t).slice(0, 200); };
 
   function showFinal() {
-    finalShown = true; disengage();
+    finalShown = true; disengage(); forgetRoom(); hostRoom = '';
     try { document.exitPointerLock && document.exitPointerLock(); } catch (e) {}
     const sc = snap.score || [0, 0]; const me = snap.players.find(p => p.slot === mySlot);
     const mt = me ? me.team : 0;
@@ -218,6 +248,7 @@ export function mountSquads(o) {
   // ---------- connection ----------
   function connect(action, room) {
     closeSession();
+    if (action === 'restore' && (!noticeOk || hashRoom().given || !ROOM_RE.test(String(room || '')))) return showChoices('无法恢复原房间。');
     const g = ++gen; last = {action, room};
     showConnecting();
     const receive = (s, slot) => { if (g === gen) onState(s, slot); };
@@ -231,6 +262,12 @@ export function mountSquads(o) {
       session = s; S[stateKey] = 'play';
       invBtn.hidden = !!s.localPractice; root.dataset.practice = s.localPractice ? '1':'0';
       if (action === ACTION_JOIN && !last.room) last.room = s.room;
+      netMsg.textContent = '';
+      if ((action === ACTION_CREATE || action === 'restore') && s.role === 'host' && !s.localPractice && ROOM_RE.test(String(s.room || ''))) {
+        hostRoom = String(s.room); rememberRoom(hostRoom);
+        if (action === 'restore') last = {action: 'restore', room: hostRoom};
+        keepTimer = setInterval(() => { if (session === s && hostRoom && !finalShown) rememberRoom(hostRoom); }, 60000);
+      } else if (action === 'restore') { forgetRoom(); last = {action: ACTION_JOIN, room: s.room}; }
       overlay.hidden = true; board.hidden = false; root.dataset.connected = '1'; root.dataset.room = String(s.room || '');
       updatePrompt();
     }, e => { if (g === gen) { closeSession(); showChoices('连接失败：' + readable(e) + '。可重试，或检查网络（NAT／防火墙）。'); } });
@@ -248,6 +285,7 @@ export function mountSquads(o) {
     if (session) { try { session.close(); } catch (e) {} }
     session = null; mySlot = -1; watchSlot = -1; engaged = false; camSnap = true;
     if (!keepFinal) { snap = null; finalShown = false; }
+    clearInterval(keepTimer); keepTimer = 0; hostRoom = ''; netMsg.textContent = '';
     R.fill(null);
     for (let i = 0; i < SLOTS; i++) { const e = enemies[i]; if (e && e.g) e.g.visible = false; }
     if (gun) gun.visible = true;
@@ -416,7 +454,21 @@ export function mountSquads(o) {
   invBtn.addEventListener('click', () => {
     if (!session) return;
     invPanel.hidden = !invPanel.hidden;
-    if (!invPanel.hidden) { invInput.value = inviteUrl(); invMsg.textContent = ''; }
+    if (!invPanel.hidden) {
+      invInput.value = inviteUrl(); invMsg.textContent = '';
+      invNote.textContent = hostRoom
+        ? '分享后请直接切回本标签页，不要刷新。刷新或关闭本页会结束本局；约 10 分钟内可在大厅“恢复原房间”继续使用此链接，但会重开新的一局，比分不保留。'
+        : '分享后请直接切回本标签页，不要刷新。刷新或关闭本页会断开连接，房间可能重置，需通过邀请链接重新加入。';
+    }
+  });
+  invShare.addEventListener('click', () => {
+    if (!session) return;
+    const url = invInput.value || inviteUrl();
+    try {
+      Promise.resolve(navigator.share({title: '联机小队 4 对 4', text: '加入我的房间', url})).then(
+        () => { invMsg.textContent = '已分享，请切回本标签页继续'; },
+        e => { invMsg.textContent = e && e.name === 'AbortError' ? '已取消分享' : '分享失败，请改用复制'; });
+    } catch (e) { invMsg.textContent = '分享失败，请改用复制'; }
   });
   invCopy.addEventListener('click', () => {
     const fallback = () => { invInput.focus(); invInput.select(); invMsg.textContent = '请手动复制（Ctrl+C）'; };

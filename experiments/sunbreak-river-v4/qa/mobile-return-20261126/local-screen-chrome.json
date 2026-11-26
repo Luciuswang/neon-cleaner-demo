@@ -1,0 +1,43 @@
+{
+  "engine": "Chromium touch profile",
+  "url": "http://127.0.0.1:5190/river/",
+  "errors": [],
+  "response": "native fullscreen",
+  "landscape": {
+    "canvas": [
+      863,
+      360
+    ],
+    "viewport": [
+      863,
+      360
+    ],
+    "profile": "mobile",
+    "fire": "rf-fire"
+  },
+  "portrait": {
+    "canvas": [
+      390,
+      810
+    ],
+    "viewport": [
+      390,
+      810
+    ],
+    "profile": "mobile",
+    "fire": "rf-fire"
+  },
+  "returned": {
+    "canvas": [
+      820,
+      390
+    ],
+    "viewport": [
+      820,
+      390
+    ],
+    "profile": "mobile",
+    "fire": "rf-fire"
+  },
+  "pass": true
+}

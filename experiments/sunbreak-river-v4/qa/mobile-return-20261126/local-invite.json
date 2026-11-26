@@ -1,0 +1,25 @@
+{
+  "live": false,
+  "pageErrors": [],
+  "steps": [
+    "copied original invite with real Clipboard API",
+    "same retained host after synthetic persisted pagehide + CDP freeze/thaw",
+    "two independent WebRTC peers, six AI, original invitation after host returned",
+    "host reload; explicit restore; second guest joins unchanged URL"
+  ],
+  "copyReach": [
+    [
+      390,
+      844
+    ],
+    [
+      667,
+      375
+    ]
+  ],
+  "slots": [
+    "0",
+    "1"
+  ],
+  "pass": true
+}

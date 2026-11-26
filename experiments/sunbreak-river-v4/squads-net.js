@@ -11,6 +11,8 @@ const ROOM_RE = /^rf4-v1-(?:[0-9a-f]{20}|q[0-7])$/;
 const TICK_MS = 50, STEP = TICK_MS / 1000, SEND_MS = 40, PING_MS = 1000;
 const OPEN_MS = 12000, JOIN_MS = 15000, HELLO_MS = 10000;
 const HOST_SILENCE_MS = 6000, CLIENT_SILENCE_MS = 10000, STALL_MS = 5000;
+const HOST_AWAY_MS = 90000, RECONNECT_TRIES = 5, RECONNECT_MS = 2000;
+const PRIVATE_RE = /^rf4-v1-[0-9a-f]{20}$/;
 const MAX_PENDING = 4, MAX_CONNS = MAX_SLOTS - 1 + MAX_PENDING;
 const MAX_CTRL = 512, MAX_SNAP = 16384, RATE = 60, MAX_BUFFER = 65536;
 const RETRIES = 1, RETRY_MS = 800, BYE_FLUSH_MS = 200;
@@ -35,7 +37,10 @@ const MSG = {
   'host-left': '主机已离开，对局结束',
   'host-signal': '主机与信令服务器断开，房间已关闭',
   'host-silent': '主机无响应，连接已超时',
-  'signal-lost': '与信令服务器的连接已断开，房间已关闭',
+  'signal-lost': '与信令服务器的连接已断开且重连失败，房间已关闭，请检查网络后重新创建房间',
+  'reclaim-lost': '重连时房间号已被占用，房间已关闭，请重新创建房间并重新邀请好友',
+  'bad-restore': '没有可恢复的房间，请重新创建房间',
+  'restore-taken': '原房间号已被占用，无法恢复，请重新创建房间并重新邀请好友',
 };
 
 function netError(code) {
@@ -255,13 +260,57 @@ function runHost(peer, room, cb) {
     c.scope.on(conn, 'close', () => drop(conn));
     c.scope.on(conn, 'error', () => drop(conn));
   });
-  s.on(peer, 'disconnected', () => end('signal-lost')); // terminal: no silent re-claim of the room id
+  // Bounded signaling reconnect: same peer id, same match; data connections stay up meanwhile.
+  let tries = 0, retryOff = null;
+  const online = () => peer.open && !peer.disconnected;
+  const reconnect = () => {
+    if (ended || retryOff || peer.destroyed || paused) return;
+    if (tries >= RECONNECT_TRIES) return end('signal-lost');
+    tries++;
+    safeCall(cb.onStatus, '与信令服务器断开，正在重连…');
+    retryOff = s.timeout(() => {
+      retryOff = null;
+      if (ended || peer.destroyed) return;
+      if (online()) { tries = 0; return; }
+      try { if (peer.disconnected) peer.reconnect(); else peer.disconnect(); } catch { return end('signal-lost'); }
+      if (!retryOff) retryOff = s.timeout(() => { retryOff = null; if (!ended && !online()) reconnect(); }, OPEN_MS);
+    }, RECONNECT_MS * tries);
+  };
+  s.on(peer, 'open', () => {
+    if (retryOff) { retryOff(); retryOff = null; }
+    if (tries) safeCall(cb.onStatus, '已重新连接信令服务器');
+    tries = 0;
+  });
+  s.on(peer, 'disconnected', reconnect);
   s.on(peer, 'close', () => end('signal-lost'));
-  s.on(peer, 'error', (e) => { if (e && FATAL.has(e.type)) end('signal-lost'); });
-  s.listen(globalThis, 'pagehide', () => end());
+  s.on(peer, 'error', (e) => {
+    const t = e && e.type;
+    if (t === 'unavailable-id') end('reclaim-lost'); // id taken while away: refuse, never fight for it
+    else if (t === 'network' || t === 'server-error' || t === 'socket-error' || t === 'socket-closed') reconnect();
+    else if (FATAL.has(t)) end('signal-lost');
+  });
+
+  // Suspend the simulation while hidden or in bfcache; resume with fresh clocks.
+  let paused = false, frozen = false;
+  const sync = () => {
+    const p = frozen || (typeof document !== 'undefined' && document.visibilityState === 'hidden');
+    if (p === paused) return;
+    paused = p;
+    if (p) return;
+    const now = performance.now();
+    last = now; acc = 0;
+    for (const c of clients.values()) { c.heard = now; c.stall = 0; c.win = now; c.n = 0; }
+    tries = 0;
+    if (!ended && !online()) reconnect();
+  };
+  s.listen(globalThis, 'pagehide', (e) => { if (e && e.persisted) { frozen = true; sync(); } else end(); });
+  s.listen(globalThis, 'pageshow', () => { frozen = false; sync(); });
+  if (typeof document !== 'undefined') s.listen(document, 'visibilitychange', sync);
+  sync();
 
   // Fixed-step authoritative tick, independent of rendering.
   s.interval(() => {
+    if (paused) return;
     const now = performance.now();
     acc = Math.min(1, acc + (now - last) / 1000);
     last = now;
@@ -282,6 +331,7 @@ function runHost(peer, room, cb) {
 
   return {
     room, id: slot,
+    role: 'host',
     send(p) { const i = ended ? null : cleanInput(p); if (i) match.input(slot, i); },
     close() { end(); },
   };
@@ -314,19 +364,24 @@ function runClient(peer, conn, slot, room, cb) {
   });
   s.on(conn, 'close', () => end('host-left'));
   s.on(conn, 'error', () => end('host-left'));
-  s.listen(globalThis, 'pagehide', () => end());
+  const away = () => typeof document !== 'undefined' && document.visibilityState === 'hidden';
+  const fresh = () => { next = null; if (!away()) heard = sent = performance.now(); };
+  s.listen(globalThis, 'pagehide', (e) => { if (e && e.persisted) next = null; else end(); });
+  s.listen(globalThis, 'pageshow', fresh);
+  if (typeof document !== 'undefined') s.listen(document, 'visibilitychange', fresh);
 
   // Throttled input (latest wins) plus heartbeat; watchdog ends the session if the host goes quiet.
   s.interval(() => {
     const now = performance.now();
-    if (now - heard > HOST_SILENCE_MS) return end('host-silent');
+    if (now - heard > HOST_AWAY_MS) return end('host-silent'); // tolerate a briefly hidden/suspended host
     if (next) { if (sendRaw(conn, { t: 'input', i: next })) { next = null; sent = now; } }
     else if (now - sent > PING_MS && sendRaw(conn, { t: 'ping' })) sent = now;
   }, SEND_MS);
 
   return {
     room, id: slot,
-    send(p) { if (!ended) next = cleanInput(p) || next; },
+    role: 'guest',
+    send(p) { if (!ended && !away()) next = cleanInput(p) || next; },
     close() { end(); },
   };
 }
@@ -393,6 +448,16 @@ export async function connectRoom({ action, room, onState, onStatus, onEnd } = {
       destroy(peer);
       throw e;
     }
+  }
+  if (action === 'restore') {
+    // Caller must pass the private id kept in per-tab host state, never one taken from a URL.
+    if (typeof room !== 'string' || !PRIVATE_RE.test(room)) throw netError('bad-restore');
+    safeCall(onStatus, '正在恢复房间…');
+    let peer;
+    try { peer = await openPeer(room); } // the signaling server claims the id atomically
+    catch (e) { throw e && e.code === 'taken' ? netError('restore-taken') : e; }
+    safeCall(onStatus, '房间已恢复，等待好友重新加入');
+    return runHost(peer, room, cb);
   }
   if (action === 'quick') return quick(cb);
   throw netError('bad-action');

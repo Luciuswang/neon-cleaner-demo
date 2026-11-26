@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261126T044432Z-97e9a6a091",
+  "task_id": "river-mobile-return-20261126",
+  "timestamp_utc": "2026-11-26T04:44:32.285573+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Riverfall phone viewport, recoverable room invitation and water. Local two-peer original-link freeze/thaw and reload, narrow copy control, screen fit, water frames and rules verified; public release and Apple probe pending.",
+  "commit_shas": [
+    "cd5f7663ccfc79e3bd66cc4a9724947da4de3954"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

@@ -877,3 +877,7 @@ Riverfall five textured palms, ten vine-bearing covers and roof patina checked a
 ## Sync note - 2026-11-25T22:04:43.7696090+08:00
 
 Riverfall material ageing is live on Pages PR 24. Public manifest and 7 runtime modules byte verified. Next: owner art review, especially vine stems in deep shade.
+
+## Sync note - 2026-11-26T12:44:31.6652593+08:00
+
+Riverfall phone viewport, recoverable room invitation and water. Local two-peer original-link freeze/thaw and reload, narrow copy control, screen fit, water frames and rules verified; public release and Apple probe pending.

@@ -1,0 +1,10 @@
+{
+  "profile": "phone-profile",
+  "errors": [],
+  "views": [
+    "bank",
+    "ford"
+  ],
+  "edges": [],
+  "pass": true
+}

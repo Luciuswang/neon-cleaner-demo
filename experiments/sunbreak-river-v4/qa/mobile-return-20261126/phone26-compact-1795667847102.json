@@ -1,0 +1,35 @@
+{
+  "phase": "phone26-compact",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T04:37:27.100Z",
+  "result": "completed",
+  "responseSHA": "c3e82437a9de179ce7a20d629340a7ffc7dbcf7364c27b84c300b731defac7b2",
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 19424,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 11184,
+    "output_tokens_details": {
+      "thinking_tokens": 9594
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 19424
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.641664
+}
