@@ -183,10 +183,10 @@ function sanitize(p) {
 }
 
 // ---------- match ----------
-export function createMatch() {
+export function createMatch({ waiting = false } = {}) {
   const rand = rng32(0x52495646);
   const players = [];
-  let seq = 0, round = 1, phase = 'warmup', seconds = FIRST_WARMUP;
+  let seq = 0, round = 1, phase = waiting ? 'lobby' : 'warmup', seconds = waiting ? 0 : FIRST_WARMUP;
   let winner = -1, acc = 0;
   const score = [0, 0];
 
@@ -251,6 +251,7 @@ export function createMatch() {
   }
 
   function input(slot, raw) {
+    if (phase === 'lobby') return;
     if (!validSlot(slot)) return;
     const p = players[slot];
     if (p.bot) return;
@@ -489,6 +490,7 @@ export function createMatch() {
 
   function step(dt) {
     if (typeof dt !== 'number' || !Number.isFinite(dt) || dt <= 0) return;
+    if (phase === 'lobby') return; // no time, actors or score before start()
     acc += Math.min(dt, MAX_DT);
     while (acc >= TICK - 1e-9) { acc -= TICK; tick(TICK); } // fixed host step
     if (acc < 0) acc = 0;
@@ -500,7 +502,7 @@ export function createMatch() {
       seconds: r3(Math.max(0, seconds)),
       score: [score[0], score[1]],
       winner,
-      players: players.map((p) => ({
+      players: (phase === 'lobby' ? players.filter((p) => !p.bot) : players).map((p) => ({
         slot: p.slot, team: p.team, bot: p.bot,
         x: r3(p.x), y: r3(p.y), z: r3(p.z),
         yaw: r3(p.yaw), pitch: r3(p.pitch),
@@ -510,5 +512,32 @@ export function createMatch() {
     };
   }
 
-  return { join, leave, input, step, snapshot };
+  function chooseTeam(slot, team) {
+    if (phase !== 'lobby' || !validSlot(slot) || (team !== 0 && team !== 1)) return -1;
+    const p = players[slot];
+    if (p.bot) return -1;
+    if (p.team === team) return slot;
+    for (const q of players) {
+      if (q.bot && q.team === team) {
+        q.bot = false; q.in = neutralInput(); q.age = 0;
+        p.bot = true; p.in = neutralInput(); p.age = 0;
+        return q.slot;
+      }
+    }
+    return -1;
+  }
+
+  function start() {
+    if (phase !== 'lobby') return false;
+    let humans = 0;
+    for (const p of players) if (!p.bot) humans++;
+    if (humans < 2) return false;
+    round = 1; winner = -1; acc = 0; score[0] = 0; score[1] = 0;
+    for (const p of players) { p.ai.rn = 0; p.kills = 0; p.shots = 0; }
+    resetRound();
+    phase = 'warmup'; seconds = FIRST_WARMUP;
+    return true;
+  }
+
+  return { join, leave, input, step, snapshot, chooseTeam, start };
 }

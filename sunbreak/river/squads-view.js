@@ -49,6 +49,10 @@ body.squads-on [data-solo-only],body.squads-on .solo-only,body.squads-on #bPause
 .sq-invite{position:absolute;top:52px;left:50%;transform:translateX(-50%);pointer-events:auto;display:flex;gap:6px;align-items:center;background:rgba(11,23,48,.94);border:1px solid #2b4480;border-radius:8px;padding:8px 10px;max-width:92vw}
 .sq-invite input{font:12px monospace;width:min(60vw,360px);color:#e8eefc;background:#0b1730;border:1px solid #35539a;border-radius:4px;padding:4px 6px;user-select:text}
 .sq-banner{position:absolute;top:58px;left:50%;transform:translateX(-50%);background:rgba(11,23,48,.86);border-left:3px solid #ffb62e;border-radius:4px;padding:5px 14px;font-weight:600;letter-spacing:.05em}
+.sq-pteam{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3px 4px;min-width:0;box-sizing:border-box}
+.sq-pteam .sq-seat{min-width:0;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#182c58;border-radius:4px;padding:3px 5px}
+@media (pointer:coarse){.sq-btn:not(.sq-mini){min-height:44px}}
+@media (max-height:480px){.sq-card{box-sizing:border-box;max-width:calc(100vw - 12px);max-height:calc(100vh - 12px);max-height:calc(100dvh - 12px);overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:10px 12px}}
 .sq-prompt{position:absolute;bottom:84px;left:50%;transform:translateX(-50%);background:rgba(11,23,48,.9);border:1px solid #ffb62e;color:#ffd98a;border-radius:999px;padding:6px 16px}
 `;
 
@@ -93,9 +97,51 @@ export function mountSquads(o) {
   let session = null, snap = null, mySlot = -1, watchSlot = -1, gen = 0;
   let engaged = false, holdFire = false, reloadLatch = false, lastSend = 0, neutralTimer = 0;
   let last = null, finalShown = false, noticeOk = false, camSnap = true;
+  let lobbyOn = false, partyKey = '';
   const R = new Array(SLOTS).fill(null);
   const markers = new Array(SLOTS).fill(null);
   let markerTex = null;
+  const outlines = new Array(SLOTS).fill(null);
+  const outlinePx = {value: null};
+  let outlineMat = null;
+  const rims = new Array(SLOTS).fill(null);
+  const RIM_GLSL = [
+    'float rimF = 1.0 - abs(dot(normalize(normal), normalize(vViewPosition)));',
+    'float rimW = clamp(fwidth(rimF) * 2.5, 0.0, 0.45);', // few pixels across => wider band
+    'float rimA = smoothstep(0.55 - rimW, 0.8 - rimW, rimF) * uRim;',
+    'outgoingLight = mix(outgoingLight, vec3(1.9, 0.07, 0.04), rimA);',
+    ''
+  ].join('\n');
+
+  // ---------- enemy rim: per-actor clones of the body materials, built on first hostile sighting ----------
+  function buildRim(i, e) {
+    const body = T && e.g.getObjectByName('licensed-tactical-display');
+    if (!body) return null; // GLB not attached yet; retried next frame
+    const u = {value: 0}, swaps = [], own = new Map();
+    const mk = o => {
+      if (!o || !o.isMeshStandardMaterial) return o;
+      let c = own.get(o);
+      if (!c) {
+        c = o.clone(); // textures stay shared; only the clone is owned
+        c.onBeforeCompile = s => {
+          s.uniforms.uRim = u;
+          const tag = s.fragmentShader.includes('#include <opaque_fragment>') ? '#include <opaque_fragment>' : '#include <output_fragment>';
+          s.fragmentShader = 'uniform float uRim;\n' + s.fragmentShader.replace(tag, RIM_GLSL + tag);
+        };
+        c.customProgramCacheKey = () => 'enemy-rim';
+        own.set(o, c);
+      }
+      return c;
+    };
+    body.traverse(m => {
+      if (!m.isMesh || m.name === 'enemy-outline') return;
+      for (let p = m; p && p !== body; p = p.parent) if (p === e.wg2) return; // not the weapon
+      const orig = m.material;
+      swaps.push({m, orig});
+      m.material = Array.isArray(orig) ? orig.map(mk) : mk(orig);
+    });
+    return rims[i] = {u, swaps, own};
+  }
 
   // ---------- look helpers ----------
   const getYaw = () => hasYaw ? S.yaw : cam.rotation.y;
@@ -183,6 +229,110 @@ export function mountSquads(o) {
   };
   const backSolo = () => { forgetRoom(); leave(); location.href = soloUrl(); };
 
+  function renderParty(s, slot) {
+    const players = (s.players || []).slice(0, 8);
+    const me = players.find(p => p.slot === slot);
+    const isHost = !!hostRoom;
+    const url = inviteUrl();
+    const full = players.length >= 8;
+
+    const status = el('div', 'sq-note', full ? '房间已满 8 人，新好友暂时无法加入' : `已有 ${players.length}/8 人 · 把链接发给好友`);
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.style.cssText = 'font-size:12px;margin:2px 0';
+
+    const link = el('input', 'sq-input');
+    link.type = 'text';
+    link.readOnly = true;
+    link.value = url;
+    link.hidden = true;
+    link.setAttribute('aria-label', '邀请链接');
+    link.style.cssText = 'width:100%;box-sizing:border-box;font-size:12px;user-select:text;-webkit-user-select:text';
+    link.onfocus = () => link.select();
+
+    const reveal = msg => {
+      link.hidden = false;
+      status.textContent = msg;
+      try { link.focus(); link.select(); } catch (e) {}
+    };
+    const copy = async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+        status.textContent = '已复制邀请链接，发给好友即可加入';
+      } catch (e) {
+        reveal('无法自动复制，请长按下方链接手动复制');
+      }
+    };
+    const share = async () => {
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: '好友房', text: '来和我一起对战！', url });
+          status.textContent = '已发出邀请';
+          return;
+        } catch (e) {
+          if (e && e.name === 'AbortError') return;
+        }
+      }
+      reveal('请复制下方链接发给好友');
+    };
+
+    const copyBtn = btn('复制邀请链接', copy);
+    const shareBtn = btn('邀请好友', share, true);
+    const inviteRow = btnRow(copyBtn, shareBtn);
+
+    const grid = el('div', 'sq-teams');
+    grid.style.cssText = 'display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px;margin:4px 0;min-width:0';
+    [['蓝队', '#4aa8ff'], ['橙队', '#ff9a3c']].forEach(([name, color], t) => {
+      const members = players.filter(p => p.team === t);
+      const teamFull = members.length >= 4;
+      const mine = !!me && me.team === t;
+      const box = el('div', 'sq-pteam');
+      box.setAttribute('role', 'group');
+      box.setAttribute('aria-label', `${name} ${members.length}/4`);
+      box.style.cssText = `border:1px solid ${color};border-radius:6px;padding:4px 6px;font-size:12px;line-height:1.35`;
+      const head = el('div', 'sq-team-title', `${name} ${members.length}/4`);
+      head.style.cssText = `color:${color};font-weight:700;grid-column:1/-1`;
+      box.appendChild(head);
+      for (let i = 0; i < 4; i++) {
+        const m = members[i];
+        const who = m ? (m.slot === slot ? '你' : `玩家${m.slot + 1}`) : '空位';
+        const seat = el('div', 'sq-seat', `${i + 1}号位 · ${who}`);
+        if (!m) seat.style.opacity = '0.55';
+        box.appendChild(seat);
+      }
+      const label = mine ? `已在${name}` : teamFull ? `${name}已满` : `选 ${name}`;
+      const pick = btn(label, () => session.chooseTeam(t), true);
+      pick.disabled = mine || teamFull;
+      pick.setAttribute('aria-label', mine ? `你已在${name}` : teamFull ? `${name}四个位置已满，无法加入` : `加入${name}`);
+      pick.style.cssText = 'grid-column:1/-1;margin-top:3px;width:100%;box-sizing:border-box;min-height:44px;padding:4px 0;font-size:13px;touch-action:manipulation';
+      box.appendChild(pick);
+      grid.appendChild(box);
+    });
+
+    let action;
+    if (isHost) {
+      action = btn('开始对战', () => session.start());
+      action.disabled = players.length < 2;
+      action.setAttribute('aria-label', players.length < 2 ? '开始对战（至少需要两名玩家）' : '开始对战');
+    } else {
+      action = btn('等待房主开战', () => {}, true);
+      action.disabled = true;
+    }
+    const leave = btn('离开房间', () => {
+      forgetRoom();
+      closeSession();
+      showChoices();
+    }, true);
+
+    const hint = el('div', 'sq-note',
+      full ? '所有位置已满，等待房主开战' :
+      players.length < 2 ? '有空位：至少需要 2 名真人玩家才能开战；只有房主开始对战后，空位才由 [AI] 补齐' :
+      '有空位：只有房主开始对战后，空位才由 [AI] 补齐（至少 2 名真人）· 每队最多 4 人，满员请选另一队');
+    hint.style.cssText = 'font-size:11px;opacity:.75';
+
+    render('好友房 · 等待开战', false, inviteRow, status, link, grid, hint, btnRow(action, leave));
+  }
+
   function showNotice() {
     const ul = el('ul');
     [
@@ -212,8 +362,10 @@ export function mountSquads(o) {
         nodes.push(el('p', '', '此标签页不久前创建过邀请房间：' + mem + '。可恢复原房间号，让原邀请链接继续可用。'));
         nodes.push(btnRow(btn('恢复原房间', () => confirmRestore(mem)), btn('忘记原房间', () => { forgetRoom(); showChoices(); }, true)));
       }
-      nodes.push(el('p', '', '创建房间邀请好友，或快速匹配其他玩家。不足八人时由 [AI] 补位。'));
-      nodes.push(btnRow(btn('创建邀请房间', () => connect(ACTION_CREATE)), btn('快速匹配', () => connect(ACTION_QUICK)), btn('4v4 AI 练习（不联网）', () => connect('practice'), true), btn('返回单人', backSolo, true)));
+      nodes.push(el('p', '', '私人邀请：创建房间后先进入房间大厅，把邀请链接发给好友。'));
+      nodes.push(btnRow(btn('创建邀请房间', () => connect(ACTION_CREATE))));
+      nodes.push(el('p', '', '立即开打：无需邀请，直接进入对局。不足八人时由 [AI] 补位。'));
+      nodes.push(btnRow(btn('快速匹配', () => connect(ACTION_QUICK)), btn('4v4 AI 练习（不联网）', () => connect('practice'), true), btn('返回单人', backSolo, true)));
     }
     render('联机大厅', false, ...nodes);
   }
@@ -259,7 +411,9 @@ export function mountSquads(o) {
       onEnd: t => { if (g === gen) ended(t); }
     })).then(s => {
       if (g !== gen) { try { s.close(); } catch (e) {} return; }
-      session = s; S[stateKey] = 'play';
+      session = s;
+      const hold = snap ? snap.phase === 'lobby' : (!s.localPractice && action !== ACTION_QUICK);
+      S[stateKey] = hold ? 'menu' : 'play';
       invBtn.hidden = !!s.localPractice; root.dataset.practice = s.localPractice ? '1':'0';
       if (action === ACTION_JOIN && !last.room) last.room = s.room;
       netMsg.textContent = '';
@@ -268,7 +422,9 @@ export function mountSquads(o) {
         if (action === 'restore') last = {action: 'restore', room: hostRoom};
         keepTimer = setInterval(() => { if (session === s && hostRoom && !finalShown) rememberRoom(hostRoom); }, 60000);
       } else if (action === 'restore') { forgetRoom(); last = {action: ACTION_JOIN, room: s.room}; }
-      overlay.hidden = true; board.hidden = false; root.dataset.connected = '1'; root.dataset.room = String(s.room || '');
+      root.dataset.connected = '1'; root.dataset.room = String(s.room || '');
+      if (hold) { lobbyOn = true; partyKey = ''; if (snap) onState(snap, mySlot); return; }
+      overlay.hidden = true; board.hidden = false;
       updatePrompt();
     }, e => { if (g === gen) { closeSession(); showChoices('连接失败：' + readable(e) + '。可重试，或检查网络（NAT／防火墙）。'); } });
   }
@@ -284,6 +440,7 @@ export function mountSquads(o) {
     clearTimeout(neutralTimer);
     if (session) { try { session.close(); } catch (e) {} }
     session = null; mySlot = -1; watchSlot = -1; engaged = false; camSnap = true;
+    lobbyOn = false; partyKey = ''; root.dataset.phase = ''; root.dataset.slot = ''; root.dataset.round = '';
     if (!keepFinal) { snap = null; finalShown = false; }
     clearInterval(keepTimer); keepTimer = 0; hostRoom = ''; netMsg.textContent = '';
     R.fill(null);
@@ -318,9 +475,75 @@ export function mountSquads(o) {
     m.material.color.setHex(TEAM_COL[team === 1 ? 1 : 0]);
   }
 
+  // ---------- enemy outline: inverted hull sharing geometry, skeleton and one material ----------
+  function buildOutline(i, e) {
+    const body = T && e.g.getObjectByName('licensed-tactical-display');
+    if (!body) return null; // GLB not attached yet; retried next frame
+    if (!outlineMat) {
+      outlinePx.value = new T.Vector2();
+      outlineMat = new T.MeshBasicMaterial({color: 0xff1418, side: T.BackSide, toneMapped: false, fog: false});
+      // meshbasic only defines objectNormal under USE_ENVMAP||USE_SKINNING, so the
+      // static path reads the raw attribute. FLIP_SIDED only negates transformedNormal,
+      // which is not used here, so the push is always outward.
+      outlineMat.onBeforeCompile = s => {
+        s.uniforms.uOutlinePx = outlinePx;
+        s.vertexShader = 'uniform vec2 uOutlinePx;\n' + s.vertexShader.replace('#include <project_vertex>', [
+          '#include <project_vertex>',
+          '#ifdef USE_SKINNING',
+          'vec3 oN = objectNormal;',
+          '#else',
+          'vec3 oN = normal;',
+          '#endif',
+          'vec2 oD = (normalMatrix * oN).xy;',
+          'gl_Position.xy += oD / max(length(oD), 1e-4) * uOutlinePx * min(gl_Position.w, 40.0);'
+        ].join('\n'));
+      };
+    }
+    const src = [];
+    body.traverse(m => { if (m.isMesh && m.visible) src.push(m); });
+    const list = outlines[i] = [];
+    for (const m of src) {
+      const sh = m.isSkinnedMesh ? new T.SkinnedMesh(m.geometry, outlineMat) : new T.Mesh(m.geometry, outlineMat);
+      if (m.isSkinnedMesh) { sh.bindMode = m.bindMode; sh.bind(m.skeleton, m.bindMatrix); }
+      sh.name = 'enemy-outline'; sh.frustumCulled = false; sh.visible = false;
+      m.add(sh); list.push(sh); // identity child: inherits the source transform
+    }
+    return list;
+  }
+
   // ---------- snapshots ----------
   function onState(s, slot) {
     if (!s || !Array.isArray(s.players)) return;
+    if (s.phase === 'lobby') {
+      const wasEngaged = engaged;
+      snap = s; mySlot = slot; lobbyOn = true; S[stateKey] = 'menu';
+      engaged = false; holdFire = false;
+      if (wasEngaged) {
+        try { clearKeys && clearKeys(); } catch (e) {}
+        try { document.exitPointerLock && document.exitPointerLock(); } catch (e) {}
+      }
+      board.hidden = true; prompt.hidden = true;
+      for (let i = 0; i < SLOTS; i++) { const e = enemies[i]; if (e && e.g) e.g.visible = false; }
+      if (gun) gun.visible = false;
+      R.fill(null);
+      root.dataset.phase = 'lobby'; root.dataset.slot = String(slot); root.dataset.round = String(s.round);
+      if (session) {
+        const key = [session.role, slot, s.players.map(p => [p.slot, p.name, p.team, p.ai, p.bot, p.ready].join(':')).join(',')].join('|');
+        if (key !== partyKey) { partyKey = key; overlay.hidden = false; renderParty(s, slot); }
+      }
+      return;
+    }
+    if (lobbyOn) {
+      lobbyOn = false; partyKey = ''; snap = null; R.fill(null);
+      root.dataset.phase = String(s.phase || ''); root.dataset.slot = String(slot); root.dataset.round = String(s.round);
+      if (gun) gun.visible = true;
+      camSnap = true;
+      if (session) {
+        S[stateKey] = 'play'; overlay.hidden = true; board.hidden = false;
+        const g0 = gen;
+        Promise.resolve().then(() => { if (g0 === gen && session && snap && snap.phase !== 'lobby') updatePrompt(); });
+      }
+    }
     const reset = !snap || snap.round !== s.round || (snap.phase !== 'warmup' && s.phase === 'warmup');
     mySlot = slot;
     for (const p of s.players) {
@@ -426,7 +649,7 @@ export function mountSquads(o) {
   const onCanvasDown = (ev) => {
     if (ev && ev.button !== 0) return;
     if (engaged) return;
-    if (!session || !snap || finalShown) return;
+    if (!session || !snap || finalShown || snap.phase === 'lobby') return;
     engaged = true; holdFire = true; // the recapture click must not fire
     try { initAudio && initAudio(); } catch (e) {}
     try { lockReq && lockReq(); } catch (e) {} // synchronous, inside the user gesture
@@ -481,7 +704,7 @@ export function mountSquads(o) {
 
   // ---------- per-frame ----------
   function frame(dt) {
-    if (!session || !snap) return;
+    if (!session || !snap || snap.phase === 'lobby') return;
     dt = Math.min(0.1, Math.max(0, +dt || 0));
     const k = 1 - Math.exp(-dt * 14);
     const me = R[mySlot], alive = !!me && me.hp > 0;
@@ -517,6 +740,14 @@ export function mountSquads(o) {
       }
       if (e.wg2 && e.wg2.rotation) e.wg2.rotation.x = -r.pitch;
       if (markers[i]) markers[i].visible = live;
+      const on = live && !!me && r.team !== me.team && (snap.phase === 'warmup' || snap.phase === 'live');
+      const ol = outlines[i] || buildOutline(i, e);
+      if (ol) {
+        if (on) outlinePx.value.set(5 / window.innerWidth, 5 / window.innerHeight); // 2.5 CSS px
+        for (let j = 0; j < ol.length; j++) ol[j].visible = on;
+      }
+      const rim = rims[i] || (on ? buildRim(i, e) : null); // friendlies are never cloned
+      if (rim) rim.u.value = on ? 1 : 0;
     }
 
     // camera
@@ -545,6 +776,18 @@ export function mountSquads(o) {
       if (m) { if (m.parent) m.parent.remove(m); m.material.dispose(); markers[i] = null; }
     }
     if (markerTex) { markerTex.dispose(); markerTex = null; }
+    for (let i = 0; i < SLOTS; i++) {
+      const ol = outlines[i];
+      if (ol) { for (const sh of ol) sh.removeFromParent(); outlines[i] = null; } // geometry/skeleton belong to the source
+    }
+    if (outlineMat) { outlineMat.dispose(); outlineMat = null; }
+    for (let i = 0; i < SLOTS; i++) {
+      const rim = rims[i];
+      if (!rim) continue;
+      for (const s of rim.swaps) s.m.material = s.orig; // restore shared GLB materials
+      rim.own.forEach(c => c.dispose()); // owned clones only
+      rims[i] = null;
+    }
     root.remove(); style.remove();
     document.body.classList.remove('squads-on');
   }

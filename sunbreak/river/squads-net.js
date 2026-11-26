@@ -6,7 +6,7 @@
 import './peer-runtime.js';
 import { createMatch } from './squads-sim.js';
 
-const VERSION = 1, PREFIX = 'rf4-v1-', BUCKETS = 8, MAX_SLOTS = 8;
+const VERSION = 2, PREFIX = 'rf4-v1-', BUCKETS = 8, MAX_SLOTS = 8;
 const ROOM_RE = /^rf4-v1-(?:[0-9a-f]{20}|q[0-7])$/;
 const TICK_MS = 50, STEP = TICK_MS / 1000, SEND_MS = 40, PING_MS = 1000;
 const OPEN_MS = 12000, JOIN_MS = 15000, HELLO_MS = 10000;
@@ -16,7 +16,7 @@ const PRIVATE_RE = /^rf4-v1-[0-9a-f]{20}$/;
 const MAX_PENDING = 4, MAX_CONNS = MAX_SLOTS - 1 + MAX_PENDING;
 const MAX_CTRL = 512, MAX_SNAP = 16384, RATE = 60, MAX_BUFFER = 65536;
 const RETRIES = 1, RETRY_MS = 800, BYE_FLUSH_MS = 200;
-const PHASES = ['warmup', 'live', 'result', 'finished'];
+const PHASES = ['lobby', 'warmup', 'live', 'result', 'finished'];
 const FATAL = new Set(['network', 'server-error', 'socket-error', 'socket-closed', 'unavailable-id',
   'invalid-id', 'invalid-key', 'ssl-unavailable', 'browser-incompatible']);
 
@@ -145,6 +145,7 @@ function cleanSnapshot(s) {
   if (!Array.isArray(s.score) || s.score.length !== 2) return null;
   const players = [], seen = new Set();
   for (const raw of s.players) {
+    if (raw == null) continue; // sparse seats: empty slots may arrive as null
     const p = cleanPlayer(raw);
     if (!p || seen.has(p.slot)) return null;
     seen.add(p.slot);
@@ -202,11 +203,19 @@ function handshake(peer, room) {
 // ---------- host ----------
 
 function runHost(peer, room, cb) {
-  const match = createMatch();
-  const slot = match.join();
+  const match = createMatch({ waiting: PRIVATE_RE.test(room) }); // invite rooms wait in the lobby; quick rooms do not
+  let slot = match.join();
   if (slot < 0) { destroy(peer); throw netError('sim'); }
   const s = makeScope(), clients = new Map();
   let pending = 0, ended = false, last = performance.now(), acc = 0;
+
+  // Seat bookkeeping: me is the client record asking, or null for the host itself.
+  const held = (sl, me) => {
+    if (me && sl === slot) return true;
+    for (const o of clients.values()) if (o !== me && o.slot === sl) return true;
+    return false;
+  };
+  const seatOk = (sl, me) => Number.isInteger(sl) && sl >= 0 && sl < MAX_SLOTS && !held(sl, me);
 
   const drop = (conn, msg) => {
     const c = clients.get(conn);
@@ -229,13 +238,19 @@ function runHost(peer, room, cb) {
       if (m.v !== VERSION) return drop(conn, { t: 'error', code: 'version' });
       const sl = match.join();
       if (!Number.isInteger(sl) || sl < 0) return drop(conn, { t: 'full' });
+      if (!seatOk(sl, c)) return drop(conn, { t: 'full' }); // never share or evict an occupied seat
       c.slot = sl; pending--; c.deadline();
       sendRaw(conn, { t: 'welcome', v: VERSION, slot: sl });
       safeCall(cb.onStatus, '有玩家加入');
     } else if (m.t === 'input') {
       const i = cleanInput(m.i);
       if (i) match.input(c.slot, i);
-    } else if (m.t !== 'ping') drop(conn, { t: 'error', code: 'bad' });
+    } else if (m.t === 'team') {
+      // A guest may only move itself: the seat comes from the connection, never from the message.
+      if (m.team !== 0 && m.team !== 1) return drop(conn, { t: 'error', code: 'bad' });
+      const ns = match.chooseTeam(c.slot, m.team);
+      if (seatOk(ns, c) && ns !== c.slot) { c.slot = ns; c.moved = true; }
+    } else if (m.t !== 'ping') drop(conn, { t: 'error', code: 'bad' }); // includes 'start': only the host starts
   };
 
   const end = (code) => {
@@ -323,6 +338,11 @@ function runHost(peer, room, cb) {
       if (now - c.heard > CLIENT_SILENCE_MS) { drop(conn, { t: 'error', code: 'idle' }); continue; }
       if (conn.open && buffered(conn) <= MAX_BUFFER) {
         c.stall = 0;
+        // A seat change must reach the guest before any snapshot that reflects it.
+        if (c.moved) {
+          if (!sendRaw(conn, { t: 'seat', slot: c.slot })) { drop(conn); continue; }
+          c.moved = false;
+        }
         try { conn.send(raw); } catch { drop(conn); }
       } else if (!c.stall) c.stall = now; // congested: skip snapshots rather than queue them
       else if (now - c.stall > STALL_MS) drop(conn);
@@ -330,8 +350,21 @@ function runHost(peer, room, cb) {
   }, TICK_MS);
 
   return {
-    room, id: slot,
+    room, get id() { return slot; },
     role: 'host',
+    chooseTeam(team) {
+      if (ended || (team !== 0 && team !== 1)) return -1;
+      const ns = match.chooseTeam(slot, team);
+      if (!seatOk(ns, null)) return -1;
+      slot = ns;
+      return slot;
+    },
+    start() {
+      if (ended) return false;
+      let humans = 1;
+      for (const c of clients.values()) if (c.slot >= 0) humans++;
+      return humans >= 2 && match.start() !== false;
+    },
     send(p) { const i = ended ? null : cleanInput(p); if (i) match.input(slot, i); },
     close() { end(); },
   };
@@ -341,7 +374,7 @@ function runHost(peer, room, cb) {
 
 function runClient(peer, conn, slot, room, cb) {
   const s = makeScope();
-  let ended = false, heard = performance.now(), sent = heard, next = null;
+  let ended = false, heard = performance.now(), sent = heard, next = null, want = null;
 
   const end = (code) => {
     if (ended) return;
@@ -359,6 +392,9 @@ function runClient(peer, conn, slot, room, cb) {
     if (m.t === 'state') {
       const snap = cleanSnapshot(m.s);
       if (snap) safeCall(cb.onState, snap, slot);
+    } else if (m.t === 'seat') {
+      // Ordered channel: this lands before the first snapshot that uses the new seat.
+      if (Number.isInteger(m.slot) && m.slot >= 0 && m.slot < MAX_SLOTS) slot = m.slot;
     } else if (m.t === 'bye') end(m.code === 'host-signal' ? 'host-signal' : 'host-left');
     else if (m.t === 'error') end('kicked');
   });
@@ -374,13 +410,15 @@ function runClient(peer, conn, slot, room, cb) {
   s.interval(() => {
     const now = performance.now();
     if (now - heard > HOST_AWAY_MS) return end('host-silent'); // tolerate a briefly hidden/suspended host
+    if (want !== null && sendRaw(conn, { t: 'team', team: want })) { want = null; sent = now; }
     if (next) { if (sendRaw(conn, { t: 'input', i: next })) { next = null; sent = now; } }
     else if (now - sent > PING_MS && sendRaw(conn, { t: 'ping' })) sent = now;
   }, SEND_MS);
 
   return {
-    room, id: slot,
+    room, get id() { return slot; },
     role: 'guest',
+    chooseTeam(team) { if (!ended && (team === 0 || team === 1)) want = team; },
     send(p) { if (!ended && !away()) next = cleanInput(p) || next; },
     close() { end(); },
   };
