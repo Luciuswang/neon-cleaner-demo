@@ -2,7 +2,11 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="RIVERFALL"/>
 <base href="../"/>
 <title>SUNBREAK · RIVERFALL / 雨林河谷</title>
 <meta name="description" content="SUNBREAK RIVERFALL：雨林河谷新地图，双岸村落、浅河木桥、废墟掩体和全自动射击。电脑单人演示。"/>
@@ -99,12 +103,58 @@ html,body{background:#172229;color:#d5dedc}
  .panel h1{font-size:30px}.panel h2{font-size:12px}
  #help{display:none}.panel#menu{max-height:calc(100vh - 110px)}
 }
+/* Touch only: fullscreen tip, safe areas, compact landscape HUD. Desktop never gets html.touch. */
+#fsTip{position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:9999;width:min(360px,calc(100vw - 24px));padding:12px 14px;background:#111f27f5;border:1px solid #d0ac7b;border-radius:3px;font:12px/1.7 "Segoe UI","Microsoft YaHei",sans-serif;color:#d5dedc}
+#fsTip[hidden]{display:none}
+#fsTip .btn{display:block;margin-top:8px}
+html.touch #fsTip{z-index:10001}
+html.touch #bFull{position:fixed;left:var(--sl);top:var(--st);z-index:9000;min-width:48px;min-height:44px;padding:8px 10px;font-size:12px;pointer-events:auto;touch-action:manipulation}
+html.touch #bStyle,html.touch #bWeather,html.touch #bPres,html.touch #bPresOff,html.touch #soundControls,html.touch #stormControls,html.touch #quality,html.touch #help,html.touch #ammo em{display:none!important}
+html.touch .btns{left:calc(var(--sl) + 84px);top:var(--st);max-width:calc(100vw - 200px);gap:4px}
+html.touch .btns .btn{min-height:44px;padding:8px 12px;font-size:12px}
+html.touch #kills{right:var(--sr);top:var(--st);font-size:11px;padding:5px 8px}
+html.touch .sq-card{width:min(94vw,420px);max-height:calc(100vh - 120px);max-height:calc(100dvh - 120px);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 14px}
+html.touch .sq-card h2{font-size:15px;margin-bottom:6px}
+html.touch .sq-card p,html.touch .sq-card li{margin-bottom:5px;font-size:12px}
+html.touch .sq-btn{min-height:36px}
+html.touch .sq-board{top:calc(var(--st) + 50px);max-width:calc(100vw - 16px);overflow-x:auto;overflow-y:hidden;pointer-events:auto;-webkit-overflow-scrolling:touch}
+html.touch .sq-team{gap:3px;padding:3px 5px}
+html.touch .sq-team b{font-size:10px;margin:0 2px}
+html.touch .sq-chip{font-size:10px;padding:1px 4px}
+html.touch .sq-mid{padding:2px 8px}
+html.touch .sq-score{font-size:14px}
+html.touch .sq-sub{font-size:10px}
+html.touch .sq-invite{top:calc(var(--st) + 92px);flex-wrap:wrap;justify-content:center;max-width:calc(100vw - 16px);padding:6px 8px}
+html.touch .sq-invite input{width:min(46vw,220px)}
+html.touch .sq-banner{top:calc(var(--st) + 180px);max-width:calc(100vw - 24px);padding:4px 10px;font-size:12px}
+html.touch{--sl:max(12px,env(safe-area-inset-left));--sr:max(12px,env(safe-area-inset-right));--st:max(6px,env(safe-area-inset-top));--sb:max(8px,env(safe-area-inset-bottom))}
+@supports(height:100dvh){html.touch,html.touch body{height:100dvh}}
+@media(orientation:landscape) and (max-height:540px){
+ html.touch .btns{left:var(--sl);top:var(--st);max-width:50vw;gap:4px}
+ html.touch .btn{padding:6px 9px}
+ html.touch #soundControls{left:var(--sl);top:calc(var(--st) + 36px)}
+ html.touch #stormControls{left:var(--sl);top:calc(var(--st) + 74px)}
+ html.touch #kills{right:var(--sr);top:var(--st)}
+ html.touch #quality{right:var(--sr);top:calc(var(--st) + 34px)}
+ html.touch .bar{left:50%;bottom:var(--sb);width:120px;transform:translateX(-108%)}
+ html.touch #ammo{left:50%;right:auto;bottom:var(--sb);transform:translateX(8%);text-align:left}
+ html.touch #ammo i{font-size:24px}html.touch #ammo s{font-size:12px}html.touch #ammo em,html.touch #help{display:none}
+ html.touch .panel{max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);overflow-y:auto}
+ html.touch .panel#menu{left:auto;right:var(--sr);bottom:var(--sb);width:min(340px,46vw);max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);padding:14px 16px}
+ html.touch .panel h1{font-size:22px}html.touch .panel p{margin:8px 0}
+ html.touch .btns{left:calc(var(--sl) + 84px);top:var(--st);max-width:40vw}
+ html.touch .sq-card{width:min(420px,calc(100vw - 200px));max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px)}
+ html.touch .sq-board{top:var(--st);max-width:calc(100vw - 2*var(--sl) - 190px)}
+ html.touch .sq-invite{top:calc(var(--st) + 40px);flex-wrap:nowrap;max-width:calc(100vw - 2*var(--sl) - 24px)}
+ html.touch .sq-invite input{width:min(40vw,300px)}
+ html.touch .sq-banner{top:calc(var(--st) + 92px)}
+}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <div id="hud">
-  <div class="btns"><button class="btn" id="bStyle" title="切换冷暖色调 (V)">冷调 / 暖调</button><button class="btn" id="bWeather" title="切换天气 (T)">天气</button><button class="btn" id="bPause" title="暂停或继续 (P)">暂停/继续</button><button class="btn" id="bPres" title="演示模式 (G)">演示</button><button class="btn hide" id="bPresOff">退出演示</button></div>
+  <div class="btns"><button class="btn" id="bStyle" title="切换冷暖色调 (V)">冷调 / 暖调</button><button class="btn" id="bWeather" title="切换天气 (T)">天气</button><button class="btn" id="bPause" title="暂停或继续 (P)">暂停/继续</button><button class="btn" id="bPres" title="演示模式 (G)">演示</button><button class="btn hide" id="bPresOff">退出演示</button><button class="btn" id="bFull" type="button" aria-label="全屏" aria-pressed="false" hidden>全屏</button></div>
   <div id="soundControls"><button class="btn" id="bMute" aria-pressed="false">静音</button><label for="soundVolume">音量</label><input id="soundVolume" type="range" min="0" max="100" value="65" aria-label="音效音量"/><span id="audioStatus" role="status">点击开始启用音效</span></div>
   <div id="stormControls"><button class="btn" id="bPost" aria-pressed="true">后期：开</button><button class="btn" id="bFlash" aria-pressed="true">闪电：开启</button><button class="btn" id="bAssist" aria-pressed="true" title="轻度辅助瞄准：仅对视线内的敌人，不会自动开火">辅助瞄准：开</button></div>
   <div id="quality"><strong>RIVERFALL</strong> / 新地图<br><span id="weatherName">雨后 · 山谷日照</span></div><div id="tip"></div>
@@ -118,6 +168,7 @@ html,body{background:#172229;color:#d5dedc}
 <div class="panel" id="menu"><div class="eyebrow">SUNBREAK / RIVER VILLAGE</div><h1>RIVER<br>FALL</h1><h2>雨林河谷 · 双岸交火</h2><p>按住鼠标左键持续开火，松开即停。<br>R 更换弹匣，E 开关木屋门。<br>两岸斜对称木屋、浅河与坍塌村落。</p><div id="bootStatus"><span id="bootLabel" role="status">正在加载 · 1/6 主程序</span><progress id="bootBar" max="6" value="1" aria-labelledby="bootLabel"></progress><span id="bootTime"></span><noscript>需要启用 JavaScript 才能加载。</noscript></div><button class="btn" id="bStart" disabled>开始作战</button><button class="btn" id="bStyle2">切换色调</button><br><a class="compare" href="./original/" target="_blank" rel="noopener">01 原版 ↗</a><a class="compare" href="./v2/" target="_blank" rel="noopener">02 写实版 ↗</a><a class="compare" href="./" target="_blank" rel="noopener">03 暴雨版 ↗</a><a class="compare" href="./v4/" target="_blank" rel="noopener">04 连射版 ↗</a><small>电脑键盘与鼠标操作。单人 Demo。<a href="./river/?mode=squads" rel="noopener">4v4 联机试玩（可选，好友邀请 / AI 补位）</a><br>包含闪电效果，可在左上角关闭。建议适中音量。<br>独立网页实时渲染，非 Unreal 引擎。<br><a href="./river/credits.html" target="_blank" rel="noopener">模型、材质与音效鸣谢</a></small></div>
 <div class="panel hide" id="over"><h1 id="ot">任务完成</h1><p id="op"></p><button class="btn" id="bAgain">重新开始</button></div>
 <div id="err"></div>
+<div id="fsTip" role="dialog" aria-label="全屏提示" hidden><span id="fsTipText">此浏览器无法直接进入全屏。iPhone / iPad：在 Safari 打开 → 分享 → 添加到主屏幕 → 打开为网页 App → 添加 → 从图标启动并横屏；其他浏览器：在菜单中选择「添加到主屏幕」或「全屏」。</span><button class="btn" id="bFsTipOk" type="button">知道了</button></div>
 
 <script type="importmap">{"imports":{"three":"./vendor/presentation/build/three.module.js","three/addons/":"./vendor/presentation/examples/jsm/"}}</script>
 <script src="./river/boot-ui.js" onerror="var s=document.getElementById('bootStatus');if(s)s.innerHTML='启动脚本加载失败。<button class=btn style=pointer-events:auto onclick=location.reload()>重新加载</button>'"></script>
@@ -353,7 +404,31 @@ addEventListener('focusin',e=>{if(controlTarget(e.target))clearKeys()},true);
 function lockReq(){if(MOBILE||!cv.requestPointerLock){plOK=false;return}try{const r=cv.requestPointerLock();if(r&&r.catch)r.catch(()=>{plOK=false})}catch(e){plOK=false}}
 document.addEventListener('pointerlockerror',()=>{plOK=false});
 document.addEventListener('pointerlockchange',()=>{if(document.pointerLockElement!==cv){clearKeys();if(!squadsMode&&S.state==='play'&&plOK&&!pres){S.state='pause';showMenu('继续作战')}}});
-addEventListener('resize',()=>{cam.aspect=gcam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();if(MOBILE)rnd.setPixelRatio(mobPR());rnd.setSize(innerWidth,innerHeight)});
+let rzQ=0,rzT=0,rzW=0,rzH=0;
+function fitView(){rzQ=0;const w=Math.max(1,(MOBILE&&app.clientWidth)||innerWidth),h=Math.max(1,(MOBILE&&app.clientHeight)||innerHeight);if(MOBILE&&w===rzW&&h===rzH)return;rzW=w;rzH=h;cam.aspect=gcam.aspect=w/h;cam.updateProjectionMatrix();gcam.updateProjectionMatrix();if(MOBILE)rnd.setPixelRatio(mobPR());rnd.setSize(w,h)}
+function queueFit(){if(!MOBILE){fitView();return}if(!rzQ)rzQ=requestAnimationFrame(fitView);clearTimeout(rzT);rzT=setTimeout(()=>{if(!rzQ)rzQ=requestAnimationFrame(fitView)},350)}
+addEventListener('resize',queueFit);
+if(MOBILE){
+ const de=document.documentElement,bFull=document.getElementById('bFull'),fsTip=document.getElementById('fsTip');
+ de.classList.add('touch');
+ addEventListener('orientationchange',queueFit);addEventListener('pageshow',queueFit);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)queueFit()});
+ if(window.visualViewport)visualViewport.addEventListener('resize',queueFit);
+ const fsEl=()=>document.fullscreenElement||document.webkitFullscreenElement;
+ const standalone=navigator.standalone===true||matchMedia('(display-mode:standalone),(display-mode:fullscreen)').matches;
+ const fsFail=()=>{if(standalone)document.getElementById('fsTipText').textContent='已从主屏幕以全屏方式运行，无需再切换。';fsTip.hidden=false};
+ const fsSync=()=>{const on=!!fsEl();bFull.setAttribute('aria-pressed',String(on));bFull.textContent=on?'退出全屏':'全屏';
+  if(on){fsTip.hidden=true;try{const l=screen.orientation&&screen.orientation.lock&&screen.orientation.lock('landscape');if(l&&l.catch)l.catch(()=>{})}catch(e){}}
+  queueFit()};
+ document.addEventListener('fullscreenchange',fsSync);document.addEventListener('webkitfullscreenchange',fsSync);
+ document.getElementById('bFsTipOk').onclick=()=>{fsTip.hidden=true};
+ bFull.hidden=false;document.body.appendChild(bFull);
+ bFull.addEventListener('click',()=>{bFull.blur();
+  if(fsEl()){try{(document.exitFullscreen||document.webkitExitFullscreen).call(document)}catch(e){}return}
+  const rq=de.requestFullscreen||de.webkitRequestFullscreen;
+  if(!rq){fsFail();return}
+  try{const p=rq.call(de,{navigationUI:'hide'});if(p&&p.catch)p.catch(fsFail)}catch(e){fsFail()}});
+}
 
 // Optional light aim assist: visible in-game NPCs only; it nudges the look angles only while the player is moving the view (mouse or arrow look) and never fires. Fire or ADS alone never rotates the camera.
 const assist=createAimAssist({actors:()=>enemies,center:e=>actorCenter(e,enemyHitBounds),visible:(a,b)=>clearSight(a,b)});

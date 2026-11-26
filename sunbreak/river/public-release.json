@@ -1,13 +1,13 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "8ad5a46e8c5ff50d842df82d695a2d83b3ceb2dc",
-  "created": "2026-11-25T14:01:29.965Z",
+  "sourceCommit": "871241424a1817752d9b892207e13a1e9c762902",
+  "created": "2026-11-26T04:44:49.593Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
       "path": "index.html",
-      "bytes": 48653,
-      "sha256": "68910cb7e467e7e06c53479993615f92d4883bb47eea99025b8bfbddb8c733e3"
+      "bytes": 55471,
+      "sha256": "8d39877e8c60971b0c57d07020c381ed369a4d77c97c81eb489f2176ef4f429a"
     },
     {
       "path": "world.js",
@@ -256,8 +256,8 @@
     },
     {
       "path": "mobile-terrain.js",
-      "bytes": 11681,
-      "sha256": "8b14752730ce5ba1d5d68ee25d19476d52f4cbdb9d24bec18fcb79a2871899a5"
+      "bytes": 12715,
+      "sha256": "624ed2747c2be16d7acaf83646ac9650686b18179e6a7961b984bdc0eda9e0fb"
     },
     {
       "path": "mobile-ecology.js",
@@ -276,13 +276,13 @@
     },
     {
       "path": "squads-net.js",
-      "bytes": 15985,
-      "sha256": "1d6812f15949d07a437fe3cbf9b98cca09b9978a6e6c5dd03f94352b6509a3f9"
+      "bytes": 19417,
+      "sha256": "d37d6ee012c3be011831200be36f84addf64e4e840d35afb55625c9cdba5456b"
     },
     {
       "path": "squads-view.js",
-      "bytes": 27306,
-      "sha256": "6ec16b486957e2fdfc61ae402ff5c4e2016f45e72bda85c15267ccdd788f66de"
+      "bytes": 31130,
+      "sha256": "c8d160c8b69f546fe4d6a536fd5c897ec09b19160182e75029df104383d3e33f"
     },
     {
       "path": "peer-runtime.js",
