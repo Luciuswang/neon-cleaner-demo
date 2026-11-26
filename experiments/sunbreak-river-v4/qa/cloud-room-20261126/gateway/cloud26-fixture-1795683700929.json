@@ -1,0 +1,35 @@
+{
+  "phase": "cloud26-fixture",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T09:01:40.927Z",
+  "result": "completed",
+  "responseSHA": "fa5cbf6c8c36cd6c37076fd378e04d41723dd53710841341ff84d2bb93f205cf",
+  "usage": {
+    "input_tokens": 381,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2905,
+    "output_tokens_details": {
+      "thinking_tokens": 1770
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.11924799999999999
+}

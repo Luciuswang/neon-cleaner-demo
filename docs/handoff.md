@@ -897,3 +897,7 @@ Riverfall candidate: host-start invitation lobby, explicit team picks, enemy-onl
 ## Sync note - 2026-11-26T16:35:04.5946740+08:00
 
 Riverfall PR 26 live with byte checks and public invitation/team/start UI PASS on two clients; official links delivered to owner by SeaTalk DM. See river-party-lobby-20261126.
+
+## Sync note - 2026-11-26T17:10:27.6248059+08:00
+
+Server-backed auto-invite candidate only. No public service or new live link; public endpoint and release gates remain pending. See river-room-service-20261126.

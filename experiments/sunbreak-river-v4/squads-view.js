@@ -1,4 +1,5 @@
-import {connectRoom} from './squads-net.js';
+const connectRoom = async (...a) => (await import('./squads-net.js')).connectRoom(...a);
+import {connectCloud} from './squads-cloud.js';
 import {createMatch} from './squads-sim.js';
 
 // Riverfall online squads view (4v4, one life per round, friendly prototype).
@@ -11,7 +12,18 @@ import {createMatch} from './squads-sim.js';
 
 const ACTION_CREATE = 'create', ACTION_JOIN = 'join', ACTION_QUICK = 'quick';
 const EYE = 1.7, SEND_MS = 50, SLOTS = 8;
-const ROOM_RE = /^rf4-v1-(?:[0-9a-f]{20}|q[0-7])$/;
+const ROOM_RE = /^(?:rf4-v1-(?:[0-9a-f]{20}|q[0-7])|rf4-h2-[0-9a-f]{32})$/;
+const H2_RE = /^rf4-h2-[0-9a-f]{32}$/;
+// Production URL is not assigned yet: fill only after the public anonymous API is verified. Must be https.
+const CLOUD_ROOM_URL = '';
+// Never derived from an invite: only the constant above, or explicit loopback QA (?cloudqa=1 on 127.0.0.1/localhost).
+const cloudUrl = () => {
+  try {
+    const hn = location.hostname;
+    if ((hn === '127.0.0.1' || hn === 'localhost') && new URLSearchParams(location.search).get('cloudqa') === '1') return 'http://127.0.0.1:5197/api/room';
+  } catch (e) {}
+  return CLOUD_ROOM_URL.startsWith('https://') ? CLOUD_ROOM_URL : '';
+};
 const TEAM_NAME = ['蓝队', '橙队'];
 const TEAM_COL = [0x4da3ff, 0xffb02e];
 const PHASE_NAME = {warmup: '准备', live: '交战', result: '结算', finished: '终局'};
@@ -333,23 +345,23 @@ export function mountSquads(o) {
     render('好友房 · 等待开战', false, inviteRow, status, link, grid, hint, btnRow(action, leave));
   }
 
-  function showNotice() {
+  function showNotice(next) {
     const ul = el('ul');
     [
       '联机为可选功能，单人模式完全不受影响。',
-      '联机使用 WebRTC 点对点连接：房主和其他玩家可能看到你的 IP 地址；信令经由公共 PeerJS 服务。',
+      '快速匹配与旧版（rf4-v1）邀请房间使用 WebRTC 点对点连接：房主和其他玩家可能看到你的 IP 地址；信令经由公共 PeerJS 服务。',
       '比赛由房主的浏览器裁定；房主退出或断线，比赛即结束。',
       '部分网络（严格 NAT／防火墙）可能无法连接，届时会给出提示并可重试。',
       '本游戏不要求账号。空位由明确标注 [AI] 的电脑玩家补齐。友谊赛原型，不计排名。'
     ].forEach(t => ul.appendChild(el('li', '', t)));
     render('联机小队 · 4 对 4', false, ul,
-      el('p', '', '点击“我已了解”之前不会发起任何网络连接。'),
-      btnRow(btn('我已了解，继续', () => { noticeOk = true; try { initAudio && initAudio(); } catch (e) {} showChoices(); }),
+      el('p', '', '点击“我已了解”之前不会发起任何点对点（P2P）连接。'),
+      btnRow(btn('我已了解，继续', () => { noticeOk = true; try { initAudio && initAudio(); } catch (e) {} if (typeof next === 'function') next(); else showChoices(); }),
+        btn('返回大厅', () => showChoices(), true),
         btn('返回单人', backSolo, true)));
   }
 
   function showChoices(err) {
-    if (!noticeOk) return showNotice();
     const h = hashRoom(); const nodes = [];
     if (err) { const p = el('p', 'sq-err', err); p.setAttribute('role', 'alert'); nodes.push(p); }
     if (h.given && h.room) {
@@ -362,16 +374,16 @@ export function mountSquads(o) {
         nodes.push(el('p', '', '此标签页不久前创建过邀请房间：' + mem + '。可恢复原房间号，让原邀请链接继续可用。'));
         nodes.push(btnRow(btn('恢复原房间', () => confirmRestore(mem)), btn('忘记原房间', () => { forgetRoom(); showChoices(); }, true)));
       }
-      nodes.push(el('p', '', '私人邀请：创建房间后先进入房间大厅，把邀请链接发给好友。'));
-      nodes.push(btnRow(btn('创建邀请房间', () => connect(ACTION_CREATE))));
-      nodes.push(el('p', '', '立即开打：无需邀请，直接进入对局。不足八人时由 [AI] 补位。'));
-      nodes.push(btnRow(btn('快速匹配', () => connect(ACTION_QUICK)), btn('4v4 AI 练习（不联网）', () => connect('practice'), true), btn('返回单人', backSolo, true)));
+      nodes.push(el('p', '', cloudUrl() ? '私人邀请（服务器房间）：创建后先进入房间大厅，把邀请链接发给好友。经由游戏服务器中转，玩家之间不直接连接。' : '私人邀请（点对点 P2P）：创建房间后先进入房间大厅，把邀请链接发给好友。连接前会先显示 IP 可见性说明。'));
+      nodes.push(btnRow(btn(cloudUrl() ? '创建服务器房间' : '创建邀请房间', () => connect(ACTION_CREATE))));
+      nodes.push(el('p', '', '可选 · 立即开打：无需邀请，直接进入对局。不足八人时由 [AI] 补位。快速匹配为点对点（P2P），连接前会先显示 IP 可见性说明并征得同意。'));
+      nodes.push(btnRow(btn('快速匹配（P2P）', () => connect(ACTION_QUICK), true), btn('4v4 AI 练习（不联网）', () => connect('practice'), true), btn('返回单人', backSolo, true)));
     }
     render('联机大厅', false, ...nodes);
   }
 
   function confirmRestore(room) {
-    if (!noticeOk) return showNotice();
+    if (!noticeOk && !H2_RE.test(String(room || ''))) return showNotice(() => confirmRestore(room));
     if (hashRoom().given || recallRoom() !== room) return showChoices();
     const p = el('p', '', '将以房主身份恢复房间 ' + room + '。这会开始全新的一局：之前的比分和进度不会保留，原来的玩家需要通过邀请链接重新加入。');
     render('恢复原房间？', false, p,
@@ -400,17 +412,23 @@ export function mountSquads(o) {
   // ---------- connection ----------
   function connect(action, room) {
     closeSession();
-    if (action === 'restore' && (!noticeOk || hashRoom().given || !ROOM_RE.test(String(room || '')))) return showChoices('无法恢复原房间。');
+    if (action === 'restore' && (hashRoom().given || !ROOM_RE.test(String(room || '')))) return showChoices('无法恢复原房间。');
+    const curl = cloudUrl();
+    const cloud = action === ACTION_CREATE ? !!curl : ((action === ACTION_JOIN || action === 'restore') && H2_RE.test(String(room || '')));
+    if (cloud && !curl) return showChoices('服务器房间暂未开放，暂时无法进入此房间。请稍后重试。'); // h2 never falls back to WebRTC
+    if (!cloud && action !== 'practice' && !noticeOk) return showNotice(() => connect(action, room)); // explicit consent before any P2P
     const g = ++gen; last = {action, room};
     showConnecting();
     const receive = (s, slot) => { if (g === gen) onState(s, slot); };
-    Promise.resolve().then(() => action === 'practice' ? localPractice(receive) : connectRoom({
+    Promise.resolve().then(() => action === 'practice' ? localPractice(receive) : (cloud ? connectCloud : connectRoom)({
+      ...(cloud ? {url: curl} : {}),
       action, room,
       onState: (s, slot) => { if (g === gen) onState(s, slot); },
       onStatus: t => { if (g === gen) setStatus(t); },
       onEnd: t => { if (g === gen) ended(t); }
     })).then(s => {
       if (g !== gen) { try { s.close(); } catch (e) {} return; }
+      if (cloud !== H2_RE.test(String(s.room || ''))) { try { s.close(); } catch (e) {} closeSession(); return showChoices('连接失败：房间类型不匹配。请稍后重试。'); }
       session = s;
       const hold = snap ? snap.phase === 'lobby' : (!s.localPractice && action !== ACTION_QUICK);
       S[stateKey] = hold ? 'menu' : 'play';
@@ -426,7 +444,7 @@ export function mountSquads(o) {
       if (hold) { lobbyOn = true; partyKey = ''; if (snap) onState(snap, mySlot); return; }
       overlay.hidden = true; board.hidden = false;
       updatePrompt();
-    }, e => { if (g === gen) { closeSession(); showChoices('连接失败：' + readable(e) + '。可重试，或检查网络（NAT／防火墙）。'); } });
+    }, e => { if (g === gen) { closeSession(); showChoices('连接失败：' + readable(e) + (cloud ? '。请稍后重试。' : '。可重试，或检查网络（NAT／防火墙）。')); } });
   }
 
   function ended(text) {
@@ -792,7 +810,7 @@ export function mountSquads(o) {
     document.body.classList.remove('squads-on');
   }
 
-  showNotice();
+  { const h0 = hashRoom(); if (h0.given && H2_RE.test(h0.room)) connect(ACTION_JOIN, h0.room); else showChoices(); } // h2 invite: server only, no peer contact, so no consent step; one attempt, no retry loop
   function mayTouch() { return !!(session && snap && !finalShown && snap.phase !== 'finished' && snap.phase !== 'lobby'); }
   function touchEngage() {
     if (!mayTouch()) return null;

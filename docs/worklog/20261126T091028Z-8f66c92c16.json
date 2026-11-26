@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "event_id": "20261126T091028Z-8f66c92c16",
+  "task_id": "river-room-service-20261126",
+  "timestamp_utc": "2026-11-26T09:10:28.281750+00:00",
+  "machine_id": "c962db33-1d3e-4fe9-b725-02dd37288550",
+  "branch": "codex/character-continuity-pipeline",
+  "status": "checkpoint",
+  "summary": "Server-backed auto-invite candidate only. No public service or new live link; public endpoint and release gates remain pending. See river-room-service-20261126.",
+  "commit_shas": [
+    "6457337ddfc8a68eaa447afb6a162df6bce03ce2"
+  ],
+  "evidence": [],
+  "blockers": [],
+  "next_action": "Read the task packet and latest QA before continuing.",
+  "provenance": "Written on the producing workstation; commit_shas are existing source checkpoints. The containing commit records this event; only remote events enter reports."
+}

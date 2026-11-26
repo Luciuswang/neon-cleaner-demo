@@ -1,0 +1,35 @@
+{
+  "phase": "cloud26-wiring",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T09:01:30.508Z",
+  "result": "completed",
+  "responseSHA": "47cb0809bf1ab6ce918065080bbcf954fa98b26e4ca546c2751fdd77aaf38c6f",
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 18689,
+    "cache_read_input_tokens": 6092,
+    "output_tokens": 14765,
+    "output_tokens_details": {
+      "thinking_tokens": 12080
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 18689
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.7788044
+}

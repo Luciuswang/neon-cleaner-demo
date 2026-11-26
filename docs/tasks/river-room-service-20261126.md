@@ -1,0 +1,9 @@
+# Riverfall: open a friend invitation without device-to-device networking
+
+Release state: candidate only; not enabled or published. Existing public Pages game stays on PR 26. No hosted room service, paid account, or public database was provisioned.
+
+The candidate adds isolated, expiring, token-authenticated rooms on an HTTPS/D1 service, a client adapter and an automatic path from new `rf4-h2-` invitation fragments to the waiting room. A fragment contains the random room invite only, not an owner/member token. Old P2P links remain behind disclosure. The service URL is deliberately unset for production. Host browser still simulates the game. Quick match has not been migrated.
+
+Implementation and model receipts are under `experiments/sunbreak-river-v4/`; `room-service/` contains the service and schema/migration. A local Sites candidate compiled; its generic framework dependencies need a production security review or a dependency-free Worker entry before exposure. The manual test fixture uses the same handler and migration with local SQLite; it is not a hosted D1 test.
+
+The prior public release required direct networking on the tested route. Candidate local paired Chromium tests intentionally denied all RTC constructors. The desktop-host test demonstrated new-link auto-entry and same-team selection. Early fixture configuration, one dependency's RTC capability probe, and excessive guest refresh attempts were identified; fixture corrected, P2P import made lazy, and guest input now coalesced. Mobile-host acceptance, public anonymous service reachability, real Wi-Fi/cellular and live motion quality must not be inferred. Public go-live involves provisioning a new anonymous room endpoint with ongoing compute/storage use outside the existing static Pages release; obtain explicit scope for that service and any spending limit. Never send the old link as a fix.

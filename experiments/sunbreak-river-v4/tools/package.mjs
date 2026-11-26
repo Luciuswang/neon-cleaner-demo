@@ -16,7 +16,7 @@ runtime.push('perimeter-layout.js','perimeter-art.js');
 runtime.push('mobile-world.js','mobile-controls.js');
 runtime.push('meadow-roots.js','wall-meadow.js','slope-sward.js','coconut-grove.js','cover-creepers.js','roof-patina.js');
 runtime.push('mobile-terrain.js','mobile-ecology.js','mobile-look.json');
-runtime.push('squads-sim.js','squads-net.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.
+runtime.push('squads-sim.js','squads-net.js','squads-cloud.js','squads-view.js','peer-runtime.js','peer-notice.html'); // Opt-in ?mode=squads only; peer-notice.html carries the PeerJS MIT credit.
 runtime.push('downloaded-dressing.js'); // Local preview loader; no scan binaries/manifests in public output.
 runtime.push('environment-polish.js','stone-cover.js','combat-feedback.js','shot-feedback-event.js');
 runtime.push('procedural-materials.js','procedural-ground.js','afterrain-ground.js','afterrain-light.js','forest-floor.js','puddle-reflection.js','fieldstone-surface.js','scan-cover.js','PROCEDURAL-NOTICE.txt');
