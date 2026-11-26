@@ -1,7 +1,7 @@
 {
   "schema": "sunbreak-river-overlay-v1",
-  "sourceCommit": "871241424a1817752d9b892207e13a1e9c762902",
-  "created": "2026-11-26T04:44:49.593Z",
+  "sourceCommit": "91dad7d6c61461e9ed815fb14b7ffa208e4ebabb",
+  "created": "2026-11-26T08:30:09.949Z",
   "publicPath": "sunbreak/river/",
   "files": [
     {
@@ -271,18 +271,18 @@
     },
     {
       "path": "squads-sim.js",
-      "bytes": 21413,
-      "sha256": "6261da7556d5e4f16a18f84e090c2e61dc17dc525732eec2661a24770d5ebc44"
+      "bytes": 22503,
+      "sha256": "373f0efa58fb57e362182bee4be20dbd8523ce91ed2b9138712f01fcbb76d0b5"
     },
     {
       "path": "squads-net.js",
-      "bytes": 19417,
-      "sha256": "d37d6ee012c3be011831200be36f84addf64e4e840d35afb55625c9cdba5456b"
+      "bytes": 21502,
+      "sha256": "42517d0bcb81eac32787a69aeaf57fe3588bd9acecdc846613fc2c8fc4a59fa8"
     },
     {
       "path": "squads-view.js",
-      "bytes": 31130,
-      "sha256": "c8d160c8b69f546fe4d6a536fd5c897ec09b19160182e75029df104383d3e33f"
+      "bytes": 43025,
+      "sha256": "329ec27f78e8029e62ce43ee7a4c05138de0624df8aa406e066fb66ce39892ae"
     },
     {
       "path": "peer-runtime.js",
