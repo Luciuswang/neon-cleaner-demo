@@ -14,6 +14,20 @@
       ],
       "task_id": "cinematic-polish-2026-10-30",
       "updated_at": "2026-10-30T11:24:39.782667+00:00"
+    },
+    "river-room-service-20261126": {
+      "base_commit": "6457337ddfc8a68eaa447afb6a162df6bce03ce2",
+      "branch": "codex/character-continuity-pipeline",
+      "expires_at": "2026-11-26T16:56:04.060147+00:00",
+      "owner": "c962db33-1d3e-4fe9-b725-02dd37288550",
+      "scopes": [
+        "experiments/sunbreak-river-v4",
+        "docs/tasks/river-room-service-20261126.md",
+        "docs/handoff.md",
+        "docs/worklog"
+      ],
+      "task_id": "river-room-service-20261126",
+      "updated_at": "2026-11-26T08:56:04.060147+00:00"
     }
   },
   "schema": 1
