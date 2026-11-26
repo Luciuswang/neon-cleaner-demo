@@ -1,0 +1,35 @@
+{
+  "phase": "party26-polish",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T08:26:19.291Z",
+  "result": "completed",
+  "responseSHA": "99210b26072960c563ae2dd844bca430fcb27a2cc13f7c0950a07f67e984135c",
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 5215,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 3228,
+    "output_tokens_details": {
+      "thinking_tokens": 2170
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 5215
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.18130200000000002
+}

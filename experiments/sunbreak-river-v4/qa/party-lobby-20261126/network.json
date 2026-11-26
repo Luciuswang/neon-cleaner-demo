@@ -1,0 +1,355 @@
+{
+  "tool": "squads-network",
+  "mode": "local",
+  "base": "http://127.0.0.1:5190/river/",
+  "startedAt": "2026-11-26T08:27:52.365Z",
+  "assumptions": {
+    "actions": [
+      "create",
+      "join",
+      "quick"
+    ],
+    "livePhase": "live",
+    "inputAxes": [
+      "dx",
+      "dz"
+    ]
+  },
+  "privateRoom": {
+    "created": true,
+    "lobby": {
+      "hostAlone": true,
+      "loneStartRefused": true,
+      "both": true,
+      "hostCanStart": true,
+      "guestCannotStart": true,
+      "hostStarted": true
+    },
+    "distinctIds": true,
+    "distinctSlots": true,
+    "sameRoom": true,
+    "sameHumanSlots": true,
+    "roster": {
+      "host": {
+        "humans": 2,
+        "bots": 6,
+        "slot": 0
+      },
+      "guest": {
+        "humans": 2,
+        "bots": 6,
+        "slot": 1
+      }
+    },
+    "live": {
+      "round": 1
+    },
+    "movement": {
+      "hostSlotOnHost": 0.69,
+      "hostSlotOnGuest": 0.69,
+      "guestSlotOnHost": 0.69,
+      "guestSlotOnGuest": 0.69,
+      "sent": {
+        "host": 3,
+        "guest": 3
+      },
+      "sendErr": {
+        "host": null,
+        "guest": null
+      },
+      "ok": true
+    },
+    "result": {
+      "host": {
+        "round": 1,
+        "phase": "result",
+        "score": [
+          0,
+          1
+        ],
+        "winner": 1,
+        "seq": 1362
+      },
+      "guest": {
+        "round": 1,
+        "phase": "result",
+        "score": [
+          0,
+          1
+        ],
+        "winner": 1,
+        "seq": 1362
+      },
+      "consensus": true,
+      "secondsFromLive": 16.8
+    },
+    "final": {
+      "host": {
+        "n": 592,
+        "slot": 0,
+        "seq": 1374,
+        "phase": "result",
+        "round": 1,
+        "seconds": 3.767,
+        "canStart": true,
+        "score": [
+          0,
+          1
+        ],
+        "winner": 1,
+        "count": 8,
+        "humans": 2,
+        "bots": 6,
+        "humanSlots": [
+          0,
+          1
+        ],
+        "slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teams": [
+          4,
+          4
+        ],
+        "selfHuman": true,
+        "hist": [
+          {
+            "round": 1,
+            "phase": "lobby",
+            "score": [
+              0,
+              0
+            ],
+            "winner": -1,
+            "seq": 0
+          },
+          {
+            "round": 1,
+            "phase": "warmup",
+            "score": [
+              0,
+              0
+            ],
+            "winner": -1,
+            "seq": 3
+          },
+          {
+            "round": 1,
+            "phase": "live",
+            "score": [
+              0,
+              0
+            ],
+            "winner": -1,
+            "seq": 363
+          },
+          {
+            "round": 1,
+            "phase": "result",
+            "score": [
+              0,
+              1
+            ],
+            "winner": 1,
+            "seq": 1362
+          }
+        ],
+        "status": [
+          "正在创建房间…",
+          "房间已创建，等待好友加入",
+          "有玩家加入"
+        ],
+        "ends": [],
+        "move": {
+          "1:0": 5.903,
+          "1:1": 7.59,
+          "1:4": 33.742,
+          "1:5": 52.858,
+          "1:2": 27.151,
+          "1:3": 51.532,
+          "1:6": 27.425,
+          "1:7": 42.83
+        },
+        "sent": 305,
+        "sendErr": null,
+        "errors": []
+      },
+      "guest": {
+        "n": 511,
+        "slot": 1,
+        "seq": 1374,
+        "phase": "result",
+        "round": 1,
+        "seconds": 3.767,
+        "canStart": false,
+        "score": [
+          0,
+          1
+        ],
+        "winner": 1,
+        "count": 8,
+        "humans": 2,
+        "bots": 6,
+        "humanSlots": [
+          0,
+          1
+        ],
+        "slots": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "teams": [
+          4,
+          4
+        ],
+        "selfHuman": true,
+        "hist": [
+          {
+            "round": 1,
+            "phase": "lobby",
+            "score": [
+              0,
+              0
+            ],
+            "winner": -1,
+            "seq": 0
+          },
+          {
+            "round": 1,
+            "phase": "warmup",
+            "score": [
+              0,
+              0
+            ],
+            "winner": -1,
+            "seq": 3
+          },
+          {
+            "round": 1,
+            "phase": "live",
+            "score": [
+              0,
+              0
+            ],
+            "winner": -1,
+            "seq": 363
+          },
+          {
+            "round": 1,
+            "phase": "result",
+            "score": [
+              0,
+              1
+            ],
+            "winner": 1,
+            "seq": 1362
+          }
+        ],
+        "status": [
+          "正在加入房间…",
+          "已加入对局"
+        ],
+        "ends": [],
+        "move": {
+          "1:0": 5.903,
+          "1:1": 7.59,
+          "1:4": 33.742,
+          "1:5": 52.858,
+          "1:2": 27.151,
+          "1:3": 51.532,
+          "1:6": 27.425,
+          "1:7": 42.83
+        },
+        "sent": 305,
+        "sendErr": null,
+        "errors": []
+      }
+    },
+    "afterGuestLeft": {
+      "humans": 1,
+      "bots": 7,
+      "phase": "result"
+    },
+    "hostClosed": true
+  },
+  "isolation": {
+    "distinctRooms": true,
+    "otherRoster": {
+      "humans": 1,
+      "bots": 0,
+      "phase": "lobby",
+      "seconds": 0
+    },
+    "firstRoomStill2Humans": true
+  },
+  "quickMatch": {
+    "converged": true,
+    "sameRoom": true,
+    "distinctSlots": true,
+    "distinctIds": true,
+    "notPrivateRoom": true,
+    "privateRoomUntouched": true,
+    "otherPrivateUntouched": true,
+    "peers": [
+      {
+        "humans": 2,
+        "bots": 6,
+        "slot": 1,
+        "phase": "warmup",
+        "status": [
+          "正在匹配（1/8）…",
+          "已加入对局"
+        ],
+        "ends": [],
+        "errors": []
+      },
+      {
+        "humans": 2,
+        "bots": 6,
+        "slot": 0,
+        "phase": "warmup",
+        "status": [
+          "正在匹配（1/8）…",
+          "已创建公开房间，等待其他玩家",
+          "有玩家加入"
+        ],
+        "ends": [],
+        "errors": []
+      }
+    ]
+  },
+  "capacity": {
+    "full": {
+      "humans": 8,
+      "bots": 0
+    },
+    "ninthError": "page.evaluate: Error: 房间已满\n    at netError (http://<ip>:5190/river/squads-net.js:47:13)\n    at done (http://<ip>:5190/river/squads-net.js:182:40)\n    at e$.<anonymous> (http://<ip>:5190/river/squads-net.js:192:34)\n    at eS.emit (http://<ip>:5190/river/peer-runtime.js:7:3505)\n    at e$._handleDataMe",
+    "ninthRejected": true,
+    "hostStill8": true,
+    "ninth": {
+      "connectResolved": false,
+      "ends": [],
+      "status": [
+        "正在加入房间…"
+      ],
+      "snapshots": 0
+    },
+    "startedForShape": false
+  },
+  "finishedAt": "2026-11-26T08:28:35.448Z",
+  "issues": [],
+  "ok": true
+}

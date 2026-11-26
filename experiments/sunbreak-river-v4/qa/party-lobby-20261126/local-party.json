@@ -1,0 +1,16 @@
+{
+  "live": false,
+  "errors": [],
+  "steps": [
+    "touch clipboard reachable; host alone cannot start even after background return",
+    "guest joins and chooses blue; zero visible AI and no auto start",
+    "host switches twice, both clients retain ownership after host pause with guest connected; no card horizontal overflow",
+    "host starts once; both clients in live match, two humans on chosen team + six AI"
+  ],
+  "lobbyText": "好友房 · 等待开战\n复制邀请链接\n邀请好友\n已有 2/8 人 · 把链接发给好友\n蓝队 2/4\n1号位 · 你\n2号位 · 玩家3\n3号位 · 空位\n4号位 · 空位\n已在蓝队\n橙队 0/4\n1号位 · 空位\n2号位 · 空位\n3号位 · 空位\n4号位 · 空位\n选 橙队\n有空位：只有房主开始对战后，空位才由 [AI] 补齐（至少 2 名真人）· 每队最多 4 人，满员请选另一队\n开始对战\n离开房间",
+  "slots": [
+    "0",
+    "2"
+  ],
+  "pass": true
+}

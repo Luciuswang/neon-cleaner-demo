@@ -1,0 +1,24 @@
+{
+  "mobile": false,
+  "errors": [],
+  "idx": 1,
+  "shown": [
+    false,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    true
+  ],
+  "seen": {
+    "changed": 792,
+    "red": 744
+  },
+  "blocked": {
+    "changed": 0,
+    "red": 0
+  },
+  "pass": true
+}

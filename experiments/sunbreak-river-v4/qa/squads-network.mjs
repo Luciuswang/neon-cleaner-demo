@@ -112,6 +112,7 @@ function pageSummary() {
     n: q.n, slot: q.slot,
     id: h && h.id != null ? String(h.id) : '', room: h && h.room != null ? String(h.room) : '',
     seq: s ? s.seq : null, phase: s ? s.phase : null, round: s ? s.round : null, seconds: s ? s.seconds : null,
+    canStart: !!h && typeof h.start === 'function',
     score: s ? s.score : null, winner: s && s.winner !== undefined ? s.winner : null,
     count: ps.length, humans: ps.filter((p) => !p.bot).length, bots: ps.filter((p) => !!p.bot).length,
     humanSlots: ps.filter((p) => !p.bot).map((p) => p.slot).sort((a, b) => a - b),
@@ -192,6 +193,45 @@ async function close(p) {
 async function waitRoster(p, humans, timeout) {
   return waitFor(async () => { const s = await sum(p); return s.humans === humans && s.bots === 8 - humans ? s : null; }, timeout);
 }
+// Waiting-room contract: humans only, no AI fill, phase 'lobby', seconds === 0.
+async function waitLobby(p, humans, timeout) {
+  return waitFor(async () => { const s = await sum(p); return s.humans === humans && s.bots === 0 && s.phase === 'lobby' && s.seconds === 0 ? s : null; }, timeout);
+}
+// The waiting room must stay put: phase 'lobby', seconds 0, no bots, not live, no countdown ticking.
+async function lobbyHolds(p, humans, ms) {
+  const a = await sum(p);
+  await sleep(ms);
+  const b = await sum(p);
+  const bad = [];
+  if (b.humans !== humans) bad.push('humans=' + b.humans);
+  if (b.bots !== 0) bad.push('bots=' + b.bots);
+  if (b.phase !== 'lobby') bad.push('phase=' + b.phase);
+  if (b.seconds !== 0) bad.push('seconds=' + b.seconds);
+  if (b.phase === LIVE) bad.push('phase is live');
+  if (b.phase !== a.phase || b.round !== a.round) bad.push('phase/round advanced ' + a.round + ':' + a.phase + ' -> ' + b.round + ':' + b.phase);
+  if (typeof a.seconds === 'number' && typeof b.seconds === 'number' && b.seconds < a.seconds) bad.push('countdown ticking ' + a.seconds + ' -> ' + b.seconds);
+  if (bad.length) issue(p.name + ': waiting room did not hold: ' + bad.join('; '));
+  return bad.length ? null : b;
+}
+// Raw handle.start() result from the page; 'no-start' when the handle has no callable start (guests).
+async function startResult(p) {
+  return withTimeout(p.page.evaluate(async () => { const h = window.__qa.handle; if (!h || typeof h.start !== 'function') return 'no-start'; const r = await h.start(); return r === undefined ? null : r; }), T.connect, p.name + ' handle.start()');
+}
+// Host-only explicit start, run locally in the host page.
+async function startMatch(p) {
+  try {
+    const r = await startResult(p);
+    if (r === 'no-start') { issue(p.name + ': handle has no callable start()'); return false; }
+    if (r === false) { issue(p.name + ': handle.start() returned false'); return false; }
+    return true;
+  } catch (e) {
+    issue(p.name + ': handle.start() failed: ' + e.message);
+    return false;
+  }
+}
+function fullShape(s) { // non-reporting twin of shapeCheck
+  return s.count === 8 && s.slots.join() === '0,1,2,3,4,5,6,7' && s.teams.join() === '4,4' && s.selfHuman;
+}
 async function describe(p) {
   try { const s = await sum(p); return 'n=' + s.n + ' phase=' + s.phase + ' humans=' + s.humans + ' bots=' + s.bots + ' status=' + JSON.stringify(s.status.slice(-2)) + ' ends=' + JSON.stringify(s.ends); } catch (e) { return 'unreadable: ' + e.message; }
 }
@@ -224,8 +264,35 @@ async function privateMatch() {
   if (!room) { issue('host: no room code exposed on handle after create (' + (await describe(host)) + ')'); return null; }
   out.created = true;
 
+  // waiting room: host alone, phase lobby, seconds 0, no AI fill, no countdown
+  const lobby = (out.lobby = {});
+  const alone = await waitLobby(host, 1, T.roster);
+  if (!alone) issue('host alone is not in an unstarted, bot-free waiting room (' + (await describe(host)) + ')');
+  lobby.hostAlone = !!alone && !!(await lobbyHolds(host, 1, 2500));
+
+  // lone host: handle.start() must explicitly return false and leave the waiting room untouched
+  let lone;
+  try { lone = await startResult(host); } catch (e) { lone = 'threw: ' + e.message; }
+  if (lone !== false) issue('host: lone handle.start() should return false, got ' + String(lone));
+  lobby.loneStartRefused = lone === false && !!(await lobbyHolds(host, 1, 1000));
+
   const guest = await open('guest');
   if (!(await connect(guest, ACT_JOIN, room))) return { host, guest: null, room };
+
+  // second human joins: 2 humans + 0 AI on both peers, and joining must not start the match
+  const [lh, lg] = await Promise.all([waitLobby(host, 2, T.roster), waitLobby(guest, 2, T.roster)]);
+  if (!lh || !lg) issue('waiting room did not converge to 2 humans + 0 AI, unstarted: host ' + (await describe(host)) + ' / guest ' + (await describe(guest)));
+  lobby.both = !!lh && !!lg && (await Promise.all([lobbyHolds(host, 2, 2500), lobbyHolds(guest, 2, 2500)])).every(Boolean);
+
+  // start() exists only on the host handle; the guest has no callable start
+  const hostCan = (await sum(host)).canStart, guestCan = (await sum(guest)).canStart;
+  lobby.hostCanStart = hostCan === true;
+  lobby.guestCannotStart = guestCan === false;
+  if (!lobby.hostCanStart) issue('host: handle.start is not callable');
+  if (!lobby.guestCannotStart) issue('guest: handle exposes a callable start()');
+
+  // only the host starts, explicitly and locally; the guest never calls start
+  lobby.hostStarted = await startMatch(host);
 
   const [hs, gs] = await Promise.all([waitRoster(host, 2, T.roster), waitRoster(guest, 2, T.roster)]);
   if (!hs) issue('host: never saw 2 humans + 6 AI (' + (await describe(host)) + ')');
@@ -277,14 +344,14 @@ async function isolationAndQuick(ctx) {
   const other = await open('other-host');
   if (await connect(other, ACT_CREATE)) {
     const r2 = await roomOf(other);
-    const os = await waitRoster(other, 1, T.roster);
+    const os = await waitLobby(other, 1, T.roster);
     const hs = await sum(ctx.host);
     iso.distinctRooms = !!r2 && r2 !== ctx.room;
-    iso.otherRoster = os ? { humans: os.humans, bots: os.bots } : null;
+    iso.otherRoster = os ? { humans: os.humans, bots: os.bots, phase: os.phase, seconds: os.seconds } : null;
     iso.firstRoomStill2Humans = hs.humans === 2 && hs.bots === 6;
     if (!iso.distinctRooms) issue('second private room has no room code or collides with the first');
-    if (!os) issue('second private room is not 1 human + 7 AI (' + (await describe(other)) + ')');
-    else shapeCheck('other-host', os);
+    if (!os) issue('second private room is not a waiting room with 1 human + 0 AI, phase lobby, seconds 0 (' + (await describe(other)) + ')');
+    else if (os.phase !== 'lobby') issue('second private room is not in lobby phase: phase=' + os.phase);
     if (!iso.firstRoomStill2Humans) issue('first room roster changed when a second room was created: humans=' + hs.humans);
   }
 
@@ -311,8 +378,8 @@ async function isolationAndQuick(ctx) {
     if (!qm.privateRoomUntouched) issue('private room roster changed during quick match: humans=' + hs.humans);
     if (!other.closed && iso.otherRoster) {
       const os = await sum(other);
-      qm.otherPrivateUntouched = os.humans === 1 && os.bots === 7;
-      if (!qm.otherPrivateUntouched) issue('second private room roster changed during quick match: humans=' + os.humans);
+      qm.otherPrivateUntouched = os.humans === 1 && os.bots === 0 && os.phase === 'lobby' && os.seconds === 0;
+      if (!qm.otherPrivateUntouched) issue('second private room waiting state changed during quick match: humans=' + os.humans + ' bots=' + os.bots + ' phase=' + os.phase + ' seconds=' + os.seconds);
     }
     qm.peers = [pub(await sum(q1), q1), pub(await sum(q2), q2)].map((s) => ({ humans: s.humans, bots: s.bots, slot: s.slot, phase: s.phase, status: s.status.slice(-4), ends: s.ends, errors: s.errors }));
   }
@@ -361,11 +428,10 @@ async function capacity() {
     const g = await open('cap-guest-' + i);
     guests.push(g);
     if (!(await connect(g, ACT_JOIN, room))) return;
-    if (!(await waitRoster(host, i + 1, T.roster))) { issue('capacity: host did not reach ' + (i + 1) + ' humans (' + (await describe(host)) + ')'); return; }
+    if (!(await waitLobby(host, i + 1, T.roster))) { issue('capacity: host did not reach ' + (i + 1) + ' humans + 0 AI before start (' + (await describe(host)) + ')'); return; }
   }
   const full = await sum(host);
-  cap.full = { humans: full.humans, bots: full.bots };
-  shapeCheck('cap-host', full);
+  cap.full = { humans: full.humans, bots: full.bots, start: full.start };
   const ninth = await open('cap-ninth');
   let joined = false;
   let ninthErr = '';
@@ -383,6 +449,13 @@ async function capacity() {
   cap.ninth = { connectResolved: joined, ends: ns.ends.map(redact), status: ns.status.slice(-3).map(redact), snapshots: ns.n };
   if (!cap.ninthRejected) issue('capacity: ninth player was not clearly rejected');
   if (!cap.hostStill8) issue('capacity: host roster broke after ninth join attempt: humans=' + hs.humans + ' count=' + hs.count);
+  // 8-slot/4v4 shape: accept it from the waiting room if already assigned; start only if needed
+  let shaped = await sum(host);
+  cap.startedForShape = !fullShape(shaped);
+  if (cap.startedForShape && (await startMatch(host))) {
+    shaped = (await waitFor(async () => { const s = await sum(host); return fullShape(s) ? s : null; }, T.roster)) || (await sum(host));
+  }
+  shapeCheck('cap-host', shaped);
   await Promise.all([ninth, ...guests, host].map(close));
 }
 

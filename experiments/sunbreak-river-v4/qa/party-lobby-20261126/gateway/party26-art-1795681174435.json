@@ -1,0 +1,35 @@
+{
+  "phase": "party26-art",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T08:19:34.433Z",
+  "result": "completed",
+  "responseSHA": "175ad9d10fb85b626d4d755133004d80c5cd29574b4bb8e1ecc937eacc502a0a",
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 14763,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 19162,
+    "output_tokens_details": {
+      "thinking_tokens": 17384
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 14763
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.914206
+}

@@ -1,0 +1,35 @@
+{
+  "phase": "party26-qa",
+  "requested": "claude-fable-5-2",
+  "returned": [
+    "claude-fable-5-2"
+  ],
+  "ok": true,
+  "code": 0,
+  "utc": "2026-11-26T08:18:59.720Z",
+  "result": "completed",
+  "responseSHA": "e84021d9280126d59be706a74a26222adbd096b8c150a055d3dcbdcab6f8d61b",
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 13270,
+    "cache_read_input_tokens": 6703,
+    "output_tokens": 8966,
+    "output_tokens_details": {
+      "thinking_tokens": 6061
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 13270
+    },
+    "inference_geo": "global",
+    "iterations": [],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost": 0.4927446
+}

@@ -1,0 +1,11 @@
+# Riverfall — friends first, host starts
+
+Task `river-party-lobby-20261126`. Scope: the optional 4v4 Riverfall client, session protocol, simulation and QA. Earlier demos, solo behavior, level geometry and assets are unchanged.
+
+Private invite links lead to a waiting room: copy or share the actual room link, see both four-seat teams and choose a free seat on either side. No automatic round clock, active actors or AI roster before the host starts. The host needs at least one other person. At start the simulation preserves all human team assignments and fills just the vacancies. Quick matchmaking and explicitly chosen offline practice keep their immediate-start behavior. Protocol version 2 rejects obsolete peers rather than mixing rules. The hosting tab still needs to exist; native app/OS termination is not a persistent game server.
+
+Enemy bodies receive a depth-tested skinned silhouette and surface-edge red light. Only living opposing players or bots in warmup/live are eligible. No always-on-top pass; opaque scenery occludes the effect. Shared textures stay shared and private materials/hulls are restored/disposed on leaving squads.
+
+Evidence: `experiments/sunbreak-river-v4/qa/party-lobby-20261126/`. Two real WebRTC browser clients verified host-only authority, lobby hold, clipboard invitation, team switching and 2 humans + 6 AI on start. The rules and opening regressions passed. Eight distinct browser clients filled the private room before start with no AI; a ninth was refused without eviction. Network simulation and transport both declare 8 slots, closing the independent review's seat-bound condition. Render A/B: 354 changed red pixels on the targeted mobile-profile opponent and 744 on desktop; 0 changes when fully covered by an opaque wall on both. These pixel counts describe these test views, not a universal enemy outline size.
+
+Gateway receipts record the requested/returned `claude-fable-5-2`, outcome and reported usage; no claim of independently verified upstream billing. One oversized UI request hit its individual CLI cap and was split into smaller successful Fable requests. No model fallback. Existing unrelated private UE workspace left untouched. Public release and Apple candidate checks tracked separately.

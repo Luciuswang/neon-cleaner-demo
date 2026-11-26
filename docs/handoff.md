@@ -889,3 +889,7 @@ PR 25 released and byte-verified. Public invite after host freeze/thaw: two conn
 ## Sync note - 2026-11-26T16:04:52.4922937+08:00
 
 Record personal SeaTalk delivery for every verified playable update. This release was sent directly with both solo and 4v4 links.
+
+## Sync note - 2026-11-26T16:29:54.1138725+08:00
+
+Riverfall candidate: host-start invitation lobby, explicit team picks, enemy-only occluded red edges; local rules, WebRTC UI, capacity and render gates passed. Public delivery tracked in task.
