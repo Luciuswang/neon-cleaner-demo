@@ -885,3 +885,7 @@ Riverfall phone viewport, recoverable room invitation and water. Local two-peer 
 ## Sync note - 2026-11-26T12:49:33.1097476+08:00
 
 PR 25 released and byte-verified. Public invite after host freeze/thaw: two connected peers, six AI; phone touch and rotation passed. Apple candidate solo, practice and host passed. Physical SeaTalk app switch not tested.
+
+## Sync note - 2026-11-26T16:04:52.4922937+08:00
+
+Record personal SeaTalk delivery for every verified playable update. This release was sent directly with both solo and 4v4 links.

@@ -1,5 +1,9 @@
 # Codex Project Entry: Neon Cleaner
 
+## Playtest delivery — standing user instruction, 2026-11-26
+
+每次完成有可试玩版本的项目任务并验证上线后，直接将手机可点开的公网试玩链接发到用户本人的 SeaTalk 私聊，无需再次询问。单人和 4v4 有独立入口时分别标注，并用一句话说明本次重点验收什么。不要用 localhost、仓库页或截图链接代替试玩入口。只有收到发送成功回执才报告已发送；若发送失败，说明情况并在对话里保留链接。
+
 ## Model priority — standing user instruction, 2026-11-20
 
 Use the user's Gateway route with the explicit model `claude-fable-5-2` first
